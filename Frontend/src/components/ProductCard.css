@@ -1,0 +1,194 @@
+/* ── ProductCard ── */
+
+.pc-card {
+  position: relative;
+  background: #ffffff;
+  border: 1.5px solid #e8e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 320px; /* Standard size for single-card view */
+  margin: 0 auto;
+}
+
+.pc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(26, 26, 46, 0.14);
+  border-color: transparent;
+}
+
+/* ── New badge (top-left) ── */
+.pc-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  background: #ff6b35;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* ── Wishlist heart (top-right) ── */
+.pc-wish {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid #e8e8f0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.pc-wish:hover,
+.pc-wish--active {
+  border-color: #ef4444;
+  background: #fff5f5;
+}
+
+/* ── Image area ── */
+.pc-img-link {
+  display: block;
+  flex: 1.3;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 12px;
+  transition: transform 0.4s ease;
+}
+
+.pc-card:hover .pc-img {
+  transform: scale(1.04);
+}
+
+/* Placeholder (used when no real image is provided) */
+.pc-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #f0f0f8, #e8e8f5);
+  transition: background 0.4s ease;
+}
+
+.pc-placeholder--hover {
+  background: linear-gradient(135deg, #fff0eb, #ffe4d8);
+}
+
+.pc-placeholder-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a4a6a;
+}
+
+.pc-placeholder-hint {
+  font-size: 0.72rem;
+  color: #8888aa;
+  text-align: center;
+  padding: 0 12px;
+}
+
+/* ── Card body ── */
+.pc-body {
+  padding: 10px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between; /* Push button to bottom */
+  min-height: 0; /* Important for aspect-ratio enforcement */
+}
+
+.pc-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-decoration: none;
+  transition: color 0.25s;
+  /* Clamp to 1 line */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1; /* Standard property */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pc-name:hover {
+  color: #ff6b35;
+}
+
+.pc-desc {
+  font-size: 0.75rem;
+  color: #8888aa;
+  line-height: 1.3;
+  /* Clamp to 1 line */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pc-price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.pc-price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ff6b35;
+}
+
+.pc-old-price {
+  font-size: 0.8rem;
+  color: #8888aa;
+  text-decoration: line-through;
+}
+
+.pc-add-btn {
+  margin-top: 10px;
+  padding: 9px 0;
+  width: 100%;
+  background: #ff6b35;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.pc-add-btn:hover {
+  background: #e5521a;
+  transform: translateY(-1px);
+}

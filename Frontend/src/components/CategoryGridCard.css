@@ -1,0 +1,133 @@
+/* ── CategoryGridCard ── */
+
+.cgc-card {
+  background: #ffffff;
+  border: 1.5px solid #e8e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  height: 100%; /* Fill container */
+  min-height: 480px; /* Fixed minimum height to keep all cards uniform */
+}
+
+.cgc-card:hover {
+  box-shadow: 0 10px 32px rgba(26, 26, 46, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ── Heading ── */
+.cgc-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.3;
+  margin: 0;
+  /* Clamp to 1 line for perfect alignment */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 1.4em;
+}
+
+/* ── 2x2 grid ── */
+.cgc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  flex: 1; /* Take up available space */
+}
+
+/* ── Single item in the grid ── */
+.cgc-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: #1a1a2e;
+}
+
+/* Image wrapper – fixed height so all items align */
+.cgc-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f0f0f8;
+}
+
+.cgc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.cgc-item:hover .cgc-img {
+  transform: scale(1.06);
+}
+
+/* Placeholder used when no imgSrc is provided */
+.cgc-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f0f0f8, #e4e4f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: background 0.3s ease;
+}
+
+.cgc-item:hover .cgc-img-placeholder {
+  background: linear-gradient(135deg, #fff0eb, #fde4d6);
+}
+
+.cgc-ph-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #8888aa;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Label below each image */
+.cgc-item-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4a4a6a;
+  line-height: 1.3;
+  transition: color 0.25s;
+  /* Clamp to 1 line */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 1.3em;
+}
+
+.cgc-item:hover .cgc-item-label {
+  color: #ff6b35;
+}
+
+/* ── See all link ── */
+.cgc-see-all {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0072c6;
+  text-decoration: none;
+  margin-top: auto; /* Push to bottom */
+  transition: color 0.25s;
+  display: inline-block;
+}
+
+.cgc-see-all:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
