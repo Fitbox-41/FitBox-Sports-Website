@@ -12,91 +12,25 @@ import './Home.css';
    with real image paths when ready.
 ═══════════════════════════════════════ */
 
-/* Hero slides – 3 slides, auto-swap every 3 seconds */
-const heroSlides = [
-  {
-    id: 1,
-    title: 'Elite Toning Tubes',
-    subtitle: 'Sculpt your physique with high-resistance exercise bands.',
-    cta: 'Shop Now',
-    ctaLink: '/accessories',
-    bg: 'linear-gradient(135deg, #0d1b1a 60%, #1a3a35 100%)', // Lime Green Theme
-    accent: '#a8e063',
-    imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsxqtjeedu.jpeg',
-  },
-  {
-    id: 2,
-    title: 'Max Impact Training',
-    subtitle: 'Push your limits with our premium adjustable weighted vests.',
-    cta: 'Shop Now',
-    ctaLink: '/homegym',
-    bg: 'linear-gradient(135deg, #1f1f1f 60%, #3d3d3d 100%)', // Gray Theme
-    accent: '#bdc3c7',
-    imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6zaph8zkh.jpeg',
-  },
-  {
-    id: 3,
-    title: 'Pro-Grade Dumbbells',
-    subtitle: 'Built for strength, designed for results. Explore our PVC sets.',
-    cta: 'Shop Now',
-    ctaLink: '/dumbbells',
-    bg: 'linear-gradient(135deg, #1b1a0d 60%, #3a351a 100%)', // Yellow Theme
-    accent: '#f1c40f',
-    imgSrc: '/sports-hexa-pvc-dumbbells-2-fitbox-sports-original-imahgz5rfzebvzh9.jpeg',
-  },
-  {
-    id: 4,
-    title: 'Premium Kettlebells',
-    subtitle: 'Vinyl-coated solid cast iron for the ultimate home workout.',
-    cta: 'Shop Now',
-    ctaLink: '/dumbbells',
-    bg: 'linear-gradient(135deg, #0d141b 60%, #1a2a3a 100%)', // Blue Theme
-    accent: '#3498db',
-    imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.jpeg',
-  },
-  {
-    id: 5,
-    title: 'Grip Like a Pro',
-    subtitle: 'Adjustable 10kg hand exercisers to master your forearm strength.',
-    cta: 'Shop Now',
-    ctaLink: '/accessories',
-    bg: 'linear-gradient(135deg, #1b130d 60%, #3a2a1a 100%)', // Orange Theme
-    accent: '#e67e22',
-    imgSrc: '/hand-gripper-for-best-hand-exerciser-grip-adjustable-10kg-hand-original-imagtykf3fg5qhnj.jpeg',
-  },
-  {
-    id: 6,
-    title: 'The Viper Series',
-    subtitle: 'Professional full-size heavy-duty bats for every champion.',
-    cta: 'Shop Now',
-    ctaLink: '/balls',
-    bg: 'linear-gradient(135deg, #050505 60%, #1a1a1a 100%)', // Black Theme
-    accent: '#ffffff',
-    imgSrc: '/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjqfbhzth4.jpeg',
-  },
-  {
-    id: 7,
-    title: 'Pro Boxing Pads',
-    subtitle: 'High-density curved punching mitts for elite strike training.',
-    cta: 'Shop Now',
-    ctaLink: '/boxing',
-    bg: 'linear-gradient(135deg, #1a0d0d 60%, #3a1a1a 100%)', // Red Theme
-    accent: '#ff4b2b',
-    imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve.jpeg',
-  },
+
+
+/* Posters Section Data */
+const posterImages = [
+  { id: 'p1', imgSrc: '/2.jpg-scaled.jpeg', link: '/products' },
+  { id: 'p2', imgSrc: '/4.jpg.jpeg', link: '/products' },
+  { id: 'p3', imgSrc: '/7.jpg.jpeg', link: '/products' },
+  { id: 'p4', imgSrc: '/5.jpg.jpeg', link: '/products' },
+  { id: 'p5', imgSrc: '/6.jpg.jpeg', link: '/products' },
+  { id: 'p6', imgSrc: '/3.jpg-scaled.jpeg', link: '/products' },
 ];
 
-/* Promo banner slides – 9 banners, auto-swap every 3 seconds */
-const bannerSlides = [
-  { id: 'b1', imgSrc: '/1.jpg-scaled.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b2', imgSrc: '/2.jpg-scaled.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b3', imgSrc: '/3.jpg-scaled.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b4', imgSrc: '/4.jpg.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b5', imgSrc: '/5-scaled.jpg', link: '/products', cta: 'Shop Now' },
-  { id: 'b6', imgSrc: '/6.jpg.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b7', imgSrc: '/7.jpg.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b8', imgSrc: '/8.jpg.jpeg', link: '/products', cta: 'Shop Now' },
-  { id: 'b9', imgSrc: '/9.jpg.jpeg', link: '/products', cta: 'Shop Now' },
+/* Hot Products Data for Hero */
+const hotProducts = [
+  { id: 'hp1', name: 'Hexa PVC Dumbbells', price: '₹799', imgSrc: '/sports-hexa-pvc-dumbbells-4-0-fitbox-sports-original-imahf77zvmat7mpm.jpeg' },
+  { id: 'hp2', name: 'Speed Skipping Rope', price: '₹299', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.jpeg' },
+  { id: 'hp3', name: 'Premium Shaker', price: '₹499', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.jpg' },
+  { id: 'hp4', name: 'Gym Gloves V2', price: '₹699', imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.jpg' },
+  { id: 'hp5', name: 'Fabric Resistance Band', price: '₹449', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.jpeg' },
 ];
 
 /* Category pills – infinite scrolling strip */
@@ -331,9 +265,16 @@ const availabilityPlatforms = [
 ═══════════════════════════════════════ */
 export default function Home() {
 
-  /* ── Hero slider state ── */
-  const [heroIdx, setHeroIdx] = useState(0);
-  const heroTimer = useRef(null);
+  /* ── Hero product swap state ── */
+  const [hpIdx, sethpIdx] = useState(0);
+  const hpTimer = useRef(null);
+
+  useEffect(() => {
+    hpTimer.current = setInterval(() => {
+      sethpIdx((prev) => (prev + 1) % hotProducts.length);
+    }, 5000);
+    return () => clearInterval(hpTimer.current);
+  }, []);
 
   /* ── Category Swipe & Scroll state ── */
   const catTrackRef = useRef(null);
@@ -473,23 +414,7 @@ export default function Home() {
     };
   }, []);
 
-  /* Auto-advance hero every 3 seconds */
-  const startHeroTimer = () => {
-    clearInterval(heroTimer.current);
-    heroTimer.current = setInterval(() => {
-      setHeroIdx((prev) => (prev + 1) % heroSlides.length);
-    }, 5000);
-  };
 
-  useEffect(() => {
-    startHeroTimer();
-    return () => clearInterval(heroTimer.current);
-  }, [heroSlides.length]);
-
-  const goToSlide = (idx) => {
-    setHeroIdx(idx);
-    startHeroTimer();
-  };
 
   /* ── New Arrivals carousel state (Infinite) ── */
   const [naIdx, setNaIdx] = useState(newArrivals.length);
@@ -660,26 +585,7 @@ export default function Home() {
     if (endX - revStartX.current > 50) revPrev();
   };
 
-  /* ── Banner slider state ── */
-  const [bannerIdx, setBannerIdx] = useState(0);
-  const bannerTimer = useRef(null);
 
-  const startBannerTimer = () => {
-    clearInterval(bannerTimer.current);
-    bannerTimer.current = setInterval(() => {
-      setBannerIdx((prev) => (prev + 1) % bannerSlides.length);
-    }, 5000);
-  };
-
-  useEffect(() => {
-    startBannerTimer();
-    return () => clearInterval(bannerTimer.current);
-  }, [bannerSlides.length]); // Added dependency to be extra safe
-
-  const goToBanner = (idx) => {
-    setBannerIdx(idx);
-    startBannerTimer();
-  };
 
   /* ── Floating back-to-top button ── */
   const [showTop, setShowTop] = useState(false);
@@ -693,8 +599,8 @@ export default function Home() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  /* Current hero slide */
-  const slide = heroSlides[heroIdx];
+  const hpCurrent = hpIdx;
+  const hpNextIdx = (hpIdx + 1) % hotProducts.length;
 
   /* ═══ RENDER ═══ */
   return (
@@ -704,71 +610,83 @@ export default function Home() {
       <Header />
 
       {/* ══════════════════════════════════
-          1. HERO SECTION
-          3 slides, auto-swaps every 3s
+          1. NEW HERO SECTION
       ══════════════════════════════════ */}
-      <section className="hero-section" id="hero-section" aria-label="Hero banner">
-        <div className="hero-slide" style={{ background: slide.bg }} id={`hero-slide-${slide.id}`}>
+      <section className="new-hero" id="new-hero">
+        <div className="hero-wallpaper-wrap">
+          <img src="/Untitled-design-19.png" alt="Hero Background" className="hero-wallpaper" />
+          <div className="hero-overlay"></div>
+        </div>
 
-          {/* Right half – actual image */}
-          <div className="hero-img-side" id={`hero-img-${slide.id}`}>
-            {slide.imgSrc ? (
-              <img src={slide.imgSrc} alt={slide.title} className="hero-main-img" />
-            ) : (
-              <div className="hero-img-placeholder">
-                <span className="hero-ph-title">Hero Image {slide.id}</span>
-                <span className="hero-ph-hint">Replace this div with your &lt;img&gt;</span>
-              </div>
-            )}
-          </div>
-
-          {/* Left half – text + CTA */}
-          <div className="hero-content" key={slide.id}>
-            <span className="hero-eyebrow" style={{ color: slide.accent }}>FitBox Sports</span>
-            <h1 className="hero-title">{slide.title}</h1>
-            <p className="hero-subtitle">{slide.subtitle}</p>
-            <div className="hero-actions">
-              <Link to={slide.ctaLink} className="hero-cta-primary" id={`hero-cta-${slide.id}`}>
-                {slide.cta}
-              </Link>
-              <Link to="/products" className="hero-cta-outline">Browse All</Link>
+        <div className="hero-main-content">
+          <div className="hero-left">
+            <h1 className="hero-main-heading">
+              1 Million+ Customers Served <br />
+              <span>And Still Growing Strong</span>
+            </h1>
+            
+            <div className="hero-search-box">
+              <input type="text" placeholder="Search for premium gym gear..." className="hero-search-input" />
+              <button className="hero-search-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                Search
+              </button>
             </div>
           </div>
 
-          {/* Slide indicator dots */}
-          <div className="hero-dots" id="hero-dots">
-            {heroSlides.map((_, i) => (
-              <button
-                key={i}
-                className={`hero-dot ${i === heroIdx ? 'hero-dot--active' : ''}`}
-                id={`hero-dot-${i}`}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => goToSlide(i)}
-              />
-            ))}
+          <div className="hero-right">
+            <div className="hot-products-label">HOT PRODUCTS</div>
+            <div className="hot-products-container">
+              <div className="hot-product-card" key={`hp-${hpCurrent}`}>
+                <img src={hotProducts[hpCurrent].imgSrc} alt={hotProducts[hpCurrent].name} />
+                <div className="hp-info">
+                  <p className="hp-name">{hotProducts[hpCurrent].name}</p>
+                  <div className="hp-price-row">
+                    <p className="hp-price">{hotProducts[hpCurrent].price}</p>
+                    <button className="hp-cart-btn" aria-label="Add to cart">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="hot-product-card" key={`hp-next-${hpNextIdx}`}>
+                <img src={hotProducts[hpNextIdx].imgSrc} alt={hotProducts[hpNextIdx].name} />
+                <div className="hp-info">
+                  <p className="hp-name">{hotProducts[hpNextIdx].name}</p>
+                  <div className="hp-price-row">
+                    <p className="hp-price">{hotProducts[hpNextIdx].price}</p>
+                    <button className="hp-cart-btn" aria-label="Add to cart">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          {/* Previous / Next arrows */}
-          <button
-            className="hero-arrow hero-arrow--left"
-            id="hero-prev"
-            aria-label="Previous slide"
-            onClick={() => goToSlide((heroIdx - 1 + heroSlides.length) % heroSlides.length)}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-          <button
-            className="hero-arrow hero-arrow--right"
-            id="hero-next"
-            aria-label="Next slide"
-            onClick={() => goToSlide((heroIdx + 1) % heroSlides.length)}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
+      {/* ══════════════════════════════════
+          2. POSTERS SECTION (GRID)
+      ══════════════════════════════════ */}
+      <section className="posters-section" id="posters-grid">
+        <div className="posters-grid">
+          {posterImages.map((poster) => (
+            <Link key={poster.id} to={poster.link} className="poster-item">
+              <img src={poster.imgSrc} alt="Promotion" />
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -849,63 +767,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════
-          4. PROMO BANNER SLIDER
-          9 banners, auto-swap every 3s
-          Dots + prev/next arrows
-      ══════════════════════════════════ */}
-      <section className="banner-section" id="promo-banner" aria-label="Promotional banners">
-        <div
-          className="banner-slider"
-          id="banner-slider"
-        >
-          {/* Banner Image */}
-          <img
-            src={bannerSlides[bannerIdx].imgSrc}
-            alt="Promotional Banner"
-            className="banner-bg-img"
-          />
 
-          {/* Only showing images now — arrows and dots remain for navigation */}
-
-          {/* Prev arrow */}
-          <button
-            className="banner-arrow banner-arrow--left"
-            id="banner-prev"
-            aria-label="Previous banner"
-            onClick={() => goToBanner((bannerIdx - 1 + bannerSlides.length) % bannerSlides.length)}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-              <polyline points="15 18 9 12 15 6" />
-            </svg>
-          </button>
-
-          {/* Next arrow */}
-          <button
-            className="banner-arrow banner-arrow--right"
-            id="banner-next"
-            aria-label="Next banner"
-            onClick={() => goToBanner((bannerIdx + 1) % bannerSlides.length)}
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-              <polyline points="9 18 15 12 9 6" />
-            </svg>
-          </button>
-
-          {/* Dot indicators */}
-          <div className="banner-dots" id="banner-dots">
-            {bannerSlides.map((_, i) => (
-              <button
-                key={i}
-                className={`banner-dot ${i === bannerIdx ? 'banner-dot--active' : ''}`}
-                id={`banner-dot-${i}`}
-                aria-label={`Go to banner ${i + 1}`}
-                onClick={() => goToBanner(i)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════
           5. OUR PRODUCTS

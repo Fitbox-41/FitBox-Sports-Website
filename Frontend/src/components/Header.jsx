@@ -70,10 +70,12 @@ const userMenuItems = [
 export default function Header() {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [cartCount]               = useState(3);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [lastScrollPos, setLastScrollPos] = useState(0);
   const userRef                   = useRef(null);
+  const searchRef                 = useRef(null);
 
   /* Scroll event listener to hide/show sub-header */
   useEffect(() => {
@@ -94,11 +96,14 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollPos]);
 
-  /* Close user dropdown when clicking outside */
+  /* Close user & search dropdown when clicking outside */
   useEffect(() => {
     const handler = (e) => {
       if (userRef.current && !userRef.current.contains(e.target)) {
         setUserOpen(false);
+      }
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setIsSearchOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
@@ -110,22 +115,12 @@ export default function Header() {
       <div className="header-top">
         <div className="header-inner">
 
-          {/* ── Logo ── */}
           <Link to="/" className="logo" id="logo-link">
             <img src="/fitbox-_logo.-2-blackpng.png" alt="FitBox Sports" className="header-logo-img" />
           </Link>
 
 
-          {/* ── Search Bar ── */}
-          <div className={`header-search ${!isScrollingUp ? 'header-search--hidden' : ''}`}>
-            <input type="text" placeholder="Search for products..." className="search-input" />
-            <button className="search-btn" aria-label="Search">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-            </button>
-          </div>
+
 
         {/* ── Right: user + cart + hamburger ── */}
         <div className="header-actions">
@@ -138,6 +133,29 @@ export default function Header() {
           >
             <span /><span /><span />
           </button>
+
+          {/* Search Toggle Icon */}
+          <div className="search-wrap" ref={searchRef}>
+            <button 
+              className={`icon-btn ${isSearchOpen ? 'active' : ''}`} 
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              aria-label="Toggle search"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+
+            {isSearchOpen && (
+              <div className="header-search-overlay">
+                <div className="search-overlay-inner">
+                  <input type="text" placeholder="Search for products..." autoFocus className="overlay-search-input" />
+                  <button className="overlay-search-btn">Search</button>
+                </div>
+              </div>
+            )}
+          </div>
 
           {/* User icon with hover dropdown */}
           <div
