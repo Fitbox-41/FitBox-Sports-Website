@@ -101,8 +101,8 @@
 
 /* SALE RIBBON */
 .sale-ribbon {
-  background: #FFF9C4; /* Pale Yellow */
-  color: #000; /* Black */
+  background: #e53935; /* Strong Red */
+  color: #ffffff; /* White Text */
   height: 35px;
   display: flex;
   align-items: center;

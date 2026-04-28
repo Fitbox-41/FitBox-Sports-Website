@@ -7,8 +7,8 @@
 .new-hero {
   position: relative;
   width: 100%;
-  height: 85vh;
-  min-height: 600px;
+  height: 70vh; /* Reduced height to pull posters up */
+  min-height: 500px;
   background: #000;
   overflow: hidden;
   display: flex;
@@ -60,7 +60,7 @@
   font-weight: 900;
   color: #fff;
   line-height: 1.1;
-  margin-bottom: 40px;
+  margin-bottom: 30px; /* Reduced margin */
   text-transform: uppercase;
 }
 
@@ -142,76 +142,147 @@
 .hot-products-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 25px;
+  padding: 30px;
+  background: rgba(15, 15, 15, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 107, 53, 0.4);
+  border-radius: 28px;
+  box-shadow: 0 0 40px rgba(255, 107, 53, 0.15), inset 0 0 20px rgba(255, 107, 53, 0.05);
+  position: relative;
+  animation: mainContainerGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes mainContainerGlow {
+  from { box-shadow: 0 0 20px rgba(255, 107, 53, 0.1); border-color: rgba(255, 107, 53, 0.3); }
+  to { box-shadow: 0 0 45px rgba(255, 107, 53, 0.25); border-color: rgba(255, 107, 53, 0.6); }
 }
 
 .hot-product-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
   text-align: center;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: hpSlideIn 0.8s ease forwards;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes hpSlideIn {
-  0% { opacity: 0; transform: translateX(50px); }
-  100% { opacity: 1; transform: translateX(0); }
+.hot-product-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.4), transparent);
+}
+
+.hot-product-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 107, 53, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.hp-img-wrap {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1; /* Force perfect square */
+  width: 100%;
+}
+
+.hot-product-card:hover .hp-img-wrap {
+  border-color: var(--primary);
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.2);
 }
 
 .hot-product-card img {
-  width: 100%;
-  height: 180px;
+  width: 90%;
+  height: 90%;
   object-fit: contain;
-  margin-bottom: 15px;
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hot-product-card:hover img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.hp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .hp-name {
   color: #fff;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.hp-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .hp-price {
-  color: #ffffff; /* Make price visible on dark background */
+  color: #ffffff;
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-.hp-price-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px; /* Increased space between price and icon */
-  margin-top: 15px;
-}
-
-.hp-cart-btn {
-  background: var(--primary);
-  color: white;
-  border: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px; /* Square with rounded corners */
+.hp-action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.35);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
 }
 
-.hp-cart-btn:hover {
+.hp-action-btn:hover {
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+.hp-action-btn.wishlist:hover {
+  background: #ff4757;
+  border-color: #ff4757;
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+}
+
+.hp-action-btn.cart {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.hp-action-btn.cart:hover {
   background: var(--primary-dark);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.45);
+  border-color: var(--primary-dark);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.5);
 }
 
-.hp-cart-btn svg {
+.hp-action-btn svg {
   width: 18px;
   height: 18px;
 }
@@ -221,7 +292,7 @@
 ═══════════════════════════════════════════ */
 .posters-section {
   background: #000;
-  padding: 20px 40px;
+  padding: 0px 40px 40px; /* Removed top padding to bring posters up */
   height: auto;
 }
 
