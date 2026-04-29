@@ -880,11 +880,9 @@ export default function Home() {
                   (1 Million +)
                 </span>
               </span>
-              <br />
               <span className="hero-text-wrap">
                 <span className="customers-served">Customers Served</span>
               </span>
-              <br />
               <span className="growing-strong">And Still Growing Strong</span>
             </h1>
 
