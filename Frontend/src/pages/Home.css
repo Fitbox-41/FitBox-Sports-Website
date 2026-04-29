@@ -848,8 +848,40 @@
   }
   .na-mobile-list {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* BEST SELLERS GRID */
+.best-sellers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.bs-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .bs-desktop {
+    display: none !important;
+  }
+  .bs-mobile {
+    display: block !important;
+    position: relative;
+  }
+  .bs-mobile-multi-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 20px;
+  }
+  .bs-mobile-row {
+    position: relative;
+    width: 100%;
   }
 }
 
@@ -1787,7 +1819,8 @@
   width: 110px;
   height: 110px;
   background: var(--white);
-  padding: 5px; /* Reduced padding to make images larger */
+  padding: 0; 
+  overflow: hidden; /* Ensure image doesn't bleed outside the circle */
   border: 2px solid var(--border);
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   display: flex;
@@ -1802,7 +1835,10 @@
 .availability-strip .cat-img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Best for marketplace logos */
+  object-fit: cover; 
+  transform: scale(1.1); /* Zoom in slightly to fill the circle and hide internal image margins */
+  padding: 0 !important;
+  display: block;
   opacity: 1;
   transition: transform 0.4s ease;
 }

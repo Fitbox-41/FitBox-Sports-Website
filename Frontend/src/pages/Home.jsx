@@ -117,7 +117,7 @@ const newArrivals = [
   },
 ];
 
-/* Best Sellers – similar to newArrivals */
+/* Best Sellers – expanded to 30 items for infinite scroll feel */
 const bestSellers = [
   {
     id: 101,
@@ -125,7 +125,6 @@ const bestSellers = [
     desc: 'Solid cast iron | Matte finish',
     price: '₹1,499',
     oldPrice: '₹1,999',
-    tag: 'Best Seller',
     imgSrc: 'premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.png',
   },
   {
@@ -134,7 +133,6 @@ const bestSellers = [
     desc: 'Heavy duty | Plastic',
     price: '₹1,299',
     oldPrice: '₹1,599',
-    tag: 'Best Seller',
     imgSrc: '/Bat.png',
   },
   {
@@ -143,7 +141,6 @@ const bestSellers = [
     desc: 'Curved design | High density',
     price: '₹899',
     oldPrice: '₹1,199',
-    tag: 'Best Seller',
     imgSrc: 'boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzq5ucedvy.jpeg',
   },
   {
@@ -152,7 +149,6 @@ const bestSellers = [
     desc: 'Adjustable weight | Breathable',
     price: '₹2,999',
     oldPrice: '₹3,499',
-    tag: 'Best Seller',
     imgSrc: 'adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfcuf3thayh.jpeg',
   },
   {
@@ -161,7 +157,6 @@ const bestSellers = [
     desc: 'Adjustable 10-60kg | Counter',
     price: '₹299',
     oldPrice: '₹499',
-    tag: 'Best Seller',
     imgSrc: '/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tquhzhgu9.jpeg',
   },
   {
@@ -170,10 +165,22 @@ const bestSellers = [
     desc: '3 resistance levels | Handles',
     price: '₹749',
     oldPrice: '₹999',
-    tag: 'Best Seller',
     imgSrc: 'double-toning-tube-resistance-band-for-workout-for-men-women-1-original-imah7wwjgnvvvzhu.jpeg',
   },
+  ...Array.from({ length: 34 }).map((_, i) => ({
+    id: 107 + i,
+    name: `New Product ${i + 1}`,
+    desc: 'Product description goes here',
+    price: '₹999',
+    oldPrice: '₹1,299',
+    imgSrc: '', // Placeholder for user to add images later
+  }))
 ];
+
+const bsChunks = [];
+for (let i = 0; i < bestSellers.length; i += 8) {
+  bsChunks.push(bestSellers.slice(i, i + 8));
+}
 
 /* Customer Reviews data */
 const customerReviews = [
@@ -249,16 +256,88 @@ const ourProductCards = [
 /* Platforms availability data */
 const availabilityPlatforms = [
   { id: 'p1', label: 'Amazon', imgSrc: '/amazon.jpg' },
-  { id: 'p2', label: 'Flipkart', imgSrc: '/flipkart.png' },
-  { id: 'p3', label: 'Desertcart', imgSrc: '/Desertcart.jpg' },
-  { id: 'p4', label: 'India Mart', imgSrc: '/india mart.png' },
-  { id: 'p5', label: 'India Free Stuff', imgSrc: '/india free stuff.png' },
-  { id: 'p6', label: 'I\'M Fit India', imgSrc: '/imfitindia.jpg' },
-  { id: 'p7', label: 'FitBox.com', imgSrc: '/favicon.png' },
-  { id: 'p8', label: 'Blinkit', imgSrc: '/blinkit.png' },
+  { id: 'p2', label: 'Swiggy', imgSrc: '/Swiggy.png' },
+  { id: 'p3', label: 'FitBox.com', imgSrc: '/favicon.png' },
+  { id: 'p4', label: 'Blinkit', imgSrc: '/blinkit.png' },
 
 
 ];
+
+/* ═══════════════════════════════════════
+   MOBILE ROW CAROUSEL COMPONENT
+═══════════════════════════════════════ */
+const MobileRowCarousel = ({ products }) => {
+  const [idx, setIdx] = useState(products.length);
+  const [trans, setTrans] = useState(true);
+  const [busy, setBusy] = useState(false);
+
+  const next = () => {
+    if (busy) return;
+    setBusy(true);
+    setIdx((p) => p + 1);
+    setTimeout(() => setBusy(false), 550);
+  };
+  const prev = () => {
+    if (busy) return;
+    setBusy(true);
+    setIdx((p) => p - 1);
+    setTimeout(() => setBusy(false), 550);
+  };
+
+  useEffect(() => {
+    if (idx >= products.length * 2) {
+      setTimeout(() => { setTrans(false); setIdx(products.length); }, 500);
+    }
+    if (idx < products.length) {
+      setTimeout(() => { setTrans(false); setIdx(products.length * 2 - 1); }, 500);
+    }
+  }, [idx, products.length]);
+
+  useEffect(() => {
+    if (!trans) {
+      const timer = setTimeout(() => setTrans(true), 20);
+      return () => clearTimeout(timer);
+    }
+  }, [trans]);
+
+  const startX = useRef(0);
+  const handleTouchStart = (e) => (startX.current = e.touches[0].pageX);
+  const handleTouchEnd = (e) => {
+    const endX = e.changedTouches[0].pageX;
+    if (startX.current - endX > 50) next();
+    if (endX - startX.current > 50) prev();
+  };
+
+  return (
+    <div className="carousel-wrapper bs-mobile-row">
+      <div className="carousel-content">
+        <div className="carousel-viewport">
+          <div 
+            className="carousel-track-simple"
+            style={{ 
+              transform: `translateX(calc(-${idx} * (100% / 2)))`,
+              transition: trans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+            }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
+            {[...products, ...products, ...products].map((product, i) => (
+              <div className="na-mobile-carousel" key={`${product.id}-${i}`} style={{ width: '50%' }}>
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <button className="side-nav-btn left" onClick={prev} aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+      </button>
+      <button className="side-nav-btn right" onClick={next} aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+      </button>
+    </div>
+  );
+};
 
 /* ═══════════════════════════════════════
    HOME PAGE COMPONENT
@@ -362,9 +441,9 @@ export default function Home() {
     const animate = () => {
       if (!isDragging.current) {
         const totalWidth = track.scrollWidth;
-        const halfWidth = totalWidth / 2;
+        const setWidth = totalWidth / 15; // 15 repetitions
         scrollPos.current -= autoScrollSpeed;
-        if (Math.abs(scrollPos.current) >= halfWidth) {
+        if (Math.abs(scrollPos.current) >= setWidth) {
           scrollPos.current = 0;
         }
         track.style.transform = `translateX(${scrollPos.current}px)`;
@@ -385,8 +464,9 @@ export default function Home() {
       const x = e.pageX || e.touches[0].pageX;
       const walk = x - startX.current;
       scrollPos.current = walk;
-      if (scrollPos.current > 0) scrollPos.current = -track.scrollWidth / 2;
-      if (Math.abs(scrollPos.current) >= track.scrollWidth / 2) scrollPos.current = 0;
+      const setWidth = track.scrollWidth / 15;
+      if (scrollPos.current > 0) scrollPos.current = -setWidth;
+      if (Math.abs(scrollPos.current) >= setWidth) scrollPos.current = 0;
       track.style.transform = `translateX(${scrollPos.current}px)`;
     };
 
@@ -429,8 +509,10 @@ export default function Home() {
 
     const animate = () => {
       if (!isDraggingAvail.current) {
+        const totalWidth = track.scrollWidth;
+        const setWidth = totalWidth / 15; 
         scrollPosAvail.current -= autoScrollSpeed;
-        if (Math.abs(scrollPosAvail.current) >= halfWidth) {
+        if (Math.abs(scrollPosAvail.current) >= setWidth) {
           scrollPosAvail.current = 0;
         }
         track.style.transform = `translateX(${scrollPosAvail.current}px)`;
@@ -451,8 +533,9 @@ export default function Home() {
       const x = e.pageX || e.touches[0].pageX;
       const walk = x - startXAvail.current;
       scrollPosAvail.current = walk;
-      if (scrollPosAvail.current > 0) scrollPosAvail.current = -halfWidth;
-      if (Math.abs(scrollPosAvail.current) >= halfWidth) scrollPosAvail.current = 0;
+      const setWidth = track.scrollWidth / 15;
+      if (scrollPosAvail.current > 0) scrollPosAvail.current = -setWidth;
+      if (Math.abs(scrollPosAvail.current) >= setWidth) scrollPosAvail.current = 0;
       track.style.transform = `translateX(${scrollPosAvail.current}px)`;
     };
 
@@ -524,48 +607,7 @@ export default function Home() {
     if (endX - naStartX.current > 50) naPrev();
   };
 
-  /* ── Best Sellers carousel state (Infinite) ── */
-  const [bsIdx, setBsIdx] = useState(bestSellers.length);
-  const [bsTrans, setBsTrans] = useState(true);
-  const [bsBusy, setBsBusy] = useState(false);
-
-  const bsNext = () => {
-    if (bsBusy) return;
-    setBsBusy(true);
-    setBsIdx((p) => p + 1);
-    setTimeout(() => setBsBusy(false), 550);
-  };
-  const bsPrev = () => {
-    if (bsBusy) return;
-    setBsBusy(true);
-    setBsIdx((p) => p - 1);
-    setTimeout(() => setBsBusy(false), 550);
-  };
-
-  useEffect(() => {
-    if (bsIdx >= bestSellers.length * 2) {
-      setTimeout(() => { setBsTrans(false); setBsIdx(bestSellers.length); }, 500);
-    }
-    if (bsIdx < bestSellers.length) {
-      setTimeout(() => { setBsTrans(false); setBsIdx(bestSellers.length * 2 - 1); }, 500);
-    }
-  }, [bsIdx]);
-
-  useEffect(() => {
-    if (!bsTrans) {
-      const timer = setTimeout(() => setBsTrans(true), 20);
-      return () => clearTimeout(timer);
-    }
-  }, [bsTrans]);
-
-  // Swipe for Best Sellers
-  const bsStartX = useRef(0);
-  const handleBsTouchStart = (e) => (bsStartX.current = e.touches[0].pageX);
-  const handleBsTouchEnd = (e) => {
-    const endX = e.changedTouches[0].pageX;
-    if (bsStartX.current - endX > 50) bsNext();
-    if (endX - bsStartX.current > 50) bsPrev();
-  };
+  /* Best Sellers state removed. Now handled inside MobileRowCarousel component. */
 
   /* ── Our Products carousel state (Infinite) ── */
   const [opIdx, setOpIdx] = useState(ourProductCards.length);
@@ -850,7 +892,7 @@ export default function Home() {
             ref={catTrackRef}
             style={{ cursor: 'grab' }}
           >
-            {[...categories, ...categories].map((cat, i) => (
+            {[...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories].map((cat, i) => (
               <Link
                 key={`${cat.id}-${i}`}
                 to={cat.path}
@@ -912,6 +954,35 @@ export default function Home() {
 
 
       {/* ══════════════════════════════════
+          6. OUR BEST SELLERS
+          Grid of ProductCards
+      ══════════════════════════════════ */}
+      <section className="arrivals-section" id="best-sellers" aria-label="Best sellers">
+        <div className="section-header">
+          <div className="section-heading-group">
+            <span className="section-eyebrow">Top Rated</span>
+            <h2 className="section-title">Our Best Sellers</h2>
+          </div>
+        </div>
+
+        {/* Desktop Grid (Hidden on Mobile) */}
+        <div className="best-sellers-grid bs-desktop">
+          {bestSellers.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+
+        {/* Mobile Carousels (5 Rows, Independent, Hidden on Desktop) */}
+        <div className="bs-mobile">
+          <div className="bs-mobile-multi-rows">
+            {bsChunks.map((chunk, rowIdx) => (
+              <MobileRowCarousel key={`bs-row-${rowIdx}`} products={chunk} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════
           5. OUR PRODUCTS
           Grid of Amazon-style CategoryGridCards
           Each card: heading + 2x2 sub-items + "See all"
@@ -919,7 +990,7 @@ export default function Home() {
       <section className="our-products" id="our-products" aria-label="Our products">
         <div className="section-header centered">
           <span className="section-eyebrow">What We Offer</span>
-          <h2 className="section-title">Our Products</h2>
+          <h2 className="section-title">Explore Our Range</h2>
           <p className="section-meta">Quality gear curated for every fitness level</p>
         </div>
 
@@ -948,48 +1019,6 @@ export default function Home() {
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
           </button>
           <button className="side-nav-btn right" onClick={opNext} aria-label="Next products">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
-          </button>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════
-          6. OUR BEST SELLERS
-          Carousel of ProductCards
-      ══════════════════════════════════ */}
-      <section className="arrivals-section" id="best-sellers" aria-label="Best sellers">
-        <div className="section-header">
-          <div className="section-heading-group">
-            <span className="section-eyebrow">Top Rated</span>
-            <h2 className="section-title">Our Best Sellers</h2>
-          </div>
-        </div>
-
-        <div className="carousel-wrapper">
-          <div className="carousel-content">
-            <div className="carousel-viewport">
-              <div 
-                className="carousel-track-simple"
-                style={{ 
-                  transform: `translateX(calc(-${bsIdx} * (100% / var(--visible-count))))`,
-                  transition: bsTrans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
-                }}
-                onTouchStart={handleBsTouchStart}
-                onTouchEnd={handleBsTouchEnd}
-              >
-                {[...bestSellers, ...bestSellers, ...bestSellers].map((product, i) => (
-                  <div className="na-mobile-carousel" key={`${product.id}-${i}`}>
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <button className="side-nav-btn left" onClick={bsPrev} aria-label="Previous best sellers">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-          </button>
-          <button className="side-nav-btn right" onClick={bsNext} aria-label="Next best sellers">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
           </button>
         </div>
@@ -1074,7 +1103,7 @@ export default function Home() {
             ref={availTrackRef}
             style={{ cursor: 'grab' }}
           >
-            {[...availabilityPlatforms, ...availabilityPlatforms].map((plat, i) => (
+            {[...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms].map((plat, i) => (
               <div
                 key={`${plat.id}-${i}`}
                 className="cat-pill"
