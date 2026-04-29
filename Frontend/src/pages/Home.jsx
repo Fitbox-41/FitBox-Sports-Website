@@ -16,7 +16,7 @@ import './Home.css';
 
 /* Posters Section Data */
 const posterImages = [
-  { id: 'p1', imgSrc: '/2.jpg-scaled.jpeg', link: '/products' },
+  { id: 'p1', imgSrc: '/2.jpg-scaled.jpeg', mobileImgSrc: '/2.jpg-scaled - Copy.jpeg', link: '/products' },
   { id: 'p2', imgSrc: '/4.jpg.jpeg', link: '/products' },
   { id: 'p3', imgSrc: '/7.jpg.jpeg', link: '/products' },
   { id: 'p4', imgSrc: '/5.jpg.jpeg', link: '/products' },
@@ -265,16 +265,20 @@ const availabilityPlatforms = [
 ═══════════════════════════════════════ */
 export default function Home() {
 
-  /* ── Hero product swap state ── */
-  const [hpIdx, sethpIdx] = useState(0);
-  const hpTimer = useRef(null);
+  /* ── Hot Products Carousel State (Infinite) ── */
+  const [hpCurrent, setHpCurrent] = useState(hotProducts.length); 
+  const [hpTrans, setHpTrans] = useState(true);
+  const hpStartY = useRef(0);
+  const hpStartX = useRef(0);
+  const [hpWishlist, setHpWishlist] = useState([]);
 
-  useEffect(() => {
-    hpTimer.current = setInterval(() => {
-      sethpIdx((prev) => (prev + 1) % hotProducts.length);
-    }, 5000);
-    return () => clearInterval(hpTimer.current);
-  }, []);
+  const toggleHpWishlist = (id) => {
+    setHpWishlist(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
+  };
+
+  const hpNext = () => {
+    setHpCurrent(prev => prev + 1);
+  };
 
   /* ── Category Swipe & Scroll state ── */
   const catTrackRef = useRef(null);
@@ -283,18 +287,83 @@ export default function Home() {
   const scrollPos = useRef(0);
   const autoScrollSpeed = 0.6; // pixels per frame
 
+  /* ── Posters Scroll logic (Mobile Infinite) ── */
+  const postersTrackRef = useRef(null);
+  const isDraggingPosters = useRef(false);
+  const startXPosters = useRef(0);
+  const scrollPosPosters = useRef(0);
+
   useEffect(() => {
+    let animationId;
+    const track = postersTrackRef.current;
+    if (!track) return;
+
+    const animate = () => {
+      if (!isDraggingPosters.current) {
+        const totalWidth = track.scrollWidth;
+        const halfWidth = totalWidth / 2;
+        scrollPosPosters.current -= autoScrollSpeed;
+        if (Math.abs(scrollPosPosters.current) >= halfWidth) {
+          scrollPosPosters.current = 0;
+        }
+        track.style.transform = `translateX(${scrollPosPosters.current}px)`;
+      }
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+
+    const handleStart = (e) => {
+      isDraggingPosters.current = true;
+      startXPosters.current = (e.pageX || e.touches[0].pageX) - scrollPosPosters.current;
+      track.style.cursor = 'grabbing';
+    };
+
+    const handleMove = (e) => {
+      if (!isDraggingPosters.current) return;
+      const totalWidth = track.scrollWidth;
+      const halfWidth = totalWidth / 2;
+      const x = e.pageX || e.touches[0].pageX;
+      const walk = x - startXPosters.current;
+      scrollPosPosters.current = walk;
+      if (scrollPosPosters.current > 0) scrollPosPosters.current = -halfWidth;
+      if (Math.abs(scrollPosPosters.current) >= halfWidth) scrollPosPosters.current = 0;
+      track.style.transform = `translateX(${scrollPosPosters.current}px)`;
+    };
+
+    const handleEnd = () => {
+      isDraggingPosters.current = false;
+      track.style.cursor = 'grab';
+    };
+
+    track.addEventListener('mousedown', handleStart);
+    track.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseup', handleEnd);
+    track.addEventListener('touchstart', handleStart);
+    track.addEventListener('touchmove', handleMove);
+    track.addEventListener('touchend', handleEnd);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      track.removeEventListener('mousedown', handleStart);
+      track.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseup', handleEnd);
+      track.removeEventListener('touchstart', handleStart);
+      track.removeEventListener('touchmove', handleMove);
+      track.removeEventListener('touchend', handleEnd);
+    };
+  }, []);
+
+  useEffect(() => {
+    let animationId;
     const track = catTrackRef.current;
     if (!track) return;
 
-    let animationId;
-    const totalWidth = track.scrollWidth;
-    const halfWidth = totalWidth / 2;
-
     const animate = () => {
       if (!isDragging.current) {
+        const totalWidth = track.scrollWidth;
+        const halfWidth = totalWidth / 2;
         scrollPos.current -= autoScrollSpeed;
-        // Reset for infinite loop
         if (Math.abs(scrollPos.current) >= halfWidth) {
           scrollPos.current = 0;
         }
@@ -305,7 +374,6 @@ export default function Home() {
 
     animationId = requestAnimationFrame(animate);
 
-    // Mouse/Touch Events
     const handleStart = (e) => {
       isDragging.current = true;
       startX.current = (e.pageX || e.touches[0].pageX) - scrollPos.current;
@@ -317,11 +385,8 @@ export default function Home() {
       const x = e.pageX || e.touches[0].pageX;
       const walk = x - startX.current;
       scrollPos.current = walk;
-
-      // Infinite wrap while dragging
-      if (scrollPos.current > 0) scrollPos.current = -halfWidth;
-      if (Math.abs(scrollPos.current) >= halfWidth) scrollPos.current = 0;
-
+      if (scrollPos.current > 0) scrollPos.current = -track.scrollWidth / 2;
+      if (Math.abs(scrollPos.current) >= track.scrollWidth / 2) scrollPos.current = 0;
       track.style.transform = `translateX(${scrollPos.current}px)`;
     };
 
@@ -587,20 +652,43 @@ export default function Home() {
 
 
 
+  useEffect(() => {
+    if (hpCurrent >= hotProducts.length * 2) {
+      setTimeout(() => {
+        setHpTrans(false);
+        setHpCurrent(hotProducts.length);
+      }, 850); 
+    } else if (hpCurrent < hotProducts.length) {
+      setTimeout(() => {
+        setHpTrans(false);
+        setHpCurrent(hotProducts.length * 2 - 1);
+      }, 850);
+    }
+  }, [hpCurrent]);
+
+  useEffect(() => {
+    if (!hpTrans) {
+      const timer = setTimeout(() => setHpTrans(true), 50);
+      return () => clearTimeout(timer);
+    }
+  }, [hpTrans]);
+
+  useEffect(() => {
+    const hpInterval = setInterval(hpNext, 4000);
+    return () => clearInterval(hpInterval);
+  }, []);
+
   /* ── Floating back-to-top button ── */
   const [showTop, setShowTop] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
-    onScroll(); // Run immediately on mount to check initial scroll position
+    onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  const hpCurrent = hpIdx;
-  const hpNextIdx = (hpIdx + 1) % hotProducts.length;
 
   /* ═══ RENDER ═══ */
   return (
@@ -621,8 +709,8 @@ export default function Home() {
         <div className="hero-main-content">
           <div className="hero-left">
             <h1 className="hero-main-heading">
-              1 Million+ Customers Served <br />
-              <span>And Still Growing Strong</span>
+              <span className="million-highlight">1 Million+</span> Customers Served <br className="mobile-break" />
+              <span className="growing-strong">And Still Growing Strong</span>
             </h1>
             
             <div className="hero-search-box">
@@ -632,58 +720,83 @@ export default function Home() {
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                Search
+                <span className="search-text">Search</span>
               </button>
             </div>
           </div>
 
           <div className="hero-right">
-            <div className="hot-products-label">HOT PRODUCTS</div>
-            <div className="hot-products-container">
-              <div className="hot-product-card" key={`hp-${hpCurrent}`}>
-                <div className="hp-img-wrap">
-                  <img src={hotProducts[hpCurrent].imgSrc} alt={hotProducts[hpCurrent].name} />
-                </div>
-                <div className="hp-info">
-                  <p className="hp-name">{hotProducts[hpCurrent].name}</p>
-                  <div className="hp-actions-row">
-                    <p className="hp-price">{hotProducts[hpCurrent].price}</p>
-                    <button className="hp-action-btn wishlist" aria-label="Add to wishlist">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                      </svg>
-                    </button>
-                    <button className="hp-action-btn cart" aria-label="Add to cart">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="hot-product-card" key={`hp-next-${hpNextIdx}`}>
-                <div className="hp-img-wrap">
-                  <img src={hotProducts[hpNextIdx].imgSrc} alt={hotProducts[hpNextIdx].name} />
-                </div>
-                <div className="hp-info">
-                  <p className="hp-name">{hotProducts[hpNextIdx].name}</p>
-                  <div className="hp-actions-row">
-                    <p className="hp-price">{hotProducts[hpNextIdx].price}</p>
-                    <button className="hp-action-btn wishlist" aria-label="Add to wishlist">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                      </svg>
-                    </button>
-                    <button className="hp-action-btn cart" aria-label="Add to cart">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-                        <circle cx="9" cy="21" r="1" />
-                        <circle cx="20" cy="21" r="1" />
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                      </svg>
-                    </button>
-                  </div>
+            <div className="hp-carousel-wrapper">
+              <div className="hot-products-label">HOT PRODUCTS</div>
+              <div 
+                className="hp-carousel"
+                onTouchStart={(e) => {
+                  hpStartY.current = e.touches[0].clientY;
+                  hpStartX.current = e.touches[0].clientX;
+                }}
+                onTouchEnd={(e) => {
+                  const touch = e.changedTouches[0];
+                  const diffY = touch.clientY - hpStartY.current;
+                  const diffX = touch.clientX - hpStartX.current;
+                  
+                  if (window.innerWidth <= 1100) {
+                    if (Math.abs(diffX) > 40) {
+                      if (diffX > 0) setHpCurrent(prev => prev - 1);
+                      else setHpCurrent(prev => prev + 1);
+                    }
+                  } else {
+                    if (Math.abs(diffY) > 40) {
+                      if (diffY > 0) setHpCurrent(prev => prev - 1);
+                      else setHpCurrent(prev => prev + 1);
+                    }
+                  }
+                }}
+              >
+                <div 
+                  className="hp-track"
+                  style={{
+                    '--hp-translate-val': `calc(-${hpCurrent} * var(--hp-step))`,
+                    transition: hpTrans ? 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+                  }}
+                >
+                  {[...hotProducts, ...hotProducts, ...hotProducts].map((product, i) => {
+                    const isCenter = i === hpCurrent;
+                    const isVisible = i >= hpCurrent - 1 && i <= hpCurrent + 1;
+                    return (
+                      <div 
+                        key={`${product.id}-${i}`}
+                        className={`hp-card ${isCenter ? 'hp-card--raised' : ''} ${isVisible ? 'hp-visible' : ''}`}
+                        style={{ transition: hpTrans ? '' : 'none' }}
+                      >
+                        <div className="hp-card-img-square">
+                          <img src={product.imgSrc} alt={product.name} />
+                        </div>
+                        <div className="hp-card-info">
+                          <p className="hp-card-name">{product.name}</p>
+                          <div className="hp-card-actions">
+                            <p className="hp-card-price">{product.price}</p>
+                            <div className="hp-card-btns">
+                              <button 
+                                className={`hp-card-btn-mini wishlist ${hpWishlist.includes(product.id) ? 'wished' : ''}`}
+                                onClick={() => toggleHpWishlist(product.id)}
+                              >
+                                <svg viewBox="0 0 24 24" fill={hpWishlist.includes(product.id) ? '#ff4757' : 'none'} stroke={hpWishlist.includes(product.id) ? '#ff4757' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                                </svg>
+                              </button>
+                              <button className="hp-card-btn-mini cart">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                                  <circle cx="9" cy="21" r="1" />
+                                  <circle cx="20" cy="21" r="1" />
+                                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -695,12 +808,27 @@ export default function Home() {
           2. POSTERS SECTION (GRID)
       ══════════════════════════════════ */}
       <section className="posters-section" id="posters-grid">
-        <div className="posters-grid">
+        {/* Desktop Grid */}
+        <div className="posters-grid posters-desktop">
           {posterImages.map((poster) => (
             <Link key={poster.id} to={poster.link} className="poster-item">
               <img src={poster.imgSrc} alt="Promotion" />
             </Link>
           ))}
+        </div>
+        {/* Mobile Infinite Scroll */}
+        <div className="posters-scroll-outer posters-mobile">
+          <div
+            className="posters-scroll-track"
+            ref={postersTrackRef}
+            style={{ cursor: 'grab' }}
+          >
+            {[...posterImages, ...posterImages].map((poster, i) => (
+              <Link key={`${poster.id}-${i}`} to={poster.link} className="poster-item poster-item-scroll">
+                <img src={poster.mobileImgSrc || poster.imgSrc} alt="Promotion" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
