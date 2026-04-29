@@ -21,7 +21,18 @@ const posterImages = [
   { id: 'p3', imgSrc: '/7.jpg.jpeg', link: '/products' },
   { id: 'p4', imgSrc: '/5.jpg.jpeg', link: '/products' },
   { id: 'p5', imgSrc: '/6.jpg.jpeg', link: '/products' },
-  { id: 'p6', imgSrc: '/3.jpg-scaled.jpeg', link: '/products' },
+  { id: 'p6', imgSrc: '/3.jpg-scaled.jpeg', mobileImgSrc:'/3.jpg-scaled - Copy.jpeg', link: '/products' },
+];
+
+/* Collage Posters Data */
+const collagePosters = [
+  { id: 'cp1', imgSrc: '/4.jpg.jpeg', mobileImgSrc: '/2.jpg-scaled - Copy.jpeg', link: '/products' },
+  { id: 'cp2', imgSrc: '/5.jpg.jpeg', mobileImgSrc: '/5.jpg.jpeg', link: '/products' },
+  { id: 'cp3', imgSrc: '/9.jpg.jpeg', mobileImgSrc: '/zz.jpg', link: '/products' },
+  { id: 'cp4', imgSrc: 'zz.jpg', mobileImgSrc: '4-8.jpg' },
+  { id: 'cp6', imgSrc: '/8.jpg.jpeg', mobileImgSrc: '/2.jpg', link: '/products' },
+  { id: 'cp7', imgSrc: '/1.jpg-scaled - Copy.jpeg', mobileImgSrc: '', link: '/products' },
+  { id: 'cp8', imgSrc: '/7.jpg - Copy.jpeg', mobileImgSrc: '', link: '/products' },
 ];
 
 /* Hot Products Data for Hero */
@@ -342,6 +353,34 @@ const MobileRowCarousel = ({ products }) => {
 /* ═══════════════════════════════════════
    HOME PAGE COMPONENT
 ═══════════════════════════════════════ */
+
+/* ── Digit Roll Component (Defined outside to prevent re-mounts) ── */
+const DigitRoll = ({ target, duration }) => {
+  const [val, setVal] = useState('0');
+  
+  useEffect(() => {
+    if (target === ',' || target === '.') {
+      setVal(target);
+      return;
+    }
+    
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      if (elapsed >= duration) {
+        setVal(target);
+        clearInterval(interval);
+      } else {
+        setVal(Math.floor(Math.random() * 10).toString());
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [target, duration]);
+
+  return <>{val}</>;
+};
+
 export default function Home() {
 
   /* ── Hot Products Carousel State (Infinite) ── */
@@ -366,8 +405,49 @@ export default function Home() {
   const scrollPos = useRef(0);
   const autoScrollSpeed = 0.6; // pixels per frame
 
-  /* ── Posters Scroll logic (Mobile Infinite) ── */
-  const postersTrackRef = useRef(null);
+  /* ── Posters Carousel State (Infinite & Arrow-free) ── */
+  const [postIdx, setPostIdx] = useState(posterImages.length);
+  const [postTrans, setPostTrans] = useState(true);
+  const [postBusy, setPostBusy] = useState(false);
+
+  const postNext = () => {
+    if (postBusy) return;
+    setPostBusy(true);
+    setPostIdx(p => p + 1);
+    setTimeout(() => setPostBusy(false), 550);
+  };
+  const postPrev = () => {
+    if (postBusy) return;
+    setPostBusy(true);
+    setPostIdx(p => p - 1);
+    setTimeout(() => setPostBusy(false), 550);
+  };
+
+  useEffect(() => {
+    if (postIdx >= posterImages.length * 2) {
+      setTimeout(() => { setPostTrans(false); setPostIdx(posterImages.length); }, 500);
+    }
+    if (postIdx < posterImages.length) {
+      setTimeout(() => { setPostTrans(false); setPostIdx(posterImages.length * 2 - 1); }, 500);
+    }
+  }, [postIdx]);
+
+  useEffect(() => {
+    if (!postTrans) {
+      const timer = setTimeout(() => setPostTrans(true), 50);
+      return () => clearTimeout(timer);
+    }
+  }, [postTrans]);
+
+  // Swipe for Posters
+  const postStartX = useRef(0);
+  const handlePostTouchStart = (e) => (postStartX.current = e.touches[0].pageX);
+  const handlePostTouchEnd = (e) => {
+    const endX = e.changedTouches[0].pageX;
+    if (postStartX.current - endX > 50) postNext();
+    if (endX - postStartX.current > 50) postPrev();
+  };
+
   /* ── Scroll Reveal Logic for Titles & Rows ── */
   useEffect(() => {
     const observerOptions = {
@@ -393,6 +473,7 @@ export default function Home() {
     };
   }, []);
 
+  const postersTrackRef = useRef(null);
   const isDraggingPosters = useRef(false);
   const startXPosters = useRef(0);
   const scrollPosPosters = useRef(0);
@@ -757,6 +838,14 @@ export default function Home() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  const [showExtra, setShowExtra] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowExtra(true), 2200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const targetNumber = "10,00,000";
+
   /* ═══ RENDER ═══ */
   return (
     <div className="home" id="home-page">
@@ -776,7 +865,19 @@ export default function Home() {
         <div className="hero-main-content">
           <div className="hero-left">
             <h1 className="hero-main-heading">
-              <span className="million-highlight">1 Million+</span> Customers Served <br className="mobile-break" />
+              <span className="million-highlight">
+                {targetNumber.split('').map((char, i) => (
+                  <DigitRoll 
+                    key={i} 
+                    target={char} 
+                    duration={800 + (i * 150)} 
+                  />
+                ))}
+                <span className={`plus-symbol ${showExtra ? 'visible' : ''}`}>+</span>
+                <span className={`extra-reveal ${showExtra ? 'visible' : ''}`}>
+                  (1 Million +)
+                </span>
+              </span> Customers Served <br className="mobile-break" />
               <span className="growing-strong">And Still Growing Strong</span>
             </h1>
 
@@ -872,30 +973,24 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════
-          2. POSTERS SECTION (GRID)
+          COLLAGE SECTION
       ══════════════════════════════════ */}
-      <section className="posters-section" id="posters-grid">
-        {/* Desktop Grid */}
-        <div className="posters-grid posters-desktop">
-          {posterImages.map((poster) => (
-            <Link key={poster.id} to={poster.link} className="poster-item">
-              <img src={poster.imgSrc} alt="Promotion" />
+      <section className="collage-section" id="collage-section">
+        <div className="collage-grid">
+          {collagePosters.map((poster, i) => (
+            <Link key={poster.id} to={poster.link} className={`collage-item item-${i + 1} reveal-on-scroll`}>
+              {poster.imgSrc ? (
+                <picture style={{ width: '100%', height: '100%' }}>
+                  {poster.mobileImgSrc && (
+                    <source media="(max-width: 600px)" srcSet={poster.mobileImgSrc} />
+                  )}
+                  <img src={poster.imgSrc} alt="Promotion" />
+                </picture>
+              ) : (
+                <div className="poster-placeholder">Poster {i + 1}</div>
+              )}
             </Link>
           ))}
-        </div>
-        {/* Mobile Infinite Scroll */}
-        <div className="posters-scroll-outer posters-mobile">
-          <div
-            className="posters-scroll-track"
-            ref={postersTrackRef}
-            style={{ cursor: 'grab' }}
-          >
-            {[...posterImages, ...posterImages].map((poster, i) => (
-              <Link key={`${poster.id}-${i}`} to={poster.link} className="poster-item poster-item-scroll">
-                <img src={poster.mobileImgSrc || poster.imgSrc} alt="Promotion" />
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -973,6 +1068,47 @@ export default function Home() {
           <button className="side-nav-btn right" onClick={naNext} aria-label="Next arrivals">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
           </button>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════
+          4. POSTERS SECTION (GRID & SCROLL)
+      ══════════════════════════════════ */}
+      <section className="posters-section" id="posters-grid">
+        {/* Desktop Grid */}
+        <div className="posters-grid posters-desktop">
+          {posterImages.map((poster) => (
+            <Link key={poster.id} to={poster.link} className="poster-item reveal-on-scroll">
+              <img src={poster.imgSrc} alt="Promotion" />
+            </Link>
+          ))}
+        </div>
+
+        {/* Mobile Infinite Swipe (One by one, no arrows) */}
+        <div className="posters-mobile reveal-on-scroll">
+          <div className="carousel-wrapper">
+            <div className="carousel-content">
+              <div className="carousel-viewport">
+                <div
+                  className="carousel-track-simple"
+                  style={{
+                    transform: `translateX(calc(-${postIdx} * 100%))`,
+                    transition: postTrans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+                  }}
+                  onTouchStart={handlePostTouchStart}
+                  onTouchEnd={handlePostTouchEnd}
+                >
+                  {[...posterImages, ...posterImages, ...posterImages].map((poster, i) => (
+                    <div className="na-mobile-carousel" key={`${poster.id}-${i}`} style={{ minWidth: '100%' }}>
+                      <Link to={poster.link} className="poster-item">
+                        <img src={poster.mobileImgSrc || poster.imgSrc} alt="Promotion" style={{ width: '100%', borderRadius: 'var(--radius-lg)' }} />
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
