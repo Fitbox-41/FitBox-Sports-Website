@@ -81,15 +81,25 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
+      const delta = currentScrollPos - lastScrollPos;
+      const threshold = 10; // Minimum scroll delta to trigger a change
       
-      // If we scroll down and are not at the very top, hide sub-header
-      if (currentScrollPos > lastScrollPos && currentScrollPos > 50) {
+      // If we scroll down past threshold and are not at the very top, hide sub-header
+      if (delta > threshold && currentScrollPos > 50) {
         setIsScrollingUp(false);
-      } else {
+        setLastScrollPos(currentScrollPos);
+      } 
+      // If we scroll up past threshold
+      else if (delta < -threshold) {
         setIsScrollingUp(true);
+        setLastScrollPos(currentScrollPos);
       }
       
-      setLastScrollPos(currentScrollPos);
+      // Always update last scroll pos if we are at the top
+      if (currentScrollPos <= 0) {
+        setIsScrollingUp(true);
+        setLastScrollPos(0);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
