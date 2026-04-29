@@ -649,9 +649,16 @@
 
 @media (max-width: 600px) {
   .new-hero { height: auto; }
-  .hero-main-content { padding: 10px 0 15px; }
-  .hero-left { padding: 0 16px; }
+  .hero-main-content { 
+    padding: 20px 0 30px; 
+    text-align: center;
+  }
+  .hero-left { 
+    padding: 0 16px; 
+    margin-bottom: 20px;
+  }
   .hero-search-box { 
+    display: flex !important;
     max-width: 100%; 
     margin: 0;
     width: 100%;
@@ -679,6 +686,15 @@
 }
 
 
+
+/* ═══════════════════════════════════════════
+   GLOBAL PAGE SPACING FOR FIXED HEADER
+═══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .home {
+    padding-top: 76px; /* Just the Header. Search Ribbon appears on scroll. */
+  }
+}
 
 /* ═══════════════════════════════════════════
    COLLAGE SECTION

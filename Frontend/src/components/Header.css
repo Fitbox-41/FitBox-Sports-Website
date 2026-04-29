@@ -615,6 +615,12 @@
     display: none;
   }
 
+  .mobile-search-ribbon--hidden {
+    transform: translateY(-100%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
   .sub-header--open {
     display: block !important;
     transform: translateY(0) !important;

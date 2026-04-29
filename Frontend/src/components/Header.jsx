@@ -79,12 +79,21 @@ export default function Header() {
   const searchRef                 = useRef(null);
 
   /* Scroll event listener to hide/show sub-header */
+  const [showHeaderSearch, setShowHeaderSearch] = useState(false);
+
   useEffect(() => {
     const updateScrollDir = () => {
       const currentScrollPos = window.scrollY;
       const delta = currentScrollPos - lastScrollPos.current;
       const threshold = 15; 
       
+      // Show header search only after scrolling down a bit
+      if (currentScrollPos > 150) {
+        setShowHeaderSearch(true);
+      } else {
+        setShowHeaderSearch(false);
+      }
+
       if (Math.abs(delta) > threshold) {
         if (delta > 0 && currentScrollPos > 50) {
           if (isScrollingUp) setIsScrollingUp(false);
@@ -253,8 +262,8 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ── Mobile Search Ribbon (Drops with sale ribbon) ── */}
-      <div className="mobile-search-ribbon">
+      {/* ── Mobile Search Ribbon (Drops with sale ribbon, conditionally visible) ── */}
+      <div className={`mobile-search-ribbon ${!showHeaderSearch ? 'mobile-search-ribbon--hidden' : ''}`}>
         <div className="mobile-search-inner">
           <input 
             type="text" 
