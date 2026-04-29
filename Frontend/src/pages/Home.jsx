@@ -312,9 +312,9 @@ const MobileRowCarousel = ({ products }) => {
     <div className="carousel-wrapper bs-mobile-row">
       <div className="carousel-content">
         <div className="carousel-viewport">
-          <div 
+          <div
             className="carousel-track-simple"
-            style={{ 
+            style={{
               transform: `translateX(calc(-${idx} * (100% / 2)))`,
               transition: trans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
             }}
@@ -345,7 +345,7 @@ const MobileRowCarousel = ({ products }) => {
 export default function Home() {
 
   /* ── Hot Products Carousel State (Infinite) ── */
-  const [hpCurrent, setHpCurrent] = useState(hotProducts.length); 
+  const [hpCurrent, setHpCurrent] = useState(hotProducts.length);
   const [hpTrans, setHpTrans] = useState(true);
   const hpStartY = useRef(0);
   const hpStartX = useRef(0);
@@ -368,6 +368,31 @@ export default function Home() {
 
   /* ── Posters Scroll logic (Mobile Infinite) ── */
   const postersTrackRef = useRef(null);
+  /* ── Scroll Reveal Logic for Titles & Rows ── */
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const elements = document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll');
+    elements.forEach(el => observer.observe(el));
+
+    return () => {
+      elements.forEach(el => observer.unobserve(el));
+    };
+  }, []);
+
   const isDraggingPosters = useRef(false);
   const startXPosters = useRef(0);
   const scrollPosPosters = useRef(0);
@@ -510,7 +535,7 @@ export default function Home() {
     const animate = () => {
       if (!isDraggingAvail.current) {
         const totalWidth = track.scrollWidth;
-        const setWidth = totalWidth / 15; 
+        const setWidth = totalWidth / 15;
         scrollPosAvail.current -= autoScrollSpeed;
         if (Math.abs(scrollPosAvail.current) >= setWidth) {
           scrollPosAvail.current = 0;
@@ -699,7 +724,7 @@ export default function Home() {
       setTimeout(() => {
         setHpTrans(false);
         setHpCurrent(hotProducts.length);
-      }, 850); 
+      }, 850);
     } else if (hpCurrent < hotProducts.length) {
       setTimeout(() => {
         setHpTrans(false);
@@ -754,7 +779,7 @@ export default function Home() {
               <span className="million-highlight">1 Million+</span> Customers Served <br className="mobile-break" />
               <span className="growing-strong">And Still Growing Strong</span>
             </h1>
-            
+
             <div className="hero-search-box">
               <input type="text" placeholder="Search for premium gym gear..." className="hero-search-input" />
               <button className="hero-search-btn">
@@ -770,7 +795,7 @@ export default function Home() {
           <div className="hero-right">
             <div className="hp-carousel-wrapper">
               <div className="hot-products-label">HOT PRODUCTS</div>
-              <div 
+              <div
                 className="hp-carousel"
                 onTouchStart={(e) => {
                   hpStartY.current = e.touches[0].clientY;
@@ -780,7 +805,7 @@ export default function Home() {
                   const touch = e.changedTouches[0];
                   const diffY = touch.clientY - hpStartY.current;
                   const diffX = touch.clientX - hpStartX.current;
-                  
+
                   if (window.innerWidth <= 1100) {
                     if (Math.abs(diffX) > 40) {
                       if (diffX > 0) setHpCurrent(prev => prev - 1);
@@ -794,7 +819,7 @@ export default function Home() {
                   }
                 }}
               >
-                <div 
+                <div
                   className="hp-track"
                   style={{
                     '--hp-translate-val': `calc(-${hpCurrent} * var(--hp-step))`,
@@ -805,7 +830,7 @@ export default function Home() {
                     const isCenter = i === hpCurrent;
                     const isVisible = i >= hpCurrent - 1 && i <= hpCurrent + 1;
                     return (
-                      <div 
+                      <div
                         key={`${product.id}-${i}`}
                         className={`hp-card ${isCenter ? 'hp-card--raised' : ''} ${isVisible ? 'hp-visible' : ''}`}
                         style={{ transition: hpTrans ? '' : 'none' }}
@@ -818,7 +843,7 @@ export default function Home() {
                           <div className="hp-card-actions">
                             <p className="hp-card-price">{product.price}</p>
                             <div className="hp-card-btns">
-                              <button 
+                              <button
                                 className={`hp-card-btn-mini wishlist ${hpWishlist.includes(product.id) ? 'wished' : ''}`}
                                 onClick={() => toggleHpWishlist(product.id)}
                               >
@@ -880,7 +905,7 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="cat-strip" id="category-strip" aria-label="Shop by category">
         <div className="cat-strip-header">
-          <h2 className="strip-heading">Shop by Category</h2>
+          <h2 className="strip-heading scroll-reveal-title">Shop by Category</h2>
           <p className="strip-sub">Explore our complete range of gym essentials</p>
         </div>
 
@@ -917,16 +942,16 @@ export default function Home() {
         <div className="section-header">
           <div className="section-heading-group">
             <span className="section-eyebrow">Fresh Stock</span>
-            <h2 className="section-title">New Arrivals</h2>
+            <h2 className="section-title scroll-reveal-title">New Arrivals</h2>
           </div>
         </div>
 
         <div className="carousel-wrapper">
           <div className="carousel-content">
             <div className="carousel-viewport">
-              <div 
+              <div
                 className="carousel-track-simple"
-                style={{ 
+                style={{
                   transform: `translateX(calc(-${naIdx} * (100% / var(--visible-count))))`,
                   transition: naTrans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
                 }}
@@ -961,14 +986,16 @@ export default function Home() {
         <div className="section-header">
           <div className="section-heading-group">
             <span className="section-eyebrow">Top Rated</span>
-            <h2 className="section-title">Our Best Sellers</h2>
+            <h2 className="section-title scroll-reveal-title">Our Best Sellers</h2>
           </div>
         </div>
 
         {/* Desktop Grid (Hidden on Mobile) */}
         <div className="best-sellers-grid bs-desktop">
           {bestSellers.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <div key={product.id} className="reveal-on-scroll">
+              <ProductCard product={product} />
+            </div>
           ))}
         </div>
 
@@ -976,7 +1003,9 @@ export default function Home() {
         <div className="bs-mobile">
           <div className="bs-mobile-multi-rows">
             {bsChunks.map((chunk, rowIdx) => (
-              <MobileRowCarousel key={`bs-row-${rowIdx}`} products={chunk} />
+              <div key={`bs-row-reveal-${rowIdx}`} className="reveal-on-scroll">
+                <MobileRowCarousel products={chunk} />
+              </div>
             ))}
           </div>
         </div>
@@ -990,16 +1019,16 @@ export default function Home() {
       <section className="our-products" id="our-products" aria-label="Our products">
         <div className="section-header centered">
           <span className="section-eyebrow">What We Offer</span>
-          <h2 className="section-title">Explore Our Range</h2>
+          <h2 className="section-title scroll-reveal-title">Explore Our Range</h2>
           <p className="section-meta">Quality gear curated for every fitness level</p>
         </div>
 
         <div className="carousel-wrapper">
           <div className="carousel-content">
             <div className="carousel-viewport">
-              <div 
+              <div
                 className="carousel-track-simple"
-                style={{ 
+                style={{
                   transform: `translateX(calc(-${opIdx} * (100% / var(--visible-count))))`,
                   transition: opTrans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
                 }}
@@ -1031,7 +1060,7 @@ export default function Home() {
       <section className="reviews-section" id="reviews" aria-label="Customer reviews">
         <div className="section-header centered">
           <span className="section-eyebrow">Happy Customers</span>
-          <h2 className="section-title">What People Love About Us!</h2>
+          <h2 className="section-title scroll-reveal-title">What People Love About Us!</h2>
         </div>
 
         <div className="reviews-carousel-wrapper">
@@ -1092,7 +1121,7 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="cat-strip availability-strip" id="availability-strip" aria-label="We are available on">
         <div className="cat-strip-header centered">
-          <h2 className="strip-heading">We are Available on</h2>
+          <h2 className="strip-heading scroll-reveal-title">We are Available on</h2>
           <p className="strip-sub">Find our premium products on your favorite platforms</p>
         </div>
 

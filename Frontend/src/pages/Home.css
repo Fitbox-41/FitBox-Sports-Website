@@ -109,6 +109,31 @@
   to { width: 100%; }
 }
 
+.scroll-reveal-title {
+  position: relative;
+  display: inline-block;
+}
+
+.scroll-reveal-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.scroll-reveal-title.active::after {
+  animation: revealUnderline 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes revealUnderline {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
 
 .hero-search-box {
   display: flex;
