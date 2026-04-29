@@ -73,38 +73,45 @@ export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [cartCount]               = useState(3);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
-  const [lastScrollPos, setLastScrollPos] = useState(0);
+  const lastScrollPos = useRef(0);
+  const ticking = useRef(false);
   const userRef                   = useRef(null);
   const searchRef                 = useRef(null);
 
   /* Scroll event listener to hide/show sub-header */
   useEffect(() => {
-    const handleScroll = () => {
+    const updateScrollDir = () => {
       const currentScrollPos = window.scrollY;
-      const delta = currentScrollPos - lastScrollPos;
-      const threshold = 10; // Minimum scroll delta to trigger a change
+      const delta = currentScrollPos - lastScrollPos.current;
+      const threshold = 15; 
       
-      // If we scroll down past threshold and are not at the very top, hide sub-header
-      if (delta > threshold && currentScrollPos > 50) {
-        setIsScrollingUp(false);
-        setLastScrollPos(currentScrollPos);
-      } 
-      // If we scroll up past threshold
-      else if (delta < -threshold) {
-        setIsScrollingUp(true);
-        setLastScrollPos(currentScrollPos);
+      if (Math.abs(delta) > threshold) {
+        if (delta > 0 && currentScrollPos > 50) {
+          if (isScrollingUp) setIsScrollingUp(false);
+        } else {
+          if (!isScrollingUp) setIsScrollingUp(true);
+        }
+        lastScrollPos.current = currentScrollPos;
       }
       
-      // Always update last scroll pos if we are at the top
       if (currentScrollPos <= 0) {
-        setIsScrollingUp(true);
-        setLastScrollPos(0);
+        if (!isScrollingUp) setIsScrollingUp(true);
+        lastScrollPos.current = 0;
+      }
+      
+      ticking.current = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(updateScrollDir);
+        ticking.current = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollPos]);
+  }, [isScrollingUp]);
 
   /* Close user & search dropdown when clicking outside */
   useEffect(() => {
