@@ -57,14 +57,16 @@
 }
 
 .hero-main-heading {
-  font-family: var(--font-heading);
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
   color: #fff;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 30px;
   text-transform: uppercase;
   opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   animation: heroFadeUp 0.8s ease-out forwards;
 }
 
@@ -108,10 +110,28 @@
   transition: opacity 0.6s ease;
   display: inline-block;
   margin-left: 6px;
-  font-size: 0.45em;
+  font-size: 0.4em;
   font-weight: 600;
-  color: var(--text-mid);
+  color: #aaa;
   vertical-align: middle;
+  margin-right: 10px;
+}
+
+.customers-served {
+  color: #fff;
+  font-size: 0.85em;
+  font-weight: 900;
+}
+
+.hero-counter-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.hero-text-wrap {
+  display: block;
+  margin-top: 5px;
 }
 
 .extra-reveal.visible {
@@ -654,19 +674,26 @@
     text-align: center;
   }
   .hero-left { 
-    padding: 0 16px; 
-    margin-bottom: 20px;
+    padding: 0 10px; 
+    margin-bottom: 25px;
+    width: 100%;
   }
   .hero-search-box { 
     display: flex !important;
-    max-width: 100%; 
-    margin: 0;
-    width: 100%;
+    width: 100% !important;
+    max-width: 100% !important; 
+    margin: 0 auto !important;
+    border-radius: 50px; 
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   .hero-main-heading {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     padding-top: 10px;
     line-height: 1.3;
+    align-items: center; /* Center on mobile */
+  }
+  .hero-counter-wrap {
+    justify-content: center;
   }
   .hero-main-heading .growing-strong {
     font-size: 0.45em;
@@ -1917,6 +1944,15 @@
     position: relative;
   }
 
+  /* Hide arrows for Best Sellers on mobile */
+  .bs-mobile-row .side-nav-btn {
+    display: none !important;
+  }
+
+  /* Ensure the track allows overflow for partial visibility */
+  .bs-mobile-row .carousel-viewport {
+    overflow: visible;
+  }
 }
 
 /* Base styles for the simple track & items (Shared by mobile and desktop) */
@@ -2050,3 +2086,9 @@
 }
 
 .carousel-track-simple { width: 100%; }
+
+@media (max-width: 900px) {
+  .float-top-btn {
+    display: none !important;
+  }
+}

@@ -326,14 +326,14 @@ const MobileRowCarousel = ({ products }) => {
           <div
             className="carousel-track-simple"
             style={{
-              transform: `translateX(calc(-${idx} * (100% / 2)))`,
+              transform: `translateX(calc(-${idx} * 80%))`,
               transition: trans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
             }}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
             {[...products, ...products, ...products].map((product, i) => (
-              <div className="na-mobile-carousel" key={`${product.id}-${i}`} style={{ width: '50%' }}>
+              <div className="na-mobile-carousel bs-card-wrap" key={`${product.id}-${i}`} style={{ width: '80%' }}>
                 <ProductCard product={product} />
               </div>
             ))}
@@ -865,19 +865,26 @@ export default function Home() {
         <div className="hero-main-content">
           <div className="hero-left">
             <h1 className="hero-main-heading">
-              <span className="million-highlight">
-                {targetNumber.split('').map((char, i) => (
-                  <DigitRoll 
-                    key={i} 
-                    target={char} 
-                    duration={800 + (i * 150)} 
-                  />
-                ))}
-                <span className={`plus-symbol ${showExtra ? 'visible' : ''}`}>+</span>
+              <span className="hero-counter-wrap">
+                <span className="million-highlight">
+                  {targetNumber.split('').map((char, i) => (
+                    <DigitRoll 
+                      key={i} 
+                      target={char} 
+                      duration={800 + (i * 150)} 
+                    />
+                  ))}
+                  <span className={`plus-symbol ${showExtra ? 'visible' : ''}`}>+</span>
+                </span>
                 <span className={`extra-reveal ${showExtra ? 'visible' : ''}`}>
                   (1 Million +)
                 </span>
-              </span> Customers Served <br className="mobile-break" />
+              </span>
+              <br />
+              <span className="hero-text-wrap">
+                <span className="customers-served">Customers Served</span>
+              </span>
+              <br />
               <span className="growing-strong">And Still Growing Strong</span>
             </h1>
 

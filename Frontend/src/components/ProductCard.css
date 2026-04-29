@@ -3,7 +3,7 @@
 .pc-card {
   position: relative;
   background: #ffffff;
-  border: 1.5px solid #e8e8f0;
+  border: 1px solid #cfcfda; /* Darker border */
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -153,9 +153,9 @@
   display: flex;
   align-items: center;
   background: #fff;
-  border: 1px solid #ff6b35; /* Orange border */
+  border: 1px solid #e5e7eb; /* Gray border instead of orange */
   color: #374151;
-  font-size: 0.75rem; /* Decreased size */
+  font-size: 0.75rem; 
   padding: 6px 10px;
   border-radius: 6px;
   line-height: 1.3;
@@ -166,7 +166,7 @@
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  color: #1f2937; /* Darker icon color */
+  color: #ff6b35; /* Icons in orange only */
 }
 
 .pc-quality-icon svg {
@@ -202,7 +202,7 @@
   margin-top: 10px;
   padding: 9px 0;
   width: 100%;
-  background: #ff6b35;
+  background: #1a1a2e; /* Dark button */
   color: #fff;
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
@@ -210,10 +210,10 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.25s, transform 0.2s;
+  transition: all 0.25s;
 }
 
 .pc-add-btn:hover {
-  background: #e5521a;
+  background: #000000;
   transform: translateY(-1px);
 }
