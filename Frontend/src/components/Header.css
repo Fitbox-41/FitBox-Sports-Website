@@ -114,7 +114,8 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sale-ribbon--hidden {
+.sale-ribbon--hidden,
+.is-scrolling-down .sale-ribbon {
   height: 0;
   border-bottom: none;
   transform: translateY(-100%);
@@ -156,7 +157,8 @@
   /* The transform will make it slide up behind the header-top */
 }
 
-.sub-header--hidden {
+.sub-header--hidden,
+.is-scrolling-down .sub-header {
   transform: translateY(-100%);
 }
 
@@ -254,6 +256,71 @@
 
 .search-wrap {
   position: relative;
+}
+
+/* Mobile Search Ribbon */
+.mobile-search-ribbon {
+  display: none;
+  background: white;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: auto;
+}
+
+.mobile-search-ribbon--hidden,
+.is-scrolling-down .mobile-search-ribbon {
+  transform: translateY(-100%);
+  height: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  border-bottom: none;
+}
+
+.mobile-search-inner {
+  display: flex;
+  align-items: center;
+  background: #f5f7f9;
+  border-radius: 12px;
+  padding: 6px 16px;
+  gap: 10px;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.mobile-search-inner:focus-within {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.mobile-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  outline: none;
+  padding: 4px 0;
+}
+
+.mobile-search-submit {
+  background: transparent;
+  border: none;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.mobile-search-submit:hover {
+  color: var(--primary);
 }
 
 .header-search-overlay {
@@ -476,16 +543,16 @@
     display: flex;
   }
 
+  .search-wrap {
+    display: none !important;
+  }
+
+  .mobile-search-ribbon {
+    display: block !important;
+  }
+
   .header-search {
-    /* display: none; */
-    order: 3;
-    width: 100%;
-    max-width: none;
-    flex: 1 1 100%;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    max-height: 50px;
-    opacity: 1;
-    overflow: hidden;
+    display: none !important;
   }
 
   .header-search--hidden {

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import MobileNav from './components/MobileNav';
 import './index.css';
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
         <Route path="/accessories" element={<Home />} />
         <Route path="/cart" element={<Home />} />
         <Route path="/account" element={<Home />} />
+        <Route path="/under99" element={<Home />} />
       </Routes>
+      <MobileNav />
     </BrowserRouter>
   );
 }
