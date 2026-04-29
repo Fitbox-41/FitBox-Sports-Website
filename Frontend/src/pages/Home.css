@@ -60,8 +60,8 @@
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 900;
   color: #fff;
-  line-height: 1.2;
-  margin-bottom: 30px;
+  line-height: 1.0;
+  margin-bottom: 25px;
   text-transform: uppercase;
   opacity: 0;
   display: flex;
@@ -81,7 +81,7 @@
   font-size: 0.6em;
   display: block;
   letter-spacing: 2px;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .million-highlight {
@@ -131,7 +131,7 @@
 
 .hero-text-wrap {
   display: block;
-  margin-top: 5px;
+  margin-top: 2px;
 }
 
 .extra-reveal.visible {
@@ -697,7 +697,7 @@
   }
   .hero-main-heading .growing-strong {
     font-size: 0.45em;
-    margin-top: 5px;
+    margin-top: 2px;
   }
   
   .million-highlight {
