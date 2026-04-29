@@ -1059,8 +1059,8 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="reviews-section" id="reviews" aria-label="Customer reviews">
         <div className="section-header centered">
-          <span className="section-eyebrow">Happy Customers</span>
-          <h2 className="section-title scroll-reveal-title">What People Love About Us!</h2>
+        <h2 className="section-title scroll-reveal-title">Why Choose Us!</h2>
+        <span className="section-eyebrow">Happy Customers</span>
         </div>
 
         <div className="reviews-carousel-wrapper">
