@@ -1,19 +1,8 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductCard.css';
 
-/**
- * ProductCard
- * Used in the "New Arrivals" carousel.
- *
- * Props:
- *  product = {
- *    id, name, desc, price, oldPrice, tag,
- *    imgSrc (optional – leave empty for placeholder),
- *    hoverImgSrc (optional)
- *  }
- */
-export default function ProductCard({ product }) {
+const ProductCard = memo(({ product }) => {
   const [wished, setWished] = useState(false);
   const [hovered, setHovered] = useState(false);
 
@@ -104,11 +93,13 @@ export default function ProductCard({ product }) {
       {/* Image area */}
       <Link to={`/product/${product.id}`} className="pc-img-link" id={`pc-img-${product.id}`}>
         {product.imgSrc ? (
-          <img
-            src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
-            alt={product.name}
-            className="pc-img"
-          />
+            <img
+              src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
+              alt={product.name}
+              className="pc-img"
+              loading="lazy"
+              decoding="async"
+            />
         ) : (
           <div className={`pc-placeholder ${hovered ? 'pc-placeholder--hover' : ''}`}>
             <div className="pc-placeholder-label">
@@ -159,4 +150,6 @@ export default function ProductCard({ product }) {
       </div>
     </div>
   );
-}
+});
+
+export default ProductCard;

@@ -137,7 +137,7 @@
 }
 
 .sale-text {
-  font-family: var(--font-heading);
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.8rem;
   font-weight: 800;
   padding-right: 60px;
@@ -490,58 +490,35 @@
 /* HAMBURGER */
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   align-items: center;
   justify-content: center;
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 4px;
-  border-radius: 8px;
-  transition: background var(--transition);
+  padding: 0;
+  border-radius: 50%;
+  transition: all var(--transition);
+  color: var(--text-dark);
+}
+
+.hamburger svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover svg {
+  transform: scale(1.1);
 }
 
 .hamburger:hover {
   background: rgba(255, 107, 53, 0.08);
 }
 
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--text-dark);
-  border-radius: 2px;
-  transition: all 0.3s;
-  transform-origin: center;
-  position: relative;
-}
-
-.hamburger span::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 4px;
-  height: 4px;
-  background: var(--text-dark);
-  border-radius: 1px;
-}
-
-.hamburger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-  transform: scaleX(0);
-}
-
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.hamburger.open {
+  color: var(--primary);
 }
 
 /* ============ RESPONSIVE ============ */
@@ -606,13 +583,49 @@
   }
 
   .sub-header {
-    top: 76px; /* Place it at the same start as search ribbon */
-    background: white;
-    padding: 16px;
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-md);
-    z-index: 1009; /* Below header-top but above search */
+    top: 76px;
+    background: rgba(0, 0, 0, 0.95); /* Semi-transparent black */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0;
+    border-bottom: 2px solid var(--primary);
+    z-index: 1009;
     display: none;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .sub-header-nav {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 0;
+    gap: 0;
+  }
+
+  .sub-header-link {
+    width: 100%;
+    padding: 18px 24px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0;
+    background: transparent;
+    text-align: left;
+    font-size: 1.05rem;
+    font-family: 'Space Grotesk', sans-serif; /* Using the new modern font */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .sub-header-link:last-child {
+    border-bottom: none;
+  }
+
+  .sub-header-link:hover {
+    background: rgba(255, 107, 53, 0.1);
+    transform: none;
   }
 
   .mobile-search-ribbon--hidden {

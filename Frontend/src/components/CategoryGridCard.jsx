@@ -1,22 +1,8 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import './CategoryGridCard.css';
 
-/**
- * CategoryGridCard
- * Amazon-style card: heading + 2x2 grid of sub-items + "See all" link.
- *
- * Props:
- *  card = {
- *    id,
- *    heading,        // e.g. "Up to 40% off | Dumbbells"
- *    seeAllPath,     // route for "See all" link
- *    items: [        // exactly 4 items for the 2x2 grid
- *      { id, label, imgSrc (optional) },
- *      ...
- *    ]
- *  }
- */
-export default function CategoryGridCard({ card }) {
+const CategoryGridCard = memo(({ card }) => {
   return (
     <div className="cgc-card" id={`cgc-card-${card.id}`}>
 
@@ -56,4 +42,6 @@ export default function CategoryGridCard({ card }) {
       </Link>
     </div>
   );
-}
+});
+
+export default CategoryGridCard;

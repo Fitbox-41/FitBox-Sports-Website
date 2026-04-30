@@ -137,7 +137,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`header-container ${isScrollingUp ? 'is-scrolling-up' : 'is-scrolling-down'}`} id="header">
+    <header className={`header-container ${(isScrollingUp || menuOpen) ? 'is-scrolling-up' : 'is-scrolling-down'}`} id="header">
       <div className="header-top">
         <div className="header-inner">
 
@@ -157,7 +157,21 @@ export default function Header() {
             aria-label="Toggle navigation menu"
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            <span /><span /><span />
+            {menuOpen ? (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="4.5" width="4" height="4" rx="1" fill="currentColor"/>
+                <rect x="3" y="10.5" width="4" height="4" rx="1" fill="currentColor"/>
+                <rect x="3" y="16.5" width="4" height="4" rx="1" fill="currentColor"/>
+                <rect x="9" y="5.5" width="12" height="2" rx="1" fill="currentColor"/>
+                <rect x="9" y="11.5" width="12" height="2" rx="1" fill="currentColor"/>
+                <rect x="9" y="17.5" width="12" height="2" rx="1" fill="currentColor"/>
+              </svg>
+            )}
           </button>
 
           {/* Search Toggle Icon */}
@@ -280,7 +294,7 @@ export default function Header() {
       </div>
 
       {/* ── Sub Header (Categories) ── */}
-      <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${!isScrollingUp ? 'sub-header--hidden' : ''}`}>
+      <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${(!isScrollingUp && !menuOpen) ? 'sub-header--hidden' : ''}`}>
         <nav className="sub-header-nav">
           {categories.map((cat) => (
             <Link key={cat.path} to={cat.path} className="sub-header-link" onClick={() => setMenuOpen(false)}>

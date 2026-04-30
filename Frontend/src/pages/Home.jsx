@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
@@ -28,10 +28,10 @@ const posterImages = [
 const collagePosters = [
   { id: 'cp1', imgSrc: '/4.jpg.jpeg', mobileImgSrc: '/2.jpg-scaled - Copy.jpeg', link: '/products' },
   { id: 'cp2', imgSrc: '/5.jpg.jpeg', mobileImgSrc: '/5.jpg.jpeg', link: '/products' },
-  { id: 'cp3', imgSrc: '/9.jpg.jpeg', mobileImgSrc: '/zz.jpg', link: '/products' },
-  { id: 'cp4', imgSrc: 'zz.jpg', mobileImgSrc: '4-8.jpg' },
-  { id: 'cp6', imgSrc: '/8.jpg.jpeg', mobileImgSrc: '/2.jpg', link: '/products' },
-  { id: 'cp7', imgSrc: '/1.jpg-scaled - Copy.jpeg', mobileImgSrc: '', link: '/products' },
+  { id: 'cp3', imgSrc: '/9.jpg.jpeg', mobileImgSrc: '', link: '/products' },
+  { id: 'cp4', imgSrc: '6.jpg.jpeg', mobileImgSrc: '6.jpg.jpeg' },
+  { id: 'cp6', imgSrc: '/8.jpg.jpeg', mobileImgSrc: '', link: '/products' },
+  { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.jpeg', mobileImgSrc: '', link: '/products' },
   { id: 'cp8', imgSrc: '/7.jpg - Copy.jpeg', mobileImgSrc: '', link: '/products' },
 ];
 
@@ -355,7 +355,7 @@ const MobileRowCarousel = ({ products }) => {
 ═══════════════════════════════════════ */
 
 /* ── Digit Roll Component (Defined outside to prevent re-mounts) ── */
-const DigitRoll = ({ target, duration }) => {
+const DigitRoll = memo(({ target, duration }) => {
   const [val, setVal] = useState('0');
   
   useEffect(() => {
@@ -379,7 +379,7 @@ const DigitRoll = ({ target, duration }) => {
   }, [target, duration]);
 
   return <>{val}</>;
-};
+});
 
 export default function Home() {
 
@@ -547,7 +547,7 @@ export default function Home() {
     const animate = () => {
       if (!isDragging.current) {
         const totalWidth = track.scrollWidth;
-        const setWidth = totalWidth / 15; // 15 repetitions
+        const setWidth = totalWidth / 3; // 3 repetitions
         scrollPos.current -= autoScrollSpeed;
         if (Math.abs(scrollPos.current) >= setWidth) {
           scrollPos.current = 0;
@@ -570,7 +570,7 @@ export default function Home() {
       const x = e.pageX || e.touches[0].pageX;
       const walk = x - startX.current;
       scrollPos.current = walk;
-      const setWidth = track.scrollWidth / 15;
+      const setWidth = track.scrollWidth / 3;
       if (scrollPos.current > 0) scrollPos.current = -setWidth;
       if (Math.abs(scrollPos.current) >= setWidth) scrollPos.current = 0;
       track.style.transform = `translateX(${scrollPos.current}px)`;
@@ -616,7 +616,7 @@ export default function Home() {
     const animate = () => {
       if (!isDraggingAvail.current) {
         const totalWidth = track.scrollWidth;
-        const setWidth = totalWidth / 15;
+        const setWidth = totalWidth / 3;
         scrollPosAvail.current -= autoScrollSpeed;
         if (Math.abs(scrollPosAvail.current) >= setWidth) {
           scrollPosAvail.current = 0;
@@ -639,7 +639,7 @@ export default function Home() {
       const x = e.pageX || e.touches[0].pageX;
       const walk = x - startXAvail.current;
       scrollPosAvail.current = walk;
-      const setWidth = track.scrollWidth / 15;
+      const setWidth = track.scrollWidth / 3;
       if (scrollPosAvail.current > 0) scrollPosAvail.current = -setWidth;
       if (Math.abs(scrollPosAvail.current) >= setWidth) scrollPosAvail.current = 0;
       track.style.transform = `translateX(${scrollPosAvail.current}px)`;
@@ -989,7 +989,7 @@ export default function Home() {
                   {poster.mobileImgSrc && (
                     <source media="(max-width: 600px)" srcSet={poster.mobileImgSrc} />
                   )}
-                  <img src={poster.imgSrc} alt="Promotion" />
+                  <img src={poster.imgSrc} alt="Promotion" loading="lazy" decoding="async" />
                 </picture>
               ) : (
                 <div className="poster-placeholder">Poster {i + 1}</div>
@@ -1017,7 +1017,7 @@ export default function Home() {
             ref={catTrackRef}
             style={{ cursor: 'grab' }}
           >
-            {[...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories, ...categories].map((cat, i) => (
+            {[...categories, ...categories, ...categories].map((cat, i) => (
               <Link
                 key={`${cat.id}-${i}`}
                 to={cat.path}
@@ -1025,7 +1025,7 @@ export default function Home() {
                 id={`cat-pill-${cat.id}-${i}`}
               >
                 <div className="cat-circle">
-                  {cat.imgSrc && <img src={cat.imgSrc} alt={cat.label} className="cat-img" />}
+                  {cat.imgSrc && <img src={cat.imgSrc} alt={cat.label} className="cat-img" loading="lazy" decoding="async" />}
                 </div>
                 <span className="cat-label">{cat.label}</span>
               </Link>
@@ -1106,7 +1106,13 @@ export default function Home() {
                   {[...posterImages, ...posterImages, ...posterImages].map((poster, i) => (
                     <div className="na-mobile-carousel" key={`${poster.id}-${i}`} style={{ minWidth: '100%' }}>
                       <Link to={poster.link} className="poster-item">
-                        <img src={poster.mobileImgSrc || poster.imgSrc} alt="Promotion" style={{ width: '100%', borderRadius: 'var(--radius-lg)' }} />
+                        <img 
+                          src={poster.mobileImgSrc || poster.imgSrc} 
+                          alt="Promotion" 
+                          style={{ width: '100%', borderRadius: 'var(--radius-lg)' }} 
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </Link>
                     </div>
                   ))}
@@ -1273,13 +1279,13 @@ export default function Home() {
             ref={availTrackRef}
             style={{ cursor: 'grab' }}
           >
-            {[...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms].map((plat, i) => (
+            {[...availabilityPlatforms, ...availabilityPlatforms, ...availabilityPlatforms].map((plat, i) => (
               <div
                 key={`${plat.id}-${i}`}
                 className="cat-pill"
               >
                 <div className="cat-circle">
-                  {plat.imgSrc && <img src={plat.imgSrc} alt={plat.label} className="cat-img" />}
+                  {plat.imgSrc && <img src={plat.imgSrc} alt={plat.label} className="cat-img" loading="lazy" decoding="async" />}
                 </div>
                 <span className="cat-label">{plat.label}</span>
               </div>
