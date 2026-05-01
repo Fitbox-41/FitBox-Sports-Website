@@ -67,7 +67,7 @@ const userMenuItems = [
   },
 ];
 
-export default function Header() {
+export default function Header({ hideSubHeader = false, hideSaleRibbon = false }) {
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -269,43 +269,49 @@ export default function Header() {
       </div>
 
       {/* ── Sale Ribbon ── */}
-      <div className={`sale-ribbon ${!isScrollingUp ? 'sale-ribbon--hidden' : ''}`}>
-        <div className="sale-ribbon-track">
-          <div className="sale-content">
-            <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
-            <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
-            <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
+      {!hideSaleRibbon && (
+        <div className={`sale-ribbon ${!isScrollingUp ? 'sale-ribbon--hidden' : ''}`}>
+          <div className="sale-ribbon-track">
+            <div className="sale-content">
+              <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
+              <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
+              <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* ── Mobile Search Ribbon (Drops with sale ribbon, conditionally visible) ── */}
-      <div className={`mobile-search-ribbon ${!showHeaderSearch ? 'mobile-search-ribbon--hidden' : ''}`}>
-        <div className="mobile-search-inner">
-          <input 
-            type="text" 
-            placeholder="Search for products..." 
-            className="mobile-search-input" 
-          />
-          <button className="mobile-search-submit" aria-label="Search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
+      {!hideSaleRibbon && (
+        <div className={`mobile-search-ribbon ${!showHeaderSearch ? 'mobile-search-ribbon--hidden' : ''}`}>
+          <div className="mobile-search-inner">
+            <input 
+              type="text" 
+              placeholder="Search for products..." 
+              className="mobile-search-input" 
+            />
+            <button className="mobile-search-submit" aria-label="Search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* ── Sub Header (Categories) ── */}
-      <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${(!isScrollingUp && !menuOpen) ? 'sub-header--hidden' : ''}`}>
-        <nav className="sub-header-nav">
-          {categories.map((cat) => (
-            <Link key={cat.path} to={cat.path} className="sub-header-link" onClick={() => setMenuOpen(false)}>
-              {cat.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      {!hideSubHeader && (
+        <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${(!isScrollingUp && !menuOpen) ? 'sub-header--hidden' : ''}`}>
+          <nav className="sub-header-nav">
+            {categories.map((cat) => (
+              <Link key={cat.path} to={cat.path} className="sub-header-link" onClick={() => setMenuOpen(false)}>
+                {cat.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
