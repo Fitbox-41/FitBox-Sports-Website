@@ -221,13 +221,13 @@
 /* ── Mobile Layout Changes ── */
 @media (max-width: 600px) {
   .pc-card {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1.25; /* Slightly more height */
     max-width: 100%;
     border-radius: 12px;
   }
 
   .pc-img-link {
-    height: 50% !important;
+    height: 45% !important; /* Slightly smaller image to make room */
     aspect-ratio: auto !important;
   }
 
@@ -235,29 +235,46 @@
     padding: 8px;
   }
 
+  .pc-card {
+    aspect-ratio: 1 / 1.35; /* More room for responsive text */
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .pc-img-link {
+    height: 44% !important; 
+    aspect-ratio: auto !important;
+  }
+
+  .pc-img {
+    padding: 10px;
+  }
+
   .pc-body {
-    height: 50%;
-    padding: 8px 10px 10px;
+    flex: 1;
+    padding: 8px 12px 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 2px;
+    gap: 4px;
     border-top: 1px solid #f0f0f5;
   }
 
   .pc-name {
-    font-size: 0.8rem;
-    -webkit-line-clamp: 2; /* Allow 2 lines for name on square cards */
+    font-size: clamp(0.85rem, 4vw, 1rem); /* Responsive name */
+    -webkit-line-clamp: 2; 
     line-clamp: 2;
     margin-bottom: 2px;
+    line-height: 1.2;
+    height: auto;
   }
 
-  /* Qualities in 3 rows for mobile square cards */
+  /* Qualities in 3 rows for mobile cards */
   .pc-qualities {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    margin: 2px 0 6px;
+    margin: 2px 0;
   }
 
   .pc-quality-sq {
@@ -266,38 +283,42 @@
     background: transparent;
     border: none;
     padding: 0;
-    font-size: 0.6rem;
+    font-size: clamp(0.68rem, 3.2vw, 0.78rem); /* Responsive qualities */
     color: #4b5563;
-    line-height: 1.2;
+    line-height: 1.3;
   }
 
   .pc-quality-icon {
-    margin-right: 4px;
+    margin-right: 6px;
   }
 
   .pc-quality-icon svg {
-    width: 11px;
-    height: 11px;
+    width: 12px;
+    height: 12px;
   }
 
   .pc-price-row {
-    margin-top: auto; /* Push price/button down */
-    gap: 4px;
+    margin-top: auto; 
+    gap: 6px;
   }
 
   .pc-price {
-    font-size: 0.85rem;
-  }
-
-  .pc-old-price {
-    font-size: 0.7rem;
+    font-size: clamp(0.9rem, 4.5vw, 1.1rem); /* Responsive price */
   }
 
   .pc-add-btn {
-    margin-top: 4px;
-    padding: 6px 0;
-    font-size: 0.7rem;
+    display: flex !important;
+    margin-top: 6px;
+    height: 34px;
+    padding: 0;
+    width: 100%;
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
     border-radius: 8px;
+    align-items: center;
+    justify-content: center;
   }
 
   .pc-badge {
