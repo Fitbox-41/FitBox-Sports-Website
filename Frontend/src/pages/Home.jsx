@@ -26,10 +26,10 @@ const posterImages = [
 
 /* Collage Posters Data */
 const collagePosters = [
-  { id: 'cp1', imgSrc: '/4.jpg.jpeg', mobileImgSrc: '/2.jpg-scaled - Copy.jpeg', link: '/products' },
-  { id: 'cp2', imgSrc: '/5.jpg.jpeg', mobileImgSrc: '/5.jpg.jpeg', link: '/products' },
-  { id: 'cp3', imgSrc: '/9.jpg.jpeg', mobileImgSrc: '', link: '/products' },
-  { id: 'cp4', imgSrc: '6.jpg.jpeg', mobileImgSrc: '6.jpg.jpeg' },
+  { id: 'cp1', imgSrc: '/4.jpg.jpeg', mobileImgSrc: '/1.jpg-scaled.jpeg', link: '/products' },
+  { id: 'cp2', imgSrc: '/5.jpg.jpeg', mobileImgSrc: '/2.jpg-scaled.jpeg', link: '/products' },
+  { id: 'cp3', imgSrc: '/9.jpg.jpeg', mobileImgSrc: '5-scaled.jpg', link: '/products' },
+  { id: 'cp4', imgSrc: '6.jpg.jpeg', mobileImgSrc: '/3.jpg-scaled.jpeg' },
   { id: 'cp6', imgSrc: '/8.jpg.jpeg', mobileImgSrc: '', link: '/products' },
   { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.jpeg', mobileImgSrc: '', link: '/products' },
   { id: 'cp8', imgSrc: '/7.jpg - Copy.jpeg', mobileImgSrc: '', link: '/products' },
@@ -355,30 +355,64 @@ const MobileRowCarousel = ({ products }) => {
 ═══════════════════════════════════════ */
 
 /* ── Digit Roll Component (Defined outside to prevent re-mounts) ── */
-const DigitRoll = memo(({ target, duration }) => {
-  const [val, setVal] = useState('0');
-  
+const DigitRoll = memo(({ start, target, duration, delay }) => {
+  const [isAnimating, setIsAnimating] = useState(false);
+
   useEffect(() => {
-    if (target === ',' || target === '.') {
-      setVal(target);
-      return;
+    const timer = setTimeout(() => {
+      setIsAnimating(true);
+    }, delay + 1000); // 1s hold to see 9,99,999
+
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  const opacityStyle = { 
+    opacity: (start === ' ' && !isAnimating) ? 0 : 1,
+    transition: 'opacity 0.2s ease-in'
+  };
+
+  if (target === ',' || target === '.') {
+    return (
+      <span className="digit-roll-container is-comma" style={opacityStyle}>
+        <span className="digit-val">{target}</span>
+      </span>
+    );
+  }
+
+  // Create a sequence strip based on the request (9 to 0 rollover)
+  const numbers = [];
+  if (start === ' ' && target === '1') {
+    numbers.push('1'); // Just the target 1
+  } else if (start === '9' && target === '0') {
+    // Rolling from 9 back to 0 in casino style
+    // Strip: 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+    for (let i = 0; i < 2; i++) {
+      for (let j = 9; j >= 0; j--) numbers.push(j);
     }
-    
-    const startTime = Date.now();
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      if (elapsed >= duration) {
-        setVal(target);
-        clearInterval(interval);
-      } else {
-        setVal(Math.floor(Math.random() * 10).toString());
-      }
-    }, 50);
+  } else {
+    numbers.push(start, target);
+  }
 
-    return () => clearInterval(interval);
-  }, [target, duration]);
+  const totalItems = numbers.length;
+  const finalTransform = -((totalItems - 1) / totalItems) * 100;
 
-  return <>{val}</>;
+  return (
+    <span className="digit-roll-container" style={opacityStyle}>
+      <span
+        className="digit-strip"
+        style={{
+          transform: (isAnimating && numbers.length > 1) ? `translateY(${finalTransform}%)` : 'translateY(0)',
+          transition: isAnimating 
+            ? `transform ${duration}ms cubic-bezier(0.15, 0, 0.15, 1)` 
+            : 'none'
+        }}
+      >
+        {numbers.map((n, idx) => (
+          <span key={idx} className="digit-val">{n}</span>
+        ))}
+      </span>
+    </span>
+  );
 });
 
 export default function Home() {
@@ -838,13 +872,15 @@ export default function Home() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  const targetNumber = "10,00,000";
+  const startNumber  = " 9,99,999";
+
   const [showExtra, setShowExtra] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => setShowExtra(true), 2200);
+    // Show + symbol after the full rollover completes
+    const timer = setTimeout(() => setShowExtra(true), 5000);
     return () => clearTimeout(timer);
   }, []);
-
-  const targetNumber = "10,00,000";
 
   /* ═══ RENDER ═══ */
   return (
@@ -867,18 +903,29 @@ export default function Home() {
             <h1 className="hero-main-heading">
               <span className="hero-counter-wrap">
                 <span className="million-highlight">
-                  {targetNumber.split('').map((char, i) => (
-                    <DigitRoll 
-                      key={i} 
-                      target={char} 
-                      duration={800 + (i * 150)} 
-                    />
-                  ))}
+                  {targetNumber.split('').map((char, i) => {
+                    const startChar = startNumber[i];
+                    // Calculate delay from right to left
+                    const reverseIdx = targetNumber.length - 1 - i;
+                    
+                    // Special logic for the leading '1' (appears after right bit is zero)
+                    // The right bit (idx 8) takes duration (2000)
+                    let delayVal = reverseIdx * 350;
+                    if (i === 0) delayVal = 4000; // Trigger exactly when showExtra becomes true
+
+                    return (
+                      <DigitRoll 
+                        key={i} 
+                        start={startChar}
+                        target={char} 
+                        duration={2000 + (i * 300)} 
+                        delay={delayVal}
+                      />
+                    );
+                  })}
                   <span className={`plus-symbol ${showExtra ? 'visible' : ''}`}>+</span>
                 </span>
-                <span className={`extra-reveal ${showExtra ? 'visible' : ''}`}>
-                  (1 Million +)
-                </span>
+                
               </span>
               <span className="hero-text-wrap">
                 <span className="customers-served">Customers Served</span>
@@ -1046,20 +1093,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="carousel-wrapper">
+        <div className="carousel-wrapper na-mobile-row">
           <div className="carousel-content">
             <div className="carousel-viewport">
               <div
                 className="carousel-track-simple"
                 style={{
-                  transform: `translateX(calc(-${naIdx} * (100% / var(--visible-count))))`,
+                  transform: `translateX(calc(-${naIdx} * var(--na-step, 25%)))`,
                   transition: naTrans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
                 }}
                 onTouchStart={handleNaTouchStart}
                 onTouchEnd={handleNaTouchEnd}
               >
                 {[...newArrivals, ...newArrivals, ...newArrivals].map((product, i) => (
-                  <div className="na-mobile-carousel" key={`${product.id}-${i}`}>
+                  <div className="na-mobile-carousel na-card-wrap" key={`${product.id}-${i}`} style={{ width: 'var(--na-step, 25%)' }}>
                     <ProductCard product={product} />
                   </div>
                 ))}

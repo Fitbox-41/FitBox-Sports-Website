@@ -4,7 +4,7 @@ import './Footer.css';
 
 export default function Footer() {
   /* ── Footer Accordion state (Mobile) ── */
-  const [openFooterCol, setOpenFooterCol] = useState(null);
+  const [openFooterCol, setOpenFooterCol] = useState(window.innerWidth <= 600 ? 'about' : null);
 
   const toggleFooterCol = (colId) => {
     setOpenFooterCol((prev) => (prev === colId ? null : colId));

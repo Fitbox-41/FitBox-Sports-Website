@@ -141,6 +141,46 @@
   white-space: nowrap;
 }
 
+.million-highlight {
+  font-family: 'Space Grotesk', sans-serif;
+  display: flex;
+  align-items: baseline;
+  color: var(--primary);
+  font-size: 1.15em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.digit-roll-container {
+  display: inline-flex;
+  flex-direction: column;
+  height: 1.2em;
+  overflow: hidden;
+  position: relative;
+  width: 0.6em; /* Fixed width for digits to prevent jitter */
+  text-align: center;
+}
+
+.digit-roll-container.is-comma {
+  width: auto;
+  padding: 0 1px;
+}
+
+.digit-strip {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.digit-val {
+  height: 1.2em;
+  line-height: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .hero-text-wrap {
   display: block;
   margin-top: 0; /* Clear margin */
@@ -810,7 +850,7 @@
 /* Mobile Layout (2-1-2) */
 @media (max-width: 600px) {
   .collage-section {
-    padding: 15px 0;
+    padding: 10px 0;
   }
   .collage-grid {
     gap: 4px; /* Ultra-tight spacing on mobile */
@@ -820,8 +860,8 @@
   }
   .collage-item {
     width: 100%;
-    min-height: 140px;
-    height: auto;
+    min-height: 85px;
+    height: 85px;
     border-radius: var(--radius-lg); /* Maintain rounding on mobile */
   }
   /* Ensure all items are shown in the stack if they exist */
@@ -831,7 +871,7 @@
   .collage-item.item-4 { 
     display: flex !important;
     grid-column: span 12; 
-    height: auto;
+    height: 85px;
   }
   .collage-item.item-5, 
   .collage-item.item-6, 
@@ -1981,13 +2021,15 @@
     position: relative;
   }
 
-  /* Hide arrows for Best Sellers on mobile */
-  .bs-mobile-row .side-nav-btn {
+  /* Hide arrows for Best Sellers & New Arrivals on mobile */
+  .bs-mobile-row .side-nav-btn,
+  .na-mobile-row .side-nav-btn {
     display: none !important;
   }
 
   /* Ensure the track allows overflow for partial visibility */
-  .bs-mobile-row .carousel-viewport {
+  .bs-mobile-row .carousel-viewport,
+  .na-mobile-row .carousel-viewport {
     overflow: visible;
   }
 }
@@ -2023,10 +2065,15 @@
 }
 
 /* Adjust :root for precise steps - base values defined above */
+:root {
+  --na-step: 25%; /* 4 items on desktop */
+}
+
 @media (max-width: 800px) {
   :root {
     --review-step: 310px; /* 280 + 30 gap */
     --visible-count: 1;
+    --na-step: 80%; /* 1.25 items on mobile */
   }
 }
 

@@ -142,7 +142,10 @@ export default function Header() {
         <div className="header-inner">
 
           <Link to="/" className="logo" id="logo-link">
-            <img src="/fitbox-_logo.-2-blackpng.png" alt="FitBox Sports" className="header-logo-img" />
+            <picture>
+              <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.png" />
+              <img src="/fitbox-_logo.-2-blackpng.png" alt="FitBox Sports" className="header-logo-img" />
+            </picture>
           </Link>
 
 
