@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import ProductPage from './pages/ProductPage';
 import MobileNav from './components/MobileNav';
 import './index.css';
 
@@ -8,12 +9,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dumbbells" element={<Home />} />
-        <Route path="/balls" element={<Home />} />
-        <Route path="/accessories" element={<Home />} />
+        <Route path="/product/:productId" element={<ProductPage />} />
+        
         <Route path="/cart" element={<Home />} />
         <Route path="/account" element={<Home />} />
         <Route path="/under99" element={<Home />} />
+        
+        {/* Catch-all to home */}
+        <Route path="*" element={<Home />} />
       </Routes>
       <MobileNav />
     </BrowserRouter>

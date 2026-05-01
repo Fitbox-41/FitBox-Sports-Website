@@ -46,22 +46,22 @@ const hotProducts = [
 
 /* Category pills – infinite scrolling strip */
 const categories = [
-  { id: 1, label: 'Wall Mounting', path: '/wall-mounting', imgSrc: '/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.jpeg' },
-  { id: 2, label: 'Weighted Vests', path: '/weighted-vests', imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6y5zxfhsz.jpeg' },
-  { id: 3, label: 'Clothing', path: '/clothing', imgSrc: '/s-t-shirt-for-gym-fitbox-sports-original-imahf8gphqczzqsg-removebg-preview.png' },
-  { id: 4, label: 'Balls', path: '/balls', imgSrc: '/71di3zpn2mL.jpg' },
-  { id: 5, label: 'Toning Tube', path: '/toning-tube', imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.jpeg' },
-  { id: 6, label: 'Dumbbells', path: '/dumbbells', imgSrc: '/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mxbhghmgfz.jpeg' },
-  { id: 7, label: 'Resistance Bands', path: '/accessories', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.jpeg' },
-  { id: 8, label: 'Ropes', path: '/ropes', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.jpeg' },
-  { id: 9, label: 'Push-up Bars', path: '/bars', imgSrc: '/barrr.png' },
-  { id: 10, label: 'Kettlebells', path: '/kettlebells', imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.png' },
-  { id: 11, label: 'Supporters', path: '/supporters', imgSrc: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.jpeg' },
-  { id: 12, label: 'Belts', path: '/belts', imgSrc: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.jpeg' },
-  { id: 13, label: 'Gloves', path: '/gloves', imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.jpeg' },
-  { id: 14, label: 'Grippers', path: '/grippers', imgSrc: '/gripper.png' },
-  { id: 15, label: 'Shakers', path: '/shakers', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.jpg' },
-  { id: 16, label: 'Bats', path: '/bats', imgSrc: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.jpeg' },
+  { id: 1, label: 'Wall Mounting', path: '/', imgSrc: '/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.jpeg' },
+  { id: 2, label: 'Weighted Vests', path: '/', imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6y5zxfhsz.jpeg' },
+  { id: 3, label: 'Clothing', path: '/', imgSrc: '/s-t-shirt-for-gym-fitbox-sports-original-imahf8gphqczzqsg-removebg-preview.png' },
+  { id: 4, label: 'Balls', path: '/', imgSrc: '/71di3zpn2mL.jpg' },
+  { id: 5, label: 'Toning Tube', path: '/', imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.jpeg' },
+  { id: 6, label: 'Dumbbells', path: '/', imgSrc: '/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mxbhghmgfz.jpeg' },
+  { id: 7, label: 'Resistance Bands', path: '/', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.jpeg' },
+  { id: 8, label: 'Ropes', path: '/', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.jpeg' },
+  { id: 9, label: 'Push-up Bars', path: '/', imgSrc: '/barrr.png' },
+  { id: 10, label: 'Kettlebells', path: '/', imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.png' },
+  { id: 11, label: 'Supporters', path: '/', imgSrc: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.jpeg' },
+  { id: 12, label: 'Belts', path: '/', imgSrc: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.jpeg' },
+  { id: 13, label: 'Gloves', path: '/', imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.jpeg' },
+  { id: 14, label: 'Grippers', path: '/', imgSrc: '/gripper.png' },
+  { id: 15, label: 'Shakers', path: '/', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.jpg' },
+  { id: 16, label: 'Bats', path: '/', imgSrc: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.jpeg' },
 
 ];
 
@@ -355,7 +355,7 @@ const MobileRowCarousel = ({ products }) => {
 ═══════════════════════════════════════ */
 
 /* ── Digit Roll Component (Defined outside to prevent re-mounts) ── */
-const DigitRoll = memo(({ start, target, duration, delay }) => {
+const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -385,9 +385,18 @@ const DigitRoll = memo(({ start, target, duration, delay }) => {
     numbers.push('1'); // Just the target 1
   } else if (start === '9' && target === '0') {
     // Rolling from 9 back to 0 in casino style
-    // Strip: 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
-    for (let i = 0; i < 2; i++) {
-      for (let j = 9; j >= 0; j--) numbers.push(j);
+    if (reverse) {
+      // Ascending sequence for reverse spin
+      numbers.push('9');
+      for (let i = 0; i < 2; i++) {
+        for (let j = 0; j <= 9; j++) numbers.push(j.toString());
+      }
+      numbers.push('0');
+    } else {
+      // Descending sequence for normal spin
+      for (let i = 0; i < 2; i++) {
+        for (let j = 9; j >= 0; j--) numbers.push(j.toString());
+      }
     }
   } else {
     numbers.push(start, target);
@@ -877,8 +886,8 @@ export default function Home() {
 
   const [showExtra, setShowExtra] = useState(false);
   useEffect(() => {
-    // Show + symbol after the full rollover completes
-    const timer = setTimeout(() => setShowExtra(true), 5000);
+    // Show + symbol exactly after the main rollover (1s hold + 2.5s duration)
+    const timer = setTimeout(() => setShowExtra(true), 3500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -905,21 +914,21 @@ export default function Home() {
                 <span className="million-highlight">
                   {targetNumber.split('').map((char, i) => {
                     const startChar = startNumber[i];
-                    // Calculate delay from right to left
-                    const reverseIdx = targetNumber.length - 1 - i;
                     
-                    // Special logic for the leading '1' (appears after right bit is zero)
-                    // The right bit (idx 8) takes duration (2000)
-                    let delayVal = reverseIdx * 350;
-                    if (i === 0) delayVal = 4000; // Trigger exactly when showExtra becomes true
+                    // Leading 1 pops in instantly after the spin ends
+                    const isLeadingOne = (i === 0);
+                    const delayVal = isLeadingOne ? 2500 : 0;
+                    const durationVal = isLeadingOne ? 100 : 2500;
+                    const isReverse = (i % 2 === 0);
 
                     return (
                       <DigitRoll 
                         key={i} 
                         start={startChar}
                         target={char} 
-                        duration={2000 + (i * 300)} 
+                        duration={durationVal} 
                         delay={delayVal}
+                        reverse={isReverse}
                       />
                     );
                   })}
