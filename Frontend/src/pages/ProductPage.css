@@ -34,8 +34,10 @@
 /* LEFT: GALLERY */
 .product-gallery-v2 {
   position: sticky;
-  top: 180px; /* Increased to account for full sticky header (top + sub-header) */
-  z-index: 10; /* Lower than header z-index (1000) */
+  top: 180px;
+  /* Increased to account for full sticky header (top + sub-header) */
+  z-index: 10;
+  /* Lower than header z-index (1000) */
 }
 
 .main-image-viewport {
@@ -898,7 +900,8 @@ body {
 .card-img-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4; /* Taller portrait aspect ratio */
+  aspect-ratio: 3 / 4;
+  /* Taller portrait aspect ratio */
   overflow: hidden;
   background: #ffffff;
   flex-shrink: 0;

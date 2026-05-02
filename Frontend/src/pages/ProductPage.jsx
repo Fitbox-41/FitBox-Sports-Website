@@ -12,15 +12,15 @@ export default function ProductPage() {
   // ─── 1. State & Data Logic ───
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
-  
+
   // Local state for the current product data
   const [product, setProduct] = useState(null);
-  
+
   // Interaction states: which variant (color), size, and image are currently active
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedSizeIdx, setSelectedSizeIdx] = useState(0);
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
-  
+
   // UI states: active tab for details, and accordion toggle states
   const [activeTab, setActiveTab] = useState('features');
   const [acc1, setAcc1] = useState(window.innerWidth > 1024); // Accordion 1 starts open on desktop
@@ -53,16 +53,16 @@ export default function ProductPage() {
         entry.target.classList.add('active');
       }
     }, { threshold: 0.1 });
-    
+
     if (titleRef.current) observer.observe(titleRef.current);
-    
+
     // Find product data from mock array based on URL ID
     const found = allProducts.find(p => p.id === parseInt(productId));
     setProduct(found);
 
     // Clean up observer on component unmount
     return () => observer.disconnect();
-  }, [productId]);
+  }, [productId, product]);
 
   const touchStart = useRef(0);
   const touchEnd = useRef(0);
@@ -111,13 +111,13 @@ export default function ProductPage() {
       <Header hideSubHeader={true} hideSaleRibbon={false} />
       {/* Spacer for fixed header (Main header + Sale ribbon = ~111px) */}
       <div className="header-spacer desktop-only-spacer" style={{ height: '111px' }} />
-      
+
       <main className="product-main container">
         <div className="product-layout">
-          
+
           {/* ──── LEFT SECTION: Image Gallery ──── */}
           <div className="product-gallery-v2">
-            <div 
+            <div
               className="main-image-viewport"
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
@@ -126,7 +126,7 @@ export default function ProductPage() {
               <button className="nav-arrow left-arrow" onClick={handlePrev}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
-              
+
               <div className="image-track" style={{ transform: `translateX(-${currentImgIdx * 100}%)` }}>
                 {images.map((img, idx) => (
                   <div key={idx} className="gallery-main-img-wrap">
@@ -143,8 +143,8 @@ export default function ProductPage() {
 
             <div className="thumb-strip-v2">
               {images.map((img, idx) => (
-                <button 
-                  key={idx} 
+                <button
+                  key={idx}
                   className={`thumb-item-v2 ${currentImgIdx === idx ? 'active' : ''}`}
                   onClick={() => setCurrentImgIdx(idx)}
                 >
@@ -176,8 +176,8 @@ export default function ProductPage() {
               <p className="selector-label">Color</p>
               <div className="v2-color-grid">
                 {product.variants.map((variant, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className={`color-pill ${selectedVariantIdx === idx ? 'selected' : ''}`}
                     onClick={() => {
                       setSelectedVariantIdx(idx);
@@ -195,8 +195,8 @@ export default function ProductPage() {
               <p className="selector-label">Size</p>
               <div className="v2-size-grid">
                 {product.sizes.map((size, idx) => (
-                  <div 
-                    key={idx} 
+                  <div
+                    key={idx}
                     className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
                     onClick={() => setSelectedSizeIdx(idx)}
                   >
@@ -243,13 +243,13 @@ export default function ProductPage() {
 
       {/* TABS SECTION - Outside main for true full-width */}
       <div className="v2-tabs-selector">
-        <button 
+        <button
           className={`tab-round-btn ${activeTab === 'features' ? 'active' : ''}`}
           onClick={() => setActiveTab('features')}
         >
           Features
         </button>
-        <button 
+        <button
           className={`tab-round-btn ${activeTab === 'reviews' ? 'active' : ''}`}
           onClick={() => setActiveTab('reviews')}
         >
@@ -333,7 +333,7 @@ export default function ProductPage() {
         <div className="section-header">
           <h2 className="section-title scroll-reveal-title" ref={titleRef}>You may also like</h2>
         </div>
-        
+
         <div className="related-grid">
           {relatedProducts.map(rp => (
             <Link key={rp.id} to={`/product/${rp.id}`} className="v2-product-card-link">
@@ -348,7 +348,7 @@ export default function ProductPage() {
                     <span className="price-now">₹{rp.price}</span>
                     <span className="price-was">₹{rp.oldPrice}</span>
                   </div>
-                  <p className="card-discount">{Math.round((1 - rp.price/rp.oldPrice)*100)}% OFF</p>
+                  <p className="card-discount">{Math.round((1 - rp.price / rp.oldPrice) * 100)}% OFF</p>
                 </div>
               </div>
             </Link>
