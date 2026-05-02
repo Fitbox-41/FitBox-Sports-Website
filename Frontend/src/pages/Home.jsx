@@ -897,6 +897,8 @@ export default function Home() {
 
       {/* ── Header ── */}
       <Header />
+      {/* Spacer for fixed header (Main header + Sale ribbon + Sub-header = ~161px) */}
+      <div className="header-spacer desktop-only-spacer" style={{ height: '161px' }} />
 
       {/* ══════════════════════════════════
           1. NEW HERO SECTION

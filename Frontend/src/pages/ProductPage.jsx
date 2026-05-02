@@ -5,119 +5,49 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './ProductPage.css';
 
-// Extended Mock Data with Color Blocks instead of Images
-const allProducts = [
-  { 
-    id: 1, 
-    name: 'Pro Hex Dumbbell Set', 
-    price: 2499, 
-    oldPrice: 3200, 
-    qualities: ['Rubber-coated', 'Anti-roll', 'Premium Quality'],
-    variants: [
-      {
-        color: 'Onyx Black',
-        hex: '#1a1a1a',
-        images: ['#1a1a1a', '#2a2a2a', '#3a3a3a', '#4a4a4a', '#000000']
-      },
-      {
-        color: 'Electric Blue',
-        hex: '#3b82f6',
-        images: ['#3b82f6', '#60a5fa', '#93c5fd', '#2563eb', '#1e40af']
-      },
-      {
-        color: 'Crimson Red',
-        hex: '#ef4444',
-        images: ['#ef4444', '#f87171', '#dc2626', '#b91c1c', '#991b1b']
-      }
-    ],
-    sizes: ['5kg', '10kg', '15kg'],
-    longDesc: 'Our Pro Hex Dumbbells are designed for maximum durability and comfort. The hexagonal shape prevents rolling, while the rubber coating protects your floors and reduces noise.',
-    material: 'Cast Iron with Premium Rubber Coating'
-  },
-  {
-    id: 2,
-    name: 'Official Match Basketball',
-    price: 1799,
-    oldPrice: 2400,
-    qualities: ['Superior Grip', 'Official Size', 'Indoor/Outdoor'],
-    variants: [
-      {
-        color: 'Classic Orange',
-        hex: '#f97316',
-        images: ['#f97316', '#fb923c', '#fdba74', '#ea580c', '#c2410c']
-      },
-      {
-        color: 'Pro Brown',
-        hex: '#78350f',
-        images: ['#78350f', '#92400e', '#b45309', '#d97706', '#f59e0b']
-      },
-      {
-        color: 'Neon Yellow',
-        hex: '#eab308',
-        images: ['#eab308', '#facc15', '#fef08a', '#ca8a04', '#a16207']
-      }
-    ],
-    sizes: ['Size 5', 'Size 6', 'Size 7'],
-    longDesc: 'Engineered for consistent bounce and exceptional grip, our Official Match Basketball is the perfect choice for both indoor courts and outdoor play.',
-    material: 'Composite Leather & Natural Rubber'
-  },
-  {
-    id: 3,
-    name: 'Shaker Pro 700ml',
-    price: 499,
-    oldPrice: 699,
-    qualities: ['BPA-Free', 'Leak-Proof', 'High-Grade Plastic'],
-    variants: [
-      {
-        color: 'Smoke Black',
-        hex: '#111827',
-        images: ['#111827', '#1f2937', '#374151', '#4b5563', '#000000']
-      },
-      {
-        color: 'Crystal Clear',
-        hex: '#f3f4f6',
-        images: ['#f3f4f6', '#e5e7eb', '#d1d5db', '#9ca3af', '#ffffff']
-      },
-      {
-        color: 'Royal Blue',
-        hex: '#1d4ed8',
-        images: ['#1d4ed8', '#2563eb', '#3b82f6', '#60a5fa', '#1e3a8a']
-      }
-    ],
-    sizes: ['500ml', '700ml'],
-    longDesc: 'The Supplements Shaker Bottle is a premium-quality gym and fitness accessory designed for athletes, bodybuilders, and fitness enthusiasts. Specially crafted to mix protein powders, supplements, and nutrition shakes effortlessly, this shaker bottle ensures you get a smooth, lump-free drink every time. Made from high-grade, BPA-free, and non-toxic plastic, it is safe, durable, and built for everyday use. With its ergonomic design and leak-proof lid, you can confidently carry it in your gym bag, backpack, or while traveling without worrying about spills. The shaker comes with a powerful mixing mechanism (whisk ball or built-in blender design) that allows quick blending of protein, pre-workout, or post-workout supplements, ensuring maximum nutrient absorption. Its lightweight yet sturdy construction makes it perfect for daily workouts, running, cycling, yoga, and other sports activities. The bottle is also easy to clean and maintain, making it a reliable companion for your fitness journey. Designed with a comfortable grip and wide-mouth opening, it allows easy filling, pouring, and cleaning. Whether you need to mix protein shakes, BCAAs, creatine, or meal replacements, this shaker bottle is a must-have for every fitness-conscious individual.add ',
-    material: 'BPA-Free High-Grade Polypropylene',
-    features: [
-      'Premium Quality Shaker Bottle – Designed for athletes, bodybuilders, and fitness enthusiasts for daily gym and workout use',
-      'Smooth & Lump-Free Mixing – Efficient mixing mechanism ensures quick and even blending of protein powders and supplements',
-      'BPA-Free & Non-Toxic Material – Made from high-grade plastic that is safe, durable, and suitable for everyday use',
-      'Leak-Proof & Secure Lid – Prevents spills and mess, making it ideal for gym bags, backpacks, and travel',
-      'Ergonomic & Lightweight Design – Comfortable grip with sturdy construction for easy handling during workouts',
-      'Wide Mouth Opening – Allows easy filling, pouring, and hassle-free cleaning'
-    ]
-  }
-];
+import allProducts from '../data/products';
+
 
 export default function ProductPage() {
+  // ─── 1. State & Data Logic ───
+  // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
+  
+  // Local state for the current product data
   const [product, setProduct] = useState(null);
+  
+  // Interaction states: which variant (color), size, and image are currently active
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedSizeIdx, setSelectedSizeIdx] = useState(0);
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
+  
+  // UI states: active tab for details, and accordion toggle states
   const [activeTab, setActiveTab] = useState('features');
-  const [acc1, setAcc1] = useState(window.innerWidth > 1024);
+  const [acc1, setAcc1] = useState(window.innerWidth > 1024); // Accordion 1 starts open on desktop
   const [acc2, setAcc2] = useState(false);
 
-  const relatedProducts = [
-    { id: 101, name: "Women's Blue Printed Sport Bra", price: 979, oldPrice: 2799, image: "/1-1.jpg" },
-    { id: 102, name: "Pro Mesh Leggings Black", price: 1299, oldPrice: 2499, image: "/2-1.jpg" },
-    { id: 103, name: "Active Seamless Tank", price: 749, oldPrice: 1499, image: "/3-1.jpg" },
-    { id: 104, name: "Compression Core Shorts", price: 899, oldPrice: 1999, image: "/4-1.jpg" }
-  ];
+  // ─── 2. RELATED PRODUCTS LOGIC ───
+  // Fetch specific products if relatedIds are provided, else fallback to category/first few
+  let relatedProducts = [];
+  if (product?.relatedIds) {
+    relatedProducts = allProducts.filter(p => product.relatedIds.includes(p.id));
+  } else {
+    relatedProducts = allProducts
+      .filter(p => p.id !== parseInt(productId))
+      .slice(0, 4);
+  }
+
+  relatedProducts = relatedProducts.map(p => ({
+    ...p,
+    /* ── 3. RELATED PRODUCT THUMBNAILS ── */
+    image: p.variants[0].images[0]
+  }));
 
   const titleRef = useRef(null);
 
+  // ─── 3. Data Loading Effect ───
   useEffect(() => {
+    // Scroll reveal observer for the "You may also like" title
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
@@ -126,9 +56,11 @@ export default function ProductPage() {
     
     if (titleRef.current) observer.observe(titleRef.current);
     
+    // Find product data from mock array based on URL ID
     const found = allProducts.find(p => p.id === parseInt(productId));
     setProduct(found);
 
+    // Clean up observer on component unmount
     return () => observer.disconnect();
   }, [productId]);
 
@@ -167,6 +99,7 @@ export default function ProductPage() {
     </div>
   );
 
+  // ─── 4. Derived State: Current variant data and handlers ───
   const currentVariant = product.variants[selectedVariantIdx];
   const images = currentVariant.images;
 
@@ -175,12 +108,14 @@ export default function ProductPage() {
 
   return (
     <div className="product-page">
-      <Header hideSubHeader={true} hideSaleRibbon={true} />
+      <Header hideSubHeader={true} hideSaleRibbon={false} />
+      {/* Spacer for fixed header (Main header + Sale ribbon = ~111px) */}
+      <div className="header-spacer desktop-only-spacer" style={{ height: '111px' }} />
       
       <main className="product-main container">
         <div className="product-layout">
           
-          {/* LEFT: GALLERY SECTION */}
+          {/* ──── LEFT SECTION: Image Gallery ──── */}
           <div className="product-gallery-v2">
             <div 
               className="main-image-viewport"
@@ -194,7 +129,10 @@ export default function ProductPage() {
               
               <div className="image-track" style={{ transform: `translateX(-${currentImgIdx * 100}%)` }}>
                 {images.map((img, idx) => (
-                  <div key={idx} className="gallery-main-img-placeholder" style={{ backgroundColor: img }}></div>
+                  <div key={idx} className="gallery-main-img-wrap">
+                    {/* Rendering MAIN PRODUCT IMAGES */}
+                    <img src={img} alt={`${product.name} - ${idx}`} className="gallery-main-img" />
+                  </div>
                 ))}
               </div>
 
@@ -205,21 +143,20 @@ export default function ProductPage() {
 
             <div className="thumb-strip-v2">
               {images.map((img, idx) => (
-                <div 
+                <button 
                   key={idx} 
-                  className={`thumb-v2 ${currentImgIdx === idx ? 'active' : ''}`}
+                  className={`thumb-item-v2 ${currentImgIdx === idx ? 'active' : ''}`}
                   onClick={() => setCurrentImgIdx(idx)}
                 >
-                  <div className="thumb-color-square" style={{ backgroundColor: img }}></div>
-                </div>
+                  <img src={img} alt="thumbnail" />
+                </button>
               ))}
             </div>
           </div>
 
-          {/* RIGHT: INFO SECTION */}
+          {/* ──── RIGHT SECTION: Product Details ──── */}
           <div className="product-info-v2">
             <h1 className="v2-product-title">{product.name}</h1>
-            
             <div className="v2-qualities">
               {product.qualities.map((q, i) => (
                 <span key={i}>
@@ -296,7 +233,7 @@ export default function ProductPage() {
                   ))}
                 </ul>
               ) : (
-                <p>{product.longDesc}</p>
+                <p>{product.aboutText || product.longDesc}</p>
               )}
             </div>
           </div> {/* End of product-info-v2 */}
@@ -376,25 +313,20 @@ export default function ProductPage() {
       )}
 
       {/* PRODUCT SHOWCASE SECTION */}
-      <div className="v2-product-showcase">
-        <div className="showcase-grid">
-          <div className="showcase-item">
-            <div className="square-frame">
-              <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=2070&auto=format&fit=crop" alt="Gym Workout" />
-            </div>
-          </div>
-          <div className="showcase-item">
-            <div className="square-frame">
-              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop" alt="Sports Gear" />
-            </div>
-          </div>
-          <div className="showcase-item">
-            <div className="square-frame">
-              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" alt="Athlete Life" />
-            </div>
+      {product.showcaseImages && (
+        <div className="v2-product-showcase">
+          <div className="showcase-grid">
+            {product.showcaseImages.map((img, idx) => (
+              <div key={idx} className="showcase-item">
+                <div className="square-frame">
+                  {/* Rendering SHOWCASE/DESCRIPTION IMAGES */}
+                  <img src={img} alt={`${product.name} showcase ${idx}`} />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      )}
 
       {/* YOU MAY ALSO LIKE SECTION */}
       <section className="v2-related-products">
@@ -404,19 +336,22 @@ export default function ProductPage() {
         
         <div className="related-grid">
           {relatedProducts.map(rp => (
-            <div key={rp.id} className="v2-product-card">
-              <div className="card-img-wrap">
-                <img src={rp.image} alt={rp.name} />
-              </div>
-              <div className="card-info">
-                <h4 className="card-title">{rp.name}</h4>
-                <div className="card-pricing">
-                  <span className="price-now">₹{rp.price}</span>
-                  <span className="price-was">₹{rp.oldPrice}</span>
+            <Link key={rp.id} to={`/product/${rp.id}`} className="v2-product-card-link">
+              <div className="v2-product-card">
+                <div className="card-img-wrap">
+                  {/* Rendering RELATED PRODUCT IMAGES */}
+                  <img src={rp.image} alt={rp.name} />
                 </div>
-                <p className="card-discount">{Math.round((1 - rp.price/rp.oldPrice)*100)}% OFF</p>
+                <div className="card-info">
+                  <h4 className="card-title">{rp.name}</h4>
+                  <div className="card-pricing">
+                    <span className="price-now">₹{rp.price}</span>
+                    <span className="price-was">₹{rp.oldPrice}</span>
+                  </div>
+                  <p className="card-discount">{Math.round((1 - rp.price/rp.oldPrice)*100)}% OFF</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
