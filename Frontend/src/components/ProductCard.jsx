@@ -106,7 +106,7 @@ const ProductCard = memo(({ product }) => {
               {hovered ? 'Hover View' : product.name}
             </div>
             <div className="pc-placeholder-hint">
-              {hovered ? product.desc : 'Add image'}
+              {hovered ? (product.desc || 'Quality Sports Gear') : 'Add image'}
             </div>
           </div>
         )}
@@ -118,9 +118,8 @@ const ProductCard = memo(({ product }) => {
           {product.name}
         </Link>
         <div className="pc-qualities">
-          {product.desc.split('|').concat(['Premium Quality', 'Highly Durable']).slice(0, 3).map((q, idx) => {
+          {(product.desc || (product.qualities ? product.qualities.join(' | ') : '')).split('|').concat(['Premium Quality', 'Highly Durable']).filter(Boolean).slice(0, 3).map((q, idx) => {
             const text = q.trim();
-            // Optional: split by ":" to bold the first part if it's "Speed : 1-20 Km/hr" format
             const parts = text.split(':');
             return (
               <span key={idx} className="pc-quality-sq">

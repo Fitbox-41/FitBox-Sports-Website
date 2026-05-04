@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 're
 import { useEffect } from 'react';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
+import ProductCategory from './pages/ProductCategory';
 import MobileNav from './components/MobileNav';
 import './index.css';
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/cart" element={<Home />} />
         <Route path="/account" element={<Home />} />
         <Route path="/under99" element={<Home />} />
+        <Route path="/category/:categoryId" element={<ProductCategory />} />
         
         {/* Catch-all to home */}
         <Route path="*" element={<Home />} />
