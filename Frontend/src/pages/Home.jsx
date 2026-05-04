@@ -16,52 +16,52 @@ import './Home.css';
 
 /* Posters Section Data */
 const posterImages = [
-  { id: 'p1', imgSrc: '/2.jpg-scaled.jpeg', mobileImgSrc: '/2.jpg-scaled - Copy.jpeg', link: '/products' },
-  { id: 'p2', imgSrc: '/4.jpg.jpeg', link: '/products' },
-  { id: 'p3', imgSrc: '/7.jpg.jpeg', link: '/products' },
-  { id: 'p4', imgSrc: '/5.jpg.jpeg', link: '/products' },
-  { id: 'p5', imgSrc: '/6.jpg.jpeg', link: '/products' },
-  { id: 'p6', imgSrc: '/3.jpg-scaled.jpeg', mobileImgSrc:'/3.jpg-scaled - Copy.jpeg', link: '/products' },
+  { id: 'p1', imgSrc: '/2.jpg-scaled.webp', mobileImgSrc: '/2.jpg-scaled - Copy.webp', link: '/products' },
+  { id: 'p2', imgSrc: '/4.jpg.webp', link: '/products' },
+  { id: 'p3', imgSrc: '/7.jpg.webp', link: '/products' },
+  { id: 'p4', imgSrc: '/5.jpg.webp', link: '/products' },
+  { id: 'p5', imgSrc: '/6.jpg.webp', link: '/products' },
+  { id: 'p6', imgSrc: '/3.jpg-scaled.webp', mobileImgSrc:'/3.jpg-scaled - Copy.webp', link: '/products' },
 ];
 
 /* Collage Posters Data */
 const collagePosters = [
-  { id: 'cp1', imgSrc: '/4.jpg.jpeg', mobileImgSrc: '/1.jpg-scaled.jpeg', link: '/products' },
-  { id: 'cp2', imgSrc: '/5.jpg.jpeg', mobileImgSrc: '/2.jpg-scaled.jpeg', link: '/products' },
-  { id: 'cp3', imgSrc: '/9.jpg.jpeg', mobileImgSrc: '5-scaled.jpg', link: '/products' },
-  { id: 'cp4', imgSrc: '6.jpg.jpeg', mobileImgSrc: '/3.jpg-scaled.jpeg' },
-  { id: 'cp6', imgSrc: '/8.jpg.jpeg', mobileImgSrc: '', link: '/products' },
-  { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.jpeg', mobileImgSrc: '', link: '/products' },
-  { id: 'cp8', imgSrc: '/7.jpg - Copy.jpeg', mobileImgSrc: '', link: '/products' },
+  { id: 'cp1', imgSrc: '/4.jpg.webp', mobileImgSrc: '/1.jpg-scaled.webp', link: '/products' },
+  { id: 'cp2', imgSrc: '/5.jpg.webp', mobileImgSrc: '/2.jpg-scaled.webp', link: '/products' },
+  { id: 'cp3', imgSrc: '/9.jpg.webp', mobileImgSrc: '5-scaled.webp', link: '/products' },
+  { id: 'cp4', imgSrc: '6.jpg.webp', mobileImgSrc: '/3.jpg-scaled.webp' },
+  { id: 'cp6', imgSrc: '/8.jpg.webp', mobileImgSrc: '', link: '/products' },
+  { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.webp', mobileImgSrc: '', link: '/products' },
+  { id: 'cp8', imgSrc: '/7.jpg - Copy.webp', mobileImgSrc: '', link: '/products' },
 ];
 
 /* Hot Products Data for Hero */
 const hotProducts = [
-  { id: 'hp1', name: 'Hexa PVC Dumbbells', price: '₹799', imgSrc: '/sports-hexa-pvc-dumbbells-4-0-fitbox-sports-original-imahf77zvmat7mpm.jpeg' },
-  { id: 'hp2', name: 'Speed Skipping Rope', price: '₹299', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.jpeg' },
-  { id: 'hp3', name: 'Premium Shaker', price: '₹499', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.jpg' },
-  { id: 'hp4', name: 'Gym Gloves V2', price: '₹699', imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.jpg' },
-  { id: 'hp5', name: 'Fabric Resistance Band', price: '₹449', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.jpeg' },
+  { id: 'hp1', name: 'Hexa PVC Dumbbells', price: '₹799', imgSrc: '/sports-hexa-pvc-dumbbells-4-0-fitbox-sports-original-imahf77zvmat7mpm.webp' },
+  { id: 'hp2', name: 'Speed Skipping Rope', price: '₹299', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp' },
+  { id: 'hp3', name: 'Premium Shaker', price: '₹499', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp' },
+  { id: 'hp4', name: 'Gym Gloves V2', price: '₹699', imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp' },
+  { id: 'hp5', name: 'Fabric Resistance Band', price: '₹449', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp' },
 ];
 
 /* Category pills – infinite scrolling strip */
 const categories = [
-  { id: 1, label: 'Wall Mounting', path: '/', imgSrc: '/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.jpeg' },
-  { id: 2, label: 'Weighted Vests', path: '/', imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6y5zxfhsz.jpeg' },
-  { id: 3, label: 'Clothing', path: '/', imgSrc: '/s-t-shirt-for-gym-fitbox-sports-original-imahf8gphqczzqsg-removebg-preview.png' },
-  { id: 4, label: 'Balls', path: '/', imgSrc: '/71di3zpn2mL.jpg' },
-  { id: 5, label: 'Toning Tube', path: '/', imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.jpeg' },
-  { id: 6, label: 'Dumbbells', path: '/', imgSrc: '/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mxbhghmgfz.jpeg' },
-  { id: 7, label: 'Resistance Bands', path: '/', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.jpeg' },
-  { id: 8, label: 'Ropes', path: '/', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.jpeg' },
-  { id: 9, label: 'Push-up Bars', path: '/', imgSrc: '/barrr.png' },
-  { id: 10, label: 'Kettlebells', path: '/', imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.png' },
-  { id: 11, label: 'Supporters', path: '/', imgSrc: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.jpeg' },
-  { id: 12, label: 'Belts', path: '/', imgSrc: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.jpeg' },
-  { id: 13, label: 'Gloves', path: '/', imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.jpeg' },
-  { id: 14, label: 'Grippers', path: '/', imgSrc: '/gripper.png' },
-  { id: 15, label: 'Shakers', path: '/', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.jpg' },
-  { id: 16, label: 'Bats', path: '/', imgSrc: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.jpeg' },
+  { id: 1, label: 'Wall Mounting', path: '/', imgSrc: '/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp' },
+  { id: 2, label: 'Weighted Vests', path: '/', imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6y5zxfhsz.webp' },
+  { id: 3, label: 'Clothing', path: '/', imgSrc: '/s-t-shirt-for-gym-fitbox-sports-original-imahf8gphqczzqsg-removebg-preview.webp' },
+  { id: 4, label: 'Balls', path: '/', imgSrc: '/71di3zpn2mL.webp' },
+  { id: 5, label: 'Toning Tube', path: '/', imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.webp' },
+  { id: 6, label: 'Dumbbells', path: '/', imgSrc: '/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mxbhghmgfz.webp' },
+  { id: 7, label: 'Resistance Bands', path: '/', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp' },
+  { id: 8, label: 'Ropes', path: '/', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.webp' },
+  { id: 9, label: 'Push-up Bars', path: '/', imgSrc: '/barrr.webp' },
+  { id: 10, label: 'Kettlebells', path: '/', imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp' },
+  { id: 11, label: 'Supporters', path: '/', imgSrc: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.webp' },
+  { id: 12, label: 'Belts', path: '/', imgSrc: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.webp' },
+  { id: 13, label: 'Gloves', path: '/', imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.webp' },
+  { id: 14, label: 'Grippers', path: '/', imgSrc: '/gripper.webp' },
+  { id: 15, label: 'Shakers', path: '/', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp' },
+  { id: 16, label: 'Bats', path: '/', imgSrc: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.webp' },
 
 ];
 
@@ -73,8 +73,8 @@ const newArrivals = [
     price: '₹2,499',
     oldPrice: '₹3,200',
     tag: 'New',
-    imgSrc: '/sports-hexa-pvc-dumbbells-8-0-fitbox-sports-original-imahf77zyfemq8nj.jpeg',
-    hoverImgSrc: '/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.jpeg',
+    imgSrc: '/sports-hexa-pvc-dumbbells-8-0-fitbox-sports-original-imahf77zyfemq8nj.webp',
+    hoverImgSrc: '/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp',
   },
   {
     id: 2,
@@ -83,8 +83,8 @@ const newArrivals = [
     price: '₹1,799',
     oldPrice: '₹2,100',
     tag: 'New',
-    imgSrc: '/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.jpeg',
-    hoverImgSrc: '/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.jpeg',
+    imgSrc: '/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp',
+    hoverImgSrc: '/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp',
   },
   {
     id: 3,
@@ -93,8 +93,8 @@ const newArrivals = [
     price: '₹499',
     oldPrice: '₹699',
     tag: 'New',
-    imgSrc: '/700-supplements-shaker-bottle-for-protein-pre-post-workout-700ml-original-imahfgyeae98gqtf.jpg',
-    hoverImgSrc: '/700-supplements-shaker-bottle-for-protein-pre-post-workout-original-imahfgyh5fg5pgfh.jpg',
+    imgSrc: '/700-supplements-shaker-bottle-for-protein-pre-post-workout-700ml-original-imahfgyeae98gqtf.webp',
+    hoverImgSrc: '/700-supplements-shaker-bottle-for-protein-pre-post-workout-original-imahfgyh5fg5pgfh.webp',
   },
   {
     id: 4,
@@ -103,8 +103,8 @@ const newArrivals = [
     price: '₹849',
     oldPrice: '₹1,200',
     tag: 'New',
-    imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9knq3knt5gv.jpeg',
-    hoverImgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.png',
+    imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9knq3knt5gv.webp',
+    hoverImgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp',
   },
   {
     id: 5,
@@ -113,8 +113,8 @@ const newArrivals = [
     price: '₹699',
     oldPrice: '₹999',
     tag: 'New',
-    imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.jpg',
-    hoverImgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.jpg'
+    imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp',
+    hoverImgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp'
   },
   {
     id: 6,
@@ -123,8 +123,8 @@ const newArrivals = [
     price: '₹499',
     oldPrice: '₹600',
     tag: 'New',
-    imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztkrqjxtzh.jpeg',
-    hoverImgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.jpeg'
+    imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztkrqjxtzh.webp',
+    hoverImgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp'
   },
 ];
 
@@ -136,7 +136,7 @@ const bestSellers = [
     desc: 'Solid cast iron | Matte finish',
     price: '₹1,499',
     oldPrice: '₹1,999',
-    imgSrc: 'premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.png',
+    imgSrc: 'premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp',
   },
   {
     id: 102,
@@ -144,7 +144,7 @@ const bestSellers = [
     desc: 'Heavy duty | Plastic',
     price: '₹1,299',
     oldPrice: '₹1,599',
-    imgSrc: '/Bat.png',
+    imgSrc: '/Bat.webp',
   },
   {
     id: 103,
@@ -152,7 +152,7 @@ const bestSellers = [
     desc: 'Curved design | High density',
     price: '₹899',
     oldPrice: '₹1,199',
-    imgSrc: 'boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzq5ucedvy.jpeg',
+    imgSrc: 'boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzq5ucedvy.webp',
   },
   {
     id: 104,
@@ -160,7 +160,7 @@ const bestSellers = [
     desc: 'Adjustable weight | Breathable',
     price: '₹2,999',
     oldPrice: '₹3,499',
-    imgSrc: 'adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfcuf3thayh.jpeg',
+    imgSrc: 'adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfcuf3thayh.webp',
   },
   {
     id: 105,
@@ -168,7 +168,7 @@ const bestSellers = [
     desc: 'Adjustable 10-60kg | Counter',
     price: '₹299',
     oldPrice: '₹499',
-    imgSrc: '/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tquhzhgu9.jpeg',
+    imgSrc: '/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tquhzhgu9.webp',
   },
   {
     id: 106,
@@ -176,7 +176,7 @@ const bestSellers = [
     desc: '3 resistance levels | Handles',
     price: '₹749',
     oldPrice: '₹999',
-    imgSrc: 'double-toning-tube-resistance-band-for-workout-for-men-women-1-original-imah7wwjgnvvvzhu.jpeg',
+    imgSrc: 'double-toning-tube-resistance-band-for-workout-for-men-women-1-original-imah7wwjgnvvvzhu.webp',
   },
   ...Array.from({ length: 34 }).map((_, i) => ({
     id: 107 + i,
@@ -211,10 +211,10 @@ const ourProductCards = [
     heading: 'Strength Training',
     seeAllPath: '/dumbbells',
     items: [
-      { id: 'op-1-a', label: 'Dumbbells', path: '/', imgSrc: '517FvNN-33L.jpg' },
-      { id: 'op-1-b', label: 'Kettlebell', path: '/', imgSrc: 'abcde.png' },
-      { id: 'op-1-c', label: 'Weight Vest', path: '/', imgSrc: 'vest square.png' },
-      { id: 'op-1-d', label: 'Ankle Weights', path: '/', imgSrc: 'ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sf9bbxghv.jpeg' },
+      { id: 'op-1-a', label: 'Dumbbells', path: '/', imgSrc: '517FvNN-33L.webp' },
+      { id: 'op-1-b', label: 'Kettlebell', path: '/', imgSrc: 'abcde.webp' },
+      { id: 'op-1-c', label: 'Weight Vest', path: '/', imgSrc: 'vest square.webp' },
+      { id: 'op-1-d', label: 'Ankle Weights', path: '/', imgSrc: 'ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sf9bbxghv.webp' },
     ],
   },
   {
@@ -222,10 +222,10 @@ const ourProductCards = [
     heading: 'Workout Essentials',
     seeAllPath: '/accessories',
     items: [
-      { id: 'op-2-a', label: 'Yoga Belt', path: '/', imgSrc: '183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7f5ffqchh.jpeg' },
-      { id: 'op-2-b', label: 'Toning Tube', path: '/', imgSrc: 'toning.png' },
-      { id: 'op-2-c', label: 'Skipping Rope', path: '/', imgSrc: 'rope.png' },
-      { id: 'op-2-d', label: 'Push-up Bar', path: '/', imgSrc: ' barrr.png' },
+      { id: 'op-2-a', label: 'Yoga Belt', path: '/', imgSrc: '183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7f5ffqchh.webp' },
+      { id: 'op-2-b', label: 'Toning Tube', path: '/', imgSrc: 'toning.webp' },
+      { id: 'op-2-c', label: 'Skipping Rope', path: '/', imgSrc: 'rope.webp' },
+      { id: 'op-2-d', label: 'Push-up Bar', path: '/', imgSrc: ' barrr.webp' },
     ],
   },
   {
@@ -233,10 +233,10 @@ const ourProductCards = [
     heading: 'Support & Protection',
     seeAllPath: '/accessories',
     items: [
-      { id: 'op-3-a', label: 'Wrist Supporter', path: '/', imgSrc: 'supporters.png' },
-      { id: 'op-3-b', label: 'Lifting Belts', path: '/', imgSrc: 'left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86nwz3u6bh.jpeg' },
-      { id: 'op-3-c', label: 'Gym Gloves', path: '/', imgSrc: 'gloves.png' },
-      { id: 'op-3-d', label: 'Hand Gripper', path: '/', imgSrc: 'gripper.png' },
+      { id: 'op-3-a', label: 'Wrist Supporter', path: '/', imgSrc: 'supporters.webp' },
+      { id: 'op-3-b', label: 'Lifting Belts', path: '/', imgSrc: 'left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86nwz3u6bh.webp' },
+      { id: 'op-3-c', label: 'Gym Gloves', path: '/', imgSrc: 'gloves.webp' },
+      { id: 'op-3-d', label: 'Hand Gripper', path: '/', imgSrc: 'gripper.webp' },
     ],
   },
   {
@@ -244,10 +244,10 @@ const ourProductCards = [
     heading: 'Sports & Training',
     seeAllPath: '/balls',
     items: [
-      { id: 'op-4-a', label: 'Football', path: '/', imgSrc: '450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8yuaymr7e.jpeg' },
-      { id: 'op-4-b', label: 'Cricket Ball', path: '/', imgSrc: 'balls.png' },
-      { id: 'op-4-c', label: 'Pickleball', path: '/', imgSrc: 'pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcseafvhaz.jpeg' },
-      { id: 'op-4-da', label: 'Basketball', path: '/', imgSrc: '450-475-basketball-official-professional-match-ball-indoor-original-imahf79fgrnzr9m4.jpeg' },
+      { id: 'op-4-a', label: 'Football', path: '/', imgSrc: '450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8yuaymr7e.webp' },
+      { id: 'op-4-b', label: 'Cricket Ball', path: '/', imgSrc: 'balls.webp' },
+      { id: 'op-4-c', label: 'Pickleball', path: '/', imgSrc: 'pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcseafvhaz.webp' },
+      { id: 'op-4-da', label: 'Basketball', path: '/', imgSrc: '450-475-basketball-official-professional-match-ball-indoor-original-imahf79fgrnzr9m4.webp' },
 
     ],
   },
@@ -256,20 +256,20 @@ const ourProductCards = [
     heading: 'Lifestyle & Accessories',
     seeAllPath: '/accessories',
     items: [
-      { id: 'op-5-a', label: 'T-shirt', path: '/', imgSrc: 's-t-shirt-for-gym-fitbox-sports-original-imahf8gpbqppvzzz-removebg-preview.png' },
-      { id: 'op-5-b', label: 'Boxing Gloves', path: '/', imgSrc: 'boxing.png' },
-      { id: 'op-5-c', label: 'Shakers', path: '/', imgSrc: '51qT2eMcH1L.jpg' },
-      { id: 'op-5-d', label: 'Wall Mountings', path: '/', imgSrc: 'wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.jpeg' },
+      { id: 'op-5-a', label: 'T-shirt', path: '/', imgSrc: 's-t-shirt-for-gym-fitbox-sports-original-imahf8gpbqppvzzz-removebg-preview.webp' },
+      { id: 'op-5-b', label: 'Boxing Gloves', path: '/', imgSrc: 'boxing.webp' },
+      { id: 'op-5-c', label: 'Shakers', path: '/', imgSrc: '51qT2eMcH1L.webp' },
+      { id: 'op-5-d', label: 'Wall Mountings', path: '/', imgSrc: 'wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp' },
     ],
   },
 ];
 
 /* Platforms availability data */
 const availabilityPlatforms = [
-  { id: 'p1', label: 'Amazon', imgSrc: '/amazon.jpg' },
-  { id: 'p2', label: 'Swiggy', imgSrc: '/Swiggy.png' },
-  { id: 'p3', label: 'FitBox.com', imgSrc: '/favicon.png' },
-  { id: 'p4', label: 'Blinkit', imgSrc: '/blinkit.png' },
+  { id: 'p1', label: 'Amazon', imgSrc: '/amazon.webp' },
+  { id: 'p2', label: 'Swiggy', imgSrc: '/Swiggy.webp' },
+  { id: 'p3', label: 'FitBox.com', imgSrc: '/favicon.webp' },
+  { id: 'p4', label: 'Blinkit', imgSrc: '/blinkit.webp' },
 
 
 ];
@@ -905,7 +905,7 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="new-hero" id="new-hero">
         <div className="hero-wallpaper-wrap">
-          <img src="/Untitled-design-19.png" alt="Hero Background" className="hero-wallpaper" />
+          <img src="/Untitled-design-19.webp" alt="Hero Background" className="hero-wallpaper" />
           <div className="hero-overlay"></div>
         </div>
 
@@ -1142,7 +1142,7 @@ export default function Home() {
         <div className="posters-grid posters-desktop">
           {posterImages.map((poster) => (
             <Link key={poster.id} to={poster.link} className="poster-item reveal-on-scroll">
-              <img src={poster.imgSrc} alt="Promotion" />
+              <img src={poster.imgSrc} alt="Promotion" loading="lazy" decoding="async" />
             </Link>
           ))}
         </div>
@@ -1183,7 +1183,7 @@ export default function Home() {
 
 
 
-      {/* ══════════════════════════════════
+      {/* ═════════════════════════════════
           6. OUR BEST SELLERS
           Grid of ProductCards
       ══════════════════════════════════ */}

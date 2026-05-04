@@ -143,8 +143,8 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
 
           <Link to="/" className="logo" id="logo-link">
             <picture>
-              <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.png" />
-              <img src="/fitbox-_logo.-2-blackpng.png" alt="FitBox Sports" className="header-logo-img" />
+              <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.webp" />
+              <img src="/fitbox-_logo.-2-blackpng.webp" alt="FitBox Sports" className="header-logo-img" />
             </picture>
           </Link>
 

@@ -148,7 +148,7 @@ export default function ProductPage() {
                   className={`thumb-item-v2 ${currentImgIdx === idx ? 'active' : ''}`}
                   onClick={() => setCurrentImgIdx(idx)}
                 >
-                  <img src={img} alt="thumbnail" />
+                  <img src={img} alt="thumbnail" loading="lazy" decoding="async" />
                 </button>
               ))}
             </div>
@@ -320,7 +320,7 @@ export default function ProductPage() {
               <div key={idx} className="showcase-item">
                 <div className="square-frame">
                   {/* Rendering SHOWCASE/DESCRIPTION IMAGES */}
-                  <img src={img} alt={`${product.name} showcase ${idx}`} />
+                  <img src={img} alt={`${product.name} showcase ${idx}`} loading="lazy" decoding="async" />
                 </div>
               </div>
             ))}
@@ -340,7 +340,7 @@ export default function ProductPage() {
               <div className="v2-product-card">
                 <div className="card-img-wrap">
                   {/* Rendering RELATED PRODUCT IMAGES */}
-                  <img src={rp.image} alt={rp.name} />
+                  <img src={rp.image} alt={rp.name} loading="lazy" decoding="async" />
                 </div>
                 <div className="card-info">
                   <h4 className="card-title">{rp.name}</h4>

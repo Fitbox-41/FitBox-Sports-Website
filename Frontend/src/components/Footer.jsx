@@ -22,7 +22,7 @@ export default function Footer() {
           </h4>
           <div className={`footer-col-content ${openFooterCol === 'about' ? 'open' : ''}`}>
             <div className="footer-logo">
-              <img src="/fitbox-_red-white.png" alt="FitBox Sports" className="footer-logo-img" />
+              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="footer-logo-img" loading="lazy" decoding="async" />
             </div>
             <p className="footer-tagline">
               Your ultimate fitness companion. Premium gym equipment delivered to your door.
@@ -171,7 +171,7 @@ export default function Footer() {
           <div className={`footer-col-content ${openFooterCol === 'brand-col' ? 'open' : ''}`}>
             {/* Company logo image – replace this div with <img src="..." /> */}
             <div className="footer-brand-img-wrap" id="footer-brand-img">
-              <img src="/fitbox-_red-white.png" alt="FitBox Sports" className="footer-brand-img" />
+              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="footer-brand-img" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>

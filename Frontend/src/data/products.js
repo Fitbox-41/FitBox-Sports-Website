@@ -39,7 +39,7 @@ const allProducts = [
         color: 'Onyx Black',
         hex: '#1a1a1a',
         images: [
-          '/1-2.jpg',
+          '/1-2.webp',
           'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop',
           'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2070&auto=format&fit=crop',
           'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop',
@@ -89,7 +89,7 @@ const allProducts = [
         color: 'Classic Orange',
         hex: '#f97316',
         images: [
-          '/81eCO23-KQL.jpg',
+          '/81eCO23-KQL.webp',
           'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2090&auto=format&fit=crop',
           'https://images.unsplash.com/photo-1519060202266-39f323a395f8?q=80&w=2070&auto=format&fit=crop',
         ],
@@ -133,23 +133,23 @@ const allProducts = [
         color: 'Smoke Black',
         hex: '#d57b01',
         images: [
-          '/51qT2eMcH1L.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.jpg',
+          '/51qT2eMcH1L.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp',
         ],
       },
       {
         color: 'Pearl White',
         hex: '#bdb6c5',
         images: [
-          '/white sipper.jpg',
-          '/white-2.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.jpg',
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.jpg",
+          '/white sipper.webp',
+          '/white-2.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp',
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
 
         ],
       },
@@ -157,20 +157,20 @@ const allProducts = [
         color: 'Ocean Blue',
         hex: '#00a5bb',
         images: [
-          '/blue.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.jpg',
-          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.jpg'
+          '/blue.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp',
+          '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp'
         ],
       },
     ],
 
     //  -- SWAP SHOWCASE IMAGES BELOW --
     showcaseImages: [
-      '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.jpg',
-      '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.jpg',
-      '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.jpg',
+      '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp',
+      '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp',
+      '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp',
     ],
   },
 
@@ -201,7 +201,7 @@ const allProducts = [
         color: 'Stealth Black',
         hex: '#1a1a1a',
         images: [
-          '/boxing.png',
+          '/boxing.webp',
         ],
       },
     ],
@@ -239,7 +239,7 @@ const allProducts = [
         color: 'Racer Red',
         hex: '#ef4444',
         images: [
-          '/61fgiBs02IL.jpg',
+          '/61fgiBs02IL.webp',
         ],
       },
     ],

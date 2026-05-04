@@ -21,7 +21,7 @@ const CategoryGridCard = memo(({ card }) => {
             {/* Image – use real src when available, else show placeholder */}
             <div className="cgc-img-wrap">
               {item.imgSrc ? (
-                <img src={item.imgSrc} alt={item.label} className="cgc-img" />
+                <img src={item.imgSrc} alt={item.label} className="cgc-img" loading="lazy" decoding="async" />
               ) : (
                 /* Placeholder – replace with <img src="..." /> later */
                 <div className="cgc-img-placeholder">
