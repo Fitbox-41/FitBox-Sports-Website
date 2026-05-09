@@ -893,6 +893,29 @@ body {
   margin: 0 auto;
 }
 
+.related-desktop {
+  display: grid;
+}
+
+.related-mobile-multi-rows {
+  display: none;
+}
+
+.v2-mobile-row-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.v2-carousel-track-simple {
+  display: flex;
+  will-change: transform;
+}
+
+.v2-mobile-carousel-item {
+  flex-shrink: 0;
+}
+
 .v2-product-card-link {
   text-decoration: none;
   color: inherit;
@@ -996,10 +1019,25 @@ body {
 }
 
 @media (max-width: 600px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
   .v2-related-products {
     padding: 30px 0 140px;
     width: 100%;
     overflow: hidden;
+  }
+
+  .related-desktop {
+    display: none !important;
+  }
+
+  .related-mobile-multi-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
   }
 
   .related-grid {

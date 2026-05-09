@@ -242,6 +242,93 @@ const allProducts = [
     ],
   },
 
+  // =============================================
+  //  PRODUCT 6  -  Resistance Bands Set
+  // =============================================
+  {
+    id: 6,
+    name: 'Resistance Bands Set',
+    category: 'Accessories',
+    price: 899,
+    oldPrice: 1299,
+    qualities: ['Durable', '5 Levels', 'Portable'],
+    sizes: ['One Size'],
+    longDesc: 'Complete set of 5 resistance bands for full-body workouts. Perfect for strength training, yoga, and physical therapy.',
+    features: ['5 different resistance levels', '100% natural latex', 'Includes carry bag', 'Snap-resistant design'],
+    material: 'Natural Latex',
+    variants: [{ color: 'Multicolor', images: ['/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp'] }],
+    showcaseImages: ['/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp']
+  },
+  {
+    id: 7,
+    name: 'Yoga Mat Premium',
+    category: 'Accessories',
+    price: 1299,
+    oldPrice: 1800,
+    qualities: ['Non-slip', 'Eco-friendly', 'Extra Thick'],
+    sizes: ['Standard'],
+    longDesc: 'High-density eco-friendly yoga mat with alignment lines. Provides excellent cushioning and joint protection.',
+    features: ['Alignment lines', 'Non-slip surface', 'Tear-resistant', 'Lightweight'],
+    material: 'TPE',
+    variants: [{ color: 'Purple', images: ['/2.jpg-scaled.webp'] }],
+    showcaseImages: ['/2.jpg-scaled.webp']
+  },
+  {
+    id: 8,
+    name: 'Adjustable Kettlebell',
+    category: 'Equipment',
+    price: 3499,
+    oldPrice: 4500,
+    qualities: ['Space-saving', 'Cast Iron', 'Quick Adjust'],
+    sizes: ['10kg', '20kg'],
+    longDesc: 'Versatile adjustable kettlebell that replaces multiple traditional kettlebells. Easy weight selection mechanism.',
+    features: ['Quick-adjust mechanism', 'Cast iron plates', 'Ergonomic handle', 'Flat base for pushups'],
+    material: 'Cast Iron',
+    variants: [{ color: 'Black/Red', images: ['/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp'] }],
+    showcaseImages: ['/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp']
+  },
+  {
+    id: 9,
+    name: 'Pull-up Bar',
+    category: 'Equipment',
+    price: 1599,
+    oldPrice: 2200,
+    qualities: ['No Screws', 'Heavy Duty', 'Multi-grip'],
+    sizes: ['Adjustable Length'],
+    longDesc: 'Doorway pull-up bar requires no drilling or screws. Features multiple grip positions for comprehensive upper body workouts.',
+    features: ['No-screw installation', 'Multi-grip design', 'Supports up to 150kg', 'Foam padded grips'],
+    material: 'Heavy Duty Steel',
+    variants: [{ color: 'Black', images: ['/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp'] }],
+    showcaseImages: ['/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp']
+  },
+  {
+    id: 10,
+    name: 'Weightlifting Belt',
+    category: 'Accessories',
+    price: 999,
+    oldPrice: 1499,
+    qualities: ['Leather', 'Lower Back Support', 'Adjustable'],
+    sizes: ['S', 'M', 'L'],
+    longDesc: 'Premium leather weightlifting belt provides essential lower back support for heavy lifting like squats and deadlifts.',
+    features: ['Genuine leather', 'Heavy-duty buckle', 'Contoured design', 'Double stitching'],
+    material: 'Leather',
+    variants: [{ color: 'Brown', images: ['/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.webp'] }],
+    showcaseImages: ['/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.webp']
+  },
+  {
+    id: 11,
+    name: 'Gym Bag Duffel',
+    category: 'Accessories',
+    price: 1199,
+    oldPrice: 1600,
+    qualities: ['Waterproof', 'Shoe Compartment', 'Spacious'],
+    sizes: ['Large'],
+    longDesc: 'Spacious gym duffel bag with a dedicated shoe compartment and wet pocket for sweaty clothes.',
+    features: ['Dedicated shoe compartment', 'Water-resistant material', 'Multiple pockets', 'Adjustable shoulder strap'],
+    material: 'Nylon',
+    variants: [{ color: 'Grey', images: ['/4.jpg.webp'] }],
+    showcaseImages: ['/4.jpg.webp']
+  }
 ];
 
 export default allProducts;

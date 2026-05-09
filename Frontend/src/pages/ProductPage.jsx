@@ -7,6 +7,83 @@ import './ProductPage.css';
 
 import allProducts from '../data/products';
 
+const MobileRelatedRow = ({ products }) => {
+  const [idx, setIdx] = useState(products.length);
+  const [trans, setTrans] = useState(true);
+  const [busy, setBusy] = useState(false);
+
+  const next = () => {
+    if (busy) return;
+    setBusy(true);
+    setIdx((p) => p + 1);
+    setTimeout(() => setBusy(false), 550);
+  };
+  const prev = () => {
+    if (busy) return;
+    setBusy(true);
+    setIdx((p) => p - 1);
+    setTimeout(() => setBusy(false), 550);
+  };
+
+  useEffect(() => {
+    if (idx >= products.length * 2) {
+      setTimeout(() => { setTrans(false); setIdx(products.length); }, 500);
+    }
+    if (idx < products.length) {
+      setTimeout(() => { setTrans(false); setIdx(products.length * 2 - 1); }, 500);
+    }
+  }, [idx, products.length]);
+
+  useEffect(() => {
+    if (!trans) {
+      const timer = setTimeout(() => setTrans(true), 20);
+      return () => clearTimeout(timer);
+    }
+  }, [trans]);
+
+  const startX = useRef(0);
+  const handleTouchStart = (e) => (startX.current = e.touches[0].pageX);
+  const handleTouchEnd = (e) => {
+    const endX = e.changedTouches[0].pageX;
+    if (startX.current - endX > 50) next();
+    if (endX - startX.current > 50) prev();
+  };
+
+  return (
+    <div className="v2-mobile-row-wrapper">
+      <div
+        className="v2-carousel-track-simple"
+        style={{
+          transform: `translateX(calc(-${idx} * 46%))`,
+          transition: trans ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+          display: 'flex',
+        }}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {[...products, ...products, ...products].map((rp, i) => (
+          <div className="v2-mobile-carousel-item" key={`${rp.id}-${i}`} style={{ flex: '0 0 46%', padding: '0 6px', boxSizing: 'border-box' }}>
+            <Link to={`/product/${rp.id}`} className="v2-product-card-link">
+              <div className="v2-product-card">
+                <div className="card-img-wrap">
+                  <img src={rp.image} alt={rp.name} loading="lazy" decoding="async" />
+                </div>
+                <div className="card-info">
+                  <h4 className="card-title">{rp.name}</h4>
+                  <div className="card-pricing">
+                    <span className="price-now">₹{rp.price}</span>
+                    <span className="price-was">₹{rp.oldPrice}</span>
+                  </div>
+                  <p className="card-discount">{Math.round((1 - rp.price / rp.oldPrice) * 100)}% OFF</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function ProductPage() {
   // ─── 1. State & Data Logic ───
@@ -25,23 +102,38 @@ export default function ProductPage() {
   const [activeTab, setActiveTab] = useState('features');
   const [acc1, setAcc1] = useState(window.innerWidth > 1024); // Accordion 1 starts open on desktop
   const [acc2, setAcc2] = useState(false);
+  const [recentlyViewedProducts, setRecentlyViewedProducts] = useState([]);
 
   // ─── 2. RELATED PRODUCTS LOGIC ───
-  // Fetch specific products if relatedIds are provided, else fallback to category/first few
   let relatedProducts = [];
-  if (product?.relatedIds) {
+  
+  if (product?.relatedIds && product.relatedIds.length > 0) {
+    // 1. Get the exact products the user manually specified in products.js
     relatedProducts = allProducts.filter(p => product.relatedIds.includes(p.id));
+    
+    // 2. If they specified fewer than 10, automatically fill the rest so the UI stays perfect
+    if (relatedProducts.length < 10) {
+      const extraProducts = allProducts.filter(p => p.id !== parseInt(productId) && !product.relatedIds.includes(p.id));
+      relatedProducts = [...relatedProducts, ...extraProducts].slice(0, 10);
+    }
   } else {
+    // Fallback: just get 10 other products automatically
     relatedProducts = allProducts
       .filter(p => p.id !== parseInt(productId))
-      .slice(0, 4);
+      .slice(0, 10);
   }
 
-  relatedProducts = relatedProducts.map(p => ({
+  relatedProducts = relatedProducts.map((p, index) => ({
     ...p,
+    id: p.id,
     /* ── 3. RELATED PRODUCT THUMBNAILS ── */
-    image: p.variants[0].images[0]
+    image: p.variants && p.variants[0] && p.variants[0].images ? p.variants[0].images[0] : p.imgSrc || p.image || ''
   }));
+
+  const relatedChunks = [];
+  for (let i = 0; i < relatedProducts.length; i += 5) {
+    relatedChunks.push(relatedProducts.slice(i, i + 5));
+  }
 
   const titleRef = useRef(null);
 
@@ -63,6 +155,31 @@ export default function ProductPage() {
     // Clean up observer on component unmount
     return () => observer.disconnect();
   }, [productId, product]);
+
+  // ─── RECENTLY VIEWED LOGIC ───
+  useEffect(() => {
+    if (!productId) return;
+    const currentId = parseInt(productId);
+    
+    // Retrieve array from localStorage
+    let viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+    
+    // Get the products to display (excluding the current one, top 4)
+    const recentIds = viewed.filter(id => id !== currentId).slice(0, 4);
+    const recentProducts = allProducts
+      .filter(p => recentIds.includes(p.id))
+      .map(p => ({
+        ...p,
+        image: p.variants && p.variants[0] && p.variants[0].images ? p.variants[0].images[0] : p.imgSrc || p.image || ''
+      }));
+    setRecentlyViewedProducts(recentProducts);
+
+    // Update localStorage
+    viewed = viewed.filter(id => id !== currentId);
+    viewed.unshift(currentId);
+    if (viewed.length > 10) viewed = viewed.slice(0, 10);
+    localStorage.setItem('recentlyViewed', JSON.stringify(viewed));
+  }, [productId]);
 
   const touchStart = useRef(0);
   const touchEnd = useRef(0);
@@ -335,8 +452,9 @@ export default function ProductPage() {
           <h2 className="section-title scroll-reveal-title" ref={titleRef}>You may also like</h2>
         </div>
 
-        <div className="related-grid">
-          {relatedProducts.map(rp => (
+        {/* Desktop grid (only 4 items max) */}
+        <div className="related-grid related-desktop">
+          {relatedProducts.slice(0, 4).map(rp => (
             <Link key={rp.id} to={`/product/${rp.id}`} className="v2-product-card-link">
               <div className="v2-product-card">
                 <div className="card-img-wrap">
@@ -355,6 +473,43 @@ export default function ProductPage() {
             </Link>
           ))}
         </div>
+
+        {/* Mobile multi-row swipers */}
+        <div className="related-mobile-multi-rows">
+          {relatedChunks.map((chunk, rowIdx) => (
+            <MobileRelatedRow key={`related-row-${rowIdx}`} products={chunk} />
+          ))}
+        </div>
+      </section>
+
+      {/* RECENTLY VIEWED SECTION */}
+      <section className="v2-recently-viewed" style={{ padding: '0 0 60px', background: '#fff', width: '100%', maxWidth: '1400px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div className="section-header" style={{ width: '100%', padding: '0 20px', marginBottom: '20px' }}>
+          <h2 className="section-title">Recently Viewed</h2>
+        </div>
+        {recentlyViewedProducts.length > 0 ? (
+          <div className="related-grid" style={{ width: '100%' }}>
+            {recentlyViewedProducts.map((rp, index) => (
+              <Link key={rp.id} to={`/product/${rp.id}`} className={`v2-product-card-link ${index >= 2 ? 'hide-on-mobile' : ''}`}>
+                <div className="v2-product-card">
+                  <div className="card-img-wrap">
+                    <img src={rp.image} alt={rp.name} loading="lazy" decoding="async" />
+                  </div>
+                  <div className="card-info">
+                    <h4 className="card-title">{rp.name}</h4>
+                    <div className="card-pricing">
+                      <span className="price-now">₹{rp.price}</span>
+                      <span className="price-was">₹{rp.oldPrice}</span>
+                    </div>
+                    <p className="card-discount">{Math.round((1 - rp.price / rp.oldPrice) * 100)}% OFF</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p style={{ color: 'var(--text-mid)', textAlign: 'center', width: '100%' }}>You haven't viewed any other products yet.</p>
+        )}
       </section>
 
       <Footer />
