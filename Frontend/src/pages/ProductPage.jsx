@@ -225,7 +225,7 @@ export default function ProductPage() {
 
   return (
     <div className="product-page">
-      <Header hideSubHeader={true} hideSaleRibbon={false} />
+      <Header hideSaleRibbon={false} />
       {/* Spacer for fixed header (Main header + Sale ribbon = ~111px) */}
       <div className="header-spacer desktop-only-spacer" style={{ height: '111px' }} />
 
@@ -513,6 +513,12 @@ export default function ProductPage() {
       </section>
 
       <Footer />
+
+      {/* STICKY MOBILE ACTIONS (Hidden on Desktop) */}
+      <div className="v2-mobile-sticky-actions">
+        <button className="v2-btn v2-btn-cart">Add to Cart</button>
+        <button className="v2-btn v2-btn-buy">Buy Now</button>
+      </div>
     </div>
   );
 }

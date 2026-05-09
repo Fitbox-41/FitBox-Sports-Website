@@ -49,7 +49,7 @@ export default function ProductCategory() {
 
   return (
     <div className="category-page">
-      <Header hideSubHeader={true} hideSaleRibbon={false} />
+      <Header hideSaleRibbon={false} />
       
       {/* Spacer for fixed header */}
       <div className="header-spacer" />
