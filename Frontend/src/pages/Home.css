@@ -857,6 +857,7 @@
     width: 95%;
     display: flex;
     flex-direction: column;
+    margin-bottom: -52px; /* Pull next section up to create half-black half-white bg for 5th poster */
   }
   .collage-item {
     width: 100%;
@@ -867,13 +868,27 @@
   /* Ensure all items are shown in the stack if they exist */
   .collage-item.item-1, 
   .collage-item.item-2, 
-  .collage-item.item-3, 
-  .collage-item.item-4 { 
+  .collage-item.item-3 { 
     display: flex !important;
     grid-column: span 12; 
     height: 85px;
   }
-  .collage-item.item-5, 
+  .collage-item.item-4 {
+    display: flex !important;
+    grid-column: span 12; 
+    height: 85px;
+    min-height: 85px;
+    order: 1; /* Bring to bottom */
+    position: relative;
+    z-index: 10; /* Ensure it stays above the next section */
+  }
+  .collage-item.item-5 {
+    display: flex !important;
+    grid-column: span 12; 
+    height: 145px; /* Increased height */
+    min-height: 145px;
+    order: -1; /* Bring to top */
+  }
   .collage-item.item-6, 
   .collage-item.item-7 {
     display: none !important;
@@ -981,7 +996,7 @@
 
 @media (max-width: 600px) {
   .cat-strip {
-    padding: 15px 0 10px;
+    padding: 67px 0 10px; /* Increased top padding to accommodate the overlapping 5th poster */
   }
   .cat-strip-header {
     margin-bottom: 15px;

@@ -156,6 +156,7 @@ export default function ProductPage() {
 
           {/* ──── RIGHT SECTION: Product Details ──── */}
           <div className="product-info-v2">
+            <span className="v2-brand-tag">FitBox Sports </span>
             <h1 className="v2-product-title">{product.name}</h1>
             <div className="v2-qualities">
               {product.qualities.map((q, i) => (
@@ -184,7 +185,7 @@ export default function ProductPage() {
                       setCurrentImgIdx(0);
                     }}
                   >
-                    <div className="color-swatch" style={{ backgroundColor: variant.hex }}></div>
+                    <img src={variant.images[0]} alt={variant.color || `Color ${idx}`} />
                   </div>
                 ))}
               </div>

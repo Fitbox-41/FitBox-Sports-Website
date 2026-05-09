@@ -37,7 +37,6 @@ const allProducts = [
     variants: [
       {
         color: 'Onyx Black',
-        hex: '#1a1a1a',
         images: [
           '/1-2.webp',
           'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop',
@@ -47,9 +46,8 @@ const allProducts = [
       },
       {
         color: 'Electric Blue',
-        hex: '#3b82f6',
         images: [
-          'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=2070&auto=format&fit=crop',
+          '/51qT2eMcH1L.webp'
         ],
       },
     ],
@@ -87,7 +85,6 @@ const allProducts = [
     variants: [
       {
         color: 'Classic Orange',
-        hex: '#f97316',
         images: [
           '/81eCO23-KQL.webp',
           'https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=2090&auto=format&fit=crop',
@@ -131,7 +128,6 @@ const allProducts = [
     variants: [
       {
         color: 'Smoke Black',
-        hex: '#d57b01',
         images: [
           '/51qT2eMcH1L.webp',
           '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp',
@@ -142,7 +138,6 @@ const allProducts = [
       },
       {
         color: 'Pearl White',
-        hex: '#bdb6c5',
         images: [
           '/white sipper.webp',
           '/white-2.webp',
@@ -155,7 +150,6 @@ const allProducts = [
       },
       {
         color: 'Ocean Blue',
-        hex: '#00a5bb',
         images: [
           '/blue.webp',
           '/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp',
@@ -199,7 +193,6 @@ const allProducts = [
     variants: [
       {
         color: 'Stealth Black',
-        hex: '#1a1a1a',
         images: [
           '/boxing.webp',
         ],
@@ -237,7 +230,6 @@ const allProducts = [
     variants: [
       {
         color: 'Racer Red',
-        hex: '#ef4444',
         images: [
           '/61fgiBs02IL.webp',
         ],
