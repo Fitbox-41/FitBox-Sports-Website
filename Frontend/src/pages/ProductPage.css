@@ -379,10 +379,6 @@
   margin-bottom: 40px;
 }
 
-.v2-mobile-sticky-actions {
-  display: none;
-}
-
 .v2-btn {
   height: 44px;
   /* Reduced for laptop mode */
@@ -443,7 +439,7 @@
   }
 
   .product-main {
-    padding: 60px 16px 0px !important;
+    padding: 60px 16px 20px;
   }
 
   /* Gallery: full width, centered */
@@ -548,15 +544,9 @@
     border-radius: 10px;
   }
 
-  .v2-description {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .v2-description h3, 
-  .v2-description p, 
-  .v2-description ul {
-    margin: 0 !important;
+  /* Description text */
+  .v2-description h3 {
+    font-size: 0.88rem;
   }
 
   .v2-description p,
@@ -572,25 +562,24 @@
   }
 
   /* ── STICKY ACTION BUTTONS ──
-     Fixed just above the permanent bottom nav bar */
+     Fixed just above the permanent footer bar */
   .v2-action-buttons {
-    display: none !important;
-  }
-
-  .v2-mobile-sticky-actions {
-    display: grid !important;
-    position: fixed !important;
-    bottom: 65px !important;
+    position: fixed;
+    bottom: 60px;
+    /* Sits just above the bottom nav/footer */
     left: 0;
     right: 0;
     width: 100%;
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 12px 16px;
-    background: transparent !important;
-    z-index: 2147483647 !important;
+    gap: 10px;
+    padding: 10px 16px;
+    background: transparent;
+    backdrop-filter: none;
+    border-top: none;
+    z-index: 9999;
     box-sizing: border-box;
-    pointer-events: auto;
+    margin-bottom: 0;
   }
 
   .v2-btn {
@@ -601,7 +590,8 @@
 
   /* Extra bottom padding so content doesn't hide behind sticky bar */
   .product-info-v2 {
-    padding-bottom: 140px; 
+    padding-bottom: 60px;
+    /* Reduced from 120px */
   }
 }
 
@@ -789,8 +779,8 @@ body {
 
 @media (max-width: 1024px) {
   .v2-tabs-selector {
-    margin: -30px 0 25px !important;
-    /* Increased negative margin to -30px */
+    margin: 5px 0 25px;
+    /* Minimum top margin on mobile */
     gap: 10px;
   }
 

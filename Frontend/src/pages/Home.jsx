@@ -21,7 +21,7 @@ const posterImages = [
   { id: 'p3', imgSrc: '/7.jpg.webp', link: '/products' },
   { id: 'p4', imgSrc: '/5.jpg.webp', link: '/products' },
   { id: 'p5', imgSrc: '/6.jpg.webp', link: '/products' },
-  { id: 'p6', imgSrc: '/3.jpg-scaled.webp', mobileImgSrc:'/3.jpg-scaled - Copy.webp', link: '/products' },
+  { id: 'p6', imgSrc: '/3.jpg-scaled.webp', mobileImgSrc: '/3.jpg-scaled - Copy.webp', link: '/products' },
 ];
 
 /* Collage Posters Data */
@@ -37,11 +37,11 @@ const collagePosters = [
 
 /* Hot Products Data for Hero */
 const hotProducts = [
-  { id: 'hp1', name: 'Hexa PVC Dumbbells', price: '₹799', imgSrc: '/sports-hexa-pvc-dumbbells-4-0-fitbox-sports-original-imahf77zvmat7mpm.webp' },
+  { id: 'hp5', name: 'Fabric Resistance Band', price: '₹449', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp' },
   { id: 'hp2', name: 'Speed Skipping Rope', price: '₹299', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp' },
   { id: 'hp3', name: 'Premium Shaker', price: '₹499', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp' },
   { id: 'hp4', name: 'Gym Gloves V2', price: '₹699', imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp' },
-  { id: 'hp5', name: 'Fabric Resistance Band', price: '₹449', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp' },
+  { id: 'hp1', name: 'Hexa PVC Dumbbells', price: '₹799', imgSrc: '/sports-hexa-pvc-dumbbells-4-0-fitbox-sports-original-imahf77zvmat7mpm.webp' },
 ];
 
 /* Category pills – infinite scrolling strip */
@@ -365,7 +365,7 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
     return () => clearTimeout(timer);
   }, [delay]);
 
-  const opacityStyle = { 
+  const opacityStyle = {
     opacity: (start === ' ' && !isAnimating) ? 0 : 1,
     transition: 'opacity 0.2s ease-in'
   };
@@ -410,8 +410,8 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
         className="digit-strip"
         style={{
           transform: (isAnimating && numbers.length > 1) ? `translateY(${finalTransform}%)` : 'translateY(0)',
-          transition: isAnimating 
-            ? `transform ${duration}ms cubic-bezier(0.15, 0, 0.15, 1)` 
+          transition: isAnimating
+            ? `transform ${duration}ms cubic-bezier(0.15, 0, 0.15, 1)`
             : 'none'
         }}
       >
@@ -881,7 +881,7 @@ export default function Home() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const targetNumber = "10,00,000";
-  const startNumber  = " 9,99,999";
+  const startNumber = " 9,99,999";
 
   const [showExtra, setShowExtra] = useState(false);
   useEffect(() => {
@@ -915,7 +915,7 @@ export default function Home() {
                 <span className="million-highlight">
                   {targetNumber.split('').map((char, i) => {
                     const startChar = startNumber[i];
-                    
+
                     // Leading 1 pops in instantly after the spin ends
                     const isLeadingOne = (i === 0);
                     const delayVal = isLeadingOne ? 2500 : 0;
@@ -923,11 +923,11 @@ export default function Home() {
                     const isReverse = (i % 2 === 0);
 
                     return (
-                      <DigitRoll 
-                        key={i} 
+                      <DigitRoll
+                        key={i}
                         start={startChar}
-                        target={char} 
-                        duration={durationVal} 
+                        target={char}
+                        duration={durationVal}
                         delay={delayVal}
                         reverse={isReverse}
                       />
@@ -935,7 +935,7 @@ export default function Home() {
                   })}
                   <span className={`plus-symbol ${showExtra ? 'visible' : ''}`}>+</span>
                 </span>
-                
+
               </span>
               <span className="hero-text-wrap">
                 <span className="customers-served">Customers Served</span>
@@ -1163,10 +1163,10 @@ export default function Home() {
                   {[...posterImages, ...posterImages, ...posterImages].map((poster, i) => (
                     <div className="na-mobile-carousel" key={`${poster.id}-${i}`} style={{ minWidth: '100%' }}>
                       <Link to={poster.link} className="poster-item">
-                        <img 
-                          src={poster.mobileImgSrc || poster.imgSrc} 
-                          alt="Promotion" 
-                          style={{ width: '100%', borderRadius: 'var(--radius-lg)' }} 
+                        <img
+                          src={poster.mobileImgSrc || poster.imgSrc}
+                          alt="Promotion"
+                          style={{ width: '100%', borderRadius: 'var(--radius-lg)' }}
                           loading="lazy"
                           decoding="async"
                         />
@@ -1263,8 +1263,8 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="reviews-section" id="reviews" aria-label="Customer reviews">
         <div className="section-header centered">
-        <h2 className="section-title scroll-reveal-title">Why Choose Us!</h2>
-        <span className="section-eyebrow">Happy Customers</span>
+          <h2 className="section-title scroll-reveal-title">Why Choose Us!</h2>
+          <span className="section-eyebrow">Happy Customers</span>
         </div>
 
         <div className="reviews-carousel-wrapper">
