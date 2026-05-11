@@ -30,6 +30,7 @@ export const CartProvider = ({ children }) => {
   }, [wishlist]);
 
   const addToCart = (product) => {
+    const qtyToAdd = product.quantity || 1;
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => 
         item.id === product.id && item.selectedVariant === product.selectedVariant
@@ -37,11 +38,11 @@ export const CartProvider = ({ children }) => {
       if (existingItem) {
         return prevCart.map((item) =>
           (item.id === product.id && item.selectedVariant === product.selectedVariant)
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + qtyToAdd }
             : item
         );
       }
-      return [...prevCart, { ...product, quantity: 1 }];
+      return [...prevCart, { ...product, quantity: qtyToAdd }];
     });
   };
 
