@@ -342,6 +342,11 @@
   border: 1px solid #fed7d7;
 }
 
+.v2-out-of-stock-banner {
+  background: #f1f1f5;
+  border-color: #d1d1da;
+}
+
 .blink-icon {
   font-size: 1.2rem;
   /* Reduced icon size */
@@ -407,6 +412,14 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   filter: brightness(1.1);
+}
+
+.v2-btn--disabled {
+  background: #e2e8f0 !important;
+  color: #94a3b8 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .v2-description h3 {

@@ -1,10 +1,13 @@
 import { useState, memo } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
-const ProductCard = memo(({ product }) => {
-  const [wished, setWished] = useState(false);
+const ProductCard = memo(({ product, showStatusTags = false }) => {
   const [hovered, setHovered] = useState(false);
+  const { addToCart, toggleWishlist, wishlist } = useCart();
+  
+  const isInWishlist = wishlist.some(item => item.id === product.id);
 
   const getIcon = (text) => {
     const t = text.toLowerCase();
@@ -68,18 +71,19 @@ const ProductCard = memo(({ product }) => {
 
       {/* Wishlist heart button */}
       <button
-        className={`pc-wish ${wished ? 'pc-wish--active' : ''}`}
+        className={`pc-wish ${isInWishlist ? 'pc-wish--active' : ''}`}
         id={`pc-wish-${product.id}`}
         aria-label="Add to wishlist"
         onClick={(e) => {
           e.stopPropagation();
-          setWished(!wished);
+          e.preventDefault();
+          toggleWishlist(product);
         }}
       >
         <svg
           viewBox="0 0 24 24"
-          fill={wished ? '#ef4444' : 'none'}
-          stroke={wished ? '#ef4444' : '#888'}
+          fill={isInWishlist ? '#ef4444' : 'none'}
+          stroke={isInWishlist ? '#ef4444' : '#888'}
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -90,13 +94,32 @@ const ProductCard = memo(({ product }) => {
         </svg>
       </button>
 
+      {/* Status Tags (Limited to specific pages via prop) */}
+      {showStatusTags && (
+        <div className="pc-status-tags">
+          {product.isOutOfStock ? (
+            <span className="pc-status-tag pc-status-tag--out-of-stock">
+              Out of Stock
+            </span>
+          ) : product.isNew ? (
+            <span className="pc-status-tag pc-status-tag--new">
+              New Arrival
+            </span>
+          ) : null}
+        </div>
+      )}
+
       {/* Image area */}
-      <Link to={`/product/${product.id}`} className="pc-img-link" id={`pc-img-${product.id}`}>
+      <Link 
+        to={`/product/${product.id}${product.selectedVariant ? `?color=${encodeURIComponent(product.selectedVariant)}` : ''}`} 
+        className="pc-img-link" 
+        id={`pc-img-${product.id}`}
+      >
         {product.imgSrc ? (
             <img
               src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
               alt={product.name}
-              className="pc-img"
+              className={`pc-img ${showStatusTags && product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
               loading="lazy"
               decoding="async"
             />
@@ -114,7 +137,10 @@ const ProductCard = memo(({ product }) => {
 
       {/* Card body */}
       <div className="pc-body">
-        <Link to={`/product/${product.id}`} className="pc-name">
+        <Link 
+          to={`/product/${product.id}${product.selectedVariant ? `?color=${encodeURIComponent(product.selectedVariant)}` : ''}`} 
+          className="pc-name"
+        >
           {product.name}
         </Link>
         <div className="pc-qualities">
@@ -143,7 +169,14 @@ const ProductCard = memo(({ product }) => {
           )}
         </div>
 
-        <button className="pc-add-btn" id={`pc-add-${product.id}`}>
+        <button 
+          className="pc-add-btn" 
+          id={`pc-add-${product.id}`}
+          onClick={(e) => {
+            e.preventDefault();
+            addToCart(product);
+          }}
+        >
           Add to Cart
         </button>
       </div>

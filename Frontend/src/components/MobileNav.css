@@ -11,7 +11,7 @@
   padding: 0 15px;
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.08);
-  z-index: 9999;
+  z-index: 1000;
   border-top: 1px solid rgba(0, 0, 0, 0.02);
 }
 
@@ -99,6 +99,23 @@
 .line-2 {
   width: 8px;
   background: #4a00e0;
+}
+
+.mobile-cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #ff6b35;
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid white;
 }
 
 /* Ensure content doesn't get hidden behind footer */

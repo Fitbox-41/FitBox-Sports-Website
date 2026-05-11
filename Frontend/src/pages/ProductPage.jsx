@@ -1,5 +1,6 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { useCart } from '../context/CartContext';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -87,6 +88,7 @@ const MobileRelatedRow = ({ products }) => {
 
 export default function ProductPage() {
   // ─── 1. State & Data Logic ───
+  const { addToCart } = useCart();
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
 
@@ -97,6 +99,28 @@ export default function ProductPage() {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedSizeIdx, setSelectedSizeIdx] = useState(0);
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    // ─── a. Find Product ───
+    const found = allProducts.find((p) => p.id === Number(productId));
+    if (found) {
+      setProduct(found);
+      
+      // ─── b. Pre-select Variant from URL ───
+      const params = new URLSearchParams(location.search);
+      const colorParam = params.get('color');
+      if (colorParam && found.variants) {
+        const vIdx = found.variants.findIndex(v => v.color.toLowerCase() === colorParam.toLowerCase());
+        if (vIdx !== -1) {
+          setSelectedVariantIdx(vIdx);
+        }
+      }
+    }
+    // Scroll to top on page entry
+    window.scrollTo(0, 0);
+  }, [productId, location.search]);
 
   // UI states: active tab for details, and accordion toggle states
   const [activeTab, setActiveTab] = useState('features');
@@ -148,13 +172,9 @@ export default function ProductPage() {
 
     if (titleRef.current) observer.observe(titleRef.current);
 
-    // Find product data from mock array based on URL ID
-    const found = allProducts.find(p => p.id === parseInt(productId));
-    setProduct(found);
-
     // Clean up observer on component unmount
     return () => observer.disconnect();
-  }, [productId, product]);
+  }, []);
 
   // ─── RECENTLY VIEWED LOGIC ───
   useEffect(() => {
@@ -291,7 +311,7 @@ export default function ProductPage() {
 
             {/* COLOR SELECTOR */}
             <div className="v2-selector-wrap">
-              <p className="selector-label">Color</p>
+              <p className="selector-label">Color: <strong>{currentVariant.color}</strong></p>
               <div className="v2-color-grid">
                 {product.variants.map((variant, idx) => (
                   <div
@@ -324,22 +344,49 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* URGENCY MESSAGE */}
-            <div className="v2-urgency-banner">
-              <div className="urgency-icon-wrap">
-                <span className="blink-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" style={{ color: '#c53030' }}>
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            {/* URGENCY MESSAGE / OUT OF STOCK */}
+            {currentVariant.isOutOfStock ? (
+              <div className="v2-urgency-banner v2-out-of-stock-banner">
+                <div className="urgency-icon-wrap">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" style={{ color: '#1a1a2e' }}>
+                    <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
                   </svg>
-                </span>
+                </div>
+                <p className="urgency-text" style={{ color: '#1a1a2e' }}>This variant is currently out of stock.</p>
               </div>
-              <p className="urgency-text">Only 2 products left. Hurry!</p>
-            </div>
+            ) : (
+              <div className="v2-urgency-banner">
+                <div className="urgency-icon-wrap">
+                  <span className="blink-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" style={{ color: '#c53030' }}>
+                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                  </span>
+                </div>
+                <p className="urgency-text">Only 2 products left. Hurry!</p>
+              </div>
+            )}
 
             {/* ACTION BUTTONS */}
             <div className="v2-action-buttons">
-              <button className="v2-btn v2-btn-cart">Add to Cart</button>
-              <button className="v2-btn v2-btn-buy">Buy Now</button>
+              <button 
+                className={`v2-btn v2-btn-cart ${currentVariant.isOutOfStock ? 'v2-btn--disabled' : ''}`}
+                disabled={currentVariant.isOutOfStock}
+                onClick={() => addToCart({
+                  ...product,
+                  selectedVariant: currentVariant.color,
+                  selectedSize: product.sizes[selectedSizeIdx],
+                  imgSrc: currentVariant.images[0]
+                })}
+              >
+                {currentVariant.isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+              </button>
+              <button 
+                className={`v2-btn v2-btn-buy ${currentVariant.isOutOfStock ? 'v2-btn--disabled' : ''}`}
+                disabled={currentVariant.isOutOfStock}
+              >
+                Buy Now
+              </button>
             </div>
 
             <div className="v2-description">

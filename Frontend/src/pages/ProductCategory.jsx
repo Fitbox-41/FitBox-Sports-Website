@@ -9,43 +9,80 @@ import allProducts from '../data/products';
 
 // We can define a mapping of category labels to their banner images/descriptions
 const categoryMeta = {
-  'wall-mounting': { label: 'Wall Mounting', desc: 'Professional grade pull-up bars and mounting equipment.', banner: '/2.jpg-scaled.webp' },
-  'weighted-vests': { label: 'Weighted Vests', desc: 'Take your training to the next level with adjustable vests.', banner: '/4.jpg.webp' },
-  'clothing': { label: 'Clothing', desc: 'Premium athletic wear for maximum performance and comfort.', banner: '/5.jpg.webp' },
-  'balls': { label: 'Balls', desc: 'High-quality balls for football, basketball, and more.', banner: '/7.jpg.webp' },
-  'toning-tube': { label: 'Toning Tube', desc: 'Versatile resistance tubes for full-body workouts.', banner: '/6.jpg.webp' },
-  'dumbbells': { label: 'Dumbbells', desc: 'Precision-engineered weights for strength training.', banner: '/3.jpg-scaled.webp' },
-  'resistance-bands': { label: 'Resistance Bands', desc: 'Durable elastic bands for flexibility and strength.', banner: '/1.jpg-scaled.webp' },
-  'ropes': { label: 'Ropes', desc: 'High-speed skipping ropes for cardio and agility.', banner: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp' },
-  'push-up-bars': { label: 'Push-up Bars', desc: 'Ergonomic bars to enhance your upper body strength.', banner: '/barrr.webp' },
-  'kettlebells': { label: 'Kettlebells', desc: 'Cast iron and vinyl coated kettlebells for functional fitness.', banner: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp' },
-  'supporters': { label: 'Supporters', desc: 'Essential support for wrists, knees, and joints.', banner: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.webp' },
-  'belts': { label: 'Belts', desc: 'Heavy-duty weightlifting belts for core stability.', banner: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.webp' },
-  'gloves': { label: 'Gloves', desc: 'Protective gear for boxing and weightlifting.', banner: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.webp' },
-  'grippers': { label: 'Grippers', desc: 'Adjustable hand grippers to build forearm strength.', banner: '/gripper.webp' },
-  'shakers': { label: 'Shakers', desc: 'Leak-proof shaker bottles for your protein and supplements.', banner: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp' },
-  'bats': { label: 'Bats', desc: 'Premium bats for cricket and other sports.', banner: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.webp' },
+  'wall-mounting': { label: 'Wall Mounting', desc: 'Professional grade pull-up bars and mounting equipment.', banner: '/Untitled-design-19.webp' },
+  'weighted-vests': { label: 'Weighted Vests', desc: 'Take your training to the next level with adjustable vests.', banner: '/Untitled-design-19.webp' },
+  'clothing': { label: 'Clothing', desc: 'Premium athletic wear for maximum performance and comfort.', banner: '/Untitled-design-19.webp' },
+  'balls': { label: 'Balls', desc: 'High-quality balls for football, basketball, and more.', banner: '/Untitled-design-19.webp' },
+  'toning-tube': { label: 'Toning Tube', desc: 'Versatile resistance tubes for full-body workouts.', banner: '/Untitled-design-19.webp' },
+  'dumbbells': { label: 'Dumbbells', desc: 'Precision-engineered weights for strength training.', banner: '/Untitled-design-19.webp' },
+  'resistance-bands': { label: 'Resistance Bands', desc: 'Durable elastic bands for flexibility and strength.', banner: '/Untitled-design-19.webp' },
+  'ropes': { label: 'Ropes', desc: 'High-speed skipping ropes for cardio and agility.', banner: '/Untitled-design-19.webp' },
+  'push-up-bars': { label: 'Push-up Bars', desc: 'Ergonomic bars to enhance your upper body strength.', banner: '/Untitled-design-19.webp' },
+  'kettlebells': { label: 'Kettlebells', desc: 'Cast iron and vinyl coated kettlebells for functional fitness.', banner: '/Untitled-design-19.webp' },
+  'supporters': { label: 'Supporters', desc: 'Essential support for wrists, knees, and joints.', banner: '/Untitled-design-19.webp' },
+  'belts': { label: 'Belts', desc: 'Heavy-duty weightlifting belts for core stability.', banner: '/Untitled-design-19.webp' },
+  'gloves': { label: 'Gloves', desc: 'Protective gear for boxing and weightlifting.', banner: '/Untitled-design-19.webp' },
+  'grippers': { label: 'Grippers', desc: 'Adjustable hand grippers to build forearm strength.', banner: '/Untitled-design-19.webp' },
+  'shakers': { label: 'Shakers', desc: 'Leak-proof shaker bottles for your protein and supplements.', banner: '/Untitled-design-19.webp' },
+  'bats': { label: 'Bats', desc: 'Premium bats for cricket and other sports.', banner: '/Untitled-design-19.webp' },
 };
 
 export default function ProductCategory() {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [filterOpen, setFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState('featured');
+  
+  // Filter states
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const [inStockOnly, setInStockOnly] = useState(false);
+  const [outOfStockOnly, setOutOfStockOnly] = useState(false);
 
   const meta = categoryMeta[categoryId] || { label: 'Category', desc: 'Browse our premium sports equipment.', banner: '/2.jpg-scaled.webp' };
 
   useEffect(() => {
     const cid = categoryId || '';
-    const filtered = allProducts.filter(p => {
+    const categoryProducts = allProducts.filter(p => {
       const categoryMatch = p.category && p.category.toLowerCase().includes(cid.replace(/-/g, ' ').toLowerCase());
       const nameMatch = p.name && p.name.toLowerCase().includes(cid.replace(/-/g, ' ').toLowerCase());
       return categoryMatch || nameMatch;
     });
     
-    setProducts(filtered.length > 0 ? filtered : allProducts);
+    setProducts(categoryProducts);
     window.scrollTo(0, 0);
   }, [categoryId]);
+
+  useEffect(() => {
+    let result = [...products];
+
+    // Filter by Price
+    if (minPrice) result = result.filter(p => p.price >= parseInt(minPrice));
+    if (maxPrice) result = result.filter(p => p.price <= parseInt(maxPrice));
+
+    // Filter by Availability
+    if (inStockOnly && !outOfStockOnly) result = result.filter(p => !p.isOutOfStock);
+    if (outOfStockOnly && !inStockOnly) result = result.filter(p => p.isOutOfStock);
+
+    // Sort
+    if (sortBy === 'newest') {
+      result.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+    } else if (sortBy === 'price-low') {
+      result.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price-high') {
+      result.sort((a, b) => b.price - a.price);
+    } else if (sortBy === 'featured') {
+      // Custom logic for featured (e.g., show New first then in-stock)
+      result.sort((a, b) => {
+        if (a.isNew !== b.isNew) return b.isNew ? 1 : -1;
+        if (a.isOutOfStock !== b.isOutOfStock) return a.isOutOfStock ? 1 : -1;
+        return 0;
+      });
+    }
+
+    setFilteredProducts(result);
+  }, [products, sortBy, minPrice, maxPrice, inStockOnly, outOfStockOnly]);
 
   return (
     <div className="category-page">
@@ -73,7 +110,7 @@ export default function ProductCategory() {
       <main className="category-main container">
         <div className="category-controls">
           <div className="products-count">
-            Showing <span>{products.length}</span> products
+            Showing <span>{filteredProducts.length}</span> products
           </div>
           
           <div className="control-actions">
@@ -118,19 +155,37 @@ export default function ProductCategory() {
               <div className="filter-group">
                 <h4>Price Range</h4>
                 <div className="price-range-inputs">
-                  <input type="number" placeholder="Min" />
-                  <input type="number" placeholder="Max" />
+                  <input 
+                    type="number" 
+                    placeholder="Min" 
+                    value={minPrice} 
+                    onChange={(e) => setMinPrice(e.target.value)} 
+                  />
+                  <input 
+                    type="number" 
+                    placeholder="Max" 
+                    value={maxPrice} 
+                    onChange={(e) => setMaxPrice(e.target.value)} 
+                  />
                 </div>
               </div>
               
               <div className="filter-group">
                 <h4>Availability</h4>
                 <label className="filter-checkbox">
-                  <input type="checkbox" />
+                  <input 
+                    type="checkbox" 
+                    checked={inStockOnly} 
+                    onChange={(e) => setInStockOnly(e.target.checked)} 
+                  />
                   <span>In Stock</span>
                 </label>
                 <label className="filter-checkbox">
-                  <input type="checkbox" />
+                  <input 
+                    type="checkbox" 
+                    checked={outOfStockOnly} 
+                    onChange={(e) => setOutOfStockOnly(e.target.checked)} 
+                  />
                   <span>Out of Stock</span>
                 </label>
               </div>
@@ -146,16 +201,43 @@ export default function ProductCategory() {
             
             <div className="sidebar-footer">
               <button className="apply-filters-btn" onClick={() => setFilterOpen(false)}>Apply Filters</button>
-              <button className="clear-filters-btn">Clear All</button>
+              <button className="clear-filters-btn" onClick={() => {
+                setMinPrice('');
+                setMaxPrice('');
+                setInStockOnly(false);
+                setOutOfStockOnly(false);
+                setSortBy('featured');
+              }}>Clear All</button>
             </div>
           </aside>
 
           {/* Product Grid */}
           <div className="products-grid-wrapper">
-            {products.length > 0 ? (
+            {filteredProducts.length > 0 ? (
               <div className="products-grid">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {filteredProducts.flatMap((p) => {
+                  // Automatically expand products with multiple variants into separate cards
+                  if (p.variants && p.variants.length > 1) {
+                    return p.variants.map((variant, vIdx) => ({
+                      ...p,
+                      displayId: `${p.id}-v${vIdx}`, // Unique key for mapping
+                      name: variant.color ? `${p.name} - ${variant.color}` : p.name,
+                      imgSrc: variant.images[0],
+                      selectedVariant: variant.color, // Pass color for query param
+                      isOutOfStock: variant.isOutOfStock || p.isOutOfStock, // Variant-specific stock status
+                      // Keep original id for the Link inside ProductCard
+                    }));
+                  }
+                  
+                  // For products with single or no variants, pick the first image as default imgSrc
+                  const defaultImg = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
+                  return [{
+                    ...p,
+                    displayId: p.id,
+                    imgSrc: defaultImg
+                  }];
+                }).map((displayProduct) => (
+                  <ProductCard key={displayProduct.displayId} product={displayProduct} showStatusTags={true} />
                 ))}
               </div>
             ) : (
@@ -168,7 +250,13 @@ export default function ProductCategory() {
                 </div>
                 <h3>No products found</h3>
                 <p>Try adjusting your filters or search terms.</p>
-                <button className="clear-filters-btn" onClick={() => window.location.reload()}>Reset All</button>
+                <button className="clear-filters-btn" onClick={() => {
+                  setMinPrice('');
+                  setMaxPrice('');
+                  setInStockOnly(false);
+                  setOutOfStockOnly(false);
+                  setSortBy('featured');
+                }}>Reset All</button>
               </div>
             )}
           </div>

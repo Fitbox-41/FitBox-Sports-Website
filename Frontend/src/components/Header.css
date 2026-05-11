@@ -12,6 +12,10 @@
   backface-visibility: hidden;
 }
 
+.mobile-menu-backdrop {
+  display: none;
+}
+
 .header-top {
   position: relative;
   z-index: 1002;
@@ -603,10 +607,15 @@
     padding: 0;
     border-bottom: 2px solid var(--primary);
     z-index: 1009;
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     max-height: 85vh;
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.3s !important;
   }
 
   .sub-header-nav {
@@ -648,7 +657,7 @@
   }
 
   .sub-header--open {
-    display: block !important;
+    visibility: visible !important;
     transform: translateY(0) !important;
     opacity: 1 !important;
   }
@@ -705,6 +714,29 @@
     padding: 0;
     display: flex;
     align-items: center;
+  }
+
+  .mobile-menu-backdrop {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1008; /* Just below sub-header (1009) */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .mobile-menu-backdrop--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
 

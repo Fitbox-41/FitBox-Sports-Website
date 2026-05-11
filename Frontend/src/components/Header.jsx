@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 import './Header.css';
 
 /* ── Categories for Sub-Header ── */
@@ -71,7 +72,8 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [cartCount]               = useState(3);
+  const { cart } = useCart();
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const lastScrollPos = useRef(0);
   const ticking = useRef(false);
@@ -122,6 +124,18 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isScrollingUp]);
 
+  /* Lock body scroll when mobile menu is open */
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [menuOpen]);
+
   /* Close user & search dropdown when clicking outside */
   useEffect(() => {
     const handler = (e) => {
@@ -141,7 +155,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
       <div className="header-top">
         <div className="header-inner">
 
-          <Link to="/" className="logo" id="logo-link">
+          <Link to="/" className="logo" id="logo-link" onClick={() => setMenuOpen(false)}>
             <picture>
               <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.webp" />
               <img src="/fitbox-_logo.-2-blackpng.webp" alt="FitBox Sports" className="header-logo-img" />
@@ -245,7 +259,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           </div>
 
           {/* Cart icon */}
-          <Link to="/cart" className="icon-btn cart-btn" id="cart-btn" aria-label="Shopping cart">
+          <Link to="/cart" className="icon-btn cart-btn" id="cart-btn" aria-label="Shopping cart" onClick={() => setMenuOpen(false)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="9" cy="21" r="1" />
               <circle cx="20" cy="21" r="1" />
@@ -257,7 +271,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           </Link>
 
           {/* Customer Support Icon */}
-          <Link to="/support" className="icon-btn support-btn" id="support-btn" aria-label="Customer Support">
+          <Link to="/support" className="icon-btn support-btn" id="support-btn" aria-label="Customer Support" onClick={() => setMenuOpen(false)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
               <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
@@ -301,7 +315,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
       )}
 
       {/* ── Sub Header (Categories) ── */}
-      {!hideSubHeader && (
+      {(!hideSubHeader || menuOpen) && (
         <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${(!isScrollingUp && !menuOpen) ? 'sub-header--hidden' : ''}`}>
           <nav className="sub-header-nav">
             {categories.map((cat) => (
@@ -312,6 +326,12 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           </nav>
         </div>
       )}
+
+      {/* ── Mobile Menu Backdrop ── */}
+      <div 
+        className={`mobile-menu-backdrop ${menuOpen ? 'mobile-menu-backdrop--open' : ''}`} 
+        onClick={() => setMenuOpen(false)}
+      />
     </header>
   );
 }

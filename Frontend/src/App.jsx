@@ -3,7 +3,9 @@ import { useEffect } from 'react';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import ProductCategory from './pages/ProductCategory';
+import Cart from './pages/Cart';
 import MobileNav from './components/MobileNav';
+import { CartProvider } from './context/CartContext';
 import './index.css';
 
 // Scroll Management Component
@@ -37,22 +39,24 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/product/:productId" element={<ProductPage />} />
-        
-        <Route path="/cart" element={<Home />} />
-        <Route path="/account" element={<Home />} />
-        <Route path="/under99" element={<Home />} />
-        <Route path="/category/:categoryId" element={<ProductCategory />} />
-        
-        {/* Catch-all to home */}
-        <Route path="*" element={<Home />} />
-      </Routes>
-      <MobileNav />
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
+          
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/account" element={<Home />} />
+          <Route path="/under99" element={<Home />} />
+          <Route path="/category/:categoryId" element={<ProductCategory />} />
+          
+          {/* Catch-all to home */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+        <MobileNav />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 
