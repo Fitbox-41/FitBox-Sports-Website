@@ -99,6 +99,7 @@ export default function ProductPage() {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedSizeIdx, setSelectedSizeIdx] = useState(0);
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const location = useLocation();
 
@@ -120,6 +121,7 @@ export default function ProductPage() {
     }
     // Scroll to top on page entry
     window.scrollTo(0, 0);
+    setQuantity(1); // Reset quantity on product/variant change
   }, [productId, location.search]);
 
   // UI states: active tab for details, and accordion toggle states
@@ -304,9 +306,9 @@ export default function ProductPage() {
             </div>
 
             <div className="v2-price-box">
-              <span className="v2-current-price">₹{product.price}</span>
-              <span className="v2-old-price">₹{product.oldPrice}</span>
-              <span className="v2-save-tag">You Saved ₹{product.oldPrice - product.price}</span>
+              <span className="v2-current-price">₹{product.price * quantity}</span>
+              <span className="v2-old-price">₹{product.oldPrice * quantity}</span>
+              <span className="v2-save-tag">You Saved ₹{(product.oldPrice - product.price) * quantity}</span>
             </div>
 
             {/* COLOR SELECTOR */}
@@ -344,6 +346,31 @@ export default function ProductPage() {
               </div>
             </div>
 
+            {/* QUANTITY SELECTOR */}
+            <div className="v2-selector-wrap">
+              <p className="selector-label">Quantity</p>
+              <div className="v2-qty-ribbon">
+                <button 
+                  className="qty-btn" 
+                  onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                  disabled={quantity <= 1}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </button>
+                <span className="qty-value">{quantity}</span>
+                <button 
+                  className="qty-btn" 
+                  onClick={() => setQuantity(prev => prev + 1)}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                    <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
             {/* URGENCY MESSAGE / OUT OF STOCK */}
             {currentVariant.isOutOfStock ? (
               <div className="v2-urgency-banner v2-out-of-stock-banner">
@@ -376,7 +403,8 @@ export default function ProductPage() {
                   ...product,
                   selectedVariant: currentVariant.color,
                   selectedSize: product.sizes[selectedSizeIdx],
-                  imgSrc: currentVariant.images[0]
+                  imgSrc: currentVariant.images[0],
+                  quantity: quantity
                 })}
               >
                 {currentVariant.isOutOfStock ? 'Out of Stock' : 'Add to Cart'}

@@ -326,6 +326,52 @@
   background: #fffcfb;
 }
 
+/* Quantity Ribbon */
+.v2-qty-ribbon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f8f9fa;
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.qty-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1a1a2e;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.qty-btn:hover:not(:disabled) {
+  border-color: #ff6b35;
+  color: #ff6b35;
+  transform: translateY(-1px);
+}
+
+.qty-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.qty-value {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #1a1a2e;
+  min-width: 24px;
+  text-align: center;
+}
+
 /* Urgency Banner */
 .v2-urgency-banner {
   display: flex;

@@ -26,13 +26,21 @@ export default function Cart() {
             <div className="cart-items-section">
               {cart.map((item) => (
                 <div key={`${item.id}-${item.selectedVariant}`} className="cart-item-card">
-                  <div className="cart-item-img-wrap">
+                  <Link 
+                    to={`/product/${item.id}${item.selectedVariant ? `?color=${encodeURIComponent(item.selectedVariant)}` : ''}`} 
+                    className="cart-item-img-wrap"
+                  >
                     <img src={item.imgSrc} alt={item.name} />
-                  </div>
+                  </Link>
                   
                   <div className="cart-item-details">
                     <div className="cart-item-header">
-                      <Link to={`/product/${item.id}`} className="cart-item-name">{item.name}</Link>
+                      <Link 
+                        to={`/product/${item.id}${item.selectedVariant ? `?color=${encodeURIComponent(item.selectedVariant)}` : ''}`} 
+                        className="cart-item-name"
+                      >
+                        {item.name}
+                      </Link>
                       <span className="cart-item-price">₹{item.price}</span>
                     </div>
                     
