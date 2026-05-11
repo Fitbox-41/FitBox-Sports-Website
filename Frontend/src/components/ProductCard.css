@@ -3,14 +3,16 @@
 .pc-card {
   position: relative;
   background: #ffffff;
-  border: 1px solid #cfcfda; /* Darker border */
+  border: 1px solid #cfcfda;
+  /* Darker border */
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   width: 100%;
-  max-width: 280px; /* Decreased size */
+  max-width: 280px;
+  /* Decreased size */
   margin: 0 auto;
 }
 
@@ -73,6 +75,7 @@
     top: 8px;
     left: 8px;
   }
+
   .pc-status-tag {
     font-size: 0.55rem;
     padding: 3px 8px;
@@ -166,8 +169,9 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  justify-content: space-between; /* Push button to bottom */
-  min-height: min-content; 
+  justify-content: space-between;
+  /* Push button to bottom */
+  min-height: min-content;
 }
 
 .pc-name {
@@ -180,7 +184,8 @@
   /* Clamp to 1 line */
   display: -webkit-box;
   -webkit-line-clamp: 1;
-  line-clamp: 1; /* Standard property */
+  line-clamp: 1;
+  /* Standard property */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -200,9 +205,10 @@
   display: flex;
   align-items: center;
   background: #fff;
-  border: 1px solid #e5e7eb; /* Gray border instead of orange */
+  border: 1px solid #e5e7eb;
+  /* Gray border instead of orange */
   color: #374151;
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   padding: 6px 10px;
   border-radius: 6px;
   line-height: 1.3;
@@ -213,7 +219,8 @@
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  color: #ff6b35; /* Icons in orange only */
+  color: #ff6b35;
+  /* Icons in orange only */
 }
 
 .pc-quality-icon svg {
@@ -249,7 +256,8 @@
   margin-top: 10px;
   padding: 9px 0;
   width: 100%;
-  background: #1a1a2e; /* Dark button */
+  background: #1a1a2e;
+  /* Dark button */
   color: #fff;
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
@@ -268,7 +276,8 @@
 /* ── Mobile Layout Changes ── */
 @media (max-width: 600px) {
   .pc-card {
-    aspect-ratio: 1 / 1.45; /* Increased height to fit all content comfortably */
+    aspect-ratio: auto; /* Remove fixed aspect ratio to prevent cutting */
+    height: 100%; /* Fill grid cell */
     max-width: 100%;
     border-radius: 12px;
     display: flex;
@@ -276,7 +285,7 @@
   }
 
   .pc-img-link {
-    height: 42% !important; /* Slightly smaller image to make room for text/button */
+    height: 130px !important; /* Fixed height for image area */
     aspect-ratio: auto !important;
     display: block;
   }
@@ -298,15 +307,17 @@
   }
 
   .pc-name {
-    font-size: clamp(0.8rem, 3.8vw, 0.9rem); /* Slightly smaller for better fit */
-    -webkit-line-clamp: 2; 
+    font-size: clamp(0.75rem, 3.5vw, 0.85rem);
+    /* Slightly smaller for better fit */
+    -webkit-line-clamp: 2;
     line-clamp: 2;
-    margin-bottom: 4px;
-    line-height: 1.15;
+    margin-bottom: 2px;
+    line-height: 1.1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 2.3em; /* Use min-height instead of fixed height */
+    min-height: 2.3em;
+    /* Use min-height instead of fixed height */
   }
 
   .pc-qualities {
@@ -337,7 +348,7 @@
   }
 
   .pc-price-row {
-    margin-top: auto; 
+    margin-top: auto;
     gap: 6px;
     padding-bottom: 4px;
   }

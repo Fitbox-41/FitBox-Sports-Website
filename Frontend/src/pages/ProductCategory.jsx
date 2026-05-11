@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
@@ -84,6 +84,29 @@ export default function ProductCategory() {
     setFilteredProducts(result);
   }, [products, sortBy, minPrice, maxPrice, inStockOnly, outOfStockOnly]);
 
+  // Automatically expand products with multiple variants into separate cards
+  const expandedProducts = useMemo(() => {
+    return filteredProducts.flatMap((p) => {
+      if (p.variants && p.variants.length > 1) {
+        return p.variants.map((variant, vIdx) => ({
+          ...p,
+          displayId: `${p.id}-v${vIdx}`, // Unique key for mapping
+          name: variant.color ? `${p.name} - ${variant.color}` : p.name,
+          imgSrc: variant.images[0],
+          selectedVariant: variant.color, // Pass color for query param
+          isOutOfStock: variant.isOutOfStock || p.isOutOfStock, // Variant-specific stock status
+        }));
+      }
+      
+      const defaultImg = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
+      return [{
+        ...p,
+        displayId: p.id,
+        imgSrc: defaultImg
+      }];
+    });
+  }, [filteredProducts]);
+
   return (
     <div className="category-page">
       <Header hideSubHeader={true} hideSaleRibbon={false} />
@@ -110,7 +133,7 @@ export default function ProductCategory() {
       <main className="category-main container">
         <div className="category-controls">
           <div className="products-count">
-            Showing <span>{filteredProducts.length}</span> products
+            Showing <span>{expandedProducts.length}</span> products
           </div>
           
           <div className="control-actions">
@@ -213,30 +236,9 @@ export default function ProductCategory() {
 
           {/* Product Grid */}
           <div className="products-grid-wrapper">
-            {filteredProducts.length > 0 ? (
+            {expandedProducts.length > 0 ? (
               <div className="products-grid">
-                {filteredProducts.flatMap((p) => {
-                  // Automatically expand products with multiple variants into separate cards
-                  if (p.variants && p.variants.length > 1) {
-                    return p.variants.map((variant, vIdx) => ({
-                      ...p,
-                      displayId: `${p.id}-v${vIdx}`, // Unique key for mapping
-                      name: variant.color ? `${p.name} - ${variant.color}` : p.name,
-                      imgSrc: variant.images[0],
-                      selectedVariant: variant.color, // Pass color for query param
-                      isOutOfStock: variant.isOutOfStock || p.isOutOfStock, // Variant-specific stock status
-                      // Keep original id for the Link inside ProductCard
-                    }));
-                  }
-                  
-                  // For products with single or no variants, pick the first image as default imgSrc
-                  const defaultImg = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
-                  return [{
-                    ...p,
-                    displayId: p.id,
-                    imgSrc: defaultImg
-                  }];
-                }).map((displayProduct) => (
+                {expandedProducts.map((displayProduct) => (
                   <ProductCard key={displayProduct.displayId} product={displayProduct} showStatusTags={true} />
                 ))}
               </div>
