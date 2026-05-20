@@ -6,8 +6,8 @@ import ProductCategory from './pages/ProductCategory';
 import Cart from './pages/Cart';
 import MobileNav from './components/MobileNav';
 import { CartProvider } from './context/CartContext';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import './index.css';
-
 // Scroll Management Component
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -56,6 +56,7 @@ function App() {
         </Routes>
         <MobileNav />
       </BrowserRouter>
+      <SpeedInsights />
     </CartProvider>
   );
 }
