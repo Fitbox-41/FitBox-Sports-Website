@@ -4,11 +4,18 @@ import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import ProductCategory from './pages/ProductCategory';
 import Cart from './pages/Cart';
+import Favourite from './pages/Favourite';
+import Auth from './pages/Auth';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Shipping from './pages/Shipping';
 import MobileNav from './components/MobileNav';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider, ProductContext } from './context/ProductContext';
+import { AuthProvider } from './context/AuthContext';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import Loader from './components/Loader';
+import LoginRequiredModal from './components/LoginRequiredModal';
 import './index.css';
 
 // Scroll Management Component
@@ -65,13 +72,20 @@ function AppContent() {
       <Loader isVisible={showLoader} />
 
       <BrowserRouter>
+        <LoginRequiredModal />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:productId" element={<ProductPage />} />
           
           <Route path="/cart" element={<Cart />} />
-          <Route path="/account" element={<Home />} />
+          <Route path="/favourites" element={<Favourite />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/account" element={<Auth />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/shipping" element={<Shipping />} />
+          <Route path="/returns" element={<Shipping />} />
           <Route path="/under99" element={<Home />} />
           <Route path="/category/:categoryId" element={<ProductCategory />} />
           
@@ -87,11 +101,13 @@ function AppContent() {
 
 function App() {
   return (
-    <ProductProvider>
-      <CartProvider>
-        <AppContent />
-      </CartProvider>
-    </ProductProvider>
+    <AuthProvider>
+      <ProductProvider>
+        <CartProvider>
+          <AppContent />
+        </CartProvider>
+      </ProductProvider>
+    </AuthProvider>
   );
 }
 

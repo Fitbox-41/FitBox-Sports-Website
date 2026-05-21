@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { ProductContext } from '../context/ProductContext';
 import './Header.css';
@@ -73,8 +74,9 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { cart } = useCart();
+  const { cart, wishlist, toggleWishlist } = useCart();
   const { products: allProducts } = useContext(ProductContext);
+  const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
@@ -293,17 +295,22 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                             <img src={img} alt={p.name} className="search-result-img" />
                             <div className="search-result-info">
                               <h5 className="search-result-title">{p.name}</h5>
-                              <span className="search-result-price">₹{p.price}</span>
+                              <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
                             </div>
                             <button 
-                              className="search-result-fav-btn" 
+                              className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
                               onClick={(e) => {
                                 e.stopPropagation();
-                                // future: toggle wishlist logic
+                                toggleWishlist(p);
                               }}
                               aria-label="Add to wishlist"
                             >
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                              <svg 
+                                viewBox="0 0 24 24" 
+                                fill={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'none'} 
+                                stroke={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'currentColor'} 
+                                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"
+                              >
                                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                               </svg>
                             </button>
@@ -326,24 +333,33 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
             ref={userRef}
             className="user-wrap"
             id="user-icon-wrap"
-            onMouseEnter={() => setUserOpen(true)}
-            onMouseLeave={() => setUserOpen(false)}
+            onMouseEnter={() => currentUser && setUserOpen(true)}
+            onMouseLeave={() => currentUser && setUserOpen(false)}
           >
-            <button className="icon-btn" id="user-btn" aria-label="User menu">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-              </svg>
-            </button>
+            {currentUser ? (
+              <button className="icon-btn" id="user-btn" aria-label="User menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+              </button>
+            ) : (
+              <Link to="/auth" className="icon-btn" id="user-btn" aria-label="Login">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+              </Link>
+            )}
 
-            {userOpen && (
+            {userOpen && currentUser && (
               <div className="user-dropdown" id="user-dropdown">
                 {/* Dropdown header */}
                 <div className="dropdown-header">
-                  <div className="dropdown-avatar">U</div>
+                  <div className="dropdown-avatar">{currentUser.email ? currentUser.email.charAt(0).toUpperCase() : 'U'}</div>
                   <div>
                     <p className="dropdown-name">My Account</p>
-                    <p className="dropdown-email">user@fitbox.com</p>
+                    <p className="dropdown-email">{currentUser.email || 'user@fitbox.com'}</p>
                   </div>
                 </div>
 
@@ -361,6 +377,22 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                     {item.label}
                   </Link>
                 ))}
+
+                <div className="dropdown-divider" />
+                <button 
+                  className="dropdown-item" 
+                  style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', color: '#d32f2f' }}
+                  onClick={async () => {
+                    await logout();
+                    setUserOpen(false);
+                    navigate('/');
+                  }}
+                >
+                  <span className="dropdown-item-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                  </span>
+                  Log Out
+                </button>
               </div>
             )}
           </div>
@@ -377,12 +409,14 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
             )}
           </Link>
 
-          {/* Customer Support Icon */}
-          <Link to="/support" className="icon-btn support-btn" id="support-btn" aria-label="Customer Support" onClick={() => setMenuOpen(false)}>
+          {/* Favourites icon */}
+          <Link to="/favourites" className="icon-btn fav-btn" id="fav-btn" aria-label="Favourites" onClick={() => setMenuOpen(false)}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
-              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
+            {wishlist.length > 0 && (
+              <span className="cart-badge" id="fav-badge">{wishlist.length}</span>
+            )}
           </Link>
 
         </div>
@@ -443,17 +477,22 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                       <img src={img} alt={p.name} className="search-result-img" />
                       <div className="search-result-info">
                         <h5 className="search-result-title">{p.name}</h5>
-                        <span className="search-result-price">₹{p.price}</span>
+                        <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
                       </div>
                       <button 
-                        className="search-result-fav-btn" 
+                        className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
                         onClick={(e) => {
                           e.stopPropagation();
-                          // future: toggle wishlist logic
+                          toggleWishlist(p);
                         }}
                         aria-label="Add to wishlist"
                       >
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                        <svg 
+                          viewBox="0 0 24 24" 
+                          fill={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'none'} 
+                          stroke={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'currentColor'} 
+                          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"
+                        >
                           <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                         </svg>
                       </button>

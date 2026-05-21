@@ -41,7 +41,7 @@ export default function Cart() {
                       >
                         {item.name}
                       </Link>
-                      <span className="cart-item-price">₹{item.price}</span>
+                      <span className="cart-item-price">₹{String(item.price).replace(/[^0-9,.]/g, '')}</span>
                     </div>
                     
                     <div className="cart-item-meta">

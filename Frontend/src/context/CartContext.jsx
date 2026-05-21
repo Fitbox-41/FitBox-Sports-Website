@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
+import { useAuth } from './AuthContext';
 
 const CartContext = createContext();
 
@@ -11,6 +13,8 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }) => {
+  const { currentUser, setShowLoginModal } = useAuth();
+  
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('fitbox_cart');
     return savedCart ? JSON.parse(savedCart) : [];
@@ -21,6 +25,21 @@ export const CartProvider = ({ children }) => {
     return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+  // Load cart/wishlist from server when user logs in
+  useEffect(() => {
+    if (currentUser) {
+      if (currentUser.cart) setCart(currentUser.cart);
+      if (currentUser.wishlist) setWishlist(currentUser.wishlist);
+    } else {
+      // If logged out, clear cart
+      setCart([]);
+      setWishlist([]);
+    }
+  }, [currentUser]);
+
+  // Sync to local storage
   useEffect(() => {
     localStorage.setItem('fitbox_cart', JSON.stringify(cart));
   }, [cart]);
@@ -29,47 +48,106 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('fitbox_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
+  // Sync to server function
+  const syncWithServer = async (newCart, newWishlist) => {
+    if (!currentUser) return;
+    const token = localStorage.getItem('fitbox_token');
+    if (!token) return;
+
+    try {
+      await axios.put(
+        `${apiUrl}/api/auth/sync`,
+        {
+          cart: newCart !== undefined ? newCart : cart,
+          wishlist: newWishlist !== undefined ? newWishlist : wishlist
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    } catch (err) {
+      console.error('Failed to sync with server', err);
+    }
+  };
+
   const addToCart = (product) => {
+    if (!currentUser) {
+      setShowLoginModal(true);
+      return;
+    }
+
     const qtyToAdd = product.quantity || 1;
+    let newCart;
+    
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => 
         item.id === product.id && item.selectedVariant === product.selectedVariant
       );
       if (existingItem) {
-        return prevCart.map((item) =>
+        newCart = prevCart.map((item) =>
           (item.id === product.id && item.selectedVariant === product.selectedVariant)
             ? { ...item, quantity: item.quantity + qtyToAdd }
             : item
         );
+      } else {
+        newCart = [...prevCart, { ...product, quantity: qtyToAdd }];
       }
-      return [...prevCart, { ...product, quantity: qtyToAdd }];
+      return newCart;
     });
+
+    // Wait a tick for state to update, or just use the generated newCart immediately
+    setTimeout(() => syncWithServer(newCart, undefined), 0);
   };
 
   const removeFromCart = (productId, variant) => {
-    setCart((prevCart) => prevCart.filter((item) => 
-      !(item.id === productId && item.selectedVariant === variant)
-    ));
+    if (!currentUser) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    let newCart;
+    setCart((prevCart) => {
+      newCart = prevCart.filter((item) => 
+        !(item.id === productId && item.selectedVariant === variant)
+      );
+      return newCart;
+    });
+    setTimeout(() => syncWithServer(newCart, undefined), 0);
   };
 
   const updateQuantity = (productId, variant, delta) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
+    if (!currentUser) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    let newCart;
+    setCart((prevCart) => {
+      newCart = prevCart.map((item) =>
         (item.id === productId && item.selectedVariant === variant)
           ? { ...item, quantity: Math.max(1, item.quantity + delta) }
           : item
-      )
-    );
+      );
+      return newCart;
+    });
+    setTimeout(() => syncWithServer(newCart, undefined), 0);
   };
 
   const toggleWishlist = (product) => {
+    if (!currentUser) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    let newWishlist;
     setWishlist((prev) => {
       const isExist = prev.find(item => item.id === product.id);
       if (isExist) {
-        return prev.filter(item => item.id !== product.id);
+        newWishlist = prev.filter(item => item.id !== product.id);
+      } else {
+        newWishlist = [...prev, product];
       }
-      return [...prev, product];
+      return newWishlist;
     });
+    setTimeout(() => syncWithServer(undefined, newWishlist), 0);
   };
 
   return (

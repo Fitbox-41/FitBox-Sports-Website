@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import productRoutes from './Routes/productRoutes.js';
+import authRoutes from './Routes/authRoutes.js';
 
 dotenv.config();
 
@@ -36,6 +37,7 @@ app.use(async (req, res, next) => {
 
 // Routes
 app.use('/api/products', productRoutes);
+app.use('/api/auth', authRoutes);
 
 // Only listen if not running in Vercel (for local development)
 if (!process.env.VERCEL) {
