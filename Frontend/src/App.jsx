@@ -14,6 +14,7 @@ import { CartProvider } from './context/CartContext';
 import { ProductProvider, ProductContext } from './context/ProductContext';
 import { AuthProvider } from './context/AuthContext';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import Loader from './components/Loader';
 import LoginRequiredModal from './components/LoginRequiredModal';
 import './index.css';
@@ -95,6 +96,7 @@ function AppContent() {
         <MobileNav />
       </BrowserRouter>
       <SpeedInsights />
+      <Analytics />
     </>
   );
 }
