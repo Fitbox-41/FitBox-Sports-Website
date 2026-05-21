@@ -1,14 +1,16 @@
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import ProductCategory from './pages/ProductCategory';
 import Cart from './pages/Cart';
 import MobileNav from './components/MobileNav';
 import { CartProvider } from './context/CartContext';
-import { ProductProvider } from './context/ProductContext';
+import { ProductProvider, ProductContext } from './context/ProductContext';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import Loader from './components/Loader';
 import './index.css';
+
 // Scroll Management Component
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,27 +40,56 @@ function ScrollToTop() {
   return null;
 }
 
+// Inner component to consume contexts safely
+function AppContent() {
+  const { loading } = useContext(ProductContext);
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    if (!loading) {
+      // Ensure the loader stays for a very short time
+      const timer = setTimeout(() => {
+        setShowLoader(false);
+        // Wait for the faster fade out transition (0.4s) before triggering animations
+        setTimeout(() => {
+            window.__APP_LOADED__ = true;
+            window.dispatchEvent(new CustomEvent('loaderFinished'));
+        }, 400);
+      }, 300); 
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
+  return (
+    <>
+      <Loader isVisible={showLoader} />
+
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:productId" element={<ProductPage />} />
+          
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/account" element={<Home />} />
+          <Route path="/under99" element={<Home />} />
+          <Route path="/category/:categoryId" element={<ProductCategory />} />
+          
+          {/* Catch-all to home */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+        <MobileNav />
+      </BrowserRouter>
+      <SpeedInsights />
+    </>
+  );
+}
+
 function App() {
   return (
     <ProductProvider>
       <CartProvider>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:productId" element={<ProductPage />} />
-            
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/account" element={<Home />} />
-            <Route path="/under99" element={<Home />} />
-            <Route path="/category/:categoryId" element={<ProductCategory />} />
-            
-            {/* Catch-all to home */}
-            <Route path="*" element={<Home />} />
-          </Routes>
-          <MobileNav />
-        </BrowserRouter>
-        <SpeedInsights />
+        <AppContent />
       </CartProvider>
     </ProductProvider>
   );

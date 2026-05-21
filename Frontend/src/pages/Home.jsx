@@ -354,16 +354,17 @@ const MobileRowCarousel = ({ products }) => {
 ═══════════════════════════════════════ */
 
 /* ── Digit Roll Component (Defined outside to prevent re-mounts) ── */
-const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
+const DigitRoll = memo(({ start, target, duration, delay, reverse, canAnimate }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
+    if (!canAnimate) return;
     const timer = setTimeout(() => {
       setIsAnimating(true);
-    }, delay + 1000); // 1s hold to see 9,99,999
+    }, delay + 200); // slight delay after screen appears
 
     return () => clearTimeout(timer);
-  }, [delay]);
+  }, [delay, canAnimate]);
 
   const opacityStyle = {
     opacity: (start === ' ' && !isAnimating) ? 0 : 1,
@@ -434,6 +435,17 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
 });
 
 export default function Home() {
+  const [canAnimate, setCanAnimate] = useState(false);
+
+  useEffect(() => {
+    if (window.__APP_LOADED__) {
+      setCanAnimate(true);
+      return;
+    }
+    const onLoaderFinished = () => setCanAnimate(true);
+    window.addEventListener('loaderFinished', onLoaderFinished);
+    return () => window.removeEventListener('loaderFinished', onLoaderFinished);
+  }, []);
 
   /* ── Hot Products Carousel State (Infinite) ── */
   const [hpCurrent, setHpCurrent] = useState(hotProducts.length);
@@ -502,6 +514,8 @@ export default function Home() {
 
   /* ── Scroll Reveal Logic for Titles & Rows ── */
   useEffect(() => {
+    if (!canAnimate) return;
+
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -523,7 +537,7 @@ export default function Home() {
     return () => {
       elements.forEach(el => observer.unobserve(el));
     };
-  }, []);
+  }, [canAnimate]);
 
   const postersTrackRef = useRef(null);
   const isDraggingPosters = useRef(false);
@@ -939,6 +953,7 @@ export default function Home() {
                         duration={durationVal}
                         delay={delayVal}
                         reverse={isReverse}
+                        canAnimate={canAnimate}
                       />
                     );
                   })}
