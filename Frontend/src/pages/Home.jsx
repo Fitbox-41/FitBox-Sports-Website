@@ -381,7 +381,17 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
   // Create a sequence strip based on the request (9 to 0 rollover)
   const numbers = [];
   if (start === ' ' && target === '1') {
-    numbers.push('1'); // Just the target 1
+    numbers.push('\u00A0');
+    if (reverse) {
+      for (let i = 0; i < 2; i++) {
+        for (let j = 0; j <= 9; j++) numbers.push(j.toString());
+      }
+    } else {
+      for (let i = 0; i < 2; i++) {
+        for (let j = 9; j >= 0; j--) numbers.push(j.toString());
+      }
+    }
+    numbers.push('1');
   } else if (start === '9' && target === '0') {
     // Rolling from 9 back to 0 in casino style
     if (reverse) {
@@ -402,14 +412,14 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse }) => {
   }
 
   const totalItems = numbers.length;
-  const finalTransform = -((totalItems - 1) / totalItems) * 100;
+  const finalTransform = -((totalItems - 1) * 1.2);
 
   return (
     <span className="digit-roll-container" style={opacityStyle}>
       <span
         className="digit-strip"
         style={{
-          transform: (isAnimating && numbers.length > 1) ? `translateY(${finalTransform}%)` : 'translateY(0)',
+          transform: (isAnimating && numbers.length > 1) ? `translateY(${finalTransform}em)` : 'translateY(0)',
           transition: isAnimating
             ? `transform ${duration}ms cubic-bezier(0.15, 0, 0.15, 1)`
             : 'none'
@@ -916,10 +926,9 @@ export default function Home() {
                   {targetNumber.split('').map((char, i) => {
                     const startChar = startNumber[i];
 
-                    // Leading 1 pops in instantly after the spin ends
                     const isLeadingOne = (i === 0);
-                    const delayVal = isLeadingOne ? 2500 : 0;
-                    const durationVal = isLeadingOne ? 100 : 2500;
+                    const delayVal = 0;
+                    const durationVal = 2500;
                     const isReverse = (i % 2 === 0);
 
                     return (

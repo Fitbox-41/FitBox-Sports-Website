@@ -5,8 +5,8 @@ import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import './ProductCategory.css';
 
-import allProducts from '../data/products';
-
+import { useContext } from 'react';
+import { ProductContext } from '../context/ProductContext';
 // We can define a mapping of category labels to their banner images/descriptions
 const categoryMeta = {
   'wall-mounting': { label: 'Wall Mounting', desc: 'Professional grade pull-up bars and mounting equipment.', banner: '/Untitled-design-19.webp' },
@@ -28,6 +28,7 @@ const categoryMeta = {
 };
 
 export default function ProductCategory() {
+  const { products: allProducts, loading } = useContext(ProductContext);
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -111,8 +112,12 @@ export default function ProductCategory() {
     <div className="category-page">
       <Header hideSubHeader={true} hideSaleRibbon={false} />
       
-      {/* Spacer for fixed header */}
-      <div className="header-spacer" />
+      {loading ? (
+        <div style={{ textAlign: 'center', padding: '100px 0' }}>Loading products...</div>
+      ) : (
+        <>
+          {/* Spacer for fixed header */}
+          <div className="header-spacer" />
 
       <section className="category-hero">
         <div className="hero-bg">
@@ -264,6 +269,8 @@ export default function ProductCategory() {
           </div>
         </div>
       </main>
+      </>
+      )}
 
       <Footer />
     </div>

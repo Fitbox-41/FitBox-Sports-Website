@@ -6,6 +6,7 @@ import ProductCategory from './pages/ProductCategory';
 import Cart from './pages/Cart';
 import MobileNav from './components/MobileNav';
 import { CartProvider } from './context/CartContext';
+import { ProductProvider } from './context/ProductContext';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import './index.css';
 // Scroll Management Component
@@ -39,25 +40,27 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:productId" element={<ProductPage />} />
-          
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/account" element={<Home />} />
-          <Route path="/under99" element={<Home />} />
-          <Route path="/category/:categoryId" element={<ProductCategory />} />
-          
-          {/* Catch-all to home */}
-          <Route path="*" element={<Home />} />
-        </Routes>
-        <MobileNav />
-      </BrowserRouter>
-      <SpeedInsights />
-    </CartProvider>
+    <ProductProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
+            
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/account" element={<Home />} />
+            <Route path="/under99" element={<Home />} />
+            <Route path="/category/:categoryId" element={<ProductCategory />} />
+            
+            {/* Catch-all to home */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+          <MobileNav />
+        </BrowserRouter>
+        <SpeedInsights />
+      </CartProvider>
+    </ProductProvider>
   );
 }
 

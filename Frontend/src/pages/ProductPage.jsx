@@ -6,8 +6,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './ProductPage.css';
 
-import allProducts from '../data/products';
-
+import { useContext } from 'react';
+import { ProductContext } from '../context/ProductContext';
 const MobileRelatedRow = ({ products }) => {
   const [idx, setIdx] = useState(products.length);
   const [trans, setTrans] = useState(true);
@@ -87,6 +87,7 @@ const MobileRelatedRow = ({ products }) => {
 };
 
 export default function ProductPage() {
+  const { products: allProducts, loading } = useContext(ProductContext);
   // ─── 1. State & Data Logic ───
   const { addToCart } = useCart();
   // useParams retrieves the :productId from the URL (e.g., /product/1)
@@ -224,7 +225,7 @@ export default function ProductPage() {
   };
 
   // ── 3. Early return AFTER all hooks ──
-  if (!product) return (
+  if (loading || !product) return (
     <div className="product-loading-v2">
       <div className="loading-content">
         <div className="lottie-container-v2">
