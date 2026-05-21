@@ -337,6 +337,20 @@ const allProducts = [
     material: 'Nylon',
     variants: [{ color: 'Grey', images: ['/4.jpg.webp'] }],
     showcaseImages: ['/4.jpg.webp']
+  },
+  {
+    id: 999,
+    name: 'Dummy Test Product',
+    category: 'Accessories',
+    price: 99,
+    oldPrice: 199,
+    qualities: ['Test Quality'],
+    sizes: ['Test Size'],
+    longDesc: 'This is a dummy product added to test the Vercel deployment and MongoDB connection.',
+    features: ['Test Feature 1', 'Test Feature 2'],
+    material: 'Test Material',
+    variants: [{ color: 'Test Color', images: ['/fitbox-_red-white.webp'] }],
+    showcaseImages: ['/fitbox-_red-white.webp']
   }
 ];
 
