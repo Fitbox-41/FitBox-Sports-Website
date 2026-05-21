@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { ProductContext } from '../context/ProductContext';
 import './Header.css';
 
 /* ── Categories for Sub-Header ── */
@@ -73,12 +74,64 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
   const [userOpen, setUserOpen]   = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { cart } = useCart();
+  const { products: allProducts } = useContext(ProductContext);
+  const navigate = useNavigate();
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const lastScrollPos = useRef(0);
   const ticking = useRef(false);
   const userRef                   = useRef(null);
   const searchRef                 = useRef(null);
+  const mobileSearchRef           = useRef(null);
+  const [isMobileSearchFocused, setIsMobileSearchFocused] = useState(false);
+
+  // --- Search State & Logic ---
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+
+  useEffect(() => {
+    if (searchQuery.trim() === '') {
+      setSearchResults([]);
+      setFocusedIndex(-1);
+      return;
+    }
+    const q = searchQuery.toLowerCase();
+    const results = allProducts.filter(p => 
+      p.name.toLowerCase().includes(q) || 
+      (p.category && p.category.toLowerCase().includes(q))
+    ).slice(0, 5);
+    setSearchResults(results);
+    setFocusedIndex(-1);
+  }, [searchQuery, allProducts]);
+
+  const handleKeyDown = (e) => {
+    if (searchQuery.trim() === '') return;
+    
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setFocusedIndex(prev => (prev < searchResults.length - 1 ? prev + 1 : prev));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setFocusedIndex(prev => (prev > 0 ? prev - 1 : 0));
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (focusedIndex >= 0 && focusedIndex < searchResults.length) {
+        handleProductSelect(searchResults[focusedIndex].id);
+      } else if (searchResults.length > 0) {
+        handleProductSelect(searchResults[0].id);
+      }
+    } else if (e.key === 'Escape') {
+      setSearchQuery('');
+    }
+  };
+
+  const handleProductSelect = (id) => {
+    navigate(`/product/${id}`);
+    setSearchQuery('');
+    setIsSearchOpen(false);
+    setMenuOpen(false);
+  };
 
   /* Scroll event listener to hide/show sub-header */
   const [showHeaderSearch, setShowHeaderSearch] = useState(false);
@@ -145,9 +198,16 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
       if (searchRef.current && !searchRef.current.contains(e.target)) {
         setIsSearchOpen(false);
       }
+      if (mobileSearchRef.current && !mobileSearchRef.current.contains(e.target)) {
+        setIsMobileSearchFocused(false);
+      }
     };
     document.addEventListener('mousedown', handler);
-    return () => document.removeEventListener('mousedown', handler);
+    document.addEventListener('touchstart', handler, { passive: true });
+    return () => {
+      document.removeEventListener('mousedown', handler);
+      document.removeEventListener('touchstart', handler);
+    };
   }, []);
 
   return (
@@ -207,9 +267,56 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
             {isSearchOpen && (
               <div className="header-search-overlay">
                 <div className="search-overlay-inner">
-                  <input type="text" placeholder="Search for products..." autoFocus className="overlay-search-input" />
+                  <input 
+                    type="text" 
+                    placeholder="Search for products..." 
+                    autoFocus 
+                    className="overlay-search-input" 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                  />
                   <button className="overlay-search-btn">Search</button>
                 </div>
+                {searchQuery.trim().length > 0 && (
+                  <div className="search-dropdown-results">
+                    {searchResults.length > 0 ? (
+                      searchResults.map((p, idx) => {
+                        const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
+                        return (
+                          <div 
+                            key={p.id} 
+                            className={`search-result-item ${idx === focusedIndex ? 'focused' : ''}`}
+                            onClick={() => handleProductSelect(p.id)}
+                            onMouseEnter={() => setFocusedIndex(idx)}
+                          >
+                            <img src={img} alt={p.name} className="search-result-img" />
+                            <div className="search-result-info">
+                              <h5 className="search-result-title">{p.name}</h5>
+                              <span className="search-result-price">₹{p.price}</span>
+                            </div>
+                            <button 
+                              className="search-result-fav-btn" 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                // future: toggle wishlist logic
+                              }}
+                              aria-label="Add to wishlist"
+                            >
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                              </svg>
+                            </button>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div className="search-result-empty">
+                        <p>No matching product</p>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -297,12 +404,22 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
 
       {/* ── Mobile Search Ribbon (Drops with sale ribbon, conditionally visible) ── */}
       {!hideSaleRibbon && (
-        <div className={`mobile-search-ribbon ${!showHeaderSearch ? 'mobile-search-ribbon--hidden' : ''}`}>
+        <div 
+          className={`mobile-search-ribbon ${!showHeaderSearch ? 'mobile-search-ribbon--hidden' : ''}`}
+          ref={mobileSearchRef}
+        >
           <div className="mobile-search-inner">
             <input 
               type="text" 
               placeholder="Search for products..." 
               className="mobile-search-input" 
+              value={searchQuery}
+              onFocus={() => setIsMobileSearchFocused(true)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setIsMobileSearchFocused(true);
+              }}
+              onKeyDown={handleKeyDown}
             />
             <button className="mobile-search-submit" aria-label="Search">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
@@ -311,6 +428,45 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
               </svg>
             </button>
           </div>
+          {searchQuery.trim().length > 0 && isMobileSearchFocused && (
+            <div className="search-dropdown-results mobile-search-dropdown">
+              {searchResults.length > 0 ? (
+                searchResults.map((p, idx) => {
+                  const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
+                  return (
+                    <div 
+                      key={p.id} 
+                      className={`search-result-item ${idx === focusedIndex ? 'focused' : ''}`}
+                      onClick={() => handleProductSelect(p.id)}
+                      onMouseEnter={() => setFocusedIndex(idx)}
+                    >
+                      <img src={img} alt={p.name} className="search-result-img" />
+                      <div className="search-result-info">
+                        <h5 className="search-result-title">{p.name}</h5>
+                        <span className="search-result-price">₹{p.price}</span>
+                      </div>
+                      <button 
+                        className="search-result-fav-btn" 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          // future: toggle wishlist logic
+                        }}
+                        aria-label="Add to wishlist"
+                      >
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg>
+                      </button>
+                    </div>
+                  );
+                })
+              ) : (
+                <div className="search-result-empty">
+                  <p>No matching product</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 
