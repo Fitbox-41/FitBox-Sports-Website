@@ -123,7 +123,7 @@ export default function ProductPage() {
     // Scroll to top on page entry
     window.scrollTo(0, 0);
     setQuantity(1); // Reset quantity on product/variant change
-  }, [productId, location.search]);
+  }, [productId, location.search, allProducts]);
 
   // UI states: active tab for details, and accordion toggle states
   const [activeTab, setActiveTab] = useState('features');

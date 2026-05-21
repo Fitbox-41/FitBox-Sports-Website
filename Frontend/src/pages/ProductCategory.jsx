@@ -53,7 +53,7 @@ export default function ProductCategory() {
     
     setProducts(categoryProducts);
     window.scrollTo(0, 0);
-  }, [categoryId]);
+  }, [categoryId, allProducts]);
 
   useEffect(() => {
     let result = [...products];
