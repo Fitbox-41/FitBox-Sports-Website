@@ -11,8 +11,9 @@ export const ProductProvider = ({ children }) => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                // If backend is running on a different port, update this URL
-                const response = await axios.get('http://localhost:5000/api/products');
+                // Use environment variable for the API URL, fallback to localhost for development
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+                const response = await axios.get(`${apiUrl}/api/products`);
                 setProducts(response.data);
                 setLoading(false);
             } catch (err) {

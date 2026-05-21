@@ -20,10 +20,16 @@ app.use('/api/products', productRoutes);
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log('Connected to MongoDB Atlas');
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
+    // Only listen if not running in Vercel
+    if (!process.env.VERCEL) {
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    }
 })
 .catch((err) => {
     console.error('Error connecting to MongoDB Atlas:', err.message);
 });
+
+// Export the Express API for Vercel Serverless Functions
+export default app;
