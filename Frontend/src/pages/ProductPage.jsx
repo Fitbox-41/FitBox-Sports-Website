@@ -230,7 +230,7 @@ export default function ProductPage() {
       <div className="loading-content">
         <div className="lottie-container-v2">
           <DotLottieReact
-            src="/Loading.lottie"
+            src="https://lottie.host/23c83fda-09ea-4928-b899-8121bece22cd/WtC6KRywYf.lottie"
             loop
             autoplay
           />
