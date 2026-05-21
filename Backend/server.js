@@ -13,23 +13,36 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// Serverless-friendly Database Connection
+const connectDB = async () => {
+    if (mongoose.connection.readyState >= 1) {
+        return;
+    }
+    try {
+        await mongoose.connect(process.env.MONGO_URI, {
+            serverSelectionTimeoutMS: 5000 // Time out quickly if it can't connect
+        });
+        console.log('Connected to MongoDB Atlas');
+    } catch (err) {
+        console.error('Error connecting to MongoDB Atlas:', err.message);
+    }
+};
+
+// Middleware to ensure DB is connected before handling API requests
+app.use(async (req, res, next) => {
+    await connectDB();
+    next();
+});
+
 // Routes
 app.use('/api/products', productRoutes);
 
-// Database Connection
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-    console.log('Connected to MongoDB Atlas');
-    // Only listen if not running in Vercel
-    if (!process.env.VERCEL) {
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
-    }
-})
-.catch((err) => {
-    console.error('Error connecting to MongoDB Atlas:', err.message);
-});
+// Only listen if not running in Vercel (for local development)
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+}
 
 // Export the Express API for Vercel Serverless Functions
 export default app;
