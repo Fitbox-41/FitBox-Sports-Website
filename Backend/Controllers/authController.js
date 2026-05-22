@@ -1,6 +1,10 @@
 import User from '../Models/User.js';
+import OTP from '../Models/OTP.js';
+import sendEmail from '../Utils/sendEmail.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+
+const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET || 'secret123', {
@@ -8,12 +12,69 @@ const generateToken = (id) => {
   });
 };
 
+const getEmailTemplate = (otp) => `
+<div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #eaeaea;">
+  <div style="background-color: #FF416C; padding: 30px 20px; text-align: center;">
+    <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;">FitBox Sports</h1>
+  </div>
+  <div style="padding: 40px 30px;">
+    <h2 style="color: #333333; font-size: 22px; margin-top: 0; margin-bottom: 20px;">Your Verification Code</h2>
+    <p style="color: #555555; font-size: 16px; line-height: 1.5; margin-bottom: 30px;">
+      Hello! Please use the 6-digit code below to securely verify your identity and access your account.
+    </p>
+    <div style="text-align: center; margin: 30px 0;">
+      <span style="display: inline-block; padding: 15px 30px; background-color: #f8f9fa; border: 2px dashed #FF416C; border-radius: 8px; font-size: 32px; font-weight: 800; color: #FF416C; letter-spacing: 4px;">
+        ${otp}
+      </span>
+    </div>
+    <p style="color: #777777; font-size: 14px; text-align: center; margin-bottom: 0;">
+      This code will expire in <strong>5 minutes</strong>. If you did not request this, please ignore this email.
+    </p>
+  </div>
+  <div style="background-color: #fcfcfc; border-top: 1px solid #eaeaea; padding: 20px; text-align: center;">
+    <p style="color: #999999; font-size: 12px; margin: 0;">
+      &copy; ${new Date().getFullYear()} FitBox Sports. All rights reserved.
+    </p>
+  </div>
+</div>
+`;
+
+export const preRegister = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ message: 'User already exists' });
+    }
+
+    const otp = generateOTP();
+    await OTP.findOneAndDelete({ email }); // Remove old OTP
+    await OTP.create({ email, otp });
+
+    const html = getEmailTemplate(otp);
+    const sent = await sendEmail({ email, subject: 'FitBox Verification Code', html });
+
+    if (sent) {
+      res.status(200).json({ message: 'OTP sent to email' });
+    } else {
+      res.status(500).json({ message: 'Error sending email' });
+    }
+  } catch (error) {
+    console.error('Error in preRegister:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
 // @desc    Register a new user
 // @route   POST /api/auth/register
 // @access  Public
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, otp } = req.body;
+
+    if (!otp) return res.status(400).json({ message: 'OTP is required' });
+    const otpRecord = await OTP.findOne({ email, otp });
+    if (!otpRecord) return res.status(400).json({ message: 'Invalid or expired OTP' });
 
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -30,6 +91,7 @@ export const registerUser = async (req, res) => {
     });
 
     if (user) {
+      await OTP.findOneAndDelete({ email });
       res.status(201).json({
         _id: user._id,
         name: user.name,
@@ -50,16 +112,48 @@ export const registerUser = async (req, res) => {
   }
 };
 
+export const preLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+
+    if (user && user.password && (await bcrypt.compare(password, user.password))) {
+      const otp = generateOTP();
+      await OTP.findOneAndDelete({ email });
+      await OTP.create({ email, otp });
+
+      const html = getEmailTemplate(otp);
+      const sent = await sendEmail({ email, subject: 'FitBox Login Code', html });
+
+      if (sent) {
+        res.status(200).json({ message: 'OTP sent to email' });
+      } else {
+        res.status(500).json({ message: 'Error sending email' });
+      }
+    } else {
+      res.status(401).json({ message: 'Invalid email or password' });
+    }
+  } catch (error) {
+    console.error('Error in preLogin:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
 // @desc    Auth user & get token
 // @route   POST /api/auth/login
 // @access  Public
 export const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, otp } = req.body;
+
+    if (!otp) return res.status(400).json({ message: 'OTP is required' });
+    const otpRecord = await OTP.findOne({ email, otp });
+    if (!otpRecord) return res.status(400).json({ message: 'Invalid or expired OTP' });
 
     const user = await User.findOne({ email });
 
     if (user && (await bcrypt.compare(password, user.password))) {
+      await OTP.findOneAndDelete({ email });
       res.json({
         _id: user._id,
         name: user.name,

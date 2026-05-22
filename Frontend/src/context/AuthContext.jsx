@@ -17,6 +17,8 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showLogoutRibbon, setShowLogoutRibbon] = useState(false);
+  const [showLoginSuccessRibbon, setShowLoginSuccessRibbon] = useState(false);
 
   const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
@@ -44,26 +46,51 @@ export const AuthProvider = ({ children }) => {
     fetchProfile();
   }, [apiUrl]);
 
-  const signup = async (email, password, name = 'User') => {
+  const requestOtpForRegister = async (email, password, name = 'User') => {
     try {
-      const { data } = await axios.post(`${apiUrl}/api/auth/register`, { name, email, password });
+      const { data } = await axios.post(`${apiUrl}/api/auth/pre-register`, { name, email, password });
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to request OTP');
+    }
+  };
+
+  const signup = async (email, password, otp, name = 'User') => {
+    try {
+      const { data } = await axios.post(`${apiUrl}/api/auth/register`, { name, email, password, otp });
       localStorage.setItem('fitbox_token', data.token);
       setCurrentUser(data);
+      triggerLoginSuccessRibbon();
       return data;
     } catch (error) {
       throw new Error(error.response?.data?.message || 'Failed to register');
     }
   };
 
-  const login = async (email, password) => {
+  const requestOtpForLogin = async (email, password) => {
     try {
-      const { data } = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
+      const { data } = await axios.post(`${apiUrl}/api/auth/pre-login`, { email, password });
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to request OTP');
+    }
+  };
+
+  const login = async (email, password, otp) => {
+    try {
+      const { data } = await axios.post(`${apiUrl}/api/auth/login`, { email, password, otp });
       localStorage.setItem('fitbox_token', data.token);
       setCurrentUser(data);
+      triggerLoginSuccessRibbon();
       return data;
     } catch (error) {
       throw new Error(error.response?.data?.message || 'Failed to login');
     }
+  };
+
+  const triggerLoginSuccessRibbon = () => {
+    setShowLoginSuccessRibbon(true);
+    setTimeout(() => setShowLoginSuccessRibbon(false), 3000);
   };
 
   const loginWithGoogle = async () => {
@@ -80,6 +107,7 @@ export const AuthProvider = ({ children }) => {
       
       localStorage.setItem('fitbox_token', data.token);
       setCurrentUser(data);
+      triggerLoginSuccessRibbon();
       return data;
     } catch (error) {
       console.error(error);
@@ -88,6 +116,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
+    setShowLogoutRibbon(true);
+    setTimeout(() => setShowLogoutRibbon(false), 3000);
     localStorage.removeItem('fitbox_token');
     setCurrentUser(null);
   };
@@ -129,6 +159,8 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    requestOtpForRegister,
+    requestOtpForLogin,
     signup,
     login,
     loginWithGoogle,
@@ -141,6 +173,20 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={value}>
+      <div className={`toast-ribbon ${showLogoutRibbon ? 'show' : ''}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        Signing out...
+      </div>
+      <div className={`toast-ribbon ${showLoginSuccessRibbon ? 'show' : ''}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Successfully logged in!
+      </div>
       {!loading && children}
     </AuthContext.Provider>
   );

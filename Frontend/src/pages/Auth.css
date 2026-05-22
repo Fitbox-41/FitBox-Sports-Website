@@ -181,4 +181,38 @@
   .auth-card {
     padding: 30px 20px;
   }
+  .otp-container {
+    gap: 6px;
+  }
+  .otp-box {
+    width: 38px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+}
+
+.otp-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.otp-box {
+  width: 45px;
+  height: 55px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
+  color: var(--text-dark);
+  background: #fff;
+}
+
+.otp-box:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(255, 65, 108, 0.1);
+  outline: none;
 }

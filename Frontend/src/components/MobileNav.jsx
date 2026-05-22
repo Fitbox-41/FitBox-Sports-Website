@@ -8,7 +8,7 @@ const MobileNav = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { cart } = useCart();
-  const { logout, loginWithGoogle } = useAuth();
+  const { currentUser, logout, loginWithGoogle } = useAuth();
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
@@ -89,7 +89,13 @@ const MobileNav = () => {
         <button 
           className={`mobile-nav-item ${(location.pathname === '/account' || isUserMenuOpen) ? 'active' : ''}`} 
           aria-label="Account"
-          onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+          onClick={() => {
+            if (currentUser) {
+              setIsUserMenuOpen(!isUserMenuOpen);
+            } else {
+              navigate('/auth');
+            }
+          }}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />

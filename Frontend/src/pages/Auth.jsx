@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
@@ -8,10 +8,19 @@ export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [otpArray, setOtpArray] = useState(['', '', '', '', '', '']);
+  const otpInputRefs = useRef([]);
+  const [showOtpInput, setShowOtpInput] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { signup, login, loginWithGoogle } = useAuth();
+  const { currentUser, signup, login, loginWithGoogle, requestOtpForRegister, requestOtpForLogin } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/account');
+    }
+  }, [currentUser, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,12 +28,30 @@ export default function Auth() {
     setLoading(true);
 
     try {
-      if (isLogin) {
-        await login(email, password);
+      if (!showOtpInput) {
+        // Step 1: Request OTP
+        if (isLogin) {
+          await requestOtpForLogin(email, password);
+        } else {
+          await requestOtpForRegister(email, password);
+        }
+        setShowOtpInput(true);
       } else {
-        await signup(email, password);
+        // Step 2: Verify OTP and Login/Signup
+        const otpString = otpArray.join('');
+        if (otpString.length !== 6) {
+          setError('Please enter all 6 digits of the verification code.');
+          setLoading(false);
+          return;
+        }
+
+        if (isLogin) {
+          await login(email, password, otpString);
+        } else {
+          await signup(email, password, otpString);
+        }
+        navigate('/account');
       }
-      navigate('/');
     } catch (err) {
       setError(err.message || 'Failed to authenticate');
     }
@@ -37,11 +64,42 @@ export default function Auth() {
     setLoading(true);
     try {
       await loginWithGoogle();
-      navigate('/');
+      navigate('/account');
     } catch (err) {
       setError(err.message || 'Failed to authenticate with Google');
     }
     setLoading(false);
+  };
+
+  const handleOtpChange = (index, value) => {
+    if (isNaN(value)) return;
+    const newOtp = [...otpArray];
+    newOtp[index] = value.substring(value.length - 1);
+    setOtpArray(newOtp);
+
+    if (value !== '' && index < 5) {
+      otpInputRefs.current[index + 1].focus();
+    }
+  };
+
+  const handleOtpKeyDown = (index, e) => {
+    if (e.key === 'Backspace' && !otpArray[index] && index > 0) {
+      otpInputRefs.current[index - 1].focus();
+    }
+  };
+
+  const handleOtpPaste = (e) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, 6).split('');
+    if (pastedData.length === 0) return;
+    
+    const newOtp = [...otpArray];
+    pastedData.forEach((char, i) => {
+      if (i < 6) newOtp[i] = char;
+    });
+    setOtpArray(newOtp);
+    const focusIndex = Math.min(pastedData.length, 5);
+    otpInputRefs.current[focusIndex]?.focus();
   };
 
 
@@ -65,35 +123,73 @@ export default function Auth() {
           {error && <div className="auth-error">{error}</div>}
 
           <form className="auth-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email Address</label>
-              <input
-                type="email"
-                id="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-              />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter 6+ characters"
-                minLength="6"
-              />
-            </div>
+            {!showOtpInput ? (
+              <>
+                <div className="form-group">
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="you@example.com"
+                  />
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter 6+ characters"
+                    minLength="6"
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="form-group" style={{ alignItems: 'center' }}>
+                <label htmlFor="otp">Verification Code</label>
+                <div className="otp-container" onPaste={handleOtpPaste}>
+                  {otpArray.map((digit, index) => (
+                    <input
+                      key={index}
+                      type="text"
+                      className="otp-box"
+                      maxLength="2"
+                      ref={(el) => (otpInputRefs.current[index] = el)}
+                      value={digit}
+                      onChange={(e) => handleOtpChange(index, e.target.value)}
+                      onKeyDown={(e) => handleOtpKeyDown(index, e)}
+                      autoFocus={index === 0}
+                    />
+                  ))}
+                </div>
+                <button 
+                  type="button" 
+                  className="auth-toggle-btn"
+                  style={{ marginTop: '15px', fontSize: '13px' }}
+                  onClick={() => {
+                    setShowOtpInput(false);
+                    setOtpArray(['', '', '', '', '', '']);
+                  }}
+                >
+                  Change Email
+                </button>
+              </div>
+            )}
 
             <button disabled={loading} className="auth-submit-btn" type="submit">
               {loading 
                 ? 'Please wait...' 
-                : (isLogin ? 'Log In' : 'Sign Up')}
+                : (showOtpInput 
+                    ? 'Verify & Continue' 
+                    : (isLogin ? 'Log In' : 'Sign Up')
+                  )
+              }
             </button>
           </form>
 
@@ -126,6 +222,8 @@ export default function Auth() {
                 className="auth-toggle-btn"
                 onClick={() => {
                   setIsLogin(!isLogin);
+                  setShowOtpInput(false);
+                  setOtpArray(['', '', '', '', '', '']);
                   setError('');
                 }}
               >

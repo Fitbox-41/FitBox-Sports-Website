@@ -2,6 +2,8 @@ import express from 'express';
 import { 
   registerUser, 
   loginUser, 
+  preRegister,
+  preLogin,
   googleLogin,
   getUserProfile, 
   updateProfile,
@@ -12,6 +14,8 @@ import { protect } from '../MiddleWare/authMiddleware.js';
 
 const router = express.Router();
 
+router.post('/pre-register', preRegister);
+router.post('/pre-login', preLogin);
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/google', googleLogin);

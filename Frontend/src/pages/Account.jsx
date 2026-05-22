@@ -93,10 +93,16 @@ export default function Account() {
       <Header />
       <div className="header-spacer" style={{ height: '110px' }} />
 
+      <div className={`toast-ribbon ${successMsg ? 'show' : ''}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        {successMsg || 'Profile updated successfully!'}
+      </div>
+
       <div className="account-container">
         <h1 className="account-title">Personal Details</h1>
         
-        {successMsg && <div className="account-success">{successMsg}</div>}
         {errorMsg && <div className="account-error">{errorMsg}</div>}
 
         <div className="account-card">
