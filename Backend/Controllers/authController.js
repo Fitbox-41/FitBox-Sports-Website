@@ -12,15 +12,15 @@ const generateToken = (id) => {
   });
 };
 
-const getEmailTemplate = (otp) => `
+const getEmailTemplate = (otp, title = 'Your Verification Code', message = 'Hello! Please use the 6-digit code below to securely verify your identity and access your account.') => `
 <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #eaeaea;">
   <div style="background-color: #FF416C; padding: 30px 20px; text-align: center;">
     <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;">FitBox Sports</h1>
   </div>
   <div style="padding: 40px 30px;">
-    <h2 style="color: #333333; font-size: 22px; margin-top: 0; margin-bottom: 20px;">Your Verification Code</h2>
+    <h2 style="color: #333333; font-size: 22px; margin-top: 0; margin-bottom: 20px;">${title}</h2>
     <p style="color: #555555; font-size: 16px; line-height: 1.5; margin-bottom: 30px;">
-      Hello! Please use the 6-digit code below to securely verify your identity and access your account.
+      ${message}
     </p>
     <div style="text-align: center; margin: 30px 0;">
       <span style="display: inline-block; padding: 15px 30px; background-color: #f8f9fa; border: 2px dashed #FF416C; border-radius: 8px; font-size: 32px; font-weight: 800; color: #FF416C; letter-spacing: 4px;">
@@ -170,6 +170,85 @@ export const loginUser = async (req, res) => {
     }
   } catch (error) {
     console.error('Error in login:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+export const requestPasswordResetOtp = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const otp = generateOTP();
+    await OTP.findOneAndDelete({ email });
+    await OTP.create({ email, otp });
+
+    const html = getEmailTemplate(otp, 'Password Reset', 'You requested a password reset. Please use the 6-digit code below to reset your password.');
+    const sent = await sendEmail({ email, subject: 'FitBox Password Reset Code', html });
+
+    if (sent) {
+      res.status(200).json({ message: 'Password reset OTP sent to email' });
+    } else {
+      res.status(500).json({ message: 'Error sending email' });
+    }
+  } catch (error) {
+    console.error('Error in requestPasswordResetOtp:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+export const verifyResetOtp = async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+
+    if (!otp) return res.status(400).json({ message: 'OTP is required' });
+
+    const otpRecord = await OTP.findOne({ email, otp });
+    if (!otpRecord) return res.status(400).json({ message: 'Invalid or expired OTP' });
+
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    await OTP.findOneAndDelete({ email });
+
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      cart: user.cart,
+      wishlist: user.wishlist,
+      phone: user.phone,
+      addresses: user.addresses,
+      orders: user.orders,
+      token: generateToken(user._id),
+    });
+  } catch (error) {
+    console.error('Error in verifyResetOtp:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+export const updatePassword = async (req, res) => {
+  try {
+    const { password } = req.body;
+    if (!password || password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+    await user.save();
+
+    res.json({ message: 'Password updated successfully' });
+  } catch (error) {
+    console.error('Error in updatePassword:', error);
     res.status(500).json({ message: 'Server Error' });
   }
 };

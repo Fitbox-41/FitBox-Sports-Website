@@ -88,6 +88,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const requestForgotPasswordOtp = async (email) => {
+    try {
+      const { data } = await axios.post(`${apiUrl}/api/auth/forgot-password-otp`, { email });
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to request password reset OTP');
+    }
+  };
+
+  const verifyResetOtp = async (email, otp) => {
+    try {
+      const { data } = await axios.post(`${apiUrl}/api/auth/verify-reset-otp`, { email, otp });
+      localStorage.setItem('fitbox_token', data.token);
+      setCurrentUser(data);
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to verify OTP');
+    }
+  };
+
   const triggerLoginSuccessRibbon = () => {
     setShowLoginSuccessRibbon(true);
     setTimeout(() => setShowLoginSuccessRibbon(false), 3000);
@@ -140,6 +160,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const updatePassword = async (password) => {
+    try {
+      const token = localStorage.getItem('fitbox_token');
+      if (!token) throw new Error('Not authenticated');
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.put(`${apiUrl}/api/auth/password`, { password }, config);
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to update password');
+    }
+  };
+
   const deleteAccount = async () => {
     try {
       const token = localStorage.getItem('fitbox_token');
@@ -164,11 +201,15 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     loginWithGoogle,
+    requestForgotPasswordOtp,
+    verifyResetOtp,
+    updatePassword,
     logout,
     updateProfile,
     deleteAccount,
     showLoginModal,
-    setShowLoginModal
+    setShowLoginModal,
+    triggerLoginSuccessRibbon
   };
 
   return (
