@@ -36,6 +36,9 @@ export const registerUser = async (req, res) => {
         email: user.email,
         cart: user.cart,
         wishlist: user.wishlist,
+        phone: user.phone,
+        addresses: user.addresses,
+        orders: user.orders,
         token: generateToken(user._id),
       });
     } else {
@@ -63,6 +66,9 @@ export const loginUser = async (req, res) => {
         email: user.email,
         cart: user.cart,
         wishlist: user.wishlist,
+        phone: user.phone,
+        addresses: user.addresses,
+        orders: user.orders,
         token: generateToken(user._id),
       });
     } else {
@@ -101,6 +107,9 @@ export const googleLogin = async (req, res) => {
         email: user.email,
         cart: user.cart,
         wishlist: user.wishlist,
+        phone: user.phone,
+        addresses: user.addresses,
+        orders: user.orders,
         token: generateToken(user._id),
       });
     } else {
@@ -125,12 +134,52 @@ export const getUserProfile = async (req, res) => {
         email: user.email,
         cart: user.cart,
         wishlist: user.wishlist,
+        phone: user.phone,
+        addresses: user.addresses,
+        orders: user.orders,
       });
     } else {
       res.status(404).json({ message: 'User not found' });
     }
   } catch (error) {
     console.error('Error in profile:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
+// @desc    Update user profile
+// @route   PUT /api/auth/profile
+// @access  Private
+export const updateProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.phone = req.body.phone !== undefined ? req.body.phone : user.phone;
+      
+      if (req.body.addresses) {
+        user.addresses = req.body.addresses;
+        user.markModified('addresses');
+      }
+
+      const updatedUser = await user.save();
+
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        phone: updatedUser.phone,
+        addresses: updatedUser.addresses,
+        cart: updatedUser.cart,
+        wishlist: updatedUser.wishlist,
+        orders: updatedUser.orders,
+      });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error in update profile:', error);
     res.status(500).json({ message: 'Server Error' });
   }
 };
@@ -144,8 +193,14 @@ export const syncData = async (req, res) => {
     const user = await User.findById(req.user._id);
 
     if (user) {
-      if (cart !== undefined) user.cart = cart;
-      if (wishlist !== undefined) user.wishlist = wishlist;
+      if (cart !== undefined) {
+        user.cart = cart;
+        user.markModified('cart');
+      }
+      if (wishlist !== undefined) {
+        user.wishlist = wishlist;
+        user.markModified('wishlist');
+      }
       
       const updatedUser = await user.save();
       res.json({

@@ -9,6 +9,8 @@ import Auth from './pages/Auth';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Shipping from './pages/Shipping';
+import Account from './pages/Account';
+import Orders from './pages/Orders';
 import MobileNav from './components/MobileNav';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider, ProductContext } from './context/ProductContext';
@@ -22,18 +24,22 @@ import './index.css';
 // Scroll Management Component
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const navType = useNavigationType();
 
   useEffect(() => {
-    const savedPos = sessionStorage.getItem(`scrollPos-${pathname}`);
-    if (savedPos) {
-      // Small delay to ensure content is painted
-      setTimeout(() => {
-        window.scrollTo(0, parseInt(savedPos, 10));
-      }, 10);
-    } else {
-      window.scrollTo(0, 0);
+    if (navType === 'POP') {
+      const savedPos = sessionStorage.getItem(`scrollPos-${pathname}`);
+      if (savedPos) {
+        setTimeout(() => {
+          window.scrollTo(0, parseInt(savedPos, 10));
+        }, 10);
+        return;
+      }
     }
-  }, [pathname]);
+    
+    // Default: scroll to top on new navigation
+    window.scrollTo(0, 0);
+  }, [pathname, navType]);
 
   useEffect(() => {
     // 2. Track Scroll Position
@@ -82,7 +88,8 @@ function AppContent() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/favourites" element={<Favourite />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/account" element={<Auth />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/orders" element={<Orders />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/shipping" element={<Shipping />} />

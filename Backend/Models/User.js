@@ -19,30 +19,26 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: 'local' // Can be 'local' or 'google'
     },
-    cart: [
-      {
-        id: { type: String, required: true },
-        title: { type: String },
-        price: { type: Number },
-        image: { type: String },
-        quantity: { type: Number, default: 1 },
-        selectedVariant: { type: String }
-      }
-    ],
-    wishlist: [
-      {
-        id: { type: String, required: true },
-        title: { type: String },
-        price: { type: Number },
-        image: { type: String }
-      }
-    ],
-    orders: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Order'
-      }
-    ]
+    cart: {
+      type: Array,
+      default: []
+    },
+    wishlist: {
+      type: Array,
+      default: []
+    },
+    phone: {
+      type: String,
+      default: ''
+    },
+    addresses: {
+      type: Array,
+      default: []
+    },
+    orders: {
+      type: Array,
+      default: []
+    }
   },
   {
     timestamps: true,

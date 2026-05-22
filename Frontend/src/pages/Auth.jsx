@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import './Auth.css';
 
 export default function Auth() {
@@ -136,8 +135,6 @@ export default function Auth() {
           </div>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

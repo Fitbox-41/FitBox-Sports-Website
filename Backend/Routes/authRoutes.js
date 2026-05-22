@@ -4,6 +4,7 @@ import {
   loginUser, 
   googleLogin,
   getUserProfile, 
+  updateProfile,
   syncData 
 } from '../Controllers/authController.js';
 import { protect } from '../MiddleWare/authMiddleware.js';
@@ -14,6 +15,7 @@ router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/google', googleLogin);
 router.get('/profile', protect, getUserProfile);
+router.put('/profile', protect, updateProfile);
 router.put('/sync', protect, syncData);
 
 export default router;

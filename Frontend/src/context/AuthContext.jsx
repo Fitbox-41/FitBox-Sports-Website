@@ -69,6 +69,7 @@ export const AuthProvider = ({ children }) => {
   const loginWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: 'select_account' });
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       
@@ -91,12 +92,31 @@ export const AuthProvider = ({ children }) => {
     setCurrentUser(null);
   };
 
+  const updateProfile = async (profileData) => {
+    try {
+      const token = localStorage.getItem('fitbox_token');
+      if (!token) throw new Error('Not authenticated');
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.put(`${apiUrl}/api/auth/profile`, profileData, config);
+      setCurrentUser(data);
+      return data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to update profile');
+    }
+  };
+
   const value = {
     currentUser,
     signup,
     login,
     loginWithGoogle,
     logout,
+    updateProfile,
     showLoginModal,
     setShowLoginModal
   };

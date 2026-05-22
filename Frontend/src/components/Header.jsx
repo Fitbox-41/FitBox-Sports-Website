@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { ProductContext } from '../context/ProductContext';
@@ -38,7 +38,7 @@ const userMenuItems = [
   },
   {
     label: 'Your Wish List',
-    path: '/wishlist',
+    path: '/favourites',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -57,26 +57,18 @@ const userMenuItems = [
       </svg>
     ),
   },
-  {
-    label: 'Sign Out',
-    path: '/signout',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15">
-        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-        <polyline points="16 17 21 12 16 7" />
-        <line x1="21" y1="12" x2="9" y2="12" />
-      </svg>
-    ),
-  },
 ];
 
 export default function Header({ hideSubHeader = false, hideSaleRibbon = false }) {
+  const location = useLocation();
+  const shouldHideSubHeader = hideSubHeader || location.pathname !== '/';
+  
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { cart, wishlist, toggleWishlist } = useCart();
   const { products: allProducts } = useContext(ProductContext);
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
@@ -328,16 +320,19 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
             )}
           </div>
 
-          {/* User icon with hover dropdown */}
+          {/* User icon with click dropdown */}
           <div
             ref={userRef}
             className="user-wrap"
             id="user-icon-wrap"
-            onMouseEnter={() => currentUser && setUserOpen(true)}
-            onMouseLeave={() => currentUser && setUserOpen(false)}
           >
             {currentUser ? (
-              <button className="icon-btn" id="user-btn" aria-label="User menu">
+              <button 
+                className="icon-btn" 
+                id="user-btn" 
+                aria-label="User menu"
+                onClick={() => setUserOpen(!userOpen)}
+              >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="8" r="4" />
                   <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
@@ -366,32 +361,58 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                 <div className="dropdown-divider" />
 
                 {/* Menu items */}
-                {userMenuItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.path}
-                    className="dropdown-item"
-                    id={`dropdown-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    <span className="dropdown-item-icon">{item.icon}</span>
-                    {item.label}
-                  </Link>
-                ))}
+                {userMenuItems.map((item) => {
+                  if (item.label === 'Switch Accounts') {
+                    return (
+                      <button
+                        key={item.label}
+                        className="dropdown-item"
+                        style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 'inherit' }}
+                        onClick={async () => {
+                          setUserOpen(false);
+                          await logout();
+                          try {
+                            await loginWithGoogle();
+                            navigate('/');
+                          } catch (e) {
+                            console.error(e);
+                          }
+                        }}
+                      >
+                        <span className="dropdown-item-icon">{item.icon}</span>
+                        {item.label}
+                      </button>
+                    );
+                  }
+                  
+                  return (
+                    <Link
+                      key={item.label}
+                      to={item.path}
+                      className="dropdown-item"
+                      id={`dropdown-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
+                      onClick={() => setUserOpen(false)}
+                    >
+                      <span className="dropdown-item-icon">{item.icon}</span>
+                      {item.label}
+                    </Link>
+                  );
+                })}
 
                 <div className="dropdown-divider" />
                 <button 
                   className="dropdown-item" 
-                  style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', color: '#d32f2f' }}
+                  style={{ width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer', color: '#d32f2f', fontFamily: 'inherit', fontSize: 'inherit' }}
                   onClick={async () => {
-                    await logout();
                     setUserOpen(false);
+                    await logout();
                     navigate('/');
                   }}
                 >
                   <span className="dropdown-item-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="15" height="15"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                   </span>
-                  Log Out
+                  Sign Out
                 </button>
               </div>
             )}
@@ -510,7 +531,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
       )}
 
       {/* ── Sub Header (Categories) ── */}
-      {(!hideSubHeader || menuOpen) && (
+      {(!shouldHideSubHeader || menuOpen) && (
         <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${(!isScrollingUp && !menuOpen) ? 'sub-header--hidden' : ''}`}>
           <nav className="sub-header-nav">
             {categories.map((cat) => (

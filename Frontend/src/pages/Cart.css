@@ -5,6 +5,7 @@
 
 .cart-main {
   padding: 40px 20px 80px;
+  min-height: 100vh;
 }
 
 .cart-title {
@@ -266,6 +267,7 @@
 @media (max-width: 600px) {
   .cart-main {
     padding: 20px 12px 100px;
+    min-height: 100vh;
   }
 
   .cart-title {
