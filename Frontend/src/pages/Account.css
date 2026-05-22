@@ -51,7 +51,7 @@
 }
 
 .account-form input:focus {
-  border-color: #ff416c;
+  border-color: #ff6b35;
   outline: none;
 }
 
@@ -81,8 +81,8 @@
 
 .add-address-btn {
   background: none;
-  border: 1px solid #ff416c;
-  color: #ff416c;
+  border: 1px solid #ff6b35;
+  color: #ff6b35;
   padding: 8px 16px;
   border-radius: 6px;
   font-weight: 600;
@@ -91,7 +91,7 @@
 }
 
 .add-address-btn:hover {
-  background: #ff416c;
+  background: #ff6b35;
   color: white;
 }
 
@@ -163,22 +163,23 @@
 }
 
 .save-address-btn {
-  background: #333;
+  background: #ff6b35;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .save-address-btn:hover {
-  background: #111;
+  background: #e85926;
 }
 
 .save-profile-btn {
   width: 100%;
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  background: linear-gradient(135deg, #ff6b35, #ff8c42);
   color: white;
   border: none;
   padding: 15px;
@@ -192,7 +193,7 @@
 
 .save-profile-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(255, 65, 108, 0.3);
+  box-shadow: 0 8px 15px rgba(255, 107, 53, 0.3);
 }
 
 .account-success {

@@ -77,13 +77,13 @@
 }
 
 .orders-item-name:hover {
-  color: #ff416c;
+  color: #ff6b35;
 }
 
 .orders-item-price {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #ff416c;
+  color: #ff6b35;
 }
 
 .orders-item-date {
@@ -110,16 +110,16 @@
   cursor: pointer;
   transition: all 0.2s ease;
   background: white;
-  color: #ff416c;
-  border: 1px solid #ff416c;
+  color: #ff6b35;
+  border: 1px solid #ff6b35;
 }
 
 .orders-wishlist-btn:hover {
-  background: #fff0f3;
+  background: #fff4f0;
 }
 
 .orders-wishlist-btn.active {
-  background: #ff416c;
+  background: #ff6b35;
   color: white;
 }
 
@@ -149,7 +149,7 @@
 
 .continue-shopping-btn {
   display: inline-block;
-  background: #ff416c;
+  background: #ff6b35;
   color: white;
   padding: 12px 28px;
   border-radius: 8px;
@@ -159,7 +159,7 @@
 }
 
 .continue-shopping-btn:hover {
-  background: #ff2a55;
+  background: #e85926;
 }
 
 @media (max-width: 600px) {
