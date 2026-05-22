@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Account.css';
 
 export default function Account() {
-  const { currentUser, updateProfile } = useAuth();
+  const { currentUser, updateProfile, deleteAccount } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
@@ -68,6 +68,22 @@ export default function Account() {
     const updated = [...addresses];
     updated.splice(index, 1);
     setAddresses(updated);
+  };
+
+  const handleDeleteAccount = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently deleted."
+    );
+    if (!confirmed) return;
+
+    setLoading(true);
+    try {
+      await deleteAccount();
+      navigate('/');
+    } catch (err) {
+      setErrorMsg(err.message || 'Failed to delete account');
+      setLoading(false);
+    }
   };
 
   if (!currentUser) return null;
@@ -155,6 +171,19 @@ export default function Account() {
               {loading ? 'Saving...' : 'Save All Changes'}
             </button>
           </form>
+
+          <div className="danger-zone">
+            <h3>Account Deletion</h3>
+            <p>Once you delete your account, there is no going back. Please be certain.</p>
+            <button 
+              type="button" 
+              className="delete-account-btn" 
+              onClick={handleDeleteAccount}
+              disabled={loading}
+            >
+              Delete My Account
+            </button>
+          </div>
         </div>
       </div>
       

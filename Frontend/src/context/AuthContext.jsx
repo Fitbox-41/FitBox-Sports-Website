@@ -110,6 +110,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const deleteAccount = async () => {
+    try {
+      const token = localStorage.getItem('fitbox_token');
+      if (!token) throw new Error('Not authenticated');
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios.delete(`${apiUrl}/api/auth/profile`, config);
+      logout();
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Failed to delete account');
+    }
+  };
+
   const value = {
     currentUser,
     signup,
@@ -117,6 +134,7 @@ export const AuthProvider = ({ children }) => {
     loginWithGoogle,
     logout,
     updateProfile,
+    deleteAccount,
     showLoginModal,
     setShowLoginModal
   };

@@ -184,6 +184,25 @@ export const updateProfile = async (req, res) => {
   }
 };
 
+// @desc    Delete user account and all data
+// @route   DELETE /api/auth/profile
+// @access  Private
+export const deleteAccount = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+      await User.deleteOne({ _id: user._id });
+      res.json({ message: 'User account removed successfully' });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting account:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
 // @desc    Sync cart and wishlist
 // @route   PUT /api/auth/sync
 // @access  Private

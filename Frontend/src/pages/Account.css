@@ -224,3 +224,40 @@
     gap: 0;
   }
 }
+
+.danger-zone {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #ffccc7;
+}
+
+.danger-zone h3 {
+  color: #cf1322;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.danger-zone p {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.delete-account-btn {
+  background: white;
+  color: #cf1322;
+  border: 1px solid #cf1322;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-account-btn:hover {
+  background: #fff1f0;
+  color: #a8071a;
+  border-color: #a8071a;
+}
