@@ -14,16 +14,16 @@ const generateToken = (id) => {
 
 const getEmailTemplate = (otp, title = 'Your Verification Code', message = 'Hello! Please use the 6-digit code below to securely verify your identity and access your account.') => `
 <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #eaeaea;">
-  <div style="background-color: #FF416C; padding: 30px 20px; text-align: center;">
-    <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;">FitBox Sports</h1>
+  <div style="background-color: #1a1a2e; padding: 30px 20px; text-align: center;">
+    <h1 style="color: #ff6b35; margin: 0; font-size: 28px; font-weight: 700; letter-spacing: 1px;">FitBox Sports</h1>
   </div>
   <div style="padding: 40px 30px;">
-    <h2 style="color: #333333; font-size: 22px; margin-top: 0; margin-bottom: 20px;">${title}</h2>
+    <h2 style="color: #1a1a2e; font-size: 22px; margin-top: 0; margin-bottom: 20px;">${title}</h2>
     <p style="color: #555555; font-size: 16px; line-height: 1.5; margin-bottom: 30px;">
       ${message}
     </p>
     <div style="text-align: center; margin: 30px 0;">
-      <span style="display: inline-block; padding: 15px 30px; background-color: #f8f9fa; border: 2px dashed #FF416C; border-radius: 8px; font-size: 32px; font-weight: 800; color: #FF416C; letter-spacing: 4px;">
+      <span style="display: inline-block; padding: 15px 30px; background-color: #f8f9fa; border: 2px dashed #ff6b35; border-radius: 8px; font-size: 32px; font-weight: 800; color: #ff6b35; letter-spacing: 4px;">
         ${otp}
       </span>
     </div>
