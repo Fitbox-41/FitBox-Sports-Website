@@ -5,7 +5,7 @@ const sendEmail = async (options) => {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const { data, error } = await resend.emails.send({
-      from: process.env.EMAIL_FROM || 'FitBox Sports <onboarding@resend.dev>',
+      from: process.env.EMAIL_FROM || 'FitBox Sports <security@fitboxsports.in>',
       to: options.email,
       subject: options.subject,
       html: options.html,
