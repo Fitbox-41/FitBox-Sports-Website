@@ -1,10 +1,11 @@
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 import User from '../Models/User.js';
+import puppeteer from 'puppeteer-core';
+import chromium from '@sparticuz/chromium';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,110 +20,88 @@ cloudinary.config({
 
 export const generateInvoice = async (order) => {
   try {
-    const numItems = order.items?.length || 0;
-    const templateName = numItems > 10 ? 'invoice-2pages.pdf' : 'invoice.pdf';
-    const templatePath = path.join(__dirname, '..', 'public', templateName);
-    
-    // Load the existing PDF template
+    const templatePath = path.join(__dirname, '..', 'public', 'invoice-template.html');
     if (!fs.existsSync(templatePath)) {
-      throw new Error(`Invoice template not found at ${templatePath}`);
+      throw new Error(`Invoice HTML template not found at ${templatePath}`);
     }
-    const existingPdfBytes = fs.readFileSync(templatePath);
     
-    // Load a PDFDocument from the existing PDF bytes
-    const pdfDoc = await PDFDocument.load(existingPdfBytes);
-    
-    // Embed the fonts
-    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-    const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
-    
-    const pages = pdfDoc.getPages();
-    const firstPage = pages[0];
-    const secondPage = pages.length > 1 ? pages[1] : null;
-    const bottomPage = secondPage || firstPage;
-    const color = rgb(0, 0, 0); 
-    
+    let htmlContent = fs.readFileSync(templatePath, 'utf8');
+
     // Fetch User Details
     const user = await User.findById(order.userId);
     const customerName = order.customerName || order.shippingAddress?.name || user?.name || 'Customer Name';
     const customerPhone = order.customerPhone || order.shippingAddress?.phone || user?.phone || 'N/A';
     const customerEmail = order.customerEmail || user?.email || 'N/A';
     const addr = order.shippingAddress || {};
-    const addressString = `${addr.street || ''}, ${addr.city || ''}`;
+    const addressString1 = `${addr.street || ''}, ${addr.city || ''}`;
     const addressString2 = `${addr.state || ''} ${addr.zip || ''}, ${addr.country || 'India'}`;
 
-    // === TOP SECTION === (Always on page 1)
-    firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 475, y: 650, size: 14, font: fontBold, color });
-    firstPage.drawText(String(order._id).substring(0, 8).toUpperCase(), { x: 500, y: 608, size: 10, font: fontBold, color });
-    firstPage.drawText(new Date().toLocaleDateString(), { x: 500, y: 588, size: 10, font: fontBold, color });
-
-    // === INVOICE TO SECTION === (Always on page 1)
-    firstPage.drawText(String(customerName),    { x: 120, y: 648, size: 10, font: fontBold, color });
-    firstPage.drawText(String(customerPhone),   { x: 120, y: 631, size: 10, font: fontBold, color });
-    firstPage.drawText(String(customerEmail),   { x: 120, y: 614, size: 10, font: fontBold, color });
-    firstPage.drawText(String(addressString),   { x: 120, y: 597, size: 10, font: fontBold, color });
-    firstPage.drawText(String(addressString2),  { x: 120, y: 582, size: 10, font: fontBold, color });
-
-    // Draw Items
-    if (order.items && numItems > 0) {
-      let currentY = 500; // Start printing from y=500 on page 1
-      let currentPage = firstPage;
-      const maxItemsPage1 = 15; // Page 1 of 2pages can hold around 15 comfortably
-      
-      order.items.forEach((item, index) => {
-        // Switch to second page if necessary
-        if (numItems > 10 && index === maxItemsPage1 && secondPage) {
-           currentPage = secondPage;
-           currentY = 680; // Table headers are higher up on page 2
-        }
-
-        // Calculate dynamic row heights if there are too many items to fit
-        let fontSize = 10;
-        let rowHeight = 25;
-        if (currentPage === firstPage && numItems > 10 === false) {
-           rowHeight = numItems > 8 ? 240 / numItems : 28;
-           fontSize = numItems > 8 ? Math.max(7, 10 - (numItems - 8) * 0.4) : 10;
-        } else if (currentPage === secondPage) {
-           const itemsOnPage2 = numItems - maxItemsPage1;
-           rowHeight = itemsOnPage2 > 15 ? 400 / itemsOnPage2 : 25;
-           fontSize = itemsOnPage2 > 15 ? Math.max(7, 10 - (itemsOnPage2 - 15) * 0.4) : 10;
-        }
-
+    // Build Table Rows
+    let itemsTableHTML = '';
+    if (order.items && order.items.length > 0) {
+      order.items.forEach(item => {
         const numericPrice = Number(String(item.price).replace(/[^0-9.-]+/g,""));
         const itemTotal = numericPrice * (item.quantity || 1);
         const variantText = item.selectedVariant ? ` (${item.selectedVariant})` : '';
         const sizeText = item.selectedSize ? ` - ${item.selectedSize}` : '';
+        const productLabel = `${item.name}${variantText}${sizeText}`;
         
-        const productLabel = `${item.name}${variantText}${sizeText}`.substring(0, 30);
-        const qtyLabel = `${item.quantity || 1}`;
-        const priceLabel = `Rs. ${numericPrice}`;
-        const totalLabel = `Rs. ${itemTotal}`;
-
-        currentPage.drawText(productLabel, { x: 110, y: currentY, size: fontSize, font: fontBold, color });
-        currentPage.drawText(qtyLabel,     { x: 345, y: currentY, size: fontSize, font: fontBold, color });
-        currentPage.drawText(priceLabel,   { x: 415, y: currentY, size: fontSize, font: fontBold, color });
-        currentPage.drawText(totalLabel,   { x: 490, y: currentY, size: fontSize, font: fontBold, color });
-        
-        currentY -= rowHeight;
+        itemsTableHTML += `
+          <tr>
+            <td>${productLabel}</td>
+            <td class="center">${item.quantity || 1}</td>
+            <td class="right">Rs. ${numericPrice}</td>
+            <td class="right">Rs. ${itemTotal}</td>
+          </tr>
+        `;
       });
     }
 
-    // === BOTTOM SECTION === (Always on the last page)
-    const subtotal = order.totalAmount;
-    const tax = 0;
+    // Replace Placeholders — use replaceAll so duplicates are caught
+    htmlContent = htmlContent
+                             .replaceAll('{{CUSTOMER_NAME}}', customerName)
+                             .replaceAll('{{CUSTOMER_PHONE}}', customerPhone)
+                             .replaceAll('{{CUSTOMER_EMAIL}}', customerEmail)
+                             .replaceAll('{{CUSTOMER_ADDRESS1}}', addressString1)
+                             .replaceAll('{{CUSTOMER_ADDRESS2}}', addressString2)
+                             .replaceAll('{{ORDER_ID}}', String(order._id).substring(0, 8).toUpperCase())
+                             .replaceAll('{{ORDER_DATE}}', new Date(order.createdAt || Date.now()).toLocaleDateString())
+                             .replaceAll('{{ORDER_SUBTOTAL}}', order.totalAmount)
+                             .replaceAll('{{ORDER_TAX}}', 0)
+                             .replaceAll('{{ORDER_TOTAL}}', order.totalAmount)
+                             .replaceAll('{{ORDER_GRAND_TOTAL}}', order.totalAmount)
+                             .replaceAll('{{ITEMS_TABLE}}', itemsTableHTML);
 
-    bottomPage.drawText(`Rs. ${subtotal}`,       { x: 510, y: 248, size: 10, font: fontBold, color });
-    bottomPage.drawText(`Rs. ${tax}`,            { x: 510, y: 222, size: 10, font: fontBold, color });
-    bottomPage.drawText(`Rs. ${subtotal + tax}`, { x: 510, y: 193, size: 10, font: fontBold, color });
+    // On Linux (Vercel), use the sparticuz compressed Chromium.
+    // On Windows (local dev), use the installed Chrome directly.
+    const isLinux = process.platform === 'linux';
+    const executablePath = isLinux
+      ? await chromium.executablePath()
+      : 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
-    bottomPage.drawText(`Online Payment`, { x: 155, y: 222, size: 10, font: fontBold, color });
-    bottomPage.drawText(`N/A`,            { x: 155, y: 193, size: 10, font: fontBold, color });
+    const browser = await puppeteer.launch({
+      args: isLinux ? chromium.args : ['--no-sandbox', '--disable-setuid-sandbox'],
+      defaultViewport: { width: 1200, height: 800 },
+      executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    });
 
-    // Serialize to bytes
-    const pdfBytes = await pdfDoc.save();
+    const page = await browser.newPage();
+    // Load HTML content
+    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+    
+    // Convert to PDF Buffer
+    const pdfBytes = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      margin: { top: '0px', right: '0px', bottom: '0px', left: '0px' }
+    });
+
+    await browser.close();
     const buffer = Buffer.from(pdfBytes);
 
-    // Upload directly to Cloudinary (use resource_type: image for native browser PDF preview)
+    // Upload to Cloudinary (use resource_type: image for native browser PDF preview)
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
@@ -143,11 +122,12 @@ export const generateInvoice = async (order) => {
             });
           }
         }
-      );uploadStream.end(buffer);
+      );
+      uploadStream.end(buffer);
     });
 
   } catch (error) {
-    console.error("Invoice generation failed:", error);
+    console.error("HTML to PDF generation failed:", error);
     throw error;
   }
 };
