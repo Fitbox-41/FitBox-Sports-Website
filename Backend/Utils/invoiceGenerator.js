@@ -84,15 +84,11 @@ export const generateInvoice = async (order) => {
         const priceLabel = `Rs. ${numericPrice}`;
         const totalLabel = `Rs. ${itemTotal}`;
 
-        // RIGHT-align product name inside Products column (right edge ~x:305)
-        const nameWidth = fontBold.widthOfTextAtSize(productLabel, fontSize);
-        const nameX = Math.max(55, 305 - nameWidth);
-        firstPage.drawText(productLabel, { x: nameX, y: currentY, size: fontSize, font: fontBold, color });
-
-        // LEFT-align QTY, PRICE, TOTAL from the start of each column
-        firstPage.drawText(qtyLabel,   { x: 318, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(priceLabel, { x: 400, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(totalLabel, { x: 478, y: currentY, size: fontSize, font: fontBold, color });
+        // Left-align everything so it lines up with headers
+        firstPage.drawText(productLabel, { x: 110, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(qtyLabel,     { x: 345, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(priceLabel,   { x: 415, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(totalLabel,   { x: 490, y: currentY, size: fontSize, font: fontBold, color });
         
         currentY -= rowHeight;
       });
