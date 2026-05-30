@@ -52,11 +52,11 @@ export const generateInvoice = async (order) => {
     firstPage.drawText(`${new Date().toLocaleDateString()}`, { x: 500, y: 588, size: 10, font: fontBold, color });
 
     // === INVOICE TO SECTION ===
-    firstPage.drawText(customerName, { x: 145, y: 648, size: 10, font: fontBold, color });
-    firstPage.drawText(customerPhone, { x: 145, y: 631, size: 10, font: fontBold, color });
-    firstPage.drawText(customerEmail, { x: 145, y: 614, size: 10, font: fontBold, color });
-    firstPage.drawText(addressString, { x: 145, y: 597, size: 10, font: fontBold, color });
-    firstPage.drawText(addressString2, { x: 145, y: 582, size: 10, font: fontBold, color });
+    firstPage.drawText(customerName,    { x: 120, y: 648, size: 10, font: fontBold, color });
+    firstPage.drawText(customerPhone,   { x: 120, y: 631, size: 10, font: fontBold, color });
+    firstPage.drawText(customerEmail,   { x: 120, y: 614, size: 10, font: fontBold, color });
+    firstPage.drawText(addressString,   { x: 120, y: 597, size: 10, font: fontBold, color });
+    firstPage.drawText(addressString2,  { x: 120, y: 582, size: 10, font: fontBold, color });
 
     // Calculate dynamic row heights based on item count
     const numItems = order.items?.length || 0;
@@ -74,12 +74,20 @@ export const generateInvoice = async (order) => {
         const variantText = item.selectedVariant ? ` (${item.selectedVariant})` : '';
         const sizeText = item.selectedSize ? ` - ${item.selectedSize}` : '';
         
-        // Truncate name to 25 chars to avoid crossing the vertical line
-        firstPage.drawText(`${item.name}${variantText}${sizeText}`.substring(0, 25), { x: 55, y: currentY, size: fontSize, font: fontBold, color });
-        // Shifted X coordinates for perfect column centering
-        firstPage.drawText(`${item.quantity || 1}`, { x: 330, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(`Rs. ${numericPrice}`, { x: 415, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(`Rs. ${itemTotal}`, { x: 490, y: currentY, size: fontSize, font: fontBold, color });
+        const productLabel = `${item.name}${variantText}${sizeText}`.substring(0, 25);
+        const qtyLabel = `${item.quantity || 1}`;
+        const priceLabel = `Rs. ${numericPrice}`;
+        const totalLabel = `Rs. ${itemTotal}`;
+
+        // RIGHT-align product name inside Products column (right edge ~x:305)
+        const nameWidth = fontBold.widthOfTextAtSize(productLabel, fontSize);
+        const nameX = Math.max(55, 305 - nameWidth);
+        firstPage.drawText(productLabel, { x: nameX, y: currentY, size: fontSize, font: fontBold, color });
+
+        // LEFT-align QTY, PRICE, TOTAL from the start of each column
+        firstPage.drawText(qtyLabel,   { x: 318, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(priceLabel, { x: 400, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(totalLabel, { x: 478, y: currentY, size: fontSize, font: fontBold, color });
         
         currentY -= rowHeight;
       });
