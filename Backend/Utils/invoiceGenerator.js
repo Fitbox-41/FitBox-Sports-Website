@@ -88,14 +88,15 @@ export const generateInvoice = async (order) => {
     // === BOTTOM SECTION ===
     const subtotal = order.totalAmount;
     const tax = 0;
-    // Shifted bottom section UP by 10px to perfectly align with labels, and X to 490 to match column
-    firstPage.drawText(`Rs. ${subtotal}`, { x: 490, y: 245, size: 10, font: fontBold, color });
-    firstPage.drawText(`Rs. ${tax}`, { x: 490, y: 215, size: 10, font: fontBold, color });
-    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 490, y: 185, size: 12, font: fontBold, color });
 
-    // Payment Method - aligned vertically with Tax and Total labels
-    firstPage.drawText(`Online Payment`, { x: 180, y: 215, size: 10, font: fontBold, color });
-    firstPage.drawText(`N/A`, { x: 180, y: 185, size: 10, font: fontBold, color });
+    // Right column values (Sub-total, Tax, Total) — aligned with right-side box
+    firstPage.drawText(`Rs. ${subtotal}`,     { x: 510, y: 248, size: 10, font: fontBold, color });
+    firstPage.drawText(`Rs. ${tax}`,          { x: 510, y: 222, size: 10, font: fontBold, color });
+    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 510, y: 193, size: 10, font: fontBold, color });
+
+    // Payment Method — values inline with their labels (Bank Name / Bank Account rows)
+    firstPage.drawText(`Online Payment`, { x: 155, y: 222, size: 10, font: fontBold, color });
+    firstPage.drawText(`N/A`,            { x: 155, y: 193, size: 10, font: fontBold, color });
 
     // Serialize to bytes
     const pdfBytes = await pdfDoc.save();

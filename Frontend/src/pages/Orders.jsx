@@ -18,9 +18,11 @@ export default function Orders() {
       try {
         const token = localStorage.getItem('fitbox_token');
         const config = { headers: { Authorization: `Bearer ${token}` } };
-        const res = await axios.get('http://localhost:5000/api/orders/myorders', config);
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const res = await axios.get(`${apiUrl}/api/orders/myorders`, config);
         if (res.data.success) {
-          setOrders(res.data.orders);
+          const sortedOrders = res.data.orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          setOrders(sortedOrders);
         }
       } catch (err) {
         console.error("Failed to fetch orders", err);
@@ -62,7 +64,7 @@ export default function Orders() {
                      </span>
                      {order.invoiceUrl && (
                        <a 
-                         href={order.invoiceUrl.startsWith('http') ? order.invoiceUrl : `http://localhost:5000${order.invoiceUrl}`} 
+                         href={order.invoiceUrl.startsWith('http') ? order.invoiceUrl : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${order.invoiceUrl}`} 
                          target="_blank" 
                          rel="noreferrer" 
                          style={{ display: 'block', marginTop: '10px', fontSize: '14px', color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}

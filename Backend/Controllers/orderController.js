@@ -9,9 +9,8 @@ export const placeOrder = async (req, res) => {
   try {
     const { items, totalAmount } = req.body;
     
-    // In a real application, req.user._id comes from authMiddleware
-    // Using a placeholder or omitting if auth is optional
-    const userId = req.user ? req.user._id : '000000000000000000000000'; // Replace with actual logic
+    const userId = req.user?._id;
+    if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
 
     // Sanitize item prices to numbers (strip commas if any)
     const sanitizedItems = items.map(item => ({
@@ -103,7 +102,7 @@ export const gokwikWebhook = async (req, res) => {
         const emailToSend = user?.email || customer_details?.email;
         if (emailToSend && pdfBuffer) {
           await sendEmail({
-            from: 'FitBox Sports <cart@fitboxsports.in>',
+            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
             email: emailToSend,
             subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
             html: `
@@ -111,7 +110,39 @@ export const gokwikWebhook = async (req, res) => {
                 <h2 style="color: #ff6b35;">Thank you for your order!</h2>
                 <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
                 <p>Your payment has been successfully processed and your order is confirmed.</p>
-                <p><strong>Order Total:</strong> Rs. ${order.totalAmount}</p>
+
+                <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+                  <thead>
+                    <tr style="background:#1a1a1a; color:#fff;">
+                      <th style="padding:10px 14px; text-align:left;">Product</th>
+                      <th style="padding:10px 14px; text-align:center;">Qty</th>
+                      <th style="padding:10px 14px; text-align:right;">Price</th>
+                      <th style="padding:10px 14px; text-align:right;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${(order.items || []).map((item, i) => {
+                      const price = Number(String(item.price).replace(/[^0-9.-]+/g,''));
+                      const qty = item.quantity || 1;
+                      const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                      const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                      const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                      return `<tr style="background:${bg};">
+                        <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                        <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                        <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
+                        <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                      </tr>`;
+                    }).join('')}
+                  </tbody>
+                  <tfoot>
+                    <tr style="background:#fff3ee; font-weight:bold;">
+                      <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+
                 <p>Please find your official invoice attached to this email.</p>
                 <br/>
                 <p>Best Regards,</p>
@@ -198,7 +229,7 @@ export const mockPayment = async (req, res) => {
       const emailToSend = user?.email;
       if (emailToSend && pdfBuffer) {
         await sendEmail({
-          from: 'FitBox Sports <cart@fitboxsports.in>',
+          from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
           email: emailToSend,
           subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
           html: `
@@ -206,7 +237,39 @@ export const mockPayment = async (req, res) => {
               <h2 style="color: #ff6b35;">Thank you for your order!</h2>
               <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
               <p>Your payment has been successfully processed and your order is confirmed.</p>
-              <p><strong>Order Total:</strong> Rs. ${order.totalAmount}</p>
+
+              <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+                <thead>
+                  <tr style="background:#1a1a1a; color:#fff;">
+                    <th style="padding:10px 14px; text-align:left;">Product</th>
+                    <th style="padding:10px 14px; text-align:center;">Qty</th>
+                    <th style="padding:10px 14px; text-align:right;">Price</th>
+                    <th style="padding:10px 14px; text-align:right;">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(order.items || []).map((item, i) => {
+                    const price = Number(String(item.price).replace(/[^0-9.-]+/g,''));
+                    const qty = item.quantity || 1;
+                    const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                    const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                    const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                    return `<tr style="background:${bg};">
+                      <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                      <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                      <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
+                      <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                    </tr>`;
+                  }).join('')}
+                </tbody>
+                <tfoot>
+                  <tr style="background:#fff3ee; font-weight:bold;">
+                    <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                    <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                  </tr>
+                </tfoot>
+              </table>
+
               <p>Please find your official invoice attached to this email.</p>
               <br/>
               <p>Best Regards,</p>
@@ -235,7 +298,8 @@ export const mockPayment = async (req, res) => {
 
 export const getUserOrders = async (req, res) => {
   try {
-    const userId = req.user ? req.user._id : '000000000000000000000000'; // Replace with actual auth logic
+    const userId = req.user?._id;
+    if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
     const orders = await Order.find({ userId }).sort({ createdAt: -1 });
     res.status(200).json({ success: true, orders });
   } catch (error) {

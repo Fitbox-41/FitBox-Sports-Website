@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import Loader from './Loader';
 import './CheckoutModal.css';
 
 export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems, checkoutTotal, onSuccess }) {
@@ -37,7 +38,8 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
     if (orderId && !showSuccessToast) {
       try {
         const token = localStorage.getItem('fitbox_token');
-        await axios.delete(`http://localhost:5000/api/orders/${orderId}/cancel`, {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel`, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } catch (err) {
@@ -70,7 +72,8 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
         phone: shippingPhone
       };
       
-      const res = await axios.post('http://localhost:5000/api/orders/mock-payment', { 
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await axios.post(`${apiUrl}/api/orders/mock-payment`, { 
         orderId, 
         shippingAddress 
       }, config);
@@ -187,6 +190,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
           </div>
         )}
       </div>
+      <Loader isVisible={loading} />
     </div>
   );
 }
