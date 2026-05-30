@@ -82,19 +82,17 @@ export const CartProvider = ({ children }) => {
         item.id === product.id && item.selectedVariant === product.selectedVariant
       );
       if (existingItem) {
-        newCart = prevCart.map((item) =>
-          (item.id === product.id && item.selectedVariant === product.selectedVariant)
-            ? { ...item, quantity: item.quantity + qtyToAdd }
-            : item
-        );
+        alert("This item is already in your cart!");
+        newCart = prevCart; // Do not add again
       } else {
         newCart = [...prevCart, { ...product, quantity: qtyToAdd }];
       }
       return newCart;
     });
 
-    // Wait a tick for state to update, or just use the generated newCart immediately
-    setTimeout(() => syncWithServer(newCart, undefined), 0);
+    if (newCart !== cart) {
+      setTimeout(() => syncWithServer(newCart, undefined), 0);
+    }
   };
 
   const removeFromCart = (productId, variant) => {

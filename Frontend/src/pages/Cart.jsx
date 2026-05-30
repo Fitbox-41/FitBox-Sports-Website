@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -11,6 +11,7 @@ import './Cart.css';
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, toggleWishlist, wishlist } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
+  const navigate = useNavigate();
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
 
@@ -21,6 +22,11 @@ export default function Cart() {
   const handleCheckout = async () => {
     if (!currentUser) {
       setShowLoginModal(true);
+      return;
+    }
+    if (!currentUser.addresses || currentUser.addresses.length === 0 || !currentUser.phone) {
+      alert("Please complete your account details by adding a phone number and shipping address before buying.");
+      navigate('/account');
       return;
     }
     
@@ -157,9 +163,11 @@ export default function Cart() {
         isOpen={isCheckoutModalOpen} 
         onClose={() => setIsCheckoutModalOpen(false)} 
         orderId={currentOrderId}
+        checkoutItems={cart}
+        checkoutTotal={total}
         onSuccess={(id) => {
           setIsCheckoutModalOpen(false);
-          window.location.href = '/orders';
+          navigate('/orders');
         }}
       />
     </div>

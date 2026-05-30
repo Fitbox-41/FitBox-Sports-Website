@@ -13,7 +13,7 @@ const orderSchema = new mongoose.Schema({
   }],
   totalAmount: { type: Number, required: true },
   shippingAddress: {
-    street: String, city: String, state: String, zip: String, country: String
+    name: String, phone: String, street: String, city: String, state: String, zip: String, country: String
   },
   paymentStatus: { type: String, enum: ['Pending Payment', 'Paid', 'Failed'], default: 'Pending Payment' },
   shipmentStatus: { type: String, enum: ['Pending', 'Created', 'Shipped', 'Delivered', 'Cancelled'], default: 'Pending' },
@@ -25,5 +25,12 @@ const orderSchema = new mongoose.Schema({
   paymentId: String,
   paidAt: Date
 }, { timestamps: true });
+
+// TTL Index: Automatically delete documents after 1800 seconds (30 mins)
+// ONLY if paymentStatus is 'Pending Payment'.
+orderSchema.index(
+  { createdAt: 1 }, 
+  { expireAfterSeconds: 1800, partialFilterExpression: { paymentStatus: 'Pending Payment' } }
+);
 
 export default mongoose.model('Order', orderSchema);

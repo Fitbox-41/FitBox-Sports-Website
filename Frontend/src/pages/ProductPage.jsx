@@ -1,4 +1,4 @@
-import { useParams, Link, useLocation } from 'react-router-dom';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -93,6 +93,9 @@ export default function ProductPage() {
   // ─── 1. State & Data Logic ───
   const { addToCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
+  const navigate = useNavigate();
+  const [checkoutItems, setCheckoutItems] = useState([]);
+  const [checkoutTotal, setCheckoutTotal] = useState(0);
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
 
@@ -256,6 +259,11 @@ export default function ProductPage() {
       setShowLoginModal(true);
       return;
     }
+    if (!currentUser.addresses || currentUser.addresses.length === 0 || !currentUser.phone) {
+      alert("Please complete your account details by adding a phone number and shipping address before buying.");
+      navigate('/account');
+      return;
+    }
 
     try {
       const buyNowItem = {
@@ -266,6 +274,9 @@ export default function ProductPage() {
         quantity: quantity
       };
       const totalAmount = product.price * quantity;
+
+      setCheckoutItems([buyNowItem]);
+      setCheckoutTotal(totalAmount);
 
       const token = localStorage.getItem('fitbox_token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -633,9 +644,11 @@ export default function ProductPage() {
         isOpen={isCheckoutModalOpen} 
         onClose={() => setIsCheckoutModalOpen(false)} 
         orderId={currentOrderId}
+        checkoutItems={checkoutItems}
+        checkoutTotal={checkoutTotal}
         onSuccess={(id) => {
           setIsCheckoutModalOpen(false);
-          window.location.href = '/orders';
+          navigate('/orders');
         }}
       />
     </div>
