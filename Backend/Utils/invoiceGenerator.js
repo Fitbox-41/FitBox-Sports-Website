@@ -44,51 +44,58 @@ export const generateInvoice = async (order) => {
     const addressString2 = `${addr.state || ''} ${addr.zip || ''}, ${addr.country || 'India'}`;
 
     // === TOP SECTION ===
-    // Total Due on top
-    firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 480, y: 675, size: 16, font: fontBold, color });
-    // Order No and Date
-    firstPage.drawText(`${order._id.toString().substring(0, 8).toUpperCase()}`, { x: 450, y: 620, size: 10, font, color });
-    firstPage.drawText(`${new Date().toLocaleDateString()}`, { x: 450, y: 602, size: 10, font, color });
+    // Placed amount below the black line under TOTAL DUE
+    firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 460, y: 645, size: 14, font: fontBold, color });
+    
+    // Adjusted No and Date to match the new higher template placement
+    firstPage.drawText(`${order._id.toString().substring(0, 8).toUpperCase()}`, { x: 500, y: 610, size: 10, font: fontBold, color });
+    firstPage.drawText(`${new Date().toLocaleDateString()}`, { x: 500, y: 590, size: 10, font: fontBold, color });
 
     // === INVOICE TO SECTION ===
-    firstPage.drawText(customerName, { x: 145, y: 668, size: 10, font, color });
-    firstPage.drawText(customerPhone, { x: 145, y: 651, size: 10, font, color });
-    firstPage.drawText(customerEmail, { x: 145, y: 634, size: 10, font, color });
-    firstPage.drawText(addressString, { x: 145, y: 617, size: 10, font, color });
-    firstPage.drawText(addressString2, { x: 145, y: 605, size: 10, font, color });
+    firstPage.drawText(customerName, { x: 145, y: 648, size: 10, font: fontBold, color });
+    firstPage.drawText(customerPhone, { x: 145, y: 631, size: 10, font: fontBold, color });
+    firstPage.drawText(customerEmail, { x: 145, y: 614, size: 10, font: fontBold, color });
+    firstPage.drawText(addressString, { x: 145, y: 597, size: 10, font: fontBold, color });
+    firstPage.drawText(addressString2, { x: 145, y: 582, size: 10, font: fontBold, color });
 
-    // === TABLE SECTION ===
-    let currentY = 500;
+    // Calculate dynamic row heights based on item count
+    const numItems = order.items?.length || 0;
+    // The table is taller now (spans down to y=250)
+    const rowHeight = numItems > 7 ? 270 / numItems : 35;
+
+    // Draw Items
     if (order.items && order.items.length > 0) {
-      order.items.forEach((item, index) => {
-        const itemTotal = item.price * (item.quantity || 1);
+      const fontSize = numItems > 7 ? Math.max(7, 10 - (numItems - 7) * 0.5) : 10;
+      let currentY = 500; // Start printing from y=500
+      
+      order.items.forEach((item) => {
+        const numericPrice = Number(String(item.price).replace(/[^0-9.-]+/g,""));
+        const itemTotal = numericPrice * (item.quantity || 1);
         const variantText = item.selectedVariant ? ` (${item.selectedVariant})` : '';
         const sizeText = item.selectedSize ? ` - ${item.selectedSize}` : '';
         
-        // Products
-        firstPage.drawText(`${item.name}${variantText}${sizeText}`.substring(0, 35), { x: 100, y: currentY, size: 10, font: fontBold, color });
-        // Qty
-        firstPage.drawText(`${item.quantity || 1}`, { x: 330, y: currentY, size: 10, font, color });
-        // Price
-        firstPage.drawText(`Rs. ${item.price}`, { x: 400, y: currentY, size: 10, font, color });
-        // Total
-        firstPage.drawText(`Rs. ${itemTotal}`, { x: 480, y: currentY, size: 10, font, color });
+        // Truncate name to 25 chars to avoid crossing the vertical line
+        firstPage.drawText(`${item.name}${variantText}${sizeText}`.substring(0, 25), { x: 55, y: currentY, size: fontSize, font: fontBold, color });
+        // Shifted X coordinates to match the new wider column structure
+        firstPage.drawText(`${item.quantity || 1}`, { x: 330, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(`Rs. ${numericPrice}`, { x: 400, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(`Rs. ${itemTotal}`, { x: 480, y: currentY, size: fontSize, font: fontBold, color });
         
-        currentY -= 32; // Move down for next row
+        currentY -= rowHeight;
       });
     }
 
     // === BOTTOM SECTION ===
-    // Sub-total, Tax, Total
     const subtotal = order.totalAmount;
-    const tax = 0; // Assuming tax is inclusive or 0 for now
-    firstPage.drawText(`Rs. ${subtotal}`, { x: 480, y: 285, size: 10, font, color });
-    firstPage.drawText(`Rs. ${tax}`, { x: 480, y: 258, size: 10, font, color });
-    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 480, y: 230, size: 12, font: fontBold, color });
+    const tax = 0;
+    // Shifted bottom section down by ~90px to match new template
+    firstPage.drawText(`Rs. ${subtotal}`, { x: 480, y: 235, size: 10, font: fontBold, color });
+    firstPage.drawText(`Rs. ${tax}`, { x: 480, y: 205, size: 10, font: fontBold, color });
+    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 480, y: 175, size: 12, font: fontBold, color });
 
     // Payment Method
-    firstPage.drawText(`GoKwik / Online Payment`, { x: 180, y: 275, size: 10, font, color });
-    firstPage.drawText(`N/A`, { x: 180, y: 258, size: 10, font, color });
+    firstPage.drawText(`Online Payment`, { x: 155, y: 205, size: 10, font: fontBold, color });
+    firstPage.drawText(`N/A`, { x: 155, y: 175, size: 10, font: fontBold, color });
 
     // Serialize to bytes
     const pdfBytes = await pdfDoc.save();

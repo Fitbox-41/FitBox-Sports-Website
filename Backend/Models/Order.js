@@ -33,4 +33,31 @@ orderSchema.index(
   { expireAfterSeconds: 1800, partialFilterExpression: { paymentStatus: 'Pending Payment' } }
 );
 
+import { v2 as cloudinary } from 'cloudinary';
+import dotenv from 'dotenv';
+dotenv.config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+// Helper function to delete Cloudinary invoice
+const deleteCloudinaryInvoice = async (doc) => {
+  if (doc && doc.invoiceUrl) {
+    try {
+      const publicId = `fitbox_invoices/Invoice-${doc._id}`;
+      // Since it was uploaded with resource_type: "image"
+      await cloudinary.uploader.destroy(publicId, { resource_type: 'image' });
+      console.log(`Automatically deleted invoice from Cloudinary: ${publicId}`);
+    } catch (err) {
+      console.error("Failed to automatically delete invoice from Cloudinary", err);
+    }
+  }
+};
+
+orderSchema.post('findOneAndDelete', deleteCloudinaryInvoice);
+orderSchema.post('deleteOne', { document: true, query: false }, deleteCloudinaryInvoice);
+
 export default mongoose.model('Order', orderSchema);

@@ -9,14 +9,16 @@ import CheckoutModal from '../components/CheckoutModal';
 import './Cart.css';
 
 export default function Cart() {
-  const { cart, removeFromCart, updateQuantity, toggleWishlist, wishlist } = useCart();
+  const { cart, removeFromCart, updateQuantity, toggleWishlist, wishlist, clearCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
   const navigate = useNavigate();
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
 
-  const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const shipping = subtotal > 999 ? 0 : 99;
+  const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
+  
+  const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
+  const shipping = subtotal > 999 || subtotal === 0 ? 0 : 99;
   const total = subtotal + shipping;
 
   const handleCheckout = async () => {
@@ -79,7 +81,7 @@ export default function Cart() {
                       >
                         {item.name}
                       </Link>
-                      <span className="cart-item-price">₹{String(item.price).replace(/[^0-9,.]/g, '')}</span>
+                      <span className="cart-item-price">₹{parsePrice(item.price) * item.quantity}</span>
                     </div>
                     
                     <div className="cart-item-meta">
@@ -167,6 +169,7 @@ export default function Cart() {
         checkoutTotal={total}
         onSuccess={(id) => {
           setIsCheckoutModalOpen(false);
+          clearCart();
           navigate('/orders');
         }}
       />

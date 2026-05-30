@@ -11,9 +11,15 @@ export const placeOrder = async (req, res) => {
     // Using a placeholder or omitting if auth is optional
     const userId = req.user ? req.user._id : '000000000000000000000000'; // Replace with actual logic
 
+    // Sanitize item prices to numbers (strip commas if any)
+    const sanitizedItems = items.map(item => ({
+      ...item,
+      price: typeof item.price === 'string' ? Number(item.price.replace(/[^0-9.-]+/g, "")) : item.price
+    }));
+
     const order = new Order({
       userId,
-      items,
+      items: sanitizedItems,
       totalAmount,
       paymentStatus: 'Pending Payment'
     });

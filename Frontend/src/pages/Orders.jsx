@@ -87,25 +87,22 @@ export default function Orders() {
                   const img = item.image || item.imgSrc;
                   const inWishlist = wishlist.some(w => w.id === item.productId);
                   return (
-                    <div key={idx} className="orders-list-item" style={{ border: 'none', padding: '10px 0', marginBottom: 0 }}>
-                      <Link 
-                        to={`/product/${item.productId}`}
-                        className="orders-item-image-wrapper"
-                      >
-                        <img src={img} alt={item.name} className="orders-item-image" />
+                    <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '12px 0', borderBottom: idx !== order.items.length - 1 ? '1px solid #f1f5f9' : 'none' }}>
+                      <Link to={`/product/${item.productId}`} style={{ flexShrink: 0 }}>
+                        <img src={img} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e2e8f0' }} />
                       </Link>
 
-                      <div className="orders-item-details">
-                        <Link 
-                          to={`/product/${item.productId}`}
-                          className="orders-item-name"
-                        >
+                      <div style={{ flex: 1 }}>
+                        <Link to={`/product/${item.productId}`} style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b', textDecoration: 'none', display: 'block', marginBottom: '4px' }}>
                           {item.name}
                         </Link>
-                        <span className="orders-item-price">₹{item.price}</span>
-                        <div style={{ fontSize: '13px', color: '#64748b', marginTop: '5px' }}>
+                        <div style={{ fontSize: '13px', color: '#64748b' }}>
                           Qty: {item.quantity} {item.selectedVariant && `| Color: ${item.selectedVariant}`} {item.selectedSize && `| Size: ${item.selectedSize}`}
                         </div>
+                      </div>
+                      
+                      <div style={{ fontWeight: '600', color: '#0f172a', fontSize: '15px' }}>
+                        ₹{item.price}
                       </div>
                     </div>
                   );

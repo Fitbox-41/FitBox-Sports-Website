@@ -148,6 +148,11 @@ export const CartProvider = ({ children }) => {
     setTimeout(() => syncWithServer(undefined, newWishlist), 0);
   };
 
+  const clearCart = () => {
+    setCart([]);
+    setTimeout(() => syncWithServer([], undefined), 0);
+  };
+
   return (
     <CartContext.Provider value={{ 
       cart, 
@@ -155,7 +160,8 @@ export const CartProvider = ({ children }) => {
       addToCart, 
       removeFromCart, 
       updateQuantity, 
-      toggleWishlist 
+      toggleWishlist,
+      clearCart
     }}>
       {children}
     </CartContext.Provider>

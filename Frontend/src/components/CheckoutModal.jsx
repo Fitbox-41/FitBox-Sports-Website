@@ -106,7 +106,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
       <div className="checkout-modal-content">
         <button className="close-btn" onClick={handleCloseModal} disabled={loading || showSuccessToast}>&times;</button>
         
-        <h2>GoKwik Checkout</h2>
+        <h2>Secure Checkout</h2>
         <p className="modal-subtitle">Fast & Secure Payment</p>
 
         <div className="order-summary-section">
@@ -116,7 +116,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
               checkoutItems.map((item, idx) => (
                 <div key={idx} className="summary-item">
                   <span className="summary-item-name">{item.name} {item.selectedVariant ? `(${item.selectedVariant})` : ''} x {item.quantity}</span>
-                  <span className="summary-item-price">₹{item.price * item.quantity}</span>
+                  <span className="summary-item-price">₹{Number(String(item.price).replace(/[^0-9.-]+/g,"")) * item.quantity}</span>
                 </div>
               ))
             ) : (
