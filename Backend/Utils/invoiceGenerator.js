@@ -19,7 +19,9 @@ cloudinary.config({
 
 export const generateInvoice = async (order) => {
   try {
-    const templatePath = path.join(__dirname, '..', 'public', 'invoice.pdf');
+    const numItems = order.items?.length || 0;
+    const templateName = numItems > 10 ? 'invoice-2pages.pdf' : 'invoice.pdf';
+    const templatePath = path.join(__dirname, '..', 'public', templateName);
     
     // Load the existing PDF template
     if (!fs.existsSync(templatePath)) {
@@ -36,6 +38,8 @@ export const generateInvoice = async (order) => {
     
     const pages = pdfDoc.getPages();
     const firstPage = pages[0];
+    const secondPage = pages.length > 1 ? pages[1] : null;
+    const bottomPage = secondPage || firstPage;
     const color = rgb(0, 0, 0); 
     
     // Fetch User Details
@@ -47,77 +51,85 @@ export const generateInvoice = async (order) => {
     const addressString = `${addr.street || ''}, ${addr.city || ''}`;
     const addressString2 = `${addr.state || ''} ${addr.zip || ''}, ${addr.country || 'India'}`;
 
-    // === TOP SECTION ===
-    // Placed amount below the black line under TOTAL DUE, centered
+    // === TOP SECTION === (Always on page 1)
     firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 475, y: 650, size: 14, font: fontBold, color });
-    
-    // Adjusted No and Date to perfectly align horizontally with labels
     firstPage.drawText(String(order._id).substring(0, 8).toUpperCase(), { x: 500, y: 608, size: 10, font: fontBold, color });
     firstPage.drawText(new Date().toLocaleDateString(), { x: 500, y: 588, size: 10, font: fontBold, color });
 
-    // === INVOICE TO SECTION ===
-    // Coerce everything to string to prevent pdf-lib TypeError on numbers
+    // === INVOICE TO SECTION === (Always on page 1)
     firstPage.drawText(String(customerName),    { x: 120, y: 648, size: 10, font: fontBold, color });
     firstPage.drawText(String(customerPhone),   { x: 120, y: 631, size: 10, font: fontBold, color });
     firstPage.drawText(String(customerEmail),   { x: 120, y: 614, size: 10, font: fontBold, color });
     firstPage.drawText(String(addressString),   { x: 120, y: 597, size: 10, font: fontBold, color });
     firstPage.drawText(String(addressString2),  { x: 120, y: 582, size: 10, font: fontBold, color });
 
-    // Calculate dynamic row heights based on item count
-    const numItems = order.items?.length || 0;
-    // The table is taller now (spans down to y=250)
-    const rowHeight = numItems > 7 ? 270 / numItems : 35;
-
     // Draw Items
-    if (order.items && order.items.length > 0) {
-      const fontSize = numItems > 7 ? Math.max(7, 10 - (numItems - 7) * 0.5) : 10;
-      let currentY = 500; // Start printing from y=500
+    if (order.items && numItems > 0) {
+      let currentY = 500; // Start printing from y=500 on page 1
+      let currentPage = firstPage;
+      const maxItemsPage1 = 15; // Page 1 of 2pages can hold around 15 comfortably
       
-      order.items.forEach((item) => {
+      order.items.forEach((item, index) => {
+        // Switch to second page if necessary
+        if (numItems > 10 && index === maxItemsPage1 && secondPage) {
+           currentPage = secondPage;
+           currentY = 680; // Table headers are higher up on page 2
+        }
+
+        // Calculate dynamic row heights if there are too many items to fit
+        let fontSize = 10;
+        let rowHeight = 25;
+        if (currentPage === firstPage && numItems > 10 === false) {
+           rowHeight = numItems > 8 ? 240 / numItems : 28;
+           fontSize = numItems > 8 ? Math.max(7, 10 - (numItems - 8) * 0.4) : 10;
+        } else if (currentPage === secondPage) {
+           const itemsOnPage2 = numItems - maxItemsPage1;
+           rowHeight = itemsOnPage2 > 15 ? 400 / itemsOnPage2 : 25;
+           fontSize = itemsOnPage2 > 15 ? Math.max(7, 10 - (itemsOnPage2 - 15) * 0.4) : 10;
+        }
+
         const numericPrice = Number(String(item.price).replace(/[^0-9.-]+/g,""));
         const itemTotal = numericPrice * (item.quantity || 1);
         const variantText = item.selectedVariant ? ` (${item.selectedVariant})` : '';
         const sizeText = item.selectedSize ? ` - ${item.selectedSize}` : '';
         
-        const productLabel = `${item.name}${variantText}${sizeText}`.substring(0, 25);
+        const productLabel = `${item.name}${variantText}${sizeText}`.substring(0, 30);
         const qtyLabel = `${item.quantity || 1}`;
         const priceLabel = `Rs. ${numericPrice}`;
         const totalLabel = `Rs. ${itemTotal}`;
 
-        // Left-align everything so it lines up with headers
-        firstPage.drawText(productLabel, { x: 110, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(qtyLabel,     { x: 345, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(priceLabel,   { x: 415, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(totalLabel,   { x: 490, y: currentY, size: fontSize, font: fontBold, color });
+        currentPage.drawText(productLabel, { x: 110, y: currentY, size: fontSize, font: fontBold, color });
+        currentPage.drawText(qtyLabel,     { x: 345, y: currentY, size: fontSize, font: fontBold, color });
+        currentPage.drawText(priceLabel,   { x: 415, y: currentY, size: fontSize, font: fontBold, color });
+        currentPage.drawText(totalLabel,   { x: 490, y: currentY, size: fontSize, font: fontBold, color });
         
         currentY -= rowHeight;
       });
     }
 
-    // === BOTTOM SECTION ===
+    // === BOTTOM SECTION === (Always on the last page)
     const subtotal = order.totalAmount;
     const tax = 0;
 
-    // Right column values (Sub-total, Tax, Total) — aligned with right-side box
-    firstPage.drawText(`Rs. ${subtotal}`,     { x: 510, y: 248, size: 10, font: fontBold, color });
-    firstPage.drawText(`Rs. ${tax}`,          { x: 510, y: 222, size: 10, font: fontBold, color });
-    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 510, y: 193, size: 10, font: fontBold, color });
+    bottomPage.drawText(`Rs. ${subtotal}`,       { x: 510, y: 248, size: 10, font: fontBold, color });
+    bottomPage.drawText(`Rs. ${tax}`,            { x: 510, y: 222, size: 10, font: fontBold, color });
+    bottomPage.drawText(`Rs. ${subtotal + tax}`, { x: 510, y: 193, size: 10, font: fontBold, color });
 
-    // Payment Method — values inline with their labels (Bank Name / Bank Account rows)
-    firstPage.drawText(`Online Payment`, { x: 155, y: 222, size: 10, font: fontBold, color });
-    firstPage.drawText(`N/A`,            { x: 155, y: 193, size: 10, font: fontBold, color });
+    bottomPage.drawText(`Online Payment`, { x: 155, y: 222, size: 10, font: fontBold, color });
+    bottomPage.drawText(`N/A`,            { x: 155, y: 193, size: 10, font: fontBold, color });
 
     // Serialize to bytes
     const pdfBytes = await pdfDoc.save();
     const buffer = Buffer.from(pdfBytes);
 
-    // Upload directly to Cloudinary
+    // Upload directly to Cloudinary (use resource_type: image for native browser PDF preview)
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
-          resource_type: "raw",
+          resource_type: "image",
           folder: "fitbox_invoices",
-          public_id: `Invoice-${order._id}.pdf`,
+          public_id: `Invoice-${order._id}`,
+          format: "pdf"
         },
         (error, result) => {
           if (error) {
