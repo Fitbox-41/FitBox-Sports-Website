@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 
 const orderSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  customerName: { type: String },
+  customerEmail: { type: String },
+  customerPhone: { type: String },
   items: [{
     productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
     name: String,
@@ -47,9 +50,8 @@ cloudinary.config({
 const deleteCloudinaryInvoice = async (doc) => {
   if (doc && doc.invoiceUrl) {
     try {
-      const publicId = `fitbox_invoices/Invoice-${doc._id}`;
-      // Since it was uploaded with resource_type: "image"
-      await cloudinary.uploader.destroy(publicId, { resource_type: 'image' });
+      const publicId = `fitbox_invoices/Invoice-${doc._id}.pdf`;
+      await cloudinary.uploader.destroy(publicId, { resource_type: 'raw' });
       console.log(`Automatically deleted invoice from Cloudinary: ${publicId}`);
     } catch (err) {
       console.error("Failed to automatically delete invoice from Cloudinary", err);

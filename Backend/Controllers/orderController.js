@@ -12,6 +12,9 @@ export const placeOrder = async (req, res) => {
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
 
+    // Fetch user details to denormalize on the order
+    const user = await User.findById(userId).lean();
+
     // Sanitize item prices to numbers (strip commas if any)
     const sanitizedItems = items.map(item => ({
       ...item,
@@ -20,6 +23,9 @@ export const placeOrder = async (req, res) => {
 
     const order = new Order({
       userId,
+      customerName: user?.name || '',
+      customerEmail: user?.email || '',
+      customerPhone: user?.phone || '',
       items: sanitizedItems,
       totalAmount,
       paymentStatus: 'Pending Payment'
