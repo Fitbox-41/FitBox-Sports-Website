@@ -114,10 +114,9 @@ export const generateInvoice = async (order) => {
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
-          resource_type: "image", // using image format to serve pdf directly if desired or raw
+          resource_type: "raw",
           folder: "fitbox_invoices",
-          public_id: `Invoice-${order._id}`,
-          format: 'pdf'
+          public_id: `Invoice-${order._id}.pdf`,
         },
         (error, result) => {
           if (error) {

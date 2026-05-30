@@ -100,7 +100,7 @@ export const gokwikWebhook = async (req, res) => {
       try {
         const user = await User.findById(order.userId);
         const emailToSend = user?.email || customer_details?.email;
-        if (emailToSend && pdfBuffer) {
+        if (emailToSend) {
           await sendEmail({
             from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
             email: emailToSend,
@@ -143,19 +143,17 @@ export const gokwikWebhook = async (req, res) => {
                   </tfoot>
                 </table>
 
-                <p>Please find your official invoice attached to this email.</p>
+                <p>${pdfBuffer ? 'Please find your official invoice attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
                 <br/>
                 <p>Best Regards,</p>
                 <p><strong>FitBox Sports Team</strong></p>
               </div>
             `,
-            attachments: [
-              {
-                filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
-                content: pdfBuffer,
-                contentType: 'application/pdf'
-              }
-            ]
+            attachments: pdfBuffer ? [{
+              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+              content: pdfBuffer,
+              contentType: 'application/pdf'
+            }] : undefined
           });
         }
       } catch (emailErr) {
@@ -227,7 +225,7 @@ export const mockPayment = async (req, res) => {
     try {
       const user = await User.findById(order.userId);
       const emailToSend = user?.email;
-      if (emailToSend && pdfBuffer) {
+      if (emailToSend) {
         await sendEmail({
           from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
           email: emailToSend,
@@ -270,19 +268,17 @@ export const mockPayment = async (req, res) => {
                 </tfoot>
               </table>
 
-              <p>Please find your official invoice attached to this email.</p>
+              <p>${pdfBuffer ? 'Please find your official invoice attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
               <br/>
               <p>Best Regards,</p>
               <p><strong>FitBox Sports Team</strong></p>
             </div>
           `,
-          attachments: [
-            {
-              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
-              content: pdfBuffer,
-              contentType: 'application/pdf'
-            }
-          ]
+          attachments: pdfBuffer ? [{
+            filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+            content: pdfBuffer,
+            contentType: 'application/pdf'
+          }] : undefined
         });
         console.log(`Confirmation email sent to ${emailToSend}`);
       }
