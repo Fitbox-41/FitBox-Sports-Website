@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 // Serverless-friendly Database Connection
 const connectDB = async () => {
@@ -36,8 +37,11 @@ app.use(async (req, res, next) => {
 });
 
 // Routes
+import orderRoutes from './Routes/orderRoutes.js';
+
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/orders', orderRoutes);
 
 // Only listen if not running in Vercel (for local development)
 if (!process.env.VERCEL) {

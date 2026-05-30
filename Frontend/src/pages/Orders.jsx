@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
+import axios from 'axios';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Orders.css';
@@ -8,7 +10,34 @@ import './Orders.css';
 export default function Orders() {
   const { currentUser } = useAuth();
   const { toggleWishlist, wishlist } = useCart();
-  const orders = currentUser?.orders || [];
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const token = localStorage.getItem('fitbox_token');
+        const config = { headers: { Authorization: `Bearer ${token}` } };
+        const res = await axios.get('http://localhost:5000/api/orders/myorders', config);
+        if (res.data.success) {
+          setOrders(res.data.orders);
+        }
+      } catch (err) {
+        console.error("Failed to fetch orders", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (currentUser) {
+       fetchOrders();
+    } else {
+       setLoading(false);
+    }
+  }, [currentUser]);
+
+  if (loading) {
+     return <div className="orders-page"><Header /><div style={{ height: '110px' }} /><div style={{textAlign: 'center', padding: '50px'}}>Loading Orders...</div><Footer /></div>;
+  }
 
   return (
     <div className="orders-page">
@@ -20,43 +49,69 @@ export default function Orders() {
 
         {orders.length > 0 ? (
           <div className="orders-list-container">
-            {orders.map((item, idx) => {
-              const img = item.image || item.imgSrc || (item.variants && item.variants[0].images[0]);
-              const inWishlist = wishlist.some(w => w.id === item.id);
-              return (
-                <div key={idx} className="orders-list-item">
-                  <Link 
-                    to={`/product/${item.id}`}
-                    className="orders-item-image-wrapper"
-                  >
-                    <img src={img} alt={item.name} className="orders-item-image" />
-                  </Link>
-
-                  <div className="orders-item-details">
-                    <Link 
-                      to={`/product/${item.id}`}
-                      className="orders-item-name"
-                    >
-                      {item.name}
-                    </Link>
-                    <span className="orders-item-price">₹{String(item.price).replace(/[^0-9,.]/g, '')}</span>
-                    <span className="orders-item-date">Purchased recently</span>
+            {orders.map((order, orderIdx) => (
+              <div key={orderIdx} className="order-group" style={{ marginBottom: '40px', padding: '20px', border: '1px solid #e2e8f0', borderRadius: '12px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '15px', marginBottom: '15px' }}>
+                  <div>
+                    <h3 style={{ margin: '0 0 5px 0' }}>Order #{order._id.substring(0, 8)}</h3>
+                    <p style={{ margin: '0', fontSize: '14px', color: '#64748b' }}>Placed on {new Date(order.createdAt).toLocaleDateString()}</p>
                   </div>
-
-                  <div className="orders-actions-col">
-                    <button 
-                      className={`orders-wishlist-btn ${inWishlist ? 'active' : ''}`} 
-                      onClick={() => toggleWishlist(item)}
-                    >
-                      <svg viewBox="0 0 24 24" fill={inWishlist ? '#ff6b35' : 'none'} stroke={inWishlist ? '#ff6b35' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                      </svg>
-                      {inWishlist ? 'In Wishlist' : 'Add to Wishlist'}
-                    </button>
+                  <div style={{ textAlign: 'right' }}>
+                     <span style={{ display: 'inline-block', padding: '4px 12px', background: '#dcfce7', color: '#166534', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
+                       {order.paymentStatus}
+                     </span>
+                     {order.invoiceUrl && (
+                       <a 
+                         href={order.invoiceUrl.startsWith('http') ? order.invoiceUrl : `http://localhost:5000${order.invoiceUrl}`} 
+                         target="_blank" 
+                         rel="noreferrer" 
+                         style={{ display: 'block', marginTop: '10px', fontSize: '14px', color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}
+                       >
+                         Download Invoice
+                       </a>
+                     )}
+                     {order.trackingUrl && (
+                       <a 
+                         href={order.trackingUrl} 
+                         target="_blank" 
+                         rel="noreferrer" 
+                         style={{ display: 'block', marginTop: '5px', fontSize: '14px', color: '#f97316', textDecoration: 'none', fontWeight: '500' }}
+                       >
+                         Track via {order.courier}
+                       </a>
+                     )}
                   </div>
                 </div>
-              );
-            })}
+
+                {order.items.map((item, idx) => {
+                  const img = item.image || item.imgSrc;
+                  const inWishlist = wishlist.some(w => w.id === item.productId);
+                  return (
+                    <div key={idx} className="orders-list-item" style={{ border: 'none', padding: '10px 0', marginBottom: 0 }}>
+                      <Link 
+                        to={`/product/${item.productId}`}
+                        className="orders-item-image-wrapper"
+                      >
+                        <img src={img} alt={item.name} className="orders-item-image" />
+                      </Link>
+
+                      <div className="orders-item-details">
+                        <Link 
+                          to={`/product/${item.productId}`}
+                          className="orders-item-name"
+                        >
+                          {item.name}
+                        </Link>
+                        <span className="orders-item-price">₹{item.price}</span>
+                        <div style={{ fontSize: '13px', color: '#64748b', marginTop: '5px' }}>
+                          Qty: {item.quantity} {item.selectedVariant && `| Color: ${item.selectedVariant}`} {item.selectedSize && `| Size: ${item.selectedSize}`}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         ) : (
           <div className="empty-orders-state">
@@ -77,3 +132,4 @@ export default function Orders() {
     </div>
   );
 }
+

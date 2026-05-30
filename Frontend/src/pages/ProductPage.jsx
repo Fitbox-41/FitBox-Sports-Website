@@ -1,11 +1,13 @@
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './ProductPage.css';
-
+import axios from 'axios';
+import CheckoutModal from '../components/CheckoutModal';
 import { useContext } from 'react';
 import { ProductContext } from '../context/ProductContext';
 const MobileRelatedRow = ({ products }) => {
@@ -90,6 +92,7 @@ export default function ProductPage() {
   const { products: allProducts, loading } = useContext(ProductContext);
   // ─── 1. State & Data Logic ───
   const { addToCart } = useCart();
+  const { currentUser, setShowLoginModal } = useAuth();
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
 
@@ -101,6 +104,8 @@ export default function ProductPage() {
   const [selectedSizeIdx, setSelectedSizeIdx] = useState(0);
   const [currentImgIdx, setCurrentImgIdx] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
+  const [currentOrderId, setCurrentOrderId] = useState(null);
 
   const location = useLocation();
 
@@ -245,6 +250,40 @@ export default function ProductPage() {
 
   const handleNext = () => setCurrentImgIdx((prev) => (prev + 1) % images.length);
   const handlePrev = () => setCurrentImgIdx((prev) => (prev - 1 + images.length) % images.length);
+
+  const handleBuyNow = async () => {
+    if (!currentUser) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    try {
+      const buyNowItem = {
+        ...product,
+        selectedVariant: currentVariant.color,
+        selectedSize: product.sizes[selectedSizeIdx],
+        imgSrc: currentVariant.images[0],
+        quantity: quantity
+      };
+      const totalAmount = product.price * quantity;
+
+      const token = localStorage.getItem('fitbox_token');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+
+      const res = await axios.post('http://localhost:5000/api/orders/place', { 
+        items: [buyNowItem], 
+        totalAmount 
+      }, config);
+      
+      if (res.data.success) {
+        setCurrentOrderId(res.data.orderId);
+        setIsCheckoutModalOpen(true);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to initiate checkout");
+    }
+  };
 
   return (
     <div className="product-page">
@@ -413,6 +452,7 @@ export default function ProductPage() {
               <button 
                 className={`v2-btn v2-btn-buy ${currentVariant.isOutOfStock ? 'v2-btn--disabled' : ''}`}
                 disabled={currentVariant.isOutOfStock}
+                onClick={handleBuyNow}
               >
                 Buy Now
               </button>
@@ -589,6 +629,15 @@ export default function ProductPage() {
       </section>
 
       <Footer />
+      <CheckoutModal 
+        isOpen={isCheckoutModalOpen} 
+        onClose={() => setIsCheckoutModalOpen(false)} 
+        orderId={currentOrderId}
+        onSuccess={(id) => {
+          setIsCheckoutModalOpen(false);
+          window.location.href = '/orders';
+        }}
+      />
     </div>
   );
 }
