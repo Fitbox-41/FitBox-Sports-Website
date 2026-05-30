@@ -1,9 +1,13 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 import User from '../Models/User.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -15,7 +19,7 @@ cloudinary.config({
 
 export const generateInvoice = async (order) => {
   try {
-    const templatePath = path.join(process.cwd(), 'public', 'invoice.pdf');
+    const templatePath = path.join(__dirname, '..', 'public', 'invoice.pdf');
     
     // Load the existing PDF template
     if (!fs.existsSync(templatePath)) {
@@ -36,9 +40,9 @@ export const generateInvoice = async (order) => {
     
     // Fetch User Details
     const user = await User.findById(order.userId);
-    const customerName = order.shippingAddress?.name || user?.name || 'Customer Name';
-    const customerPhone = order.shippingAddress?.phone || user?.phone || 'N/A';
-    const customerEmail = user?.email || 'N/A';
+    const customerName = order.customerName || order.shippingAddress?.name || user?.name || 'Customer Name';
+    const customerPhone = order.customerPhone || order.shippingAddress?.phone || user?.phone || 'N/A';
+    const customerEmail = order.customerEmail || user?.email || 'N/A';
     const addr = order.shippingAddress || {};
     const addressString = `${addr.street || ''}, ${addr.city || ''}`;
     const addressString2 = `${addr.state || ''} ${addr.zip || ''}, ${addr.country || 'India'}`;
@@ -48,15 +52,16 @@ export const generateInvoice = async (order) => {
     firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 475, y: 650, size: 14, font: fontBold, color });
     
     // Adjusted No and Date to perfectly align horizontally with labels
-    firstPage.drawText(`${order._id.toString().substring(0, 8).toUpperCase()}`, { x: 500, y: 608, size: 10, font: fontBold, color });
-    firstPage.drawText(`${new Date().toLocaleDateString()}`, { x: 500, y: 588, size: 10, font: fontBold, color });
+    firstPage.drawText(String(order._id).substring(0, 8).toUpperCase(), { x: 500, y: 608, size: 10, font: fontBold, color });
+    firstPage.drawText(new Date().toLocaleDateString(), { x: 500, y: 588, size: 10, font: fontBold, color });
 
     // === INVOICE TO SECTION ===
-    firstPage.drawText(customerName,    { x: 120, y: 648, size: 10, font: fontBold, color });
-    firstPage.drawText(customerPhone,   { x: 120, y: 631, size: 10, font: fontBold, color });
-    firstPage.drawText(customerEmail,   { x: 120, y: 614, size: 10, font: fontBold, color });
-    firstPage.drawText(addressString,   { x: 120, y: 597, size: 10, font: fontBold, color });
-    firstPage.drawText(addressString2,  { x: 120, y: 582, size: 10, font: fontBold, color });
+    // Coerce everything to string to prevent pdf-lib TypeError on numbers
+    firstPage.drawText(String(customerName),    { x: 120, y: 648, size: 10, font: fontBold, color });
+    firstPage.drawText(String(customerPhone),   { x: 120, y: 631, size: 10, font: fontBold, color });
+    firstPage.drawText(String(customerEmail),   { x: 120, y: 614, size: 10, font: fontBold, color });
+    firstPage.drawText(String(addressString),   { x: 120, y: 597, size: 10, font: fontBold, color });
+    firstPage.drawText(String(addressString2),  { x: 120, y: 582, size: 10, font: fontBold, color });
 
     // Calculate dynamic row heights based on item count
     const numItems = order.items?.length || 0;
