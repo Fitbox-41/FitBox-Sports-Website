@@ -168,12 +168,24 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
             )}
           </div>
         </div>
-
         <div className="modal-actions">
           <button className="confirm-payment-btn" onClick={handleConfirmPayment} disabled={loading || showSuccessToast}>
             {loading ? 'Processing...' : 'Proceed to Payment'}
           </button>
         </div>
+
+        {showSuccessToast && (
+          <div className="checkout-success-overlay">
+            <div className="checkout-success-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <h2>Payment Successful!</h2>
+              <p>Redirecting to your orders...</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

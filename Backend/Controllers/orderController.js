@@ -1,7 +1,9 @@
 import Order from '../Models/Order.js';
+import User from '../Models/User.js';
 import { createGoKwikCheckout, verifyGoKwikSignature } from '../Utils/gokwik.js';
 import { createDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
+import sendEmail from '../Utils/sendEmail.js';
 
 export const placeOrder = async (req, res) => {
   try {
@@ -71,9 +73,15 @@ export const gokwikWebhook = async (req, res) => {
          };
       }
 
-      const { invoiceNumber, invoiceUrl } = await generateInvoice(order);
-      order.invoiceNumber = invoiceNumber;
-      order.invoiceUrl = invoiceUrl;
+      let pdfBuffer = null;
+      try {
+        const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
+        order.invoiceNumber = invoiceNumber;
+        order.invoiceUrl = invoiceUrl;
+        pdfBuffer = buffer;
+      } catch (err) {
+        console.error("Webhook Invoice generation failed:", err);
+      }
 
       try {
         const shipment = await createDelhiveryShipment(order);
@@ -88,6 +96,40 @@ export const gokwikWebhook = async (req, res) => {
       }
 
       await order.save();
+
+      // Send Email
+      try {
+        const user = await User.findById(order.userId);
+        const emailToSend = user?.email || customer_details?.email;
+        if (emailToSend && pdfBuffer) {
+          await sendEmail({
+            from: 'FitBox Sports <cart@fitboxsports.in>',
+            email: emailToSend,
+            subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                <h2 style="color: #ff6b35;">Thank you for your order!</h2>
+                <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+                <p>Your payment has been successfully processed and your order is confirmed.</p>
+                <p><strong>Order Total:</strong> Rs. ${order.totalAmount}</p>
+                <p>Please find your official invoice attached to this email.</p>
+                <br/>
+                <p>Best Regards,</p>
+                <p><strong>FitBox Sports Team</strong></p>
+              </div>
+            `,
+            attachments: [
+              {
+                filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+                content: pdfBuffer,
+                contentType: 'application/pdf'
+              }
+            ]
+          });
+        }
+      } catch (emailErr) {
+        console.error("Webhook Email Send Error:", emailErr);
+      }
     }
 
     res.status(200).send('Webhook processed');
@@ -120,10 +162,12 @@ export const mockPayment = async (req, res) => {
     }
 
     // 3. Generate Invoice
+    let pdfBuffer = null;
     try {
-      const { invoiceNumber, invoiceUrl } = await generateInvoice(order);
+      const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
       order.invoiceNumber = invoiceNumber;
       order.invoiceUrl = invoiceUrl;
+      pdfBuffer = buffer;
     } catch (invoiceError) {
       console.error("Mock Invoice generation failed:", invoiceError);
     }
@@ -147,6 +191,41 @@ export const mockPayment = async (req, res) => {
     }
 
     await order.save();
+
+    // 5. Send Order Confirmation Email
+    try {
+      const user = await User.findById(order.userId);
+      const emailToSend = user?.email;
+      if (emailToSend && pdfBuffer) {
+        await sendEmail({
+          from: 'FitBox Sports <cart@fitboxsports.in>',
+          email: emailToSend,
+          subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+              <h2 style="color: #ff6b35;">Thank you for your order!</h2>
+              <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+              <p>Your payment has been successfully processed and your order is confirmed.</p>
+              <p><strong>Order Total:</strong> Rs. ${order.totalAmount}</p>
+              <p>Please find your official invoice attached to this email.</p>
+              <br/>
+              <p>Best Regards,</p>
+              <p><strong>FitBox Sports Team</strong></p>
+            </div>
+          `,
+          attachments: [
+            {
+              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+              content: pdfBuffer,
+              contentType: 'application/pdf'
+            }
+          ]
+        });
+        console.log(`Confirmation email sent to ${emailToSend}`);
+      }
+    } catch (emailErr) {
+      console.error("Failed to send confirmation email:", emailErr);
+    }
 
     res.status(200).json({ success: true, message: 'Mock payment successful', orderId: order._id });
   } catch (error) {

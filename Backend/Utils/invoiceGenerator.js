@@ -44,12 +44,12 @@ export const generateInvoice = async (order) => {
     const addressString2 = `${addr.state || ''} ${addr.zip || ''}, ${addr.country || 'India'}`;
 
     // === TOP SECTION ===
-    // Placed amount below the black line under TOTAL DUE
-    firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 460, y: 645, size: 14, font: fontBold, color });
+    // Placed amount below the black line under TOTAL DUE, centered
+    firstPage.drawText(`Rs. ${order.totalAmount}`, { x: 475, y: 650, size: 14, font: fontBold, color });
     
-    // Adjusted No and Date to match the new higher template placement
-    firstPage.drawText(`${order._id.toString().substring(0, 8).toUpperCase()}`, { x: 500, y: 610, size: 10, font: fontBold, color });
-    firstPage.drawText(`${new Date().toLocaleDateString()}`, { x: 500, y: 590, size: 10, font: fontBold, color });
+    // Adjusted No and Date to perfectly align horizontally with labels
+    firstPage.drawText(`${order._id.toString().substring(0, 8).toUpperCase()}`, { x: 500, y: 608, size: 10, font: fontBold, color });
+    firstPage.drawText(`${new Date().toLocaleDateString()}`, { x: 500, y: 588, size: 10, font: fontBold, color });
 
     // === INVOICE TO SECTION ===
     firstPage.drawText(customerName, { x: 145, y: 648, size: 10, font: fontBold, color });
@@ -76,10 +76,10 @@ export const generateInvoice = async (order) => {
         
         // Truncate name to 25 chars to avoid crossing the vertical line
         firstPage.drawText(`${item.name}${variantText}${sizeText}`.substring(0, 25), { x: 55, y: currentY, size: fontSize, font: fontBold, color });
-        // Shifted X coordinates to match the new wider column structure
+        // Shifted X coordinates for perfect column centering
         firstPage.drawText(`${item.quantity || 1}`, { x: 330, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(`Rs. ${numericPrice}`, { x: 400, y: currentY, size: fontSize, font: fontBold, color });
-        firstPage.drawText(`Rs. ${itemTotal}`, { x: 480, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(`Rs. ${numericPrice}`, { x: 415, y: currentY, size: fontSize, font: fontBold, color });
+        firstPage.drawText(`Rs. ${itemTotal}`, { x: 490, y: currentY, size: fontSize, font: fontBold, color });
         
         currentY -= rowHeight;
       });
@@ -88,14 +88,14 @@ export const generateInvoice = async (order) => {
     // === BOTTOM SECTION ===
     const subtotal = order.totalAmount;
     const tax = 0;
-    // Shifted bottom section down by ~90px to match new template
-    firstPage.drawText(`Rs. ${subtotal}`, { x: 480, y: 235, size: 10, font: fontBold, color });
-    firstPage.drawText(`Rs. ${tax}`, { x: 480, y: 205, size: 10, font: fontBold, color });
-    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 480, y: 175, size: 12, font: fontBold, color });
+    // Shifted bottom section UP by 10px to perfectly align with labels, and X to 490 to match column
+    firstPage.drawText(`Rs. ${subtotal}`, { x: 490, y: 245, size: 10, font: fontBold, color });
+    firstPage.drawText(`Rs. ${tax}`, { x: 490, y: 215, size: 10, font: fontBold, color });
+    firstPage.drawText(`Rs. ${subtotal + tax}`, { x: 490, y: 185, size: 12, font: fontBold, color });
 
-    // Payment Method
-    firstPage.drawText(`Online Payment`, { x: 155, y: 205, size: 10, font: fontBold, color });
-    firstPage.drawText(`N/A`, { x: 155, y: 175, size: 10, font: fontBold, color });
+    // Payment Method - aligned vertically with Tax and Total labels
+    firstPage.drawText(`Online Payment`, { x: 180, y: 215, size: 10, font: fontBold, color });
+    firstPage.drawText(`N/A`, { x: 180, y: 185, size: 10, font: fontBold, color });
 
     // Serialize to bytes
     const pdfBytes = await pdfDoc.save();
@@ -105,19 +105,24 @@ export const generateInvoice = async (order) => {
     return new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         {
-          resource_type: "image", 
+          resource_type: "image", // using image format to serve pdf directly if desired or raw
           folder: "fitbox_invoices",
-          public_id: `Invoice-${order._id}`
+          public_id: `Invoice-${order._id}`,
+          format: 'pdf'
         },
         (error, result) => {
           if (error) {
-            console.error("Cloudinary upload failed:", error);
-            return reject(error);
+            console.error("Cloudinary upload error:", error);
+            reject(error);
+          } else {
+            resolve({ 
+              invoiceNumber: `INV-${order._id}`, 
+              invoiceUrl: result.secure_url,
+              buffer: buffer 
+            });
           }
-          resolve({ invoiceNumber: `INV-${order._id}`, invoiceUrl: result.secure_url });
         }
-      );
-      uploadStream.end(buffer);
+      );uploadStream.end(buffer);
     });
 
   } catch (error) {
