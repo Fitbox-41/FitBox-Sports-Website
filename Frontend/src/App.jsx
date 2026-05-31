@@ -14,6 +14,7 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Team from './pages/Team';
 import FAQ from './pages/FAQ';
+import Sitemap from './pages/Sitemap';
 import Account from './pages/Account';
 import Orders from './pages/Orders';
 import MobileNav from './components/MobileNav';
@@ -103,6 +104,7 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           <Route path="/team" element={<Team />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/under99" element={<Home />} />
           <Route path="/category/:categoryId" element={<ProductCategory />} />
           

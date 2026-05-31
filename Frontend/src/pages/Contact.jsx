@@ -65,11 +65,11 @@ export default function Contact() {
             <form className="contact-form" onSubmit={handleSubmit}>
               <label>
                 Name
-                <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" />
+                <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Alan Turing" />
               </label>
               <label>
                 Email
-                <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" />
+                <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="email@example.com" />
               </label>
               <label className="full-width">
                 Subject
