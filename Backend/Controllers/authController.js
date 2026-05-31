@@ -7,7 +7,8 @@ import jwt from 'jsonwebtoken';
 const generateOTP = () => Math.floor(100000 + Math.random() * 900000).toString();
 
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET || 'secret123', {
+  if (!process.env.JWT_SECRET) throw new Error('JWT_SECRET is not defined');
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d',
   });
 };
