@@ -7,11 +7,11 @@ import './Header.css';
 
 /* ── Categories for Sub-Header ── */
 const categories = [
-  { label: 'Weights & Dumbbells',    path: '/dumbbells'   },
-  { label: 'Balls & Sports',      path: '/balls'       },
-  { label: 'Home Gym & Sets',   path: '/homegym'     },
-  { label: 'Boxing & Belts',     path: '/boxing'      },
-  { label: 'Wearable & Accessories',   path: '/accessories' },
+  { label: 'Weights & Dumbbells',    path: '/category/weights-and-dumbbells'   },
+  { label: 'Workout Essentials',     path: '/category/workout-essentials'       },
+  { label: 'Support & Protection',   path: '/category/support-and-protection'     },
+  { label: 'Balls & Sports',         path: '/category/balls-and-sports'      },
+  { label: 'Lifestyle & Accessories',path: '/category/lifestyle-and-accessories' },
 ];
 
 /* ── User dropdown menu items (SVG icons, no emojis) ── */

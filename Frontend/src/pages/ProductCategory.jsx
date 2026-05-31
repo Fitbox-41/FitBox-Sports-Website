@@ -41,14 +41,24 @@ export default function ProductCategory() {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
 
-  const meta = categoryMeta[categoryId] || { label: 'Category', desc: 'Browse our premium sports equipment.', banner: '/2.jpg-scaled.webp' };
+  const formatLabel = (id) => (id || '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const meta = categoryMeta[categoryId] || { 
+    label: formatLabel(categoryId) || 'Category', 
+    desc: `Browse our premium ${formatLabel(categoryId).toLowerCase() || 'sports'} equipment.`, 
+    banner: '/Untitled-design-19.webp' 
+  };
 
   useEffect(() => {
     const cid = categoryId || '';
     const categoryProducts = allProducts.filter(p => {
-      const categoryMatch = p.category && p.category.toLowerCase().includes(cid.replace(/-/g, ' ').toLowerCase());
-      const nameMatch = p.name && p.name.toLowerCase().includes(cid.replace(/-/g, ' ').toLowerCase());
-      return categoryMatch || nameMatch;
+      const query1 = cid.replace(/-/g, ' ').toLowerCase();
+      const query2 = query1.replace(/ and /g, ' & ');
+      
+      const categoryMatch = p.category && (p.category.toLowerCase().includes(query1) || p.category.toLowerCase().includes(query2));
+      const subCategoryMatch = p.subCategory && (p.subCategory.toLowerCase().includes(query1) || p.subCategory.toLowerCase().includes(query2));
+      const nameMatch = p.name && (p.name.toLowerCase().includes(query1) || p.name.toLowerCase().includes(query2));
+      
+      return categoryMatch || subCategoryMatch || nameMatch;
     });
     
     setProducts(categoryProducts);
@@ -88,22 +98,33 @@ export default function ProductCategory() {
   // Automatically expand products with multiple variants into separate cards
   const expandedProducts = useMemo(() => {
     return filteredProducts.flatMap((p) => {
+      const pPrice = typeof p.price === 'number' ? `₹${p.price.toLocaleString('en-IN')}` : p.price;
+      const pOldPrice = typeof p.oldPrice === 'number' ? `₹${p.oldPrice.toLocaleString('en-IN')}` : p.oldPrice;
+
       if (p.variants && p.variants.length > 1) {
         return p.variants.map((variant, vIdx) => ({
           ...p,
           displayId: `${p.id}-v${vIdx}`, // Unique key for mapping
           name: variant.color ? `${p.name} - ${variant.color}` : p.name,
-          imgSrc: variant.images[0],
+          imgSrc: variant.images && variant.images[0] ? variant.images[0] : 'https://placehold.co/600x600/png?text=Product+Image',
+          hoverImgSrc: variant.images && variant.images[1] ? variant.images[1] : null,
           selectedVariant: variant.color, // Pass color for query param
           isOutOfStock: variant.isOutOfStock || p.isOutOfStock, // Variant-specific stock status
+          price: pPrice,
+          oldPrice: pOldPrice
         }));
       }
       
-      const defaultImg = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
+      const defaultImg = p.imgSrc || (p.showcaseImages && p.showcaseImages[0]) || (p.variants && p.variants[0]?.images?.[0]) || 'https://placehold.co/600x600/png?text=Product+Image';
+      const hoverImg = p.hoverImgSrc || (p.showcaseImages && p.showcaseImages[1]) || null;
+      
       return [{
         ...p,
         displayId: p.id,
-        imgSrc: defaultImg
+        imgSrc: defaultImg,
+        hoverImgSrc: hoverImg,
+        price: pPrice,
+        oldPrice: pOldPrice
       }];
     });
   }, [filteredProducts]);

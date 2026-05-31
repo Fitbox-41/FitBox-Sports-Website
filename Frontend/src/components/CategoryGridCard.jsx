@@ -38,7 +38,7 @@ const CategoryGridCard = memo(({ card }) => {
 
       {/* See all link */}
       <Link to={card.seeAllPath || '/products'} className="cgc-see-all" id={`cgc-see-all-${card.id}`}>
-        See all offers
+        See all products
       </Link>
     </div>
   );

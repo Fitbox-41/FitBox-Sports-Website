@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, memo } from 'react';
+import { useState, useEffect, useRef, memo, useContext } from 'react';
+import { ProductContext } from '../context/ProductContext';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
@@ -46,151 +47,27 @@ const hotProducts = [
 
 /* Category pills – infinite scrolling strip */
 const categories = [
-  { id: 1, label: 'Wall Mounting', path: '/category/wall-mounting', imgSrc: '/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp' },
-  { id: 2, label: 'Weighted Vests', path: '/category/weighted-vests', imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6y5zxfhsz.webp' },
-  { id: 3, label: 'Clothing', path: '/category/clothing', imgSrc: '/s-t-shirt-for-gym-fitbox-sports-original-imahf8gphqczzqsg-removebg-preview.webp' },
-  { id: 4, label: 'Balls', path: '/category/balls', imgSrc: '/71di3zpn2mL.webp' },
-  { id: 5, label: 'Toning Tube', path: '/category/toning-tube', imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.webp' },
+  { id: 1, label: 'Wall Mounting', path: '/category/wall-mounts', imgSrc: '/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp' },
+  { id: 2, label: 'Weighted Vests', path: '/category/weight-vests', imgSrc: '/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6y5zxfhsz.webp' },
+  { id: 3, label: 'Clothing', path: '/category/gym-t-shirts', imgSrc: '/s-t-shirt-for-gym-fitbox-sports-original-imahf8gphqczzqsg-removebg-preview.webp' },
+  { id: 4, label: 'Balls', path: '/category/basketballs', imgSrc: '/71di3zpn2mL.webp' },
+  { id: 5, label: 'Toning Tube', path: '/category/resistance-bands', imgSrc: '/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.webp' },
   { id: 6, label: 'Dumbbells', path: '/category/dumbbells', imgSrc: '/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mxbhghmgfz.webp' },
   { id: 7, label: 'Resistance Bands', path: '/category/resistance-bands', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp' },
-  { id: 8, label: 'Ropes', path: '/category/ropes', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.webp' },
+  { id: 8, label: 'Ropes', path: '/category/skipping-ropes', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.webp' },
   { id: 9, label: 'Push-up Bars', path: '/category/push-up-bars', imgSrc: '/barrr.webp' },
   { id: 10, label: 'Kettlebells', path: '/category/kettlebells', imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp' },
-  { id: 11, label: 'Supporters', path: '/category/supporters', imgSrc: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.webp' },
-  { id: 12, label: 'Belts', path: '/category/belts', imgSrc: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.webp' },
-  { id: 13, label: 'Gloves', path: '/category/gloves', imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.webp' },
-  { id: 14, label: 'Grippers', path: '/category/grippers', imgSrc: '/gripper.webp' },
+  { id: 11, label: 'Supporters', path: '/category/wrist-supporters', imgSrc: '/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyysgharah4.webp' },
+  { id: 12, label: 'Belts', path: '/category/lifting-belts', imgSrc: '/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86zdtkkus2.webp' },
+  { id: 13, label: 'Gloves', path: '/category/gym-gloves', imgSrc: '/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzkcgrhhkv.webp' },
+  { id: 14, label: 'Grippers', path: '/category/hand-grippers', imgSrc: '/gripper.webp' },
   { id: 15, label: 'Shakers', path: '/category/shakers', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp' },
-  { id: 16, label: 'Bats', path: '/category/bats', imgSrc: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.webp' },
+  { id: 16, label: 'Bats', path: '/category/cricket-bats', imgSrc: '/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcqddgr5nf.webp' },
 ];
 
-const newArrivals = [
-  {
-    id: 1,
-    name: 'Pro Hex Dumbbell Set',
-    desc: 'Rubber-coated | Anti-roll',
-    price: '₹2,499',
-    oldPrice: '₹3,200',
-    tag: 'New',
-    imgSrc: '/sports-hexa-pvc-dumbbells-8-0-fitbox-sports-original-imahf77zyfemq8nj.webp',
-    hoverImgSrc: '/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp',
-  },
-  {
-    id: 2,
-    name: 'Basket Ball Size-7',
-    desc: '29.5" Circumference | 8-Panel Design',
-    price: '₹1,799',
-    oldPrice: '₹2,100',
-    tag: 'New',
-    imgSrc: '/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp',
-    hoverImgSrc: '/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp',
-  },
-  {
-    id: 3,
-    name: 'Shaker Pro 700ml',
-    desc: 'Leak-proof | BPA-free',
-    price: '₹499',
-    oldPrice: '₹699',
-    tag: 'New',
-    imgSrc: '/700-supplements-shaker-bottle-for-protein-pre-post-workout-700ml-original-imahfgyeae98gqtf.webp',
-    hoverImgSrc: '/700-supplements-shaker-bottle-for-protein-pre-post-workout-original-imahfgyh5fg5pgfh.webp',
-  },
-  {
-    id: 4,
-    name: 'Premium kettlebell (MultiColor)',
-    desc: 'Set of 2 | All levels',
-    price: '₹849',
-    oldPrice: '₹1,200',
-    tag: 'New',
-    imgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9knq3knt5gv.webp',
-    hoverImgSrc: '/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp',
-  },
-  {
-    id: 5,
-    name: 'Gym Gloves V2',
-    desc: 'Full palm pad | Wrist wrap',
-    price: '₹699',
-    oldPrice: '₹999',
-    tag: 'New',
-    imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp',
-    hoverImgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp'
-  },
-  {
-    id: 6,
-    name: 'Fabric Resistance Band (Workout Hip Band)',
-    desc: 'Non-slip fabric | Durable elastic',
-    price: '₹499',
-    oldPrice: '₹600',
-    tag: 'New',
-    imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztkrqjxtzh.webp',
-    hoverImgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp'
-  },
-];
 
 /* Best Sellers – expanded to 30 items for infinite scroll feel */
-const bestSellers = [
-  {
-    id: 101,
-    name: 'Cast Iron Kettlebell',
-    desc: 'Solid cast iron | Matte finish',
-    price: '₹1,499',
-    oldPrice: '₹1,999',
-    imgSrc: 'premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp',
-  },
-  {
-    id: 102,
-    name: 'Viper Cricket Bat',
-    desc: 'Heavy duty | Plastic',
-    price: '₹1,299',
-    oldPrice: '₹1,599',
-    imgSrc: '/Bat.webp',
-  },
-  {
-    id: 103,
-    name: 'Boxing Focus Pads',
-    desc: 'Curved design | High density',
-    price: '₹899',
-    oldPrice: '₹1,199',
-    imgSrc: 'boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzq5ucedvy.webp',
-  },
-  {
-    id: 104,
-    name: 'Weighted Vest 10kg',
-    desc: 'Adjustable weight | Breathable',
-    price: '₹2,999',
-    oldPrice: '₹3,499',
-    imgSrc: 'adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfcuf3thayh.webp',
-  },
-  {
-    id: 105,
-    name: 'Hand Gripper Pro',
-    desc: 'Adjustable 10-60kg | Counter',
-    price: '₹299',
-    oldPrice: '₹499',
-    imgSrc: '/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tquhzhgu9.webp',
-  },
-  {
-    id: 106,
-    name: 'Toning Tube Set',
-    desc: '3 resistance levels | Handles',
-    price: '₹749',
-    oldPrice: '₹999',
-    imgSrc: 'double-toning-tube-resistance-band-for-workout-for-men-women-1-original-imah7wwjgnvvvzhu.webp',
-  },
-  ...Array.from({ length: 34 }).map((_, i) => ({
-    id: 107 + i,
-    name: `New Product ${i + 1}`,
-    desc: 'Product description goes here',
-    price: '₹999',
-    oldPrice: '₹1,299',
-    imgSrc: '', // Placeholder for user to add images later
-  }))
-];
 
-const bsChunks = [];
-for (let i = 0; i < bestSellers.length; i += 8) {
-  bsChunks.push(bestSellers.slice(i, i + 8));
-}
 
 /* Customer Reviews data */
 const customerReviews = [
@@ -207,8 +84,8 @@ const customerReviews = [
 const ourProductCards = [
   {
     id: 'op-1',
-    heading: 'Strength Training',
-    seeAllPath: '/category/dumbbells',
+    heading: 'Weights & Dumbbells',
+    seeAllPath: '/category/weights-and-dumbbells',
     items: [
       { id: 'op-1-a', label: 'Dumbbells', path: '/category/dumbbells', imgSrc: '517FvNN-33L.webp' },
       { id: 'op-1-b', label: 'Kettlebell', path: '/category/kettlebells', imgSrc: 'abcde.webp' },
@@ -219,7 +96,7 @@ const ourProductCards = [
   {
     id: 'op-2',
     heading: 'Workout Essentials',
-    seeAllPath: '/category/ropes',
+    seeAllPath: '/category/workout-essentials',
     items: [
       { id: 'op-2-a', label: 'Yoga Belt', path: '/category/belts', imgSrc: '183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7f5ffqchh.webp' },
       { id: 'op-2-b', label: 'Toning Tube', path: '/category/toning-tube', imgSrc: 'toning.webp' },
@@ -230,7 +107,7 @@ const ourProductCards = [
   {
     id: 'op-3',
     heading: 'Support & Protection',
-    seeAllPath: '/category/gloves',
+    seeAllPath: '/category/support-and-protection',
     items: [
       { id: 'op-3-a', label: 'Wrist Supporter', path: '/category/supporters', imgSrc: 'supporters.webp' },
       { id: 'op-3-b', label: 'Lifting Belts', path: '/category/belts', imgSrc: 'left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86nwz3u6bh.webp' },
@@ -240,20 +117,19 @@ const ourProductCards = [
   },
   {
     id: 'op-4',
-    heading: 'Sports & Training',
-    seeAllPath: '/category/balls',
+    heading: 'Balls & Sports',
+    seeAllPath: '/category/balls-and-sports',
     items: [
       { id: 'op-4-a', label: 'Football', path: '/category/balls', imgSrc: '450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8yuaymr7e.webp' },
       { id: 'op-4-b', label: 'Cricket Ball', path: '/category/balls', imgSrc: 'balls.webp' },
       { id: 'op-4-c', label: 'Pickleball', path: '/category/bats', imgSrc: 'pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcseafvhaz.webp' },
       { id: 'op-4-da', label: 'Basketball', path: '/category/balls', imgSrc: '450-475-basketball-official-professional-match-ball-indoor-original-imahf79fgrnzr9m4.webp' },
-
     ],
   },
   {
     id: 'op-5',
     heading: 'Lifestyle & Accessories',
-    seeAllPath: '/category/shakers',
+    seeAllPath: '/category/lifestyle-and-accessories',
     items: [
       { id: 'op-5-a', label: 'T-shirt', path: '/category/clothing', imgSrc: 's-t-shirt-for-gym-fitbox-sports-original-imahf8gpbqppvzzz-removebg-preview.webp' },
       { id: 'op-5-b', label: 'Boxing Gloves', path: '/category/gloves', imgSrc: 'boxing.webp' },
@@ -434,7 +310,42 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse, canAnimate })
   );
 });
 
+const newArrivalsIds = [56, 59, 48, 63, 33, 114];
+const bestSellersIds = [1, 5, 7, 19, 28, 2, 10, 18, 48, 32, 3, 11, 23, 51, 35, 4, 13, 29, 65, 40, 6, 14, 39, 105, 45, 8, 20, 59, 122, 77, 9, 24, 60, 123, 102, 12, 33, 64, 125, 103, 15, 46, 73, 113, 16, 61, 74, 114, 17, 66, 75, 115, 21, 67, 76, 116, 22, 68, 78, 120, 25, 69, 79, 121, 26, 70, 87, 27, 117, 30, 118, 31, 119, 34, 124, 36, 126, 37, 38, 41];
 export default function Home() {
+  const { products: allProducts } = useContext(ProductContext);
+
+  const newArrivals = newArrivalsIds.map(id => {
+    const p = allProducts.find(prod => prod.id === id);
+    if (!p) return null;
+    return {
+      ...p,
+      name: p.name.includes('Shaker') ? 'Shaker Pro 700ml' : p.name,
+      tag: 'New',
+      price: `₹${p.price.toLocaleString('en-IN')}`,
+      oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
+      imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : 'https://placehold.co/600x600/png?text=Product+Image'),
+      hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
+    };
+  }).filter(Boolean);
+
+  const bestSellers = bestSellersIds.map(id => {
+    const p = allProducts.find(prod => prod.id === id);
+    if (!p) return null;
+    return {
+      ...p,
+      price: `₹${p.price.toLocaleString('en-IN')}`,
+      oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
+      imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : 'https://placehold.co/600x600/png?text=Product+Image'),
+      hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
+    };
+  }).filter(Boolean);
+
+  const bsChunks = [];
+  for (let i = 0; i < bestSellers.length; i += 8) {
+    bsChunks.push(bestSellers.slice(i, i + 8));
+  }
+
   const [canAnimate, setCanAnimate] = useState(false);
 
   useEffect(() => {
