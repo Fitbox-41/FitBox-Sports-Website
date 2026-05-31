@@ -270,9 +270,9 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         </div>
 
         <div className="pc-price-row">
-          <span className="pc-price">{product.price}</span>
+          <span className="pc-price">{typeof product.price === 'number' ? `₹${product.price.toLocaleString('en-IN')}` : product.price}</span>
           {product.oldPrice && (
-            <span className="pc-old-price">{product.oldPrice}</span>
+            <span className="pc-old-price">{typeof product.oldPrice === 'number' ? `₹${product.oldPrice.toLocaleString('en-IN')}` : product.oldPrice}</span>
           )}
         </div>
 

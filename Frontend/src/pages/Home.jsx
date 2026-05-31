@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import CategoryGridCard from '../components/CategoryGridCard';
 import Footer from '../components/Footer';
+import { flattenProducts } from '../utils/flattenProducts';
 import './Home.css';
 
 /* ═══════════════════════════════════════
@@ -208,7 +209,7 @@ const MobileRowCarousel = ({ products }) => {
             onTouchEnd={handleTouchEnd}
           >
             {[...products, ...products, ...products].map((product, i) => (
-              <div className="na-mobile-carousel bs-card-wrap" key={`${product.id}-${i}`} style={{ width: '80%' }}>
+              <div className="na-mobile-carousel bs-card-wrap" key={`\${product.displayId || product.id}-${i}`} style={{ width: '80%' }}>
                 <ProductCard product={product} />
               </div>
             ))}
@@ -328,6 +329,7 @@ export default function Home() {
       hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
     };
   }).filter(Boolean);
+  const flattenedNewArrivals = flattenProducts(newArrivals);
 
   const bestSellers = bestSellersIds.map(id => {
     const p = allProducts.find(prod => prod.id === id);
@@ -340,10 +342,11 @@ export default function Home() {
       hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
     };
   }).filter(Boolean);
+  const flattenedBestSellers = flattenProducts(bestSellers);
 
   const bsChunks = [];
-  for (let i = 0; i < bestSellers.length; i += 8) {
-    bsChunks.push(bestSellers.slice(i, i + 8));
+  for (let i = 0; i < flattenedBestSellers.length; i += 8) {
+    bsChunks.push(flattenedBestSellers.slice(i, i + 8));
   }
 
   const [canAnimate, setCanAnimate] = useState(false);
@@ -929,7 +932,7 @@ export default function Home() {
                     const isVisible = i >= hpCurrent - 1 && i <= hpCurrent + 1;
                     return (
                       <div
-                        key={`${product.id}-${i}`}
+                        key={`\${product.displayId || product.id}-${i}`}
                         className={`hp-card ${isCenter ? 'hp-card--raised' : ''} ${isVisible ? 'hp-visible' : ''}`}
                         style={{ transition: hpTrans ? '' : 'none' }}
                       >
@@ -1050,8 +1053,8 @@ export default function Home() {
                 onTouchStart={handleNaTouchStart}
                 onTouchEnd={handleNaTouchEnd}
               >
-                {[...newArrivals, ...newArrivals, ...newArrivals].map((product, i) => (
-                  <div className="na-mobile-carousel na-card-wrap" key={`${product.id}-${i}`} style={{ width: 'var(--na-step, 25%)' }}>
+                {[...flattenedNewArrivals, ...flattenedNewArrivals, ...flattenedNewArrivals].map((product, i) => (
+                  <div className="na-mobile-carousel na-card-wrap" key={`\${product.displayId || product.id}-${i}`} style={{ width: 'var(--na-step, 25%)' }}>
                     <ProductCard product={product} />
                   </div>
                 ))}
@@ -1131,8 +1134,8 @@ export default function Home() {
 
         {/* Desktop Grid (Hidden on Mobile) */}
         <div className="best-sellers-grid bs-desktop">
-          {bestSellers.map((product) => (
-            <div key={product.id} className="reveal-on-scroll">
+          {flattenedBestSellers.map((product) => (
+            <div key={product.displayId || product.id} className="reveal-on-scroll">
               <ProductCard product={product} />
             </div>
           ))}

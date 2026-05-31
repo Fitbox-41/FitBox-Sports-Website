@@ -1,4 +1,4 @@
-const products = [
+export default [
   {
     "id": 1,
     "name": "Intruder 20 Kg Adjustable Pvc Dumbbells",
@@ -30,21 +30,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75azbs9hyjq.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf79dz5twqvjy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-    "hoverImgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 2,
@@ -77,21 +77,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 3,
@@ -124,21 +124,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffbxr73dae.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffge8d2fsy.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffkzczefhf.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffuzw4ezzd.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-      "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffbxr73dae.webp",
-      "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffge8d2fsy.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-    "hoverImgSrc": "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffbxr73dae.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 4,
@@ -171,21 +171,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-    "hoverImgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 5,
@@ -218,31 +218,31 @@ const products = [
       {
         "color": "Punching Wraps Hand",
         "images": [
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fbg6huupt.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fmpztrvmg.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fw3rnnhmy.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fwkd3jebq.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fwsxkxmkx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Punching Wraps Hand & Wrist Wraps",
         "images": [
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fbg6huupt.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fmpztrvmg.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fw3rnnhmy.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fwkd3jebq.webp",
-          "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fwsxkxmkx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fbg6huupt.webp",
-      "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fmpztrvmg.webp",
-      "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fw3rnnhmy.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fbg6huupt.webp",
-    "hoverImgSrc": "/5-0-boxing-wraps-punching-wraps-hand-wrist-wraps-protectors-original-imahff3fmpztrvmg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 6,
@@ -275,41 +275,41 @@ const products = [
       {
         "color": "W/A Barbell Rod & Weigth Plates",
         "images": [
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cpsyhhgu4.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79ctkygkjfq.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cybd3gkfz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "W/A Barbell Rod & Weigth Plates 19Kg",
         "images": [
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cpsyhhgu4.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79ctkygkjfq.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cybd3gkfz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "W/A Barbell Rod & Weigth Plates 19kg (2kg x 2 + 2.5kg x 2 + 5kg x 2) Black Bar & Plate Combo (19 kg)",
         "images": [
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cpsyhhgu4.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79ctkygkjfq.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cybd3gkfz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-      "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp",
-      "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cpsyhhgu4.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-    "hoverImgSrc": "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 7,
@@ -342,21 +342,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zect55pkhd.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zeh7u3gwrk.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zemgatwqjk.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-      "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp",
-      "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zect55pkhd.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-    "hoverImgSrc": "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 8,
@@ -389,21 +389,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-    "hoverImgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 9,
@@ -436,21 +436,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-          "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-          "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-          "/dumbbells-set-10kg-pvc-home-gym-combo-10-rv-fitness-original-imahfuagwrbxvgzm.webp",
-          "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-      "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-      "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-    "hoverImgSrc": "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 10,
@@ -483,21 +483,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy6fjwsbat.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyyavs527zp.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyyccfyfgb2.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp",
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy6fjwsbat.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-    "hoverImgSrc": "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 11,
@@ -530,21 +530,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xhyggekmt.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xpqr3bwhc.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xs8nermgy.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xstfdkmag.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xydqrefyg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xhyggekmt.webp",
-      "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xpqr3bwhc.webp",
-      "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xs8nermgy.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xhyggekmt.webp",
-    "hoverImgSrc": "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xpqr3bwhc.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 12,
@@ -577,21 +577,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjw8qqjqrc.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-    "hoverImgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 13,
@@ -624,21 +624,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "https://placehold.co/600x600/png?text=Product+Image",
-      "https://placehold.co/600x600/png?text=Product+Image",
-      "https://placehold.co/600x600/png?text=Product+Image"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "https://placehold.co/600x600/png?text=Product+Image",
-    "hoverImgSrc": "https://placehold.co/600x600/png?text=Product+Image"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 14,
@@ -671,21 +671,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy6fjwsbat.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyyavs527zp.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyyccfyfgb2.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp",
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy6fjwsbat.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-    "hoverImgSrc": "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 15,
@@ -718,21 +718,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyrzyduzg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-    "hoverImgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 16,
@@ -765,21 +765,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 17,
@@ -812,21 +812,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 18,
@@ -859,21 +859,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-          "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp",
-          "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-      "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp",
-      "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-    "hoverImgSrc": "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 19,
@@ -906,21 +906,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp",
-          "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp",
-          "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwz5vzz6yb.webp",
-          "/wall-mounted-pull-up-bar-chin-up-bar-for-home-gym-medium-3-original-imahdzx8yq5hgpkz.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve - Copy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp",
-      "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp",
-      "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwz5vzz6yb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp",
-    "hoverImgSrc": "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 20,
@@ -953,21 +953,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5bzsqsyjs.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5fspgvqgr.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5hffheqsx.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5mgfphrqh.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5ppunru38.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5bzsqsyjs.webp",
-      "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5fspgvqgr.webp",
-      "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5hffheqsx.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5bzsqsyjs.webp",
-    "hoverImgSrc": "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5fspgvqgr.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 21,
@@ -1000,21 +1000,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 22,
@@ -1047,21 +1047,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-    "hoverImgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 23,
@@ -1094,21 +1094,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdtgvmeum.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-    "hoverImgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 24,
@@ -1141,21 +1141,21 @@ const products = [
       {
         "color": "40Kg",
         "images": [
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tdvxzwec6.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tg2hwt8w3.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tgha94ykg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp",
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tdvxzwec6.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-    "hoverImgSrc": "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 25,
@@ -1188,21 +1188,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dznmyyr2p.webp",
-          "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-    "hoverImgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 26,
@@ -1235,21 +1235,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/dumbbells-set-10kg-pvc-home-gym-combo-10-rv-fitness-original-imahfuagwrbxvgzm.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrpsmyqe2w.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/dumbbells-set-10kg-pvc-home-gym-combo-10-rv-fitness-original-imahfuagwrbxvgzm.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/dumbbells-set-10kg-pvc-home-gym-combo-10-rv-fitness-original-imahfuagwrbxvgzm.webp",
-    "hoverImgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 27,
@@ -1282,21 +1282,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffbxr73dae.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffge8d2fsy.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffkzczefhf.webp",
-          "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffuzw4ezzd.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-      "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffbxr73dae.webp",
-      "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffge8d2fsy.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-    "hoverImgSrc": "/8-grip-home-gym-set-8kg-barbell-rod-2-x-dumbbell-rods-8kg-original-imahfeffbxr73dae.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 28,
@@ -1329,21 +1329,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzdxr5ghz.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzu8g2h2q.webp",
-          "/double-toning-tube-resistance-band-for-workout-for-men-women-1-original-imah7wwjgnvvvzhu.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp",
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzdxr5ghz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-    "hoverImgSrc": "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 29,
@@ -1376,21 +1376,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdtgvmeum.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-    "hoverImgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 30,
@@ -1423,21 +1423,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 31,
@@ -1470,21 +1470,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dznmyyr2p.webp",
-          "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-    "hoverImgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 32,
@@ -1517,21 +1517,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-adjustable-hand-gripper-vmoni-original-imah7yqfnssg9fhx.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tdvxzwec6.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tg2hwt8w3.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-adjustable-hand-gripper-vmoni-original-imah7yqfnssg9fhx.webp",
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-adjustable-hand-gripper-vmoni-original-imah7yqfnssg9fhx.webp",
-    "hoverImgSrc": "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 33,
@@ -1564,21 +1564,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv-1.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp",
-      "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp",
-      "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv-1.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp",
-    "hoverImgSrc": "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 34,
@@ -1611,21 +1611,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjw8qqjqrc.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-    "hoverImgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 35,
@@ -1658,21 +1658,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez45hcfnzgf.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4dthah3sh.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4fs2gurkd.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4ggpyvhgt.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4vpetyrun.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez45hcfnzgf.webp",
-      "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4dthah3sh.webp",
-      "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4fs2gurkd.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez45hcfnzgf.webp",
-    "hoverImgSrc": "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4dthah3sh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 36,
@@ -1705,21 +1705,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3eptpz6zdp.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3etnhvhkcs.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp",
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3eptpz6zdp.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-    "hoverImgSrc": "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 37,
@@ -1752,21 +1752,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 38,
@@ -1799,21 +1799,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjw8qqjqrc.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-    "hoverImgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 39,
@@ -1846,21 +1846,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj5v4ntsnc.webp",
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj7qr9fr3x.webp",
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjqfbhzth4.webp",
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjrmxpbyaw.webp",
-          "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff689ad3v7zf.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj5v4ntsnc.webp",
-      "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj7qr9fr3x.webp",
-      "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjqfbhzth4.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj5v4ntsnc.webp",
-    "hoverImgSrc": "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj7qr9fr3x.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 40,
@@ -1893,21 +1893,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynezbbxhkr.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyng7vaqhmz.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynszwrmvxp.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynezbbxhkr.webp",
-      "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyng7vaqhmz.webp",
-      "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynezbbxhkr.webp",
-    "hoverImgSrc": "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyng7vaqhmz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 41,
@@ -1940,21 +1940,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykpsezhafz.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykudhkzgdz.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykumtgqa2t.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykpsezhafz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-    "hoverImgSrc": "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 42,
@@ -1987,21 +1987,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrpsmyqe2w.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrvyzbm5hs.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-    "hoverImgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 43,
@@ -2034,21 +2034,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3eptpz6zdp.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3etnhvhkcs.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp",
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3eptpz6zdp.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-    "hoverImgSrc": "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 44,
@@ -2081,21 +2081,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-          "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp",
-          "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhgkhyrjr.webp",
-          "/sports-hexa-pvc-dumbbells-2-0-fitbox-sports-original-imahf77z2ygwxqfv.webp",
-          "/sports-hexa-pvc-dumbbells-2-0-fitbox-sports-original-imahf77z4yhqzuvc.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-      "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp",
-      "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhgkhyrjr.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-    "hoverImgSrc": "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 45,
@@ -2128,21 +2128,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzdxr5ghz.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzu8g2h2q.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js2rgp73xf.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp",
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzdxr5ghz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-    "hoverImgSrc": "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 46,
@@ -2175,21 +2175,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-      "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-      "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-    "hoverImgSrc": "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 47,
@@ -2222,21 +2222,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-    "hoverImgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 48,
@@ -2269,21 +2269,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyftz5x3p7u.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-      "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
-      "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyftz5x3p7u.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-    "hoverImgSrc": "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 49,
@@ -2316,21 +2316,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp",
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-    "hoverImgSrc": "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 50,
@@ -2363,21 +2363,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-          "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-      "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-    "hoverImgSrc": "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 51,
@@ -2410,21 +2410,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ybeaw3mvj.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ycmgaqcsh.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ysgseye6h.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp",
-      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ybeaw3mvj.webp",
-      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ycmgaqcsh.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp",
-    "hoverImgSrc": "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ybeaw3mvj.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 52,
@@ -2457,21 +2457,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9dkagsz6e.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9fedmcvsg.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9awbxex3c.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9fm3gsgbc.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9ggh2cqrz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9dkagsz6e.webp",
-      "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9fedmcvsg.webp",
-      "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9awbxex3c.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9dkagsz6e.webp",
-    "hoverImgSrc": "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9fedmcvsg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 53,
@@ -2504,21 +2504,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75azbs9hyjq.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf79dz5twqvjy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-    "hoverImgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 54,
@@ -2551,21 +2551,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-weight-plates-original-imahff8g6ymmhbet.webp",
-          "/exclusive-strip-plates-dumbbells-set-home-gym-set-for-men-women-original-imahff6gfzkffbhy.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-      "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp",
-      "/button-shaped-weight-plates-for-barbells-dumbbells-weight-plates-original-imahff8g6ymmhbet.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-    "hoverImgSrc": "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 55,
@@ -2598,21 +2598,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75azbs9hyjq.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-    "hoverImgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 56,
@@ -2645,21 +2645,21 @@ const products = [
       {
         "color": "Unisex",
         "images": [
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyrzyduzg.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyycndzez.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-    "hoverImgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 57,
@@ -2692,21 +2692,21 @@ const products = [
       {
         "color": "Unisex",
         "images": [
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyrzyduzg.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyycndzez.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-    "hoverImgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 58,
@@ -2739,21 +2739,21 @@ const products = [
       {
         "color": "Unisex",
         "images": [
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyrzyduzg.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyycndzez.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-    "hoverImgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 59,
@@ -2787,41 +2787,41 @@ const products = [
       {
         "color": "Size: 5",
         "images": [
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdtgvmeum.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Size: 5 (Standard",
         "images": [
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdtgvmeum.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Size: 7 (Standard",
         "images": [
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdtgvmeum.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-    "hoverImgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 60,
@@ -2854,21 +2854,21 @@ const products = [
       {
         "color": "Size: 7",
         "images": [
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdpsbjjkj.webp",
-          "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79fdtgvmeum.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp",
-      "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f7pmsybhj.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3ahdndyq.webp",
-    "hoverImgSrc": "/450-475-basketball-official-professional-match-ball-indoor-original-imahf79f3znfkzj9.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 61,
@@ -2904,41 +2904,41 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbhdfwmaq.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrpmh4fryt.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Black",
         "images": [
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbhdfwmaq.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrpmh4fryt.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Brown",
         "images": [
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbhdfwmaq.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrpmh4fryt.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-      "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-      "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-    "hoverImgSrc": "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 62,
@@ -2976,25 +2976,25 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9dkagsz6e.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9fedmcvsg.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9awbxex3c.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9fm3gsgbc.webp",
-          "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9ggh2cqrz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9dkagsz6e.webp",
-      "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9fedmcvsg.webp",
-      "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-4-original-imahf7e9awbxex3c.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9dkagsz6e.webp",
-    "hoverImgSrc": "/exclusive-blend-dumbbells-anti-slip-anti-rolling-dumbbells-set-2-original-imahf7e9fedmcvsg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 63,
-    "name": "Premium Kettlebell Cast Iron Vinyl Coated Solid Kettlebell Red Kettlebell",
+    "name": "Premium Vinyl Coated Kettlebell",
     "category": "Weights & Dumbbells",
     "subCategory": "Kettlebells",
     "price": 999,
@@ -3021,23 +3021,40 @@ const products = [
     "relatedIds": [],
     "variants": [
       {
-        "color": "Default",
+        "color": "Red",
         "images": [
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9knkgja2scd.webp"
-        ]
+          "/.webp",
+          "/.webp",
+          "/.webp"
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "color": "Pink",
+        "images": [
+          "/.webp",
+          "/.webp",
+          "/.webp"
+        ],
+        "isOutOfStock": false
+      },
+      {
+        "color": "Orange",
+        "images": [
+          "/.webp",
+          "/.webp",
+          "/.webp"
+        ],
+        "isOutOfStock": false
       }
     ],
     "showcaseImages": [
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp",
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-    "hoverImgSrc": "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 64,
@@ -3070,21 +3087,21 @@ const products = [
       {
         "color": "Pack of 3",
         "images": [
-          "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-          "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp",
-          "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-      "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp",
-      "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-    "hoverImgSrc": "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 65,
@@ -3122,41 +3139,41 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Black",
         "images": [
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Grey",
         "images": [
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image",
-          "https://placehold.co/600x600/png?text=Product+Image"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "https://placehold.co/600x600/png?text=Product+Image",
-      "https://placehold.co/600x600/png?text=Product+Image",
-      "https://placehold.co/600x600/png?text=Product+Image"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "https://placehold.co/600x600/png?text=Product+Image",
-    "hoverImgSrc": "https://placehold.co/600x600/png?text=Product+Image"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 66,
@@ -3189,21 +3206,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy6fjwsbat.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyyavs527zp.webp",
-          "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyyccfyfgb2.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp",
-      "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy6fjwsbat.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy2ekfawez.webp",
-    "hoverImgSrc": "/left-and-right-hand-premium-wrist-supporter-l-wrist-band-with-original-imahfdyy4gdz2qzy.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 67,
@@ -3236,21 +3253,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3j9nm3wgwc.webp",
-          "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3j9rw6gpbz.webp",
-          "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3jfpebzsks.webp",
-          "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3jg53whbzh.webp",
-          "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3jhjepkcbg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3j9nm3wgwc.webp",
-      "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3j9rw6gpbz.webp",
-      "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3jfpebzsks.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3j9nm3wgwc.webp",
-    "hoverImgSrc": "/left-right-powerlifting-wrist-supporter-for-deadlifting-with-original-imahfe3j9rw6gpbz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 68,
@@ -3283,21 +3300,21 @@ const products = [
       {
         "color": "X Lifting Straps",
         "images": [
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5bzsqsyjs.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5fspgvqgr.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5hffheqsx.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5mgfphrqh.webp",
-          "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5ppunru38.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5bzsqsyjs.webp",
-      "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5fspgvqgr.webp",
-      "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5hffheqsx.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5bzsqsyjs.webp",
-    "hoverImgSrc": "/left-and-right-hand-figure-8-x-lifting-straps-powerlifting-wrist-original-imahffy5fspgvqgr.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 69,
@@ -3330,31 +3347,31 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff862gavhggf.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff868zdwqbzz.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86ebtk8dbw.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86gaqtdjzd.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86gms6hbgr.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Beige",
         "images": [
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff862gavhggf.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff868zdwqbzz.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86ebtk8dbw.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86gaqtdjzd.webp",
-          "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86gms6hbgr.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff862gavhggf.webp",
-      "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff868zdwqbzz.webp",
-      "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86ebtk8dbw.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff862gavhggf.webp",
-    "hoverImgSrc": "/left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff868zdwqbzz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 70,
@@ -3387,21 +3404,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pk9z3vf2p.webp",
-          "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pkwtr66dz.webp",
-          "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6px7mk9ak8.webp",
-          "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pyedvapvx.webp",
-          "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pzzsdcvcy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pk9z3vf2p.webp",
-      "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pkwtr66dz.webp",
-      "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6px7mk9ak8.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pk9z3vf2p.webp",
-    "hoverImgSrc": "/left-and-right-hand-weight-lifting-wrist-straps-with-steel-hooks-original-imahff6pkwtr66dz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 71,
@@ -3434,21 +3451,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75azbs9hyjq.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-    "hoverImgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 72,
@@ -3481,21 +3498,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-          "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-          "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-          "/dumbbells-set-10kg-pvc-home-gym-combo-10-rv-fitness-original-imahfuagwrbxvgzm.webp",
-          "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-      "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp",
-      "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-    "hoverImgSrc": "/20-kg-adjustable-pvc-dumbbells-weights-with-dumbbells-rods-10-kg-original-imahfg2fwnrzzrup.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 73,
@@ -3528,21 +3545,21 @@ const products = [
       {
         "color": "Standard",
         "images": [
-          "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-          "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp",
-          "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-      "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp",
-      "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/50-twenty20-tennis-ball-for-street-cricket-turf-ball-standard-2-original-imah5fct327rvgaf.webp",
-    "hoverImgSrc": "/twenty20-tennis-ball-for-street-cricket-turf-fitbox-sports-3-original-imah5f52yyt8rgzs-1.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 74,
@@ -3575,21 +3592,21 @@ const products = [
       {
         "color": "Pu",
         "images": [
-          "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8gf77uqxzyd.webp",
-          "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hn6ghs82ua.webp",
-          "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hn6y7xcw8x.webp",
-          "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hn8qwuyx4m.webp",
-          "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hncdarp9zv.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8gf77uqxzyd.webp",
-      "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hn6ghs82ua.webp",
-      "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hn6y7xcw8x.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8gf77uqxzyd.webp",
-    "hoverImgSrc": "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hn6ghs82ua.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 75,
@@ -3625,21 +3642,21 @@ const products = [
       {
         "color": "Standard",
         "images": [
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zect55pkhd.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zeh7u3gwrk.webp",
-          "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zemgatwqjk.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-      "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp",
-      "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zect55pkhd.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zea5z9phzp.webp",
-    "hoverImgSrc": "/50-gully-ball-cricket-ball-for-street-match-cricket-ball-tennis-original-imahf9zebu2ah7pq.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 76,
@@ -3672,21 +3689,21 @@ const products = [
       {
         "color": "Size: 5 (Standard",
         "images": [
-          "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8dyzzbz3p.webp",
-          "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8gmjefxa4.webp",
-          "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8vbcahr97.webp",
-          "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8yuaymr7e.webp",
-          "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8zrghssn4.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8dyzzbz3p.webp",
-      "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8gmjefxa4.webp",
-      "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8vbcahr97.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8dyzzbz3p.webp",
-    "hoverImgSrc": "/450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8gmjefxa4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 77,
@@ -3719,21 +3736,21 @@ const products = [
       {
         "color": "Yoga Strap for Stretching with Extra Safe Cotton Yoga Strap (Black)",
         "images": [
-          "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7crsxwtn6.webp",
-          "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7f5ffqchh.webp",
-          "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7n8ybzztq.webp",
-          "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7nrgdxmn4.webp",
-          "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7xgs5zwnj.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7crsxwtn6.webp",
-      "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7f5ffqchh.webp",
-      "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7n8ybzztq.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7crsxwtn6.webp",
-    "hoverImgSrc": "/183-yoga-belt-for-men-and-women-yoga-strap-for-stretching-with-original-imahfdw7f5ffqchh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 78,
@@ -3766,21 +3783,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bc5zsuznpf.webp",
-          "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bc647aghat.webp",
-          "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcad3xgjue.webp",
-          "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcagcbnhns.webp",
-          "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bccmfxwtzs.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bc5zsuznpf.webp",
-      "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bc647aghat.webp",
-      "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bcad3xgjue.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bc5zsuznpf.webp",
-    "hoverImgSrc": "/pickleball-paddle-premium-boarded-composite-surface-shock-original-imahf7bc647aghat.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 79,
@@ -3813,31 +3830,31 @@ const products = [
       {
         "color": "3Balls",
         "images": [
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cccgzzypdk.webp",
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7ccgefwz7e4.webp",
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cckhxqevrc.webp",
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7ccueggeezu.webp",
-          "/7-29-6-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cc8ajms4z6.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "6Balls",
         "images": [
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cccgzzypdk.webp",
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7ccgefwz7e4.webp",
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cckhxqevrc.webp",
-          "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7ccueggeezu.webp",
-          "/7-29-6-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cc8ajms4z6.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cccgzzypdk.webp",
-      "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7ccgefwz7e4.webp",
-      "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cckhxqevrc.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7cccgzzypdk.webp",
-    "hoverImgSrc": "/7-29-3-pickleball-balls-bright-durable-indoor-outdoor-balls-original-imahf7ccgefwz7e4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 80,
@@ -3870,21 +3887,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrpsmyqe2w.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrvyzbm5hs.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-    "hoverImgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 81,
@@ -3917,21 +3934,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3eptpz6zdp.webp",
-          "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3etnhvhkcs.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp",
-      "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3eptpz6zdp.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ege6jqqzb.webp",
-    "hoverImgSrc": "/20-home-gym-set-with-one-curl-and-one-pair-dumbbell-rods-with-original-imahfg3ehmjzfpxg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 82,
@@ -3964,21 +3981,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykpsezhafz.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykudhkzgdz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/12-double-grip-home-gym-set-12kg-barbell-rod-2-x-dumbbell-rods-original-imahfefgydsusvfg.webp",
-    "hoverImgSrc": "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 83,
@@ -4011,21 +4028,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/16-gym-set-16kg-barbell-rod-2-x-dumbbell-rods-16kg-adjustable-original-imahfe2ahmhmzbr3.webp",
-          "/16-gym-set-16kg-barbell-rod-2-x-dumbbell-rods-16kg-adjustable-original-imahfe2aswbbjqch.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykpsezhafz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/16-gym-set-16kg-barbell-rod-2-x-dumbbell-rods-16kg-adjustable-original-imahfe2ahmhmzbr3.webp",
-      "/16-gym-set-16kg-barbell-rod-2-x-dumbbell-rods-16kg-adjustable-original-imahfe2aswbbjqch.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/16-gym-set-16kg-barbell-rod-2-x-dumbbell-rods-16kg-adjustable-original-imahfe2ahmhmzbr3.webp",
-    "hoverImgSrc": "/16-gym-set-16kg-barbell-rod-2-x-dumbbell-rods-16kg-adjustable-original-imahfe2aswbbjqch.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 84,
@@ -4058,21 +4075,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykpsezhafz.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykudhkzgdz.webp",
-          "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykumtgqa2t.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp",
-      "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykpsezhafz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykewgrm9ku.webp",
-    "hoverImgSrc": "/3-double-grip-home-gym-set-16kg-curl-rod-2-x-dumbbell-rods-16kg-original-imahfeykp78npgm9.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 85,
@@ -4105,21 +4122,21 @@ const products = [
       {
         "color": "20kg with Barbell Rod",
         "images": [
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrpsmyqe2w.webp",
-          "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrvyzbm5hs.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp",
-      "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrnqhgybyz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyr97wz8a7q.webp",
-    "hoverImgSrc": "/20-gym-combo-8kg-20kg-with-barbell-rod-dumbbells-gym-accessories-original-imahfgyrexuyvgpc.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 86,
@@ -4152,21 +4169,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjw8qqjqrc.webp",
-          "/exclusive-strip-plates-dumbbells-set-home-gym-set-for-men-women-original-imahff6gfzkffbhy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp",
-      "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpsrfakdv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp",
-    "hoverImgSrc": "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjpd7dzym4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 87,
@@ -4199,69 +4216,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj5v4ntsnc.webp",
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj7qr9fr3x.webp",
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjqfbhzth4.webp",
-          "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjrmxpbyaw.webp",
-          "/190-polyurethane-pu-blend-balls-professional-ball-cricket-for-original-imahf8hnghtknyrs.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj5v4ntsnc.webp",
-      "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj7qr9fr3x.webp",
-      "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezjqfbhzth4.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj5v4ntsnc.webp",
-    "hoverImgSrc": "/800-viper-series-full-size-heavy-duty-plastic-cricket-bat-original-imahfezj7qr9fr3x.webp"
-  },
-  {
-    "id": 88,
-    "name": "Premium Kettlebell Cast Iron Vinyl Coated Solid Kettlebell Pink Kettlebell",
-    "category": "Weights & Dumbbells",
-    "subCategory": "Kettlebells",
-    "price": 999,
-    "oldPrice": 1299,
-    "isNew": true,
-    "isOutOfStock": false,
-    "qualities": [
-      "Cast Iron",
-      "Flat Base",
-      "Vinyl Coated"
-    ],
-    "sizes": [
-      "2 kg",
-      "8 kg"
-    ],
-    "longDesc": "Experience the ultimate performance with the Premium Kettlebell Cast Iron Vinyl Coated Solid Kettlebell Pink Kettlebell. Designed for optimal durability and comfort, this premium gear is ideal for both beginners and professionals. Enhance your fitness journey with our top-tier Kettlebells, crafted to withstand intense workouts and deliver outstanding results every time.",
-    "features": [
-      "Premium build quality",
-      "Suitable for daily workouts",
-      "Comfortable and durable",
-      "Designed for fitness enthusiasts",
-      "Easy maintenance"
-    ],
-    "material": "Premium Fitness Grade Material",
-    "relatedIds": [],
-    "variants": [
-      {
-        "color": "Default",
-        "images": [
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9knkgja2scd.webp"
-        ]
-      }
-    ],
-    "showcaseImages": [
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp",
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp"
-    ],
-    "imgSrc": "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-    "hoverImgSrc": "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 89,
@@ -4295,21 +4264,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex66egfvf8x.webp",
-          "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6hx2gc2kp.webp",
-          "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6jz57kr4t.webp",
-          "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6k3mfa6zj.webp",
-          "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6mfechpzb.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex66egfvf8x.webp",
-      "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6hx2gc2kp.webp",
-      "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6jz57kr4t.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex66egfvf8x.webp",
-    "hoverImgSrc": "/weighted-vest-for-training-running-boxing-jogging-cycling-original-imahfex6hx2gc2kp.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 90,
@@ -4342,21 +4311,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4s7hmzfjyd.webp",
-          "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sf9bbxghv.webp",
-          "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sgrubwkzr.webp",
-          "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4smfpshnm5.webp",
-          "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4smgzyu2my.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4s7hmzfjyd.webp",
-      "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sf9bbxghv.webp",
-      "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sgrubwkzr.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4s7hmzfjyd.webp",
-    "hoverImgSrc": "/ankle-weight-wrist-weight-1kg-0-5kg-x-2-for-running-boxing-original-imahgz4sf9bbxghv.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 91,
@@ -4390,21 +4359,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-weight-plates-original-imahff8g6ymmhbet.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-      "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp",
-      "/button-shaped-weight-plates-for-barbells-dumbbells-weight-plates-original-imahff8g6ymmhbet.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-    "hoverImgSrc": "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 92,
@@ -4437,21 +4406,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp",
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-    "hoverImgSrc": "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 93,
@@ -4484,68 +4453,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/rubber-plates-5kg-weight-plates-2-5kg-x-2-black-weight-plates-5-original-imahfgf5zahyyzj2.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp"
-  },
-  {
-    "id": 94,
-    "name": "Premium Kettlebell Cast Iron Vinyl Coated Solid Kettlebell Orange Kettlebell",
-    "category": "Weights & Dumbbells",
-    "subCategory": "Kettlebells",
-    "price": 999,
-    "oldPrice": 1299,
-    "isNew": true,
-    "isOutOfStock": false,
-    "qualities": [
-      "Cast Iron",
-      "Flat Base",
-      "Vinyl Coated"
-    ],
-    "sizes": [
-      "10 kg"
-    ],
-    "longDesc": "Experience the ultimate performance with the Premium Kettlebell Cast Iron Vinyl Coated Solid Kettlebell Orange Kettlebell. Designed for optimal durability and comfort, this premium gear is ideal for both beginners and professionals. Enhance your fitness journey with our top-tier Kettlebells, crafted to withstand intense workouts and deliver outstanding results every time.",
-    "features": [
-      "Premium build quality",
-      "Suitable for daily workouts",
-      "Comfortable and durable",
-      "Designed for fitness enthusiasts",
-      "Easy maintenance"
-    ],
-    "material": "Premium Fitness Grade Material",
-    "relatedIds": [],
-    "variants": [
-      {
-        "color": "Default",
-        "images": [
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz.webp",
-          "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9knkgja2scd.webp"
-        ]
-      }
-    ],
-    "showcaseImages": [
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp",
-      "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kng7zgmjdz-removebg-preview.webp"
-    ],
-    "imgSrc": "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn4chrnyte.webp",
-    "hoverImgSrc": "/premium-kettlebell-cast-iron-vinyl-coated-solid-kettlebell-original-imahf9kn5ts8rsx4.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 95,
@@ -4578,21 +4500,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp",
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-      "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-black-original-imahf8dzuq5yyn5y.webp",
-    "hoverImgSrc": "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 96,
@@ -4625,21 +4547,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-          "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp",
-      "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfqzg5vgdyg.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq4yaxy3dx.webp",
-    "hoverImgSrc": "/10kg-finger-gripped-pvc-bouncer-plates-2-5kg-x-4-weight-plates-original-imahfgfq7ghc5hrg.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 97,
@@ -4672,21 +4594,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-          "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-      "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5-kg-kettlebell-strength-dumbbells-4kg-2kg-x-2-black-hexa-pvc-original-imahfevysc97g7bx.webp",
-    "hoverImgSrc": "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 98,
@@ -4719,21 +4641,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfc5wgzfgjm.webp",
-          "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfc8gku3n5z.webp",
-          "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfchkksehfj.webp",
-          "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfcjzbaggmd.webp",
-          "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfcuf3thayh.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfc5wgzfgjm.webp",
-      "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfc8gku3n5z.webp",
-      "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfchkksehfj.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfc5wgzfgjm.webp",
-    "hoverImgSrc": "/adjustable-weighted-vest-10kg-with-removable-weight-weighted-original-imahfgfc8gku3n5z.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 99,
@@ -4766,21 +4688,21 @@ const products = [
       {
         "color": "2.25kg (1.13kg x 2) With Removable 5 Weight Bags Black Ankle Weight (2.25 kg)",
         "images": [
-          "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvbtucu7he.webp",
-          "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvtauzhdh5.webp",
-          "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvvgcngbty.webp",
-          "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvyryuhfhy.webp",
-          "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvzbepfz9u.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvbtucu7he.webp",
-      "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvtauzhdh5.webp",
-      "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvvgcngbty.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvbtucu7he.webp",
-    "hoverImgSrc": "/ajdustable-ankle-weight-5lbs-2-25kg-1-13kg-x-2-with-removable-5-original-imahfdvvtauzhdh5.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 100,
@@ -4813,21 +4735,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dznmyyr2p.webp",
-          "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-    "hoverImgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 101,
@@ -4860,21 +4782,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-          "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbenzcsrgs.webp",
-          "/vinyl-coated-pvc-intruder-20-kg-weight-plates-10kg-x-2-5-kg-original-imahf9nbqmjdbd3p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp",
-      "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewaun8txmyv.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewag7apzehn.webp",
-    "hoverImgSrc": "/blend-intruder-20-kg-weight-plates-5-kg-x-4-black-weight-plates-original-imahfewatvzhvybk.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 102,
@@ -4907,21 +4829,21 @@ const products = [
       {
         "color": "Non-Slip Handles | Push Up Push-up Bar ()",
         "images": [
-          "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvd8hez9j2.webp",
-          "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwve2pneytf.webp",
-          "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvmrddwmxz.webp",
-          "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvmxvm954w.webp",
-          "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvzwrhtx7k.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvd8hez9j2.webp",
-      "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwve2pneytf.webp",
-      "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvmrddwmxz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwvd8hez9j2.webp",
-    "hoverImgSrc": "/push-up-board-for-15-push-up-workouts-non-slip-handles-push-up-original-imahfdwve2pneytf.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 103,
@@ -4954,21 +4876,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6aznrhtcj.webp",
-          "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6fptpfdrd.webp",
-          "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6hhcs59hs.webp",
-          "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6qdgxcskz.webp",
-          "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6xyggfpzf.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6aznrhtcj.webp",
-      "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6fptpfdrd.webp",
-      "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6hhcs59hs.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6aznrhtcj.webp",
-    "hoverImgSrc": "/push-up-bars-stand-non-slip-handles-push-up-handles-with-original-imahfdx6fptpfdrd.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 104,
@@ -5001,21 +4923,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/14-inches-dumbbells-rods-set-of-2-medium-1-3-fitbox-sports-original-imahff7fd8gkyfs9.webp",
-          "/14-inches-dumbbells-rods-set-of-2-medium-1-3-fitbox-sports-original-imahff7fzfgshn25.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffstatptb4v.webp",
-          "/button-shaped-weight-plates-for-barbells-dumbbells-weight-plates-original-imahff8g6ymmhbet.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/14-inches-dumbbells-rods-set-of-2-medium-1-3-fitbox-sports-original-imahff7fd8gkyfs9.webp",
-      "/14-inches-dumbbells-rods-set-of-2-medium-1-3-fitbox-sports-original-imahff7fzfgshn25.webp",
-      "/button-shaped-weight-plates-for-barbells-dumbbells-button-shaped-original-imahfffsnt9hucsf.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/14-inches-dumbbells-rods-set-of-2-medium-1-3-fitbox-sports-original-imahff7fd8gkyfs9.webp",
-    "hoverImgSrc": "/14-inches-dumbbells-rods-set-of-2-medium-1-3-fitbox-sports-original-imahff7fzfgshn25.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 105,
@@ -5048,21 +4970,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp",
-          "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp",
-          "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwz5vzz6yb.webp",
-          "/wall-mounted-pull-up-bar-chin-up-bar-for-home-gym-medium-3-original-imahdzx8yq5hgpkz.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve - Copy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp",
-      "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp",
-      "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwz5vzz6yb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwmkwx4ubs.webp",
-    "hoverImgSrc": "/wall-mounting-chin-up-bar-pull-up-bar-ab-straps-combo-120-kg-original-imahfezwwygtzfdd.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 106,
@@ -5099,21 +5021,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-          "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp",
-          "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhgkhyrjr.webp",
-          "/sports-hexa-pvc-dumbbells-2-0-fitbox-sports-original-imahf77z2ygwxqfv.webp",
-          "/sports-hexa-pvc-dumbbells-2-0-fitbox-sports-original-imahf77z4yhqzuvc.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-      "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp",
-      "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhgkhyrjr.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/pvc-fixed-dumbbells-2kg-x-2-black-sports-adjustable-hand-grip-original-imahfg2um54hc6ve.webp",
-    "hoverImgSrc": "/sports-hexa-pvc-dumbbells-10-0-fitbox-sports-original-imahf77zhdyyyghx.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 107,
@@ -5146,21 +5068,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75azbs9hyjq.webp",
-          "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf79dz5twqvjy.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp",
-      "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75aqhp9hy7k.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75afgzrfazh.webp",
-    "hoverImgSrc": "/sports-intruder-20-kg-adjustable-pvc-dumbbells-weights-with-original-imahf75amy8qz9fb.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 108,
@@ -5199,21 +5121,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx2rgq9jf4.webp",
-          "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx73ju86qz.webp",
-          "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx8y3fpjc2.webp",
-          "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx8zh2pzyg.webp",
-          "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mxb2bcndxz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx2rgq9jf4.webp",
-      "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx73ju86qz.webp",
-      "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx8y3fpjc2.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx2rgq9jf4.webp",
-    "hoverImgSrc": "/neoprene-coated-cast-iron-dumbbells-for-exercise-fitness-original-imahf9mx73ju86qz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 109,
@@ -5251,21 +5173,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgbhga93j3.webp",
-          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgvzdxmjby.webp",
-          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-2-original-imahf9hgh4hhk6yb.webp",
-          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-4-original-imahf9hg6qrfqgej.webp",
-          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-5-original-imahf9hg5kbmu6gb.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgbhga93j3.webp",
-      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgvzdxmjby.webp",
-      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-2-original-imahf9hgh4hhk6yb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgbhga93j3.webp",
-    "hoverImgSrc": "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgvzdxmjby.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 110,
@@ -5298,21 +5220,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cpsyhhgu4.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79ctkygkjfq.webp",
-          "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cybd3gkfz.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-      "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp",
-      "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cpsyhhgu4.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79c3sdaz5z7.webp",
-    "hoverImgSrc": "/5kg-diamond-dumbbells-2-5kg-x-2-set-of-2-for-home-gym-workout-5-original-imahf79cguyvjfy8.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 111,
@@ -5345,21 +5267,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dubgegfqu.webp",
-          "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dznmyyr2p.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp",
-      "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dsgszct2x.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/5-kg-kettlebell-strength-and-cardio-training-weights-5kg-diamond-original-imahf8gz4j3zyder.webp",
-    "hoverImgSrc": "/intruder-5-kg-kettlebell-strength-and-cardio-training-weights-original-imahf78dpwjpnafj.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 112,
@@ -5392,21 +5314,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyrzyduzg.webp",
-          "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hyycndzez.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp",
-      "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hwd2pqvyb.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4h4zphzrzn.webp",
-    "hoverImgSrc": "/exclusive-hex-dumbbells-4kg-2kg-x-2-for-home-gym-set-2-fitbox-original-imah8z4hhdczerjv.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 113,
@@ -5439,21 +5361,21 @@ const products = [
       {
         "color": "Great for Resistance Bands",
         "images": [
-          "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff689ad3v7zf.webp",
-          "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68chuvzyjc.webp",
-          "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68cknj43j4.webp",
-          "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68e9xm6frg.webp",
-          "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68gdhg9zye.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff689ad3v7zf.webp",
-      "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68chuvzyjc.webp",
-      "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68cknj43j4.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff689ad3v7zf.webp",
-    "hoverImgSrc": "/heavy-duty-door-anchor-great-for-resistance-bands-physical-original-imahff68chuvzyjc.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 114,
@@ -5486,51 +5408,51 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffzt23kurws6.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztbcw5zeyh.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztdehszppx.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztfjwfy82k.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztgthjhe4z.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Multicolor",
         "images": [
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffzt23kurws6.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztbcw5zeyh.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztdehszppx.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztfjwfy82k.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztgthjhe4z.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Dark Grey",
         "images": [
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffzt23kurws6.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztbcw5zeyh.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztdehszppx.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztfjwfy82k.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztgthjhe4z.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Grey",
         "images": [
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffzt23kurws6.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztbcw5zeyh.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztdehszppx.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztfjwfy82k.webp",
-          "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztgthjhe4z.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffzt23kurws6.webp",
-      "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztbcw5zeyh.webp",
-      "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztdehszppx.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffzt23kurws6.webp",
-    "hoverImgSrc": "/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztbcw5zeyh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 115,
@@ -5563,21 +5485,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzdxr5ghz.webp",
-          "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzu8g2h2q.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js2rgp73xf.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp",
-      "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfzdxr5ghz.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jf3uyvvb4c.webp",
-    "hoverImgSrc": "/double-toning-tube-resistance-exercise-band-with-comfortable-original-imahf8jfhzydhyqz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 116,
@@ -5610,31 +5532,31 @@ const products = [
       {
         "color": "Red",
         "images": [
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js2rgp73xf.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js3ejexdxh.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsdcvhpwpu.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsxqtjeedu.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Green",
         "images": [
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js2rgp73xf.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js3ejexdxh.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsdcvhpwpu.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsgygz9hk4.webp",
-          "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsxqtjeedu.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js2rgp73xf.webp",
-      "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js3ejexdxh.webp",
-      "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8jsdcvhpwpu.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js2rgp73xf.webp",
-    "hoverImgSrc": "/toning-tube-with-door-anchor-resistance-exercise-band-original-imahf8js3ejexdxh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 117,
@@ -5667,21 +5589,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tdvxzwec6.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tg2hwt8w3.webp",
-          "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tgha94ykg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp",
-      "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tdvxzwec6.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76t4tfdczzh.webp",
-    "hoverImgSrc": "/adjustable-hand-grip-strengthener-with-counter-for-men-women-for-original-imahf76tc8h8h9xa.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 118,
@@ -5714,21 +5636,21 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xhyggekmt.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xpqr3bwhc.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xs8nermgy.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xstfdkmag.webp",
-          "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xydqrefyg.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xhyggekmt.webp",
-      "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xpqr3bwhc.webp",
-      "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xs8nermgy.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xhyggekmt.webp",
-    "hoverImgSrc": "/hand-grip-strengthener-foam-padded-finger-excerciser-hand-original-imahff3xpqr3bwhc.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 119,
@@ -5761,21 +5683,21 @@ const products = [
       {
         "color": "Black Hand Grip/Fitness Grip (Black",
         "images": [
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-          "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-      "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-      "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp",
-    "hoverImgSrc": "/intruder-hand-grips-set-of-2-black-hand-grip-fitbox-sports-original-imahff3snbrhmvst.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 120,
@@ -5808,21 +5730,21 @@ const products = [
       {
         "color": "Men & Women (Red) Freestyle Skipping Rope (Black",
         "images": [
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynezbbxhkr.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyng7vaqhmz.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynqzgzczqz.webp",
-          "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynszwrmvxp.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynezbbxhkr.webp",
-      "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyng7vaqhmz.webp",
-      "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffynezbbxhkr.webp",
-    "hoverImgSrc": "/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyng7vaqhmz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 121,
@@ -5855,21 +5777,21 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez45hcfnzgf.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4dthah3sh.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4fs2gurkd.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4ggpyvhgt.webp",
-          "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4vpetyrun.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez45hcfnzgf.webp",
-      "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4dthah3sh.webp",
-      "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4fs2gurkd.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez45hcfnzgf.webp",
-    "hoverImgSrc": "/skipping-rope-foam-padded-with-coated-steel-rope-jump-rope-for-original-imahfez4dthah3sh.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 122,
@@ -5902,100 +5824,107 @@ const products = [
       {
         "color": "Brown",
         "images": [
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6bephfp7.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6gc2y3zz.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzdvmngh9y.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve - Copy.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Red",
         "images": [
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6bephfp7.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6gc2y3zz.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzdvmngh9y.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve - Copy.webp",
-          "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzfbarhzve.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6bephfp7.webp",
-      "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6gc2y3zz.webp",
-      "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewzdvmngh9y.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6bephfp7.webp",
-    "hoverImgSrc": "/boxing-focus-pads-mitts-curved-punching-pads-with-high-density-original-imahfewz6gc2y3zz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 123,
-    "name": "Supplements Shaker Bottle for Protein, Pre",
+    "name": "Shaker Pro 700ml",
     "category": "Lifestyle & Accessories",
     "subCategory": "Shakers",
-    "price": 999,
-    "oldPrice": 1299,
+    "price": 499,
+    "oldPrice": 699,
     "isNew": true,
     "isOutOfStock": false,
     "qualities": [
-      "Leak Proof",
-      "BPA Free",
-      "Easy to Clean"
+      "BPA-Free",
+      "Leak-Proof",
+      "High-Grade Plastic"
     ],
     "sizes": [
-      "Blue)",
-      "Orange)",
-      "Standard"
+      "500ml",
+      "700ml"
     ],
-    "longDesc": "Experience the ultimate performance with the Supplements Shaker Bottle for Protein, Pre. Designed for optimal durability and comfort, this premium gear is ideal for both beginners and professionals. Enhance your fitness journey with our top-tier Shakers, crafted to withstand intense workouts and deliver outstanding results every time.",
+    "longDesc": "The Supplements Shaker Bottle is a premium-quality gym and fitness accessory designed for athletes, bodybuilders, and fitness enthusiasts. Specially crafted to mix protein powders, supplements, and nutrition shakes effortlessly, this shaker bottle ensures you get a smooth, lump-free drink every time. Made from high-grade, BPA-free, and non-toxic plastic, it is safe, durable, and built for everyday use. With its ergonomic design and leak-proof lid, you can confidently carry it in your gym bag, backpack, or while traveling without worrying about spills. The shaker comes with a powerful mixing mechanism (whisk ball or built-in blender design) that allows quick blending of protein, pre-workout, or post-workout supplements, ensuring maximum nutrient absorption. Its lightweight yet sturdy construction makes it perfect for daily workouts, running, cycling, yoga, and other sports activities. The bottle is also easy to clean and maintain, making it a reliable companion for your fitness journey. Designed with a comfortable grip and wide-mouth opening, it allows easy filling, pouring, and cleaning. Whether you need to mix protein shakes, BCAAs, creatine, or meal replacements, this shaker bottle is a must-have for every fitness-conscious individual.",
     "features": [
-      "Premium build quality",
-      "Suitable for daily workouts",
-      "Comfortable and durable",
-      "Designed for fitness enthusiasts",
-      "Easy maintenance"
+      "Premium Quality Shaker Bottle – Designed for athletes, bodybuilders, and fitness enthusiasts for daily gym and workout use",
+      "Smooth & Lump-Free Mixing – Efficient mixing mechanism ensures quick and even blending of protein powders and supplements",
+      "BPA-Free & Non-Toxic Material – Made from high-grade plastic that is safe, durable, and suitable for everyday use",
+      "Leak-Proof & Secure Lid – Prevents spills and mess, making it ideal for gym bags, backpacks, and travel",
+      "Ergonomic & Lightweight Design – Comfortable grip with sturdy construction for easy handling during workouts",
+      "Wide Mouth Opening – Allows easy filling, pouring, and hassle-free cleaning"
     ],
-    "material": "Premium Fitness Grade Material",
-    "relatedIds": [],
+    "material": "BPA-Free High-Grade Polypropylene",
+    "relatedIds": [
+      1,
+      4,
+      2,
+      5
+    ],
     "variants": [
       {
-        "color": "Post Workout 700ml Blue 700 ml Plastic Shaker (Pack of 1",
+        "color": "Smoke Black",
         "images": [
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyftz5x3p7u.webp",
+          "/51qT2eMcH1L.webp",
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp",
           "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp"
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp"
         ]
       },
       {
-        "color": "Post Workout Orange 700 ml Plastic Shaker (Pack of 1",
+        "color": "Pearl White",
+        "isOutOfStock": true,
         "images": [
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyftz5x3p7u.webp",
+          "/white sipper.webp",
+          "/white-2.webp",
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp",
           "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp"
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp"
         ]
       },
       {
-        "color": "Post Workout 700 ml Plastic Shaker",
+        "color": "Ocean Blue",
         "images": [
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyftz5x3p7u.webp",
+          "/blue.webp",
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp",
           "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp",
-          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfyqsp7ngk.webp"
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
+          "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
       "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
-      "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyftz5x3p7u.webp"
+      "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp",
+      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp"
     ],
-    "imgSrc": "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfmqnn3ctd.webp",
-    "hoverImgSrc": "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp"
+    "imgSrc": "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfruhdxygt.webp",
+    "hoverImgSrc": "/700-supplements-shaker-bottle-for-protein-pre-post-workout-1-original-imahfgyfx4azahjb.webp"
   },
   {
     "id": 124,
@@ -6028,41 +5957,41 @@ const products = [
       {
         "color": "Default",
         "images": [
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbhdfwmaq.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrpmh4fryt.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Tan",
         "images": [
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbhdfwmaq.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrpmh4fryt.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       },
       {
         "color": "Black",
         "images": [
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbhdfwmaq.webp",
-          "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrpmh4fryt.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-      "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp",
-      "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexrbb4xncyz-1.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr382phyp4-1.webp",
-    "hoverImgSrc": "/both-free-size-boxing-gloves-for-training-sparring-multi-layer-original-imahfexr8gaaceaz.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 125,
@@ -6095,21 +6024,21 @@ const products = [
       {
         "color": "Post Workout",
         "images": [
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ybeaw3mvj.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ycmgaqcsh.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp",
-          "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ysgseye6h.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp",
-      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ybeaw3mvj.webp",
-      "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ycmgaqcsh.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7y9zqfwk5x.webp",
-    "hoverImgSrc": "/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7ybeaw3mvj.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   },
   {
     "id": 126,
@@ -6142,22 +6071,20 @@ const products = [
       {
         "color": "Black",
         "images": [
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv-1.webp",
-          "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp",
-          "/20-20kg-home-gym-set-with-finger-gripped-plates-2-5kg-x-8-fitbox-original-imahfgfjfdvbrsfj.webp"
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp",
+          "/.webp"
         ]
       }
     ],
     "showcaseImages": [
-      "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp",
-      "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp",
-      "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv-1.webp"
+      "/.webp",
+      "/.webp",
+      "/.webp"
     ],
-    "imgSrc": "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z - Copy.webp",
-    "hoverImgSrc": "/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyazs6d4z.webp"
+    "imgSrc": "/.webp",
+    "hoverImgSrc": "/.webp"
   }
 ];
-
-export default products;

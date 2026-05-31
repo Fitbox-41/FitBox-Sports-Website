@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
+import { flattenProducts } from '../utils/flattenProducts';
 import './ProductCategory.css';
 
 import { useContext } from 'react';
@@ -97,35 +98,13 @@ export default function ProductCategory() {
 
   // Automatically expand products with multiple variants into separate cards
   const expandedProducts = useMemo(() => {
-    return filteredProducts.flatMap((p) => {
-      const pPrice = typeof p.price === 'number' ? `₹${p.price.toLocaleString('en-IN')}` : p.price;
-      const pOldPrice = typeof p.oldPrice === 'number' ? `₹${p.oldPrice.toLocaleString('en-IN')}` : p.oldPrice;
-
-      if (p.variants && p.variants.length > 1) {
-        return p.variants.map((variant, vIdx) => ({
-          ...p,
-          displayId: `${p.id}-v${vIdx}`, // Unique key for mapping
-          name: variant.color ? `${p.name} - ${variant.color}` : p.name,
-          imgSrc: variant.images && variant.images[0] ? variant.images[0] : 'https://placehold.co/600x600/png?text=Product+Image',
-          hoverImgSrc: variant.images && variant.images[1] ? variant.images[1] : null,
-          selectedVariant: variant.color, // Pass color for query param
-          isOutOfStock: variant.isOutOfStock || p.isOutOfStock, // Variant-specific stock status
-          price: pPrice,
-          oldPrice: pOldPrice
-        }));
-      }
-      
-      const defaultImg = p.imgSrc || (p.showcaseImages && p.showcaseImages[0]) || (p.variants && p.variants[0]?.images?.[0]) || 'https://placehold.co/600x600/png?text=Product+Image';
-      const hoverImg = p.hoverImgSrc || (p.showcaseImages && p.showcaseImages[1]) || null;
-      
-      return [{
+    return flattenProducts(filteredProducts).map(p => {
+      return {
         ...p,
-        displayId: p.id,
-        imgSrc: defaultImg,
-        hoverImgSrc: hoverImg,
-        price: pPrice,
-        oldPrice: pOldPrice
-      }];
+        displayId: p.displayId || p.id,
+        price: typeof p.price === 'number' ? `₹${p.price.toLocaleString('en-IN')}` : p.price,
+        oldPrice: typeof p.oldPrice === 'number' ? `₹${p.oldPrice.toLocaleString('en-IN')}` : p.oldPrice
+      };
     });
   }, [filteredProducts]);
 
