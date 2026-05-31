@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, memo, useContext } from 'react';
+import { useState, useEffect, useRef, memo, useContext, useMemo } from 'react';
 import { ProductContext } from '../context/ProductContext';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -312,7 +312,7 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse, canAnimate })
 });
 
 const newArrivalsIds = [56, 59, 48, 63, 33, 114];
-const bestSellersIds = [1, 5, 7, 19, 28, 2, 10, 18, 48, 32, 3, 11, 23, 51, 35, 4, 13, 29, 65, 40, 6, 14, 39, 105, 45, 8, 20, 59, 122, 77, 9, 24, 60, 123, 102, 12, 33, 64, 125, 103, 15, 46, 73, 113, 16, 61, 74, 114, 17, 66, 75, 115, 21, 67, 76, 116, 22, 68, 78, 120, 25, 69, 79, 121, 26, 70, 87, 27, 117, 30, 118, 31, 119, 34, 124, 36, 126, 37, 38, 41];
+
 export default function Home() {
   const { products: allProducts } = useContext(ProductContext);
 
@@ -331,18 +331,21 @@ export default function Home() {
   }).filter(Boolean);
   const flattenedNewArrivals = flattenProducts(newArrivals);
 
-  const bestSellers = bestSellersIds.map(id => {
-    const p = allProducts.find(prod => prod.id === id);
-    if (!p) return null;
-    return {
-      ...p,
-      price: `₹${p.price.toLocaleString('en-IN')}`,
-      oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
-      imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : 'https://placehold.co/600x600/png?text=Product+Image'),
-      hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
-    };
-  }).filter(Boolean);
-  const flattenedBestSellers = flattenProducts(bestSellers);
+  // Pick 80 random products from the full catalogue
+  const flattenedBestSellers = useMemo(() => {
+    if (!allProducts.length) return [];
+    const mapped = [...allProducts]
+      .sort(() => Math.random() - 0.5) // shuffle
+      .slice(0, 80)
+      .map(p => ({
+        ...p,
+        price: `₹${p.price.toLocaleString('en-IN')}`,
+        oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
+        imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : 'https://placehold.co/600x600/png?text=Product+Image'),
+        hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null,
+      }));
+    return flattenProducts(mapped).slice(0, 80);
+  }, [allProducts]);
 
   const bsChunks = [];
   for (let i = 0; i < flattenedBestSellers.length; i += 8) {
