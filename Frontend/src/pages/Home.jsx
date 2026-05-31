@@ -451,7 +451,8 @@ export default function Home() {
     return () => {
       elements.forEach(el => observer.unobserve(el));
     };
-  }, [canAnimate]);
+    // Re-run when products load (async API fetch) so newly rendered cards get observed
+  }, [canAnimate, flattenedBestSellers.length, flattenedNewArrivals.length]);
 
   const postersTrackRef = useRef(null);
   const isDraggingPosters = useRef(false);
