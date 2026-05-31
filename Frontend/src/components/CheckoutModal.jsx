@@ -38,7 +38,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
     if (orderId && !showSuccessToast) {
       try {
         const token = localStorage.getItem('fitbox_token');
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
         await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel`, {
           headers: { Authorization: `Bearer ${token}` }
         });
@@ -72,7 +72,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
         phone: shippingPhone
       };
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
       const res = await axios.post(`${apiUrl}/api/orders/mock-payment`, { 
         orderId, 
         shippingAddress 

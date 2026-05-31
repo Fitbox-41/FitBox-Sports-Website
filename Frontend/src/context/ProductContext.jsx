@@ -12,7 +12,7 @@ export const ProductProvider = ({ children }) => {
         const fetchProducts = async () => {
             try {
                 // Use environment variable for the API URL, fallback to localhost for development
-                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+                const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
                 const response = await axios.get(`${apiUrl}/api/products`);
                 setProducts(response.data);
                 setLoading(false);

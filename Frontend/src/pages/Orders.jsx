@@ -18,7 +18,7 @@ export default function Orders() {
       try {
         const token = localStorage.getItem('fitbox_token');
         const config = { headers: { Authorization: `Bearer ${token}` } };
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+        const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
         const res = await axios.get(`${apiUrl}/api/orders/myorders`, config);
         if (res.data.success) {
           const sortedOrders = res.data.orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -64,7 +64,7 @@ export default function Orders() {
                      </span>
                      {order.invoiceUrl && (
                        <a 
-                         href={order.invoiceUrl.startsWith('http') ? order.invoiceUrl : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${order.invoiceUrl}`} 
+                         href={order.invoiceUrl.startsWith('http') ? order.invoiceUrl : `${import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`}${order.invoiceUrl}`} 
                          target="_blank" 
                          rel="noreferrer" 
                          style={{ display: 'block', marginTop: '10px', fontSize: '14px', color: '#3b82f6', textDecoration: 'none', fontWeight: '500' }}

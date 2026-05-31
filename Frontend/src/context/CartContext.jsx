@@ -25,7 +25,7 @@ export const CartProvider = ({ children }) => {
     return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
 
   // Load cart/wishlist from server when user logs in
   useEffect(() => {

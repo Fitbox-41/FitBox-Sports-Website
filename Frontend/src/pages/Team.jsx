@@ -37,7 +37,7 @@ export default function Team() {
       </section>
 
       <div className="info-container wide">
-        <div className="info-card" style={{ padding: '40px 48px' }}>
+        <div className="info-card info-card-padded">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
             {teamMembers.map((member, index) => (
               <div key={index} style={{

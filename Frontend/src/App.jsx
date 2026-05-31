@@ -66,19 +66,17 @@ function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    if (!loading) {
-      // Ensure the loader stays for a very short time
-      const timer = setTimeout(() => {
-        setShowLoader(false);
-        // Wait for the faster fade out transition (0.4s) before triggering animations
-        setTimeout(() => {
-            window.__APP_LOADED__ = true;
-            window.dispatchEvent(new CustomEvent('loaderFinished'));
-        }, 400);
-      }, 300); 
-      return () => clearTimeout(timer);
-    }
-  }, [loading]);
+    // Ensure the loader stays for a very short time
+    const timer = setTimeout(() => {
+      setShowLoader(false);
+      // Wait for the faster fade out transition (0.4s) before triggering animations
+      setTimeout(() => {
+          window.__APP_LOADED__ = true;
+          window.dispatchEvent(new CustomEvent('loaderFinished'));
+      }, 400);
+    }, 150); 
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>

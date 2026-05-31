@@ -84,6 +84,10 @@
   overflow: hidden;
 }
 
+.info-card-padded {
+  padding: 48px;
+}
+
 /* ── Section header inside card ── */
 .info-section-head {
   padding: 36px 48px 28px;
@@ -629,15 +633,26 @@
   }
 
   .info-container {
-    padding: 28px 16px 56px;
+    padding: 24px 16px 48px;
+    max-width: 100%;
+    width: 95%;
+  }
+
+  .info-container.wide {
+    max-width: 100%;
+    width: 95%;
   }
 
   .info-section-head,
   .info-body,
   .contact-form-wrap,
   .faq-list {
-    padding-left: 22px;
-    padding-right: 22px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .info-card-padded {
+    padding: 24px 18px !important;
   }
 
   .contact-grid {

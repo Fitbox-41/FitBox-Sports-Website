@@ -281,7 +281,7 @@ export default function ProductPage() {
       const token = localStorage.getItem('fitbox_token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
       const res = await axios.post(`${apiUrl}/api/orders/place`, { 
         items: [{
           ...buyNowItem,

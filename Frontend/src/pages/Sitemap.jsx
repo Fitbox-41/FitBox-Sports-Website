@@ -63,7 +63,7 @@ export default function Sitemap() {
       </section>
 
       <div className="info-container wide">
-        <div className="info-card" style={{ padding: '48px' }}>
+        <div className="info-card info-card-padded">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
             {sitemapData.map((section, idx) => (
               <div key={idx}>
