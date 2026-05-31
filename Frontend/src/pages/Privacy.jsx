@@ -13,14 +13,19 @@ export default function Privacy() {
       <Header hideSubHeader={true} hideSaleRibbon={true} />
       <div className="header-spacer" style={{ height: '70px' }} />
 
+      <section className="info-hero">
+        <h1 className="info-hero-title">Privacy Policy</h1>
+        <p className="info-hero-subtitle">How we collect, use, and protect your personal data when you use FitBox Sports.</p>
+      </section>
+
       <div className="info-container">
         <div className="info-card">
-          <div className="info-header">
-            <h1 className="info-title">Privacy Policy</h1>
+          <div className="info-section-head">
+            <h2 className="info-title">Privacy Policy</h2>
             <span className="info-date">Last Updated: May 2026</span>
           </div>
 
-          <div className="info-content">
+          <div className="info-body">
             <p>At <strong>FitBox Sports</strong>, we are committed to protecting your privacy and ensuring your personal information is handled in a safe and responsible manner. This Privacy Policy outlines how we collect, use, and protect your data.</p>
 
             <h2>1. Information We Collect</h2>
@@ -46,8 +51,7 @@ export default function Privacy() {
             <p>We adopt appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of your personal information, username, password, transaction information, and data stored on our Site.</p>
 
             <h2>5. Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at:</p>
-            <p><strong>Email:</strong> fitboxsports01@gmail.com</p>
+            <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please <a href="/contact">contact us</a>.</p>
           </div>
         </div>
       </div>

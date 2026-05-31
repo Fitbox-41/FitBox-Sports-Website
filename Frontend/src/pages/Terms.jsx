@@ -13,14 +13,19 @@ export default function Terms() {
       <Header hideSubHeader={true} hideSaleRibbon={true} />
       <div className="header-spacer" style={{ height: '70px' }} />
 
+      <section className="info-hero">
+        <h1 className="info-hero-title">Terms & Conditions</h1>
+        <p className="info-hero-subtitle">The rules and guidelines for using the FitBox Sports platform and services.</p>
+      </section>
+
       <div className="info-container">
         <div className="info-card">
-          <div className="info-header">
-            <h1 className="info-title">Terms & Conditions</h1>
+          <div className="info-section-head">
+            <h2 className="info-title">Terms of Service</h2>
             <span className="info-date">Last Updated: May 2026</span>
           </div>
 
-          <div className="info-content">
+          <div className="info-body">
             <p>Welcome to <strong>FitBox Sports</strong>. These terms and conditions outline the rules and regulations for the use of our website and services.</p>
 
             <h2>1. Acceptance of Terms</h2>
@@ -33,7 +38,7 @@ export default function Terms() {
             <p>All products listed on the website are subject to availability. We reserve the right to discontinue any product at any time. Prices for our products are subject to change without notice. We shall not be liable to you or to any third-party for any modification, price change, suspension, or discontinuance of the Service.</p>
 
             <h2>4. Returns and Refunds</h2>
-            <p>We want you to be completely satisfied with your purchase. If you are not satisfied, you may return the item within our standard return window in its original condition. Please refer to our Shipping & Returns policy for detailed instructions.</p>
+            <p>We want you to be completely satisfied with your purchase. If you are not satisfied, you may return the item within our standard return window in its original condition. Please refer to our <a href="/returns">Return & Cancellation Policy</a> for detailed instructions.</p>
 
             <h2>5. Limitation of Liability</h2>
             <p>In no event shall FitBox Sports, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this website.</p>

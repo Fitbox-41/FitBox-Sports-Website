@@ -9,6 +9,11 @@ import Auth from './pages/Auth';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Shipping from './pages/Shipping';
+import Returns from './pages/Returns';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Team from './pages/Team';
+import FAQ from './pages/FAQ';
 import Account from './pages/Account';
 import Orders from './pages/Orders';
 import MobileNav from './components/MobileNav';
@@ -93,7 +98,11 @@ function AppContent() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/shipping" element={<Shipping />} />
-          <Route path="/returns" element={<Shipping />} />
+          <Route path="/returns" element={<Returns />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/under99" element={<Home />} />
           <Route path="/category/:categoryId" element={<ProductCategory />} />
           
