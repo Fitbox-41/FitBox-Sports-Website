@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { User, Mail, Phone, MapPin, Plus, Trash2, AlertTriangle, Save } from 'lucide-react';
 import './Account.css';
 
 export default function Account() {
@@ -101,7 +102,10 @@ export default function Account() {
       </div>
 
       <div className="account-container">
-        <h1 className="account-title">Personal Details</h1>
+        <div className="account-header-section">
+          <h1 className="account-title">Personal Details</h1>
+          <p className="account-subtitle">Manage your personal information and addresses</p>
+        </div>
         
         {errorMsg && <div className="account-error">{errorMsg}</div>}
 
@@ -109,22 +113,23 @@ export default function Account() {
           <form className="account-form" onSubmit={handleSaveProfile}>
             
             <div className="form-group">
-              <label>Email Address (Cannot be changed)</label>
+              <label><Mail size={16} /> Email Address <span className="label-note">(Cannot be changed)</span></label>
               <input type="email" value={currentUser.email} disabled className="disabled-input" />
             </div>
 
             <div className="form-group">
-              <label>Full Name</label>
+              <label><User size={16} /> Full Name</label>
               <input 
                 type="text" 
                 value={name} 
                 onChange={(e) => setName(e.target.value)} 
                 required 
+                placeholder="Enter your full name"
               />
             </div>
 
             <div className="form-group">
-              <label>Phone Number</label>
+              <label><Phone size={16} /> Phone Number</label>
               <input 
                 type="tel" 
                 value={phone} 
@@ -135,51 +140,68 @@ export default function Account() {
 
             <div className="addresses-section">
               <div className="addresses-header">
-                <h3>Saved Addresses</h3>
+                <h3><MapPin size={18} /> Saved Addresses</h3>
                 <button type="button" className="add-address-btn" onClick={() => setShowAddAddress(!showAddAddress)}>
-                  {showAddAddress ? 'Cancel' : '+ Add Address'}
+                  {showAddAddress ? 'Cancel' : <><Plus size={16} /> Add Address</>}
                 </button>
               </div>
 
               {addresses.length === 0 && !showAddAddress && (
-                <p className="no-address">No addresses saved yet.</p>
+                <div className="no-address-box">
+                  <MapPin size={32} strokeWidth={1} />
+                  <p>No addresses saved yet.</p>
+                </div>
               )}
 
               <div className="addresses-list">
                 {addresses.map((addr, idx) => (
                   <div key={idx} className="address-card">
-                    <p><strong>{addr.street}</strong></p>
-                    <p>{addr.city}, {addr.state} {addr.zip}</p>
-                    <p>{addr.country}</p>
-                    <button type="button" className="remove-address-btn" onClick={() => handleRemoveAddress(idx)}>Remove</button>
+                    <div className="address-card-content">
+                      <p className="address-street">{addr.street}</p>
+                      <p className="address-city">{addr.city}, {addr.state} {addr.zip}</p>
+                      <p className="address-country">{addr.country}</p>
+                    </div>
+                    <button type="button" className="remove-address-btn" onClick={() => handleRemoveAddress(idx)} title="Remove Address">
+                      <Trash2 size={18} />
+                    </button>
                   </div>
                 ))}
               </div>
 
               {showAddAddress && (
                 <div className="new-address-form">
-                  <h4>New Address</h4>
-                  <input type="text" placeholder="Street Address" value={newAddress.street} onChange={e => setNewAddress({...newAddress, street: e.target.value})} />
-                  <div className="input-row">
-                    <input type="text" placeholder="City" value={newAddress.city} onChange={e => setNewAddress({...newAddress, city: e.target.value})} />
-                    <input type="text" placeholder="State" value={newAddress.state} onChange={e => setNewAddress({...newAddress, state: e.target.value})} />
+                  <h4><Plus size={16} /> New Address Details</h4>
+                  <div className="form-group">
+                    <input type="text" placeholder="Street Address" value={newAddress.street} onChange={e => setNewAddress({...newAddress, street: e.target.value})} />
                   </div>
                   <div className="input-row">
-                    <input type="text" placeholder="ZIP Code" value={newAddress.zip} onChange={e => setNewAddress({...newAddress, zip: e.target.value})} />
-                    <input type="text" placeholder="Country" value={newAddress.country} onChange={e => setNewAddress({...newAddress, country: e.target.value})} />
+                    <div className="form-group">
+                      <input type="text" placeholder="City" value={newAddress.city} onChange={e => setNewAddress({...newAddress, city: e.target.value})} />
+                    </div>
+                    <div className="form-group">
+                      <input type="text" placeholder="State" value={newAddress.state} onChange={e => setNewAddress({...newAddress, state: e.target.value})} />
+                    </div>
                   </div>
-                  <button type="button" className="save-address-btn" onClick={handleAddAddress}>Save Address to List</button>
+                  <div className="input-row">
+                    <div className="form-group">
+                      <input type="text" placeholder="ZIP Code" value={newAddress.zip} onChange={e => setNewAddress({...newAddress, zip: e.target.value})} />
+                    </div>
+                    <div className="form-group">
+                      <input type="text" placeholder="Country" value={newAddress.country} onChange={e => setNewAddress({...newAddress, country: e.target.value})} />
+                    </div>
+                  </div>
+                  <button type="button" className="save-address-btn" onClick={handleAddAddress}>Save Address</button>
                 </div>
               )}
             </div>
 
             <button type="submit" className="save-profile-btn" disabled={loading}>
-              {loading ? 'Saving...' : 'Save All Changes'}
+              {loading ? 'Saving...' : <><Save size={18} /> Save All Changes</>}
             </button>
           </form>
 
           <div className="danger-zone">
-            <h3>Account Deletion</h3>
+            <h3><AlertTriangle size={18} /> Account Deletion</h3>
             <p>Once you delete your account, there is no going back. Please be certain.</p>
             <button 
               type="button" 
