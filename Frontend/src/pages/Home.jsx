@@ -321,6 +321,7 @@ export default function Home() {
     if (!p) return null;
     return {
       ...p,
+      displayId: `${p.id}`,
       name: p.name.includes('Shaker') ? 'Shaker Pro 700ml' : p.name,
       tag: 'New',
       price: `₹${p.price.toLocaleString('en-IN')}`,
@@ -329,22 +330,27 @@ export default function Home() {
       hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
     };
   }).filter(Boolean);
-  const flattenedNewArrivals = flattenProducts(newArrivals);
 
-  // Pick 80 random products from the full catalogue
+  // Pick 80 random products from the full catalogue (flattened so variants are randomly placed)
   const flattenedBestSellers = useMemo(() => {
     if (!allProducts.length) return [];
-    const mapped = [...allProducts]
-      .sort(() => Math.random() - 0.5) // shuffle
-      .slice(0, 80)
-      .map(p => ({
-        ...p,
-        price: `₹${p.price.toLocaleString('en-IN')}`,
-        oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
-        imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : 'https://placehold.co/600x600/png?text=Product+Image'),
-        hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null,
-      }));
-    return flattenProducts(mapped).slice(0, 80);
+    
+    // First flatten all products to get all variants as individual items
+    const allFlattened = flattenProducts([...allProducts]);
+    
+    // Then shuffle the flattened list so variants of the same product are randomly distributed
+    const shuffled = allFlattened.sort(() => Math.random() - 0.5);
+    
+    // Take exactly 80 items and format their prices/images
+    const mapped = shuffled.slice(0, 80).map(p => ({
+      ...p,
+      price: `₹${p.price.toLocaleString('en-IN')}`,
+      oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
+      imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : p.imgSrc || 'https://placehold.co/600x600/png?text=Product+Image'),
+      hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null,
+    }));
+    
+    return mapped;
   }, [allProducts]);
 
   const bsChunks = [];
@@ -455,7 +461,7 @@ export default function Home() {
       elements.forEach(el => observer.unobserve(el));
     };
     // Re-run when products load (async API fetch) so newly rendered cards get observed
-  }, [canAnimate, flattenedBestSellers.length, flattenedNewArrivals.length]);
+  }, [canAnimate, flattenedBestSellers.length, newArrivals.length]);
 
   const postersTrackRef = useRef(null);
   const isDraggingPosters = useRef(false);
@@ -1057,8 +1063,8 @@ export default function Home() {
                 onTouchStart={handleNaTouchStart}
                 onTouchEnd={handleNaTouchEnd}
               >
-                {[...flattenedNewArrivals, ...flattenedNewArrivals, ...flattenedNewArrivals].map((product, i) => (
-                  <div className="na-mobile-carousel na-card-wrap" key={`\${product.displayId || product.id}-${i}`} style={{ width: 'var(--na-step, 25%)' }}>
+                {[...newArrivals, ...newArrivals, ...newArrivals].map((product, i) => (
+                  <div className="na-mobile-carousel na-card-wrap" key={`${product.displayId || product.id}-${i}`} style={{ width: 'var(--na-step, 25%)' }}>
                     <ProductCard product={product} />
                   </div>
                 ))}
