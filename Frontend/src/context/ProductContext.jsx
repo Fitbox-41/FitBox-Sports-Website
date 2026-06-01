@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios'; // We will install axios in the frontend
+import axios from 'axios';
+import localProducts from '../data/products';
 
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // Seed with local static data immediately so every section renders on first paint
+    const [products, setProducts] = useState(localProducts);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -14,7 +16,10 @@ export const ProductProvider = ({ children }) => {
                 // Use environment variable for the API URL, fallback to localhost for development
                 const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
                 const response = await axios.get(`${apiUrl}/api/products`);
-                setProducts(response.data);
+                // Only replace if the API returned actual data
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    setProducts(response.data);
+                }
                 setLoading(false);
             } catch (err) {
                 console.error('Error fetching products:', err);
