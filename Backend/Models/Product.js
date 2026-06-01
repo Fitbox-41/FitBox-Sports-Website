@@ -22,7 +22,9 @@ const productSchema = new mongoose.Schema({
   material: { type: String },
   relatedIds: [{ type: Number }],
   variants: [variantSchema],
-  showcaseImages: [{ type: String }]
+  showcaseImages: [{ type: String }],
+  imgSrc: { type: String },
+  hoverImgSrc: { type: String }
 }, { timestamps: true, suppressReservedKeysWarning: true });
 
 const Product = mongoose.model('Product', productSchema);

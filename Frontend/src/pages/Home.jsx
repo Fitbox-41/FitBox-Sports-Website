@@ -326,36 +326,49 @@ export default function Home() {
       tag: 'New',
       price: `₹${p.price.toLocaleString('en-IN')}`,
       oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
-      imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : 'https://placehold.co/600x600/png?text=Product+Image'),
-      hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null
+      imgSrc: p.imgSrc && p.imgSrc !== '/.webp' ? p.imgSrc : '',
+      hoverImgSrc: p.hoverImgSrc && p.hoverImgSrc !== '/.webp' ? p.hoverImgSrc : ''
     };
   }).filter(Boolean);
 
-  // Pick 80 random products from the full catalogue (flattened so variants are randomly placed)
+  // Pick 50 random products from the full catalogue (flattened so variants are randomly placed)
   const flattenedBestSellers = useMemo(() => {
     if (!allProducts.length) return [];
     
     // First flatten all products to get all variants as individual items
     const allFlattened = flattenProducts([...allProducts]);
     
-    // Then shuffle the flattened list so variants of the same product are randomly distributed
-    const shuffled = allFlattened.sort(() => Math.random() - 0.5);
+    // Stable pseudo-random shuffle using a deterministic hash to prevent layout shifting on state changes or page reloads
+    const getHash = (str) => {
+      let h = 1540483477;
+      for (let i = 0; i < str.length; i++) {
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+        h = (h << 13) | (h >>> 19);
+      }
+      return (Math.abs(h) % 100000) / 100000;
+    };
     
-    // Take exactly 80 items and format their prices/images
-    const mapped = shuffled.slice(0, 80).map(p => ({
+    const shuffled = [...allFlattened].sort((a, b) => {
+      const keyA = a.displayId || String(a.id);
+      const keyB = b.displayId || String(b.id);
+      return getHash(keyA) - getHash(keyB);
+    });
+    
+    // Take exactly 50 items and format their prices/images
+    const mapped = shuffled.slice(0, 50).map(p => ({
       ...p,
       price: `₹${p.price.toLocaleString('en-IN')}`,
       oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
-      imgSrc: p.showcaseImages && p.showcaseImages.length > 0 ? p.showcaseImages[0] : (p.variants && p.variants[0] && p.variants[0].images && p.variants[0].images.length > 0 ? p.variants[0].images[0] : p.imgSrc || 'https://placehold.co/600x600/png?text=Product+Image'),
-      hoverImgSrc: p.showcaseImages && p.showcaseImages.length > 1 ? p.showcaseImages[1] : null,
+      imgSrc: p.imgSrc || '',
+      hoverImgSrc: p.hoverImgSrc || '',
     }));
     
     return mapped;
   }, [allProducts]);
 
   const bsChunks = [];
-  for (let i = 0; i < flattenedBestSellers.length; i += 8) {
-    bsChunks.push(flattenedBestSellers.slice(i, i + 8));
+  for (let i = 0; i < flattenedBestSellers.length; i += 10) {
+    bsChunks.push(flattenedBestSellers.slice(i, i + 10));
   }
 
   const [canAnimate, setCanAnimate] = useState(false);

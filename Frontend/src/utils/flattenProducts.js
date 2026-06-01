@@ -1,5 +1,4 @@
 // Utility to flatten products with variants into separate product cards
-
 export const flattenProducts = (products) => {
   if (!products || !Array.isArray(products)) return [];
 
@@ -17,29 +16,34 @@ export const flattenProducts = (products) => {
     if (hasColorVariants) {
       // Explode into multiple products
       product.variants.forEach((variant, vIdx) => {
-          // Determine the main images for this variant
-          const variantImages = variant.images && variant.images.length > 0 ? variant.images : product.showcaseImages;
-          const imgSrc = variantImages[0] || product.imgSrc;
-          const hoverImgSrc = variantImages[1] || variantImages[0] || product.hoverImgSrc;
+          // Prioritize variant images first, then fallback to base product images
+          const vImg0 = variant.images && variant.images[0] && variant.images[0] !== '/.webp' ? variant.images[0] : null;
+          const vImg1 = variant.images && variant.images[1] && variant.images[1] !== '/.webp' ? variant.images[1] : null;
+          
+          const imgSrc = vImg0 || (product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc : '');
+          const hoverImgSrc = vImg1 || (product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc : '');
 
           flattened.push({
             ...product,
-            // Create a unique ID for mapping in React
             displayId: `${product.id}-v${vIdx}`,
-            // Modify the name to include the color for the card display
             name: `${product.name} - ${variant.color}`,
-            // Pass the selected variant so the Link can append ?color=...
             selectedVariant: variant.color,
-            // Override images
             imgSrc: imgSrc,
             hoverImgSrc: hoverImgSrc,
-            // Override stock status based on variant
             isOutOfStock: variant.isOutOfStock !== undefined ? variant.isOutOfStock : product.isOutOfStock
           });
         });
     } else {
-      // No variants, just push the original product
-      flattened.push({ ...product, displayId: `${product.id}` });
+      // No variants, just push the original product with its set images
+      const imgSrc = product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc : '';
+      const hoverImgSrc = product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc : '';
+      
+      flattened.push({ 
+        ...product, 
+        displayId: `${product.id}`,
+        imgSrc: imgSrc,
+        hoverImgSrc: hoverImgSrc
+      });
     }
   });
 

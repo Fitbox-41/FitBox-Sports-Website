@@ -45,8 +45,22 @@ app.use('/api/orders', orderRoutes);
 
 // Only listen if not running in Vercel (for local development)
 if (!process.env.VERCEL) {
-    app.listen(PORT, () => {
+    app.listen(PORT, async () => {
         console.log(`Server is running on port ${PORT}`);
+        try {
+            await connectDB();
+            
+            // Dynamically import to keep Vercel/serverless bundle lightweight
+            const Product = (await import('./Models/Product.js')).default;
+            const allProducts = (await import('../Frontend/src/data/products.js')).default;
+            
+            // Delete and re-insert to synchronize
+            await Product.deleteMany();
+            await Product.insertMany(allProducts);
+            console.log('🔄 MongoDB successfully auto-synced with products.js!');
+        } catch (syncErr) {
+            console.error('Failed to auto-sync products.js to MongoDB:', syncErr);
+        }
     });
 }
 
