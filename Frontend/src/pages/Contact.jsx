@@ -44,7 +44,7 @@ export default function Contact() {
               <div>
                 <div className="contact-card-label">Phone Support</div>
                 <div className="contact-card-value"><a href="tel:+919876543210">+91 98765 43210</a></div>
-                <div className="contact-card-value" style={{fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px'}}>Mon - Fri, 9am - 6pm IST</div>
+                <div className="contact-card-value" style={{ fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px' }}>Mon - Fri, 9am - 6pm IST</div>
               </div>
             </div>
 
@@ -55,9 +55,55 @@ export default function Contact() {
               <div>
                 <div className="contact-card-label">Email Us</div>
                 <div className="contact-card-value"><a href="mailto:fitboxsports01@gmail.com">fitboxsports01@gmail.com</a></div>
-                <div className="contact-card-value" style={{fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px'}}>We reply within 24 hours</div>
+                <div className="contact-card-value" style={{ fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px' }}>We reply within 24 hours</div>
               </div>
             </div>
+            {/* Address */}
+            <div className="contact-card-item">
+              <div className="contact-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+
+              <div>
+                <div className="contact-card-label">Our Address</div>
+
+                <div className="contact-card-value">
+                  <strong>FitBox Sports</strong>
+                </div>
+
+                <div
+                  className="contact-card-value"
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "var(--text-mid)",
+                    marginTop: "4px",
+                  }}
+                >
+                  41, Warirana Industrial Complex, Jalandhar
+                </div>
+
+                <div
+                  className="contact-card-value"
+                  style={{
+                    fontSize: "0.85rem",
+                    marginTop: "4px",
+                  }}
+                >
+                  <a href="tel:+918568989898">+91 85689 89898</a>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div className="contact-form-wrap">

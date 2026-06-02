@@ -237,8 +237,8 @@
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   padding: 40px 48px;
 }
 
@@ -404,6 +404,20 @@
   font-weight: 600;
   text-align: center;
   animation: fadeSlideIn 0.35s ease;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    padding: 24px 22px;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ─────────────────────────────────────────────
