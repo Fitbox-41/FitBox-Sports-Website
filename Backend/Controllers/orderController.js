@@ -188,6 +188,8 @@ export const mockPayment = async (req, res) => {
 
     // 1. Mark as Paid
     order.paymentStatus = 'Paid';
+    order.paymentMode = 'Online';
+    order.orderStatus = 'Completed';
     order.paymentId = 'MOCK_TXN_' + Math.random().toString(36).substr(2, 9).toUpperCase();
     order.paidAt = new Date();
     
@@ -325,6 +327,66 @@ export const cancelOrder = async (req, res) => {
     }
     
     res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been paid' });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const codPayment = async (req, res) => {
+  try {
+    const { orderId, shippingAddress } = req.body;
+    const order = await Order.findById(orderId);
+    
+    if (!order) {
+      return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+
+    if (order.paymentStatus === 'Paid') {
+      return res.status(400).json({ success: false, message: 'Order already paid' });
+    }
+
+    // Mark as COD
+    order.paymentMode = 'COD';
+    order.paymentStatus = 'Pending Payment';
+    order.orderStatus = 'Pending';
+    
+    // Set Shipping Address
+    if (shippingAddress) {
+      order.shippingAddress = shippingAddress;
+    }
+
+    order.shipmentStatus = 'Created';
+
+    await order.save();
+
+    // Send Order Confirmation Email for COD
+    try {
+      const user = await User.findById(order.userId);
+      const emailToSend = user?.email;
+      if (emailToSend) {
+        await sendEmail({
+          from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+          email: emailToSend,
+          subject: `Order Placed (COD) - FitBox Sports (${order._id})`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+              <h2 style="color: #ff6b35;">Order Placed Successfully!</h2>
+              <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+              <p>Your order has been placed with <strong>Cash on Delivery</strong>. Please keep ₹${order.totalAmount} ready at the time of delivery.</p>
+              <p>Order ID: <strong>${order._id}</strong></p>
+              <br/>
+              <p>Best Regards,</p>
+              <p><strong>FitBox Sports Team</strong></p>
+            </div>
+          `
+        });
+        console.log(`COD confirmation email sent to ${emailToSend}`);
+      }
+    } catch (emailErr) {
+      console.error("Failed to send COD confirmation email:", emailErr);
+    }
+
+    res.status(200).json({ success: true, message: 'COD order placed successfully', orderId: order._id });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

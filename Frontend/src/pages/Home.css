@@ -236,6 +236,65 @@
   box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
 }
 
+.hero-search-dropdown{
+  position: relative;
+  max-width: 550px;
+  margin-top: 10px;
+  background: rgba(10, 10, 10, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+}
+
+.hero-search-item{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  text-align: left;
+}
+
+.hero-search-item:hover{
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.hero-search-item-img{
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+}
+
+.hero-search-item-name{
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-search-item-price{
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.hero-search-empty{
+  padding: 12px 14px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+}
+
 .hero-search-input {
   font-family: 'Space Grotesk', sans-serif;
   flex: 1;

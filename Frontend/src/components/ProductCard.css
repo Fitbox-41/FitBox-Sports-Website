@@ -268,9 +268,16 @@
   transition: all 0.25s;
 }
 
-.pc-add-btn:hover {
+.pc-add-btn:hover:not(.pc-add-btn--disabled) {
   background: #000000;
   transform: translateY(-1px);
+}
+
+.pc-add-btn--disabled {
+  background: #e8e8f0;
+  color: #a0a0b0;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 /* ── Mobile Layout Changes ── */

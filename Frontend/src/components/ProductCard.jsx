@@ -198,8 +198,8 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         </svg>
       </button>
 
-      {/* Status Tags (Limited to specific pages via prop) */}
-      {showStatusTags && (
+      {/* Status Tags (Always show if out of stock or new) */}
+      {(showStatusTags || product.isOutOfStock || product.isNew) && (
         <div className="pc-status-tags">
           {product.isOutOfStock ? (
             <span className="pc-status-tag pc-status-tag--out-of-stock">
@@ -223,7 +223,7 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
             <img
               src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
               alt={product.name}
-              className={`pc-img ${showStatusTags && product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
+              className={`pc-img ${product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
               loading="lazy"
               decoding="async"
             />
@@ -277,14 +277,17 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         </div>
 
         <button 
-          className="pc-add-btn" 
+          className={`pc-add-btn ${product.isOutOfStock ? 'pc-add-btn--disabled' : ''}`} 
           id={`pc-add-${product.id}`}
+          disabled={product.isOutOfStock}
           onClick={(e) => {
             e.preventDefault();
-            addToCart(product);
+            if (!product.isOutOfStock) {
+              addToCart(product);
+            }
           }}
         >
-          Add to Cart
+          {product.isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
         </button>
       </div>
     </div>

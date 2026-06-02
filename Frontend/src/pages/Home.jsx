@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef, memo, useContext, useMemo } from 'react';
 import { ProductContext } from '../context/ProductContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import CategoryGridCard from '../components/CategoryGridCard';
 import Footer from '../components/Footer';
 import { flattenProducts } from '../utils/flattenProducts';
+import { useCart } from '../context/CartContext';
 import './Home.css';
 
 /* ═══════════════════════════════════════
@@ -37,14 +38,7 @@ const collagePosters = [
   { id: 'cp8', imgSrc: '/7.jpg - Copy.webp', mobileImgSrc: '', link: '/products' },
 ];
 
-/* Hot Products Data for Hero */
-const hotProducts = [
-  { id: 'hp5', name: 'Fabric Resistance Band', price: '₹449', imgSrc: '/fabric-resistance-band-loop-hip-band-for-women-fabric-resistance-original-imahffztnb49twpk.webp' },
-  { id: 'hp2', name: 'Speed Skipping Rope', price: '₹299', imgSrc: '/skipping-rope-jump-rope-for-exercise-workout-men-women-red-rope-original-imahffyngy3yzz5z.webp' },
-  { id: 'hp3', name: 'Premium Shaker', price: '₹499', imgSrc: '/500-shaker-bottle-with-2-removable-compartment-for-protein-pre-original-imahff7yhwbrxgmw.webp' },
-  { id: 'hp4', name: 'Gym Gloves V2', price: '₹699', imgSrc: '/left-right-free-size-gym-gloves-foam-padded-with-wrist-support-original-imahfeyvyfbv6rrv.webp' },
-  { id: 'hp1', name: 'Hexa PVC Dumbbells', price: '₹799', imgSrc: '/sports-hexa-pvc-dumbbells-4-0-fitbox-sports-original-imahf77zvmat7mpm.webp' },
-];
+const HERO_CARD_COUNT = 5;
 
 /* Category pills – infinite scrolling strip */
 const categories = [
@@ -315,6 +309,28 @@ const newArrivalsIds = [56, 59, 48, 63, 33, 114];
 
 export default function Home() {
   const { products: allProducts } = useContext(ProductContext);
+  const { addToCart, toggleWishlist, wishlist } = useCart();
+  const navigate = useNavigate();
+
+  const heroProducts = useMemo(() => {
+    if (!allProducts?.length) return [];
+    const flattened = flattenProducts([...allProducts]);
+
+    const withImages = flattened.filter((p) => {
+      const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
+      return Boolean(img);
+    });
+
+    return withImages.slice(0, HERO_CARD_COUNT).map((p) => {
+      const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]) || '';
+      return {
+        ...p,
+        displayId: p.displayId || String(p.id),
+        imgSrc: img,
+        price: typeof p.price === 'number' ? `₹${p.price.toLocaleString('en-IN')}` : p.price,
+      };
+    });
+  }, [allProducts]);
 
   const newArrivals = newArrivalsIds.map(id => {
     const p = allProducts.find(prod => prod.id === id);
@@ -384,19 +400,40 @@ export default function Home() {
   }, []);
 
   /* ── Hot Products Carousel State (Infinite) ── */
-  const [hpCurrent, setHpCurrent] = useState(hotProducts.length);
+  const [hpCurrent, setHpCurrent] = useState(HERO_CARD_COUNT);
   const [hpTrans, setHpTrans] = useState(true);
   const hpStartY = useRef(0);
   const hpStartX = useRef(0);
-  const [hpWishlist, setHpWishlist] = useState([]);
-
-  const toggleHpWishlist = (id) => {
-    setHpWishlist(prev => prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]);
-  };
 
   const hpNext = () => {
     setHpCurrent(prev => prev + 1);
   };
+
+  const [heroQuery, setHeroQuery] = useState('');
+  const heroResults = useMemo(() => {
+    const q = heroQuery.trim().toLowerCase();
+    if (!q) return [];
+    return allProducts
+      .filter((p) => p.name?.toLowerCase().includes(q) || p.category?.toLowerCase().includes(q))
+      .slice(0, 5);
+  }, [heroQuery, allProducts]);
+
+  const heroGo = (q) => {
+    const clean = String(q || '').trim();
+    if (!clean) return;
+    const slug = clean.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    navigate(`/category/${slug || 'all'}`);
+  };
+
+  const heroSelectProduct = (id) => {
+    navigate(`/product/${id}`);
+    setHeroQuery('');
+  };
+
+  useEffect(() => {
+    if (!heroProducts.length) return;
+    setHpCurrent(heroProducts.length);
+  }, [heroProducts.length]);
 
   /* ── Category Swipe & Scroll state ── */
   const catTrackRef = useRef(null);
@@ -804,18 +841,19 @@ export default function Home() {
 
 
   useEffect(() => {
-    if (hpCurrent >= hotProducts.length * 2) {
+    if (!heroProducts.length) return;
+    if (hpCurrent >= heroProducts.length * 2) {
       setTimeout(() => {
         setHpTrans(false);
-        setHpCurrent(hotProducts.length);
+        setHpCurrent(heroProducts.length);
       }, 850);
-    } else if (hpCurrent < hotProducts.length) {
+    } else if (hpCurrent < heroProducts.length) {
       setTimeout(() => {
         setHpTrans(false);
-        setHpCurrent(hotProducts.length * 2 - 1);
+        setHpCurrent(heroProducts.length * 2 - 1);
       }, 850);
     }
-  }, [hpCurrent]);
+  }, [hpCurrent, heroProducts.length]);
 
   useEffect(() => {
     if (!hpTrans) {
@@ -905,8 +943,28 @@ export default function Home() {
             </h1>
 
             <div className="hero-search-box">
-              <input type="text" placeholder="Search for premium gym gear..." className="hero-search-input" />
-              <button className="hero-search-btn">
+              <input
+                type="text"
+                placeholder="Search for premium gym gear..."
+                className="hero-search-input"
+                value={heroQuery}
+                onChange={(e) => setHeroQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (heroResults.length) heroSelectProduct(heroResults[0].id);
+                    else heroGo(heroQuery);
+                  }
+                  if (e.key === 'Escape') setHeroQuery('');
+                }}
+              />
+              <button
+                className="hero-search-btn"
+                onClick={() => {
+                  if (heroResults.length) heroSelectProduct(heroResults[0].id);
+                  else heroGo(heroQuery);
+                }}
+              >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -914,6 +972,32 @@ export default function Home() {
                 <span className="search-text">Search</span>
               </button>
             </div>
+
+            {heroQuery.trim().length > 0 && (
+              <div className="hero-search-dropdown" role="listbox" aria-label="Search results">
+                {heroResults.length ? (
+                  heroResults.map((p) => {
+                    const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
+                    return (
+                      <button
+                        key={p.id}
+                        className="hero-search-item"
+                        onClick={() => heroSelectProduct(p.id)}
+                        type="button"
+                      >
+                        <img className="hero-search-item-img" src={img} alt={p.name} />
+                        <span className="hero-search-item-name">{p.name}</span>
+                        <span className="hero-search-item-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
+                      </button>
+                    );
+                  })
+                ) : (
+                  <div className="hero-search-empty">
+                    No matches. Press Enter to browse related products.
+                  </div>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="hero-right">
@@ -950,14 +1034,16 @@ export default function Home() {
                     transition: hpTrans ? 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
                   }}
                 >
-                  {[...hotProducts, ...hotProducts, ...hotProducts].map((product, i) => {
+                  {[...heroProducts, ...heroProducts, ...heroProducts].map((product, i) => {
                     const isCenter = i === hpCurrent;
                     const isVisible = i >= hpCurrent - 1 && i <= hpCurrent + 1;
+                    const isWished = wishlist.some((w) => w.id === product.id);
                     return (
-                      <div
+                      <Link
+                        to={`/product/${product.id}${product.selectedVariant ? `?color=${encodeURIComponent(product.selectedVariant)}` : ''}`}
                         key={`\${product.displayId || product.id}-${i}`}
                         className={`hp-card ${isCenter ? 'hp-card--raised' : ''} ${isVisible ? 'hp-visible' : ''}`}
-                        style={{ transition: hpTrans ? '' : 'none' }}
+                        style={{ transition: hpTrans ? '' : 'none', textDecoration: 'none' }}
                       >
                         <div className="hp-card-img-square">
                           <img src={product.imgSrc} alt={product.name} />
@@ -968,14 +1054,25 @@ export default function Home() {
                             <p className="hp-card-price">{product.price}</p>
                             <div className="hp-card-btns">
                               <button
-                                className={`hp-card-btn-mini wishlist ${hpWishlist.includes(product.id) ? 'wished' : ''}`}
-                                onClick={() => toggleHpWishlist(product.id)}
+                                className={`hp-card-btn-mini wishlist ${isWished ? 'wished' : ''}`}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  toggleWishlist(product);
+                                }}
                               >
-                                <svg viewBox="0 0 24 24" fill={hpWishlist.includes(product.id) ? '#ff4757' : 'none'} stroke={hpWishlist.includes(product.id) ? '#ff4757' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                                <svg viewBox="0 0 24 24" fill={isWished ? '#ff4757' : 'none'} stroke={isWished ? '#ff4757' : 'currentColor'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
                                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                                 </svg>
                               </button>
-                              <button className="hp-card-btn-mini cart">
+                              <button
+                                className="hp-card-btn-mini cart"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  addToCart(product);
+                                }}
+                              >
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
                                   <circle cx="9" cy="21" r="1" />
                                   <circle cx="20" cy="21" r="1" />
@@ -985,7 +1082,7 @@ export default function Home() {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>

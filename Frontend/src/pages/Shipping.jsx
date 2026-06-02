@@ -65,6 +65,14 @@ export default function Shipping() {
             
             <h2>4. Delivery Issues</h2>
             <p>If you haven't received your order within the estimated delivery time, please check your tracking link. If the issue persists, please <a href="/contact">contact our support team</a> with your order number.</p>
+
+            <h2>5. Cash on Delivery (COD)</h2>
+            <p><strong>COD is available on select locations</strong>. If COD is available for your address, you’ll see it as a payment option during Secure Checkout.</p>
+            <ul>
+              <li><strong>Payment</strong>: Pay in cash at the time of delivery.</li>
+              <li><strong>Order status</strong>: COD orders remain <strong>Pending</strong> until successfully delivered.</li>
+              <li><strong>Availability</strong>: COD availability may vary by pincode and courier serviceability.</li>
+            </ul>
           </div>
         </div>
       </div>

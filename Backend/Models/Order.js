@@ -19,6 +19,8 @@ const orderSchema = new mongoose.Schema({
     name: String, phone: String, street: String, city: String, state: String, zip: String, country: String
   },
   paymentStatus: { type: String, enum: ['Pending Payment', 'Paid', 'Failed'], default: 'Pending Payment' },
+  paymentMode: { type: String, enum: ['Online', 'COD'], default: 'Online' },
+  orderStatus: { type: String, enum: ['Pending', 'Completed', 'Cancelled'], default: 'Pending' },
   shipmentStatus: { type: String, enum: ['Pending', 'Created', 'Shipped', 'Delivered', 'Cancelled'], default: 'Pending' },
   awb: String,
   courier: { type: String, default: 'Delhivery' },
@@ -33,7 +35,7 @@ const orderSchema = new mongoose.Schema({
 // ONLY if paymentStatus is 'Pending Payment'.
 orderSchema.index(
   { createdAt: 1 }, 
-  { expireAfterSeconds: 1800, partialFilterExpression: { paymentStatus: 'Pending Payment' } }
+  { expireAfterSeconds: 1800, partialFilterExpression: { paymentStatus: 'Pending Payment', paymentMode: 'Online' } }
 );
 
 import { v2 as cloudinary } from 'cloudinary';

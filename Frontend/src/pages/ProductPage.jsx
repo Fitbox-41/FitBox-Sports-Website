@@ -250,6 +250,7 @@ export default function ProductPage() {
   // ─── 4. Derived State: Current variant data and handlers ───
   const currentVariant = product.variants[selectedVariantIdx];
   const images = currentVariant.images;
+  const isActuallyOutOfStock = product.isOutOfStock || currentVariant.isOutOfStock;
 
   const handleNext = () => setCurrentImgIdx((prev) => (prev + 1) % images.length);
   const handlePrev = () => setCurrentImgIdx((prev) => (prev - 1 + images.length) % images.length);
@@ -351,7 +352,14 @@ export default function ProductPage() {
           {/* ──── RIGHT SECTION: Product Details ──── */}
           <div className="product-info-v2">
             <span className="v2-brand-tag">FitBox Sports </span>
-            <h1 className="v2-product-title">{product.name}</h1>
+            <h1 className="v2-product-title">
+              {product.name}
+              {product.isNew && (
+                <span className="ml-3 inline-block px-3 py-1 bg-[#ff6b35] text-white text-[0.65rem] font-bold uppercase tracking-wider rounded-full align-middle">
+                  New Arrival
+                </span>
+              )}
+            </h1>
             <div className="v2-qualities">
               {product.qualities.map((q, i) => (
                 <span key={i}>
@@ -427,7 +435,7 @@ export default function ProductPage() {
             </div>
 
             {/* URGENCY MESSAGE / OUT OF STOCK */}
-            {currentVariant.isOutOfStock ? (
+            {isActuallyOutOfStock ? (
               <div className="v2-urgency-banner v2-out-of-stock-banner">
                 <div className="urgency-icon-wrap">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="20" height="20" style={{ color: '#1a1a2e' }}>
@@ -452,8 +460,8 @@ export default function ProductPage() {
             {/* ACTION BUTTONS */}
             <div className="v2-action-buttons">
               <button 
-                className={`v2-btn v2-btn-cart ${currentVariant.isOutOfStock ? 'v2-btn--disabled' : ''}`}
-                disabled={currentVariant.isOutOfStock}
+                className={`v2-btn v2-btn-cart ${isActuallyOutOfStock ? 'v2-btn--disabled' : ''}`}
+                disabled={isActuallyOutOfStock}
                 onClick={() => addToCart({
                   ...product,
                   selectedVariant: currentVariant.color,
@@ -462,11 +470,11 @@ export default function ProductPage() {
                   quantity: quantity
                 })}
               >
-                {currentVariant.isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+                {isActuallyOutOfStock ? 'Out of Stock' : 'Add to Cart'}
               </button>
               <button 
-                className={`v2-btn v2-btn-buy ${currentVariant.isOutOfStock ? 'v2-btn--disabled' : ''}`}
-                disabled={currentVariant.isOutOfStock}
+                className={`v2-btn v2-btn-buy ${isActuallyOutOfStock ? 'v2-btn--disabled' : ''}`}
+                disabled={isActuallyOutOfStock}
                 onClick={handleBuyNow}
               >
                 Buy Now
