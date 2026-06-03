@@ -61,7 +61,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="contact-card-label">Phone Support</div>
-                <div className="contact-card-value"><a href="tel:+919876543210">+91 98765 43210</a></div>
+                <div className="contact-card-value"><a href="tel:+918568989898">+91 85689 89898</a></div>
                 <div className="contact-card-value" style={{ fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px' }}>Mon - Fri, 9am - 6pm IST</div>
               </div>
             </div>
