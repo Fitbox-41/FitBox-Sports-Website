@@ -17,13 +17,11 @@ export const sendContactEmail = async (req, res) => {
       <p>${message.replace(/\n/g, '<br>')}</p>
     `;
 
-    const targetEmail = process.env.CONTACT_EMAIL;
-
     const success = await sendEmail({
-      email: targetEmail,
+      email: process.env.CONTACT_RECEIVE_EMAIL,
       subject: `Contact Form: ${subject || 'New Message from ' + name}`,
       html: html,
-      from: `FitBox Support <${targetEmail}>`,
+      from: process.env.EMAIL_CONTACT_FROM,
     });
 
     if (success) {
