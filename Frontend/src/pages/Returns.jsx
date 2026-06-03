@@ -47,7 +47,7 @@ export default function Returns() {
             </ul>
 
             <h2>4. Return Process</h2>
-            <p>To initiate a return, please send an email to <strong>fitboxsports01@gmail.com</strong> with your Order Number and the reason for return. You may be asked to provide photographs of the item.</p>
+            <p>To initiate a return, please send an email to <strong>{import.meta.env.VITE_CONTACT_EMAIL}</strong> with your Order Number and the reason for return. You may be asked to provide photographs of the item.</p>
             <p>If your return is approved, we will provide instructions on how and where to send your package. <strong>Return shipping costs are the responsibility of the customer</strong>, unless the return is due to a defective or incorrect item sent by us.</p>
 
             <h2>5. Refunds</h2>

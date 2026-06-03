@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import productRoutes from './Routes/productRoutes.js';
 import authRoutes from './Routes/authRoutes.js';
+import contactRoutes from './Routes/contactRoutes.js';
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ import orderRoutes from './Routes/orderRoutes.js';
 app.use('/api/products', productRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Add developer entry point to sync products manually
 app.post('/api/developer/sync-products', async (req, res) => {

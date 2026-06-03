@@ -11,12 +11,30 @@ export default function Contact() {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:fitboxsports01@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`From: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
-    setStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setStatus('sending');
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus('error');
+    }
     setTimeout(() => setStatus(''), 4000);
   };
 
@@ -54,7 +72,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="contact-card-label">Email Us</div>
-                <div className="contact-card-value"><a href="mailto:fitboxsports01@gmail.com">fitboxsports01@gmail.com</a></div>
+                <div className="contact-card-value"><a href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}>{import.meta.env.VITE_CONTACT_EMAIL}</a></div>
                 <div className="contact-card-value" style={{ fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px' }}>We reply within 24 hours</div>
               </div>
             </div>
@@ -126,10 +144,15 @@ export default function Contact() {
                 <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Tell us more about your inquiry..."></textarea>
               </label>
               <div className="contact-submit">
-                <button type="submit" className="contact-btn">Send Message</button>
+                <button type="submit" className="contact-btn" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending...' : 'Send Message'}
+                </button>
               </div>
               {status === 'success' && (
                 <div className="contact-success">Your message has been sent successfully! We will get back to you soon.</div>
+              )}
+              {status === 'error' && (
+                <div className="contact-error" style={{ color: 'red', marginTop: '10px' }}>Failed to send message. Please try again later.</div>
               )}
             </form>
           </div>
