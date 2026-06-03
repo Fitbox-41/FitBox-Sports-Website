@@ -72,7 +72,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="contact-card-label">Email Us</div>
-                <div className="contact-card-value"><a href={`mailto:${import.meta.env.VITE_CONTACT_MAILTO}`}>{import.meta.env.VITE_CONTACT_EMAIL}</a></div>
+                <div className="contact-card-value"><a href={`mailto:${import.meta.env.VITE_CONTACT_EMAIL}`}>{import.meta.env.VITE_CONTACT_EMAIL}</a></div>
                 <div className="contact-card-value" style={{ fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px' }}>We reply within 24 hours</div>
               </div>
             </div>
