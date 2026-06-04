@@ -76,9 +76,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (email, password, otp) => {
+  const login = async (email, password) => {
     try {
-      const { data } = await axios.post(`${apiUrl}/api/auth/login`, { email, password, otp });
+      const { data } = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
       localStorage.setItem('fitbox_token', data.token);
       setCurrentUser(data);
       triggerLoginSuccessRibbon();

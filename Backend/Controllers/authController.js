@@ -145,16 +145,11 @@ export const preLogin = async (req, res) => {
 // @access  Public
 export const loginUser = async (req, res) => {
   try {
-    const { email, password, otp } = req.body;
-
-    if (!otp) return res.status(400).json({ message: 'OTP is required' });
-    const otpRecord = await OTP.findOne({ email, otp });
-    if (!otpRecord) return res.status(400).json({ message: 'Invalid or expired OTP' });
+    const { email, password } = req.body;
 
     const user = await User.findOne({ email });
 
     if (user && (await bcrypt.compare(password, user.password))) {
-      await OTP.findOneAndDelete({ email });
       res.json({
         _id: user._id,
         name: user.name,

@@ -105,19 +105,11 @@ export default function Contact() {
                     fontSize: "0.85rem",
                     color: "var(--text-mid)",
                     marginTop: "4px",
+                    lineHeight: "1.4"
                   }}
                 >
-                  41, Warirana Industrial Complex, Jalandhar
-                </div>
-
-                <div
-                  className="contact-card-value"
-                  style={{
-                    fontSize: "0.85rem",
-                    marginTop: "4px",
-                  }}
-                >
-                  <a href="tel:+918568989898">+91 85689 89898</a>
+                  41, Wariana Industrial Complex,<br />
+                  Jalandhar, Punjab - 144002
                 </div>
               </div>
             </div>

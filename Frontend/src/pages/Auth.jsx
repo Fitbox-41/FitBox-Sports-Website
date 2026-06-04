@@ -56,15 +56,17 @@ export default function Auth() {
           navigate('/account');
         }
       } else if (!showOtpInput) {
-        // Step 1: Request OTP
         if (isLogin) {
-          await requestOtpForLogin(email, password);
+          // Direct login without OTP
+          await login(email, password);
+          navigate('/account');
         } else {
+          // Step 1: Request OTP for register
           await requestOtpForRegister(email, password);
+          setShowOtpInput(true);
         }
-        setShowOtpInput(true);
       } else {
-        // Step 2: Verify OTP and Login/Signup
+        // Step 2: Verify OTP and Signup
         const otpString = otpArray.join('');
         if (otpString.length !== 6) {
           setError('Please enter all 6 digits of the verification code.');
@@ -72,11 +74,7 @@ export default function Auth() {
           return;
         }
 
-        if (isLogin) {
-          await login(email, password, otpString);
-        } else {
-          await signup(email, password, otpString);
-        }
+        await signup(email, password, otpString);
         navigate('/account');
       }
     } catch (err) {
