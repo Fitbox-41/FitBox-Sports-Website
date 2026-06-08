@@ -351,6 +351,25 @@ export default function ProductPage() {
 
           {/* ──── RIGHT SECTION: Product Details ──── */}
           <div className="product-info-v2">
+            <div className="v2-breadcrumb" style={{ marginBottom: '12px', fontSize: '0.8rem', color: '#666', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+              <Link to="/" style={{ color: '#666', textDecoration: 'none' }}>Home</Link>
+              {product.category && (
+                <>
+                  <span>&gt;</span>
+                  <Link to={`/category/${product.category.trim().replace(/\s+/g, '-').toLowerCase()}`} style={{ color: '#666', textDecoration: 'none' }}>
+                    {product.category.charAt(0).toUpperCase() + product.category.slice(1).toLowerCase()}
+                  </Link>
+                </>
+              )}
+              {product.subCategory && (
+                <>
+                  <span>&gt;</span>
+                  <Link to={`/category/${product.subCategory.trim().replace(/\s+/g, '-').toLowerCase()}`} style={{ color: '#666', textDecoration: 'none' }}>
+                    {product.subCategory.charAt(0).toUpperCase() + product.subCategory.slice(1).toLowerCase()}
+                  </Link>
+                </>
+              )}
+            </div>
             <span className="v2-brand-tag">FitBox Sports </span>
             <h1 className="v2-product-title">
               {product.name}

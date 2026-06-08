@@ -4926,18 +4926,54 @@ export default [
     "relatedIds": [],
     "variants": [
       {
-        "color": "Black",
+        "color": "Pink",
+        "images": [
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-2-original-imahf9hgh4hhk6yb.webp"
+        ]
+      },
+      {
+        "color": "Red",
+        "images": [
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-4-original-imahf9hg6qrfqgej.webp"
+        ]
+      },
+      {
+        "color": "Orange",
+        "images": [
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-5-original-imahf9hg5kbmu6gb.webp",
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-5-original-imahf9hgy23tz5cg.webp",
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-5-original-imahf9hgzcz99q4h.webp"
+        ]
+      },
+      {
+        "color": "Yellow",
         "images": [
           "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hg2hshhtcs.webp",
           "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hgyyrzdkym.webp",
           "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hg9vyvh6wf.webp"
         ]
+      },
+      {
+        "color": "Purple",
+        "images": [
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-8-original-imahf9hgyeffmnw3.webp"
+        ]
+      },
+      {
+        "color": "Blue",
+        "images": [
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgbhga93j3.webp",
+          "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgvzdxmjby.webp"
+        ]
       }
     ],
     "showcaseImages": [
       "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hg2hshhtcs.webp",
-      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hgyyrzdkym.webp",
-      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hg9vyvh6wf.webp"
+      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-2-original-imahf9hgh4hhk6yb.webp",
+      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-4-original-imahf9hg6qrfqgej.webp",
+      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-5-original-imahf9hg5kbmu6gb.webp",
+      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-8-original-imahf9hgyeffmnw3.webp",
+      "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-10-original-imahf9hgbhga93j3.webp"
     ],
     "imgSrc": "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hg2hshhtcs.webp",
     "hoverImgSrc": "/premium-vinyl-coated-cast-iron-dumbbells-for-exercise-fitness-6-original-imahf9hgyyrzdkym.webp"

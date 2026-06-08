@@ -112,8 +112,15 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
       e.preventDefault();
       if (focusedIndex >= 0 && focusedIndex < searchResults.length) {
         handleProductSelect(searchResults[focusedIndex].id);
-      } else if (searchResults.length > 0) {
-        handleProductSelect(searchResults[0].id);
+      } else {
+        const targetCategory = searchResults.length > 0 && searchResults[0].category 
+            ? searchResults[0].category.trim().replace(/\s+/g, '-').toLowerCase()
+            : searchQuery.trim().replace(/\s+/g, '-').toLowerCase();
+        navigate(`/category/${targetCategory}`);
+        setSearchQuery('');
+        setIsSearchOpen(false);
+        setIsMobileSearchFocused(false);
+        setMenuOpen(false);
       }
     } else if (e.key === 'Escape') {
       setSearchQuery('');
@@ -275,40 +282,56 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                 {searchQuery.trim().length > 0 && (
                   <div className="search-dropdown-results">
                     {searchResults.length > 0 ? (
-                      searchResults.map((p, idx) => {
-                        const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
-                        return (
-                          <div 
-                            key={p.id} 
-                            className={`search-result-item ${idx === focusedIndex ? 'focused' : ''}`}
-                            onClick={() => handleProductSelect(p.id)}
-                            onMouseEnter={() => setFocusedIndex(idx)}
-                          >
-                            <img src={img} alt={p.name} className="search-result-img" />
-                            <div className="search-result-info">
-                              <h5 className="search-result-title">{p.name}</h5>
-                              <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
-                            </div>
-                            <button 
-                              className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                toggleWishlist(p);
-                              }}
-                              aria-label="Add to wishlist"
+                      <>
+                        {searchResults.map((p, idx) => {
+                          const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
+                          return (
+                            <div 
+                              key={p.id} 
+                              className={`search-result-item ${idx === focusedIndex ? 'focused' : ''}`}
+                              onClick={() => handleProductSelect(p.id)}
+                              onMouseEnter={() => setFocusedIndex(idx)}
                             >
-                              <svg 
-                                viewBox="0 0 24 24" 
-                                fill={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'none'} 
-                                stroke={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'currentColor'} 
-                                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"
+                              <img src={img} alt={p.name} className="search-result-img" />
+                              <div className="search-result-info">
+                                <h5 className="search-result-title">{p.name}</h5>
+                                <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
+                              </div>
+                              <button 
+                                className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleWishlist(p);
+                                }}
+                                aria-label="Add to wishlist"
                               >
-                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                              </svg>
-                            </button>
-                          </div>
-                        );
-                      })
+                                <svg 
+                                  viewBox="0 0 24 24" 
+                                  fill={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'none'} 
+                                  stroke={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'currentColor'} 
+                                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"
+                                >
+                                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                                </svg>
+                              </button>
+                            </div>
+                          );
+                        })}
+                        <div 
+                          className="search-result-item"
+                          style={{ justifyContent: 'center', background: '#f8f9fa', cursor: 'pointer' }}
+                          onClick={() => {
+                            const targetCategory = searchResults.length > 0 && searchResults[0].category 
+                                ? searchResults[0].category.trim().replace(/\s+/g, '-').toLowerCase()
+                                : searchQuery.trim().replace(/\s+/g, '-').toLowerCase();
+                            navigate(`/category/${targetCategory}`);
+                            setIsSearchOpen(false);
+                            setSearchQuery('');
+                          }}
+                        >
+                          <span style={{ fontWeight: '600', color: '#ff416c' }}>View all products</span>
+                        </div>
+                      </>
                     ) : (
                       <div className="search-result-empty">
                         <p>No matching product</p>
@@ -486,40 +509,57 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           {searchQuery.trim().length > 0 && isMobileSearchFocused && (
             <div className="search-dropdown-results mobile-search-dropdown">
               {searchResults.length > 0 ? (
-                searchResults.map((p, idx) => {
-                  const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
-                  return (
-                    <div 
-                      key={p.id} 
-                      className={`search-result-item ${idx === focusedIndex ? 'focused' : ''}`}
-                      onClick={() => handleProductSelect(p.id)}
-                      onMouseEnter={() => setFocusedIndex(idx)}
-                    >
-                      <img src={img} alt={p.name} className="search-result-img" />
-                      <div className="search-result-info">
-                        <h5 className="search-result-title">{p.name}</h5>
-                        <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
-                      </div>
-                      <button 
-                        className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleWishlist(p);
-                        }}
-                        aria-label="Add to wishlist"
+                <>
+                  {searchResults.map((p, idx) => {
+                    const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
+                    return (
+                      <div 
+                        key={p.id} 
+                        className={`search-result-item ${idx === focusedIndex ? 'focused' : ''}`}
+                        onClick={() => handleProductSelect(p.id)}
+                        onMouseEnter={() => setFocusedIndex(idx)}
                       >
-                        <svg 
-                          viewBox="0 0 24 24" 
-                          fill={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'none'} 
-                          stroke={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'currentColor'} 
-                          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"
+                        <img src={img} alt={p.name} className="search-result-img" />
+                        <div className="search-result-info">
+                          <h5 className="search-result-title">{p.name}</h5>
+                          <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
+                        </div>
+                        <button 
+                          className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleWishlist(p);
+                          }}
+                          aria-label="Add to wishlist"
                         >
-                          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                        </svg>
-                      </button>
-                    </div>
-                  );
-                })
+                          <svg 
+                            viewBox="0 0 24 24" 
+                            fill={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'none'} 
+                            stroke={wishlist.some(w => w.id === p.id) ? '#ff416c' : 'currentColor'} 
+                            strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"
+                          >
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                          </svg>
+                        </button>
+                      </div>
+                    );
+                  })}
+                  <div 
+                    className="search-result-item"
+                    style={{ justifyContent: 'center', background: '#f8f9fa', cursor: 'pointer' }}
+                    onClick={() => {
+                      const targetCategory = searchResults.length > 0 && searchResults[0].category 
+                          ? searchResults[0].category.trim().replace(/\s+/g, '-').toLowerCase()
+                          : searchQuery.trim().replace(/\s+/g, '-').toLowerCase();
+                      navigate(`/category/${targetCategory}`);
+                      setIsMobileSearchFocused(false);
+                      setSearchQuery('');
+                      setMenuOpen(false);
+                    }}
+                  >
+                    <span style={{ fontWeight: '600', color: '#ff416c' }}>View all products</span>
+                  </div>
+                </>
               ) : (
                 <div className="search-result-empty">
                   <p>No matching product</p>
