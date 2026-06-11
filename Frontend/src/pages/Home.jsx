@@ -138,7 +138,7 @@ const ourProductCards = [
 const availabilityPlatforms = [
   { id: 'p1', label: 'Amazon', imgSrc: '/amazon.webp' },
   { id: 'p2', label: 'Swiggy', imgSrc: '/Swiggy.webp' },
-  { id: 'p3', label: 'FitBox.com', imgSrc: '/favicon.webp' },
+  { id: 'p3', label: 'FitBox Sports.in', imgSrc: '/favicon.webp' },
   { id: 'p4', label: 'Blinkit', imgSrc: '/blinkit.webp' },
 
 
