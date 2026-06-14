@@ -135,6 +135,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
   const logout = () => {
     setShowLogoutRibbon(true);
     setTimeout(() => setShowLogoutRibbon(false), 3000);

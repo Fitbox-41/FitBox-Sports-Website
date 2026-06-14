@@ -290,6 +290,7 @@ export const googleLogin = async (req, res) => {
   }
 };
 
+
 // @desc    Get user profile
 // @route   GET /api/auth/profile
 // @access  Private
