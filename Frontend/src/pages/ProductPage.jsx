@@ -109,6 +109,10 @@ export default function ProductPage() {
   const [quantity, setQuantity] = useState(1);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
+  // Pincode delivery check state
+  const [pincode, setPincode] = useState('');
+  const [deliveryStatus, setDeliveryStatus] = useState(null); // null | 'available' | 'unavailable' | 'unknown'
+  const [pincodeLoading, setPincodeLoading] = useState(false);
 
   const location = useLocation();
 
@@ -131,6 +135,8 @@ export default function ProductPage() {
     // Scroll to top on page entry
     window.scrollTo(0, 0);
     setQuantity(1); // Reset quantity on product/variant change
+    setDeliveryStatus(null); // Reset delivery check on product change
+    setPincode('');
   }, [productId, location.search, allProducts]);
 
   // UI states: active tab for details, and accordion toggle states
@@ -255,9 +261,32 @@ export default function ProductPage() {
   const handleNext = () => setCurrentImgIdx((prev) => (prev + 1) % images.length);
   const handlePrev = () => setCurrentImgIdx((prev) => (prev - 1 + images.length) % images.length);
 
+  // Pincode checker — demo logic: valid 6-digit Indian pincodes 100000–899999
+  const handleCheckPincode = async () => {
+    const cleaned = pincode.trim().replace(/\D/g, '');
+    if (cleaned.length !== 6) {
+      setDeliveryStatus('unknown');
+      return;
+    }
+    const num = parseInt(cleaned, 10);
+    setPincodeLoading(true);
+    // Simulate a short network call
+    await new Promise((r) => setTimeout(r, 600));
+    if (num >= 100000 && num <= 899999) {
+      setDeliveryStatus('available');
+    } else {
+      setDeliveryStatus('unavailable');
+    }
+    setPincodeLoading(false);
+  };
+
   const handleBuyNow = async () => {
     if (!currentUser) {
       setShowLoginModal(true);
+      return;
+    }
+    if (deliveryStatus === 'unavailable') {
+      alert('Sorry, we do not deliver to your area yet.');
       return;
     }
     if (!currentUser.addresses || currentUser.addresses.length === 0 || !currentUser.phone) {
@@ -453,6 +482,117 @@ export default function ProductPage() {
               </div>
             </div>
 
+            {/* PINCODE DELIVERY CHECKER */}
+            <div className="v2-selector-wrap">
+              <p className="selector-label">Check Delivery</p>
+              <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  value={pincode}
+                  onChange={(e) => { setPincode(e.target.value.replace(/\D/g, '')); setDeliveryStatus(null); }}
+                  onKeyDown={(e) => e.key === 'Enter' && handleCheckPincode()}
+                  placeholder="Enter 6-digit pincode"
+                  style={{
+                    flex: 1,
+                    padding: '10px 14px',
+                    border: '1.5px solid #ddd',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    outline: 'none',
+                    fontFamily: 'inherit',
+                    letterSpacing: '2px',
+                    transition: 'border-color 0.2s',
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={handleCheckPincode}
+                  disabled={pincodeLoading || pincode.length < 6}
+                  style={{
+                    padding: '10px 18px',
+                    background: pincodeLoading || pincode.length < 6 ? '#ccc' : '#1a1a2e',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    cursor: pincodeLoading || pincode.length < 6 ? 'not-allowed' : 'pointer',
+                    transition: 'background 0.2s',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {pincodeLoading ? 'Checking…' : 'Check'}
+                </button>
+              </div>
+
+              {/* Delivery ribbon */}
+              {deliveryStatus === 'available' && (
+                <div style={{
+                  marginTop: '10px',
+                  padding: '10px 14px',
+                  background: 'linear-gradient(90deg, #e8f5e9, #f1f8e9)',
+                  borderLeft: '4px solid #2e7d32',
+                  borderRadius: '0 8px 8px 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  animation: 'slideInRibbon 0.3s ease',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: '#1b5e20',
+                }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  🎉 Great news! We deliver to pincode {pincode}.
+                </div>
+              )}
+              {deliveryStatus === 'unavailable' && (
+                <div style={{
+                  marginTop: '10px',
+                  padding: '10px 14px',
+                  background: 'linear-gradient(90deg, #ffebee, #fce4ec)',
+                  borderLeft: '4px solid #c62828',
+                  borderRadius: '0 8px 8px 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  animation: 'slideInRibbon 0.3s ease',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: '#b71c1c',
+                }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+                    <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+                  </svg>
+                  Sorry, we don't deliver to pincode {pincode} yet. Check back soon!
+                </div>
+              )}
+              {deliveryStatus === 'unknown' && (
+                <div style={{
+                  marginTop: '10px',
+                  padding: '10px 14px',
+                  background: 'linear-gradient(90deg, #fff8e1, #fff3e0)',
+                  borderLeft: '4px solid #f57f17',
+                  borderRadius: '0 8px 8px 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  animation: 'slideInRibbon 0.3s ease',
+                  fontSize: '13px',
+                  fontWeight: '600',
+                  color: '#e65100',
+                }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" width="18" height="18">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  Invalid pincode. Please enter a valid 6-digit Indian pincode.
+                </div>
+              )}
+            </div>
+
             {/* URGENCY MESSAGE / OUT OF STOCK */}
             {isActuallyOutOfStock ? (
               <div className="v2-urgency-banner v2-out-of-stock-banner">
@@ -492,11 +632,12 @@ export default function ProductPage() {
                 {isActuallyOutOfStock ? 'Out of Stock' : 'Add to Cart'}
               </button>
               <button 
-                className={`v2-btn v2-btn-buy ${isActuallyOutOfStock ? 'v2-btn--disabled' : ''}`}
-                disabled={isActuallyOutOfStock}
+                className={`v2-btn v2-btn-buy ${(isActuallyOutOfStock || deliveryStatus === 'unavailable' || deliveryStatus === 'unknown') ? 'v2-btn--disabled' : ''}`}
+                disabled={isActuallyOutOfStock || deliveryStatus === 'unavailable' || deliveryStatus === 'unknown'}
                 onClick={handleBuyNow}
+                title={deliveryStatus === 'unavailable' || deliveryStatus === 'unknown' ? 'Delivery not available in your area' : ''}
               >
-                Buy Now
+                {isActuallyOutOfStock ? 'Out of Stock' : (deliveryStatus === 'unavailable' ? 'Not Deliverable' : 'Buy Now')}
               </button>
             </div>
 

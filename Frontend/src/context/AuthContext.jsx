@@ -113,6 +113,52 @@ export const AuthProvider = ({ children }) => {
     setTimeout(() => setShowLoginSuccessRibbon(false), 3000);
   };
 
+  // ── Location helper: silently get GPS → reverse-geocode → save address ──
+  const requestLocationAndSaveAddress = async (token, userData) => {
+    if (!navigator.geolocation) return;
+    // Skip if user already has addresses saved
+    if (userData?.addresses && userData.addresses.length > 0) return;
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        try {
+          const { latitude, longitude } = position.coords;
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`,
+            { headers: { 'Accept-Language': 'en' } }
+          );
+          const geo = await res.json();
+          const a = geo.address || {};
+
+          const locationAddress = {
+            street: [a.house_number, a.road, a.neighbourhood, a.suburb]
+              .filter(Boolean).join(', ') || a.display_name?.split(',')[0] || '',
+            city: a.city || a.town || a.village || a.county || '',
+            state: a.state || '',
+            zip: a.postcode || '',
+            country: a.country || 'India',
+            isAutoDetected: true,
+          };
+
+          if (!locationAddress.street && !locationAddress.city) return;
+
+          const config = { headers: { Authorization: `Bearer ${token}` } };
+          const updatedAddresses = [...(userData?.addresses || []), locationAddress];
+          const { data: updatedUser } = await axios.put(
+            `${apiUrl}/api/auth/profile`,
+            { addresses: updatedAddresses },
+            config
+          );
+          setCurrentUser((prev) => ({ ...prev, addresses: updatedUser.addresses }));
+        } catch (_) {
+          // Silently ignore — location is a best-effort enhancement
+        }
+      },
+      () => { /* User denied — silently skip */ },
+      { timeout: 8000, maximumAge: 60000 }
+    );
+  };
+
   const loginWithGoogle = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -202,6 +248,7 @@ export const AuthProvider = ({ children }) => {
     signup,
     login,
     loginWithGoogle,
+    requestLocationAndSaveAddress,
     requestForgotPasswordOtp,
     verifyResetOtp,
     updatePassword,

@@ -18,14 +18,41 @@ export default function Auth() {
   const [newPassword, setNewPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
-  const { currentUser, signup, login, loginWithGoogle, requestOtpForRegister, requestOtpForLogin, requestForgotPasswordOtp, verifyResetOtp, updatePassword, triggerLoginSuccessRibbon } = useAuth();
+  const [showLocationModal, setShowLocationModal] = useState(false);
+  const [pendingUserData, setPendingUserData] = useState(null);
+  const { currentUser, signup, login, loginWithGoogle, requestLocationAndSaveAddress, requestOtpForRegister, requestOtpForLogin, requestForgotPasswordOtp, verifyResetOtp, updatePassword, triggerLoginSuccessRibbon } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentUser && !isForgotPassword) {
+    if (currentUser && !isForgotPassword && !showLocationModal) {
       navigate('/account');
     }
-  }, [currentUser, isForgotPassword, navigate]);
+  }, [currentUser, isForgotPassword, showLocationModal, navigate]);
+
+  // Show location modal after login instead of auto-navigating
+  const handlePostLoginFlow = (userData) => {
+    // Only prompt if they have no addresses yet
+    if (!userData?.addresses || userData.addresses.length === 0) {
+      setPendingUserData(userData);
+      setShowLocationModal(true);
+    } else {
+      navigate('/account');
+    }
+  };
+
+  const handleAllowLocation = async () => {
+    setShowLocationModal(false);
+    if (pendingUserData) {
+      const token = localStorage.getItem('fitbox_token');
+      await requestLocationAndSaveAddress(token, pendingUserData);
+    }
+    navigate('/account');
+  };
+
+  const handleSkipLocation = () => {
+    setShowLocationModal(false);
+    navigate('/account');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -59,8 +86,8 @@ export default function Auth() {
       } else if (!showOtpInput) {
         if (isLogin) {
           // Direct login without OTP
-          await login(email, password);
-          navigate('/account');
+          const data = await login(email, password);
+          handlePostLoginFlow(data);
         } else {
           // Step 1: Request OTP for register
           await requestOtpForRegister(email, password);
@@ -75,8 +102,8 @@ export default function Auth() {
           return;
         }
 
-        await signup(email, password, otpString);
-        navigate('/account');
+        const data = await signup(email, password, otpString);
+        handlePostLoginFlow(data);
       }
     } catch (err) {
       setError(err.message || 'Failed to authenticate');
@@ -89,8 +116,8 @@ export default function Auth() {
     setError('');
     setLoading(true);
     try {
-      await loginWithGoogle();
-      navigate('/account');
+      const data = await loginWithGoogle();
+      handlePostLoginFlow(data);
     } catch (err) {
       setError(err.message || 'Failed to authenticate with Google');
     }
@@ -370,6 +397,112 @@ export default function Auth() {
           </div>
         </div>
       </div>
+
+      {/* ── LOCATION PERMISSION MODAL ── */}
+      {showLocationModal && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.55)',
+          backdropFilter: 'blur(6px)',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px',
+          animation: 'fadeInOverlay 0.25s ease',
+        }}>
+          <div style={{
+            background: '#fff',
+            borderRadius: '20px',
+            padding: '36px 32px',
+            maxWidth: '420px',
+            width: '100%',
+            textAlign: 'center',
+            boxShadow: '0 24px 60px rgba(0,0,0,0.2)',
+            animation: 'slideUpModal 0.3s cubic-bezier(0.34,1.56,0.64,1)',
+          }}>
+            {/* Location icon */}
+            <div style={{
+              width: '70px',
+              height: '70px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 20px',
+              boxShadow: '0 8px 24px rgba(255,107,53,0.35)',
+            }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="32" height="32">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+
+            <h2 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#1a1a2e', marginBottom: '10px', fontFamily: 'inherit' }}>
+              Enable Location Access
+            </h2>
+            <p style={{ fontSize: '0.9rem', color: '#666', lineHeight: '1.6', marginBottom: '28px' }}>
+              Allow FitBox Sports to detect your location to <strong>auto-fill your delivery address</strong> and show products available in your area.
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <button
+                onClick={handleAllowLocation}
+                style={{
+                  padding: '14px',
+                  background: 'linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '12px',
+                  fontSize: '1rem',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 15px rgba(255,107,53,0.4)',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  fontFamily: 'inherit',
+                }}
+                onMouseOver={e => e.currentTarget.style.transform='translateY(-2px)'}
+                onMouseOut={e => e.currentTarget.style.transform='translateY(0)'}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Allow Location Access
+              </button>
+              <button
+                onClick={handleSkipLocation}
+                style={{
+                  padding: '13px',
+                  background: 'transparent',
+                  color: '#888',
+                  border: '1.5px solid #e0e0e0',
+                  borderRadius: '12px',
+                  fontSize: '0.9rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  transition: 'border-color 0.2s, color 0.2s',
+                }}
+                onMouseOver={e => { e.currentTarget.style.borderColor='#bbb'; e.currentTarget.style.color='#555'; }}
+                onMouseOut={e => { e.currentTarget.style.borderColor='#e0e0e0'; e.currentTarget.style.color='#888'; }}
+              >
+                Skip for Now
+              </button>
+            </div>
+
+            <p style={{ marginTop: '16px', fontSize: '0.75rem', color: '#bbb' }}>
+              You can always update your address manually from your account settings.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -216,3 +216,13 @@
   box-shadow: 0 0 0 3px rgba(255, 65, 108, 0.1);
   outline: none;
 }
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUpModal {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

@@ -413,6 +413,17 @@
   }
 }
 
+@keyframes slideInRibbon {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .urgency-text {
   color: #c53030;
   font-weight: 800;

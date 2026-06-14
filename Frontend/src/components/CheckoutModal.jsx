@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import Loader from './Loader';
 import './CheckoutModal.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems, checkoutTotal, onSuccess }) {
   const [loading, setLoading] = useState(false);
@@ -11,6 +11,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
   const [step, setStep] = useState(1); // 1 = shipping, 2 = payment mode
   const [paymentMode, setPaymentMode] = useState(''); // 'Online' or 'COD'
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
   
   // Shipping details state
   const [selectedAddressIdx, setSelectedAddressIdx] = useState(0);
@@ -204,19 +205,60 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
               <div className="shipping-form-group">
                 <label>Shipping Address</label>
                 {currentUser?.addresses && currentUser.addresses.length > 0 ? (
-                  <select 
-                    value={selectedAddressIdx} 
-                    onChange={e => setSelectedAddressIdx(Number(e.target.value))}
-                    className="address-selector"
-                  >
-                    {currentUser.addresses.map((addr, idx) => (
-                      <option key={idx} value={idx}>
-                        {addr.street}, {addr.city}, {addr.state} {addr.zip}
-                      </option>
-                    ))}
-                  </select>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <select 
+                      value={selectedAddressIdx} 
+                      onChange={e => setSelectedAddressIdx(Number(e.target.value))}
+                      className="address-selector"
+                      style={{ flex: 1 }}
+                    >
+                      {currentUser.addresses.map((addr, idx) => (
+                        <option key={idx} value={idx}>
+                          {addr.street}, {addr.city}, {addr.state} {addr.zip}
+                        </option>
+                      ))}
+                    </select>
+                    <button
+                      type="button"
+                      onClick={() => { handleCloseModal(); navigate('/account'); }}
+                      style={{
+                        padding: '9px 14px',
+                        background: 'transparent',
+                        border: '1.5px solid #1a1a2e',
+                        borderRadius: '8px',
+                        fontWeight: '600',
+                        fontSize: '12px',
+                        cursor: 'pointer',
+                        color: '#1a1a2e',
+                        whiteSpace: 'nowrap',
+                        transition: 'all 0.2s',
+                      }}
+                      title="Edit your saved addresses"
+                    >
+                      Edit
+                    </button>
+                  </div>
                 ) : (
-                  <p className="no-address-warning">No addresses found.</p>
+                  <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                    <p className="no-address-warning" style={{ flex: 1, margin: 0 }}>No addresses found.</p>
+                    <button
+                      type="button"
+                      onClick={() => { handleCloseModal(); navigate('/account'); }}
+                      style={{
+                        padding: '9px 14px',
+                        background: '#1a1a2e',
+                        border: 'none',
+                        borderRadius: '8px',
+                        fontWeight: '600',
+                        fontSize: '12px',
+                        cursor: 'pointer',
+                        color: '#fff',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      + Add Address
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
