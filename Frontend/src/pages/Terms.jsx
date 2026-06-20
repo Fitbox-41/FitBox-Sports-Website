@@ -44,7 +44,7 @@ export default function Terms() {
             <p>In no event shall FitBox Sports, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this website.</p>
 
             <h2>6. Governing Law</h2>
-            <p>These terms and conditions are governed by and construed in accordance with the laws of India, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
+            <p>These terms and conditions are governed by and construed in accordance with the laws of Punjab, India, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
           </div>
         </div>
       </div>

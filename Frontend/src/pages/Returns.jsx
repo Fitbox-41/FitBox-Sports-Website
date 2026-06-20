@@ -43,7 +43,6 @@ export default function Returns() {
             <ul>
               <li>Used or worn fitness accessories (like gloves, wrist wraps).</li>
               <li>Items purchased during clearance sales or marked as "Final Sale".</li>
-              <li>Gift cards.</li>
             </ul>
 
             <h2>4. Return Process</h2>
@@ -56,6 +55,7 @@ export default function Returns() {
             <h2>6. Damaged or Defective Items</h2>
             <div className="info-notice">
               <p>In the event that your order arrives damaged or defective, please email us within 48 hours of delivery with photos of the product and packaging. We will arrange a replacement or full refund at no extra cost to you.</p>
+              <p>The replacement of all the damaged or defective items will be checked and it will get delivered in the address in 8 to 10 days after the verification is done by the team end. Or else the refund will be credited in 6 to 8 days, depending on the customer.</p>
             </div>
           </div>
         </div>
