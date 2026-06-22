@@ -56,10 +56,12 @@ app.post('/api/developer/sync-products', async (req, res) => {
         for (const p of allProducts) {
             const existingProduct = await Product.findOne({ id: p.id });
             
-            // If it exists, preserve its current admin statuses
+            // If it exists, preserve its current admin statuses & pricing
             if (existingProduct) {
                 p.isOutOfStock = existingProduct.isOutOfStock;
                 p.isNew = existingProduct.isNew;
+                if (existingProduct.price !== undefined) p.price = existingProduct.price;
+                if (existingProduct.oldPrice !== undefined) p.oldPrice = existingProduct.oldPrice;
             }
             
             await Product.findOneAndUpdate(
@@ -76,11 +78,41 @@ app.post('/api/developer/sync-products', async (req, res) => {
     }
 });
 
+// Function to safely sync products.js to MongoDB automatically
+const autoSyncProductsToDB = async () => {
+    try {
+        console.log('Starting automatic product sync...');
+        const Product = (await import('./Models/Product.js')).default;
+        const allProducts = (await import('../Frontend/src/data/products.js')).default;
+        
+        for (const p of allProducts) {
+            const existingProduct = await Product.findOne({ id: p.id });
+            
+            if (existingProduct) {
+                p.isOutOfStock = existingProduct.isOutOfStock;
+                p.isNew = existingProduct.isNew;
+                if (existingProduct.price !== undefined) p.price = existingProduct.price;
+                if (existingProduct.oldPrice !== undefined) p.oldPrice = existingProduct.oldPrice;
+            }
+            
+            await Product.findOneAndUpdate(
+                { id: p.id },
+                { $set: p },
+                { upsert: true, new: true }
+            );
+        }
+        console.log('Automatic product sync completed!');
+    } catch (error) {
+        console.error('Failed automatic product sync:', error);
+    }
+};
+
 // Only listen if not running in Vercel (for local development)
 if (!process.env.VERCEL) {
     app.listen(PORT, async () => {
         console.log(`Server is running on port ${PORT}`);
         await connectDB();
+        await autoSyncProductsToDB();
     });
 }
 
