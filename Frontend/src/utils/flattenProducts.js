@@ -30,7 +30,7 @@ export const flattenProducts = (products) => {
             selectedVariant: variant.color,
             imgSrc: imgSrc,
             hoverImgSrc: hoverImgSrc,
-            isOutOfStock: variant.isOutOfStock !== undefined ? variant.isOutOfStock : product.isOutOfStock
+            isOutOfStock: product.isOutOfStock || (variant.isOutOfStock === true)
           });
         });
     } else {

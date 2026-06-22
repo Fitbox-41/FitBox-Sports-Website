@@ -880,8 +880,8 @@ export default [
     "name": "Premium Lifting Straps",
     "category": "Support & Protection",
     "subCategory": "Gym Gloves",
-    "price": 999,
-    "oldPrice": 1299,
+    "price": 1234,
+    "oldPrice": 333333,
     "isNew": true,
     "isOutOfStock": false,
     "qualities": [
