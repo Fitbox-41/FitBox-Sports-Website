@@ -164,8 +164,10 @@ export default function Auth() {
       <div className="header-spacer" style={{ height: '70px' }} />
 
       <div className="auth-container">
-        <div className="auth-card">
-          <h1 className="auth-title">
+        <div className="auth-wrapper">
+          <div className="auth-left">
+            <div className="auth-card-content">
+              <h1 className="auth-title">
             {isForgotPassword 
               ? (forgotPasswordStep === 3 ? 'Set New Password' : 'Reset Password') 
               : (isLogin ? 'Welcome Back' : 'Create an Account')}
@@ -229,8 +231,8 @@ export default function Auth() {
                   </div>
                 )}
 
-                {isLogin && !isForgotPassword && (
-                  <div style={{ textAlign: 'right', marginTop: '-10px' }}>
+                {!isForgotPassword && (
+                  <div style={{ textAlign: 'right', marginTop: '-10px', visibility: isLogin ? 'visible' : 'hidden' }}>
                     <button type="button" className="auth-toggle-btn" onClick={() => {
                       setIsForgotPassword(true);
                       setForgotPasswordStep(1);
@@ -397,6 +399,11 @@ export default function Auth() {
           </div>
         </div>
       </div>
+      <div className="auth-right">
+        <img src="zzz.jpg" alt="Welcome to FitBox" className="auth-side-image" />
+      </div>
+    </div>
+  </div>
 
       {/* ── LOCATION PERMISSION MODAL ── */}
       {showLocationModal && (
