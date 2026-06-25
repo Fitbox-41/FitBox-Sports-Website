@@ -323,11 +323,12 @@ export default function Home() {
 
     return withImages.slice(0, HERO_CARD_COUNT).map((p) => {
       const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]) || '';
+      const price = typeof p.price === 'number' ? p.price : (Number(p.price) || 0);
       return {
         ...p,
         displayId: p.displayId || String(p.id),
         imgSrc: img,
-        price: typeof p.price === 'number' ? `₹${p.price.toLocaleString('en-IN')}` : p.price,
+        price: price ? `₹${price.toLocaleString('en-IN')}` : '₹0',
       };
     });
   }, [allProducts]);
@@ -335,13 +336,15 @@ export default function Home() {
   const newArrivals = newArrivalsIds.map(id => {
     const p = allProducts.find(prod => prod.id === id);
     if (!p) return null;
+    const price = typeof p.price === 'number' ? p.price : (Number(p.price) || 0);
+    const oldPrice = typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0);
     return {
       ...p,
       displayId: `${p.id}`,
       name: p.name.includes('Shaker') ? 'Shaker Pro 700ml' : p.name,
       tag: 'New',
-      price: `₹${p.price.toLocaleString('en-IN')}`,
-      oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
+      price: price,
+      oldPrice: oldPrice || null,
       imgSrc: p.imgSrc && p.imgSrc !== '/.webp' ? p.imgSrc : '',
       hoverImgSrc: p.hoverImgSrc && p.hoverImgSrc !== '/.webp' ? p.hoverImgSrc : ''
     };
@@ -373,8 +376,8 @@ export default function Home() {
     // Take exactly 50 items and format their prices/images
     const mapped = shuffled.slice(0, 50).map(p => ({
       ...p,
-      price: `₹${p.price.toLocaleString('en-IN')}`,
-      oldPrice: p.oldPrice ? `₹${p.oldPrice.toLocaleString('en-IN')}` : null,
+      price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
+      oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null,
       imgSrc: p.imgSrc || '',
       hoverImgSrc: p.hoverImgSrc || '',
     }));

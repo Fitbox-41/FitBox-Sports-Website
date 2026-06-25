@@ -16,13 +16,20 @@ const seedDatabase = async () => {
     await mongoose.connect(process.env.MONGO_URI);
     console.log('Connected to MongoDB');
 
-    // Delete existing products
-    await Product.deleteMany();
-    console.log('Existing products removed');
+    // Fetch all existing products
+    const existingProducts = await Product.find({}, { id: 1 });
+    const existingIds = new Set(existingProducts.map(p => p.id));
 
-    // Insert new products
-    await Product.insertMany(allProducts);
-    console.log('Database seeded successfully with products from products.js');
+    // Filter out products that already exist
+    const newProducts = allProducts.filter(p => !existingIds.has(p.id));
+
+    if (newProducts.length > 0) {
+      // Insert only new products
+      await Product.insertMany(newProducts);
+      console.log(`Database seeded successfully with ${newProducts.length} NEW products from products.js`);
+    } else {
+      console.log('No new products found in products.js. Existing data was left untouched.');
+    }
 
     process.exit();
   } catch (error) {

@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema({
     name: String,
     quantity: Number,
     price: Number,
+    weight: { type: Number, default: 0 },
     selectedVariant: String,
     selectedSize: String,
     imgSrc: String

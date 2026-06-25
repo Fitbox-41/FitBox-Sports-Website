@@ -296,14 +296,22 @@ export default function ProductPage() {
     }
 
     try {
+      const currentVariant = product.variants[selectedVariantIdx] || product.variants[0];
+      const currentSize = product.sizes && product.sizes[selectedSizeIdx] ? product.sizes[selectedSizeIdx] : null;
+      
+      const activePrice = currentSize?.price || currentVariant?.price || product.price;
+      const activeWeight = currentSize?.weight || currentVariant?.weight || 0;
+
       const buyNowItem = {
         ...product,
-        selectedVariant: currentVariant.color,
-        selectedSize: product.sizes[selectedSizeIdx],
-        imgSrc: currentVariant.images[0],
+        selectedVariant: currentVariant?.color || '',
+        selectedSize: currentSize?.name || currentSize || '',
+        price: activePrice,
+        weight: activeWeight,
+        imgSrc: currentVariant?.images[0] || product.imgSrc,
         quantity: quantity
       };
-      const totalAmount = product.price * quantity;
+      const totalAmount = activePrice * quantity;
 
       setCheckoutItems([buyNowItem]);
       setCheckoutTotal(totalAmount);
@@ -402,6 +410,13 @@ export default function ProductPage() {
             <span className="v2-brand-tag">FitBox Sports </span>
             <h1 className="v2-product-title">
               {product.name}
+              {(() => {
+                const currentVariant = product.variants && product.variants[selectedVariantIdx];
+                const currentSize = product.sizes && product.sizes[selectedSizeIdx];
+                const colorStr = currentVariant?.color ? ` - ${currentVariant.color}` : '';
+                const sizeStr = currentSize ? ` - ${currentSize.name || currentSize}` : '';
+                return `${colorStr}${sizeStr}`;
+              })()}
               {product.isNew && (
                 <span className="ml-3 inline-block px-3 py-1 bg-[#ff6b35] text-white text-[0.65rem] font-bold uppercase tracking-wider rounded-full align-middle">
                   New Arrival
@@ -417,14 +432,24 @@ export default function ProductPage() {
             </div>
 
             <div className="v2-price-box">
-              <span className="v2-current-price">₹{product.price * quantity}</span>
-              <span className="v2-old-price">₹{product.oldPrice * quantity}</span>
-              <span className="v2-save-tag">You Saved ₹{(product.oldPrice - product.price) * quantity}</span>
+              {(() => {
+                const currentVariant = product.variants && product.variants[selectedVariantIdx];
+                const currentSize = product.sizes && product.sizes[selectedSizeIdx];
+                const activePrice = currentSize?.price || currentVariant?.price || product.price;
+                const activeOldPrice = currentSize?.oldPrice || currentVariant?.oldPrice || product.oldPrice;
+                return (
+                  <>
+                    <span className="v2-current-price">₹{activePrice * quantity}</span>
+                    <span className="v2-old-price">₹{activeOldPrice * quantity}</span>
+                    <span className="v2-save-tag">You Saved ₹{(activeOldPrice - activePrice) * quantity}</span>
+                  </>
+                );
+              })()}
             </div>
 
             {/* COLOR SELECTOR */}
             <div className="v2-selector-wrap">
-              <p className="selector-label">Color: <strong>{currentVariant.color}</strong></p>
+              <p className="selector-label">Color: <strong>{currentVariant?.color}</strong></p>
               <div className="v2-color-grid">
                 {product.variants.map((variant, idx) => (
                   <div
@@ -436,26 +461,35 @@ export default function ProductPage() {
                     }}
                   >
                     <img src={variant.images[0]} alt={variant.color || `Color ${idx}`} />
+                    {variant.price && variant.price !== product.price && (
+                       <span style={{ fontSize: '10px', display: 'block', textAlign: 'center' }}>₹{variant.price}</span>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
 
             {/* SIZE SELECTOR */}
-            <div className="v2-selector-wrap">
-              <p className="selector-label">Size</p>
-              <div className="v2-size-grid">
-                {product.sizes.map((size, idx) => (
-                  <div
-                    key={idx}
-                    className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
-                    onClick={() => setSelectedSizeIdx(idx)}
-                  >
-                    {size}
-                  </div>
-                ))}
+            {product.sizes && product.sizes.length > 0 && (
+              <div className="v2-selector-wrap">
+                <p className="selector-label">Size</p>
+                <div className="v2-size-grid">
+                  {product.sizes.map((size, idx) => (
+                    <div
+                      key={idx}
+                      className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
+                      onClick={() => setSelectedSizeIdx(idx)}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                    >
+                      <span>{size.name || size}</span>
+                      {size.price && size.price !== product.price && (
+                        <span style={{ fontSize: '10px', opacity: 0.8 }}>₹{size.price}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* QUANTITY SELECTOR */}
             <div className="v2-selector-wrap">
@@ -621,13 +655,21 @@ export default function ProductPage() {
               <button 
                 className={`v2-btn v2-btn-cart ${isActuallyOutOfStock ? 'v2-btn--disabled' : ''}`}
                 disabled={isActuallyOutOfStock}
-                onClick={() => addToCart({
-                  ...product,
-                  selectedVariant: currentVariant.color,
-                  selectedSize: product.sizes[selectedSizeIdx],
-                  imgSrc: currentVariant.images[0],
-                  quantity: quantity
-                })}
+                onClick={() => {
+                  const currentSize = product.sizes && product.sizes[selectedSizeIdx] ? product.sizes[selectedSizeIdx] : null;
+                  const activePrice = currentSize?.price || currentVariant?.price || product.price;
+                  const activeWeight = currentSize?.weight || currentVariant?.weight || 0;
+                  
+                  addToCart({
+                    ...product,
+                    selectedVariant: currentVariant?.color || '',
+                    selectedSize: currentSize?.name || currentSize || '',
+                    price: activePrice,
+                    weight: activeWeight,
+                    imgSrc: currentVariant?.images[0] || product.imgSrc,
+                    quantity: quantity
+                  });
+                }}
               >
                 {isActuallyOutOfStock ? 'Out of Stock' : 'Add to Cart'}
               </button>

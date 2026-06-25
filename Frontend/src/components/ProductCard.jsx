@@ -270,10 +270,37 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         </div>
 
         <div className="pc-price-row">
-          <span className="pc-price">{typeof product.price === 'number' ? `₹${product.price.toLocaleString('en-IN')}` : product.price}</span>
-          {product.oldPrice && (
-            <span className="pc-old-price">{typeof product.oldPrice === 'number' ? `₹${product.oldPrice.toLocaleString('en-IN')}` : product.oldPrice}</span>
-          )}
+          {(() => {
+            let minP = product.price || 0;
+            let maxP = product.price || 0;
+            if (product.variants) {
+              product.variants.forEach(v => {
+                if (v.price) {
+                  if (v.price < minP) minP = v.price;
+                  if (v.price > maxP) maxP = v.price;
+                }
+              });
+            }
+            if (product.sizes) {
+              product.sizes.forEach(s => {
+                if (s.price) {
+                  if (s.price < minP) minP = s.price;
+                  if (s.price > maxP) maxP = s.price;
+                }
+              });
+            }
+            const hasRange = minP !== maxP;
+            return (
+              <>
+                <span className="pc-price">
+                  {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
+                </span>
+                {product.oldPrice && !hasRange && (
+                  <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+                )}
+              </>
+            );
+          })()}
         </div>
 
         <button 

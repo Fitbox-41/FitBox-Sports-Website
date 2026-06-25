@@ -23,6 +23,10 @@ export const flattenProducts = (products) => {
           const imgSrc = vImg0 || (product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc : '');
           const hoverImgSrc = vImg1 || (product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc : '');
 
+          // Effective price: use variant price if set, else fall back to product base price
+          const effectivePrice = (variant.price && variant.price > 0) ? variant.price : (product.price || 0);
+          const effectiveOldPrice = (variant.oldPrice && variant.oldPrice > 0) ? variant.oldPrice : (product.oldPrice || 0);
+
           flattened.push({
             ...product,
             displayId: `${product.id}-v${vIdx}`,
@@ -30,19 +34,25 @@ export const flattenProducts = (products) => {
             selectedVariant: variant.color,
             imgSrc: imgSrc,
             hoverImgSrc: hoverImgSrc,
+            price: effectivePrice,
+            oldPrice: effectiveOldPrice,
             isOutOfStock: product.isOutOfStock || (variant.isOutOfStock === true)
           });
         });
     } else {
       // No variants, just push the original product with its set images
-      const imgSrc = product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc : '';
-      const hoverImgSrc = product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc : '';
+      const imgSrc = product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc 
+        : (product.variants && product.variants[0]?.images?.[0]) || '';
+      const hoverImgSrc = product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc 
+        : (product.variants && product.variants[0]?.images?.[1]) || '';
       
       flattened.push({ 
         ...product, 
         displayId: `${product.id}`,
         imgSrc: imgSrc,
-        hoverImgSrc: hoverImgSrc
+        hoverImgSrc: hoverImgSrc,
+        price: product.price || 0,
+        oldPrice: product.oldPrice || 0
       });
     }
   });

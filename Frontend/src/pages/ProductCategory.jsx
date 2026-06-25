@@ -102,8 +102,8 @@ export default function ProductCategory() {
       return {
         ...p,
         displayId: p.displayId || p.id,
-        price: typeof p.price === 'number' ? `₹${p.price.toLocaleString('en-IN')}` : p.price,
-        oldPrice: typeof p.oldPrice === 'number' ? `₹${p.oldPrice.toLocaleString('en-IN')}` : p.oldPrice
+        price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
+        oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null
       };
     });
   }, [filteredProducts]);

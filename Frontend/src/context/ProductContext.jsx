@@ -5,9 +5,9 @@ import localProducts from '../data/products';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    // Seed with local static data immediately so every section renders on first paint
-    const [products, setProducts] = useState(localProducts);
-    const [loading, setLoading] = useState(false);
+    // Do not seed with local static data anymore to prevent flashing old prices
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {

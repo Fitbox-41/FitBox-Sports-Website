@@ -3,7 +3,17 @@ import mongoose from 'mongoose';
 const variantSchema = new mongoose.Schema({
   color: { type: String, required: true },
   images: [{ type: String }],
-  isOutOfStock: { type: Boolean, default: false }
+  isOutOfStock: { type: Boolean, default: false },
+  weight: { type: Number, default: 0 },
+  price: { type: Number },
+  oldPrice: { type: Number }
+});
+
+const sizeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  weight: { type: Number, default: 0 },
+  price: { type: Number },
+  oldPrice: { type: Number }
 });
 
 const productSchema = new mongoose.Schema({
@@ -11,12 +21,12 @@ const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
   category: { type: String, required: true },
   subCategory: { type: String },
-  price: { type: Number, required: true },
+  price: { type: Number },
   oldPrice: { type: Number },
   isNew: { type: Boolean, default: false },
   isOutOfStock: { type: Boolean, default: false },
   qualities: [{ type: String }],
-  sizes: [{ type: String }],
+  sizes: [sizeSchema],
   longDesc: { type: String },
   features: [{ type: String }],
   material: { type: String },
