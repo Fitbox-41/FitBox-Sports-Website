@@ -254,8 +254,8 @@ export default function ProductPage() {
   );
 
   // ─── 4. Derived State: Current variant data and handlers ───
-  const currentVariant = product.variants[selectedVariantIdx];
-  const images = currentVariant.images;
+  const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { images: [], sizes: [] };
+  const images = currentVariant.images || [];
   const isActuallyOutOfStock = product.isOutOfStock || currentVariant.isOutOfStock;
 
   const handleNext = () => setCurrentImgIdx((prev) => (prev + 1) % images.length);
@@ -296,11 +296,11 @@ export default function ProductPage() {
     }
 
     try {
-      const currentVariant = product.variants[selectedVariantIdx] || product.variants[0];
-      const currentSize = product.sizes && product.sizes[selectedSizeIdx] ? product.sizes[selectedSizeIdx] : null;
-      
-      const activePrice = currentSize?.price || currentVariant?.price || product.price;
-      const activeWeight = currentSize?.weight || currentVariant?.weight || 0;
+      const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { sizes: [] };
+      const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
+
+      const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
+      const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
 
       const buyNowItem = {
         ...product,
@@ -411,8 +411,8 @@ export default function ProductPage() {
             <h1 className="v2-product-title">
               {product.name}
               {(() => {
-                const currentVariant = product.variants && product.variants[selectedVariantIdx];
-                const currentSize = product.sizes && product.sizes[selectedSizeIdx];
+                const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { sizes: [] };
+                const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
                 const colorStr = currentVariant?.color ? ` - ${currentVariant.color}` : '';
                 const sizeStr = currentSize ? ` - ${currentSize.name || currentSize}` : '';
                 return `${colorStr}${sizeStr}`;
@@ -433,10 +433,10 @@ export default function ProductPage() {
 
             <div className="v2-price-box">
               {(() => {
-                const currentVariant = product.variants && product.variants[selectedVariantIdx];
-                const currentSize = product.sizes && product.sizes[selectedSizeIdx];
-                const activePrice = currentSize?.price || currentVariant?.price || product.price;
-                const activeOldPrice = currentSize?.oldPrice || currentVariant?.oldPrice || product.oldPrice;
+                const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { sizes: [] };
+                const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
+                const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
+                const activeOldPrice = currentSize?.oldPrice ?? currentVariant?.oldPrice ?? product.oldPrice ?? 0;
                 return (
                   <>
                     <span className="v2-current-price">₹{activePrice * quantity}</span>
@@ -457,6 +457,7 @@ export default function ProductPage() {
                     className={`color-pill ${selectedVariantIdx === idx ? 'selected' : ''}`}
                     onClick={() => {
                       setSelectedVariantIdx(idx);
+                      setSelectedSizeIdx(0);
                       setCurrentImgIdx(0);
                     }}
                   >
@@ -470,11 +471,11 @@ export default function ProductPage() {
             </div>
 
             {/* SIZE SELECTOR */}
-            {product.sizes && product.sizes.length > 0 && (
+            {currentVariant?.sizes && currentVariant.sizes.length > 0 && (
               <div className="v2-selector-wrap">
                 <p className="selector-label">Size</p>
                 <div className="v2-size-grid">
-                  {product.sizes.map((size, idx) => (
+                  {currentVariant.sizes.map((size, idx) => (
                     <div
                       key={idx}
                       className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
@@ -656,9 +657,9 @@ export default function ProductPage() {
                 className={`v2-btn v2-btn-cart ${isActuallyOutOfStock ? 'v2-btn--disabled' : ''}`}
                 disabled={isActuallyOutOfStock}
                 onClick={() => {
-                  const currentSize = product.sizes && product.sizes[selectedSizeIdx] ? product.sizes[selectedSizeIdx] : null;
-                  const activePrice = currentSize?.price || currentVariant?.price || product.price;
-                  const activeWeight = currentSize?.weight || currentVariant?.weight || 0;
+                  const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
+                  const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
+                  const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
                   
                   addToCart({
                     ...product,

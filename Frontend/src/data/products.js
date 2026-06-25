@@ -1,4 +1,3 @@
-// Auto-generated from product.json - do not edit manually
 const products = [
     {
         "id": 1,
@@ -21,38 +20,13 @@ const products = [
         ],
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "2kg (1kg x 2)",
-                "weight": 2000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "4kg (2kg x 2)",
-                "weight": 4000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "6kg (3kg x 2)",
-                "weight": 6000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "8kg (4kg x 2)",
-                "weight": 8000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "10kg (5kg x 2)",
-                "weight": 10000,
-                "price": 999,
-                "oldPrice": 999
-            }
+        "showcaseImages": [
+            "/Images/1.1.1.jpg",
+            "/Images/1.1.2.jpg",
+            "/Images/1.1.3.jpg"
         ],
+        "imgSrc": "/Images/1.1.1.jpg",
+        "hoverImgSrc": "/Images/1.2.1.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -63,8 +37,38 @@ const products = [
                     "/Images/1.1.4.jpg",
                     "/Images/1.1.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "2kg (1kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "4kg (2kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "6kg (3kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 6000
+                    },
+                    {
+                        "name": "8kg (4kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    }
+                ]
             },
             {
                 "color": "Red",
@@ -73,17 +77,40 @@ const products = [
                     "/Images/1.2.2.jpg",
                     "/Images/1.2.3.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "2kg (1kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "4kg (2kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "6kg (3kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 6000
+                    },
+                    {
+                        "name": "8kg (4kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/1.1.1.jpg",
-            "/Images/1.1.2.jpg",
-            "/Images/1.1.3.jpg"
-        ],
-        "imgSrc": "/Images/1.1.1.jpg",
-        "hoverImgSrc": "/Images/1.2.1.jpg"
+        ]
     },
     {
         "id": 2,
@@ -105,44 +132,13 @@ const products = [
         ],
         "material": "Blend, Iron, Polyvinyl Chloride (PVC)",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "4kg (1kg x 4)",
-                "weight": 4000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "8kg (2kg x 4)",
-                "weight": 8000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "10kg (5kg x 2)",
-                "weight": 10000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "12kg (3kg x 4)",
-                "weight": 12000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "16kg",
-                "weight": 16000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "20kg",
-                "weight": 20000,
-                "price": 999,
-                "oldPrice": 999
-            }
+        "showcaseImages": [
+            "/Images/2.1.1.jpg",
+            "/Images/2.1.2.jpg",
+            "/Images/2.1.3.jpg"
         ],
+        "imgSrc": "/Images/2.1.1.jpg",
+        "hoverImgSrc": "/Images/2.2.1.jpg",
         "variants": [
             {
                 "color": "Convertible Barbell",
@@ -156,8 +152,44 @@ const products = [
                     "/Images/2.1.7.jpg",
                     "/Images/2.1.8.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "4kg (1kg x 4)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "8kg (2kg x 4)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    },
+                    {
+                        "name": "12kg (3kg x 4)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 12000
+                    },
+                    {
+                        "name": "16kg",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 16000
+                    },
+                    {
+                        "name": "20kg",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 20000
+                    }
+                ]
             },
             {
                 "color": "Dumbbell Kit",
@@ -168,17 +200,46 @@ const products = [
                     "/Images/2.2.4.jpg",
                     "/Images/2.2.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "4kg (1kg x 4)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "8kg (2kg x 4)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    },
+                    {
+                        "name": "12kg (3kg x 4)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 12000
+                    },
+                    {
+                        "name": "16kg",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 16000
+                    },
+                    {
+                        "name": "20kg",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 20000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/2.1.1.jpg",
-            "/Images/2.1.2.jpg",
-            "/Images/2.1.3.jpg"
-        ],
-        "imgSrc": "/Images/2.1.1.jpg",
-        "hoverImgSrc": "/Images/2.2.1.jpg"
+        ]
     },
     {
         "id": 3,
@@ -201,38 +262,13 @@ const products = [
         ],
         "material": "Polypropylene (PP)",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "2kg (1kg x 2)",
-                "weight": 2000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "4kg (2kg x 2)",
-                "weight": 4000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "6kg (3kg x 2)",
-                "weight": 6000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "8kg (4kg x 2)",
-                "weight": 8000,
-                "price": 999,
-                "oldPrice": 999
-            },
-            {
-                "name": "10kg (5kg x 2)",
-                "weight": 10000,
-                "price": 999,
-                "oldPrice": 999
-            }
+        "showcaseImages": [
+            "/Images/3.1.1.jpg",
+            "/Images/3.1.2.jpg",
+            "/Images/3.1.3.jpg"
         ],
+        "imgSrc": "/Images/3.1.1.jpg",
+        "hoverImgSrc": "/Images/3.2.1.jpg",
         "variants": [
             {
                 "color": "Snow & Pink",
@@ -243,8 +279,38 @@ const products = [
                     "/Images/3.1.4.jpg",
                     "/Images/3.1.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "2kg (1kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "4kg (2kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "6kg (3kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 6000
+                    },
+                    {
+                        "name": "8kg (4kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    }
+                ]
             },
             {
                 "color": "Black & Red",
@@ -255,8 +321,38 @@ const products = [
                     "/Images/3.2.4.jpg",
                     "/Images/3.2.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "2kg (1kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "4kg (2kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "6kg (3kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 6000
+                    },
+                    {
+                        "name": "8kg (4kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    }
+                ]
             },
             {
                 "color": "Steel Gray",
@@ -267,17 +363,40 @@ const products = [
                     "/Images/3.3.4.jpg",
                     "/Images/3.3.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "2kg (1kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "4kg (2kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "6kg (3kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 6000
+                    },
+                    {
+                        "name": "8kg (4kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 999,
+                        "oldPrice": 999,
+                        "weight": 10000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/3.1.1.jpg",
-            "/Images/3.1.2.jpg",
-            "/Images/3.1.3.jpg"
-        ],
-        "imgSrc": "/Images/3.1.1.jpg",
-        "hoverImgSrc": "/Images/3.2.1.jpg"
+        ]
     },
     {
         "id": 4,
@@ -300,13 +419,13 @@ const products = [
         ],
         "material": "Stainless Steel",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "5kg - 60kg",
-                "weight": 150,
-                "price": 0
-            }
+        "showcaseImages": [
+            "/Images/4.1.1.jpg",
+            "/Images/4.2.1.jpg",
+            "/Images/4.3.1.jpg"
         ],
+        "imgSrc": "/Images/4.1.1.jpg",
+        "hoverImgSrc": "/Images/4.2.1.jpg",
         "variants": [
             {
                 "color": " Counter Black 5kg - 60kg",
@@ -317,9 +436,14 @@ const products = [
                     "/Images/4.1.4.jpg",
                     "/Images/4.1.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": " Black Gray 10kg - 40kg",
@@ -330,9 +454,14 @@ const products = [
                     "/Images/4.2.4.jpg",
                     "/Images/4.2.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": " Black Orange 10kg - 40kg",
@@ -343,9 +472,14 @@ const products = [
                     "/Images/4.3.4.jpg",
                     "/Images/4.3.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": " Blue 10kg - 40kg",
@@ -356,9 +490,14 @@ const products = [
                     "/Images/4.4.4.jpg",
                     "/Images/4.4.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": ": Counter Blue 5kg - 60kg",
@@ -369,9 +508,14 @@ const products = [
                     "/Images/4.5.4.jpg",
                     "/Images/4.5.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": " Orange 10kg - 40kg",
@@ -382,9 +526,14 @@ const products = [
                     "/Images/4.6.4.jpg",
                     "/Images/4.6.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": " Black Orange 5kg - 60kg",
@@ -395,9 +544,14 @@ const products = [
                     "/Images/4.7.4.jpg",
                     "/Images/4.7.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             },
             {
                 "color": "  Orange 5kg - 60kg",
@@ -408,18 +562,16 @@ const products = [
                     "/Images/4.8.4.jpg",
                     "/Images/4.8.5.jpg"
                 ],
-                "price": 399,
-                "oldPrice": 399,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg - 60kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/4.1.1.jpg",
-            "/Images/4.2.1.jpg",
-            "/Images/4.3.1.jpg"
-        ],
-        "imgSrc": "/Images/4.1.1.jpg",
-        "hoverImgSrc": "/Images/4.2.1.jpg"
+        ]
     },
     {
         "id": 5,
@@ -442,107 +594,141 @@ const products = [
         ],
         "material": "Cast Iron, Neoprene",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": "Red - 4kg (2kg x 2)",
-                "weight": 4000,
-                "price": 599,
-                "oldPrice": 899,
-                "images": [
-                    "/Images/5.1.1.jpg",
-                    "/Images/5.1.2.jpg",
-                    "/Images/5.1.3.jpg",
-                    "/Images/5.1.4.jpg",
-                    "/Images/5.1.5.jpg"
-                ]
-            },
-            {
-                "color": " Orange - 6kg (3kg x 2)",
-                "weight": 6000,
-                "price": 699,
-                "oldPrice": 999,
-                "images": [
-                    "/Images/5.2.1.jpg",
-                    "/Images/5.2.2.jpg",
-                    "/Images/5.2.3.jpg",
-                    "/Images/5.2.4.jpg",
-                    "/Images/5.2.5.jpg"
-                ]
-            },
-            {
-                "color": "Blue - 8kg (4kg x 2)",
-                "weight": 8000,
-                "price": 799,
-                "oldPrice": 1099,
-                "images": [
-                    "/Images/5.3.1.jpg",
-                    "/Images/5.3.2.jpg",
-                    "/Images/5.3.3.jpg",
-                    "/Images/5.3.4.jpg",
-                    "/Images/5.3.5.jpg"
-                ]
-            },
-            {
-                "color": "Pink - 2kg (1kg x 2)",
-                "weight": 2000,
-                "price": 599,
-                "oldPrice": 899,
-                "images": [
-                    "/Images/5.4.1.jpg",
-                    "/Images/5.4.2.jpg",
-                    "/Images/5.4.3.jpg",
-                    "/Images/5.4.4.jpg",
-                    "/Images/5.4.5.jpg"
-                ]
-            },
-            {
-                "color": "Multicolor - 12kg Combo Set",
-                "weight": 12000,
-                "price": 2499,
-                "oldPrice": 3999,
-                "images": [
-                    "/Images/5.5.1.jpg",
-                    "/Images/5.5.2.jpg",
-                    "/Images/5.5.3.jpg",
-                    "/Images/5.5.4.jpg",
-                    "/Images/5.5.5.jpg"
-                ]
-            },
-            {
-                "color": "Multicolor - 16kg Combo Set",
-                "weight": 16000,
-                "price": 2899,
-                "oldPrice": 4299,
-                "images": [
-                    "/Images/5.6.1.jpg",
-                    "/Images/5.6.2.jpg",
-                    "/Images/5.6.3.jpg",
-                    "/Images/5.6.4.jpg",
-                    "/Images/5.6.5.jpg"
-                ]
-            },
-            {
-                "color": "Multicolor - 20kg Combo Set",
-                "weight": 20000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/5.7.1.jpg",
-                    "/Images/5.7.2.jpg",
-                    "/Images/5.7.3.jpg",
-                    "/Images/5.7.4.jpg",
-                    "/Images/5.7.5.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/5.1.1.jpg",
             "/Images/5.2.1.jpg",
             "/Images/5.3.1.jpg"
         ],
         "imgSrc": "/Images/5.1.1.jpg",
-        "hoverImgSrc": "/Images/5.2.1.jpg"
+        "hoverImgSrc": "/Images/5.2.1.jpg",
+        "variants": [
+            {
+                "color": "Red - 4kg (2kg x 2)",
+                "images": [
+                    "/Images/5.1.1.jpg",
+                    "/Images/5.1.2.jpg",
+                    "/Images/5.1.3.jpg",
+                    "/Images/5.1.4.jpg",
+                    "/Images/5.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 599,
+                        "oldPrice": 899,
+                        "weight": 4000
+                    }
+                ]
+            },
+            {
+                "color": " Orange - 6kg (3kg x 2)",
+                "images": [
+                    "/Images/5.2.1.jpg",
+                    "/Images/5.2.2.jpg",
+                    "/Images/5.2.3.jpg",
+                    "/Images/5.2.4.jpg",
+                    "/Images/5.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 699,
+                        "oldPrice": 999,
+                        "weight": 6000
+                    }
+                ]
+            },
+            {
+                "color": "Blue - 8kg (4kg x 2)",
+                "images": [
+                    "/Images/5.3.1.jpg",
+                    "/Images/5.3.2.jpg",
+                    "/Images/5.3.3.jpg",
+                    "/Images/5.3.4.jpg",
+                    "/Images/5.3.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 799,
+                        "oldPrice": 1099,
+                        "weight": 8000
+                    }
+                ]
+            },
+            {
+                "color": "Pink - 2kg (1kg x 2)",
+                "images": [
+                    "/Images/5.4.1.jpg",
+                    "/Images/5.4.2.jpg",
+                    "/Images/5.4.3.jpg",
+                    "/Images/5.4.4.jpg",
+                    "/Images/5.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 599,
+                        "oldPrice": 899,
+                        "weight": 2000
+                    }
+                ]
+            },
+            {
+                "color": "Multicolor - 12kg Combo Set",
+                "images": [
+                    "/Images/5.5.1.jpg",
+                    "/Images/5.5.2.jpg",
+                    "/Images/5.5.3.jpg",
+                    "/Images/5.5.4.jpg",
+                    "/Images/5.5.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 2499,
+                        "oldPrice": 3999,
+                        "weight": 12000
+                    }
+                ]
+            },
+            {
+                "color": "Multicolor - 16kg Combo Set",
+                "images": [
+                    "/Images/5.6.1.jpg",
+                    "/Images/5.6.2.jpg",
+                    "/Images/5.6.3.jpg",
+                    "/Images/5.6.4.jpg",
+                    "/Images/5.6.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 2899,
+                        "oldPrice": 4299,
+                        "weight": 16000
+                    }
+                ]
+            },
+            {
+                "color": "Multicolor - 20kg Combo Set",
+                "images": [
+                    "/Images/5.7.1.jpg",
+                    "/Images/5.7.2.jpg",
+                    "/Images/5.7.3.jpg",
+                    "/Images/5.7.4.jpg",
+                    "/Images/5.7.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 20000
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 6,
@@ -565,20 +751,13 @@ const products = [
         ],
         "material": "  Blend, Ironsand, Polyester Blend",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": " 5Lbs - 2.5kg (1.13kg x 2)",
-                "weight": 2.5,
-                "price": 699,
-                "oldPrice": 799
-            },
-            {
-                "name": " 10Lbs - 4.5kg (2.25kg x 2)",
-                "weight": 4.5,
-                "price": 999,
-                "oldPrice": 1099
-            }
+        "showcaseImages": [
+            "/Images/6.1.1.jpg",
+            "/Images/6.1.2.jpg",
+            "/Images/6.1.3.jpg"
         ],
+        "imgSrc": "/Images/6.1.1.jpg",
+        "hoverImgSrc": "/Images/6.1.2.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -590,17 +769,22 @@ const products = [
                     "/Images/6.1.5.jpg",
                     "/Images/6.1.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": " 5Lbs - 2.5kg (1.13kg x 2)",
+                        "price": 699,
+                        "oldPrice": 799,
+                        "weight": 2.5
+                    },
+                    {
+                        "name": " 10Lbs - 4.5kg (2.25kg x 2)",
+                        "price": 999,
+                        "oldPrice": 1099,
+                        "weight": 4.5
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/6.1.1.jpg",
-            "/Images/6.1.2.jpg",
-            "/Images/6.1.3.jpg"
-        ],
-        "imgSrc": "/Images/6.1.1.jpg",
-        "hoverImgSrc": "/Images/6.1.2.jpg"
+        ]
     },
     {
         "id": 7,
@@ -622,68 +806,87 @@ const products = [
         ],
         "material": "Cast Iron, Vinyl",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": " 2kg | Panther Pink",
-                "weight": 2000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/7.1.1.jpg",
-                    "/Images/7.1.2.jpg",
-                    "/Images/7.1.3.jpg",
-                    "/Images/7.1.4.jpg",
-                    "/Images/7.1.5.jpg"
-                ]
-            },
-            {
-                "color": " 5kg | Rugged Red",
-                "weight": 5000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/7.2.1.jpg",
-                    "/Images/7.2.2.jpg",
-                    "/Images/7.2.3.jpg",
-                    "/Images/7.2.4.jpg",
-                    "/Images/7.2.5.jpg"
-                ]
-            },
-            {
-                "color": " 8kg | Blitz Blue",
-                "weight": 8000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/7.3.1.jpg",
-                    "/Images/7.3.2.jpg",
-                    "/Images/7.3.3.jpg",
-                    "/Images/7.3.4.jpg",
-                    "/Images/7.3.5.jpg"
-                ]
-            },
-            {
-                "color": " 10kg | Owlish Orange",
-                "weight": 10000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/7.4.1.jpg",
-                    "/Images/7.4.2.jpg",
-                    "/Images/7.4.3.jpg",
-                    "/Images/7.4.4.jpg",
-                    "/Images/7.4.5.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/7.1.1.jpg",
             "/Images/7.2.1.jpg",
             "/Images/7.3.1.jpg"
         ],
         "imgSrc": "/Images/7.1.1.jpg",
-        "hoverImgSrc": "/Images/7.2.1.jpg"
+        "hoverImgSrc": "/Images/7.2.1.jpg",
+        "variants": [
+            {
+                "color": " 2kg | Panther Pink",
+                "images": [
+                    "/Images/7.1.1.jpg",
+                    "/Images/7.1.2.jpg",
+                    "/Images/7.1.3.jpg",
+                    "/Images/7.1.4.jpg",
+                    "/Images/7.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 2000
+                    }
+                ]
+            },
+            {
+                "color": " 5kg | Rugged Red",
+                "images": [
+                    "/Images/7.2.1.jpg",
+                    "/Images/7.2.2.jpg",
+                    "/Images/7.2.3.jpg",
+                    "/Images/7.2.4.jpg",
+                    "/Images/7.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 5000
+                    }
+                ]
+            },
+            {
+                "color": " 8kg | Blitz Blue",
+                "images": [
+                    "/Images/7.3.1.jpg",
+                    "/Images/7.3.2.jpg",
+                    "/Images/7.3.3.jpg",
+                    "/Images/7.3.4.jpg",
+                    "/Images/7.3.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 8000
+                    }
+                ]
+            },
+            {
+                "color": " 10kg | Owlish Orange",
+                "images": [
+                    "/Images/7.4.1.jpg",
+                    "/Images/7.4.2.jpg",
+                    "/Images/7.4.3.jpg",
+                    "/Images/7.4.4.jpg",
+                    "/Images/7.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 10000
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 8,
@@ -706,94 +909,123 @@ const products = [
         ],
         "material": "Vinyl Coated Cast Iron",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": " 5kg (2.5kg x 2) Owlish Orange",
-                "weight": 5000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/8.4.1.jpg",
-                    "/Images/8.4.2.jpg",
-                    "/Images/8.4.3.jpg",
-                    "/Images/8.4.4.jpg",
-                    "/Images/8.4.5.jpg"
-                ]
-            },
-            {
-                "color": " 10kg (5kg x 2) Blitz Blue",
-                "weight": 10000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/8.2.1.jpg",
-                    "/Images/8.2.2.jpg",
-                    "/Images/8.2.3.jpg",
-                    "/Images/8.2.4.jpg",
-                    "/Images/8.2.5.jpg"
-                ]
-            },
-            {
-                "color": "2kg (1kg x 2) Panther Pink",
-                "weight": 2000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/8.3.1.jpg",
-                    "/Images/8.3.2.jpg",
-                    "/Images/8.3.3.jpg",
-                    "/Images/8.3.4.jpg",
-                    "/Images/8.3.5.jpg"
-                ]
-            },
-            {
-                "color": "4kg (2kg x 2) Rugged Red",
-                "weight": 4000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/8.4.1.jpg",
-                    "/Images/8.4.2.jpg",
-                    "/Images/8.4.3.jpg",
-                    "/Images/8.4.4.jpg",
-                    "/Images/8.4.5.jpg"
-                ]
-            },
-            {
-                "color": " 6kg (3kg x 2) Yobbery Yellow",
-                "weight": 6000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/8.5.1.jpg",
-                    "/Images/8.5.2.jpg",
-                    "/Images/8.5.3.jpg",
-                    "/Images/8.5.4.jpg",
-                    "/Images/8.5.5.jpg"
-                ]
-            },
-            {
-                "color": "8kg (4kg x 2) Gazzle Grey",
-                "weight": 8000,
-                "price": 3499,
-                "oldPrice": 5299,
-                "images": [
-                    "/Images/8.6.1.jpg",
-                    "/Images/8.6.2.jpg",
-                    "/Images/8.6.3.jpg",
-                    "/Images/8.6.4.jpg",
-                    "/Images/8.6.5.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/8.1.1.jpg",
             "/Images/8.2.1.jpg",
             "/Images/8.3.1.jpg"
         ],
         "imgSrc": "/Images/8.1.1.jpg",
-        "hoverImgSrc": "/Images/8.2.1.jpg"
+        "hoverImgSrc": "/Images/8.2.1.jpg",
+        "variants": [
+            {
+                "color": " 5kg (2.5kg x 2) Owlish Orange",
+                "images": [
+                    "/Images/8.4.1.jpg",
+                    "/Images/8.4.2.jpg",
+                    "/Images/8.4.3.jpg",
+                    "/Images/8.4.4.jpg",
+                    "/Images/8.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 5000
+                    }
+                ]
+            },
+            {
+                "color": " 10kg (5kg x 2) Blitz Blue",
+                "images": [
+                    "/Images/8.2.1.jpg",
+                    "/Images/8.2.2.jpg",
+                    "/Images/8.2.3.jpg",
+                    "/Images/8.2.4.jpg",
+                    "/Images/8.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 10000
+                    }
+                ]
+            },
+            {
+                "color": "2kg (1kg x 2) Panther Pink",
+                "images": [
+                    "/Images/8.3.1.jpg",
+                    "/Images/8.3.2.jpg",
+                    "/Images/8.3.3.jpg",
+                    "/Images/8.3.4.jpg",
+                    "/Images/8.3.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 2000
+                    }
+                ]
+            },
+            {
+                "color": "4kg (2kg x 2) Rugged Red",
+                "images": [
+                    "/Images/8.4.1.jpg",
+                    "/Images/8.4.2.jpg",
+                    "/Images/8.4.3.jpg",
+                    "/Images/8.4.4.jpg",
+                    "/Images/8.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 4000
+                    }
+                ]
+            },
+            {
+                "color": " 6kg (3kg x 2) Yobbery Yellow",
+                "images": [
+                    "/Images/8.5.1.jpg",
+                    "/Images/8.5.2.jpg",
+                    "/Images/8.5.3.jpg",
+                    "/Images/8.5.4.jpg",
+                    "/Images/8.5.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 6000
+                    }
+                ]
+            },
+            {
+                "color": "8kg (4kg x 2) Gazzle Grey",
+                "images": [
+                    "/Images/8.6.1.jpg",
+                    "/Images/8.6.2.jpg",
+                    "/Images/8.6.3.jpg",
+                    "/Images/8.6.4.jpg",
+                    "/Images/8.6.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 3499,
+                        "oldPrice": 5299,
+                        "weight": 8000
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 9,
@@ -815,68 +1047,87 @@ const products = [
         ],
         "material": "Rubber",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": "BlackGold 5",
-                "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/9.1.1.jpg",
-                    "/Images/9.1.2.jpg",
-                    "/Images/9.1.3.jpg",
-                    "/Images/9.1.4.jpg",
-                    "/Images/9.1.5.jpg"
-                ]
-            },
-            {
-                "color": "BlackGold 5",
-                "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/9.2.1.jpg",
-                    "/Images/9.2.2.jpg",
-                    "/Images/9.2.3.jpg",
-                    "/Images/9.2.4.jpg",
-                    "/Images/9.2.5.jpg"
-                ]
-            },
-            {
-                "color": "Skywalker 7",
-                "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/9.3.1.jpg",
-                    "/Images/9.3.2.jpg",
-                    "/Images/9.3.3.jpg",
-                    "/Images/9.3.4.jpg",
-                    "/Images/9.3.5.jpg"
-                ]
-            },
-            {
-                "color": "Combat 7",
-                "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/9.4.1.jpg",
-                    "/Images/9.4.2.jpg",
-                    "/Images/9.4.3.jpg",
-                    "/Images/9.4.4.jpg",
-                    "/Images/9.4.5.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/9.1.1.jpg",
             "/Images/9.2.1.jpg",
             "/Images/9.3.1.jpg"
         ],
         "imgSrc": "/Images/9.1.1.jpg",
-        "hoverImgSrc": "/Images/9.2.1.jpg"
+        "hoverImgSrc": "/Images/9.2.1.jpg",
+        "variants": [
+            {
+                "color": "BlackGold 5",
+                "images": [
+                    "/Images/9.1.1.jpg",
+                    "/Images/9.1.2.jpg",
+                    "/Images/9.1.3.jpg",
+                    "/Images/9.1.4.jpg",
+                    "/Images/9.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 350
+                    }
+                ]
+            },
+            {
+                "color": "BlackGold 5",
+                "images": [
+                    "/Images/9.2.1.jpg",
+                    "/Images/9.2.2.jpg",
+                    "/Images/9.2.3.jpg",
+                    "/Images/9.2.4.jpg",
+                    "/Images/9.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 350
+                    }
+                ]
+            },
+            {
+                "color": "Skywalker 7",
+                "images": [
+                    "/Images/9.3.1.jpg",
+                    "/Images/9.3.2.jpg",
+                    "/Images/9.3.3.jpg",
+                    "/Images/9.3.4.jpg",
+                    "/Images/9.3.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 350
+                    }
+                ]
+            },
+            {
+                "color": "Combat 7",
+                "images": [
+                    "/Images/9.4.1.jpg",
+                    "/Images/9.4.2.jpg",
+                    "/Images/9.4.3.jpg",
+                    "/Images/9.4.4.jpg",
+                    "/Images/9.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 350
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 10,
@@ -899,7 +1150,13 @@ const products = [
         ],
         "material": "",
         "relatedIds": [],
-        "sizes": [],
+        "showcaseImages": [
+            "/Images/10.1.1.jpg",
+            "/Images/10.1.2.jpg",
+            "/Images/10.1.3.jpg"
+        ],
+        "imgSrc": "/Images/10.1.1.jpg",
+        "hoverImgSrc": "/Images/10.1.2.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -912,17 +1169,16 @@ const products = [
                     "/Images/10.1.6.jpg",
                     "/Images/10.1.7.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 0
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/10.1.1.jpg",
-            "/Images/10.1.2.jpg",
-            "/Images/10.1.3.jpg"
-        ],
-        "imgSrc": "/Images/10.1.1.jpg",
-        "hoverImgSrc": "/Images/10.1.2.jpg"
+        ]
     },
     {
         "id": 11,
@@ -943,68 +1199,87 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": "Pack Of 1",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/11.1.1.jpg",
-                    "/Images/11.1.2.jpg",
-                    "/Images/11.1.3.jpg",
-                    "/Images/11.1.4.jpg",
-                    "/Images/11.1.5.jpg"
-                ]
-            },
-            {
-                "color": "Pack Of 2",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/11.2.1.jpg",
-                    "/Images/11.2.2.jpg",
-                    "/Images/11.2.3.jpg",
-                    "/Images/11.2.4.jpg",
-                    "/Images/11.2.5.jpg"
-                ]
-            },
-            {
-                "color": "Pack Of 3",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/11.3.1.jpg",
-                    "/Images/11.3.2.jpg",
-                    "/Images/11.3.3.jpg",
-                    "/Images/11.3.4.jpg",
-                    "/Images/11.3.5.jpg"
-                ]
-            },
-            {
-                "color": "Pack Of 6",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/11.4.1.jpg",
-                    "/Images/11.4.2.jpg",
-                    "/Images/11.4.3.jpg",
-                    "/Images/11.4.4.jpg",
-                    "/Images/11.4.5.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/11.1.1.jpg",
             "/Images/11.2.1.jpg",
             "/Images/11.3.1.jpg"
         ],
         "imgSrc": "/Images/11.1.1.jpg",
-        "hoverImgSrc": "/Images/11.2.1.jpg"
+        "hoverImgSrc": "/Images/11.2.1.jpg",
+        "variants": [
+            {
+                "color": "Pack Of 1",
+                "images": [
+                    "/Images/11.1.1.jpg",
+                    "/Images/11.1.2.jpg",
+                    "/Images/11.1.3.jpg",
+                    "/Images/11.1.4.jpg",
+                    "/Images/11.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            },
+            {
+                "color": "Pack Of 2",
+                "images": [
+                    "/Images/11.2.1.jpg",
+                    "/Images/11.2.2.jpg",
+                    "/Images/11.2.3.jpg",
+                    "/Images/11.2.4.jpg",
+                    "/Images/11.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            },
+            {
+                "color": "Pack Of 3",
+                "images": [
+                    "/Images/11.3.1.jpg",
+                    "/Images/11.3.2.jpg",
+                    "/Images/11.3.3.jpg",
+                    "/Images/11.3.4.jpg",
+                    "/Images/11.3.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            },
+            {
+                "color": "Pack Of 6",
+                "images": [
+                    "/Images/11.4.1.jpg",
+                    "/Images/11.4.2.jpg",
+                    "/Images/11.4.3.jpg",
+                    "/Images/11.4.4.jpg",
+                    "/Images/11.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 12,
@@ -1025,68 +1300,87 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": "Pack Of 1",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/12.1.1.jpg",
-                    "/Images/12.1.2.jpg",
-                    "/Images/12.1.3.jpg",
-                    "/Images/12.1.4.jpg",
-                    "/Images/12.1.5.jpg"
-                ]
-            },
-            {
-                "color": "Pack Of 2",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/12.2.1.jpg",
-                    "/Images/12.2.2.jpg",
-                    "/Images/12.2.3.jpg",
-                    "/Images/12.2.4.jpg",
-                    "/Images/12.2.5.jpg"
-                ]
-            },
-            {
-                "color": "Pack Of 3",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/12.3.1.jpg",
-                    "/Images/12.3.2.jpg",
-                    "/Images/12.3.3.jpg",
-                    "/Images/12.3.4.jpg",
-                    "/Images/12.3.5.jpg"
-                ]
-            },
-            {
-                "color": "Pack Of 6",
-                "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
-                "images": [
-                    "/Images/12.4.1.jpg",
-                    "/Images/12.4.2.jpg",
-                    "/Images/12.4.3.jpg",
-                    "/Images/12.4.4.jpg",
-                    "/Images/12.4.5.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/12.1.1.jpg",
             "/Images/12.2.1.jpg",
             "/Images/12.3.1.jpg"
         ],
         "imgSrc": "/Images/12.1.1.jpg",
-        "hoverImgSrc": "/Images/12.2.1.jpg"
+        "hoverImgSrc": "/Images/12.2.1.jpg",
+        "variants": [
+            {
+                "color": "Pack Of 1",
+                "images": [
+                    "/Images/12.1.1.jpg",
+                    "/Images/12.1.2.jpg",
+                    "/Images/12.1.3.jpg",
+                    "/Images/12.1.4.jpg",
+                    "/Images/12.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            },
+            {
+                "color": "Pack Of 2",
+                "images": [
+                    "/Images/12.2.1.jpg",
+                    "/Images/12.2.2.jpg",
+                    "/Images/12.2.3.jpg",
+                    "/Images/12.2.4.jpg",
+                    "/Images/12.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            },
+            {
+                "color": "Pack Of 3",
+                "images": [
+                    "/Images/12.3.1.jpg",
+                    "/Images/12.3.2.jpg",
+                    "/Images/12.3.3.jpg",
+                    "/Images/12.3.4.jpg",
+                    "/Images/12.3.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            },
+            {
+                "color": "Pack Of 6",
+                "images": [
+                    "/Images/12.4.1.jpg",
+                    "/Images/12.4.2.jpg",
+                    "/Images/12.4.3.jpg",
+                    "/Images/12.4.4.jpg",
+                    "/Images/12.4.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 230
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 13,
@@ -1108,7 +1402,13 @@ const products = [
         ],
         "material": "Cotton, Polyester, Rayon",
         "relatedIds": [],
-        "sizes": [],
+        "showcaseImages": [
+            "/Images/13.1.1.jpg",
+            "/Images/13.1.2.jpg",
+            "/Images/13.1.3.jpg"
+        ],
+        "imgSrc": "/Images/13.1.1.jpg",
+        "hoverImgSrc": "/Images/13.1.2.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -1120,17 +1420,16 @@ const products = [
                     "/Images/13.1.5.jpg",
                     "/Images/13.1.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 0
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/13.1.1.jpg",
-            "/Images/13.1.2.jpg",
-            "/Images/13.1.3.jpg"
-        ],
-        "imgSrc": "/Images/13.1.1.jpg",
-        "hoverImgSrc": "/Images/13.1.2.jpg"
+        ]
     },
     {
         "id": 14,
@@ -1152,13 +1451,16 @@ const products = [
         ],
         "material": "Cotton, Polyester, Rayon",
         "relatedIds": [],
-        "sizes": [],
+        "showcaseImages": [
+            "/Images/14.1.1.jpg",
+            "/Images/14.1.2.jpg",
+            "/Images/14.1.3.jpg"
+        ],
+        "imgSrc": "/Images/14.1.1.jpg",
+        "hoverImgSrc": "/Images/14.1.2.jpg",
         "variants": [
             {
                 "color": "Black",
-                "weight": 250,
-                "price": 449,
-                "oldPrice": 529,
                 "images": [
                     "/Images/14.1.1.jpg",
                     "/Images/14.1.2.jpg",
@@ -1167,13 +1469,18 @@ const products = [
                     "/Images/14.1.5.jpg",
                     "/Images/14.1.6.jpg",
                     "/Images/14.1.7.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 250
+                    }
                 ]
             },
             {
                 "color": "Combat - Camo",
-                "weight": 250,
-                "price": 449,
-                "oldPrice": 529,
                 "images": [
                     "/Images/14.2.1.jpg",
                     "/Images/14.2.2.jpg",
@@ -1181,16 +1488,17 @@ const products = [
                     "/Images/14.2.4.jpg",
                     "/Images/14.2.5.jpg",
                     "/Images/14.2.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 449,
+                        "oldPrice": 529,
+                        "weight": 250
+                    }
                 ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/14.1.1.jpg",
-            "/Images/14.1.2.jpg",
-            "/Images/14.1.3.jpg"
-        ],
-        "imgSrc": "/Images/14.1.1.jpg",
-        "hoverImgSrc": "/Images/14.1.2.jpg"
+        ]
     },
     {
         "id": 15,
@@ -1214,38 +1522,13 @@ const products = [
         ],
         "material": "100% Polyester",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "Small",
-                "weight": 200,
-                "price": 399,
-                "oldPrice": 499
-            },
-            {
-                "name": "Medium",
-                "weight": 200,
-                "price": 399,
-                "oldPrice": 499
-            },
-            {
-                "name": "Large",
-                "weight": 200,
-                "price": 399,
-                "oldPrice": 499
-            },
-            {
-                "name": "X-Large",
-                "weight": 200,
-                "price": 399,
-                "oldPrice": 499
-            },
-            {
-                "name": "XX-Large",
-                "weight": 200,
-                "price": 399,
-                "oldPrice": 499
-            }
+        "showcaseImages": [
+            "/Images/15.1.1.jpg",
+            "/Images/15.1.2.jpg",
+            "/Images/15.1.3.jpg"
         ],
+        "imgSrc": "/Images/15.1.1.jpg",
+        "hoverImgSrc": "/Images/15.1.7.jpg",
         "variants": [
             {
                 "color": "Gray",
@@ -1258,8 +1541,38 @@ const products = [
                     "/Images/15.1.6.jpg",
                     "/Images/15.1.7.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "Small",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "Medium",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "Large",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "X-Large",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "XX-Large",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    }
+                ]
             },
             {
                 "color": "Black",
@@ -1271,17 +1584,40 @@ const products = [
                     "/Images/15.2.5.jpg",
                     "/Images/15.2.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "Small",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "Medium",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "Large",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "X-Large",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    },
+                    {
+                        "name": "XX-Large",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 200
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/15.1.1.jpg",
-            "/Images/15.1.2.jpg",
-            "/Images/15.1.3.jpg"
-        ],
-        "imgSrc": "/Images/15.1.1.jpg",
-        "hoverImgSrc": "/Images/15.1.7.jpg"
+        ]
     },
     {
         "id": 16,
@@ -1304,26 +1640,13 @@ const products = [
         ],
         "material": "Neoprene",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "1kg (0.5kg x 2) Black",
-                "weight": 1000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "2kg (1kg x 2) Black",
-                "weight": 2000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "4kg (2kg x 2) Black",
-                "weight": 4000,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/16.1.1.jpg",
+            "/Images/16.1.2.jpg",
+            "/Images/16.1.3.jpg"
         ],
+        "imgSrc": "/Images/16.1.1.jpg",
+        "hoverImgSrc": "/Images/16.1.10.jpg",
         "variants": [
             {
                 "color": "FitBox Sports Professional Neoprene Ankle Weights",
@@ -1335,17 +1658,28 @@ const products = [
                     "/Images/16.1.5.jpg",
                     "/Images/16.1.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "1kg (0.5kg x 2) Black",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 1000
+                    },
+                    {
+                        "name": "2kg (1kg x 2) Black",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "4kg (2kg x 2) Black",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 4000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/16.1.1.jpg",
-            "/Images/16.1.2.jpg",
-            "/Images/16.1.3.jpg"
-        ],
-        "imgSrc": "/Images/16.1.1.jpg",
-        "hoverImgSrc": "/Images/16.1.10.jpg"
+        ]
     },
     {
         "id": 17,
@@ -1369,26 +1703,13 @@ const products = [
         ],
         "material": "",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "10kg (5kg x 2)",
-                "weight": 10000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "15kg (7.5kg x 2)",
-                "weight": 15000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "20kg (10kg x 2)",
-                "weight": 20000,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/17.1.1.jpg",
+            "/Images/17.1.2.jpg",
+            "/Images/17.1.3.jpg"
         ],
+        "imgSrc": "/Images/17.1.1.jpg",
+        "hoverImgSrc": "/Images/17.1.10.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -1401,17 +1722,28 @@ const products = [
                     "/Images/17.1.6.jpg",
                     "/Images/17.1.7.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 10000
+                    },
+                    {
+                        "name": "15kg (7.5kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 15000
+                    },
+                    {
+                        "name": "20kg (10kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 20000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/17.1.1.jpg",
-            "/Images/17.1.2.jpg",
-            "/Images/17.1.3.jpg"
-        ],
-        "imgSrc": "/Images/17.1.1.jpg",
-        "hoverImgSrc": "/Images/17.1.10.jpg"
+        ]
     },
     {
         "id": 18,
@@ -1435,13 +1767,12 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "sizes": [],
+        "showcaseImages": [],
+        "imgSrc": "",
+        "hoverImgSrc": "",
         "variants": [
             {
                 "color": "Tan",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/18.1.1.jpg",
                     "/Images/18.1.2.jpg",
@@ -1449,13 +1780,18 @@ const products = [
                     "/Images/18.1.4.jpg",
                     "/Images/18.1.5.jpg",
                     "/Images/18.1.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
                 ]
             },
             {
                 "color": "Black / Red",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/18.2.1.jpg",
                     "/Images/18.2.2.jpg",
@@ -1463,12 +1799,17 @@ const products = [
                     "/Images/18.2.4.jpg",
                     "/Images/18.2.5.jpg",
                     "/Images/18.2.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
                 ]
             }
-        ],
-        "showcaseImages": [],
-        "imgSrc": "",
-        "hoverImgSrc": ""
+        ]
     },
     {
         "id": 19,
@@ -1491,32 +1832,13 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "1kg (0.5 Kg x 2)",
-                "weight": 1000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "2kg (1 Kg x 2)",
-                "weight": 2000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "3kg (1.5 Kg x 2)",
-                "weight": 3000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "4kg (2 Kg x 2)",
-                "weight": 4000,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/19.1.1.jpg",
+            "/Images/19.1.2.jpg",
+            "/Images/19.1.3.jpg"
         ],
+        "imgSrc": "/Images/19.1.1.jpg",
+        "hoverImgSrc": "/Images/19.1.10.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -1528,17 +1850,34 @@ const products = [
                     "/Images/19.1.5.jpg",
                     "/Images/19.1.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "1kg (0.5 Kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 1000
+                    },
+                    {
+                        "name": "2kg (1 Kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 2000
+                    },
+                    {
+                        "name": "3kg (1.5 Kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 3000
+                    },
+                    {
+                        "name": "4kg (2 Kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 4000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/19.1.1.jpg",
-            "/Images/19.1.2.jpg",
-            "/Images/19.1.3.jpg"
-        ],
-        "imgSrc": "/Images/19.1.1.jpg",
-        "hoverImgSrc": "/Images/19.1.10.jpg"
+        ]
     },
     {
         "id": 20,
@@ -1561,20 +1900,13 @@ const products = [
         ],
         "material": "Blend, Ironsand, Neoprene",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "5kg",
-                "weight": 5000,
-                "price": 0,
-                "oldPrice": 0
-            },
-            {
-                "name": "10kg",
-                "weight": 10000,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/20.1.1.jpg",
+            "/Images/20.1.2.jpg",
+            "/Images/20.1.3.jpg"
         ],
+        "imgSrc": "/Images/20.1.1.jpg",
+        "hoverImgSrc": "/Images/20.1.10.jpg",
         "variants": [
             {
                 "color": " Black ",
@@ -1587,17 +1919,22 @@ const products = [
                     "/Images/20.1.6.jpg",
                     "/Images/20.1.7.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "5kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    },
+                    {
+                        "name": "10kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 10000
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/20.1.1.jpg",
-            "/Images/20.1.2.jpg",
-            "/Images/20.1.3.jpg"
-        ],
-        "imgSrc": "/Images/20.1.1.jpg",
-        "hoverImgSrc": "/Images/20.1.10.jpg"
+        ]
     },
     {
         "id": 21,
@@ -1621,26 +1958,34 @@ const products = [
         ],
         "material": "Rubber",
         "relatedIds": [],
-        "sizes": [],
+        "showcaseImages": [
+            "/Images/21.1.1.jpg",
+            "/Images/21.1.2.jpg",
+            "/Images/21.1.3.jpg"
+        ],
+        "imgSrc": "/Images/21.1.1.jpg",
+        "hoverImgSrc": "/Images/21.1.2.jpg",
         "variants": [
             {
                 "color": "Pro-League",
-                "weight": 450,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/21.1.1.jpg",
                     "/Images/21.1.2.jpg",
                     "/Images/21.1.3.jpg",
                     "/Images/21.1.4.jpg",
                     "/Images/21.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
+                    }
                 ]
             },
             {
                 "color": "NetBuster",
-                "weight": 350,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/21.2.1.jpg",
                     "/Images/21.2.2.jpg",
@@ -1648,16 +1993,17 @@ const products = [
                     "/Images/21.2.4.jpg",
                     "/Images/21.2.5.jpg",
                     "/Images/21.2.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 350
+                    }
                 ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/21.1.1.jpg",
-            "/Images/21.1.2.jpg",
-            "/Images/21.1.3.jpg"
-        ],
-        "imgSrc": "/Images/21.1.1.jpg",
-        "hoverImgSrc": "/Images/21.1.2.jpg"
+        ]
     },
     {
         "id": 22,
@@ -1679,14 +2025,13 @@ const products = [
         ],
         "material": "Blend, Polyurethane (PU), Rubber",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "2 Pcs",
-                "weight": 220,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/22.1.1.jpg",
+            "/Images/22.1.2.jpg",
+            "/Images/22.1.3.jpg"
         ],
+        "imgSrc": "/Images/22.1.1.jpg",
+        "hoverImgSrc": "/Images/22.1.2.jpg",
         "variants": [
             {
                 "color": "Red",
@@ -1698,17 +2043,16 @@ const products = [
                     "/Images/22.1.5.jpg",
                     "/Images/22.1.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "2 Pcs",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 220
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/22.1.1.jpg",
-            "/Images/22.1.2.jpg",
-            "/Images/22.1.3.jpg"
-        ],
-        "imgSrc": "/Images/22.1.1.jpg",
-        "hoverImgSrc": "/Images/22.1.2.jpg"
+        ]
     },
     {
         "id": 23,
@@ -1730,13 +2074,16 @@ const products = [
         ],
         "material": "Blend, Polyurethane (PU), Rubber",
         "relatedIds": [],
-        "sizes": [],
+        "showcaseImages": [
+            "/Images/23.1.1.jpg",
+            "/Images/23.1.2.jpg",
+            "/Images/23.1.3.jpg"
+        ],
+        "imgSrc": "/Images/23.1.1.jpg",
+        "hoverImgSrc": "/Images/23.1.2.jpg",
         "variants": [
             {
                 "color": "Pack of 2",
-                "weight": 260,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/23.1.1.jpg",
                     "/Images/23.1.2.jpg",
@@ -1744,13 +2091,18 @@ const products = [
                     "/Images/23.1.4.jpg",
                     "/Images/23.1.5.jpg",
                     "/Images/23.1.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 260
+                    }
                 ]
             },
             {
                 "color": "Pack of 3",
-                "weight": 390,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/23.2.1.jpg",
                     "/Images/23.2.2.jpg",
@@ -1758,13 +2110,18 @@ const products = [
                     "/Images/23.2.4.jpg",
                     "/Images/23.2.5.jpg",
                     "/Images/23.2.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 390
+                    }
                 ]
             },
             {
                 "color": "Pack of 6",
-                "weight": 780,
-                "price": 0,
-                "oldPrice": 0,
                 "images": [
                     "/Images/23.3.1.jpg",
                     "/Images/23.3.2.jpg",
@@ -1772,16 +2129,17 @@ const products = [
                     "/Images/23.3.4.jpg",
                     "/Images/23.3.5.jpg",
                     "/Images/23.3.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 780
+                    }
                 ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/23.1.1.jpg",
-            "/Images/23.1.2.jpg",
-            "/Images/23.1.3.jpg"
-        ],
-        "imgSrc": "/Images/23.1.1.jpg",
-        "hoverImgSrc": "/Images/23.1.2.jpg"
+        ]
     },
     {
         "id": 24,
@@ -1803,76 +2161,100 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "sizes": [],
-        "variants": [
-            {
-                "color": "Black - Grey",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
-                "images": [
-                    "/Images/24.1.1.jpg",
-                    "/Images/24.1.2.jpg",
-                    "/Images/24.1.3.jpg",
-                    "/Images/24.1.4.jpg",
-                    "/Images/24.1.5.jpg"
-                ]
-            },
-            {
-                "color": "Red - Black",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
-                "images": [
-                    "/Images/24.2.1.jpg",
-                    "/Images/24.2.2.jpg",
-                    "/Images/24.2.3.jpg",
-                    "/Images/24.2.4.jpg"
-                ]
-            },
-            {
-                "color": "Black",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
-                "images": [
-                    "/Images/24.3.1.jpg",
-                    "/Images/24.3.2.jpg",
-                    "/Images/24.3.3.jpg",
-                    "/Images/24.3.4.jpg"
-                ]
-            },
-            {
-                "color": "Blue - Black",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
-                "images": [
-                    "/Images/24.4.1.jpg",
-                    "/Images/24.4.2.jpg",
-                    "/Images/24.4.3.jpg",
-                    "/Images/24.4.4.jpg"
-                ]
-            },
-            {
-                "color": "Yellow - Black",
-                "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
-                "images": [
-                    "/Images/24.4.1.jpg",
-                    "/Images/24.4.2.jpg",
-                    "/Images/24.4.3.jpg"
-                ]
-            }
-        ],
         "showcaseImages": [
             "/Images/24.1.1.jpg",
             "/Images/24.1.2.jpg",
             "/Images/24.1.3.jpg"
         ],
         "imgSrc": "/Images/24.1.1.jpg",
-        "hoverImgSrc": "/Images/24.1.2.jpg"
+        "hoverImgSrc": "/Images/24.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black - Grey",
+                "images": [
+                    "/Images/24.1.1.jpg",
+                    "/Images/24.1.2.jpg",
+                    "/Images/24.1.3.jpg",
+                    "/Images/24.1.4.jpg",
+                    "/Images/24.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            },
+            {
+                "color": "Red - Black",
+                "images": [
+                    "/Images/24.2.1.jpg",
+                    "/Images/24.2.2.jpg",
+                    "/Images/24.2.3.jpg",
+                    "/Images/24.2.4.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            },
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/24.3.1.jpg",
+                    "/Images/24.3.2.jpg",
+                    "/Images/24.3.3.jpg",
+                    "/Images/24.3.4.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            },
+            {
+                "color": "Blue - Black",
+                "images": [
+                    "/Images/24.4.1.jpg",
+                    "/Images/24.4.2.jpg",
+                    "/Images/24.4.3.jpg",
+                    "/Images/24.4.4.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            },
+            {
+                "color": "Yellow - Black",
+                "images": [
+                    "/Images/24.4.1.jpg",
+                    "/Images/24.4.2.jpg",
+                    "/Images/24.4.3.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            }
+        ]
     },
     {
         "id": 25,
@@ -1895,14 +2277,13 @@ const products = [
         ],
         "material": " Alloy Steel ",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "FitBox Sports Ab Roller",
-                "weight": 475,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/25.1.1.jpg",
+            "/Images/25.1.2.jpg",
+            "/Images/25.1.3.jpg"
         ],
+        "imgSrc": "/Images/25.1.1.jpg",
+        "hoverImgSrc": "/Images/25.1.2.jpg",
         "variants": [
             {
                 "color": "Yellow",
@@ -1913,17 +2294,16 @@ const products = [
                     "/Images/25.1.4.jpg",
                     "/Images/25.1.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "FitBox Sports Ab Roller",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 475
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/25.1.1.jpg",
-            "/Images/25.1.2.jpg",
-            "/Images/25.1.3.jpg"
-        ],
-        "imgSrc": "/Images/25.1.1.jpg",
-        "hoverImgSrc": "/Images/25.1.2.jpg"
+        ]
     },
     {
         "id": 26,
@@ -1945,14 +2325,13 @@ const products = [
         ],
         "material": "Natural Rubber",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "FitBox Sports Resistance and Pull up Band",
-                "weight": 200,
-                "price": 0,
-                "oldPrice": 0
-            }
+        "showcaseImages": [
+            "/Images/26.1.1.jpg",
+            "/Images/26.1.2.jpg",
+            "/Images/26.1.3.jpg"
         ],
+        "imgSrc": "/Images/26.1.1.jpg",
+        "hoverImgSrc": "/Images/26.1.2.jpg",
         "variants": [
             {
                 "color": "Yellow(15-25Kg)",
@@ -1963,17 +2342,16 @@ const products = [
                     "/Images/26.1.4.jpg",
                     "/Images/26.1.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "FitBox Sports Resistance and Pull up Band",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 200
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/26.1.1.jpg",
-            "/Images/26.1.2.jpg",
-            "/Images/26.1.3.jpg"
-        ],
-        "imgSrc": "/Images/26.1.1.jpg",
-        "hoverImgSrc": "/Images/26.1.2.jpg"
+        ]
     },
     {
         "id": 27,
@@ -1997,53 +2375,16 @@ const products = [
         ],
         "material": "Faux Leather",
         "relatedIds": [],
-        "sizes": [
-            {
-                "name": "10 Oz",
-                "weight": 450,
-                "price": 0
-            },
-            {
-                "name": "12 Oz",
-                "weight": 450,
-                "price": 0
-            },
-            {
-                "name": "14 Oz",
-                "weight": 450,
-                "price": 0
-            },
-            {
-                "name": "16 Oz",
-                "weight": 450,
-                "price": 0
-            }
+        "showcaseImages": [
+            "/Images/27.1.1.jpg",
+            "/Images/27.1.2.jpg",
+            "/Images/27.1.3.jpg"
         ],
+        "imgSrc": "/Images/27.1.1.jpg",
+        "hoverImgSrc": "/Images/27.1.2.jpg",
         "variants": [
             {
                 "color": "Black",
-                "sizes": [
-                    {
-                        "name": "10 Oz",
-                        "price": 599,
-                        "oldPrice": 1095
-                    },
-                    {
-                        "name": "12 Oz",
-                        "price": 455.08,
-                        "oldPrice": 1095
-                    },
-                    {
-                        "name": "14 Oz",
-                        "price": 501.05,
-                        "oldPrice": 1095
-                    },
-                    {
-                        "name": "16 Oz",
-                        "price": 647.72,
-                        "oldPrice": 1095
-                    }
-                ],
                 "images": [
                     "/Images/27.1.1.jpg",
                     "/Images/27.1.2.jpg",
@@ -2052,33 +2393,35 @@ const products = [
                     "/Images/27.1.5.jpg",
                     "/Images/27.1.6.jpg"
                 ],
-                "price": 0,
-                "weight": 0
-            },
-            {
-                "color": "Tan / Brown",
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 517.56,
-                        "oldPrice": 1095
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
                     },
                     {
                         "name": "12 Oz",
-                        "price": 743.16,
-                        "oldPrice": 1095
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
                     },
                     {
                         "name": "14 Oz",
-                        "price": 599,
-                        "oldPrice": 1095
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
                     },
                     {
                         "name": "16 Oz",
-                        "price": 599,
-                        "oldPrice": 1095
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
                     }
-                ],
+                ]
+            },
+            {
+                "color": "Tan / Brown",
                 "images": [
                     "/Images/27.2.1.jpg",
                     "/Images/27.2.2.jpg",
@@ -2086,17 +2429,34 @@ const products = [
                     "/Images/27.2.4.jpg",
                     "/Images/27.2.5.jpg"
                 ],
-                "price": 0,
-                "weight": 0
+                "sizes": [
+                    {
+                        "name": "10 Oz",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
+                    },
+                    {
+                        "name": "12 Oz",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
+                    },
+                    {
+                        "name": "14 Oz",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
+                    },
+                    {
+                        "name": "16 Oz",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 450
+                    }
+                ]
             }
-        ],
-        "showcaseImages": [
-            "/Images/27.1.1.jpg",
-            "/Images/27.1.2.jpg",
-            "/Images/27.1.3.jpg"
-        ],
-        "imgSrc": "/Images/27.1.1.jpg",
-        "hoverImgSrc": "/Images/27.1.2.jpg"
+        ]
     }
 ];
 

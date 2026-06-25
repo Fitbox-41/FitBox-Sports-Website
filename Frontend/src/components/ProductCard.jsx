@@ -271,24 +271,37 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
 
         <div className="pc-price-row">
           {(() => {
-            let minP = product.price || 0;
-            let maxP = product.price || 0;
+            let minP = Number.POSITIVE_INFINITY;
+            let maxP = 0;
+
             if (product.variants) {
               product.variants.forEach(v => {
-                if (v.price) {
+                if (v.sizes && v.sizes.length) {
+                  v.sizes.forEach(s => {
+                    if (typeof s.price === 'number') {
+                      if (s.price < minP) minP = s.price;
+                      if (s.price > maxP) maxP = s.price;
+                    }
+                  });
+                } else if (typeof v.price === 'number') {
                   if (v.price < minP) minP = v.price;
                   if (v.price > maxP) maxP = v.price;
                 }
               });
             }
+
+            // Legacy top-level sizes fallback
             if (product.sizes) {
               product.sizes.forEach(s => {
-                if (s.price) {
+                if (typeof s.price === 'number') {
                   if (s.price < minP) minP = s.price;
                   if (s.price > maxP) maxP = s.price;
                 }
               });
             }
+
+            if (!isFinite(minP)) minP = product.price || 0;
+            if (maxP === 0) maxP = product.price || 0;
             const hasRange = minP !== maxP;
             return (
               <>
