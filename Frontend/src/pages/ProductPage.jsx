@@ -263,7 +263,10 @@ export default function ProductPage() {
   const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { images: [], sizes: [] };
   const images = currentVariant.images || [];
   const sizeOptions = Array.isArray(currentVariant.sizes) ? currentVariant.sizes : [];
-  const hasSizeOptions = sizeOptions.length > 0 && sizeOptions.some((size) => normalizeSizeLabel(size) !== '');
+  const normalizedSizeOptions = sizeOptions
+    .map((size, idx) => ({ size, label: normalizeSizeLabel(size), idx }))
+    .filter((item) => item.label);
+  const showSizeSelector = normalizedSizeOptions.length > 1;
   const isActuallyOutOfStock = product.isOutOfStock || currentVariant.isOutOfStock;
 
   const handleNext = () => setCurrentImgIdx((prev) => (prev + 1) % images.length);
@@ -458,27 +461,23 @@ export default function ProductPage() {
             </div>
 
             {/* SIZE SELECTOR */}
-            {hasSizeOptions && (
+            {showSizeSelector && (
               <div className="v2-selector-wrap">
                 <p className="selector-label">Size</p>
                 <div className="v2-size-grid">
-                  {sizeOptions.map((size, idx) => {
-                    const label = normalizeSizeLabel(size);
-                    if (!label) return null;
-                    return (
-                      <div
-                        key={idx}
-                        className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
-                        onClick={() => setSelectedSizeIdx(idx)}
-                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-                      >
-                        <span>{label}</span>
-                        {size.price && size.price !== product.price && (
-                          <span style={{ fontSize: '10px', opacity: 0.8 }}>₹{size.price}</span>
-                        )}
-                      </div>
-                    );
-                  })}
+                  {normalizedSizeOptions.map(({ size, label, idx }) => (
+                    <div
+                      key={idx}
+                      className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
+                      onClick={() => setSelectedSizeIdx(idx)}
+                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                    >
+                      <span>{label}</span>
+                      {size.price && size.price !== product.price && (
+                        <span style={{ fontSize: '10px', opacity: 0.8 }}>₹{size.price}</span>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

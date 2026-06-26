@@ -5,25 +5,22 @@ import localProducts from '../data/products';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    // Do not seed with local static data anymore to prevent flashing old prices
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState(Array.isArray(localProducts) && localProducts.length > 0 ? localProducts : []);
+    const [loading, setLoading] = useState(!(Array.isArray(localProducts) && localProducts.length > 0));
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                // Use environment variable for the API URL, fallback to localhost for development
                 const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
                 const response = await axios.get(`${apiUrl}/api/products`);
-                // Only replace if the API returned actual data
                 if (Array.isArray(response.data) && response.data.length > 0) {
                     setProducts(response.data);
                 }
-                setLoading(false);
             } catch (err) {
                 console.error('Error fetching products:', err);
                 setError(err.message);
+            } finally {
                 setLoading(false);
             }
         };

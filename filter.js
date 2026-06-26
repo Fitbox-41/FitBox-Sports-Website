@@ -1,15 +1,20 @@
 const fs = require('fs');
-const data = require('./Frontend/src/data/products.js');
+const path = require('path');
 
-// `products.js` currently exports an array, but we need to parse it or just filter it.
-// Wait, `products.js` is an ES module `export default products;`. We can't require it directly.
-// Let's read `product.json` instead.
+const jsPath = path.join('Frontend', 'src', 'data', 'products.js');
 
-let content = fs.readFileSync('./Frontend/src/data/product.json', 'utf8');
-const products = JSON.parse(content);
+const parseProductsJs = (content) => {
+    const match = content.match(/const products =\s*([\s\S]*?)\n\nexport default products;\s*$/);
+    if (!match) throw new Error('Unable to parse products.js');
+    return JSON.parse(match[1]);
+};
+
+const stringifyProductsJs = (data) => `const products = ${JSON.stringify(data, null, 4)};\n\nexport default products;\n`;
+
+const content = fs.readFileSync(jsPath, 'utf8');
+const products = parseProductsJs(content);
 const validProducts = products.filter(p => p.name && p.name.trim() !== '' && p.category && p.category.trim() !== '');
 
-// Also clean up sizes/variants that are empty objects
 validProducts.forEach(p => {
     if (p.sizes) {
         p.sizes = p.sizes.filter(s => s.name && s.name.trim() !== '');
@@ -19,8 +24,6 @@ validProducts.forEach(p => {
     }
 });
 
-fs.writeFileSync('./Frontend/src/data/product.json', JSON.stringify(validProducts, null, 4));
-
-const jsContent = `const products = ${JSON.stringify(validProducts, null, 4)};\n\nexport default products;\n`;
-fs.writeFileSync('./Frontend/src/data/products.js', jsContent);
-console.log('Successfully filtered empty products. Total products:', validProducts.length);
+const jsContent = stringifyProductsJs(validProducts);
+fs.writeFileSync(jsPath, jsContent, 'utf8');
+console.log('Successfully filtered empty products in products.js. Total products:', validProducts.length);
