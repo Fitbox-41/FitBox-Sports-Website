@@ -14,7 +14,25 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+    origin: (_origin, callback) => callback(null, true),
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,Accept,Origin,X-Requested-With');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+    next();
+});
+app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/admin/public', express.static(path.join(process.cwd(), 'admin', 'public')));
@@ -110,6 +128,18 @@ const autoSyncProductsToDB = async () => {
         console.error('Failed automatic product sync:', error);
     }
 };
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err);
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,Accept,Origin,X-Requested-With');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    if (!res.headersSent) {
+        res.status(err.status || 500).json({ message: err.message || 'Server Error' });
+    }
+});
 
 // Only listen if not running in Vercel (for local development)
 if (!process.env.VERCEL) {
