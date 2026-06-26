@@ -68,7 +68,7 @@ export default function Cart() {
               {cart.map((item) => (
                 <div key={`${item.id}-${item.selectedVariant}`} className="cart-item-card">
                   <Link 
-                    to={`/product/${item.id}${item.selectedVariant ? `?color=${encodeURIComponent(item.selectedVariant)}` : ''}`} 
+                    to={`/product/${item.id}`} 
                     className="cart-item-img-wrap"
                   >
                     <img src={item.imgSrc} alt={item.name} />
@@ -77,7 +77,7 @@ export default function Cart() {
                   <div className="cart-item-details">
                     <div className="cart-item-header">
                       <Link 
-                        to={`/product/${item.id}${item.selectedVariant ? `?color=${encodeURIComponent(item.selectedVariant)}` : ''}`} 
+                        to={`/product/${item.id}`} 
                         className="cart-item-name"
                       >
                         {item.name}

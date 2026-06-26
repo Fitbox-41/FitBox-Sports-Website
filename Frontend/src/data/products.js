@@ -400,7 +400,7 @@ const products = [
     },
     {
         "id": 4,
-        "name": "FitBox Sports Adjustable Hand Grip for Forearm Exercise (5kg - 60kg)",
+        "name": "FitBox Sports Adjustable Hand Grip for Forearm Exercise",
         "category": "Support & Protection",
         "subCategory": "Hand Grippers",
         "isNew": false,

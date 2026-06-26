@@ -27,7 +27,7 @@ export default function Favourite() {
               return (
                 <div key={item.id} className="fav-list-item">
                   <Link 
-                    to={`/product/${item.id}${item.selectedVariant ? `?color=${encodeURIComponent(item.selectedVariant)}` : ''}`}
+                    to={`/product/${item.id}`}
                     className="fav-item-image-wrapper"
                   >
                     <img src={img} alt={item.name} className="fav-item-image" />
@@ -35,7 +35,7 @@ export default function Favourite() {
 
                   <div className="fav-item-details">
                     <Link 
-                      to={`/product/${item.id}${item.selectedVariant ? `?color=${encodeURIComponent(item.selectedVariant)}` : ''}`}
+                      to={`/product/${item.id}`}
                       className="fav-item-name"
                     >
                       {item.name}

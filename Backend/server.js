@@ -2,7 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import path from 'path';
 import productRoutes from './Routes/productRoutes.js';
+import adminRoutes from './Routes/adminRoutes.js';
 import authRoutes from './Routes/authRoutes.js';
 import contactRoutes from './Routes/contactRoutes.js';
 
@@ -15,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/admin/public', express.static(path.join(process.cwd(), 'admin', 'public')));
 
 // Serverless-friendly Database Connection
 const connectDB = async () => {
@@ -41,6 +44,7 @@ app.use(async (req, res, next) => {
 import orderRoutes from './Routes/orderRoutes.js';
 
 app.use('/api/products', productRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/contact', contactRoutes);

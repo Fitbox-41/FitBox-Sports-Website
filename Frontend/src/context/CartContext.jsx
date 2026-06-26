@@ -68,6 +68,25 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const normalizeSelectedSize = (size) => {
+    if (size === null || size === undefined) return '';
+    if (typeof size === 'string') return size.trim() || 'STANDARD';
+    if (typeof size === 'number') return size > 0 ? String(size) : 'STANDARD';
+    if (typeof size === 'object') {
+      return size.name || size.label || (size.price ? `₹${size.price}` : '') || 'STANDARD';
+    }
+    return 'STANDARD';
+  };
+
+  const normalizeSelectedVariant = (variant) => {
+    if (!variant) return '';
+    if (typeof variant === 'string') return variant;
+    if (typeof variant === 'object') {
+      return variant.color || variant.name || variant.label || variant._id?.toString() || '';
+    }
+    return String(variant);
+  };
+
   const addToCart = (product) => {
     if (!currentUser) {
       setShowLoginModal(true);
@@ -75,17 +94,22 @@ export const CartProvider = ({ children }) => {
     }
 
     const qtyToAdd = product.quantity || 1;
+    const normalizedProduct = {
+      ...product,
+      selectedVariant: normalizeSelectedVariant(product.selectedVariant),
+      selectedSize: normalizeSelectedSize(product.selectedSize)
+    };
     let newCart;
     
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => 
-        item.id === product.id && item.selectedVariant === product.selectedVariant
+        item.id === normalizedProduct.id && item.selectedVariant === normalizedProduct.selectedVariant
       );
       if (existingItem) {
         alert("This item is already in your cart!");
         newCart = prevCart; // Do not add again
       } else {
-        newCart = [...prevCart, { ...product, quantity: qtyToAdd }];
+        newCart = [...prevCart, { ...normalizedProduct, quantity: qtyToAdd }];
       }
       return newCart;
     });

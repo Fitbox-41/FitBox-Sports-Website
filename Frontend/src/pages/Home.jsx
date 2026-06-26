@@ -305,7 +305,7 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse, canAnimate })
   );
 });
 
-const newArrivalsIds = [56, 59, 48, 63, 33, 114];
+const NEW_ARRIVAL_COUNT = 6;
 
 export default function Home() {
   const { products: allProducts } = useContext(ProductContext);
@@ -333,22 +333,27 @@ export default function Home() {
     });
   }, [allProducts]);
 
-  const newArrivals = newArrivalsIds.map(id => {
-    const p = allProducts.find(prod => prod.id === id);
-    if (!p) return null;
-    const price = typeof p.price === 'number' ? p.price : (Number(p.price) || 0);
-    const oldPrice = typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0);
-    return {
-      ...p,
-      displayId: `${p.id}`,
-      name: p.name.includes('Shaker') ? 'Shaker Pro 700ml' : p.name,
-      tag: 'New',
-      price: price,
-      oldPrice: oldPrice || null,
-      imgSrc: p.imgSrc && p.imgSrc !== '/.webp' ? p.imgSrc : '',
-      hoverImgSrc: p.hoverImgSrc && p.hoverImgSrc !== '/.webp' ? p.hoverImgSrc : ''
-    };
-  }).filter(Boolean);
+  const newArrivals = useMemo(() => {
+    if (!allProducts?.length) return [];
+
+    const sortedById = [...allProducts].sort((a, b) => (Number(a.id) || 0) - (Number(b.id) || 0));
+    const selected = sortedById.slice(0, NEW_ARRIVAL_COUNT);
+
+    return selected.map((p) => {
+      const price = typeof p.price === 'number' ? p.price : (Number(p.price) || 0);
+      const oldPrice = typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0);
+      return {
+        ...p,
+        displayId: `${p.id}`,
+        name: p.name.includes('Shaker') ? 'Shaker Pro 700ml' : p.name,
+        tag: 'New',
+        price: price,
+        oldPrice: oldPrice || null,
+        imgSrc: p.imgSrc && p.imgSrc !== '/.webp' ? p.imgSrc : (p.variants && p.variants[0]?.images?.[0]) || '',
+        hoverImgSrc: p.hoverImgSrc && p.hoverImgSrc !== '/.webp' ? p.hoverImgSrc : (p.variants && p.variants[0]?.images?.[1]) || ''
+      };
+    });
+  }, [allProducts]);
 
   // Pick 50 random products from the full catalogue (flattened so variants are randomly placed)
   const flattenedBestSellers = useMemo(() => {
@@ -367,11 +372,11 @@ export default function Home() {
       return (Math.abs(h) % 100000) / 100000;
     };
     
-    const shuffled = [...allFlattened].sort((a, b) => {
-      const keyA = a.displayId || String(a.id);
-      const keyB = b.displayId || String(b.id);
-      return getHash(keyA) - getHash(keyB);
-    });
+    const shuffled = [...allFlattened];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
     
     // Take exactly 50 items and format their prices/images
     const mapped = shuffled.slice(0, 50).map(p => ({
@@ -1043,7 +1048,7 @@ export default function Home() {
                     const isWished = wishlist.some((w) => w.id === product.id);
                     return (
                       <Link
-                        to={`/product/${product.id}${product.selectedVariant ? `?color=${encodeURIComponent(product.selectedVariant)}` : ''}`}
+                        to={`/product/${product.id}`}
                         key={`\${product.displayId || product.id}-${i}`}
                         className={`hp-card ${isCenter ? 'hp-card--raised' : ''} ${isVisible ? 'hp-visible' : ''}`}
                         style={{ transition: hpTrans ? '' : 'none', textDecoration: 'none' }}

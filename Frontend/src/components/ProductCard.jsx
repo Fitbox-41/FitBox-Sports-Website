@@ -215,7 +215,7 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
 
       {/* Image area */}
       <Link 
-        to={`/product/${product.id}${product.selectedVariant ? `?color=${encodeURIComponent(product.selectedVariant)}` : ''}`} 
+        to={`/product/${product.id}`} 
         className="pc-img-link" 
         id={`pc-img-${product.id}`}
       >
@@ -242,7 +242,7 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
       {/* Card body */}
       <div className="pc-body">
         <Link 
-          to={`/product/${product.id}${product.selectedVariant ? `?color=${encodeURIComponent(product.selectedVariant)}` : ''}`} 
+          to={`/product/${product.id}`} 
           className="pc-name"
         >
           {product.name}
@@ -286,16 +286,6 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
                 } else if (typeof v.price === 'number') {
                   if (v.price < minP) minP = v.price;
                   if (v.price > maxP) maxP = v.price;
-                }
-              });
-            }
-
-            // Legacy top-level sizes fallback
-            if (product.sizes) {
-              product.sizes.forEach(s => {
-                if (typeof s.price === 'number') {
-                  if (s.price < minP) minP = s.price;
-                  if (s.price > maxP) maxP = s.price;
                 }
               });
             }
