@@ -1,8 +1,9 @@
 import path from 'path';
+import os from 'os';
 import fs from 'fs';
 import multer from 'multer';
 
-const adminPublicDir = path.join(process.cwd(), 'admin', 'public');
+const adminPublicDir = path.join(os.tmpdir(), 'fitbox-admin-public');
 if (!fs.existsSync(adminPublicDir)) {
   fs.mkdirSync(adminPublicDir, { recursive: true });
 }
