@@ -2457,7 +2457,110 @@ const products = [
                 ]
             }
         ]
+    },
+    {
+        "id": 28,
+        "name": "FitBox Sports Heavy Duty Door Anchor - Great for Resistance Bands, Physical Therapy Bands, and Closed Loop Bands ",
+        "category": "",
+        "subCategory": "",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [],
+        "longDesc": "",
+        "features": ["Heavy Duty Door Anchor - Great for Resistance Bands, Physical Therapy Bands, and Closed Loop Bands "],
+        "material": "",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/28.1.2.jpg",
+            "/Images/28.1.3.jpg",
+            "/Images/28.1.4.jpg"
+        ],
+        "imgSrc": "/Images/28.1.1.jpg",
+        "hoverImgSrc": "/Images/28.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/28.1.1.jpg",
+                    "/Images/28.1.2.jpg",
+                    "/Images/28.1.3.jpg",
+                    "/Images/28.1.4.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Heavy Duty Door Anchor",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 50
+                    }
+                ]
+            }
+        ]
+    },
+    {
+  "id": 29,
+  "name": "",
+  "category": "",
+  "subCategory": "",
+  "isNew": false,
+  "isOutOfStock": false,
+  "qualities": [],
+  "longDesc": "",
+  "features": [],
+  "material": "",
+  "relatedIds": [],
+  "showcaseImages": [],
+  "imgSrc": "",
+  "hoverImgSrc": "",
+  "variants": [
+    {
+      "color": "",
+      "images": [],
+      "sizes": [
+        {
+          "name": "",
+          "price": 0,
+          "oldPrice": 0,
+          "weight": 0
+        }
+      ]
     }
+  ]
+}
 ];
 
 export default products;
+
+
+
+
+// {
+//   "id": 0,
+//   "name": "",
+//   "category": "",
+//   "subCategory": "",
+//   "isNew": false,
+//   "isOutOfStock": false,
+//   "qualities": [],
+//   "longDesc": "",
+//   "features": [],
+//   "material": "",
+//   "relatedIds": [],
+//   "showcaseImages": [],
+//   "imgSrc": "",
+//   "hoverImgSrc": "",
+//   "variants": [
+//     {
+//       "color": "",
+//       "images": [],
+//       "sizes": [
+//         {
+//           "name": "",
+//           "price": 0,
+//           "oldPrice": 0,
+//           "weight": 0
+//         }
+//       ]
+//     }
+//   ]
+// }
