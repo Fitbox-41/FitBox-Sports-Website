@@ -355,40 +355,49 @@ export default function Home() {
     });
   }, [allProducts]);
 
-  // Pick 50 random products from the full catalogue (flattened so variants are randomly placed)
+  const [bestSellersShuffleSeed] = useState(() => {
+    try {
+      const stored = sessionStorage.getItem('bestSellersShuffleSeed');
+      if (stored !== null && !Number.isNaN(Number(stored))) {
+        return Number(stored);
+      }
+      const seed = Date.now() + Math.random();
+      sessionStorage.setItem('bestSellersShuffleSeed', String(seed));
+      return seed;
+    } catch (error) {
+      return Math.random();
+    }
+  });
+
+  // Randomize the best sellers section once per session, not on every render.
   const flattenedBestSellers = useMemo(() => {
     if (!allProducts.length) return [];
-    
-    // First flatten all products to get all variants as individual items
+
     const allFlattened = flattenProducts([...allProducts]);
-    
-    // Stable pseudo-random shuffle using a deterministic hash to prevent layout shifting on state changes or page reloads
-    const getHash = (str) => {
-      let h = 1540483477;
-      for (let i = 0; i < str.length; i++) {
-        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
-        h = (h << 13) | (h >>> 19);
-      }
-      return (Math.abs(h) % 100000) / 100000;
-    };
-    
-    const shuffled = [...allFlattened];
-    for (let i = shuffled.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    
-    // Take exactly 50 items and format their prices/images
-    const mapped = shuffled.slice(0, 50).map(p => ({
+
+    const mapped = allFlattened.map((p) => ({
       ...p,
+      displayId: p.displayId || String(p.id),
       price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
       oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null,
       imgSrc: p.imgSrc || '',
       hoverImgSrc: p.hoverImgSrc || '',
     }));
-    
-    return mapped;
-  }, [allProducts]);
+
+    let seed = bestSellersShuffleSeed;
+    const seededRandom = () => {
+      seed = Math.sin(seed) * 10000;
+      return seed - Math.floor(seed);
+    };
+
+    const shuffled = [...mapped];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(seededRandom() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled;
+  }, [allProducts, bestSellersShuffleSeed]);
 
   const bsChunks = [];
   for (let i = 0; i < flattenedBestSellers.length; i += 10) {

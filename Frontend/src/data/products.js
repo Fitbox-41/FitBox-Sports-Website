@@ -1646,7 +1646,7 @@ const products = [
             "/Images/16.1.3.jpg"
         ],
         "imgSrc": "/Images/16.1.1.jpg",
-        "hoverImgSrc": "/Images/16.1.10.jpg",
+        "hoverImgSrc": "/Images/16.1.2.jpg",
         "variants": [
             {
                 "color": "FitBox Sports Professional Neoprene Ankle Weights",
@@ -2241,9 +2241,9 @@ const products = [
             {
                 "color": "Yellow - Black",
                 "images": [
-                    "/Images/24.4.1.jpg",
-                    "/Images/24.4.2.jpg",
-                    "/Images/24.4.3.jpg"
+                    "/Images/24.5.1.jpg",
+                    "/Images/24.5.2.jpg",
+                    "/Images/24.5.3.jpg"
                 ],
                 "sizes": [
                     {
