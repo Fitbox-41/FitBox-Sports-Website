@@ -2127,8 +2127,7 @@ const products = [
                     "/Images/23.3.2.jpg",
                     "/Images/23.3.3.jpg",
                     "/Images/23.3.4.jpg",
-                    "/Images/23.3.5.jpg",
-                    "/Images/23.3.6.jpg"
+                    "/Images/23.3.5.jpg"
                 ],
                 "sizes": [
                     {
