@@ -1200,6 +1200,30 @@
   width: 100%;
 }
 
+.best-sellers-action {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0 16px;
+}
+
+.load-more-bs {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.load-more-bs:hover,
+.load-more-bs:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
 .bs-mobile {
   display: none;
 }

@@ -3,56 +3,68 @@ export const flattenProducts = (products) => {
   if (!products || !Array.isArray(products)) return [];
 
   const flattened = [];
-  const validColors = ['black', 'brown', 'red', 'pink', 'orange', 'grey', 'dark grey', 'beige', 'multicolor', 'green', 'blue', 'tan', 'white', 'yellow', 'purple'];
 
   products.forEach(product => {
-    // Check if the variants actually contain simple colors we want to split by
-    const hasColorVariants = product.variants && product.variants.length > 1 && 
-      product.variants.some(v => v.color && validColors.some(validColor => {
-        const regex = new RegExp(`\\b${validColor}\\b`, 'i');
-        return regex.test(v.color);
-      }));
+    const variants = Array.isArray(product.variants) ? product.variants : [];
+    const baseImg = product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc : '';
+    const baseHoverImg = product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc : '';
 
-    if (hasColorVariants) {
-      // Explode into multiple products
-      product.variants.forEach((variant, vIdx) => {
-          // Prioritize variant images first, then fallback to base product images
-          const vImg0 = variant.images && variant.images[0] && variant.images[0] !== '/.webp' ? variant.images[0] : null;
-          const vImg1 = variant.images && variant.images[1] && variant.images[1] !== '/.webp' ? variant.images[1] : null;
-          
-          const imgSrc = vImg0 || (product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc : '');
-          const hoverImgSrc = vImg1 || (product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc : '');
+    if (variants.length > 0) {
+      variants.forEach((variant, vIdx) => {
+        const variantName = variant.color ? variant.color.toString().trim() : `Variant ${vIdx + 1}`;
+        const variantImages = Array.isArray(variant.images) ? variant.images : [];
+        const variantImgSrc = variantImages[0] && variantImages[0] !== '/.webp' ? variantImages[0] : baseImg;
+        const variantHoverImgSrc = variantImages[1] && variantImages[1] !== '/.webp' ? variantImages[1] : baseHoverImg;
 
-          // Effective price: use variant price if set, else fall back to product base price
-          const effectivePrice = (variant.price && variant.price > 0) ? variant.price : (product.price || 0);
-          const effectiveOldPrice = (variant.oldPrice && variant.oldPrice > 0) ? variant.oldPrice : (product.oldPrice || 0);
+        const sizes = Array.isArray(variant.sizes) && variant.sizes.length > 0 ? variant.sizes : [null];
+
+        sizes.forEach((size, sIdx) => {
+          const sizeLabel = size && size.name ? size.name.toString().trim() : null;
+          const displayName = [product.name, variantName, sizeLabel].filter(Boolean).join(' - ');
+
+          const effectivePrice = size && typeof size.price === 'number' && size.price > 0
+            ? size.price
+            : typeof variant.price === 'number' && variant.price > 0
+              ? variant.price
+              : typeof product.price === 'number' && product.price > 0
+                ? product.price
+                : 0;
+
+          const effectiveOldPrice = size && typeof size.oldPrice === 'number' && size.oldPrice > 0
+            ? size.oldPrice
+            : typeof variant.oldPrice === 'number' && variant.oldPrice > 0
+              ? variant.oldPrice
+              : typeof product.oldPrice === 'number' && product.oldPrice > 0
+                ? product.oldPrice
+                : 0;
 
           flattened.push({
             ...product,
-            displayId: `${product.id}-v${vIdx}`,
-            name: `${product.name} - ${variant.color}`,
-            selectedVariant: variant.color,
-            imgSrc: imgSrc,
-            hoverImgSrc: hoverImgSrc,
+            displayId: `${product.id}-v${vIdx}${sizeLabel ? `-s${sIdx}` : ''}`,
+            name: displayName,
+            selectedVariant: variantName,
+            selectedSize: sizeLabel,
+            variant: { ...variant, color: variantName },
+            size: size ? { ...size } : null,
+            imgSrc: variantImgSrc || baseImg,
+            hoverImgSrc: variantHoverImgSrc || baseHoverImg,
             price: effectivePrice,
             oldPrice: effectiveOldPrice,
-            isOutOfStock: product.isOutOfStock || (variant.isOutOfStock === true)
+            isOutOfStock: product.isOutOfStock || variant.isOutOfStock === true || (size && size.isOutOfStock === true),
           });
         });
+      });
     } else {
-      // No variants, just push the original product with its set images
-      const imgSrc = product.imgSrc && product.imgSrc !== '/.webp' ? product.imgSrc 
-        : (product.variants && product.variants[0]?.images?.[0]) || '';
-      const hoverImgSrc = product.hoverImgSrc && product.hoverImgSrc !== '/.webp' ? product.hoverImgSrc 
-        : (product.variants && product.variants[0]?.images?.[1]) || '';
-      
-      flattened.push({ 
-        ...product, 
+      flattened.push({
+        ...product,
         displayId: `${product.id}`,
-        imgSrc: imgSrc,
-        hoverImgSrc: hoverImgSrc,
+        name: product.name,
+        selectedVariant: null,
+        selectedSize: null,
+        imgSrc: baseImg,
+        hoverImgSrc: baseHoverImg,
         price: product.price || 0,
-        oldPrice: product.oldPrice || 0
+        oldPrice: product.oldPrice || 0,
       });
     }
   });

@@ -1709,7 +1709,7 @@ const products = [
             "/Images/17.1.3.jpg"
         ],
         "imgSrc": "/Images/17.1.1.jpg",
-        "hoverImgSrc": "/Images/17.1.10.jpg",
+        "hoverImgSrc": "/Images/17.1.2.jpg",
         "variants": [
             {
                 "color": "Black",
@@ -1906,7 +1906,7 @@ const products = [
             "/Images/20.1.3.jpg"
         ],
         "imgSrc": "/Images/20.1.1.jpg",
-        "hoverImgSrc": "/Images/20.1.10.jpg",
+        "hoverImgSrc": "/Images/20.1.2.jpg",
         "variants": [
             {
                 "color": " Black ",
@@ -2461,12 +2461,16 @@ const products = [
     {
         "id": 28,
         "name": "FitBox Sports Heavy Duty Door Anchor - Great for Resistance Bands, Physical Therapy Bands, and Closed Loop Bands ",
-        "category": "",
-        "subCategory": "",
+        "category": "Workout Essentials",
+        "subCategory": "Resistance Bands",
         "isNew": false,
         "isOutOfStock": false,
-        "qualities": [],
-        "longDesc": "",
+        "qualities": [
+            "Heavy Duty Construction",
+            "Secure Door Mount",
+            "Universal Compatibility"
+        ],
+        "longDesc": "A durable door anchor designed for resistance band workouts, physical therapy, and functional training. This premium anchor offers a secure fit on most door frames and lets you perform a wide range of upper- and lower-body exercises safely at home.",
         "features": ["Heavy Duty Door Anchor - Great for Resistance Bands, Physical Therapy Bands, and Closed Loop Bands "],
         "material": "",
         "relatedIds": [],
@@ -2498,30 +2502,501 @@ const products = [
         ]
     },
     {
-  "id": 29,
-  "name": "",
-  "category": "",
-  "subCategory": "",
+        "id": 29,
+        "name": "FitBox Sports Pro Lever Weightlifting & Powerlifting Belt – Leather Gym Belt for Heavy Lifting, Squats, Deadlifts – Strong Back Support & Double",
+        "category": "Support & Protection",
+        "subCategory": "Belts",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Reinforced Leather",
+            "Heavy Duty Lever Closure",
+            "Ergonomic Support"
+        ],
+        "longDesc": "A premium leather powerlifting belt engineered for serious lifters. The heavy-duty lever closure provides a secure, consistent fit for squats, deadlifts, and other compound lifts while stabilizing your core and protecting your lower back.",
+        "features": ["Maximum Back & Core Support : Designed to stabilize your spine and core during heavy lifts—ideal for squats, deadlifts, clean & jerks, and more.",
+            "Secure Fit with Adjustable Closure : Heavy-duty Lever buckle ensures a tight, customizable fit for maximum support without restricting movement.",
+            "Comfortable Contoured Design : Ergonomic shape supports your natural movement while offering comfort during extended training sessions.",
+            "Prevents Injury & Enhances Performance : Maintains proper lifting posture and reduces stress on your lower back to help you lift heavier with confidence.",
+            "Maximum Support & Stability – 10mm thick lever belt designed to give you a rock-solid core brace, reducing stress on the lower back and helping you lift heavier with confidence."],
+        "material": "Leather",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/29.1.2.jpg",
+            "/Images/29.1.3.jpg",
+            "/Images/29.1.4.jpg",
+
+        ],
+        "imgSrc": "/Images/29.1.1.jpg",
+        "hoverImgSrc": "/Images/29.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/29.1.1.jpg",
+                    "/Images/29.1.2.jpg",
+                    "/Images/29.1.3.jpg",
+                    "/Images/29.1.4.jpg",
+                    "/Images/29.1.5.jpg",
+                    "/Images/29.1.6.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "Medium",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "name": "FitBox Sports Pro Weightlifting Belt – Leather Gym Belt for Heavy Lifting, Squats, Deadlifts – Strong Back Support & Double-Prong Buckle",
+        "category": "Support & Protection",
+        "subCategory": "Belts",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Dual-Prong Closure",
+            "Premium Leather Comfort",
+            "Sturdy Core Support"
+        ],
+        "longDesc": "A high-performance leather weightlifting belt with a dual-prong buckle for a secure, adjustable fit. It supports heavy lifts by stabilizing the lumbar area, reducing strain, and helping maintain proper form during squats, deadlifts, and powerlifting movements.",
+        "features": ["Maximum Back & Core Support : Designed to stabilize your spine and core during heavy lifts—ideal for squats, deadlifts, clean & jerks, and more.",
+            "Secure Fit with Adjustable Closure : Heavy-duty Dual-Prong buckle ensures a tight, customizable fit for maximum support without restricting movement.",
+            "Comfortable Contoured Design : Ergonomic shape supports your natural movement while offering comfort during extended training sessions.",
+            "Prevents Injury & Enhances Performance : Maintains proper lifting posture and reduces stress on your lower back to help you lift heavier with confidence. "],
+        "material": "Leather",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/30.1.2.jpg",
+            "/Images/30.1.3.jpg",
+            "/Images/30.1.4.jpg"
+        ],
+        "imgSrc": "/Images/30.1.1.jpg",
+        "hoverImgSrc": "/Images/30.1.2.jpg",
+        "variants": [
+            {
+                "color": "Leather Black",
+                "images": [
+                    "/Images/30.1.1.jpg",
+                    "/Images/30.1.2.jpg",
+                    "/Images/30.1.3.jpg",
+                    "/Images/30.1.4.jpg",
+                    "/Images/30.1.5.jpg",
+                    "/Images/30.1.6.jpg",
+                    "/Images/30.1.7.jpg",
+                    "/Images/30.1.8.jpg",
+                    "/Images/30.1.9.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "S/M",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    },
+                    {
+                        "name": "L/XL",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    }
+                ]
+            },
+            {
+                "color": "Leather Tan",
+                "images": [
+                    "/Images/30.2.1.jpg",
+                    "/Images/30.2.2.jpg",
+                    "/Images/30.2.3.jpg",
+                    "/Images/30.2.4.jpg",
+                    "/Images/30.2.5.jpg",
+                    "/Images/30.2.6.jpg",
+                    "/Images/30.2.7.jpg",
+                    "/Images/30.2.8.jpg",
+                    "/Images/30.2.9.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "S/M",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    },
+                    {
+                        "name": "L/XL",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    }
+                ]
+            },
+            {
+                "color": "Suede Black Leather",
+                "images": [
+                    "/Images/30.3.1.jpg",
+                    "/Images/30.3.2.jpg",
+                    "/Images/30.3.3.jpg",
+                    "/Images/30.3.4.jpg",
+                    "/Images/30.3.5.jpg",
+                    "/Images/30.3.6.jpg",
+                    "/Images/30.3.7.jpg",
+                    "/Images/30.3.8.jpg"],
+                "sizes": [
+                    {
+                        "name": "S/M",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    },
+                    {
+                        "name": "L/XL",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    }
+                ]
+            },
+            {
+                "color": "Suede Blue Grey Leather",
+                "images": [
+                    "/Images/30.4.1.jpg",
+                    "/Images/30.4.2.jpg",
+                    "/Images/30.4.3.jpg",
+                    "/Images/30.4.4.jpg",
+                    "/Images/30.4.5.jpg",
+                    "/Images/30.4.6.jpg",
+                    "/Images/30.4.7.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "S/M",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    },
+                    {
+                        "name": "L/XL",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    }
+                ]
+            },
+            {
+                "color": "Suede Brown Leather",
+                "images": [
+                    "/Images/30.5.1.jpg",
+                    "/Images/30.5.2.jpg",
+                    "/Images/30.5.3.jpg",
+                    "/Images/30.5.4.jpg",
+                    "/Images/30.5.5.jpg",
+                    "/Images/30.5.6.jpg",
+                    "/Images/30.5.7.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "S/M",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    },
+                    {
+                        "name": "L/XL",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 720
+                    }
+                ]
+            }
+        ]
+    },
+
+    {
+        "id": 31,
+        "name": "FitBox Sports 5kg Diamond Dumbbells Set Of 2 For Home Gym Workout | Men & Women,Polypropylene (PP) ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Diamond Shape",
+            "Comfort Grip",
+            "Durable PP Coating"
+        ],
+        "longDesc": "A compact diamond-shaped dumbbell set designed for versatile home workouts. Built with polypropylene coating and ergonomic handles, these dumbbells are ideal for strength training, toning, and full-body conditioning for both men and women.",
+        "features": [
+            "So easy to use What’s great about free arm weights is that, even if you are a beginner or new to the fit lifestyle, it’s simple to perform exercises that are very effective and easy to learn, requiring just a hand weight and some motivation.",
+            "So many uses With our small single weight, you can incorporate it into any fitness or strength training routine. Whether repairing a torn rotator, targeting stabilizing muscles, or just wanting to look great in your jeans, this training weight is a must.",
+            "Box Content - 2.5kg x 2 Diamond Shaped Dumbbells"
+        ],
+        "material": "Polypropylene (PP)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/31.1.3.jpg",
+            "/Images/31.1.4.jpg",
+            "/Images/31.1.5.jpg"
+        ],
+        "imgSrc": "/Images/31.1.1.jpg",
+        "hoverImgSrc": "/Images/31.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black ",
+                "images": [
+                    "/Images/31.1.1.jpg",
+                    "/Images/31.1.2.jpg",
+                    "/Images/31.1.3.jpg",
+                    "/Images/31.1.4.jpg",
+                    "/Images/31.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "5kg (2.5kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    },
+                    {
+                        "name": "10kg (5kg x 2)",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 10000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 32,
+        "name": "FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Kettlebells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Vinyl Coated",
+            "Rust Resistant",
+            "Functional Training"
+        ],
+        "longDesc": "A 5kg vinyl-coated kettlebell designed for strength and cardio training. Its durable coating protects against rust while providing a comfortable grip for swings, squats, lunges, and high-intensity workouts.",
+        "features": [" a piece of 5kg vinayl coated kettlebell",
+            "perfect for gym workout, zumba & aerobics",
+            "rustfree ensuring longer period of usage and safety",
+            "box content : 1 piece of pvc kettlebell",
+            "Sport type: Exercise & Fitness"],
+        "material": "Rubber",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/32.1.2.jpg",
+            "/Images/32.1.3.jpg",
+            "/Images/32.1.4.jpg"
+        ],
+        "imgSrc": "/Images/32.1.1.jpg",
+        "hoverImgSrc": "/Images/32.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/32.1.1.jpg",
+                    "/Images/32.1.2.jpg",
+                    "/Images/32.1.3.jpg",
+                    "/Images/32.1.4.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "5kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 33,
+        "name": "FitBox Sports Dumbbells Combo Weigth Plates & Hand Grips 4kg, Black, Polyvinyl Chloride (PVC)",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "PVC Coated",
+            "Combo Set",
+            "Ergonomic Handles"
+        ],
+        "longDesc": "A versatile dumbbells combo set with PVC-coated plates and comfortable hand grips. This set is ideal for home strength training, offering easy handling and a durable finish for repeated workouts.",
+        "features": [
+            "Pack of Vinal Coated Dumbbell Rods .",
+            "Perfect for Strength Training, Bars",
+            "Premium PVC Vinal Coated Concrete Filled Weight",
+            "Item Package Weight: 4.0 kilograms"
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/33.1.2.jpg",
+            "/Images/33.1.3.jpg",
+            "/Images/33.1.4.jpg",
+        ],
+        "imgSrc": "/Images/33.1.1.jpg",
+        "hoverImgSrc": "/Images/33.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/33.1.1.jpg",
+                    "/Images/33.1.2.jpg",
+                    "/Images/33.1.3.jpg",
+                    "/Images/33.1.4.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "4kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 4000
+                    },
+                    {
+                        "name": "8kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "10k",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 10000
+                    },
+                    {
+                        "name": "12kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 12000
+                    },
+                    {
+                        "name": "14kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 14000
+                    },
+                    {
+                        "name": "16kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 16000
+                    },
+                    {
+                        "name": "18kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 18000
+                    },
+                    {
+                        "name": "20kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 20000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 34,
+        "name": "FitBox Sports Wall Mounting Chin Up Bar, Pull Up Bar & Ab Straps Combo, 120 Kg Capacity",
+        "category": "Wall Mounting",
+        "subCategory": "Wall Mounting",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "120kg Load Capacity",
+            "Multi-Grip Design",
+            "Rust Resistant"
+        ],
+        "longDesc": "A wall-mounted pull-up bar combo built for serious upper-body training. It supports chin-ups, pull-ups, and ab strap exercises with multiple hand positions while delivering durable, rust-resistant performance.",
+        "features": [
+            "3 grip positions designed for pull ups & chin ups",
+            "Top rod Length 38 inches & pillar length 20 inches",
+            "Percent rust-free ensuring longer period of usage and safety",
+            "Box content: bars and Installation accessories",
+            "Weight load - up to 120Kg",
+            "In-box Contents: box content: bars and Installation accessories "
+        ],
+        "material": "Alloy Steel",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/34.1.2.jpg",
+            "/Images/34.1.3.jpg",
+            "/Images/34.1.4.jpg"
+        ],
+        "imgSrc": "/Images/34.1.1.jpg",
+        "hoverImgSrc": "/Images/34.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/34.1.1.jpg",
+                    "/Images/34.1.2.jpg",
+                    "/Images/34.1.3.jpg",
+                    "/Images/34.1.4.jpg",
+                    "/Images/34.1.5.jpg",
+                    "/Images/34.1.6.jpg",
+                    "/Images/34.1.7.jpg",
+                    "/Images/34.1.8.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "20 Inch",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 1000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+  "id": 35,
+  "name": "Fitbox Sports Vinyl Coated PVC Intruder 20 Kg Weight Plates ",
+  "category": "Weights & Dumbbells",
+  "subCategory": "Dumbbells",
   "isNew": false,
   "isOutOfStock": false,
-  "qualities": [],
-  "longDesc": "",
-  "features": [],
-  "material": "",
+  "qualities": [
+    "Vinyl Coated",
+    "Rust Resistant",
+    "Durable Plates"
+  ],
+  "longDesc": "A 20kg set of vinyl-coated PVC weight plates designed for home lifting and strength training. These plates offer a protective coating to prevent rust and simplify handling while delivering reliable weight for a range of exercises.",
+  "features": ["Rustfree ensuring longer period of usage and safety",
+    "Perfect for gym workout, zumba & aerobics",
+    "Box Content : 10kg X 2 20kg Weight Plates",
+    "A pair of 10kg vinyl coated PVC weight plates"],
+  "material": "Rubber",
   "relatedIds": [],
-  "showcaseImages": [],
-  "imgSrc": "",
-  "hoverImgSrc": "",
+  "showcaseImages": [
+    "/Images/35.1.1.jpg"
+  ],
+  "imgSrc": "/Images/35.1.1.jpg",
+  "hoverImgSrc": "/Images/35.1.1.jpg",
   "variants": [
     {
-      "color": "",
-      "images": [],
+      "color": "Black",
+      "images": [
+        "/Images/35.1.1.jpg",
+        ],
       "sizes": [
         {
-          "name": "",
+          "name": "10Kg X 2",
           "price": 0,
           "oldPrice": 0,
-          "weight": 0
+          "weight": 2000
         }
       ]
     }

@@ -39,6 +39,8 @@ const collagePosters = [
 ];
 
 const HERO_CARD_COUNT = 5;
+const BEST_SELLER_INITIAL_COUNT = 40;
+const BEST_SELLER_INCREMENT = 20;
 
 /* Category pills – infinite scrolling strip */
 const categories = [
@@ -399,9 +401,24 @@ export default function Home() {
     return shuffled;
   }, [allProducts, bestSellersShuffleSeed]);
 
+  const [bestSellerVisibleCount, setBestSellerVisibleCount] = useState(BEST_SELLER_INITIAL_COUNT);
+
+  useEffect(() => {
+    setBestSellerVisibleCount(Math.min(BEST_SELLER_INITIAL_COUNT, flattenedBestSellers.length));
+  }, [flattenedBestSellers.length]);
+
+  const visibleBestSellers = useMemo(() => {
+    return flattenedBestSellers.slice(0, bestSellerVisibleCount);
+  }, [flattenedBestSellers, bestSellerVisibleCount]);
+
+  const hasMoreBestSellers = visibleBestSellers.length < flattenedBestSellers.length;
+  const loadMoreBestSellers = () => {
+    setBestSellerVisibleCount((prev) => Math.min(flattenedBestSellers.length, prev + BEST_SELLER_INCREMENT));
+  };
+
   const bsChunks = [];
-  for (let i = 0; i < flattenedBestSellers.length; i += 10) {
-    bsChunks.push(flattenedBestSellers.slice(i, i + 10));
+  for (let i = 0; i < visibleBestSellers.length; i += 10) {
+    bsChunks.push(visibleBestSellers.slice(i, i + 10));
   }
 
   const [canAnimate, setCanAnimate] = useState(false);
@@ -1271,11 +1288,19 @@ export default function Home() {
 
         {/* Desktop Grid (Hidden on Mobile) */}
         <div className="best-sellers-grid bs-desktop">
-          {flattenedBestSellers.map((product) => (
+          {visibleBestSellers.map((product) => (
             <div key={product.displayId || product.id} className="reveal-on-scroll">
               <ProductCard product={product} />
             </div>
           ))}
+        </div>
+
+        <div className="best-sellers-action">
+          {hasMoreBestSellers && (
+            <button type="button" className="load-more-bs" onClick={loadMoreBestSellers}>
+              Load more
+            </button>
+          )}
         </div>
 
         {/* Mobile Carousels (5 Rows, Independent, Hidden on Desktop) */}
