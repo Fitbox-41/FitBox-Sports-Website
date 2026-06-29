@@ -86,23 +86,20 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
       const shippingAddress = getShippingAddress();
       
       const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-      const res = await axios.post(`${apiUrl}/api/orders/mock-payment`, { 
+      const res = await axios.post(`${apiUrl}/api/orders/phonepe/initiate`, { 
         orderId, 
         shippingAddress 
       }, config);
       
-      if (res.data.success) {
-        setShowSuccessToast(true);
-        setTimeout(() => {
-          setShowSuccessToast(false);
-          onSuccess(res.data.orderId);
-        }, 2500);
+      if (res.data.success && res.data.redirectUrl) {
+        window.location.href = res.data.redirectUrl;
       } else {
         alert("Payment failed: " + res.data.message);
       }
     } catch (error) {
       console.error(error);
-      alert("An error occurred during payment.");
+      const errorMsg = error.response?.data?.message || error.response?.data?.code || error.message || "An error occurred during payment.";
+      alert("Payment Error: " + errorMsg);
     } finally {
       setLoading(false);
     }

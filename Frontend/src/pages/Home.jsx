@@ -19,23 +19,23 @@ import './Home.css';
 
 /* Posters Section Data */
 const posterImages = [
-  { id: 'p1', imgSrc: '/2.jpg-scaled.webp', mobileImgSrc: '/2.jpg-scaled - Copy.webp', link: '/products' },
-  { id: 'p2', imgSrc: '/4.jpg.webp', link: '/products' },
-  { id: 'p3', imgSrc: '/7.jpg.webp', link: '/products' },
-  { id: 'p4', imgSrc: '/5.jpg.webp', link: '/products' },
-  { id: 'p5', imgSrc: '/6.jpg.webp', link: '/products' },
-  { id: 'p6', imgSrc: '/3.jpg-scaled.webp', mobileImgSrc: '/3.jpg-scaled - Copy.webp', link: '/products' },
+  { id: 'p1', imgSrc: '/2.jpg-scaled.webp', mobileImgSrc: '/2.jpg-scaled - Copy.webp', link: '/category/dumbbells' },
+  { id: 'p2', imgSrc: '/4.jpg.webp', link: '/category/weight-vests' },
+  { id: 'p3', imgSrc: '/7.jpg.webp', link: '/category/wall-mounts' },
+  { id: 'p4', imgSrc: '/5.jpg.webp', link: '/category/gym-t-shirts' },
+  { id: 'p5', imgSrc: '/6.jpg.webp', link: '/category/resistance-bands' },
+  { id: 'p6', imgSrc: '/3.jpg-scaled.webp', mobileImgSrc: '/3.jpg-scaled - Copy.webp', link: '/category/kettlebells' },
 ];
 
 /* Collage Posters Data */
 const collagePosters = [
-  { id: 'cp1', imgSrc: '/4.jpg.webp', mobileImgSrc: '/1.jpg-scaled.webp', link: '/products' },
-  { id: 'cp2', imgSrc: '/5.jpg.webp', mobileImgSrc: '/2.jpg-scaled.webp', link: '/products' },
-  { id: 'cp3', imgSrc: '/9.jpg.webp', mobileImgSrc: '5-scaled.webp', link: '/products' },
-  { id: 'cp4', imgSrc: '6.jpg.webp', mobileImgSrc: '/3.jpg-scaled.webp' },
-  { id: 'cp6', imgSrc: '/8.jpg.webp', mobileImgSrc: '', link: '/products' },
-  { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.webp', mobileImgSrc: '', link: '/products' },
-  { id: 'cp8', imgSrc: '/7.jpg - Copy.webp', mobileImgSrc: '', link: '/products' },
+  { id: 'cp1', imgSrc: '/4.jpg.webp', mobileImgSrc: '/1.jpg-scaled.webp', link: '/category/lifting-belts' },
+  { id: 'cp2', imgSrc: '/5.jpg.webp', mobileImgSrc: '/2.jpg-scaled.webp', link: '/category/gym-gloves' },
+  { id: 'cp3', imgSrc: '/9.jpg.webp', mobileImgSrc: '5-scaled.webp', link: '/category/shakers' },
+  { id: 'cp4', imgSrc: '6.jpg.webp', mobileImgSrc: '/3.jpg-scaled.webp', link: '/category/push-up-bars' },
+  { id: 'cp6', imgSrc: '/8.jpg.webp', mobileImgSrc: '', link: '/category/hand-grippers' },
+  { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.webp', mobileImgSrc: '', link: '/category/basketballs' },
+  { id: 'cp8', imgSrc: '/7.jpg - Copy.webp', mobileImgSrc: '', link: '/category/skipping-ropes' },
 ];
 
 const HERO_CARD_COUNT = 5;
@@ -316,21 +316,31 @@ export default function Home() {
 
   const heroProducts = useMemo(() => {
     if (!allProducts?.length) return [];
-    const flattened = flattenProducts([...allProducts]);
-
-    const withImages = flattened.filter((p) => {
+    
+    // Pick the first HERO_CARD_COUNT distinct products (that have images)
+    const withImages = allProducts.filter((p) => {
       const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
       return Boolean(img);
     });
 
     return withImages.slice(0, HERO_CARD_COUNT).map((p) => {
       const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]) || '';
-      const price = typeof p.price === 'number' ? p.price : (Number(p.price) || 0);
+      
+      // Determine base price from the first variant/size if not directly on product
+      let priceVal = p.price;
+      if (typeof priceVal !== 'number') {
+         if (p.variants && p.variants[0]?.sizes && p.variants[0].sizes[0]?.price) {
+           priceVal = p.variants[0].sizes[0].price;
+         } else {
+           priceVal = Number(p.price) || 0;
+         }
+      }
+      
       return {
         ...p,
-        displayId: p.displayId || String(p.id),
+        displayId: String(p.id),
         imgSrc: img,
-        price: price ? `₹${price.toLocaleString('en-IN')}` : '₹0',
+        price: priceVal ? `₹${priceVal.toLocaleString('en-IN')}` : '₹0',
       };
     });
   }, [allProducts]);
@@ -357,21 +367,10 @@ export default function Home() {
     });
   }, [allProducts]);
 
-  const [bestSellersShuffleSeed] = useState(() => {
-    try {
-      const stored = sessionStorage.getItem('bestSellersShuffleSeed');
-      if (stored !== null && !Number.isNaN(Number(stored))) {
-        return Number(stored);
-      }
-      const seed = Date.now() + Math.random();
-      sessionStorage.setItem('bestSellersShuffleSeed', String(seed));
-      return seed;
-    } catch (error) {
-      return Math.random();
-    }
-  });
+  // Fresh random seed on every page load — cards are different on every reload
+  const [bestSellersShuffleSeed] = useState(() => Date.now() * Math.random());
 
-  // Randomize the best sellers section once per session, not on every render.
+  // Shuffle best sellers with a new random order on every page load
   const flattenedBestSellers = useMemo(() => {
     if (!allProducts.length) return [];
 
@@ -416,10 +415,13 @@ export default function Home() {
     setBestSellerVisibleCount((prev) => Math.min(flattenedBestSellers.length, prev + BEST_SELLER_INCREMENT));
   };
 
-  const bsChunks = [];
-  for (let i = 0; i < visibleBestSellers.length; i += 10) {
-    bsChunks.push(visibleBestSellers.slice(i, i + 10));
-  }
+  const bsChunks = useMemo(() => {
+    const chunks = [];
+    for (let i = 0; i < visibleBestSellers.length; i += 4) {
+      chunks.push(visibleBestSellers.slice(i, i + 4));
+    }
+    return chunks;
+  }, [visibleBestSellers]);
 
   const [canAnimate, setCanAnimate] = useState(false);
 
@@ -541,11 +543,18 @@ export default function Home() {
     const elements = document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll');
     elements.forEach(el => observer.observe(el));
 
+    // Re-run when products load (async API fetch) or when Load More is clicked
+    // Small timeout so React finishes rendering new cards before observing
+    const timeout = setTimeout(() => {
+      const freshElements = document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll');
+      freshElements.forEach(el => observer.observe(el));
+    }, 50);
+
     return () => {
+      clearTimeout(timeout);
       elements.forEach(el => observer.unobserve(el));
     };
-    // Re-run when products load (async API fetch) so newly rendered cards get observed
-  }, [canAnimate, flattenedBestSellers.length, newArrivals.length]);
+  }, [canAnimate, flattenedBestSellers.length, newArrivals.length, bestSellerVisibleCount]);
 
   const postersTrackRef = useRef(null);
   const isDraggingPosters = useRef(false);
@@ -1295,14 +1304,6 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="best-sellers-action">
-          {hasMoreBestSellers && (
-            <button type="button" className="load-more-bs" onClick={loadMoreBestSellers}>
-              Load more
-            </button>
-          )}
-        </div>
-
         {/* Mobile Carousels (5 Rows, Independent, Hidden on Desktop) */}
         <div className="bs-mobile">
           <div className="bs-mobile-multi-rows">
@@ -1312,6 +1313,14 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="best-sellers-action">
+          {hasMoreBestSellers && (
+            <button type="button" className="load-more-bs" onClick={loadMoreBestSellers}>
+              Load more
+            </button>
+          )}
         </div>
       </section>
 

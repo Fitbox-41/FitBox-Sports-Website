@@ -41,6 +41,32 @@ export default function Orders() {
      return <div className="orders-page"><Header /><div style={{ height: '110px' }} /><div style={{textAlign: 'center', padding: '50px'}}>Loading Orders...</div><Footer /></div>;
   }
 
+  const handleCancelOrder = async (orderId) => {
+    if (!window.confirm("Are you sure you want to cancel this order?")) return;
+    
+    setLoading(true);
+    try {
+      const token = localStorage.getItem('fitbox_token');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
+      const res = await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel`, config);
+      if (res.data.success) {
+        alert("Order cancelled successfully");
+        // refresh orders
+        const getRes = await axios.get(`${apiUrl}/api/orders/myorders`, config);
+        if (getRes.data.success) {
+          const sortedOrders = getRes.data.orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          setOrders(sortedOrders);
+        }
+      }
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to cancel order");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="orders-page">
       <Header />
@@ -59,10 +85,10 @@ export default function Orders() {
                     <p style={{ margin: '0', fontSize: '14px', color: '#64748b' }}>Placed on {new Date(order.createdAt).toLocaleDateString()}</p>
                   </div>
                   <div style={{ textAlign: 'right' }}>
-                     <span style={{ display: 'inline-block', padding: '4px 12px', background: '#dcfce7', color: '#166534', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
-                       {order.paymentStatus}
+                     <span style={{ display: 'inline-block', padding: '4px 12px', background: order.orderStatus === 'Cancelled' ? '#fecaca' : '#dcfce7', color: order.orderStatus === 'Cancelled' ? '#b91c1c' : '#166534', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
+                       {order.orderStatus === 'Cancelled' ? 'Cancelled' : order.paymentStatus}
                      </span>
-                     {order.invoiceUrl && (
+                     {order.invoiceUrl && order.orderStatus !== 'Cancelled' && (
                        <a 
                          href={order.invoiceUrl.startsWith('http') ? order.invoiceUrl : `${import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`}${order.invoiceUrl}`} 
                          target="_blank" 
@@ -72,15 +98,23 @@ export default function Orders() {
                          Download Invoice
                        </a>
                      )}
-                     {order.trackingUrl && (
+                     {order.trackingUrl && order.orderStatus !== 'Cancelled' && (
                        <a 
                          href={order.trackingUrl} 
                          target="_blank" 
                          rel="noreferrer" 
                          style={{ display: 'block', marginTop: '5px', fontSize: '14px', color: '#f97316', textDecoration: 'none', fontWeight: '500' }}
                        >
-                         Track via {order.courier}
+                         Track via {order.courier || 'Delhivery'}
                        </a>
+                     )}
+                     {order.orderStatus !== 'Cancelled' && order.shipmentStatus !== 'Shipped' && order.shipmentStatus !== 'Delivered' && (
+                       <button
+                         onClick={() => handleCancelOrder(order._id)}
+                         style={{ display: 'block', marginTop: '10px', padding: '6px 12px', fontSize: '13px', background: 'transparent', color: '#ef4444', border: '1px solid #ef4444', borderRadius: '4px', cursor: 'pointer', width: '100%' }}
+                       >
+                         Cancel Order
+                       </button>
                      )}
                   </div>
                 </div>

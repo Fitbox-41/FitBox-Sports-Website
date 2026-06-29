@@ -4,6 +4,8 @@ import { createGoKwikCheckout, verifyGoKwikSignature } from '../Utils/gokwik.js'
 import { createDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
+import crypto from 'crypto';
+import axios from 'axios';
 
 export const placeOrder = async (req, res) => {
   try {
@@ -300,6 +302,232 @@ export const mockPayment = async (req, res) => {
   }
 };
 
+// Helper: Get PhonePe V2 OAuth access token
+const getPhonePeToken = async () => {
+  const clientId = process.env.PHONEPE_CLIENT_ID;
+  const clientSecret = process.env.PHONEPE_CLIENT_SECRET;
+  const clientVersion = process.env.PHONEPE_CLIENT_VERSION || '1';
+  const env = process.env.PHONEPE_ENV || 'UAT';
+
+  const tokenUrl = env === 'PROD'
+    ? 'https://api.phonepe.com/apis/identity-manager/v1/oauth/token'
+    : 'https://api-preprod.phonepe.com/apis/pg-sandbox/v1/oauth/token';
+
+  const params = new URLSearchParams();
+  params.append('client_id', clientId);
+  params.append('client_version', clientVersion);
+  params.append('client_secret', clientSecret);
+  params.append('grant_type', 'client_credentials');
+
+  const tokenRes = await axios.post(tokenUrl, params.toString(), {
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  });
+  return tokenRes.data.access_token;
+};
+
+export const phonePeInitiate = async (req, res) => {
+  try {
+    const { orderId, shippingAddress } = req.body;
+    const order = await Order.findById(orderId);
+
+    if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
+    if (order.paymentStatus === 'Paid') return res.status(400).json({ success: false, message: 'Order already paid' });
+
+    if (shippingAddress) {
+      order.shippingAddress = shippingAddress;
+      await order.save();
+    }
+
+    const clientId = process.env.PHONEPE_CLIENT_ID;
+    const env = process.env.PHONEPE_ENV || 'UAT';
+    if (!clientId) return res.status(500).json({ success: false, message: 'PhonePe credentials not configured' });
+
+    // Alphanumeric transaction ID, max 38 chars
+    const merchantOrderId = 'TXN' + order._id.toString().replace(/[^a-zA-Z0-9]/g, '');
+
+    // 1. Get OAuth access token
+    let accessToken;
+    try {
+      accessToken = await getPhonePeToken();
+    } catch (tokenErr) {
+      const errData = tokenErr.response?.data;
+      console.error('PhonePe Token Error:', tokenErr.response?.status, JSON.stringify(errData));
+      return res.status(502).json({ success: false, message: errData?.message || errData?.error || 'Failed to authenticate with PhonePe', details: errData });
+    }
+
+    // 2. Initiate Pay Page
+    const payUrl = env === 'PROD'
+      ? 'https://api.phonepe.com/apis/pg/checkout/v2/pay'
+      : 'https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/pay';
+
+    const payBody = {
+      merchantOrderId,
+      amount: Math.round(order.totalAmount * 100), // paise
+      expireAfter: 1200, // 20 minutes
+      paymentFlow: {
+        type: 'PG_CHECKOUT',
+        message: 'FitBox Sports Order Payment',
+        merchantUrls: {
+          redirectUrl: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/orders`
+        }
+      }
+    };
+
+    let payResponse;
+    try {
+      payResponse = await axios.post(payUrl, payBody, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `O-Bearer ${accessToken}`
+        }
+      });
+    } catch (payErr) {
+      const errData = payErr.response?.data;
+      console.error('PhonePe Pay Error:', payErr.response?.status, JSON.stringify(errData));
+      return res.status(502).json({ success: false, message: errData?.message || errData?.code || 'PhonePe payment initiation failed', details: errData });
+    }
+
+    const redirectUrl = payResponse.data?.redirectUrl;
+    if (redirectUrl) {
+      order.paymentId = merchantOrderId;
+      await order.save();
+      return res.status(200).json({ success: true, redirectUrl });
+    } else {
+      console.error('PhonePe no redirectUrl:', JSON.stringify(payResponse.data));
+      return res.status(400).json({ success: false, message: 'Payment initiation failed — no redirect URL', data: payResponse.data });
+    }
+
+  } catch (error) {
+    console.error('PhonePe Initiate Error:', error.message);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const phonePeCallback = async (req, res) => {
+  try {
+    // PhonePe V2 sends a JSON body with { type, payload: { merchantOrderId, state, ... } }
+    const body = req.body;
+    console.log('PhonePe Callback received:', JSON.stringify(body));
+
+    // Support both the V2 event format and a manual redirect query (?merchantOrderId=...&status=...)
+    const merchantOrderId = body?.payload?.merchantOrderId || req.query?.merchantOrderId;
+    const state = body?.payload?.state || req.query?.state;
+
+    if (!merchantOrderId) {
+      return res.status(400).json({ success: false, message: 'No merchantOrderId in callback' });
+    }
+
+    // Find order by the stored paymentId (which we set to the merchantOrderId)
+    const order = await Order.findOne({ paymentId: merchantOrderId });
+    if (!order) {
+      console.error('PhonePe Callback: order not found for merchantOrderId', merchantOrderId);
+      return res.status(200).send('OK'); // Ack to PhonePe even if not found
+    }
+
+    if (state === 'COMPLETED' && order.paymentStatus !== 'Paid') {
+      order.paymentStatus = 'Paid';
+      order.paymentMode = 'Online';
+      order.orderStatus = 'Completed';
+      order.paidAt = new Date();
+
+      let pdfBuffer = null;
+      try {
+        const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
+        order.invoiceNumber = invoiceNumber;
+        order.invoiceUrl = invoiceUrl;
+        pdfBuffer = buffer;
+      } catch (err) {
+        console.error('Webhook Invoice generation failed:', err);
+      }
+
+      try {
+        const shipment = await createDelhiveryShipment(order);
+        if (shipment.packages && shipment.packages.length > 0) {
+          order.awb = shipment.packages[0].waybill;
+          order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+          order.shipmentStatus = 'Created';
+        }
+      } catch (shipmentError) {
+        console.error('Shipment creation failed:', shipmentError);
+        order.shipmentStatus = 'Pending';
+      }
+
+      await order.save();
+
+      // Send confirmation email
+      try {
+        const user = await User.findById(order.userId);
+        const emailToSend = user?.email || order.customerEmail;
+        if (emailToSend) {
+          await sendEmail({
+            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+            email: emailToSend,
+            subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                <h2 style="color: #ff6b35;">Thank you for your order!</h2>
+                <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+                <p>Your payment has been successfully processed via PhonePe and your order is confirmed.</p>
+                <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+                  <thead>
+                    <tr style="background:#1a1a1a; color:#fff;">
+                      <th style="padding:10px 14px; text-align:left;">Product</th>
+                      <th style="padding:10px 14px; text-align:center;">Qty</th>
+                      <th style="padding:10px 14px; text-align:right;">Price</th>
+                      <th style="padding:10px 14px; text-align:right;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${(order.items || []).map((item, i) => {
+                      const price = Number(String(item.price).replace(/[^0-9.-]+/g,''));
+                      const qty = item.quantity || 1;
+                      const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                      const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                      const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                      return `<tr style="background:${bg};">
+                        <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                        <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                        <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
+                        <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                      </tr>`;
+                    }).join('')}
+                  </tbody>
+                  <tfoot>
+                    <tr style="background:#fff3ee; font-weight:bold;">
+                      <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+                <p>${pdfBuffer ? 'Please find your official invoice attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
+                <br/>
+                <p>Best Regards,</p>
+                <p><strong>FitBox Sports Team</strong></p>
+              </div>
+            `,
+            attachments: pdfBuffer ? [{
+              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+              content: pdfBuffer,
+              contentType: 'application/pdf'
+            }] : undefined
+          });
+        }
+      } catch (emailErr) {
+        console.error('Webhook Email Send Error:', emailErr);
+      }
+    } else if (state === 'FAILED') {
+      order.paymentStatus = 'Failed';
+      await order.save();
+      console.log('PhonePe payment failed for order:', merchantOrderId);
+    }
+
+    res.status(200).send('OK');
+  } catch (error) {
+    console.error('PhonePe Callback Error:', error);
+    res.status(500).send('Webhook error');
+  }
+};
+
 export const getUserOrders = async (req, res) => {
   try {
     const userId = req.user?._id;
@@ -320,13 +548,47 @@ export const cancelOrder = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
     
-    // Only allow deletion if the order is still pending payment
-    if (order.paymentStatus === 'Pending Payment') {
-      await Order.findByIdAndDelete(id);
-      return res.status(200).json({ success: true, message: 'Pending order cancelled and deleted' });
+    if (order.orderStatus === 'Cancelled') {
+      return res.status(400).json({ success: false, message: 'Order is already cancelled' });
+    }
+
+    // Only allow cancellation if order is not Shipped or Delivered
+    if (order.shipmentStatus === 'Shipped' || order.shipmentStatus === 'Delivered') {
+       return res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been shipped or delivered' });
     }
     
-    res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been paid' });
+    order.orderStatus = 'Cancelled';
+    order.shipmentStatus = 'Cancelled';
+    await order.save();
+
+    try {
+      const user = await User.findById(order.userId);
+      const emailToSend = user?.email || order.customerEmail;
+      if (emailToSend) {
+        await sendEmail({
+          from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+          email: emailToSend,
+          subject: `Order Cancelled - FitBox Sports (${order._id})`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+              <h2 style="color: #ef4444;">Order Cancelled</h2>
+              <p>Hi ${order.customerName || user?.name || 'Customer'},</p>
+              <p>Your order (ID: ${order._id}) has been successfully cancelled.</p>
+              ${order.paymentStatus === 'Paid' ? '<p>Your refund will be initiated shortly and should reflect in your original payment method within 5-7 business days.</p>' : ''}
+              <br/>
+              <p>If you have any questions, feel free to reply to this email.</p>
+              <br/>
+              <p>Best Regards,</p>
+              <p><strong>FitBox Sports Team</strong></p>
+            </div>
+          `
+        });
+      }
+    } catch (emailErr) {
+      console.error("Failed to send cancellation email:", emailErr);
+    }
+
+    res.status(200).json({ success: true, message: 'Order cancelled successfully', order });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
