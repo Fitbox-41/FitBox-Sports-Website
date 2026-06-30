@@ -13,50 +13,116 @@ export default function Orders() {
   const location = useLocation();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [paymentToast, setPaymentToast] = useState(null); // { type: 'success'|'failed'|'pending'|'error', message }
+  const [paymentToast, setPaymentToast] = useState(null); // { type: 'success'|'failed'|'error', message }
+
+  const getPaymentLabel = (order) => {
+    if (order.orderStatus === 'Cancelled') return 'Cancelled';
+    if (order.paymentMode === 'COD') return order.paymentStatus === 'Paid' ? 'Paid (COD)' : 'COD - Pay on Delivery';
+    if (order.paymentStatus === 'Paid') return 'Paid';
+    if (order.paymentStatus === 'Failed') return 'Payment Failed';
+    return 'Payment Incomplete';
+  };
+
+  const fetchOrders = async () => {
+    try {
+      const token = localStorage.getItem('fitbox_token');
+      const config = { headers: { Authorization: `Bearer ${token}` } };
+      const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
+      const res = await axios.get(`${apiUrl}/api/orders/myorders`, config);
+      if (res.data.success) {
+        const sortedOrders = res.data.orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setOrders(sortedOrders);
+      }
+    } catch (err) {
+      console.error('Failed to fetch orders', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const payment = params.get('payment');
-    if (payment === 'success') {
-      setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
-    } else if (payment === 'failed') {
-      setPaymentToast({ type: 'error', message: 'Payment failed. Your order could not be processed. Please try again.' });
-    } else if (payment === 'pending') {
-      setPaymentToast({ type: 'pending', message: 'Payment is pending. Your order will be updated once payment is confirmed.' });
-    } else if (payment === 'error') {
-      const reason = params.get('reason') || 'unknown';
-      setPaymentToast({ type: 'error', message: `Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
-    }
-    if (payment) {
-      const timer = setTimeout(() => setPaymentToast(null), 6000);
-      return () => clearTimeout(timer);
-    }
-  }, [location.search]);
+    const reconcilePayment = async () => {
+      const params = new URLSearchParams(location.search);
+      const payment = params.get('payment');
+      const orderId = params.get('orderId');
 
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const token = localStorage.getItem('fitbox_token');
-        const config = { headers: { Authorization: `Bearer ${token}` } };
-        const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-        const res = await axios.get(`${apiUrl}/api/orders/myorders`, config);
-        if (res.data.success) {
-          const sortedOrders = res.data.orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-          setOrders(sortedOrders);
+      if (payment === 'success') {
+        setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
+      } else if (payment === 'failed') {
+        setPaymentToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
+      } else if (payment === 'error') {
+        const reason = params.get('reason') || 'unknown';
+        setPaymentToast({ type: 'error', message: `Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
+      }
+
+      if (orderId && currentUser && ['success', 'failed', 'pending', 'error'].includes(payment)) {
+        try {
+          const token = localStorage.getItem('fitbox_token');
+          const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
+          const verifyRes = await axios.post(
+            `${apiUrl}/api/orders/${orderId}/verify-payment`,
+            {},
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          if (verifyRes.data.success) {
+            const status = verifyRes.data.paymentStatus;
+            if (status === 'Paid') {
+              setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
+            } else if (status === 'Failed') {
+              setPaymentToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
+            }
+          }
+        } catch (err) {
+          console.error('Payment verification failed', err);
         }
-      } catch (err) {
-        console.error("Failed to fetch orders", err);
-      } finally {
-        setLoading(false);
+      }
+
+      if (payment) {
+        const timer = setTimeout(() => setPaymentToast(null), 6000);
+        return () => clearTimeout(timer);
       }
     };
+
+    reconcilePayment();
+  }, [location.search, currentUser]);
+
+  useEffect(() => {
     if (currentUser) {
-       fetchOrders();
+      fetchOrders();
     } else {
-       setLoading(false);
+      setLoading(false);
     }
-  }, [currentUser]);
+  }, [currentUser, location.search]);
+
+  useEffect(() => {
+    const reconcileStuckOrders = async () => {
+      const stuckOnlineOrders = orders.filter(
+        (order) => order.paymentMode !== 'COD' && order.paymentStatus === 'Pending Payment' && order.paymentId
+      );
+      if (stuckOnlineOrders.length === 0) return;
+
+      try {
+        const token = localStorage.getItem('fitbox_token');
+        const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
+        await Promise.all(
+          stuckOnlineOrders.map((order) =>
+            axios.post(
+              `${apiUrl}/api/orders/${order._id}/verify-payment`,
+              {},
+              { headers: { Authorization: `Bearer ${token}` } }
+            )
+          )
+        );
+        await fetchOrders();
+      } catch (err) {
+        console.error('Failed to reconcile stuck online orders', err);
+      }
+    };
+
+    if (!loading && currentUser) {
+      reconcileStuckOrders();
+    }
+  }, [loading, currentUser]);
 
   if (loading) {
      return <div className="orders-page"><Header /><div style={{ height: '110px' }} /><div style={{textAlign: 'center', padding: '50px'}}>Loading Orders...</div><Footer /></div>;
@@ -72,13 +138,8 @@ export default function Orders() {
       const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
       const res = await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel`, config);
       if (res.data.success) {
-        alert("Order cancelled successfully");
-        // refresh orders
-        const getRes = await axios.get(`${apiUrl}/api/orders/myorders`, config);
-        if (getRes.data.success) {
-          const sortedOrders = getRes.data.orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-          setOrders(sortedOrders);
-        }
+        alert('Order cancelled successfully');
+        await fetchOrders();
       }
     } catch (err) {
       alert(err.response?.data?.message || "Failed to cancel order");
@@ -105,9 +166,9 @@ export default function Orders() {
           fontSize: '15px',
           fontWeight: '600',
           boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-          background: paymentToast.type === 'success' ? '#dcfce7' : paymentToast.type === 'pending' ? '#fef3c7' : '#fee2e2',
-          color: paymentToast.type === 'success' ? '#15803d' : paymentToast.type === 'pending' ? '#92400e' : '#b91c1c',
-          border: `1px solid ${paymentToast.type === 'success' ? '#bbf7d0' : paymentToast.type === 'pending' ? '#fde68a' : '#fecaca'}`,
+          background: paymentToast.type === 'success' ? '#dcfce7' : '#fee2e2',
+          color: paymentToast.type === 'success' ? '#15803d' : '#b91c1c',
+          border: `1px solid ${paymentToast.type === 'success' ? '#bbf7d0' : '#fecaca'}`,
           animation: 'fadeIn 0.3s ease'
         }}>
           {paymentToast.message}
@@ -129,8 +190,8 @@ export default function Orders() {
                   <span className="order-date">Placed on {new Date(order.createdAt).toLocaleDateString()}</span>
                 </div>
                   <div style={{ textAlign: 'right' }}>
-                     <span style={{ display: 'inline-block', padding: '4px 12px', background: order.orderStatus === 'Cancelled' ? '#fecaca' : '#dcfce7', color: order.orderStatus === 'Cancelled' ? '#b91c1c' : '#166534', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
-                       {order.orderStatus === 'Cancelled' ? 'Cancelled' : order.paymentStatus}
+                     <span style={{ display: 'inline-block', padding: '4px 12px', background: order.orderStatus === 'Cancelled' || order.paymentStatus === 'Failed' ? '#fecaca' : order.paymentStatus === 'Paid' ? '#dcfce7' : '#fef3c7', color: order.orderStatus === 'Cancelled' || order.paymentStatus === 'Failed' ? '#b91c1c' : order.paymentStatus === 'Paid' ? '#166534' : '#92400e', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
+                       {getPaymentLabel(order)}
                      </span>
                      {order.invoiceUrl && order.orderStatus !== 'Cancelled' && (
                        <a 
