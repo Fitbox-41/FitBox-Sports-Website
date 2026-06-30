@@ -315,12 +315,13 @@ export const phonePeRedirect = async (req, res) => {
     }
 
     // Since we appended merchantOrderId to the URL, if PhonePe didn't send 'code', it's likely a POST with raw/encoded data that failed to parse, or a user cancelling.
-    // If we don't have a code but we know the order, we can check if it's already paid by webhook.
-    // If not paid, we will assume it's pending/cancelled unless we do a status check. 
-    // To be extremely safe, if code is empty but order is pending, we assume it's a cancellation/failure if PhonePe didn't provide SUCCESS.
     if (!code && order.paymentStatus !== 'Paid') {
-       // We can just redirect to pending and let the webhook handle the success, OR treat as failed if user clicked Back.
-       code = 'PAYMENT_PENDING';
+       // Give the webhook a 2-second grace period to complete in case of race condition
+       await new Promise(r => setTimeout(r, 2000));
+       order = await Order.findById(order._id);
+       if (order.paymentStatus !== 'Paid') {
+         code = 'PAYMENT_PENDING';
+       }
     }
 
     // Idempotency: if already processed, just redirect appropriately
@@ -328,7 +329,7 @@ export const phonePeRedirect = async (req, res) => {
       return res.redirect(`${frontendUrl}/orders?payment=success&orderId=${order._id}`);
     }
 
-    if (code === 'PAYMENT_SUCCESS') {
+    if (code === 'PAYMENT_SUCCESS' || code === 'SUCCESS') {
       paymentResult = 'success';
       order.paymentStatus = 'Paid';
       order.paymentMode = 'Online';

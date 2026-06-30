@@ -19,14 +19,14 @@ export default function Orders() {
     const params = new URLSearchParams(location.search);
     const payment = params.get('payment');
     if (payment === 'success') {
-      setPaymentToast({ type: 'success', message: '✅ Payment successful! Your order has been confirmed.' });
+      setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
     } else if (payment === 'failed') {
-      setPaymentToast({ type: 'error', message: '❌ Payment failed. Your order could not be processed. Please try again.' });
+      setPaymentToast({ type: 'error', message: 'Payment failed. Your order could not be processed. Please try again.' });
     } else if (payment === 'pending') {
-      setPaymentToast({ type: 'pending', message: '⏳ Payment is pending. Your order will be updated once payment is confirmed.' });
+      setPaymentToast({ type: 'pending', message: 'Payment is pending. Your order will be updated once payment is confirmed.' });
     } else if (payment === 'error') {
       const reason = params.get('reason') || 'unknown';
-      setPaymentToast({ type: 'error', message: `⚠️ Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
+      setPaymentToast({ type: 'error', message: `Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
     }
     if (payment) {
       const timer = setTimeout(() => setPaymentToast(null), 6000);
