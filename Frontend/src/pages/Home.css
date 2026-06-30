@@ -56,6 +56,78 @@
   z-index: 5;
 }
 
+.home-warning-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+.home-warning-popup {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 420px;
+  width: 100%;
+  padding: 28px 24px 22px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  border: 1px solid #fecaca;
+}
+
+.home-warning-popup h3 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  color: #991b1b;
+}
+
+.home-warning-popup p {
+  margin: 0 0 20px;
+  color: #444;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.home-warning-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.home-warning-amazon-btn {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 11px 16px;
+  border-radius: 8px;
+  background: #991b1b;
+  transition: background 0.2s ease;
+}
+
+.home-warning-amazon-btn:hover {
+  background: #7f1d1d;
+}
+
+.home-warning-close {
+  border: none;
+  background: transparent;
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.home-warning-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .hero-main-heading {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);

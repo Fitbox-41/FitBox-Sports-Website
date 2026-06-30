@@ -401,6 +401,14 @@ export default function Home() {
   }, [allProducts, bestSellersShuffleSeed]);
 
   const [bestSellerVisibleCount, setBestSellerVisibleCount] = useState(BEST_SELLER_INITIAL_COUNT);
+  const [showHomeWarning, setShowHomeWarning] = useState(true);
+
+  useEffect(() => {
+    if (!showHomeWarning) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [showHomeWarning]);
 
   useEffect(() => {
     setBestSellerVisibleCount(Math.min(BEST_SELLER_INITIAL_COUNT, flattenedBestSellers.length));
@@ -940,6 +948,30 @@ export default function Home() {
       <Header />
       {/* Spacer for fixed header (Main header + Sale ribbon + Sub-header = ~161px) */}
       <div className="header-spacer desktop-only-spacer" style={{ height: '161px' }} />
+      {showHomeWarning && (
+        <div className="home-warning-overlay" role="dialog" aria-modal="true" aria-labelledby="home-warning-title">
+          <div className="home-warning-popup">
+            <h3 id="home-warning-title">Site Under Development</h3>
+            <p>
+              Our payment system is active, but the website is not fully complete yet.
+              Please check back soon, or shop on our Amazon store in the meantime.
+            </p>
+            <div className="home-warning-actions">
+              <a
+                className="home-warning-amazon-btn"
+                href="https://www.amazon.in/stores/FitBoxSports/page/AC049833-B877-40DD-B4C2-AE1D9D439907"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit Amazon Store
+              </a>
+              <button type="button" className="home-warning-close" onClick={() => setShowHomeWarning(false)}>
+                Continue to Site
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ══════════════════════════════════
           1. NEW HERO SECTION

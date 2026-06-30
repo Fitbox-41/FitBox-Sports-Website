@@ -193,6 +193,93 @@ const getPhonePeToken = async () => {
   return tokenRes.data.access_token;
 };
 
+const getPhonePePaymentStatus = async (merchantOrderId) => {
+  const env = process.env.PHONEPE_ENV || 'UAT';
+  const statusUrl = env === 'PROD'
+    ? `https://api.phonepe.com/apis/pg/checkout/v2/status?merchantOrderId=${merchantOrderId}`
+    : `https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/status?merchantOrderId=${merchantOrderId}`;
+
+  const accessToken = await getPhonePeToken();
+  const statusRes = await axios.get(statusUrl, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `O-Bearer ${accessToken}`
+    }
+  });
+
+  return statusRes.data?.data?.state || statusRes.data?.state || null;
+};
+
+const processPaidOrder = async (order) => {
+  order.paymentStatus = 'Paid';
+  order.paymentMode = 'Online';
+  order.orderStatus = 'Completed';
+  order.paidAt = new Date();
+
+  let pdfBuffer = null;
+  if (!order.invoiceNumber || !order.invoiceUrl) {
+    try {
+      const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
+      order.invoiceNumber = invoiceNumber;
+      order.invoiceUrl = invoiceUrl;
+      pdfBuffer = buffer;
+    } catch (invoiceError) {
+      console.error('Invoice generation failed:', invoiceError);
+    }
+  }
+
+  try {
+    const shipment = await createDelhiveryShipment(order);
+    if (shipment.packages && shipment.packages.length > 0) {
+      order.awb = shipment.packages[0].waybill;
+      order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+      order.shipmentStatus = 'Created';
+    }
+  } catch (shipmentError) {
+    console.error('Shipment creation failed:', shipmentError);
+    order.shipmentStatus = order.shipmentStatus === 'Created' ? order.shipmentStatus : 'Pending';
+  }
+
+  await order.save();
+
+  try {
+    const user = await User.findById(order.userId);
+    const emailToSend = user?.email || order.customerEmail;
+    if (emailToSend) {
+      await sendEmail({
+        from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+        email: emailToSend,
+        subject: `Order Confirmed - FitBox Sports (#${order.invoiceNumber || order._id.toString().slice(-8).toUpperCase()})`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+            <div style="background: #ff6b35; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="color: #fff; margin: 0; font-size: 24px;">Order Confirmed! 🎉</h1>
+            </div>
+            <div style="padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
+              <p style="font-size: 16px;">Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+              <p>Your payment was successful and your order is confirmed.</p>
+              <p>Order ID: <strong>${order.invoiceNumber || order._id.toString().slice(-8).toUpperCase()}</strong></p>
+              <br/>
+              <p>${order.invoiceUrl ? 'Your invoice is available in your orders page, and you can download it from there.' : 'Your invoice will be available in your orders page once it is generated.'}</p>
+              <br/>
+              <p>Best Regards,<br/><strong>FitBox Sports Team</strong></p>
+            </div>
+          </div>
+        `,
+        attachments: pdfBuffer ? [{
+          filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+          content: pdfBuffer,
+          contentType: 'application/pdf'
+        }] : undefined
+      });
+    }
+  } catch (emailErr) {
+    console.error('Confirmation email failed:', emailErr);
+  }
+
+  return order;
+};
+
 export const phonePeInitiate = async (req, res) => {
   try {
     const { orderId, shippingAddress } = req.body;
@@ -228,7 +315,8 @@ export const phonePeInitiate = async (req, res) => {
       ? 'https://api.phonepe.com/apis/pg/checkout/v2/pay'
       : 'https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/pay';
 
-    const redirectUrlEndpoint = `${process.env.API_URL || 'http://localhost:5000'}/api/orders/phonepe/redirect?merchantOrderId=${merchantOrderId}&orderId=${order._id}`;
+    const apiUrl = process.env.API_URL || `${req.protocol}://${req.get('host')}`;
+    const redirectUrlEndpoint = `${apiUrl}/api/orders/phonepe/redirect?merchantOrderId=${merchantOrderId}&orderId=${order._id}`;
 
     const payBody = {
       merchantOrderId,
@@ -274,20 +362,17 @@ export const phonePeInitiate = async (req, res) => {
 };
 
 export const phonePeRedirect = async (req, res) => {
-  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+  const frontendUrl = process.env.FRONTEND_URL || `${req.protocol}://${req.get('host')}`;
   let redirectPath = '/orders';
-  let paymentResult = 'unknown';
 
   try {
-    // PhonePe sends response in body or query, but we also appended it to the URL directly
     let merchantOrderId = req.query?.merchantOrderId || req.body?.transactionId || req.body?.merchantOrderId;
     let code = req.query?.code || req.body?.code || '';
-    
-    // Sometimes PhonePe sends a base64 encoded response object
+
     if (req.body && req.body.response) {
       try {
         const decoded = JSON.parse(Buffer.from(req.body.response, 'base64').toString('utf8'));
-        if (decoded.data && decoded.data.transactionId) {
+        if (decoded.data) {
           merchantOrderId = decoded.data.transactionId || decoded.data.merchantTransactionId || merchantOrderId;
         }
         if (decoded.code) {
@@ -299,7 +384,6 @@ export const phonePeRedirect = async (req, res) => {
     }
 
     const orderIdParam = req.query.orderId;
-
     console.log('PhonePe Redirect received:', { merchantOrderId, code, orderIdParam, body: req.body, query: req.query });
 
     let order;
@@ -314,166 +398,42 @@ export const phonePeRedirect = async (req, res) => {
       return res.redirect(`${frontendUrl}/orders?payment=error&reason=order_not_found`);
     }
 
-    // Since we appended merchantOrderId to the URL, if PhonePe didn't send 'code', it's likely a POST with raw/encoded data that failed to parse, or a user cancelling.
-    if (!code && order.paymentStatus !== 'Paid') {
-       // Give the webhook a 2-second grace period to complete in case of race condition
-       await new Promise(r => setTimeout(r, 2000));
-       order = await Order.findById(order._id);
-       if (order.paymentStatus !== 'Paid') {
-         code = 'PAYMENT_PENDING';
-       }
+    if (!code && order.paymentStatus !== 'Paid' && merchantOrderId) {
+      await new Promise(r => setTimeout(r, 2000));
+      order = await Order.findById(order._id);
+      if (order.paymentStatus !== 'Paid') {
+        try {
+          const status = await getPhonePePaymentStatus(merchantOrderId);
+          if (status) {
+            code = status.toString().toUpperCase();
+          }
+        } catch (statusErr) {
+          console.error('PhonePe status lookup failed:', statusErr);
+        }
+      }
+      if (!code) {
+        code = 'PAYMENT_PENDING';
+      }
     }
 
-    // Idempotency: if already processed, just redirect appropriately
     if (order.paymentStatus === 'Paid') {
       return res.redirect(`${frontendUrl}/orders?payment=success&orderId=${order._id}`);
     }
 
-    if (code === 'PAYMENT_SUCCESS' || code === 'SUCCESS') {
-      paymentResult = 'success';
-      order.paymentStatus = 'Paid';
-      order.paymentMode = 'Online';
-      order.orderStatus = 'Completed';
-      order.paidAt = new Date();
-
-      let pdfBuffer = null;
-      try {
-        const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
-        order.invoiceNumber = invoiceNumber;
-        order.invoiceUrl = invoiceUrl;
-        pdfBuffer = buffer;
-      } catch (err) {
-        console.error('Invoice generation failed:', err);
-      }
-
-      try {
-        const shipment = await createDelhiveryShipment(order);
-        if (shipment.packages && shipment.packages.length > 0) {
-          order.awb = shipment.packages[0].waybill;
-          order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
-          order.shipmentStatus = 'Created';
-        }
-      } catch (shipmentError) {
-        console.error('Shipment creation failed:', shipmentError);
-        order.shipmentStatus = 'Pending';
-      }
-
-      await order.save();
-
-      // Send confirmation email
-      try {
-        const user = await User.findById(order.userId);
-        const emailToSend = user?.email || order.customerEmail;
-        if (emailToSend) {
-          await sendEmail({
-            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
-            email: emailToSend,
-            subject: `Order Confirmed - FitBox Sports (#${order.invoiceNumber || order._id.toString().slice(-8).toUpperCase()})`,
-            html: `
-              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-                <div style="background: #ff6b35; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-                  <h1 style="color: #fff; margin: 0; font-size: 24px;">Order Confirmed! 🎉</h1>
-                </div>
-                <div style="padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-                  <p style="font-size: 16px;">Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
-                  <p>Your payment was successful and your order is confirmed. We'll begin processing it shortly!</p>
-                  <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
-                    <thead>
-                      <tr style="background:#1a1a1a; color:#fff;">
-                        <th style="padding:10px 14px; text-align:left;">Product</th>
-                        <th style="padding:10px 14px; text-align:center;">Qty</th>
-                        <th style="padding:10px 14px; text-align:right;">Total</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${(order.items || []).map((item, i) => {
-                        const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
-                        const qty = item.quantity || 1;
-                        const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
-                        const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
-                        const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
-                        return `<tr style="background:${bg};">
-                          <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
-                          <td style="padding:10px 14px; text-align:center;">${qty}</td>
-                          <td style="padding:10px 14px; text-align:right;">₹${price * qty}</td>
-                        </tr>`;
-                      }).join('')}
-                    </tbody>
-                    <tfoot>
-                      <tr style="background:#fff3ee; font-weight:bold;">
-                        <td colspan="2" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                        <td style="padding:10px 14px; text-align:right; color:#ff6b35;">₹${order.totalAmount}</td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                  <p style="font-size:13px; color:#64748b;">
-                    ${order.shippingAddress ? `Shipping to: ${order.shippingAddress.street}, ${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.zip}` : ''}
-                  </p>
-                  <p>${pdfBuffer ? 'Your invoice is attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
-                  <br/>
-                  <p>Best Regards,<br/><strong>FitBox Sports Team</strong></p>
-                </div>
-              </div>
-            `,
-            attachments: pdfBuffer ? [{
-              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
-              content: pdfBuffer,
-              contentType: 'application/pdf'
-            }] : undefined
-          });
-        }
-      } catch (emailErr) {
-        console.error('Confirmation email failed:', emailErr);
-      }
-
+    const normalizedCode = String(code || '').toUpperCase();
+    if (['PAYMENT_SUCCESS', 'SUCCESS', 'COMPLETED', 'PAID'].includes(normalizedCode)) {
+      await processPaidOrder(order);
       redirectPath = `/orders?payment=success&orderId=${order._id}`;
-
-    } else if (code === 'PAYMENT_ERROR') {
-      paymentResult = 'error';
+    } else if (['PAYMENT_ERROR', 'FAILED', 'CANCELLED'].includes(normalizedCode)) {
       order.paymentStatus = 'Failed';
       order.orderStatus = 'Cancelled';
       order.shipmentStatus = 'Cancelled';
       await order.save();
-
-      // Send payment failure email
-      try {
-        const user = await User.findById(order.userId);
-        const emailToSend = user?.email || order.customerEmail;
-        if (emailToSend) {
-          await sendEmail({
-            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
-            email: emailToSend,
-            subject: `Payment Failed - FitBox Sports`,
-            html: `
-              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-                <div style="background: #ef4444; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-                  <h1 style="color: #fff; margin: 0; font-size: 24px;">Payment Failed</h1>
-                </div>
-                <div style="padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-                  <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
-                  <p>Unfortunately, your payment for order <strong>#${order._id.toString().slice(-8).toUpperCase()}</strong> could not be processed.</p>
-                  <p>Your cart items are still saved. Please try placing the order again.</p>
-                  <p><a href="${frontendUrl}/cart" style="display:inline-block; margin-top:10px; padding:12px 24px; background:#ff6b35; color:#fff; border-radius:6px; text-decoration:none; font-weight:600;">Go to Cart</a></p>
-                  <br/>
-                  <p>If the amount was deducted, it will be refunded within 5-7 business days.</p>
-                  <p>Best Regards,<br/><strong>FitBox Sports Team</strong></p>
-                </div>
-              </div>
-            `
-          });
-        }
-      } catch (emailErr) {
-        console.error('Failure email error:', emailErr);
-      }
-
       redirectPath = `/orders?payment=failed&orderId=${order._id}`;
-
     } else {
-      // PAYMENT_PENDING or unknown — don't change order status, let webhook handle
       console.log('PhonePe Redirect: Unhandled code:', code, '- leaving order as pending');
       redirectPath = `/orders?payment=pending&orderId=${order._id}`;
     }
-
   } catch (error) {
     console.error('PhonePe Redirect processing error:', error);
     redirectPath = `/orders?payment=error`;
@@ -484,120 +444,35 @@ export const phonePeRedirect = async (req, res) => {
 
 export const phonePeCallback = async (req, res) => {
   try {
-    // PhonePe V2 sends a JSON body with { type, payload: { merchantOrderId, state, ... } }
     const body = req.body;
     console.log('PhonePe Callback received:', JSON.stringify(body));
 
-    // Support both the V2 event format and a manual redirect query (?merchantOrderId=...&status=...)
-    const merchantOrderId = body?.payload?.merchantOrderId || req.query?.merchantOrderId;
-    const state = body?.payload?.state || req.query?.state;
+    const merchantOrderId = body?.payload?.merchantOrderId || body?.payload?.merchantTransactionId || req.query?.merchantOrderId;
+    const state = body?.payload?.state || body?.state || req.query?.state;
+    const normalizedState = String(state || '').toUpperCase();
 
     if (!merchantOrderId) {
       return res.status(400).json({ success: false, message: 'No merchantOrderId in callback' });
     }
 
-    // Find order by the stored paymentId (which we set to the merchantOrderId)
     const order = await Order.findOne({ paymentId: merchantOrderId });
     if (!order) {
       console.error('PhonePe Callback: order not found for merchantOrderId', merchantOrderId);
-      return res.status(200).send('OK'); // Ack to PhonePe even if not found
+      return res.status(200).send('OK');
     }
 
-    if (state === 'COMPLETED' && order.paymentStatus !== 'Paid') {
-      order.paymentStatus = 'Paid';
-      order.paymentMode = 'Online';
-      order.orderStatus = 'Completed';
-      order.paidAt = new Date();
+    if (order.paymentStatus === 'Paid') {
+      console.log('PhonePe Callback: order already paid', merchantOrderId);
+      return res.status(200).send('OK');
+    }
 
-      let pdfBuffer = null;
-      try {
-        const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
-        order.invoiceNumber = invoiceNumber;
-        order.invoiceUrl = invoiceUrl;
-        pdfBuffer = buffer;
-      } catch (err) {
-        console.error('Webhook Invoice generation failed:', err);
-      }
-
-      try {
-        const shipment = await createDelhiveryShipment(order);
-        if (shipment.packages && shipment.packages.length > 0) {
-          order.awb = shipment.packages[0].waybill;
-          order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
-          order.shipmentStatus = 'Created';
-        }
-      } catch (shipmentError) {
-        console.error('Shipment creation failed:', shipmentError);
-        order.shipmentStatus = 'Pending';
-      }
-
-      await order.save();
-
-      // Send confirmation email
-      try {
-        const user = await User.findById(order.userId);
-        const emailToSend = user?.email || order.customerEmail;
-        if (emailToSend) {
-          await sendEmail({
-            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
-            email: emailToSend,
-            subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
-            html: `
-              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-                <h2 style="color: #ff6b35;">Thank you for your order!</h2>
-                <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
-                <p>Your payment has been successfully processed via PhonePe and your order is confirmed.</p>
-                <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
-                  <thead>
-                    <tr style="background:#1a1a1a; color:#fff;">
-                      <th style="padding:10px 14px; text-align:left;">Product</th>
-                      <th style="padding:10px 14px; text-align:center;">Qty</th>
-                      <th style="padding:10px 14px; text-align:right;">Price</th>
-                      <th style="padding:10px 14px; text-align:right;">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${(order.items || []).map((item, i) => {
-              const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
-              const qty = item.quantity || 1;
-              const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
-              const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
-              const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
-              return `<tr style="background:${bg};">
-                        <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
-                        <td style="padding:10px 14px; text-align:center;">${qty}</td>
-                        <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
-                        <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
-                      </tr>`;
-            }).join('')}
-                  </tbody>
-                  <tfoot>
-                    <tr style="background:#fff3ee; font-weight:bold;">
-                      <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
-                    </tr>
-                  </tfoot>
-                </table>
-                <p>${pdfBuffer ? 'Please find your official invoice attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
-                <br/>
-                <p>Best Regards,</p>
-                <p><strong>FitBox Sports Team</strong></p>
-              </div>
-            `,
-            attachments: pdfBuffer ? [{
-              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
-              content: pdfBuffer,
-              contentType: 'application/pdf'
-            }] : undefined
-          });
-        }
-      } catch (emailErr) {
-        console.error('Webhook Email Send Error:', emailErr);
-      }
-    } else if (state === 'FAILED') {
+    if (['COMPLETED', 'SUCCESS', 'PAID'].includes(normalizedState)) {
+      await processPaidOrder(order);
+    } else if (['FAILED', 'CANCELLED', 'PAYMENT_FAILED'].includes(normalizedState)) {
       order.paymentStatus = 'Failed';
+      order.orderStatus = 'Cancelled';
       await order.save();
-      console.log('PhonePe payment failed for order:', merchantOrderId);
+      console.log('PhonePe payment failed for order:', merchantOrderId, 'state:', normalizedState);
     }
 
     res.status(200).send('OK');

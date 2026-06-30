@@ -85,8 +85,6 @@ app.post('/api/developer/sync-products', async (req, res) => {
             if (existingProduct) {
                 p.isOutOfStock = existingProduct.isOutOfStock;
                 p.isNew = existingProduct.isNew;
-                if (existingProduct.price !== undefined) p.price = existingProduct.price;
-                if (existingProduct.oldPrice !== undefined) p.oldPrice = existingProduct.oldPrice;
             }
             
             await Product.findOneAndUpdate(
@@ -116,8 +114,6 @@ const autoSyncProductsToDB = async () => {
             if (existingProduct) {
                 p.isOutOfStock = existingProduct.isOutOfStock;
                 p.isNew = existingProduct.isNew;
-                if (existingProduct.price !== undefined) p.price = existingProduct.price;
-                if (existingProduct.oldPrice !== undefined) p.oldPrice = existingProduct.oldPrice;
             }
             
             await Product.findOneAndUpdate(

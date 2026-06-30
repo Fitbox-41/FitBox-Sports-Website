@@ -40,32 +40,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -80,32 +80,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -155,38 +155,38 @@ const products = [
                 "sizes": [
                     {
                         "name": "4kg (1kg x 4)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "8kg (2kg x 4)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     },
                     {
                         "name": "12kg (3kg x 4)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 20000
                     }
                 ]
@@ -203,38 +203,38 @@ const products = [
                 "sizes": [
                     {
                         "name": "4kg (1kg x 4)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "8kg (2kg x 4)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     },
                     {
                         "name": "12kg (3kg x 4)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 20000
                     }
                 ]
@@ -282,32 +282,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -324,32 +324,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -366,32 +366,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 999,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -439,8 +439,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -457,8 +457,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -475,8 +475,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -493,8 +493,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -511,8 +511,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -529,8 +529,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -547,8 +547,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -565,8 +565,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 150
                     }
                 ]
@@ -614,8 +614,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 599,
-                        "oldPrice": 899,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     }
                 ]
@@ -632,8 +632,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 699,
-                        "oldPrice": 999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     }
                 ]
@@ -650,8 +650,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 799,
-                        "oldPrice": 1099,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     }
                 ]
@@ -668,8 +668,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 599,
-                        "oldPrice": 899,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     }
                 ]
@@ -686,8 +686,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 2499,
-                        "oldPrice": 3999,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 12000
                     }
                 ]
@@ -704,8 +704,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 2899,
-                        "oldPrice": 4299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 16000
                     }
                 ]
@@ -722,8 +722,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 20000
                     }
                 ]
@@ -772,14 +772,14 @@ const products = [
                 "sizes": [
                     {
                         "name": " 5Lbs - 2.5kg (1.13kg x 2)",
-                        "price": 699,
-                        "oldPrice": 799,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2.5
                     },
                     {
                         "name": " 10Lbs - 4.5kg (2.25kg x 2)",
-                        "price": 999,
-                        "oldPrice": 1099,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4.5
                     }
                 ]
@@ -826,8 +826,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     }
                 ]
@@ -844,8 +844,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 5000
                     }
                 ]
@@ -862,8 +862,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     }
                 ]
@@ -880,8 +880,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -929,8 +929,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 5000
                     }
                 ]
@@ -947,8 +947,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -965,8 +965,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     }
                 ]
@@ -983,8 +983,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     }
                 ]
@@ -1001,8 +1001,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 6000
                     }
                 ]
@@ -1019,8 +1019,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 3499,
-                        "oldPrice": 5299,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     }
                 ]
@@ -1067,8 +1067,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 350
                     }
                 ]
@@ -1085,8 +1085,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 350
                     }
                 ]
@@ -1103,8 +1103,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 350
                     }
                 ]
@@ -1121,8 +1121,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 350
                     }
                 ]
@@ -1172,8 +1172,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 0
                     }
                 ]
@@ -1219,8 +1219,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1237,8 +1237,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1255,8 +1255,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1273,8 +1273,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1320,8 +1320,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1338,8 +1338,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1356,8 +1356,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1374,8 +1374,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 230
                     }
                 ]
@@ -1423,8 +1423,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 0
                     }
                 ]
@@ -1473,8 +1473,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -1492,8 +1492,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 449,
-                        "oldPrice": 529,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -1544,32 +1544,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "Small",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "Medium",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "Large",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "X-Large",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "XX-Large",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     }
                 ]
@@ -1587,32 +1587,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "Small",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "Medium",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "Large",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "X-Large",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     },
                     {
                         "name": "XX-Large",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     }
                 ]
@@ -1661,20 +1661,20 @@ const products = [
                 "sizes": [
                     {
                         "name": "1kg (0.5kg x 2) Black",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 1000
                     },
                     {
                         "name": "2kg (1kg x 2) Black",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2) Black",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     }
                 ]
@@ -1725,20 +1725,20 @@ const products = [
                 "sizes": [
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     },
                     {
                         "name": "15kg (7.5kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 15000
                     },
                     {
                         "name": "20kg (10kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 20000
                     }
                 ]
@@ -1784,8 +1784,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -1803,8 +1803,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -1853,26 +1853,26 @@ const products = [
                 "sizes": [
                     {
                         "name": "1kg (0.5 Kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 1000
                     },
                     {
                         "name": "2kg (1 Kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 2000
                     },
                     {
                         "name": "3kg (1.5 Kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 3000
                     },
                     {
                         "name": "4kg (2 Kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     }
                 ]
@@ -1922,14 +1922,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 5000
                     },
                     {
                         "name": "10kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -1978,8 +1978,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     }
                 ]
@@ -1997,8 +1997,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 350
                     }
                 ]
@@ -2046,8 +2046,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "2 Pcs",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 220
                     }
                 ]
@@ -2095,8 +2095,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 260
                     }
                 ]
@@ -2114,8 +2114,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 390
                     }
                 ]
@@ -2132,8 +2132,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 780
                     }
                 ]
@@ -2180,8 +2180,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -2197,8 +2197,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -2214,8 +2214,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -2231,8 +2231,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -2247,8 +2247,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 250
                     }
                 ]
@@ -2296,8 +2296,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "FitBox Sports Ab Roller",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 475
                     }
                 ]
@@ -2344,8 +2344,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "FitBox Sports Resistance and Pull up Band",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 200
                     }
                 ]
@@ -2395,26 +2395,26 @@ const products = [
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     },
                     {
                         "name": "12 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     },
                     {
                         "name": "14 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     },
                     {
                         "name": "16 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     }
                 ]
@@ -2431,26 +2431,26 @@ const products = [
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     },
                     {
                         "name": "12 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     },
                     {
                         "name": "14 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     },
                     {
                         "name": "16 Oz",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 450
                     }
                 ]
@@ -2470,7 +2470,9 @@ const products = [
             "Universal Compatibility"
         ],
         "longDesc": "A durable door anchor designed for resistance band workouts, physical therapy, and functional training. This premium anchor offers a secure fit on most door frames and lets you perform a wide range of upper- and lower-body exercises safely at home.",
-        "features": ["Heavy Duty Door Anchor - Great for Resistance Bands, Physical Therapy Bands, and Closed Loop Bands "],
+        "features": [
+            "Heavy Duty Door Anchor - Great for Resistance Bands, Physical Therapy Bands, and Closed Loop Bands "
+        ],
         "material": "",
         "relatedIds": [],
         "showcaseImages": [
@@ -2487,13 +2489,13 @@ const products = [
                     "/Images/28.1.1.jpg",
                     "/Images/28.1.2.jpg",
                     "/Images/28.1.3.jpg",
-                    "/Images/28.1.4.jpg",
+                    "/Images/28.1.4.jpg"
                 ],
                 "sizes": [
                     {
                         "name": "Heavy Duty Door Anchor",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 50
                     }
                 ]
@@ -2513,18 +2515,19 @@ const products = [
             "Ergonomic Support"
         ],
         "longDesc": "A premium leather powerlifting belt engineered for serious lifters. The heavy-duty lever closure provides a secure, consistent fit for squats, deadlifts, and other compound lifts while stabilizing your core and protecting your lower back.",
-        "features": ["Maximum Back & Core Support : Designed to stabilize your spine and core during heavy lifts—ideal for squats, deadlifts, clean & jerks, and more.",
+        "features": [
+            "Maximum Back & Core Support : Designed to stabilize your spine and core during heavy lifts—ideal for squats, deadlifts, clean & jerks, and more.",
             "Secure Fit with Adjustable Closure : Heavy-duty Lever buckle ensures a tight, customizable fit for maximum support without restricting movement.",
             "Comfortable Contoured Design : Ergonomic shape supports your natural movement while offering comfort during extended training sessions.",
             "Prevents Injury & Enhances Performance : Maintains proper lifting posture and reduces stress on your lower back to help you lift heavier with confidence.",
-            "Maximum Support & Stability – 10mm thick lever belt designed to give you a rock-solid core brace, reducing stress on the lower back and helping you lift heavier with confidence."],
+            "Maximum Support & Stability – 10mm thick lever belt designed to give you a rock-solid core brace, reducing stress on the lower back and helping you lift heavier with confidence."
+        ],
         "material": "Leather",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/29.1.2.jpg",
             "/Images/29.1.3.jpg",
-            "/Images/29.1.4.jpg",
-
+            "/Images/29.1.4.jpg"
         ],
         "imgSrc": "/Images/29.1.1.jpg",
         "hoverImgSrc": "/Images/29.1.2.jpg",
@@ -2537,14 +2540,13 @@ const products = [
                     "/Images/29.1.3.jpg",
                     "/Images/29.1.4.jpg",
                     "/Images/29.1.5.jpg",
-                    "/Images/29.1.6.jpg",
-
+                    "/Images/29.1.6.jpg"
                 ],
                 "sizes": [
                     {
                         "name": "Medium",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     }
                 ]
@@ -2564,10 +2566,12 @@ const products = [
             "Sturdy Core Support"
         ],
         "longDesc": "A high-performance leather weightlifting belt with a dual-prong buckle for a secure, adjustable fit. It supports heavy lifts by stabilizing the lumbar area, reducing strain, and helping maintain proper form during squats, deadlifts, and powerlifting movements.",
-        "features": ["Maximum Back & Core Support : Designed to stabilize your spine and core during heavy lifts—ideal for squats, deadlifts, clean & jerks, and more.",
+        "features": [
+            "Maximum Back & Core Support : Designed to stabilize your spine and core during heavy lifts—ideal for squats, deadlifts, clean & jerks, and more.",
             "Secure Fit with Adjustable Closure : Heavy-duty Dual-Prong buckle ensures a tight, customizable fit for maximum support without restricting movement.",
             "Comfortable Contoured Design : Ergonomic shape supports your natural movement while offering comfort during extended training sessions.",
-            "Prevents Injury & Enhances Performance : Maintains proper lifting posture and reduces stress on your lower back to help you lift heavier with confidence. "],
+            "Prevents Injury & Enhances Performance : Maintains proper lifting posture and reduces stress on your lower back to help you lift heavier with confidence. "
+        ],
         "material": "Leather",
         "relatedIds": [],
         "showcaseImages": [
@@ -2594,14 +2598,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     }
                 ]
@@ -2622,14 +2626,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     }
                 ]
@@ -2644,18 +2648,19 @@ const products = [
                     "/Images/30.3.5.jpg",
                     "/Images/30.3.6.jpg",
                     "/Images/30.3.7.jpg",
-                    "/Images/30.3.8.jpg"],
+                    "/Images/30.3.8.jpg"
+                ],
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     }
                 ]
@@ -2674,14 +2679,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     }
                 ]
@@ -2700,21 +2705,20 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 720
                     }
                 ]
             }
         ]
     },
-
     {
         "id": 31,
         "name": "FitBox Sports 5kg Diamond Dumbbells Set Of 2 For Home Gym Workout | Men & Women,Polypropylene (PP) ",
@@ -2755,14 +2759,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg (2.5kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 5000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     }
                 ]
@@ -2782,11 +2786,13 @@ const products = [
             "Functional Training"
         ],
         "longDesc": "A 5kg vinyl-coated kettlebell designed for strength and cardio training. Its durable coating protects against rust while providing a comfortable grip for swings, squats, lunges, and high-intensity workouts.",
-        "features": [" a piece of 5kg vinayl coated kettlebell",
+        "features": [
+            " a piece of 5kg vinayl coated kettlebell",
             "perfect for gym workout, zumba & aerobics",
             "rustfree ensuring longer period of usage and safety",
             "box content : 1 piece of pvc kettlebell",
-            "Sport type: Exercise & Fitness"],
+            "Sport type: Exercise & Fitness"
+        ],
         "material": "Rubber",
         "relatedIds": [],
         "showcaseImages": [
@@ -2808,8 +2814,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 5000
                     }
                 ]
@@ -2840,7 +2846,7 @@ const products = [
         "showcaseImages": [
             "/Images/33.1.2.jpg",
             "/Images/33.1.3.jpg",
-            "/Images/33.1.4.jpg",
+            "/Images/33.1.4.jpg"
         ],
         "imgSrc": "/Images/33.1.1.jpg",
         "hoverImgSrc": "/Images/33.1.2.jpg",
@@ -2851,55 +2857,55 @@ const products = [
                     "/Images/33.1.1.jpg",
                     "/Images/33.1.2.jpg",
                     "/Images/33.1.3.jpg",
-                    "/Images/33.1.4.jpg",
+                    "/Images/33.1.4.jpg"
                 ],
                 "sizes": [
                     {
                         "name": "4kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 4000
                     },
                     {
                         "name": "8kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 8000
                     },
                     {
                         "name": "10k",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 10000
                     },
                     {
                         "name": "12kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 12000
                     },
                     {
                         "name": "14kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 14000
                     },
                     {
                         "name": "16kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 16000
                     },
                     {
                         "name": "18kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 18000
                     },
                     {
                         "name": "20kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 20000
                     }
                 ]
@@ -2952,8 +2958,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "20 Inch",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 450,
+                        "oldPrice": 600,
                         "weight": 1000
                     }
                 ]
@@ -2961,80 +2967,48 @@ const products = [
         ]
     },
     {
-  "id": 35,
-  "name": "Fitbox Sports Vinyl Coated PVC Intruder 20 Kg Weight Plates ",
-  "category": "Weights & Dumbbells",
-  "subCategory": "Dumbbells",
-  "isNew": false,
-  "isOutOfStock": false,
-  "qualities": [
-    "Vinyl Coated",
-    "Rust Resistant",
-    "Durable Plates"
-  ],
-  "longDesc": "A 20kg set of vinyl-coated PVC weight plates designed for home lifting and strength training. These plates offer a protective coating to prevent rust and simplify handling while delivering reliable weight for a range of exercises.",
-  "features": ["Rustfree ensuring longer period of usage and safety",
-    "Perfect for gym workout, zumba & aerobics",
-    "Box Content : 10kg X 2 20kg Weight Plates",
-    "A pair of 10kg vinyl coated PVC weight plates"],
-  "material": "Rubber",
-  "relatedIds": [],
-  "showcaseImages": [
-    "/Images/35.1.1.jpg"
-  ],
-  "imgSrc": "/Images/35.1.1.jpg",
-  "hoverImgSrc": "/Images/35.1.1.jpg",
-  "variants": [
-    {
-      "color": "Black",
-      "images": [
-        "/Images/35.1.1.jpg",
+        "id": 35,
+        "name": "Fitbox Sports Vinyl Coated PVC Intruder 20 Kg Weight Plates ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Vinyl Coated",
+            "Rust Resistant",
+            "Durable Plates"
         ],
-      "sizes": [
-        {
-          "name": "10Kg X 2",
-          "price": 0,
-          "oldPrice": 0,
-          "weight": 2000
-        }
-      ]
+        "longDesc": "A 20kg set of vinyl-coated PVC weight plates designed for home lifting and strength training. These plates offer a protective coating to prevent rust and simplify handling while delivering reliable weight for a range of exercises.",
+        "features": [
+            "Rustfree ensuring longer period of usage and safety",
+            "Perfect for gym workout, zumba & aerobics",
+            "Box Content : 10kg X 2 20kg Weight Plates",
+            "A pair of 10kg vinyl coated PVC weight plates"
+        ],
+        "material": "Rubber",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/35.1.1.jpg"
+        ],
+        "imgSrc": "/Images/35.1.1.jpg",
+        "hoverImgSrc": "/Images/35.1.1.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/35.1.1.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "10Kg X 2",
+                        "price": 450,
+                        "oldPrice": 600,
+                        "weight": 2000
+                    }
+                ]
+            }
+        ]
     }
-  ]
-}
 ];
 
 export default products;
-
-
-
-
-// {
-//   "id": 0,
-//   "name": "",
-//   "category": "",
-//   "subCategory": "",
-//   "isNew": false,
-//   "isOutOfStock": false,
-//   "qualities": [],
-//   "longDesc": "",
-//   "features": [],
-//   "material": "",
-//   "relatedIds": [],
-//   "showcaseImages": [],
-//   "imgSrc": "",
-//   "hoverImgSrc": "",
-//   "variants": [
-//     {
-//       "color": "",
-//       "images": [],
-//       "sizes": [
-//         {
-//           "name": "",
-//           "price": 0,
-//           "oldPrice": 0,
-//           "weight": 0
-//         }
-//       ]
-//     }
-//   ]
-// }
