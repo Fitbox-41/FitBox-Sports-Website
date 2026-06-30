@@ -360,7 +360,7 @@ export const phonePeInitiate = async (req, res) => {
       ? 'https://api.phonepe.com/apis/pg/checkout/v2/pay'
       : 'https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/pay';
 
-    const redirectUrlEndpoint = `${process.env.API_URL || 'http://localhost:5000'}/api/orders/phonepe/redirect`;
+    const redirectUrlEndpoint = `${process.env.API_URL || 'http://localhost:5000'}/api/orders/phonepe/redirect?merchantOrderId=${merchantOrderId}&orderId=${order._id}`;
 
     const payBody = {
       merchantOrderId,
@@ -411,23 +411,48 @@ export const phonePeRedirect = async (req, res) => {
   let paymentResult = 'unknown';
 
   try {
-    // PhonePe sends: transactionId (merchantOrderId), code (PAYMENT_SUCCESS / PAYMENT_ERROR / PAYMENT_PENDING)
-    const merchantOrderId = req.body.transactionId || req.query.transactionId
-      || req.body.merchantOrderId || req.query.merchantOrderId;
-    const code = req.body.code || req.query.code || '';
-
-    console.log('PhonePe Redirect received:', { merchantOrderId, code, body: req.body, query: req.query });
-
-    if (!merchantOrderId) {
-      console.error('PhonePe Redirect: No merchantOrderId received');
-      return res.redirect(`${frontendUrl}/orders?payment=error&reason=missing_id`);
+    // PhonePe sends response in body or query, but we also appended it to the URL directly
+    let merchantOrderId = req.query.merchantOrderId || req.body.transactionId || req.body.merchantOrderId;
+    let code = req.query.code || req.body.code || '';
+    
+    // Sometimes PhonePe sends a base64 encoded response object
+    if (req.body && req.body.response) {
+      try {
+        const decoded = JSON.parse(Buffer.from(req.body.response, 'base64').toString('utf8'));
+        if (decoded.data && decoded.data.transactionId) {
+          merchantOrderId = decoded.data.transactionId || decoded.data.merchantTransactionId || merchantOrderId;
+        }
+        if (decoded.code) {
+          code = decoded.code;
+        }
+      } catch (e) {
+        console.error('Failed to parse PhonePe base64 response', e);
+      }
     }
 
-    const order = await Order.findOne({ paymentId: merchantOrderId });
+    const orderIdParam = req.query.orderId;
+
+    console.log('PhonePe Redirect received:', { merchantOrderId, code, orderIdParam, body: req.body, query: req.query });
+
+    let order;
+    if (merchantOrderId) {
+      order = await Order.findOne({ paymentId: merchantOrderId });
+    } else if (orderIdParam) {
+      order = await Order.findById(orderIdParam);
+    }
 
     if (!order) {
-      console.error('PhonePe Redirect: Order not found for', merchantOrderId);
+      console.error('PhonePe Redirect: Order not found for merchantOrderId:', merchantOrderId, 'or orderId:', orderIdParam);
       return res.redirect(`${frontendUrl}/orders?payment=error&reason=order_not_found`);
+    }
+
+    // Since we appended merchantOrderId to the URL, if PhonePe didn't send 'code', it's likely a POST with raw/encoded data that failed to parse, or a user cancelling.
+    // If we don't have a code but we know the order, we can check if it's already paid by webhook.
+    // If not paid, we will assume it's pending/cancelled unless we do a status check. 
+    // To be extremely safe, if code is empty but order is pending, we assume it's a cancellation/failure if PhonePe didn't provide SUCCESS.
+    if (!code && order.paymentStatus !== 'Paid') {
+       // We can just redirect to pending and let the webhook handle the success, OR treat as failed if user clicked Back.
+       code = 'PAYMENT_PENDING';
     }
 
     // Idempotency: if already processed, just redirect appropriately

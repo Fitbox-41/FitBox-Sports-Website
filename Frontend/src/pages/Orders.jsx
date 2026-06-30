@@ -25,7 +25,8 @@ export default function Orders() {
     } else if (payment === 'pending') {
       setPaymentToast({ type: 'pending', message: '⏳ Payment is pending. Your order will be updated once payment is confirmed.' });
     } else if (payment === 'error') {
-      setPaymentToast({ type: 'error', message: '⚠️ Something went wrong during payment. Please check your order status.' });
+      const reason = params.get('reason') || 'unknown';
+      setPaymentToast({ type: 'error', message: `⚠️ Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
     }
     if (payment) {
       const timer = setTimeout(() => setPaymentToast(null), 6000);
