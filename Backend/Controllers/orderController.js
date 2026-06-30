@@ -412,8 +412,8 @@ export const phonePeRedirect = async (req, res) => {
 
   try {
     // PhonePe sends response in body or query, but we also appended it to the URL directly
-    let merchantOrderId = req.query.merchantOrderId || req.body.transactionId || req.body.merchantOrderId;
-    let code = req.query.code || req.body.code || '';
+    let merchantOrderId = req.query?.merchantOrderId || req.body?.transactionId || req.body?.merchantOrderId;
+    let code = req.query?.code || req.body?.code || '';
     
     // Sometimes PhonePe sends a base64 encoded response object
     if (req.body && req.body.response) {
