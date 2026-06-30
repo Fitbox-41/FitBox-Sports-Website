@@ -1,11 +1,10 @@
 import express from 'express';
-import { placeOrder, gokwikWebhook, mockPayment, getUserOrders, cancelOrder, codPayment, phonePeInitiate, phonePeCallback, phonePeRedirect } from '../Controllers/orderController.js';
+import { placeOrder, mockPayment, getUserOrders, cancelOrder, codPayment, phonePeInitiate, phonePeCallback, phonePeRedirect } from '../Controllers/orderController.js';
 import { protect } from '../MiddleWare/authMiddleware.js';
 
 const router = express.Router();
 
 router.post('/place', protect, placeOrder); 
-router.post('/webhook/gokwik', gokwikWebhook); 
 router.post('/mock-payment', protect, mockPayment);
 router.post('/phonepe/initiate', protect, phonePeInitiate);
 router.post('/phonepe/callback', phonePeCallback);
