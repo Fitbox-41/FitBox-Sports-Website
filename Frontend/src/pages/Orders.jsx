@@ -121,10 +121,12 @@ export default function Orders() {
             {orders.map((order, orderIdx) => (
               <div key={orderIdx} className="order-group" style={{ marginBottom: '40px', padding: '20px', border: '1px solid #e2e8f0', borderRadius: '12px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '15px', marginBottom: '15px' }}>
-                  <div>
-                    <h3 style={{ margin: '0 0 5px 0' }}>Order #{order._id.substring(0, 8)}</h3>
-                    <p style={{ margin: '0', fontSize: '14px', color: '#64748b' }}>Placed on {new Date(order.createdAt).toLocaleDateString()}</p>
-                  </div>
+                  <div className="order-header-left">
+                  <h2 className="order-id">
+                    Order {order.invoiceNumber ? order.invoiceNumber : `FBX-${order._id.toString().slice(-8).toUpperCase()}`}
+                  </h2>
+                  <span className="order-date">Placed on {new Date(order.createdAt).toLocaleDateString()}</span>
+                </div>
                   <div style={{ textAlign: 'right' }}>
                      <span style={{ display: 'inline-block', padding: '4px 12px', background: order.orderStatus === 'Cancelled' ? '#fecaca' : '#dcfce7', color: order.orderStatus === 'Cancelled' ? '#b91c1c' : '#166534', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
                        {order.orderStatus === 'Cancelled' ? 'Cancelled' : order.paymentStatus}

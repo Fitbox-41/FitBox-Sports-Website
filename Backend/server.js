@@ -36,6 +36,7 @@ app.use((req, res, next) => {
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/admin/public', express.static(path.join(process.cwd(), 'admin', 'public')));
 

@@ -107,7 +107,7 @@ export const generateInvoice = async (order) => {
         {
           resource_type: "image",
           folder: "fitbox_invoices",
-          public_id: `Invoice-${order._id}`,
+          public_id: `fitbox_invoices/FBX-${order._id.toString().slice(-8).toUpperCase()}`,
           format: "pdf"
         },
         (error, result) => {
@@ -116,7 +116,7 @@ export const generateInvoice = async (order) => {
             reject(error);
           } else {
             resolve({ 
-              invoiceNumber: `INV-${order._id}`, 
+              invoiceNumber: `FBX-${order._id.toString().slice(-8).toUpperCase()}`, 
               invoiceUrl: result.secure_url,
               buffer: buffer 
             });
