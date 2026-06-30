@@ -29,7 +29,8 @@ const orderSchema = new mongoose.Schema({
   invoiceNumber: String,
   invoiceUrl: String,
   paymentId: String,
-  paidAt: Date
+  paidAt: Date,
+  confirmationEmailSent: { type: Boolean, default: false }
 }, { timestamps: true });
 
 // TTL Index: Automatically delete documents after 1800 seconds (30 mins)

@@ -250,6 +250,11 @@ const markOnlineOrderFailed = async (order) => {
 };
 
 const processPaidOrder = async (order) => {
+  // Guard: if already paid and email sent, skip everything
+  if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
+    return order;
+  }
+
   order.paymentStatus = 'Paid';
   order.paymentMode = 'Online';
   order.orderStatus = 'Completed';
@@ -279,6 +284,8 @@ const processPaidOrder = async (order) => {
     order.shipmentStatus = order.shipmentStatus === 'Created' ? order.shipmentStatus : 'Pending';
   }
 
+  // Mark email as sent BEFORE saving so a concurrent callback won't send a second one
+  order.confirmationEmailSent = true;
   await order.save();
 
   try {
@@ -288,21 +295,49 @@ const processPaidOrder = async (order) => {
       await sendEmail({
         from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
         email: emailToSend,
-        subject: `Order Confirmed - FitBox Sports (#${order.invoiceNumber || order._id.toString().slice(-8).toUpperCase()})`,
+        subject: `Order Confirmation - FitBox Sports (${order.invoiceNumber || order._id})`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-            <div style="background: #ff6b35; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="color: #fff; margin: 0; font-size: 24px;">Order Confirmed! 🎉</h1>
-            </div>
-            <div style="padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-              <p style="font-size: 16px;">Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
-              <p>Your payment was successful and your order is confirmed.</p>
-              <p>Order ID: <strong>${order.invoiceNumber || order._id.toString().slice(-8).toUpperCase()}</strong></p>
-              <br/>
-              <p>${order.invoiceUrl ? 'Your invoice is available in your orders page, and you can download it from there.' : 'Your invoice will be available in your orders page once it is generated.'}</p>
-              <br/>
-              <p>Best Regards,<br/><strong>FitBox Sports Team</strong></p>
-            </div>
+            <h2 style="color: #ff6b35;">Thank you for your order!</h2>
+            <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+            <p>Your payment has been successfully processed and your order is confirmed.</p>
+
+            <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+              <thead>
+                <tr style="background:#1a1a1a; color:#fff;">
+                  <th style="padding:10px 14px; text-align:left;">Product</th>
+                  <th style="padding:10px 14px; text-align:center;">Qty</th>
+                  <th style="padding:10px 14px; text-align:right;">Price</th>
+                  <th style="padding:10px 14px; text-align:right;">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(order.items || []).map((item, i) => {
+                  const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+                  const qty = item.quantity || 1;
+                  const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                  const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                  const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                  return `<tr style="background:${bg};">
+                    <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                    <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                    <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
+                    <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                  </tr>`;
+                }).join('')}
+              </tbody>
+              <tfoot>
+                <tr style="background:#fff3ee; font-weight:bold;">
+                  <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                  <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                </tr>
+              </tfoot>
+            </table>
+
+            <p>${pdfBuffer ? 'Please find your official invoice attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
+            <br/>
+            <p>Best Regards,</p>
+            <p><strong>FitBox Sports Team</strong></p>
           </div>
         `,
         attachments: pdfBuffer ? [{
@@ -311,6 +346,7 @@ const processPaidOrder = async (order) => {
           contentType: 'application/pdf'
         }] : undefined
       });
+      console.log(`Confirmation email sent to ${emailToSend}`);
     }
   } catch (emailErr) {
     console.error('Confirmation email failed:', emailErr);
@@ -453,9 +489,10 @@ export const phonePeRedirect = async (req, res) => {
     const terminalState = await resolveTerminalPhonePeState(merchantOrderId);
     order = await Order.findById(order._id);
 
-    if (order.paymentStatus === 'Paid') {
+    if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
+      // Already fully processed by callback — just redirect
       redirectPath = `/orders?payment=success&orderId=${order._id}`;
-    } else if (terminalState === 'success') {
+    } else if (order.paymentStatus === 'Paid' || terminalState === 'success') {
       await processPaidOrder(order);
       redirectPath = `/orders?payment=success&orderId=${order._id}`;
     } else {
@@ -490,8 +527,8 @@ export const phonePeCallback = async (req, res) => {
       return res.status(200).send('OK');
     }
 
-    if (order.paymentStatus === 'Paid') {
-      console.log('PhonePe Callback: order already paid', merchantOrderId);
+    if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
+      console.log('PhonePe Callback: order already paid and email sent', merchantOrderId);
       return res.status(200).send('OK');
     }
 
