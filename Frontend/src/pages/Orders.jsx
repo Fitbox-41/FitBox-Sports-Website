@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import axios from 'axios';
@@ -10,8 +10,28 @@ import './Orders.css';
 export default function Orders() {
   const { currentUser } = useAuth();
   const { toggleWishlist, wishlist } = useCart();
+  const location = useLocation();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [paymentToast, setPaymentToast] = useState(null); // { type: 'success'|'failed'|'pending'|'error', message }
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const payment = params.get('payment');
+    if (payment === 'success') {
+      setPaymentToast({ type: 'success', message: '✅ Payment successful! Your order has been confirmed.' });
+    } else if (payment === 'failed') {
+      setPaymentToast({ type: 'error', message: '❌ Payment failed. Your order could not be processed. Please try again.' });
+    } else if (payment === 'pending') {
+      setPaymentToast({ type: 'pending', message: '⏳ Payment is pending. Your order will be updated once payment is confirmed.' });
+    } else if (payment === 'error') {
+      setPaymentToast({ type: 'error', message: '⚠️ Something went wrong during payment. Please check your order status.' });
+    }
+    if (payment) {
+      const timer = setTimeout(() => setPaymentToast(null), 6000);
+      return () => clearTimeout(timer);
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -71,6 +91,27 @@ export default function Orders() {
     <div className="orders-page">
       <Header />
       <div className="header-spacer" style={{ height: '110px' }} />
+
+      {paymentToast && (
+        <div style={{
+          position: 'fixed',
+          top: '120px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 9999,
+          padding: '14px 28px',
+          borderRadius: '10px',
+          fontSize: '15px',
+          fontWeight: '600',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+          background: paymentToast.type === 'success' ? '#dcfce7' : paymentToast.type === 'pending' ? '#fef3c7' : '#fee2e2',
+          color: paymentToast.type === 'success' ? '#15803d' : paymentToast.type === 'pending' ? '#92400e' : '#b91c1c',
+          border: `1px solid ${paymentToast.type === 'success' ? '#bbf7d0' : paymentToast.type === 'pending' ? '#fde68a' : '#fecaca'}`,
+          animation: 'fadeIn 0.3s ease'
+        }}>
+          {paymentToast.message}
+        </div>
+      )}
 
       <main className="orders-main container">
         <h1 className="orders-title">Your Orders</h1>

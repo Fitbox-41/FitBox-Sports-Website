@@ -313,7 +313,35 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
           onClick={(e) => {
             e.preventDefault();
             if (!product.isOutOfStock) {
-              addToCart(product);
+              const currentVariant = (product.variants && product.variants[0]) || { sizes: [] };
+              const currentSize = currentVariant?.sizes && currentVariant.sizes[0] ? currentVariant.sizes[0] : null;
+              const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
+              const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
+              
+              const normalizeSizeLabel = (size) => {
+                if (size === null || size === undefined) return '';
+                if (typeof size === 'string') return size.trim() || 'STANDARD';
+                if (typeof size === 'number') return size > 0 ? String(size) : 'STANDARD';
+                if (typeof size === 'object') return (size.name || size.label || (size.price ? `₹${size.price}` : '')).trim() || 'STANDARD';
+                return 'STANDARD';
+              };
+              
+              const normalizeVariantLabel = (variant) => {
+                if (!variant) return '';
+                if (typeof variant === 'string') return variant;
+                if (typeof variant === 'object') return variant.color || variant.name || variant.label || variant._id?.toString() || '';
+                return String(variant);
+              };
+
+              addToCart({
+                ...product,
+                selectedVariant: normalizeVariantLabel(currentVariant),
+                selectedSize: normalizeSizeLabel(currentSize),
+                price: activePrice,
+                weight: activeWeight,
+                imgSrc: currentVariant?.images?.[0] || product.imgSrc,
+                quantity: 1
+              });
             }
           }}
         >

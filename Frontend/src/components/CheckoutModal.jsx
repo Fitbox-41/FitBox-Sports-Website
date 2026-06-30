@@ -45,7 +45,7 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
       try {
         const token = localStorage.getItem('fitbox_token');
         const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-        await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel`, {
+        await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel?silent=true`, {
           headers: { Authorization: `Bearer ${token}` }
         });
       } catch (err) {

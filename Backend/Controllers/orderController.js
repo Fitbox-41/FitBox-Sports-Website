@@ -10,7 +10,7 @@ import axios from 'axios';
 export const placeOrder = async (req, res) => {
   try {
     const { items, totalAmount } = req.body;
-    
+
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
 
@@ -43,9 +43,9 @@ export const placeOrder = async (req, res) => {
     } catch (gokwikError) {
       console.warn("GoKwik checkout API failed (expected if using placeholder credentials):", gokwikError.message);
     }
-    
-    res.status(200).json({ 
-      success: true, 
+
+    res.status(200).json({
+      success: true,
       orderId: order._id,
       redirectUrl
     });
@@ -56,9 +56,9 @@ export const placeOrder = async (req, res) => {
 
 export const gokwikWebhook = async (req, res) => {
   try {
-    const signature = req.headers['x-gokwik-signature']; 
+    const signature = req.headers['x-gokwik-signature'];
     const isValid = verifyGoKwikSignature(req.body, signature);
-    
+
     if (!isValid) return res.status(400).send('Invalid signature');
 
     const { request_id, status, payment_id, customer_details } = req.body;
@@ -68,16 +68,16 @@ export const gokwikWebhook = async (req, res) => {
       order.paymentStatus = 'Paid';
       order.paymentId = payment_id;
       order.paidAt = new Date();
-      
+
       // GoKwik sends customer shipping details on success
       if (customer_details && customer_details.address) {
-         order.shippingAddress = {
-             street: customer_details.address.street || '',
-             city: customer_details.address.city || '',
-             state: customer_details.address.state || '',
-             zip: customer_details.address.pincode || '',
-             country: customer_details.address.country || 'India'
-         };
+        order.shippingAddress = {
+          street: customer_details.address.street || '',
+          city: customer_details.address.city || '',
+          state: customer_details.address.state || '',
+          zip: customer_details.address.pincode || '',
+          country: customer_details.address.country || 'India'
+        };
       }
 
       let pdfBuffer = null;
@@ -93,9 +93,9 @@ export const gokwikWebhook = async (req, res) => {
       try {
         const shipment = await createDelhiveryShipment(order);
         if (shipment.packages && shipment.packages.length > 0) {
-            order.awb = shipment.packages[0].waybill;
-            order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
-            order.shipmentStatus = 'Created';
+          order.awb = shipment.packages[0].waybill;
+          order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+          order.shipmentStatus = 'Created';
         }
       } catch (shipmentError) {
         console.error("Shipment creation failed:", shipmentError);
@@ -130,18 +130,18 @@ export const gokwikWebhook = async (req, res) => {
                   </thead>
                   <tbody>
                     ${(order.items || []).map((item, i) => {
-                      const price = Number(String(item.price).replace(/[^0-9.-]+/g,''));
-                      const qty = item.quantity || 1;
-                      const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
-                      const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
-                      const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
-                      return `<tr style="background:${bg};">
+              const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+              const qty = item.quantity || 1;
+              const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+              const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+              const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+              return `<tr style="background:${bg};">
                         <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                         <td style="padding:10px 14px; text-align:center;">${qty}</td>
                         <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
                         <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
                       </tr>`;
-                    }).join('')}
+            }).join('')}
                   </tbody>
                   <tfoot>
                     <tr style="background:#fff3ee; font-weight:bold;">
@@ -179,7 +179,7 @@ export const mockPayment = async (req, res) => {
   try {
     const { orderId, shippingAddress } = req.body;
     const order = await Order.findById(orderId);
-    
+
     if (!order) {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
@@ -194,7 +194,7 @@ export const mockPayment = async (req, res) => {
     order.orderStatus = 'Completed';
     order.paymentId = 'MOCK_TXN_' + Math.random().toString(36).substr(2, 9).toUpperCase();
     order.paidAt = new Date();
-    
+
     // 2. Set Shipping Address from mock modal
     if (shippingAddress) {
       order.shippingAddress = shippingAddress;
@@ -215,13 +215,13 @@ export const mockPayment = async (req, res) => {
     try {
       const shipment = await createDelhiveryShipment(order);
       if (shipment.packages && shipment.packages.length > 0) {
-          order.awb = shipment.packages[0].waybill;
-          order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
-          order.shipmentStatus = 'Created';
+        order.awb = shipment.packages[0].waybill;
+        order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+        order.shipmentStatus = 'Created';
       } else {
-          // Fallback if packages array is empty
-          order.trackingUrl = `https://track.delhivery.com/p/MOCK_AWB_${orderId}`;
-          order.shipmentStatus = 'Created';
+        // Fallback if packages array is empty
+        order.trackingUrl = `https://track.delhivery.com/p/MOCK_AWB_${orderId}`;
+        order.shipmentStatus = 'Created';
       }
     } catch (shipmentError) {
       console.error("Mock Shipment creation failed:", shipmentError);
@@ -257,18 +257,18 @@ export const mockPayment = async (req, res) => {
                 </thead>
                 <tbody>
                   ${(order.items || []).map((item, i) => {
-                    const price = Number(String(item.price).replace(/[^0-9.-]+/g,''));
-                    const qty = item.quantity || 1;
-                    const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
-                    const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
-                    const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
-                    return `<tr style="background:${bg};">
+            const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+            const qty = item.quantity || 1;
+            const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+            const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+            const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+            return `<tr style="background:${bg};">
                       <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                       <td style="padding:10px 14px; text-align:center;">${qty}</td>
                       <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
                       <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
                     </tr>`;
-                  }).join('')}
+          }).join('')}
                 </tbody>
                 <tfoot>
                   <tr style="background:#fff3ee; font-weight:bold;">
@@ -360,6 +360,8 @@ export const phonePeInitiate = async (req, res) => {
       ? 'https://api.phonepe.com/apis/pg/checkout/v2/pay'
       : 'https://api-preprod.phonepe.com/apis/pg-sandbox/checkout/v2/pay';
 
+    const redirectUrlEndpoint = `${process.env.API_URL || 'http://localhost:5000'}/api/orders/phonepe/redirect`;
+
     const payBody = {
       merchantOrderId,
       amount: Math.round(order.totalAmount * 100), // paise
@@ -368,7 +370,7 @@ export const phonePeInitiate = async (req, res) => {
         type: 'PG_CHECKOUT',
         message: 'FitBox Sports Order Payment',
         merchantUrls: {
-          redirectUrl: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/orders`
+          redirectUrl: redirectUrlEndpoint
         }
       }
     };
@@ -401,6 +403,189 @@ export const phonePeInitiate = async (req, res) => {
     console.error('PhonePe Initiate Error:', error.message);
     res.status(500).json({ success: false, message: error.message });
   }
+};
+
+export const phonePeRedirect = async (req, res) => {
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+  let redirectPath = '/orders';
+  let paymentResult = 'unknown';
+
+  try {
+    // PhonePe sends: transactionId (merchantOrderId), code (PAYMENT_SUCCESS / PAYMENT_ERROR / PAYMENT_PENDING)
+    const merchantOrderId = req.body.transactionId || req.query.transactionId
+      || req.body.merchantOrderId || req.query.merchantOrderId;
+    const code = req.body.code || req.query.code || '';
+
+    console.log('PhonePe Redirect received:', { merchantOrderId, code, body: req.body, query: req.query });
+
+    if (!merchantOrderId) {
+      console.error('PhonePe Redirect: No merchantOrderId received');
+      return res.redirect(`${frontendUrl}/orders?payment=error&reason=missing_id`);
+    }
+
+    const order = await Order.findOne({ paymentId: merchantOrderId });
+
+    if (!order) {
+      console.error('PhonePe Redirect: Order not found for', merchantOrderId);
+      return res.redirect(`${frontendUrl}/orders?payment=error&reason=order_not_found`);
+    }
+
+    // Idempotency: if already processed, just redirect appropriately
+    if (order.paymentStatus === 'Paid') {
+      return res.redirect(`${frontendUrl}/orders?payment=success&orderId=${order._id}`);
+    }
+
+    if (code === 'PAYMENT_SUCCESS') {
+      paymentResult = 'success';
+      order.paymentStatus = 'Paid';
+      order.paymentMode = 'Online';
+      order.orderStatus = 'Completed';
+      order.paidAt = new Date();
+
+      let pdfBuffer = null;
+      try {
+        const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
+        order.invoiceNumber = invoiceNumber;
+        order.invoiceUrl = invoiceUrl;
+        pdfBuffer = buffer;
+      } catch (err) {
+        console.error('Invoice generation failed:', err);
+      }
+
+      try {
+        const shipment = await createDelhiveryShipment(order);
+        if (shipment.packages && shipment.packages.length > 0) {
+          order.awb = shipment.packages[0].waybill;
+          order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+          order.shipmentStatus = 'Created';
+        }
+      } catch (shipmentError) {
+        console.error('Shipment creation failed:', shipmentError);
+        order.shipmentStatus = 'Pending';
+      }
+
+      await order.save();
+
+      // Send confirmation email
+      try {
+        const user = await User.findById(order.userId);
+        const emailToSend = user?.email || order.customerEmail;
+        if (emailToSend) {
+          await sendEmail({
+            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+            email: emailToSend,
+            subject: `Order Confirmed - FitBox Sports (#${order.invoiceNumber || order._id.toString().slice(-8).toUpperCase()})`,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                <div style="background: #ff6b35; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+                  <h1 style="color: #fff; margin: 0; font-size: 24px;">Order Confirmed! 🎉</h1>
+                </div>
+                <div style="padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
+                  <p style="font-size: 16px;">Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+                  <p>Your payment was successful and your order is confirmed. We'll begin processing it shortly!</p>
+                  <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+                    <thead>
+                      <tr style="background:#1a1a1a; color:#fff;">
+                        <th style="padding:10px 14px; text-align:left;">Product</th>
+                        <th style="padding:10px 14px; text-align:center;">Qty</th>
+                        <th style="padding:10px 14px; text-align:right;">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${(order.items || []).map((item, i) => {
+                        const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+                        const qty = item.quantity || 1;
+                        const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                        const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                        const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                        return `<tr style="background:${bg};">
+                          <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                          <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                          <td style="padding:10px 14px; text-align:right;">₹${price * qty}</td>
+                        </tr>`;
+                      }).join('')}
+                    </tbody>
+                    <tfoot>
+                      <tr style="background:#fff3ee; font-weight:bold;">
+                        <td colspan="2" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                        <td style="padding:10px 14px; text-align:right; color:#ff6b35;">₹${order.totalAmount}</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  <p style="font-size:13px; color:#64748b;">
+                    ${order.shippingAddress ? `Shipping to: ${order.shippingAddress.street}, ${order.shippingAddress.city}, ${order.shippingAddress.state} - ${order.shippingAddress.zip}` : ''}
+                  </p>
+                  <p>${pdfBuffer ? 'Your invoice is attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
+                  <br/>
+                  <p>Best Regards,<br/><strong>FitBox Sports Team</strong></p>
+                </div>
+              </div>
+            `,
+            attachments: pdfBuffer ? [{
+              filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+              content: pdfBuffer,
+              contentType: 'application/pdf'
+            }] : undefined
+          });
+        }
+      } catch (emailErr) {
+        console.error('Confirmation email failed:', emailErr);
+      }
+
+      redirectPath = `/orders?payment=success&orderId=${order._id}`;
+
+    } else if (code === 'PAYMENT_ERROR') {
+      paymentResult = 'error';
+      order.paymentStatus = 'Failed';
+      order.orderStatus = 'Cancelled';
+      order.shipmentStatus = 'Cancelled';
+      await order.save();
+
+      // Send payment failure email
+      try {
+        const user = await User.findById(order.userId);
+        const emailToSend = user?.email || order.customerEmail;
+        if (emailToSend) {
+          await sendEmail({
+            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+            email: emailToSend,
+            subject: `Payment Failed - FitBox Sports`,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                <div style="background: #ef4444; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+                  <h1 style="color: #fff; margin: 0; font-size: 24px;">Payment Failed</h1>
+                </div>
+                <div style="padding: 24px; background: #fff; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
+                  <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
+                  <p>Unfortunately, your payment for order <strong>#${order._id.toString().slice(-8).toUpperCase()}</strong> could not be processed.</p>
+                  <p>Your cart items are still saved. Please try placing the order again.</p>
+                  <p><a href="${frontendUrl}/cart" style="display:inline-block; margin-top:10px; padding:12px 24px; background:#ff6b35; color:#fff; border-radius:6px; text-decoration:none; font-weight:600;">Go to Cart</a></p>
+                  <br/>
+                  <p>If the amount was deducted, it will be refunded within 5-7 business days.</p>
+                  <p>Best Regards,<br/><strong>FitBox Sports Team</strong></p>
+                </div>
+              </div>
+            `
+          });
+        }
+      } catch (emailErr) {
+        console.error('Failure email error:', emailErr);
+      }
+
+      redirectPath = `/orders?payment=failed&orderId=${order._id}`;
+
+    } else {
+      // PAYMENT_PENDING or unknown — don't change order status, let webhook handle
+      console.log('PhonePe Redirect: Unhandled code:', code, '- leaving order as pending');
+      redirectPath = `/orders?payment=pending&orderId=${order._id}`;
+    }
+
+  } catch (error) {
+    console.error('PhonePe Redirect processing error:', error);
+    redirectPath = `/orders?payment=error`;
+  }
+
+  res.redirect(`${frontendUrl}${redirectPath}`);
 };
 
 export const phonePeCallback = async (req, res) => {
@@ -479,18 +664,18 @@ export const phonePeCallback = async (req, res) => {
                   </thead>
                   <tbody>
                     ${(order.items || []).map((item, i) => {
-                      const price = Number(String(item.price).replace(/[^0-9.-]+/g,''));
-                      const qty = item.quantity || 1;
-                      const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
-                      const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
-                      const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
-                      return `<tr style="background:${bg};">
+              const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+              const qty = item.quantity || 1;
+              const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+              const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+              const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+              return `<tr style="background:${bg};">
                         <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                         <td style="padding:10px 14px; text-align:center;">${qty}</td>
                         <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
                         <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
                       </tr>`;
-                    }).join('')}
+            }).join('')}
                   </tbody>
                   <tfoot>
                     <tr style="background:#fff3ee; font-weight:bold;">
@@ -547,45 +732,54 @@ export const cancelOrder = async (req, res) => {
     if (!order) {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
-    
+
     if (order.orderStatus === 'Cancelled') {
       return res.status(400).json({ success: false, message: 'Order is already cancelled' });
     }
 
     // Only allow cancellation if order is not Shipped or Delivered
     if (order.shipmentStatus === 'Shipped' || order.shipmentStatus === 'Delivered') {
-       return res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been shipped or delivered' });
+      return res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been shipped or delivered' });
     }
-    
+
+    const isSilent = req.query.silent === 'true';
+
+    if (isSilent && order.paymentStatus === 'Pending Payment' && order.paymentMode !== 'COD') {
+      await Order.findByIdAndDelete(id);
+      return res.status(200).json({ success: true, message: 'Pending order deleted', deleted: true });
+    }
+
     order.orderStatus = 'Cancelled';
     order.shipmentStatus = 'Cancelled';
     await order.save();
 
-    try {
-      const user = await User.findById(order.userId);
-      const emailToSend = user?.email || order.customerEmail;
-      if (emailToSend) {
-        await sendEmail({
-          from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
-          email: emailToSend,
-          subject: `Order Cancelled - FitBox Sports (${order._id})`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
-              <h2 style="color: #ef4444;">Order Cancelled</h2>
-              <p>Hi ${order.customerName || user?.name || 'Customer'},</p>
-              <p>Your order (ID: ${order._id}) has been successfully cancelled.</p>
-              ${order.paymentStatus === 'Paid' ? '<p>Your refund will be initiated shortly and should reflect in your original payment method within 5-7 business days.</p>' : ''}
-              <br/>
-              <p>If you have any questions, feel free to reply to this email.</p>
-              <br/>
-              <p>Best Regards,</p>
-              <p><strong>FitBox Sports Team</strong></p>
-            </div>
-          `
-        });
+    if (!isSilent) {
+      try {
+        const user = await User.findById(order.userId);
+        const emailToSend = user?.email || order.customerEmail;
+        if (emailToSend) {
+          await sendEmail({
+            from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
+            email: emailToSend,
+            subject: `Order Cancelled - FitBox Sports (${order._id})`,
+            html: `
+              <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+                <h2 style="color: #ef4444;">Order Cancelled</h2>
+                <p>Hi ${order.customerName || user?.name || 'Customer'},</p>
+                <p>Your order (ID: ${order._id}) has been successfully cancelled.</p>
+                ${order.paymentStatus === 'Paid' ? '<p>Your refund will be initiated shortly and should reflect in your original payment method within 5-7 business days.</p>' : ''}
+                <br/>
+                <p>If you have any questions, feel free to reply to this email.</p>
+                <br/>
+                <p>Best Regards,</p>
+                <p><strong>FitBox Sports Team</strong></p>
+              </div>
+            `
+          });
+        }
+      } catch (emailErr) {
+        console.error("Failed to send cancellation email:", emailErr);
       }
-    } catch (emailErr) {
-      console.error("Failed to send cancellation email:", emailErr);
     }
 
     res.status(200).json({ success: true, message: 'Order cancelled successfully', order });
@@ -598,7 +792,7 @@ export const codPayment = async (req, res) => {
   try {
     const { orderId, shippingAddress } = req.body;
     const order = await Order.findById(orderId);
-    
+
     if (!order) {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
@@ -611,7 +805,7 @@ export const codPayment = async (req, res) => {
     order.paymentMode = 'COD';
     order.paymentStatus = 'Pending Payment';
     order.orderStatus = 'Pending';
-    
+
     // Set Shipping Address
     if (shippingAddress) {
       order.shippingAddress = shippingAddress;
