@@ -112,8 +112,15 @@ const autoSyncProductsToDB = async () => {
             const existingProduct = await Product.findOne({ id: p.id });
             
             if (existingProduct) {
+                // Preserve fields that may have been manually edited in the DB
                 p.isOutOfStock = existingProduct.isOutOfStock;
                 p.isNew = existingProduct.isNew;
+                
+                // Preserve variants (prices) if they exist in the DB
+                // This prevents the sync from overwriting manually set prices
+                if (existingProduct.variants && existingProduct.variants.length > 0) {
+                    p.variants = existingProduct.variants;
+                }
             }
             
             await Product.findOneAndUpdate(
