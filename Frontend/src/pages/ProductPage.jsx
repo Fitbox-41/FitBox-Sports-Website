@@ -170,12 +170,20 @@ export default function ProductPage() {
       .slice(0, 10);
   }
 
-  relatedProducts = relatedProducts.map((p, index) => ({
-    ...p,
-    id: p.id,
-    /* ── 3. RELATED PRODUCT THUMBNAILS ── */
-    image: p.variants && p.variants[0] && p.variants[0].images ? p.variants[0].images[0] : p.imgSrc || p.image || ''
-  }));
+  relatedProducts = relatedProducts.map((p, index) => {
+    const v = p.variants?.[0] || {};
+    const s = v.sizes?.[0] || null;
+    const price = s?.price ?? v.price ?? p.price ?? 0;
+    const oldPrice = s?.oldPrice ?? v.oldPrice ?? p.oldPrice ?? 0;
+    return {
+      ...p,
+      price,
+      oldPrice,
+      id: p.id,
+      /* ── 3. RELATED PRODUCT THUMBNAILS ── */
+      image: p.variants && p.variants[0] && p.variants[0].images ? p.variants[0].images[0] : p.imgSrc || p.image || ''
+    };
+  });
 
   const relatedChunks = [];
   for (let i = 0; i < relatedProducts.length; i += 5) {
@@ -211,10 +219,18 @@ export default function ProductPage() {
     const recentIds = viewed.filter(id => id !== currentId).slice(0, 4);
     const recentProducts = allProducts
       .filter(p => recentIds.includes(p.id))
-      .map(p => ({
-        ...p,
-        image: p.variants && p.variants[0] && p.variants[0].images ? p.variants[0].images[0] : p.imgSrc || p.image || ''
-      }));
+      .map(p => {
+        const v = p.variants?.[0] || {};
+        const s = v.sizes?.[0] || null;
+        const price = s?.price ?? v.price ?? p.price ?? 0;
+        const oldPrice = s?.oldPrice ?? v.oldPrice ?? p.oldPrice ?? 0;
+        return {
+          ...p,
+          price,
+          oldPrice,
+          image: p.variants && p.variants[0] && p.variants[0].images ? p.variants[0].images[0] : p.imgSrc || p.image || ''
+        };
+      });
     setRecentlyViewedProducts(recentProducts);
 
     // Update localStorage

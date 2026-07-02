@@ -610,6 +610,7 @@ export const getUserOrders = async (req, res) => {
 export const cancelOrder = async (req, res) => {
   try {
     const { id } = req.params;
+    const { cancelReason } = req.body;
     const order = await Order.findById(id);
 
     if (!order) {
@@ -632,6 +633,10 @@ export const cancelOrder = async (req, res) => {
       return res.status(200).json({ success: true, message: 'Pending order deleted', deleted: true });
     }
 
+    if (cancelReason && Array.isArray(cancelReason)) {
+      order.cancelReason = cancelReason;
+    }
+
     order.orderStatus = 'Cancelled';
     order.shipmentStatus = 'Cancelled';
     await order.save();
@@ -650,6 +655,39 @@ export const cancelOrder = async (req, res) => {
                 <h2 style="color: #ef4444;">Order Cancelled</h2>
                 <p>Hi ${order.customerName || user?.name || 'Customer'},</p>
                 <p>Your order (ID: ${order._id}) has been successfully cancelled.</p>
+                
+                <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+                  <thead>
+                    <tr style="background:#1a1a1a; color:#fff;">
+                      <th style="padding:10px 14px; text-align:left;">Product</th>
+                      <th style="padding:10px 14px; text-align:center;">Qty</th>
+                      <th style="padding:10px 14px; text-align:right;">Price</th>
+                      <th style="padding:10px 14px; text-align:right;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${(order.items || []).map((item, i) => {
+                      const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+                      const qty = item.quantity || 1;
+                      const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                      const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                      const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                      return `<tr style="background:${bg};">
+                        <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                        <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                        <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
+                        <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                      </tr>`;
+                    }).join('')}
+                  </tbody>
+                  <tfoot>
+                    <tr style="background:#fff3ee; font-weight:bold;">
+                      <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. \${order.totalAmount}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+
                 ${order.paymentStatus === 'Paid' ? '<p>Your refund will be initiated shortly and should reflect in your original payment method within 5-7 business days.</p>' : ''}
                 <br/>
                 <p>If you have any questions, feel free to reply to this email.</p>

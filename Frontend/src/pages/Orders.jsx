@@ -7,6 +7,124 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './Orders.css';
 
+const CANCEL_REASONS = [
+  "Found a better price elsewhere",
+  "Ordered by mistake",
+  "Changed my mind",
+  "Delivery time too long",
+  "Item no longer needed",
+  "Shipping cost too high",
+  "Other"
+];
+
+const CancellationModal = ({ isOpen, onClose, onSubmit, isProcessingRefund }) => {
+  const [selectedReasons, setSelectedReasons] = useState([]);
+  
+  if (!isOpen) return null;
+
+  const toggleReason = (reason) => {
+    setSelectedReasons(prev => 
+      prev.includes(reason) ? prev.filter(r => r !== reason) : [...prev, reason]
+    );
+  };
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.5)' }}>
+      <div style={{ background: '#fff', padding: '24px', borderRadius: '12px', width: '90%', maxWidth: '400px' }}>
+        <h3 style={{ marginTop: 0, fontSize: '18px', color: '#0f172a' }}>Cancel Order</h3>
+        {isProcessingRefund ? (
+          <p style={{ fontSize: '14px', color: '#16a34a', fontWeight: '600', marginBottom: '16px' }}>
+            Your refund is processing. Kindly tell us the reason for order cancellation.
+          </p>
+        ) : (
+          <p style={{ fontSize: '14px', color: '#475569', marginBottom: '16px' }}>
+            Kindly tell us the reason for order cancellation.
+          </p>
+        )}
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+          {CANCEL_REASONS.map(reason => (
+            <label key={reason} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', cursor: 'pointer' }}>
+              <input 
+                type="checkbox" 
+                checked={selectedReasons.includes(reason)}
+                onChange={() => toggleReason(reason)}
+                style={{ width: '16px', height: '16px', accentColor: '#ff6b35' }}
+              />
+              {reason}
+            </label>
+          ))}
+        </div>
+
+        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
+          <button 
+            onClick={onClose}
+            style={{ padding: '8px 16px', borderRadius: '6px', border: '1px solid #cbd5e1', background: '#fff', cursor: 'pointer' }}
+          >
+            Go Back
+          </button>
+          <button 
+            onClick={() => {
+              onSubmit(selectedReasons);
+              setSelectedReasons([]);
+            }}
+            disabled={selectedReasons.length === 0}
+            style={{ padding: '8px 16px', borderRadius: '6px', border: 'none', background: selectedReasons.length === 0 ? '#94a3b8' : '#ef4444', color: '#fff', cursor: selectedReasons.length === 0 ? 'not-allowed' : 'pointer', fontWeight: '500' }}
+          >
+            Confirm Cancellation
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const CancelButtonWithTimer = ({ order, onCancelClick }) => {
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const orderTime = new Date(order.createdAt).getTime();
+    const now = Date.now();
+    const diff = (orderTime + 60 * 60 * 1000) - now;
+    return diff > 0 ? diff : 0;
+  });
+
+  useEffect(() => {
+    if (timeLeft <= 0) return;
+    const timer = setInterval(() => {
+      const orderTime = new Date(order.createdAt).getTime();
+      const now = Date.now();
+      const diff = (orderTime + 60 * 60 * 1000) - now;
+      if (diff <= 0) {
+        setTimeLeft(0);
+        clearInterval(timer);
+      } else {
+        setTimeLeft(diff);
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [order.createdAt, timeLeft]);
+
+  if (timeLeft <= 0) {
+    return <div style={{ height: '34px', marginTop: '10px' }} />; // Empty space
+  }
+
+  const minutes = Math.floor(timeLeft / (1000 * 60));
+  const seconds = Math.floor((timeLeft / 1000) % 60);
+
+  return (
+    <div>
+      <button
+        onClick={() => onCancelClick(order)}
+        style={{ display: 'block', marginTop: '10px', padding: '6px 12px', fontSize: '13px', background: 'transparent', color: '#ef4444', border: '1px solid #ef4444', borderRadius: '4px', cursor: 'pointer', width: '100%', fontWeight: '500' }}
+      >
+        Cancel Order
+      </button>
+      <div style={{ fontSize: '12px', color: '#64748b', marginTop: '6px', textAlign: 'center', fontWeight: '500' }}>
+        Can cancel for: <span style={{ color: '#ef4444' }}>{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</span>
+      </div>
+    </div>
+  );
+};
+
 export default function Orders() {
   const { currentUser } = useAuth();
   const { toggleWishlist, wishlist } = useCart();
@@ -14,8 +132,10 @@ export default function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [paymentToast, setPaymentToast] = useState(null); // { type: 'success'|'failed'|'error', message }
+  const [cancelModalOrder, setCancelModalOrder] = useState(null);
 
   const getPaymentLabel = (order) => {
+    if (order.isRefunded) return 'Order Refunded';
     if (order.orderStatus === 'Cancelled') return 'Cancelled';
     if (order.paymentMode === 'COD') return order.paymentStatus === 'Paid' ? 'Paid (COD)' : 'COD - Pay on Delivery';
     if (order.paymentStatus === 'Paid') return 'Paid';
@@ -128,16 +248,24 @@ export default function Orders() {
      return <div className="orders-page"><Header /><div style={{ height: '110px' }} /><div style={{textAlign: 'center', padding: '50px'}}>Loading Orders...</div><Footer /></div>;
   }
 
-  const handleCancelOrder = async (orderId) => {
-    if (!window.confirm("Are you sure you want to cancel this order?")) return;
+  const handleCancelClick = (order) => {
+    setCancelModalOrder(order);
+  };
+
+  const confirmCancellation = async (reasons) => {
+    if (!cancelModalOrder) return;
     
     setLoading(true);
     try {
       const token = localStorage.getItem('fitbox_token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
       const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-      const res = await axios.delete(`${apiUrl}/api/orders/${orderId}/cancel`, config);
+      
+      const payload = { cancelReason: reasons };
+      const res = await axios.post(`${apiUrl}/api/orders/${cancelModalOrder._id}/cancel`, payload, config);
+      
       if (res.data.success) {
+        setCancelModalOrder(null);
         alert('Order cancelled successfully');
         await fetchOrders();
       }
@@ -175,6 +303,13 @@ export default function Orders() {
         </div>
       )}
 
+      <CancellationModal
+        isOpen={!!cancelModalOrder}
+        onClose={() => setCancelModalOrder(null)}
+        onSubmit={confirmCancellation}
+        isProcessingRefund={cancelModalOrder?.paymentStatus === 'Paid'}
+      />
+
       <main className="orders-main container">
         <h1 className="orders-title">Your Orders</h1>
 
@@ -190,7 +325,7 @@ export default function Orders() {
                   <span className="order-date">Placed on {new Date(order.createdAt).toLocaleDateString()}</span>
                 </div>
                   <div style={{ textAlign: 'right' }}>
-                     <span style={{ display: 'inline-block', padding: '4px 12px', background: order.orderStatus === 'Cancelled' || order.paymentStatus === 'Failed' ? '#fecaca' : order.paymentStatus === 'Paid' ? '#dcfce7' : '#fef3c7', color: order.orderStatus === 'Cancelled' || order.paymentStatus === 'Failed' ? '#b91c1c' : order.paymentStatus === 'Paid' ? '#166534' : '#92400e', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
+                     <span style={{ display: 'inline-block', padding: '4px 12px', background: order.isRefunded ? '#dcfce7' : order.orderStatus === 'Cancelled' || order.paymentStatus === 'Failed' ? '#fecaca' : order.paymentStatus === 'Paid' ? '#dcfce7' : '#fef3c7', color: order.isRefunded ? '#166534' : order.orderStatus === 'Cancelled' || order.paymentStatus === 'Failed' ? '#b91c1c' : order.paymentStatus === 'Paid' ? '#166534' : '#92400e', borderRadius: '20px', fontSize: '13px', fontWeight: '600' }}>
                        {getPaymentLabel(order)}
                      </span>
                      {order.invoiceUrl && order.orderStatus !== 'Cancelled' && (
@@ -214,12 +349,10 @@ export default function Orders() {
                        </a>
                      )}
                      {order.orderStatus !== 'Cancelled' && order.shipmentStatus !== 'Shipped' && order.shipmentStatus !== 'Delivered' && (
-                       <button
-                         onClick={() => handleCancelOrder(order._id)}
-                         style={{ display: 'block', marginTop: '10px', padding: '6px 12px', fontSize: '13px', background: 'transparent', color: '#ef4444', border: '1px solid #ef4444', borderRadius: '4px', cursor: 'pointer', width: '100%' }}
-                       >
-                         Cancel Order
-                       </button>
+                       <CancelButtonWithTimer 
+                         order={order}
+                         onCancelClick={handleCancelClick}
+                       />
                      )}
                   </div>
                 </div>

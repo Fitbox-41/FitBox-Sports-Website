@@ -12,6 +12,7 @@ router.all('/phonepe/redirect', phonePeRedirect);
 router.get('/myorders', protect, getUserOrders);
 router.post('/:id/verify-payment', protect, verifyOrderPayment);
 router.delete('/:id/cancel', protect, cancelOrder);
+router.post('/:id/cancel', protect, cancelOrder);
 router.post('/cod-payment', protect, codPayment);
 
 export default router;
