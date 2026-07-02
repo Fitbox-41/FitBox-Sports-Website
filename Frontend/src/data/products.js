@@ -3012,3 +3012,36 @@ const products = [
 ];
 
 export default products;
+
+
+
+// {
+//   "id": 0,
+//   "name": "",
+//   "category": "",
+//   "subCategory": "",
+//   "isNew": false,
+//   "isOutOfStock": false,
+//   "qualities": [],
+//   "longDesc": "",
+//   "features": [],
+//   "material": "",
+//   "relatedIds": [],
+//   "showcaseImages": [],
+//   "imgSrc": "",
+//   "hoverImgSrc": "",
+//   "variants": [
+//     {
+//       "color": "",
+//       "images": [],
+//       "sizes": [
+//         {
+//           "name": "",
+//           "price": 0,
+//           "oldPrice": 0,
+//           "weight": 0
+//         }
+//       ]
+//     }
+//   ]
+// }
