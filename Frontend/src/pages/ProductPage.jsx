@@ -311,17 +311,20 @@ export default function ProductPage() {
       const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
       const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
 
+      const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
+      const parsedActivePrice = parsePrice(activePrice);
+      
       const buyNowItem = {
         ...product,
         selectedVariant: normalizeVariantLabel(currentVariant),
         selectedSize: normalizeSizeLabel(currentSize),
-        price: activePrice,
+        price: parsedActivePrice,
         weight: activeWeight,
         imgSrc: currentVariant?.images[0] || product.imgSrc,
         quantity: quantity
       };
       
-      const subtotalAmount = activePrice * quantity;
+      const subtotalAmount = parsedActivePrice * quantity;
       const shippingAmount = subtotalAmount > 999 || subtotalAmount === 0 ? 0 : deliveryFee;
       const totalAmount = subtotalAmount + shippingAmount;
 
@@ -448,13 +451,16 @@ export default function ProductPage() {
               {(() => {
                 const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { sizes: [] };
                 const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
+                const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
                 const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
                 const activeOldPrice = currentSize?.oldPrice ?? currentVariant?.oldPrice ?? product.oldPrice ?? 0;
+                const parsedActivePrice = parsePrice(activePrice);
+                const parsedOldPrice = parsePrice(activeOldPrice);
                 return (
                   <>
-                    <span className="v2-current-price">₹{activePrice * quantity}</span>
-                    <span className="v2-old-price">₹{activeOldPrice * quantity}</span>
-                    <span className="v2-save-tag">You Saved ₹{(activeOldPrice - activePrice) * quantity}</span>
+                    <span className="v2-current-price">₹{parsedActivePrice * quantity}</span>
+                    <span className="v2-old-price">₹{parsedOldPrice * quantity}</span>
+                    <span className="v2-save-tag">You Saved ₹{(parsedOldPrice - parsedActivePrice) * quantity}</span>
                   </>
                 );
               })()}
@@ -560,14 +566,16 @@ export default function ProductPage() {
                 disabled={isActuallyOutOfStock}
                 onClick={() => {
                   const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
+                  const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
                   const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
+                  const parsedActivePrice = parsePrice(activePrice);
                   const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
                   
                   addToCart({
                     ...product,
                     selectedVariant: normalizeVariantLabel(currentVariant),
                     selectedSize: normalizeSizeLabel(currentSize),
-                    price: activePrice,
+                    price: parsedActivePrice,
                     weight: activeWeight,
                     imgSrc: currentVariant?.images[0] || product.imgSrc,
                     quantity: quantity
