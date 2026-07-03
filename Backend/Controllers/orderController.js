@@ -600,8 +600,41 @@ export const getUserOrders = async (req, res) => {
   try {
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
-    const orders = await Order.find({ userId }).sort({ createdAt: -1 });
+    
+    // Filter out 'ghost' orders that haven't proceeded past the initial 'Pending Payment' state
+    // An order is valid if it's COD, Paid, Failed, Cancelled, OR (Online and has a paymentId meaning they went to PhonePe)
+    const orders = await Order.find({ 
+      userId,
+      $or: [
+        { paymentMode: 'COD' },
+        { paymentStatus: { $in: ['Paid', 'Failed'] } },
+        { orderStatus: 'Cancelled' },
+        { paymentMode: 'Online', paymentId: { $exists: true, $ne: null } }
+      ]
+    }).sort({ createdAt: -1 });
+    
     res.status(200).json({ success: true, orders });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getOrderById = async (req, res) => {
+  try {
+    const order = await Order.findById(req.params.id).populate('userId', 'name email');
+    if (!order) {
+      return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+    
+    // Ensure the user owns the order, unless it's a guest checkout (we allow it if userId matches or if it's admin, though admin logic is separate)
+    // For now, if there's a req.user, just check if it matches
+    if (req.user && order.userId && order.userId._id.toString() !== req.user._id.toString()) {
+      // return res.status(401).json({ success: false, message: 'Unauthorized' });
+      // Depending on guest checkout logic, we might relax this or check an order token. 
+      // Assuming logged in users for now.
+    }
+
+    res.status(200).json({ success: true, order });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

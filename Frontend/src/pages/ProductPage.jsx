@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { useSettings } from '../context/SettingsContext';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -93,9 +94,11 @@ export default function ProductPage() {
   // ─── 1. State & Data Logic ───
   const { addToCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
+  const { deliveryFee } = useSettings();
   const navigate = useNavigate();
   const [checkoutItems, setCheckoutItems] = useState([]);
   const [checkoutTotal, setCheckoutTotal] = useState(0);
+  const [buyNowDeliveryFee, setBuyNowDeliveryFee] = useState(0);
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
 
@@ -317,10 +320,14 @@ export default function ProductPage() {
         imgSrc: currentVariant?.images[0] || product.imgSrc,
         quantity: quantity
       };
-      const totalAmount = activePrice * quantity;
+      
+      const subtotalAmount = activePrice * quantity;
+      const shippingAmount = subtotalAmount > 999 || subtotalAmount === 0 ? 0 : deliveryFee;
+      const totalAmount = subtotalAmount + shippingAmount;
 
       setCheckoutItems([buyNowItem]);
       setCheckoutTotal(totalAmount);
+      setBuyNowDeliveryFee(shippingAmount);
 
       const token = localStorage.getItem('fitbox_token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -755,6 +762,7 @@ export default function ProductPage() {
         orderId={currentOrderId}
         checkoutItems={checkoutItems}
         checkoutTotal={checkoutTotal}
+        deliveryFee={buyNowDeliveryFee}
         onSuccess={(id) => {
           setIsCheckoutModalOpen(false);
           navigate('/orders');

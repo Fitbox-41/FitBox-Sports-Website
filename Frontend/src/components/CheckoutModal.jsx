@@ -5,7 +5,7 @@ import Loader from './Loader';
 import './CheckoutModal.css';
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems, checkoutTotal, onSuccess }) {
+export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems, checkoutTotal, deliveryFee, onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [showSuccessToast, setShowSuccessToast] = useState(false);
   const [step, setStep] = useState(1); // 1 = shipping, 2 = payment mode
@@ -111,33 +111,10 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
       return;
     }
     
-    setLoading(true);
-    try {
-      const token = localStorage.getItem('fitbox_token');
-      const config = { headers: { Authorization: `Bearer ${token}` } };
-      const shippingAddress = getShippingAddress();
-      
-      const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-      const res = await axios.post(`${apiUrl}/api/orders/cod-payment`, { 
-        orderId, 
-        shippingAddress 
-      }, config);
-      
-      if (res.data.success) {
-        setShowSuccessToast(true);
-        setTimeout(() => {
-          setShowSuccessToast(false);
-          onSuccess(res.data.orderId);
-        }, 2500);
-      } else {
-        alert("COD order failed: " + res.data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      alert("An error occurred while placing COD order.");
-    } finally {
-      setLoading(false);
-    }
+    // Instead of immediately confirming COD, redirect to the COD Gateway page
+    // where user can review and edit shipping details before confirming.
+    onClose(); // Close the modal first
+    navigate(`/cod-checkout/${orderId}`);
   };
 
   return (
@@ -172,6 +149,10 @@ export default function CheckoutModal({ isOpen, onClose, orderId, checkoutItems,
                 ) : (
                   <p>No items found</p>
                 )}
+              </div>
+              <div className="summary-item" style={{ paddingTop: '8px', borderTop: '1px dashed #e2e8f0', marginTop: '8px' }}>
+                <span className="summary-item-name" style={{ color: '#64748b' }}>Delivery Fee</span>
+                <span className="summary-item-price" style={{ color: '#64748b' }}>{deliveryFee === 0 ? 'FREE' : `₹${deliveryFee}`}</span>
               </div>
               <div className="summary-total">
                 <span>Total to Pay</span>

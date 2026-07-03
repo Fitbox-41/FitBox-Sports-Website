@@ -17,10 +17,12 @@ import FAQ from './pages/FAQ';
 import Sitemap from './pages/Sitemap';
 import Account from './pages/Account';
 import Orders from './pages/Orders';
+import CODGateway from './pages/CODGateway';
 import MobileNav from './components/MobileNav';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider, ProductContext } from './context/ProductContext';
 import { AuthProvider } from './context/AuthContext';
+import { SettingsProvider } from './context/SettingsContext';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Analytics } from '@vercel/analytics/react';
 import Loader from './components/Loader';
@@ -94,6 +96,7 @@ function AppContent() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/account" element={<Account />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/shipping" element={<Shipping />} />
@@ -120,11 +123,13 @@ function AppContent() {
 function App() {
   return (
     <AuthProvider>
-      <ProductProvider>
-        <CartProvider>
-          <AppContent />
-        </CartProvider>
-      </ProductProvider>
+      <SettingsProvider>
+        <ProductProvider>
+          <CartProvider>
+            <AppContent />
+          </CartProvider>
+        </ProductProvider>
+      </SettingsProvider>
     </AuthProvider>
   );
 }
