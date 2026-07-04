@@ -3,6 +3,7 @@ import { useEffect, useContext, useState } from 'react';
 import Home from './pages/Home';
 import ProductPage from './pages/ProductPage';
 import ProductCategory from './pages/ProductCategory';
+import Under99 from './pages/Under99';
 import Cart from './pages/Cart';
 import Favourite from './pages/Favourite';
 import Auth from './pages/Auth';
@@ -106,7 +107,7 @@ function AppContent() {
           <Route path="/team" element={<Team />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/sitemap" element={<Sitemap />} />
-          <Route path="/under99" element={<Home />} />
+          <Route path="/under99" element={<Under99 />} />
           <Route path="/category/:categoryId" element={<ProductCategory />} />
           
           {/* Catch-all to home */}

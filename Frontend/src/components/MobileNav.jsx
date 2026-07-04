@@ -82,9 +82,9 @@ const MobileNav = () => {
           </svg>
         </Link>
 
-        <a href="https://youtube.com" className="mobile-nav-item nav-999" aria-label="YouTube">
-          <span className="text-999">99</span>
-        </a>
+        <Link to="/under99" className={`mobile-nav-item ${location.pathname === '/under99' ? 'active' : ''}`} aria-label="Under ₹99">
+          <span className="nav-999 text-999">99</span>
+        </Link>
 
         <button 
           className={`mobile-nav-item ${(location.pathname === '/account' || isUserMenuOpen) ? 'active' : ''}`} 

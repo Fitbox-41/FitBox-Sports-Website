@@ -11,20 +11,64 @@
   height: 111px; /* Match Header + Sale Ribbon */
 }
 
+.header-spacer.under99-spacer {
+  display: none;
+}
+
+.category-hero.under99-hero {
+  margin-top: 0;
+}
+
 @media (max-width: 1024px) {
   .header-spacer {
     height: 76px; /* Exactly match mobile header height */
+  }
+
+  .header-spacer.under99-spacer {
+    display: none;
+  }
+
+  .category-hero.under99-hero {
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 76px !important;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .category-hero.under99-hero .hero-bg {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .category-hero.under99-hero .hero-bg img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center 50% !important;
+    display: block !important;
+    filter: brightness(0.95);
+  }
+
+  .category-hero.under99-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
   }
 }
 
 /* ──── HERO SECTION ──── */
 .category-hero {
   position: relative;
-  height: 350px;
+  height: 520px;
   display: flex;
   align-items: center;
   overflow: hidden;
   color: white;
+}
+
+.category-hero.under99-hero {
+  height: 420px;
 }
 
 .hero-bg {
@@ -38,9 +82,10 @@
 
 .hero-bg img {
   width: 100%;
-  height: 100%;
+  height: 120%;
   object-fit: cover;
-  filter: brightness(0.7);
+  object-position: center 20%;
+  filter: brightness(0.92);
 }
 
 .hero-overlay {
@@ -49,8 +94,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.08) 100%);
   z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .category-hero {
+    height: 420px;
+  }
 }
 
 .hero-content {

@@ -9,6 +9,7 @@ import './Header.css';
 const categories = [
   { label: 'Weights & Dumbbells',    path: '/category/weights-and-dumbbells'   },
   { label: 'Workout Essentials',     path: '/category/workout-essentials'       },
+  { label: '99',                     path: '/under99',                         isUnder99: true },
   { label: 'Support & Protection',   path: '/category/support-and-protection'     },
   { label: 'Balls & Sports',         path: '/category/balls-and-sports'      },
   { label: 'Lifestyle & Accessories',path: '/category/lifestyle-and-accessories' },
@@ -58,6 +59,14 @@ const userMenuItems = [
     ),
   },
 ];
+
+const resolveProductPrice = (product) => {
+  const variant = product?.variants?.[0];
+  const size = variant?.sizes?.[0];
+  const raw = size?.price ?? variant?.price ?? product?.price ?? 0;
+  const numeric = Number(String(raw).replace(/[^0-9.]/g, ''));
+  return Number.isFinite(numeric) ? numeric : 0;
+};
 
 export default function Header({ hideSubHeader = false, hideSaleRibbon = false }) {
   const location = useLocation();
@@ -219,7 +228,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           <Link to="/" className="logo" id="logo-link" onClick={() => setMenuOpen(false)}>
             <picture>
               <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.webp" />
-              <img src="/fitbox-_logo.-2-blackpng.webp" alt="FitBox Sports" className="header-logo-img" />
+              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="header-logo-img" />
             </picture>
           </Link>
 
@@ -285,6 +294,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                       <>
                         {searchResults.map((p, idx) => {
                           const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
+                          const resolvedPrice = resolveProductPrice(p);
                           return (
                             <div 
                               key={p.id} 
@@ -295,7 +305,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                               <img src={img} alt={p.name} className="search-result-img" />
                               <div className="search-result-info">
                                 <h5 className="search-result-title">{p.name}</h5>
-                                <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
+                                <span className="search-result-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
                               </div>
                               <button 
                                 className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
@@ -512,6 +522,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                 <>
                   {searchResults.map((p, idx) => {
                     const img = p.image || p.imgSrc || (p.variants && p.variants[0].images[0]);
+                    const resolvedPrice = resolveProductPrice(p);
                     return (
                       <div 
                         key={p.id} 
@@ -522,7 +533,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                         <img src={img} alt={p.name} className="search-result-img" />
                         <div className="search-result-info">
                           <h5 className="search-result-title">{p.name}</h5>
-                          <span className="search-result-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
+                          <span className="search-result-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
                         </div>
                         <button 
                           className={`search-result-fav-btn ${wishlist.some(w => w.id === p.id) ? 'active' : ''}`} 
@@ -575,8 +586,17 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
         <div className={`sub-header ${menuOpen ? 'sub-header--open' : ''} ${(!isScrollingUp && !menuOpen) ? 'sub-header--hidden' : ''}`}>
           <nav className="sub-header-nav">
             {categories.map((cat) => (
-              <Link key={cat.path} to={cat.path} className="sub-header-link" onClick={() => setMenuOpen(false)}>
-                {cat.label}
+              <Link
+                key={cat.path}
+                to={cat.path}
+                className={`sub-header-link ${cat.isUnder99 ? 'sub-header-link--highlight' : ''}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {cat.isUnder99 ? (
+                  <span className="sub-header-animated-text">{cat.label}</span>
+                ) : (
+                  cat.label
+                )}
               </Link>
             ))}
           </nav>

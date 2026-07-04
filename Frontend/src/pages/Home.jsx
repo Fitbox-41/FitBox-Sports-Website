@@ -1060,6 +1060,13 @@ export default function Home() {
                 {heroResults.length ? (
                   heroResults.map((p) => {
                     const img = p.imgSrc || (p.variants && p.variants[0]?.images?.[0]);
+                    // Resolve price from variants/sizes if root-level price is missing
+                    const resolvedPrice = (() => {
+                      const v = p.variants?.[0];
+                      const s = v?.sizes?.[0];
+                      const raw = s?.price ?? v?.price ?? p.price ?? 0;
+                      return Number(String(raw).replace(/[^0-9.]/g, '')) || 0;
+                    })();
                     return (
                       <button
                         key={p.id}
@@ -1069,7 +1076,7 @@ export default function Home() {
                       >
                         <img className="hero-search-item-img" src={img} alt={p.name} />
                         <span className="hero-search-item-name">{p.name}</span>
-                        <span className="hero-search-item-price">₹{String(p.price).replace(/[^0-9,.]/g, '')}</span>
+                        <span className="hero-search-item-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
                       </button>
                     );
                   })
