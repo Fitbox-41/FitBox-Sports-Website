@@ -1185,13 +1185,33 @@
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Safety fallback: if JS never fires .active, cards auto-reveal after 1.5s */
+  animation: forceReveal 0.01s 1.5s forwards;
+}
+
+@keyframes forceReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .reveal-on-scroll.active {
   opacity: 1;
   transform: translateY(0);
+  animation: none; /* Cancel the fallback once JS fires */
   will-change: opacity, transform;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
 }
 
 /* ═══════════════════════════════════════════

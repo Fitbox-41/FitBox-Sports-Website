@@ -434,13 +434,20 @@ export default function Home() {
   const [canAnimate, setCanAnimate] = useState(false);
 
   useEffect(() => {
+    // Immediately activate if loader has already finished (e.g., navigating back)
     if (window.__APP_LOADED__) {
       setCanAnimate(true);
       return;
     }
     const onLoaderFinished = () => setCanAnimate(true);
     window.addEventListener('loaderFinished', onLoaderFinished);
-    return () => window.removeEventListener('loaderFinished', onLoaderFinished);
+    // Hard fallback: if the loaderFinished event was missed (race condition on hosted/slow networks),
+    // force-enable animations after 1 second so cards are never permanently invisible.
+    const fallback = setTimeout(() => setCanAnimate(true), 1000);
+    return () => {
+      window.removeEventListener('loaderFinished', onLoaderFinished);
+      clearTimeout(fallback);
+    };
   }, []);
 
   /* ── Hot Products Carousel State (Infinite) ── */
@@ -535,8 +542,9 @@ export default function Home() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+      // Larger rootMargin so elements near/at the viewport edge activate immediately on load
+      rootMargin: '200px 0px',
+      threshold: 0.05
     };
 
     const observerCallback = (entries) => {
@@ -548,19 +556,18 @@ export default function Home() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const elements = document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll');
-    elements.forEach(el => observer.observe(el));
 
-    // Re-run when products load (async API fetch) or when Load More is clicked
-    // Small timeout so React finishes rendering new cards before observing
+    // Observe all current elements immediately
+    document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll').forEach(el => observer.observe(el));
+
+    // Also re-observe after a short delay to catch async-rendered product cards
     const timeout = setTimeout(() => {
-      const freshElements = document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll');
-      freshElements.forEach(el => observer.observe(el));
-    }, 50);
+      document.querySelectorAll('.scroll-reveal-title, .reveal-on-scroll').forEach(el => observer.observe(el));
+    }, 200);
 
     return () => {
       clearTimeout(timeout);
-      elements.forEach(el => observer.unobserve(el));
+      observer.disconnect(); // Cleanly disconnect all observations
     };
   }, [canAnimate, flattenedBestSellers.length, newArrivals.length, bestSellerVisibleCount]);
 
