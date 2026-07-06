@@ -2915,7 +2915,7 @@ const products = [
     {
         "id": 34,
         "name": "FitBox Sports Wall Mounting Chin Up Bar, Pull Up Bar & Ab Straps Combo, 120 Kg Capacity",
-        "category": "Wall Mounting",
+        "category": "Workout Essentials",
         "subCategory": "Wall Mounting",
         "isNew": false,
         "isOutOfStock": false,
@@ -3008,7 +3008,420 @@ const products = [
                 ]
             }
         ]
+    },
+    {
+        "id": 36,
+        "name": "FitBox Sports Pickleball Balls Set of 3 – Bright, Durable Indoor & Outdoor Balls for Casual Play, 40 Hole Design – Great for Families & Beginners",
+        "category": "Balls & Sports",
+        "subCategory": "Pickleball",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "40-Hole Design",
+            "Indoor & Outdoor",
+            "Tournament Grade"
+        ],
+        "longDesc": "Serve up serious fun with the FitBox Sports Pickleball Balls Set of 3. These bright yellow balls feature the official 40-hole design for consistent flight, reliable bounce, and predictable spin — whether you're playing indoors or outdoors. Built from tough, seamless plastic construction, they resist cracking and deformation match after match. Bold colour keeps the ball visible during fast rallies, making them ideal for beginners, families, and seasoned players who want a dependable practice ball at an unbeatable value.",
+        "features": ["Approved for Tournament Play | Official size and weight with 40 precision-drilled holes for consistent flight and bounce — trusted by competitive and recreational players alike.",
+            "Built for Performance | Designed to withstand tough conditions with a seamless, one-piece construction that resists cracking and deformation over time.",
+            "Consistent Bounce & Flight | Balanced design ensures reliable bounce, straight flight, and predictable spin – perfect for drills, practice, or intense matches.",
+            "Super Visible, Super Fun | Bright, bold color makes it easy to keep your eye on the ball – even during fast-paced rallies. "
+        ],
+        "material": "Plastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/36.1.4.jpg",
+            "/Images/36.1.5.jpg",
+            "/Images/36.1.6.jpg"
+        ],
+        "imgSrc": "/Images/36.1.1.jpg",
+        "hoverImgSrc": "/Images/36.1.2.jpg",
+        "variants": [
+            {
+                "color": "Yellow",
+                "images": [
+                    "/Images/36.1.1.jpg",
+                    "/Images/36.1.2.jpg",
+                    "/Images/36.1.3.jpg",
+                    "/Images/36.1.4.jpg",
+                    "/Images/36.1.5.jpg",
+                    "/Images/36.1.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "Pack of 3",
+                        "price": 239,
+                        "oldPrice": 299,
+                        "weight": 23
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 37,
+        "name": "FitBox Sports Viper Series Full Size Heavy Duty Plastic Cricket Bat Suitable with Tennis Ball, Wind Ball & Plastic Ball. ",
+        "category": "Balls & Sports",
+        "subCategory": "Cricket",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Full Size",
+            "Heavy Duty Plastic",
+            "Multi-Ball Compatible"
+        ],
+        "longDesc": "Step up to the crease with the FitBox Sports Viper Series Cricket Bat. Crafted from heavy-duty, full-size plastic, this bat is engineered to handle tennis balls, wind balls, and lightweight plastic balls with equal ease. Its robust construction delivers a powerful pick-up and a satisfying feel at the crease, making it perfect for street cricket, garden matches, and casual backyard play. Lightweight yet sturdy, the Viper Series lets players of all ages enjoy authentic cricket action without the maintenance of a traditional willow bat.",
+        "features": ["Full Size Heavy Duty Plastic Cricket Bat Suitable with Tennis Ball, Wind Ball & Plastic Ball."],
+        "material": "Plastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/37.1.3.jpg",
+            "/Images/37.1.4.jpg",
+            "/Images/37.1.5.jpg"
+        ],
+        "imgSrc": "/Images/37.1.1.jpg ",
+        "hoverImgSrc": "/Images/37.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/37.1.1.jpg",
+                    "/Images/37.1.2.jpg",
+                    "/Images/37.1.3.jpg",
+                    "/Images/37.1.4.jpg",
+                    "/Images/37.1.5.jpg",
+                    "/Images/37.1.6.jpg",
+                    "/Images/37.1.7.jpg",
+                    "/Images/37.1.8.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "One Size",
+                        "price": 399,
+                        "oldPrice": 499,
+                        "weight": 800
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 38,
+        "name": "FitBox Sports PicklePWR Pickleball Paddles Set – High-Performance Premium Boarded Composite Surface with Cushion Grip | All Skill Levels | Includes Protective Cover & 3 Balls - Black/Offwhite ",
+        "category": "Balls & Sports",
+        "subCategory": "Pickleball",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Composite Surface",
+            "Cushion Grip",
+            "Includes 3 Balls & Cover"
+        ],
+        "longDesc": "Dominate every rally with the FitBox Sports PicklePWR Pickleball Paddles Set. This premium two-paddle bundle features a boarded composite surface that delivers the ideal combination of power, control, and durability. The ergonomic cushioned grip absorbs impact and sweat, keeping your hand comfortable during long, intense sessions. Engineered weight distribution ensures quick net reflexes and forceful baseline drives, while the textured surface amplifies spin and ball placement. The set includes a protective cover and 3 pickleball balls — everything you need to start playing straight out of the box.",
+        "features": ["Lightweight & Durable Paddles | Crafted with a Premium Boarded Composite Surface for the perfect blend of power, control, and durability. Great for extended play without arm fatigue.",
+            "Balanced Weight for All Play Styles | Engineered with optimal weight distribution for quick reflexes at the net and powerful drives from the baseline.",
+            "Comfortable, Cushioned Grip | Ergonomic non-slip grip offers superior comfort and sweat absorption. Ensures enhanced control and accuracy during intense rallies and long matches.",
+            "Optimized for Power & Spin | Engineered surface texture enhances spin and ball placement. Ideal for players looking to improve their game with precision and finesse. "],
+        "material": "Wood",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/38.1.4.jpg",
+            "/Images/38.1.5.jpg",
+            "/Images/38.1.6.jpg",
+
+        ],
+        "imgSrc": "/Images/38.1.1.jpg",
+        "hoverImgSrc": "/Images/38.1.2.jpg",
+        "variants": [
+            {
+                "color": "black/offwhite",
+                "images": [
+                    "/Images/38.1.1.jpg",
+                    "/Images/38.1.2.jpg",
+                    "/Images/38.1.3.jpg",
+                    "/Images/38.1.4.jpg",
+                    "/Images/38.1.5.jpg",
+                    "/Images/38.1.6.jpg",
+                    "/Images/38.1.7.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "16L x 8W Centimeters",
+                        "price": 1699,
+                        "oldPrice": 2099,
+                        "weight": 230
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 39,
+        "name": "FitBox Sports PicklePWR Pickleball Paddle – Premium Boarded Composite Surface & Shock-Absorbent Handle for Power & Accuracy | Men & Women - Offwhite ",
+        "category": "Balls & Sports",
+        "subCategory": "Pickleball",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Composite Surface",
+            "Shock-Absorbent Handle",
+            "For Men & Women"
+        ],
+        "longDesc": "Elevate your game with the FitBox Sports PicklePWR Pickleball Paddle in classic offwhite. Engineered with a premium boarded composite surface, this single paddle delivers pinpoint accuracy and responsive power shot after shot. The shock-absorbent handle reduces vibration on impact, protecting your wrist and elbow during extended play. The ergonomic cushioned grip keeps your hand dry and locked-in, while the optimised surface texture lets you generate spin and direct shots with confidence. Suitable for men and women at all skill levels, from first-time players to competitive enthusiasts.",
+        "features": ["Lightweight & Durable Paddle | Crafted with a Premium Boarded Composite Surface for the perfect blend of power, control, and durability. Great for extended play without arm fatigue.",
+            "Balanced Weight for All Play Styles | Engineered with optimal weight distribution for quick reflexes at the net and powerful drives from the baseline.",
+            "Comfortable, Cushioned Grip | Ergonomic non-slip grip offers superior comfort and sweat absorption. Ensures enhanced control and accuracy during intense rallies and long matches.",
+            "Optimized for Power & Spin | Engineered surface texture enhances spin and ball placement. Ideal for players looking to improve their game with precision and finesse."],
+        "material": "Wood",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/39.1.3.jpg",
+            "/Images/39.1.4.jpg",
+            "/Images/39.1.5.jpg"
+        ],
+        "imgSrc": "/Images/39.1.1.jpg",
+        "hoverImgSrc": "/Images/39.1.2.jpg",
+        "variants": [
+            {
+                "color": "Offwhite",
+                "images": [
+                    "/Images/39.1.1.jpg",
+                    "/Images/39.1.2.jpg",
+                    "/Images/39.1.3.jpg",
+                    "/Images/39.1.4.jpg",
+                    "/Images/39.1.5.jpg",
+                    "/Images/39.1.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "41L x 20W Centimeters",
+                        "price": 1699,
+                        "oldPrice": 0,
+                        "weight": 230
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 40,
+        "name": "FitBox Sports Pickleball Balls Set of 6 – Bright, Durable Indoor & Outdoor Balls for Casual Play, 40 Hole Design – Great for Families & Beginners ",
+        "category": "Balls & Sports",
+        "subCategory": "Pickleball",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Pack of 6",
+            "40-Hole Design",
+            "Indoor & Outdoor"
+        ],
+        "longDesc": "Stock up and keep the game going with the FitBox Sports Pickleball Balls Set of 6. These bright yellow balls are built for all-weather performance, whether you're hitting on a hardwood gym floor or an open outdoor court. The official 40-hole design ensures a consistent, true-flying trajectory every time, while the seamless one-piece plastic construction stands up to repeated hard play without cracking. At six balls per pack, you'll always have a spare on hand for long practice sessions, group play, or teaching beginners the basics of pickleball.",
+        "features": ["Approved for Tournament Play | Official size and weight with 40 precision-drilled holes for consistent flight and bounce — trusted by competitive and recreational players alike.",
+            "Built for Performance | Designed to withstand tough conditions with a seamless, one-piece construction that resists cracking and deformation over time.",
+            "Consistent Bounce & Flight | Balanced design ensures reliable bounce, straight flight, and predictable spin – perfect for drills, practice, or intense matches.",
+            "Super Visible, Super Fun | Bright, bold color makes it easy to keep your eye on the ball – even during fast-paced rallies. "],
+        "material": "Plastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/40.1.4.jpg",
+            "/Images/40.1.5.jpg",
+            "/Images/40.1.6.jpg",
+        ],
+        "imgSrc": "/Images/40.1.1.jpg",
+        "hoverImgSrc": "/Images/40.1.2.jpg",
+        "variants": [
+            {
+                "color": "Yellow",
+                "images": [
+                    "/Images/40.1.1.jpg",
+                    "/Images/40.1.2.jpg",
+                    "/Images/40.1.3.jpg",
+                    "/Images/40.1.4.jpg",
+                    "/Images/40.1.5.jpg",
+                    "/Images/40.1.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Pack of 6",
+                        "price": 799,
+                        "oldPrice": 1199,
+                        "weight": 23
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 41,
+        "name": " FitBox Sports Boxing Wraps - Punching Wraps Hand & Wrist Wraps - Protectors",
+        "category": "Support & Protection",
+        "subCategory": "Wrist & Hand Wraps",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Wrist & Hand Support",
+            "Breathable Cotton",
+            "Hook & Loop Closure"
+        ],
+        "longDesc": "Train harder and hit heavier with the FitBox Sports Boxing Wraps. Designed for boxers, MMA fighters, weightlifters, and functional fitness athletes, these wraps deliver firm wrist stabilisation and knuckle protection so you can push your limits safely. Constructed from premium breathable cotton, they wick sweat efficiently to keep your hands dry and blister-free through your toughest sessions. The heavy-duty hook-and-loop closure locks the wrap securely in place — no slipping or bunching mid-workout. At 180 inches in length, they wrap comfortably around every hand size, providing full coverage for boxing, CrossFit, powerlifting, and bodyweight training.",
+        "features": ["STABILIZE YOUR WRISTS & Hand To Hit It HARD - You’ll literally wonder how you ever worked out without them. These high performance straps provide wrist support and stability for weightlifters, Crossfit, MMA, Powerlifting, push ups, planks, burpees & strength training. Boost your workout performance for more challenging advanced lifts and gym routines.",
+            "PREMIUM BREATHABLE MATERIAL - Constructed from the highest quality breathable cotton, these wraps wick sweat to keep your hands dry, comfortable and free of blisters during even your most intense workouts. ",
+            "SECURE HOOK & LOOP CLOSURE - Features a premium, heavy-duty hook & loop closure that stays firmly in place during your entire workout. No slipping, no bunching — just secure, reliable support from start to finish.",
+            "IDEAL LENGTH FOR ALL WORKOUTS - At 180 inches long, these wraps offer the perfect balance of coverage and flexibility. Easy to wrap, comfortable to wear, and secure enough for even the most demanding training sessions."
+        ],
+        "material": "",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/41.1.4.jpg",
+            "/Images/41.1.5.jpg",
+            "/Images/41.1.6.jpg"
+        ],
+        "imgSrc": "/Images/41.1.1.jpg",
+        "hoverImgSrc": "/Images/41.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/41.1.1.jpg",
+                    "/Images/41.1.2.jpg",
+                    "/Images/41.1.3.jpg",
+                    "/Images/41.1.4.jpg",
+                    "/Images/41.1.5.jpg",
+                    "/Images/41.1.6.jpg",
+                    "/Images/41.1.7.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 249,
+                        "oldPrice": 500,
+                        "weight": 250
+                    },
+
+                ]
+            },
+            {
+                "color": "Red",
+                "images": [
+                    "/Images/41.2.1.jpg",
+                    "/Images/41.2.2.jpg",
+                    "/Images/41.2.3.jpg",
+                    "/Images/41.2.4.jpg",
+                    "/Images/41.2.5.jpg",
+                    "/Images/41.2.6.jpg",
+                    "/Images/41.2.7.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 249,
+                        "oldPrice": 500,
+                        "weight": 250
+                    },
+
+                ]
+            }
+        ]
+    },
+    {
+        "id": 42,
+        "name": "FitBox Sports Push-Up Board for Push Up Workouts - Non-Slip Handles | Push Up Handles with Cushioned Foam Grip and Non-Slip Sturdy Structure ",
+        "category": "Workout Essentials",
+        "subCategory": "Push-Up Equipment",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Non-Slip Base",
+            "Cushioned Foam Grip",
+            "Multi-Muscle Training"
+        ],
+        "longDesc": "Transform your bodyweight training with the FitBox Sports Push-Up Board. This versatile push-up platform is colour-coded to target specific muscle groups — chest, shoulders, back, and biceps — all in one compact unit. The non-slip base stays firmly grounded on any surface, while the cushioned foam handles reduce wrist strain and keep your grip secure even during sweaty, high-rep sets. Assembly takes seconds: just align the handles, press them in, and you're ready to go. Lightweight and collapsible, the board packs away neatly for home workouts, travel, or gym use.",
+        "features": [
+            "UNIQUE DESIGN: The FitBox Sports Push Up Board for Men and Women features a unique design that relieves wrist pressure, allowing you to perform multiple pushup workouts. You can work out different parts of your body with this one piece of equipment, such as your shoulders, back, chest, and biceps.",
+            "High-quality, comfortable handles that are made of sweat-absorbing material and have a non-slip surface that gives you a firm, soft, and skid-free grip",
+            "EASY TO ASSEMBLE : The FitBox Sports Push Up Board is so simple to assemble that children can do it quickly as well. Just Take These Three Steps I align, push, and then it's ready to use. Because the equipment is portable, it requires very little room for storage."
+        ],
+        "material": "Blend",
+        "relatedIds": [],
+        "showcaseImages": ["/Images/42.1.4.jpg",
+            "/Images/42.1.5.jpg",
+            "/Images/42.1.6.jpg"
+        ],
+        "imgSrc": "/Images/42.1.1.jpg",
+        "hoverImgSrc": "/Images/42.1.2.jpg",
+        "variants": [
+            {
+                "color": "PushUp - Stand ",
+                "images": [
+                    "/Images/42.1.1.jpg",
+                    "/Images/42.1.2.jpg",
+                    "/Images/42.1.3.jpg",
+                    "/Images/42.1.4.jpg",
+                    "/Images/42.1.5.jpg",
+                    "/Images/42.1.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": " 58L x 46W x 72H Centimeters ",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
+            }
+        ]
+    },
+    {
+  "id": 43,
+  "name": "FitBox Sports Push-Up Bars Stand Non-Slip Handles | Push Up Handles with Cushioned Foam Grip and Non-Slip Sturdy Structure ",
+  "category": "Workout Essentials",
+  "subCategory": "Push-Up Equipment",
+  "isNew": false,
+  "isOutOfStock": false,
+  "qualities": [
+    "Non-Slip Handles",
+    "Cushioned Foam Grip",
+    "Portable & Lightweight"
+  ],
+  "longDesc": "Take your push-up performance to the next level with the FitBox Sports Push-Up Bars. These sturdy elevated handles are engineered with a slight tilt that naturally relieves wrist pressure, allowing deeper range of motion and greater muscle activation across your chest, shoulders, triceps, and back. The cushioned foam grips are wrapped in sweat-absorbing material for a firm, skid-free hold throughout your entire set. The compact, portable design means you can set up for a full upper-body session at home, in the gym, or on the go — with minimal setup time and even less storage space needed.",
+  "features": [ "UNIQUE DESIGN: The FitBox Sports Push Up Bar for Men and Women features a tilt design that relieves wrist pressure, allowing you to perform more pushups at once. You can work out different parts of your body with this one piece of equipment, such as your shoulders, back, chest, and biceps.",
+"High-quality, comfortable handles that are made of sweat-absorbing material and have a non-slip surface that gives you a firm, soft, and skid-free grip",
+"EASY TO ASSEMBLE : The FitBox Sports Push Up Bar is so simple to assemble that children can do it quickly as well. Just Take These Three Steps I align, push, and then it's ready to use. Because the equipment is portable, it requires very little room for storage."
+  ],
+  "material": "Blend",
+  "relatedIds": [],
+  "showcaseImages": [
+    "/Images/43.1.4.jpg",
+    "/Images/43.1.5.jpg",
+    "/Images/43.1.6.jpg"
+  ],
+  "imgSrc": "/Images/43.1.1.jpg",
+  "hoverImgSrc": "/Images/43.1.2.jpg",
+  "variants": [
+    {
+      "color": " PushUp - Handles ",
+      "images": [
+        "/Images/43.1.1.jpg",
+        "/Images/43.1.2.jpg",
+        "/Images/43.1.3.jpg",
+        "/Images/43.1.4.jpg",
+        "/Images/43.1.5.jpg",
+        "/Images/43.1.6.jpg",
+        "/Images/43.1.7.jpg"
+      ],
+      "sizes": [
+        {
+          "name": "Push-Up Bars",
+          "price": 0,
+          "oldPrice": 0,
+          "weight": 150 
+        }
+      ]
     }
+  ]
+}
+
 ];
 
 export default products;

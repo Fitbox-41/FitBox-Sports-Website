@@ -85,6 +85,20 @@ app.post('/api/developer/sync-products', async (req, res) => {
             if (existingProduct) {
                 p.isOutOfStock = existingProduct.isOutOfStock;
                 p.isNew = existingProduct.isNew;
+
+                // Merge variants: keep DB prices/sizes but always refresh images from products.js
+                if (existingProduct.variants && existingProduct.variants.length > 0) {
+                    p.variants = existingProduct.variants.map((dbVariant, idx) => {
+                        const localVariant = p.variants?.[idx] || {};
+                        return {
+                            ...dbVariant.toObject ? dbVariant.toObject() : dbVariant,
+                            images: (localVariant.images && localVariant.images.length > 0)
+                                ? localVariant.images
+                                : dbVariant.images || [],
+                            color: dbVariant.color || localVariant.color || '',
+                        };
+                    });
+                }
             }
             
             await Product.findOneAndUpdate(
@@ -118,8 +132,21 @@ const autoSyncProductsToDB = async () => {
                 
                 // Preserve variants (prices) if they exist in the DB
                 // This prevents the sync from overwriting manually set prices
+                // Merge variants: keep DB prices/sizes but always refresh images from products.js
+                // (images live in the local filesystem, so products.js is the source of truth for them)
                 if (existingProduct.variants && existingProduct.variants.length > 0) {
-                    p.variants = existingProduct.variants;
+                    p.variants = existingProduct.variants.map((dbVariant, idx) => {
+                        const localVariant = p.variants?.[idx] || {};
+                        return {
+                            ...dbVariant.toObject ? dbVariant.toObject() : dbVariant,
+                            // Always take images from products.js – they are filesystem paths
+                            images: (localVariant.images && localVariant.images.length > 0)
+                                ? localVariant.images
+                                : dbVariant.images || [],
+                            // Also refresh color label from local in case it was blank
+                            color: dbVariant.color || localVariant.color || '',
+                        };
+                    });
                 }
             }
             
