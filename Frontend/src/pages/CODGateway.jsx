@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CODGateway.css';
 import { useSettings } from '../context/SettingsContext';
+import { useCart } from '../context/CartContext';
 
 export default function CODGateway() {
   const { orderId } = useParams();
   const navigate = useNavigate();
   const { deliveryFee } = useSettings();
+  const { clearCart } = useCart();
   
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -75,6 +77,7 @@ export default function CODGateway() {
       
       if (res.data.success) {
         setSuccess(true);
+        clearCart();
       } else {
         alert("Failed to confirm COD: " + res.data.message);
         setIsConfirming(false);

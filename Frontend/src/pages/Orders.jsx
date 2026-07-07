@@ -127,7 +127,7 @@ const CancelButtonWithTimer = ({ order, onCancelClick }) => {
 
 export default function Orders() {
   const { currentUser } = useAuth();
-  const { toggleWishlist, wishlist } = useCart();
+  const { toggleWishlist, wishlist, clearCart } = useCart();
   const location = useLocation();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -168,6 +168,7 @@ export default function Orders() {
 
       if (payment === 'success') {
         setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
+        clearCart();
       } else if (payment === 'failed') {
         setPaymentToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
       } else if (payment === 'error') {
@@ -188,6 +189,7 @@ export default function Orders() {
             const status = verifyRes.data.paymentStatus;
             if (status === 'Paid') {
               setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
+              clearCart();
             } else if (status === 'Failed') {
               setPaymentToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
             }
@@ -265,8 +267,12 @@ export default function Orders() {
       const res = await axios.post(`${apiUrl}/api/orders/${cancelModalOrder._id}/cancel`, payload, config);
       
       if (res.data.success) {
+        if (cancelModalOrder.paymentStatus === 'Paid') {
+          alert('We are sorry to see your order cancelled. Your refund has been initiated and will reflect in your original payment method within 5-7 business days.');
+        } else {
+          alert('Order cancelled successfully');
+        }
         setCancelModalOrder(null);
-        alert('Order cancelled successfully');
         await fetchOrders();
       }
     } catch (err) {

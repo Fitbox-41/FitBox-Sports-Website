@@ -341,7 +341,8 @@ export default function ProductPage() {
           ...buyNowItem,
           id: product._id
         }], 
-        totalAmount 
+        totalAmount,
+        deliveryCharge: shippingAmount
       }, config);
       
       if (res.data.success) {

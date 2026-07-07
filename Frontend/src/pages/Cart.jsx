@@ -41,7 +41,8 @@ export default function Cart() {
       const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
       const res = await axios.post(`${apiUrl}/api/orders/place`, { 
         items: cart, 
-        totalAmount: total 
+        totalAmount: total,
+        deliveryCharge: shipping
       }, config);
       
       if (res.data.success) {

@@ -8,7 +8,7 @@ import axios from 'axios';
 
 export const placeOrder = async (req, res) => {
   try {
-    const { items, totalAmount } = req.body;
+    const { items, totalAmount, deliveryCharge } = req.body;
 
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
@@ -22,6 +22,20 @@ export const placeOrder = async (req, res) => {
       price: typeof item.price === 'string' ? Number(item.price.replace(/[^0-9.-]+/g, "")) : item.price
     }));
 
+    let shippingAddress = null;
+    if (user && user.addresses && user.addresses.length > 0) {
+      const addr = user.addresses[0];
+      shippingAddress = {
+        name: user.name || '',
+        phone: user.phone || addr.phone || '',
+        street: addr.address || addr.street || '',
+        city: addr.city || '',
+        state: addr.state || '',
+        zip: addr.pincode || addr.zip || '',
+        country: 'India'
+      };
+    }
+
     const order = new Order({
       userId,
       customerName: user?.name || '',
@@ -29,6 +43,8 @@ export const placeOrder = async (req, res) => {
       customerPhone: user?.phone || '',
       items: sanitizedItems,
       totalAmount,
+      deliveryCharge: deliveryCharge || 0,
+      shippingAddress,
       paymentStatus: 'Pending Payment'
     });
     await order.save();
@@ -139,6 +155,14 @@ export const mockPayment = async (req, res) => {
           }).join('')}
                 </tbody>
                 <tfoot>
+                  <tr style="background:#fff3ee;">
+                    <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
+                    <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                  </tr>
+                  <tr style="background:#fff3ee;">
+                    <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
+                    <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                  </tr>
                   <tr style="background:#fff3ee; font-weight:bold;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
                     <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
@@ -327,6 +351,14 @@ const processPaidOrder = async (order) => {
                 }).join('')}
               </tbody>
               <tfoot>
+                <tr style="background:#fff3ee;">
+                  <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
+                  <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                </tr>
+                <tr style="background:#fff3ee;">
+                  <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
+                  <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                </tr>
                 <tr style="background:#fff3ee; font-weight:bold;">
                   <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
                   <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
@@ -714,9 +746,17 @@ export const cancelOrder = async (req, res) => {
                     }).join('')}
                   </tbody>
                   <tfoot>
+                    <tr style="background:#fff3ee;">
+                      <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
+                      <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                    </tr>
+                    <tr style="background:#fff3ee;">
+                      <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
+                      <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                    </tr>
                     <tr style="background:#fff3ee; font-weight:bold;">
                       <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. \${order.totalAmount}</td>
+                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -769,6 +809,18 @@ export const codPayment = async (req, res) => {
 
     await order.save();
 
+    // Generate Invoice
+    let pdfBuffer = null;
+    try {
+      const { invoiceNumber, invoiceUrl, buffer } = await generateInvoice(order);
+      order.invoiceNumber = invoiceNumber;
+      order.invoiceUrl = invoiceUrl;
+      pdfBuffer = buffer;
+      await order.save();
+    } catch (invoiceError) {
+      console.error("COD Invoice generation failed:", invoiceError);
+    }
+
     // Send Order Confirmation Email for COD
     try {
       const user = await User.findById(order.userId);
@@ -777,18 +829,65 @@ export const codPayment = async (req, res) => {
         await sendEmail({
           from: process.env.EMAIL_CART_FROM || process.env.EMAIL_FROM || 'FitBox Sports <cart@fitboxsports.in>',
           email: emailToSend,
-          subject: `Order Placed (COD) - FitBox Sports (${order._id})`,
+          subject: `Order Placed (COD) - FitBox Sports (${order.invoiceNumber || order._id})`,
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
               <h2 style="color: #ff6b35;">Order Placed Successfully!</h2>
               <p>Hi ${order.shippingAddress?.name || user?.name || 'Customer'},</p>
               <p>Your order has been placed with <strong>Cash on Delivery</strong>. Please keep ₹${order.totalAmount} ready at the time of delivery.</p>
               <p>Order ID: <strong>${order._id}</strong></p>
+
+              <table style="width:100%; border-collapse:collapse; margin: 20px 0;">
+                <thead>
+                  <tr style="background:#1a1a1a; color:#fff;">
+                    <th style="padding:10px 14px; text-align:left;">Product</th>
+                    <th style="padding:10px 14px; text-align:center;">Qty</th>
+                    <th style="padding:10px 14px; text-align:right;">Price</th>
+                    <th style="padding:10px 14px; text-align:right;">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(order.items || []).map((item, i) => {
+                    const price = Number(String(item.price).replace(/[^0-9.-]+/g, ''));
+                    const qty = item.quantity || 1;
+                    const variant = item.selectedVariant ? ` (${item.selectedVariant})` : '';
+                    const size = item.selectedSize ? ` - ${item.selectedSize}` : '';
+                    const bg = i % 2 === 0 ? '#f9f9f9' : '#ffffff';
+                    return `<tr style="background:${bg};">
+                      <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
+                      <td style="padding:10px 14px; text-align:center;">${qty}</td>
+                      <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
+                      <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                    </tr>`;
+                  }).join('')}
+                </tbody>
+                <tfoot>
+                  <tr style="background:#fff3ee;">
+                    <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
+                    <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                  </tr>
+                  <tr style="background:#fff3ee;">
+                    <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
+                    <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                  </tr>
+                  <tr style="background:#fff3ee; font-weight:bold;">
+                    <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
+                    <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                  </tr>
+                </tfoot>
+              </table>
+
+              <p>${pdfBuffer ? 'Please find your official invoice attached to this email.' : 'Your invoice will be available in your orders page.'}</p>
               <br/>
               <p>Best Regards,</p>
               <p><strong>FitBox Sports Team</strong></p>
             </div>
-          `
+          `,
+          attachments: pdfBuffer ? [{
+            filename: `Invoice-${order.invoiceNumber || order._id}.pdf`,
+            content: pdfBuffer,
+            contentType: 'application/pdf'
+          }] : undefined
         });
         console.log(`COD confirmation email sent to ${emailToSend}`);
       }

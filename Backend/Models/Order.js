@@ -16,6 +16,7 @@ const orderSchema = new mongoose.Schema({
     imgSrc: String
   }],
   totalAmount: { type: Number, required: true },
+  deliveryCharge: { type: Number, default: 0 },
   shippingAddress: {
     name: String, phone: String, street: String, city: String, state: String, zip: String, country: String
   },
