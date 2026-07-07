@@ -3373,55 +3373,1054 @@ const products = [
         ]
     },
     {
-  "id": 43,
-  "name": "FitBox Sports Push-Up Bars Stand Non-Slip Handles | Push Up Handles with Cushioned Foam Grip and Non-Slip Sturdy Structure ",
-  "category": "Workout Essentials",
-  "subCategory": "Push-Up Equipment",
+        "id": 43,
+        "name": "FitBox Sports Push-Up Bars Stand Non-Slip Handles | Push Up Handles with Cushioned Foam Grip and Non-Slip Sturdy Structure ",
+        "category": "Workout Essentials",
+        "subCategory": "Push-Up Equipment",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Non-Slip Handles",
+            "Cushioned Foam Grip",
+            "Portable & Lightweight"
+        ],
+        "longDesc": "Take your push-up performance to the next level with the FitBox Sports Push-Up Bars. These sturdy elevated handles are engineered with a slight tilt that naturally relieves wrist pressure, allowing deeper range of motion and greater muscle activation across your chest, shoulders, triceps, and back. The cushioned foam grips are wrapped in sweat-absorbing material for a firm, skid-free hold throughout your entire set. The compact, portable design means you can set up for a full upper-body session at home, in the gym, or on the go — with minimal setup time and even less storage space needed.",
+        "features": ["UNIQUE DESIGN: The FitBox Sports Push Up Bar for Men and Women features a tilt design that relieves wrist pressure, allowing you to perform more pushups at once. You can work out different parts of your body with this one piece of equipment, such as your shoulders, back, chest, and biceps.",
+            "High-quality, comfortable handles that are made of sweat-absorbing material and have a non-slip surface that gives you a firm, soft, and skid-free grip",
+            "EASY TO ASSEMBLE : The FitBox Sports Push Up Bar is so simple to assemble that children can do it quickly as well. Just Take These Three Steps I align, push, and then it's ready to use. Because the equipment is portable, it requires very little room for storage."
+        ],
+        "material": "Blend",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/43.1.4.jpg",
+            "/Images/43.1.5.jpg",
+            "/Images/43.1.6.jpg"
+        ],
+        "imgSrc": "/Images/43.1.1.jpg",
+        "hoverImgSrc": "/Images/43.1.2.jpg",
+        "variants": [
+            {
+                "color": " PushUp - Handles ",
+                "images": [
+                    "/Images/43.1.1.jpg",
+                    "/Images/43.1.2.jpg",
+                    "/Images/43.1.3.jpg",
+                    "/Images/43.1.4.jpg",
+                    "/Images/43.1.5.jpg",
+                    "/Images/43.1.6.jpg",
+                    "/Images/43.1.7.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "Push-Up Bars",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 44,
+        "name": "FitBox Sports Supplements Shaker Bottle for Protein, Pre - Post Workout",
+        "category": "Workout Essentials",
+        "subCategory": "Shaker Bottles",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "BPA Free",
+            "Stainless Steel Shaker Ball",
+            "Leak-proof Seal"
+        ],
+        "longDesc": "Mix your supplements perfectly with the FitBox Sports Supplements Shaker Bottle. Crafted from premium, BPA-free PP+PE materials, it features a 316 stainless steel shaker ball for smooth, clump-free protein shakes, smoothies, and juices. The sturdy loop top and leak-proof screw-on lid ensure convenient carrying and secure storage, making it the ideal companion for your pre and post-workout hydration needs.",
+        "features": ["Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements.",
+            "Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
+            "Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
+        ],
+        "material": "Plastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/44.1.3.jpg",
+            "/Images/44.1.4.jpg",
+            "/Images/44.1.5.jpg",
+        ],
+        "imgSrc": "/Images/44.1.1.jpg",
+        "hoverImgSrc": "/Images/44.1.2.jpg",
+        "variants": [
+            {
+                "color": "Orange",
+                "images": [
+                    "/Images/44.1.1.jpg",
+                    "/Images/44.1.2.jpg",
+                    "/Images/44.1.3.jpg",
+                    "/Images/44.1.4.jpg",
+                    "/Images/44.1.5.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "700ml",
+                        "price": 249,
+                        "oldPrice": 0,
+                        "weight": 50
+                    }
+                ]
+            },
+            {
+                "color": "Blue",
+                "images": [
+                    "/Images/44.2.1.jpg",
+                    "/Images/44.2.2.jpg",
+                    "/Images/44.2.3.jpg",
+                    "/Images/44.2.4.jpg",
+                    "/Images/44.2.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "700ml",
+                        "price": 249,
+                        "oldPrice": 0,
+                        "weight": 50
+                    }
+                ]
+            },
+            {
+                "color": "White",
+                "images": [
+                    "/Images/44.3.1.jpg",
+                    "/Images/44.3.2.jpg",
+                    "/Images/44.3.3.jpg",
+                    "/Images/44.3.4.jpg",
+                    "/Images/44.3.5.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "700ml",
+                        "price": 249,
+                        "oldPrice": 0,
+                        "weight": 50
+                    }
+                ]
+            },
+
+        ]
+    },
+    {
+        "id": 45,
+        "name": "FitBox Sports Adjustable Dumbbells & Home Gym Set – Weights | Curl Rod | Barbell Rod – Strength Training Equipment for Men & Women, Compact and Versatile ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Adjustable Weights",
+            "Anti-slip Grip",
+            "Space-saving Design"
+        ],
+        "longDesc": "Experience the ultimate full-body workout at home with the FitBox Sports Adjustable Dumbbells & Home Gym Set. This all-in-one solution includes everything you need for strength training, featuring adjustable weights, a curl rod, and a barbell rod. Designed with high-quality, heavy-duty steel and an anti-slip grip, it provides safety and stability during intense sessions while its compact nature makes it perfect for limited spaces.",
+        "features": ["All-in-One Home Gym Solution | Everything you need for a full-body workout at home—includes 2 x dumbbell rods, 5 feet barbell, 3 feet curl rod and more. No need for multiple machines or gym memberships.",
+            "Durable & High-Quality Materials | Made from heavy-duty steel, anti-slip and premium material for long-lasting performance. Designed to handle intense training sessions with safety and stability.",
+            "Full-Body Workout Versatility | Target chest, arms, legs, back, core, and more. Great for strength training, muscle building, cardio conditioning, and toning—all from the comfort of your home.",
+            "Adjustable & Space-Saving Design | Equipment adjusts easily to your fitness level and available space. Compact storage options make it perfect for apartments, garages, or home studios.",
+            "In The Box - Weight Plate, 2 x Dumbbell Rods, 3 Feet Curl Rod, Gloves, Skipping Rope, Hand Grip & Locks "],
+        "material": "Blend, Metal",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/45.1.3.jpg",
+            "/Images/45.1.4.jpg",
+            "/Images/45.1.5.jpg",
+        ],
+        "imgSrc": "/Images/45.1.1.jpg",
+        "hoverImgSrc": "/Images/45.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black ",
+                "images": [
+                    "/Images/45.1.1.jpg",
+                    "/Images/45.1.2.jpg",
+                    "/Images/45.1.3.jpg",
+                    "/Images/45.1.4.jpg",
+                    "/Images/45.1.5.jpg",
+                    "/Images/45.1.6.jpg",
+                    "/Images/45.1.7.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "30 Kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 30000
+                    },
+                    {
+                        "name": "40 Kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 40000
+                    },
+                    {
+                        "name": "50 Kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 50000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 46,
+        "name": "FitBox Sports Fabric Resistance Band, Loop Hip Band for Women",
+        "category": "Workout Essentials",
+        "subCategory": "Resistance Bands",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Non-slip Design",
+            "Durable Fabric",
+            "Portable"
+        ],
+        "longDesc": "Enhance your workout routines with the FitBox Sports Fabric Resistance Band. Specifically designed with an elastic latex interweave to prevent slipping, it offers exceptional durability and retains tension after frequent stretching. Multipurpose and highly portable, this loop hip band is perfect for yoga, Pilates, CrossFit, and targeted exercises for the arms, abdomen, buttocks, and legs.",
+        "features": [" 【NON-SLIP AND DURABLE】: Fabric and elastic latex interweave technology prevents booty bands from slipping during workouts. Inner latex increases the elasticity and durability of elastic band to avoid losing elasticity and tension after frequent stretching.",
+            " 【Multipurpose】: Resistance bands can exercise arms, abdomen, buttocks and legs, help you shape a healthy and perfect body, increase muscle endurance and strength. Exercise bands are suitable for many workouts and activities including P90x, CrossFit, Yoga, Insanity, Pilates, Hot Yoga, and Beach Body workouts.",
+            "【PORTABLE AND ANYWHERE FITNESS】: Resistance band comes with a handy carrying bag, making it easy to store and take with you. Whether you're at home, in the gym, in the office or outdoors, you can exercise and shape yourself whenever you want. "],
+        "material": "Blend",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/46.1.3.jpg",
+            "/Images/46.1.4.jpg",
+            "/Images/46.1.5.jpg",
+        ],
+        "imgSrc": "/Images/46.1.1.jpg",
+        "hoverImgSrc": "/Images/46.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/46.1.1.jpg",
+                    "/Images/46.1.2.jpg",
+                    "/Images/46.1.3.jpg",
+                    "/Images/46.1.4.jpg",
+                    "/Images/46.1.5.jpg",
+                    "/Images/46.1.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
+            },
+            {
+                "color": "Gray",
+                "images": [
+                    "/Images/46.2.1.jpg",
+                    "/Images/46.2.2.jpg",
+                    "/Images/46.2.3.jpg",
+                    "/Images/46.2.4.jpg",
+                    "/Images/46.2.5.jpg",
+                    "/Images/46.2.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
+            },
+            {
+                "color": "Multicolor",
+                "images": [
+                    "/Images/46.3.1.jpg",
+                    "/Images/46.3.2.jpg",
+                    "/Images/46.3.3.jpg",
+                    "/Images/46.3.4.jpg",
+                    "/Images/46.3.5.jpg",
+                    "/Images/46.3.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
+            },
+            {
+                "color": "Pink",
+                "images": [
+                    "/Images/46.4.1.jpg",
+                    "/Images/46.4.2.jpg",
+                    "/Images/46.4.3.jpg",
+                    "/Images/46.4.4.jpg",
+                    "/Images/46.4.5.jpg",
+                    "/Images/46.4.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 150
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "name": "FitBox Sports Weight Lifting Wrist Straps with Steel Hooks | Powerlifting, Wrist Supporter for Deadlifting with Padded Support",
+        "category": "Support & Protection",
+        "subCategory": "Wrist Supporters",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Steel Hooks",
+            "Padded Support",
+            "Heavy-Duty"
+        ],
+        "longDesc": "Push your lifting limits with the FitBox Sports Weight Lifting Wrist Straps featuring durable steel hooks. These high-performance straps provide unparalleled wrist stability and padded support, eliminating discomfort and securing your wrists in a neutral position. Perfect for deadlifts, shrugs, and advanced gym routines, they are essential for powerlifters, bodybuilders, and fitness enthusiasts aiming for new personal records.",
+        "features": ["PERFECT WRIST PROTECTORS FOR MEN OR WOMEN, XFIT, WOD & BODYBUILDING. Hit new PR’s in shrugs, bench press, cleans, jerks, overhead or shoulder press. Mostly eliminate pain & discomfort by securing the wrist in a neutral position.",
+            "STABILIZE YOUR WRISTS & LIFT MORE WEIGHT - You’ll literally wonder how you ever worked out without them. These high performance straps provide wrist support and stability for weightlifters, Crossfit, MMA, Powerlifting, push ups, planks, burpees & strength training. Boost your workout performance for more challenging advanced lifts and gym routines.",
+            "Professionals Trust -- Finding the right type of wrist wrap for your lifting needs is essential to getting the most out of your workout. Simply put, you’re wasting cash on wraps unless you’ve got the right type on your wrists. CLICK 'Add to Cart'! Try them today!"],
+        "material": "Steel, Elastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/47.1.3.jpg",
+            "/Images/47.1.4.jpg",
+            "/Images/47.1.6.jpg",
+        ],
+        "imgSrc": "/Images/47.1.1.jpg",
+        "hoverImgSrc": "/Images/47.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/47.1.1.jpg",
+                    "/Images/47.1.2.jpg",
+                    "/Images/47.1.3.jpg",
+                    "/Images/47.1.4.jpg",
+                    "/Images/47.1.5.jpg",
+                    "/Images/47.1.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 48,
+        "name": "FitBox Sports Yoga Belt for Men and Women - Yoga Strap for Stretching with Extra Safe Adjustable D-Ring Buckle Strap for Stretching, Yoga, Pilates, Physical Therapy & Fitness",
+        "category": "Workout Essentials",
+        "subCategory": "Yoga Belts",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Adjustable D-Ring",
+            "Non-slip Material",
+            "Comfortable Grip"
+        ],
+        "longDesc": "Deepen your stretches and improve flexibility with the FitBox Sports Yoga Belt. This versatile yoga strap features an extra safe adjustable D-Ring buckle, allowing practitioners of all levels to achieve proper positioning securely. Its sturdy, non-slip cotton blend material ensures a comfortable grip without straining your hands, making it ideal for yoga, Pilates, physical therapy, and overall fitness routines.",
+        "features": ["Adjustable length: Allows for a wide range of stretching and positioning, suitable for beginners and advanced practitioners alike.",
+            "Non-slip material: Provides extra stability and support for poses and stretches.",
+            "Comfortable grip: Soft yet sturdy texture ensures a comfortable hold without straining your hands. "],
+        "material": " Cotton Blend",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/48.1.3.jpg",
+            "/Images/48.1.4.jpg",
+            "/Images/48.1.5.jpg",
+        ],
+        "imgSrc": "/Images/48.1.1.jpg",
+        "hoverImgSrc": "/Images/48.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black ",
+                "images": [
+                    "/Images/48.1.1.jpg",
+                    "/Images/48.1.2.jpg",
+                    "/Images/48.1.3.jpg",
+                    "/Images/48.1.4.jpg",
+                    "/Images/48.1.5.jpg",
+                    "/Images/48.1.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "21L x 21W Centimeters",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 250
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "name": "FitBox Sports Skipping Rope, Jump Rope For Exercise & Workout - Men & Women",
+        "category": "Workout Essentials",
+        "subCategory": "Skipping Ropes",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "PVC Embedded Wire",
+            "Smooth Rotation",
+            "Cardio Enhancing"
+        ],
+        "longDesc": "Boost your cardio endurance and agility with the FitBox Sports Skipping Rope. Perfect for both men and women, this jump rope is coated with durable PVC to prevent cracking and ensure a smooth, tangle-free rotation. Whether you're engaging in boxing, MMA, or a comprehensive cross-training session, it helps shape muscle tension across your entire body.",
+        "features": ["Our exercise skipping rope can shape your cardio endurance, stamina and speed, while improving the muscle tension of your whole body. A great choice for boxing, MMA and cross training.",
+            "PVC Embedded Wire Rope: Rope is coated with PVC, which features durable and smooth, ensures the maximum service life and avoids cracking or breaking.   "],
+        "material": "Wire with PVC Coating ",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/49.1.3.jpg",
+            "/Images/49.1.4.jpg",
+            "/Images/49.1.5.jpg",
+        ],
+        "imgSrc": "/Images/49.1.1.jpg",
+        "hoverImgSrc": "/Images/49.1.2.jpg",
+        "variants": [
+            {
+                "color": "Red/Black",
+                "images": [
+                    "/Images/49.1.1.jpg",
+                    "/Images/49.1.2.jpg",
+                    "/Images/49.1.3.jpg",
+                    "/Images/49.1.4.jpg",
+                    "/Images/49.1.5.jpg",
+                    "/Images/49.1.6.jpg",
+                    "/Images/49.1.7.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 100
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 50,
+        "name": "FitBox Sports Double Grip Home Gym Set | Curl Rod, 2 x Dumbbell Rods, Adjustable Weights & Gym Accessories ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Versatile Training",
+            "Space Saving Barbell",
+            "Multiple Configurations"
+        ],
+        "longDesc": "Transform your home into a personal gym with the FitBox Sports Double Grip Home Gym Set. This versatile kit includes a curl rod, 2 dumbbell rods, and adjustable weight plates designed for independent use off the bar. With high-quality construction and added accessories like cushioned gloves and a skipping rope, it supports boundless workout possibilities from beginner to intermediate levels.",
+        "features": ["Weight Plates, The taken care of weight plan permits for about boundless work out employments. Weights can presently be utilized on or off the bar. Essentially hold the handles and utilize them autonomous of the Rods!",
+            "Curl Rod - Our high-quality, barbell is planned to be solid and space sparing! Essentially screw together to form a solid, strong barbell to perform active workouts, Unscrew and store effectively.",
+            "Dumbbell Rods - 14 x 2 Dumbbell Rods Offer larger room for adding more weight plates and increase challenge, great for both beginners and intermediate users",
+            "Accessories - A Pair of Cushined Gym Gloves Free Size & 1 Skipping Rope For Strength Training"],
+        "material": "Blend, Iron, Polypropylene (PP)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/50.1.3.jpg",
+            "/Images/50.1.4.jpg",
+            "/Images/50.1.5.jpg",
+        ],
+        "imgSrc": "/Images/50.1.1.jpg",
+        "hoverImgSrc": "/Images/50.1.2.jpg",
+        "variants": [
+            {
+                "color": "Home Gym Set",
+                "images": [
+                    "/Images/50.1.1.jpg",
+                    "/Images/50.1.2.jpg",
+                    "/Images/50.1.3.jpg",
+                    "/Images/50.1.4.jpg",
+                    "/Images/50.1.5.jpg",
+                    "/Images/50.1.6.jpg",
+                    "/Images/50.1.7.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "8kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "12kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 12000
+                    },
+                    {
+                        "name": "16kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 16000
+                    },
+                    {
+                        "name": "20kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 20000
+                    }
+                ]
+            },
+            {
+                "color": "Convertible Barbell ",
+                "images": [
+                    "/Images/50.2.1.jpg",
+                    "/Images/50.2.2.jpg",
+                    "/Images/50.2.3.jpg",
+                    "/Images/50.2.4.jpg",
+                    "/Images/50.2.5.jpg",
+                    "/Images/50.2.6.jpg",
+                    "/Images/50.2.7.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "8kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "12kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 12000
+                    },
+                    {
+                        "name": "16kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 16000
+                    },
+                    {
+                        "name": "20kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 20000
+                    }
+                ]
+            },
+            {
+                "color": "Dumbbells Kit",
+                "images": [
+                    "/Images/50.3.1.jpg",
+                    "/Images/50.3.2.jpg",
+                    "/Images/50.3.3.jpg",
+                    "/Images/50.3.4.jpg",
+                    "/Images/50.3.5.jpg",
+                    "/Images/50.3.6.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "8kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 8000
+                    },
+                    {
+                        "name": "12kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 12000
+                    },
+                    {
+                        "name": "16kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 16000
+                    },
+                    {
+                        "name": "20kg",
+                        "price": 2750,
+                        "oldPrice": 2750,
+                        "weight": 20000
+                    }
+                ]
+            },
+
+        ]
+    },
+    {
+        "id": 51,
+        "name": "FitBox Sports 4kg Hexa PVC Dumbbells (2kg x 2) RED & FitBox Sports Adjustable Hand Grip Strengthener (10kg - 40kg) Finger Excerciser, Hand Gripper For Men & Women ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Hexagon Anti-Roll Design",
+            "Adjustable Hand Grip",
+            "Rust-Free PVC"
+        ],
+        "longDesc": "Enhance your strength training routine with the FitBox Sports 4kg Hexa PVC Dumbbells and Adjustable Hand Grip Strengthener Combo. The ergonomic, anti-rolling dumbbells offer a comfortable non-slip grip ideal for prolonged sessions. Coupled with an adjustable hand gripper (10kg-40kg) made of upgraded durable materials, this set is perfect for toning muscles and improving forearm strength without the need for expensive gym memberships.",
+        "features": ["Product 1: Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
+            "Product 1: Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
+            "Product 1: Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
+            "Product 2: The grip strengther, made of the latest upgraded material, has a longer handle than others, which is more convenient for you to hold; in addition, the handle material is strong and durable, which perfectly avoids the problem of the handle breaking during exercise!",
+            "Product 2: Focusing on your hands and forearms with our deluxe forearm grip resistance trainers can save you hundreds on gym memberships and workout equipment"],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/51.1.3.jpg",
+            "/Images/51.1.4.jpg",
+            "/Images/51.1.5.jpg",
+        ],
+        "imgSrc": "/Images/51.1.1.jpg",
+        "hoverImgSrc": "/Images/51.1.2.jpg",
+        "variants": [
+            {
+                "color": "Red",
+                "images": [
+                    "/Images/51.1.1.jpg",
+                    "/Images/51.1.2.jpg",
+                    "/Images/51.1.3.jpg",
+                    "/Images/51.1.4.jpg",
+                    "/Images/51.1.5.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "(2kg x 2) Red Hex",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 4000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 52,
+        "name": "FitBox Sports Blend IntruderWeight Plates",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Weight Plates",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Rust-Free",
+            "Vinyl Coated",
+            "High Durability"
+        ],
+        "longDesc": "Build robust strength with the FitBox Sports Blend Intruder Weight Plates. This set features 20kg of vinyl-coated PVC plates (5kg x 4), ensuring safe and rust-free usage for longer periods. Highly durable and versatile, these plates are perfect for various exercises, including gym workouts, Zumba, and aerobics, making them a staple for any home fitness setup.",
+        "features": [
+            "Box content : 5kg x 4 20kg weight plates",
+            "Rustfree ensuring longer period of usage and safety",
+            "20kg vinyl coated pvc weight plates",
+            "Perfect for Gym Workout, Zumba & Aerobics"
+        ],
+        "material": "Blend Iron",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/52.1.1.jpg",
+            "/Images/52.1.2.jpg",
+            "/Images/52.1.3.jpg",
+        ],
+        "imgSrc": "/Images/52.1.1.jpg",
+        "hoverImgSrc": "/Images/52.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/52.1.1.jpg",
+                    "/Images/52.1.2.jpg",
+                    "/Images/52.1.3.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "20 Kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 20000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 53,
+        "name": "FitBox Sports Vinyl Dumbbells Kit With Finger Grip Plates & Dumbbell Rods",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Finger Grip Plates",
+            "Easy to Carry",
+            "Premium PVC"
+        ],
+        "longDesc": "Upgrade your workout gear with the FitBox Sports Vinyl Dumbbells Kit. Designed for comfort and efficiency, this kit includes premium PVC finger grip plates that are easy to carry and handle. Paired with sturdy dumbbell rods, this set allows for customizable weight adjustments, making it perfect for targeted strength training and versatile home workouts.",
+        "features": ["Premium PVC Finger Grip Plates",
+            "Easy To Carry Weight",
+            "Weight Plates Comes With 2 Dumbbell Rods"],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/53.1.1.jpg",
+            "/Images/53.1.2.jpg",
+            "/Images/53.1.3.jpg",
+        ],
+        "imgSrc": "/Images/53.1.1.jpg",
+        "hoverImgSrc": "/Images/53.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/53.1.1.jpg",
+                    "/Images/53.1.2.jpg",
+                    "/Images/53.1.3.jpg",
+                    "/Images/53.1.4.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "10 Kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 10000
+                    }
+                ]
+            },
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/53.2.1.jpg",
+                    "/Images/53.2.2.jpg",
+                    "/Images/53.2.3.jpg",
+                    "/Images/53.2.4.jpg",
+                    "/Images/53.2.5.jpg",
+
+
+                ],
+                "sizes": [
+                    {
+                        "name": "20 Kg",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 20000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 54,
+        "name": "FitBox Sports Blend Intruder Weight Plates, 5 Kg X 4 & FitBox Sports Dumbbells Combo Weigth Plates & Hand Grips",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Weight Plates",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Vinyl Coated Plates",
+            "Comprehensive Combo",
+            "Rust-Free Durability"
+        ],
+        "longDesc": "Maximize your training potential with the FitBox Sports Blend Intruder Weight Plates and Dumbbells Combo. This package includes 20kg of vinyl-coated weight plates (5kg x 4), additional concrete-filled PVC plates (1kg x 4), and sturdy dumbbell rods. Perfect for comprehensive strength training and muscle building, it provides long-lasting, rust-free performance for a complete home gym experience.",
+        "features": [
+            "Product 1: Box content : 5kg x 4 20kg weight plates",
+            "Product 1: Rustfree ensuring longer period of usage and safety",
+            "Product 1: 20kg vinyl coated pvc weight plates",
+            "Product 1: Perfect for Gym Workout, Zumba & Aerobics",
+            "Product 2: Pack of Vinal Coated 4 Kg (1kg x 4)+ 2 x 14 Dumbbell Rods .",
+            "Product 2: Perfect for Strength Training, Bars",
+            "Product 2: Premium PVC Vinal Coated Concrete Filled Weight",
+            "Product 2: Item Package Weight: 4.0 kilograms"
+        ],
+        "material": "Polyvinyl Chloride (PVC), Vinyl",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/54.1.2.jpg",
+            "/Images/54.1.3.jpg",
+            "/Images/54.1.4.jpg"
+        ],
+        "imgSrc": "/Images/54.1.1.jpg",
+        "hoverImgSrc": "/Images/54.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/54.1.1.jpg",
+                    "/Images/54.1.2.jpg",
+                    "/Images/54.1.3.jpg",
+                    "/Images/54.1.4.jpg",
+                    "/Images/54.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "20 Kg (5 Kg X 4) + 2 x 14 Dumbbell Rods",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 20000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 55,
+        "name": "FitBox Sports Intruder Home Gym Set With One Curl And One Pair Dumbbell Rods With Gym Accessories ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Complete Gym Set",
+            "Highly Durable",
+            "Versatile Workout Options"
+        ],
+        "longDesc": "Create your ultimate home gym with the FitBox Sports Intruder Home Gym Set. This all-inclusive package features 16kg of weight plates, a 3-foot plain rod, a pair of dumbbell rods, and essential gym accessories. Highly durable and designed for a wide range of exercises, this set ensures safety and versatility for building muscles effectively at home.",
+        "features": [
+            "A combination of gym accessories for home workout",
+            "Box content : (2kg x 8) = 16kg weight plates + 1 x 3 Feet plain rod + Pair Of Dumbbell Rods + Gym Accessories",
+            "Ensuring longer period of usage and safety, highly durable",
+            "Perfect for Gym Workout at Home & Bulding Muscles"
+        ],
+        "material": "Polyvinyl Chloride (PVC), Vinyl",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/55.1.4.jpg",
+            "/Images/55.1.5.jpg",
+            "/Images/55.1.6.jpg"
+        ],
+        "imgSrc": "/Images/55.1.1.jpg",
+        "hoverImgSrc": "/Images/55.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/55.1.1.jpg",
+                    "/Images/55.1.2.jpg",
+                    "/Images/55.1.3.jpg",
+                    "/Images/55.1.4.jpg",
+                    "/Images/55.1.5.jpg",
+                    "/Images/55.1.6.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "16 Kg (2 Kg X 8) + 1 x 3 Feet Plain Rod + Pair Of Dumbbell Rods + Gym Accessories",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 16000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 56,
+        "name": "FitBox Sports Intruder 20 Kg Adjustable PVC Dumbbells Weights With Dumbbells Rods, 10 Kg X 2 & Fitbox Sports Vinyl Coated PVC Intruder Weight Plates",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Adjustable Free Weights",
+            "Convertible Barbell",
+            "Vinyl Coated Plates"
+        ],
+        "longDesc": "Unleash your inner weightlifting beast with the FitBox Sports Intruder 20 Kg Adjustable PVC Dumbbells Set. These versatile free weights let you easily switch between dumbbell and barbell exercises using the included connecting rod. Accompanied by durable, rust-free vinyl-coated weight plates, this kit provides a complete solution for muscle-sculpting, squats, and core strengthening at home.",
+        "features": [
+            "Product 1: MUST-HAVE FREE WEIGHTS FOR YOUR HOME GYM: Exercise from the comfort of your home, at your own pace, on your own terms. Create your morning-workout routine with our 20kg Button Weights Set and start building muscle, anytime, anywhere.",
+            "Product 1: BOX CONTANT : (3kg x 4 12kg + 2kg x 4 8kg) 20kg weight plates & rods",
+            "Product 1: WANT A VARIETY OF EXERCISES? Our dumbbells and barbell weights set is the thing for you! Perfect for muscle-sculpting, squatting, biceps and triceps shaping, core strengthening, push-ups, and calorie burning, the dumbbell weights meet your needs.",
+            "Product 1: UNLEASH YOUR INNER WEIGHTLIFTING BEAST: Switch between exercises with our dumbbell weights and barbell set! Use the included connecting rod to turn your two dumbbells into a barbell and take your workout to another level. Ensuring longer period of usage and safety, highly durable",
+            "Product 2: Rustfree ensuring longer period of usage and safety",
+            "Product 2: Perfect for gym workout, zumba & aerobics",
+            "Product 2: Box Content : 10kg X 2 20kg Weight Plates",
+            "Product 2: A pair of 10kg vinyl coated PVC weight plates"
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/56.1.3.jpg",
+            "/Images/56.1.4.jpg",
+            "/Images/56.1.5.jpg"
+        ],
+        "imgSrc": "/Images/56.1.1.jpg",
+        "hoverImgSrc": "/Images/56.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/56.1.1.jpg",
+                    "/Images/56.1.2.jpg",
+                    "/Images/56.1.3.jpg",
+                    "/Images/56.1.4.jpg",
+                    "/Images/56.1.5.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "20 Kg (3kg x 4 12kg + 2kg x 4 8kg) + Pair Of Dumbbell Rods + 1 x 4 Feet Plain Rod + Gym Accessories",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 20000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 57,
+        "name": "FitBox Sports 6kg Exlusive Octa PVC Fixed Dumbbells (3kg x 2) Black & FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Octa Anti-Roll Design",
+            "Vinyl Coated Kettlebell",
+            "Cardio & Strength"
+        ],
+        "longDesc": "Combine strength and cardio training seamlessly with the FitBox Sports 6kg Octa PVC Fixed Dumbbells and 5kg Kettlebell Combo. The exclusive octa-design dumbbells prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds dynamic resistance for aerobics and Zumba. Built from durable, rust-free PVC, this duo is perfect for versatile and effective home workouts.",
+        "features": [
+            "Product 1: Box Content :- A Set Of 2 Dumbbells. Includes 3kg x 2 Premium PVC Dumbbells",
+            "Product 1: Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
+            "Product 1: Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
+            "Product 1: Can be used by both men and women",
+            "Product 2: a piece of 5kg vinayl coated kettlebell",
+            "Product 2: perfect for gym workout, zumba & aerobics",
+            "Product 2: rustfree ensuring longer period of usage and safety",
+            "Product 2: box content : 1 piece of pvc kettlebell",
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/57.1.3.jpg",
+            "/Images/57.1.5.jpg",
+            "/Images/57.1.4.jpg"
+        ],
+        "imgSrc": "/Images/57.1.1.jpg",
+        "hoverImgSrc": "/Images/57.1.2.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/57.1.1.jpg",
+                    "/Images/57.1.2.jpg",
+                    "/Images/57.1.3.jpg",
+                    "/Images/57.1.4.jpg",
+                    "/Images/57.1.5.jpg",
+                    "/Images/57.1.6.jpg",
+                    "/Images/57.1.7.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "6kg (3kg x 2) + 5kg Kettlebell",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 6000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+      "id": 58,
+      "name": "FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black) & FitBox Sports 5kg Diamond Dumbbells (2.5kg x 2) Set Of 2 For Home Gym Workout | Men & Women ",
+      "category": "Weights & Dumbbells",
+      "subCategory": "Dumbbells",
+      "isNew": false,
+      "isOutOfStock": false,
+      "qualities": [
+        "Diamond Shape Grip",
+        "Versatile Usage",
+        "Beginner Friendly"
+      ],
+      "longDesc": "Step up your fitness lifestyle with the FitBox Sports 5kg Kettlebell and 5kg Diamond Dumbbells Combo. These free arm weights are easy to learn and incredibly effective, making them ideal for beginners and seasoned athletes alike. Whether you're targeting stabilizing muscles or performing intense cardio, this durable, rust-free vinyl-coated set is an essential addition to any home gym.",
+      "features": [
+        "Product 1: a piece of 5kg vinayl coated kettlebell",
+        "Product 1: perfect for gym workout, zumba & aerobics",
+        "Product 1: rustfree ensuring longer period of usage and safety",
+        "Product 1: box content : 1 piece of pvc kettlebell",
+        "Product 2: So easy to use What’s great about free arm weights is that, even if you are a beginner or new to the fit lifestyle, it’s simple to perform exercises that are very effective and easy to learn, requiring just a hand weight and some motivation.",
+        "Product 2: So many uses With our small single weight, you can incorporate it into any fitness or strength training routine. Whether repairing a torn rotator, targeting stabilizing muscles, or just wanting to look great in your jeans, this training weight is a must.",
+        "Product 2: Box Content - 2.5kg x 2 Diamond Shaped Dumbbells"
+      ],
+      "material": "Polyvinyl Chloride (PVC)",
+      "relatedIds": [],
+      "showcaseImages": [
+        "/Images/58.1.1.jpg"
+      ],
+      "imgSrc": "/Images/58.1.1.jpg",
+      "hoverImgSrc": "/Images/58.1.1.jpg",
+      "variants": [
+        {
+          "color": "Black",
+          "images": [
+            "/Images/58.1.1.jpg"
+          ],
+          "sizes": [
+            {
+              "name": "5kg Kettlebell + 5kg (2.5kg x 2) Dumbbells",
+              "price": 0,
+              "oldPrice": 0,
+              "weight": 5000
+            }
+          ]
+        }
+      ]
+    },
+    {
+  "id": 59,
+  "name": "FitBox Sports - Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black), Exlusive Octa PVC Fixed Dumbbells 4kg (2kg x 2) Black & Hexa PVC Dumbbells 4kg (2kg x 2) RED ",
+  "category": "Weights & Dumbbells",
+  "subCategory": "Dumbbells",
   "isNew": false,
   "isOutOfStock": false,
   "qualities": [
-    "Non-Slip Handles",
-    "Cushioned Foam Grip",
-    "Portable & Lightweight"
+    "Multi-shape Dumbbells",
+    "Dynamic Kettlebell",
+    "Abrasion Resistant"
   ],
-  "longDesc": "Take your push-up performance to the next level with the FitBox Sports Push-Up Bars. These sturdy elevated handles are engineered with a slight tilt that naturally relieves wrist pressure, allowing deeper range of motion and greater muscle activation across your chest, shoulders, triceps, and back. The cushioned foam grips are wrapped in sweat-absorbing material for a firm, skid-free hold throughout your entire set. The compact, portable design means you can set up for a full upper-body session at home, in the gym, or on the go — with minimal setup time and even less storage space needed.",
-  "features": [ "UNIQUE DESIGN: The FitBox Sports Push Up Bar for Men and Women features a tilt design that relieves wrist pressure, allowing you to perform more pushups at once. You can work out different parts of your body with this one piece of equipment, such as your shoulders, back, chest, and biceps.",
-"High-quality, comfortable handles that are made of sweat-absorbing material and have a non-slip surface that gives you a firm, soft, and skid-free grip",
-"EASY TO ASSEMBLE : The FitBox Sports Push Up Bar is so simple to assemble that children can do it quickly as well. Just Take These Three Steps I align, push, and then it's ready to use. Because the equipment is portable, it requires very little room for storage."
-  ],
-  "material": "Blend",
+  "longDesc": "Experience varied resistance training with this comprehensive FitBox Sports Combo featuring a 5kg Kettlebell, 4kg Octa PVC Dumbbells, and 4kg Hexa PVC Dumbbells. The unique geometric designs prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds intensity to any workout. Constructed from premium, rust-free PVC, this robust set guarantees longevity and safety for all your fitness endeavors.",
+  "features": ["a piece of 5kg vinayl coated kettlebell",
+  "perfect for gym workout, zumba & aerobics",
+  "rustfree ensuring longer period of usage and safety",
+  "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
+  "Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
+  "Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
+  "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells"
+],
+  "material": "Polyvinyl Chloride (PVC)",
   "relatedIds": [],
   "showcaseImages": [
-    "/Images/43.1.4.jpg",
-    "/Images/43.1.5.jpg",
-    "/Images/43.1.6.jpg"
+    "/Images/59.1.1.jpg"
   ],
-  "imgSrc": "/Images/43.1.1.jpg",
-  "hoverImgSrc": "/Images/43.1.2.jpg",
+  "imgSrc": "/Images/59.1.1.jpg",
+  "hoverImgSrc": "/Images/59.1.1.jpg",
   "variants": [
     {
-      "color": " PushUp - Handles ",
+      "color": "Multi",
       "images": [
-        "/Images/43.1.1.jpg",
-        "/Images/43.1.2.jpg",
-        "/Images/43.1.3.jpg",
-        "/Images/43.1.4.jpg",
-        "/Images/43.1.5.jpg",
-        "/Images/43.1.6.jpg",
-        "/Images/43.1.7.jpg"
+        "/Images/59.1.1.jpg"
       ],
       "sizes": [
         {
-          "name": "Push-Up Bars",
+          "name": "5kg Kettlebell + 4kg (2kg x 2) Octa PVC Dumbbells + 4kg (2kg x 2) Hexa PVC Dumbbells",
           "price": 0,
           "oldPrice": 0,
-          "weight": 150 
+          "weight": 5000
         }
       ]
     }
   ]
 }
-
 ];
 
 export default products;

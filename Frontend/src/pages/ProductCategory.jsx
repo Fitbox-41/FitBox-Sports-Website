@@ -55,9 +55,13 @@ export default function ProductCategory() {
       const query1 = cid.replace(/-/g, ' ').toLowerCase();
       const query2 = query1.replace(/ and /g, ' & ');
       
-      const categoryMatch = p.category && (p.category.toLowerCase().includes(query1) || p.category.toLowerCase().includes(query2));
-      const subCategoryMatch = p.subCategory && (p.subCategory.toLowerCase().includes(query1) || p.subCategory.toLowerCase().includes(query2));
-      const nameMatch = p.name && (p.name.toLowerCase().includes(query1) || p.name.toLowerCase().includes(query2));
+      const normalizedCategory = p.category ? p.category.toLowerCase().replace(/-/g, ' ') : '';
+      const normalizedSubCategory = p.subCategory ? p.subCategory.toLowerCase().replace(/-/g, ' ') : '';
+      const normalizedName = p.name ? p.name.toLowerCase() : '';
+
+      const categoryMatch = normalizedCategory && (normalizedCategory.includes(query1) || normalizedCategory.includes(query2));
+      const subCategoryMatch = normalizedSubCategory && (normalizedSubCategory.includes(query1) || normalizedSubCategory.includes(query2));
+      const nameMatch = normalizedName && (normalizedName.includes(query1) || normalizedName.includes(query2));
       
       return categoryMatch || subCategoryMatch || nameMatch;
     });

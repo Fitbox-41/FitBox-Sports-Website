@@ -273,8 +273,20 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
           {(() => {
             let minP = Number.POSITIVE_INFINITY;
             let maxP = 0;
+            let uniqueWeights = new Set();
+            const isFlattened = product.hasOwnProperty('selectedVariant');
 
-            if (product.variants) {
+            if (isFlattened) {
+              minP = product.price || 0;
+              maxP = product.price || 0;
+              if (product.size && typeof product.size.weight === 'number' && product.size.weight > 0) {
+                uniqueWeights.add(product.size.weight);
+              } else if (product.variant && typeof product.variant.weight === 'number' && product.variant.weight > 0) {
+                uniqueWeights.add(product.variant.weight);
+              } else if (product.weight && product.weight > 0) {
+                uniqueWeights.add(product.weight);
+              }
+            } else if (product.variants) {
               product.variants.forEach(v => {
                 if (v.sizes && v.sizes.length) {
                   v.sizes.forEach(s => {
@@ -282,10 +294,16 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
                       if (s.price < minP) minP = s.price;
                       if (s.price > maxP) maxP = s.price;
                     }
+                    if (typeof s.weight === 'number' && s.weight > 0) {
+                      uniqueWeights.add(s.weight);
+                    }
                   });
                 } else if (typeof v.price === 'number') {
                   if (v.price < minP) minP = v.price;
                   if (v.price > maxP) maxP = v.price;
+                  if (typeof v.weight === 'number' && v.weight > 0) {
+                    uniqueWeights.add(v.weight);
+                  }
                 }
               });
             }
@@ -293,13 +311,31 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
             if (!isFinite(minP)) minP = product.price || 0;
             if (maxP === 0) maxP = product.price || 0;
             const hasRange = minP !== maxP;
+
+            if (uniqueWeights.size === 0 && product.weight && product.weight > 0) {
+              uniqueWeights.add(product.weight);
+            }
+
+            let weightStr = '';
+            if (uniqueWeights.size > 0) {
+              const sortedWeights = Array.from(uniqueWeights).sort((a, b) => a - b);
+              weightStr = sortedWeights.map(w => `${w / 1000} kg`).join(', ');
+            }
+
             return (
               <>
-                <span className="pc-price">
-                  {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
-                </span>
-                {product.oldPrice && !hasRange && (
-                  <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="pc-price">
+                    {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
+                  </span>
+                  {product.oldPrice && !hasRange && (
+                    <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+                  )}
+                </div>
+                {weightStr && (
+                  <span className="pc-weight" style={{ marginLeft: 'auto', fontSize: '0.8rem', color: '#666', fontWeight: '500' }}>
+                    {weightStr}
+                  </span>
                 )}
               </>
             );

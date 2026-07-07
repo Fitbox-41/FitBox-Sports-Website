@@ -98,12 +98,26 @@ export default function ProductPage() {
   const navigate = useNavigate();
   const [checkoutItems, setCheckoutItems] = useState([]);
   const [checkoutTotal, setCheckoutTotal] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [buyNowDeliveryFee, setBuyNowDeliveryFee] = useState(0);
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
 
   // Local state for the current product data
   const [product, setProduct] = useState(null);
+
+
+
+  useEffect(() => {
+    if (isFullscreen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isFullscreen]);
 
   const normalizeSizeLabel = (size) => {
     if (size === null || size === undefined) return '';
@@ -374,6 +388,15 @@ export default function ProductPage() {
             >
               <button className="nav-arrow left-arrow" onClick={handlePrev}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+
+              <button className="fullscreen-expand-btn" onClick={() => setIsFullscreen(true)} title="View full screen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+                  <path d="M15 3h6v6"></path>
+                  <path d="M9 21H3v-6"></path>
+                  <path d="M21 3l-7 7"></path>
+                  <path d="M3 21l7-7"></path>
+                </svg>
               </button>
 
               <div className="image-track" style={{ transform: `translateX(-${currentImgIdx * 100}%)` }}>
@@ -777,6 +800,41 @@ export default function ProductPage() {
           navigate('/orders');
         }}
       />
+
+      {isFullscreen && (
+        <div className="fullscreen-overlay" onClick={() => setIsFullscreen(false)}>
+          <div className="fullscreen-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="fullscreen-close" onClick={() => setIsFullscreen(false)}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <div className="fullscreen-left">
+              <img src={images[currentImgIdx]} alt={product.name} />
+            </div>
+            <div className="fullscreen-right">
+              <h2>{product.name}</h2>
+              {currentVariant && currentVariant.color && (
+                <div className="fullscreen-variant-info">
+                  Color: <span>{currentVariant.color}</span>
+                </div>
+              )}
+              <div className="fullscreen-thumbnails">
+                {images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    className={`fullscreen-thumb ${currentImgIdx === idx ? 'active' : ''}`}
+                    onClick={() => setCurrentImgIdx(idx)}
+                  >
+                    <img src={img} alt="thumbnail" loading="lazy" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
