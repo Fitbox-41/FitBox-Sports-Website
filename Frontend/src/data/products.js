@@ -4412,7 +4412,7 @@ const products = [
       ],
       "sizes": [
         {
-          "name": "5kg Kettlebell + 4kg (2kg x 2) Octa PVC Dumbbells + 4kg (2kg x 2) Hexa PVC Dumbbells",
+          "name": "Standard",
           "price": 0,
           "oldPrice": 0,
           "weight": 5000

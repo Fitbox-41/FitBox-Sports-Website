@@ -24,29 +24,41 @@ export const ProductProvider = ({ children }) => {
                         const local = localMap.get(bp.id);
                         if (!local) return bp;
 
-                        // Merge variants: keep backend variant data but fall back to
-                        // local images if the backend variant has an empty images array
-                        const mergedVariants = (bp.variants && bp.variants.length > 0
-                            ? bp.variants
-                            : local.variants || []
-                        ).map((bv, idx) => {
-                            const lv = (local.variants || [])[idx] || {};
+                        // Merge variants: Local wins for structure (color, images, sizes names),
+                        // but Backend wins for price, oldPrice (mrp), and weight.
+                        const mergedVariants = (local.variants && local.variants.length > 0
+                            ? local.variants
+                            : bp.variants || []
+                        ).map((lv, idx) => {
+                            const bv = (bp.variants || [])[idx] || {};
+                            
+                            const mergedSizes = (lv.sizes && lv.sizes.length > 0 ? lv.sizes : bv.sizes || []).map((ls, sIdx) => {
+                                const bs = (bv.sizes || [])[sIdx] || {};
+                                return {
+                                    ...ls, // Local name and details
+                                    // Backend wins for pricing and weight
+                                    price: bs.price !== undefined ? bs.price : ls.price,
+                                    oldPrice: bs.oldPrice !== undefined ? bs.oldPrice : ls.oldPrice,
+                                    weight: bs.weight !== undefined ? bs.weight : ls.weight,
+                                };
+                            });
+
                             return {
-                                ...bv,
-                                images: (bv.images && bv.images.length > 0)
-                                    ? bv.images
-                                    : (lv.images || []),
+                                ...bv, // Keep backend info (e.g. stock, id)
+                                ...lv, // Local overrides color, images
+                                sizes: mergedSizes,
                             };
                         });
 
                         return {
-                            ...bp,
+                            ...bp, // Keep backend info
+                            name: local.name || bp.name, // Local name wins
                             variants: mergedVariants,
-                            imgSrc: bp.imgSrc || local.imgSrc || '',
-                            hoverImgSrc: bp.hoverImgSrc || local.hoverImgSrc || '',
-                            showcaseImages: (bp.showcaseImages && bp.showcaseImages.length > 0)
-                                ? bp.showcaseImages
-                                : (local.showcaseImages || []),
+                            imgSrc: local.imgSrc || bp.imgSrc || '', // Local images win
+                            hoverImgSrc: local.hoverImgSrc || bp.hoverImgSrc || '',
+                            showcaseImages: (local.showcaseImages && local.showcaseImages.length > 0)
+                                ? local.showcaseImages
+                                : (bp.showcaseImages || []),
                         };
                     });
 
