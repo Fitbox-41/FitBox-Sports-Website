@@ -104,7 +104,7 @@ export default function ProductPage() {
   const { productId } = useParams();
 
   // Local state for the current product data
-  const [product, setProduct] = useState(null);
+  const product = allProducts.find((p) => p.id === Number(productId));
 
 
 
@@ -152,11 +152,6 @@ export default function ProductPage() {
   const [currentOrderId, setCurrentOrderId] = useState(null);
 
   useEffect(() => {
-    // ─── a. Find Product ───
-    const found = allProducts.find((p) => p.id === Number(productId));
-    if (found) {
-      setProduct(found);
-    }
     // Scroll to top on page entry
     window.scrollTo(0, 0);
     setQuantity(1); // Reset quantity on product/variant change
@@ -279,18 +274,9 @@ export default function ProductPage() {
 
   // ── 3. Early return AFTER all hooks ──
   if (loading || !product) return (
-    <div className="product-loading-v2">
-      <div className="loading-content">
-        <div className="lottie-container-v2">
-          <DotLottieReact
-            src="https://lottie.host/23c83fda-09ea-4928-b899-8121bece22cd/WtC6KRywYf.lottie"
-            loop
-            autoplay
-          />
-        </div>
-      </div>
-    </div>
+    <div className="product-page" style={{ minHeight: '100vh', background: 'var(--bg)' }}></div>
   );
+
 
   // ─── 4. Derived State: Current variant data and handlers ───
   const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { images: [], sizes: [] };
