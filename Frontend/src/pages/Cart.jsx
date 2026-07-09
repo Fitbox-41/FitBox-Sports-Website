@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useSettings } from '../context/SettingsContext';
@@ -17,11 +17,40 @@ export default function Cart() {
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
 
+  const [walletBalance, setWalletBalance] = useState(0);
+  const [applyPoints, setApplyPoints] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      const fetchWallet = async () => {
+        try {
+          const token = localStorage.getItem('fitbox_token');
+          const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
+          const res = await axios.get(`${apiUrl}/api/wallet`, {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+          if (res.data.success) {
+            setWalletBalance(res.data.balance);
+          }
+        } catch (error) {
+          console.error("Failed to fetch wallet:", error);
+        }
+      };
+      fetchWallet();
+    }
+  }, [currentUser]);
+
   const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
   
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
   const shipping = subtotal > 999 || subtotal === 0 ? 0 : deliveryFee;
-  const total = subtotal + shipping;
+  
+  const POINT_VALUE_INR = 1;
+  const maxPointsApplicable = Math.floor(subtotal / POINT_VALUE_INR);
+  const pointsToUse = applyPoints ? Math.min(walletBalance, maxPointsApplicable) : 0;
+  const discount = pointsToUse * POINT_VALUE_INR;
+  
+  const total = subtotal + shipping - discount;
 
   const handleCheckout = async () => {
     if (!currentUser) {
@@ -42,7 +71,8 @@ export default function Cart() {
       const res = await axios.post(`${apiUrl}/api/orders/place`, { 
         items: cart, 
         totalAmount: total,
-        deliveryCharge: shipping
+        deliveryCharge: shipping,
+        appliedPoints: pointsToUse
       }, config);
       
       if (res.data.success) {
@@ -134,6 +164,29 @@ export default function Cart() {
                   <span>Shipping</span>
                   <span>{shipping === 0 ? 'FREE' : `₹${shipping}`}</span>
                 </div>
+                {walletBalance > 0 && (
+                  <div className="wallet-apply-section" style={{ marginTop: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                      <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Wallet Balance</span>
+                      <span style={{ color: '#ff6b35', fontWeight: '700' }}>{walletBalance} Pts</span>
+                    </div>
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', cursor: 'pointer' }}>
+                      <input 
+                        type="checkbox" 
+                        checked={applyPoints} 
+                        onChange={(e) => setApplyPoints(e.target.checked)} 
+                        style={{ accentColor: '#ff6b35', width: '16px', height: '16px' }}
+                      />
+                      Apply points for discount
+                    </label>
+                  </div>
+                )}
+                {applyPoints && pointsToUse > 0 && (
+                  <div className="summary-row" style={{ color: '#10b981' }}>
+                    <span>Points Discount</span>
+                    <span>-₹{discount}</span>
+                  </div>
+                )}
                 <div className="summary-divider" />
                 <div className="summary-row total-row">
                   <span>Total</span>

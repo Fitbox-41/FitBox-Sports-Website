@@ -63,12 +63,14 @@ app.use(async (req, res, next) => {
 
 // Routes
 import orderRoutes from './Routes/orderRoutes.js';
+import walletRoutes from './Routes/walletRoutes.js';
 
 app.use('/api/products', productRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/wallet', walletRoutes);
 
 // Add developer entry point to sync products manually
 app.post('/api/developer/sync-products', async (req, res) => {

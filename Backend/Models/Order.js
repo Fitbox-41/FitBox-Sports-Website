@@ -17,6 +17,8 @@ const orderSchema = new mongoose.Schema({
   }],
   totalAmount: { type: Number, required: true },
   deliveryCharge: { type: Number, default: 0 },
+  appliedPoints: { type: Number, default: 0 },
+  pointsDiscount: { type: Number, default: 0 },
   shippingAddress: {
     name: String, phone: String, street: String, city: String, state: String, zip: String, country: String
   },
@@ -34,7 +36,8 @@ const orderSchema = new mongoose.Schema({
   confirmationEmailSent: { type: Boolean, default: false },
   cancelReason: [{ type: String }],
   isRefunded: { type: Boolean, default: false },
-  refundedAt: Date
+  refundedAt: Date,
+  pointsRefunded: { type: Boolean, default: false }
 }, { timestamps: true });
 
 // TTL Index: Automatically delete documents after 1800 seconds (30 mins)

@@ -3,12 +3,17 @@ import User from '../Models/User.js';
 import { createDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
+import Wallet from '../Models/Wallet.js';
+import WalletTransaction from '../Models/WalletTransaction.js';
 import crypto from 'crypto';
+import mongoose from 'mongoose';
 import axios from 'axios';
 
 export const placeOrder = async (req, res) => {
+  const session = await mongoose.startSession();
+  session.startTransaction();
   try {
-    const { items, totalAmount, deliveryCharge } = req.body;
+    const { items, totalAmount, deliveryCharge, appliedPoints } = req.body;
 
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
@@ -36,6 +41,32 @@ export const placeOrder = async (req, res) => {
       };
     }
 
+    const pointsVal = Number(appliedPoints) || 0;
+    const POINT_VALUE_INR = 1; // 1 point = 1 INR discount
+    let pointsDiscount = 0;
+
+    if (pointsVal > 0) {
+      const wallet = await Wallet.findOne({ userId }).session(session);
+      if (!wallet || wallet.balance < pointsVal) {
+        throw new Error('Insufficient wallet points');
+      }
+      wallet.balance -= pointsVal;
+      await wallet.save({ session });
+      
+      pointsDiscount = pointsVal * POINT_VALUE_INR;
+      
+      const tx = new WalletTransaction({
+        userId,
+        type: 'debit',
+        amount: pointsVal,
+        balanceAfter: wallet.balance,
+        source: 'checkout_redeem',
+        idempotencyKey: 'checkout_' + new mongoose.Types.ObjectId().toString(),
+        description: 'Points redeemed at checkout'
+      });
+      await tx.save({ session });
+    }
+
     const order = new Order({
       userId,
       customerName: user?.name || '',
@@ -44,16 +75,32 @@ export const placeOrder = async (req, res) => {
       items: sanitizedItems,
       totalAmount,
       deliveryCharge: deliveryCharge || 0,
+      appliedPoints: pointsVal,
+      pointsDiscount,
       shippingAddress,
       paymentStatus: 'Pending Payment'
     });
-    await order.save();
+    await order.save({ session });
+    
+    // update tx sourceId with order ID now that we have it
+    if (pointsVal > 0) {
+      await WalletTransaction.findOneAndUpdate(
+        { description: 'Points redeemed at checkout', userId },
+        { sourceId: order._id.toString() },
+        { session, sort: { createdAt: -1 } }
+      );
+    }
+
+    await session.commitTransaction();
+    session.endSession();
 
     res.status(200).json({
       success: true,
       orderId: order._id
     });
   } catch (error) {
+    await session.abortTransaction();
+    session.endSession();
     res.status(500).json({ success: false, message: error.message });
   }
 };
@@ -269,6 +316,27 @@ const markOnlineOrderFailed = async (order) => {
   order.paymentMode = 'Online';
   order.orderStatus = 'Cancelled';
   order.shipmentStatus = 'Cancelled';
+  
+  if (order.appliedPoints > 0 && !order.pointsRefunded) {
+    const wallet = await Wallet.findOne({ userId: order.userId });
+    if (wallet) {
+      wallet.balance += order.appliedPoints;
+      await wallet.save();
+      const tx = new WalletTransaction({
+        userId: order.userId,
+        type: 'credit',
+        amount: order.appliedPoints,
+        balanceAfter: wallet.balance,
+        source: 'checkout_refund',
+        sourceId: order._id.toString(),
+        idempotencyKey: 'refund_fail_' + order._id.toString(),
+        description: 'Points refunded for failed order'
+      });
+      await tx.save();
+      order.pointsRefunded = true;
+    }
+  }
+  
   await order.save();
   return order;
 };
@@ -700,6 +768,26 @@ export const cancelOrder = async (req, res) => {
 
     if (cancelReason && Array.isArray(cancelReason)) {
       order.cancelReason = cancelReason;
+    }
+
+    if (order.appliedPoints > 0 && !order.pointsRefunded) {
+      const wallet = await Wallet.findOne({ userId: order.userId });
+      if (wallet) {
+        wallet.balance += order.appliedPoints;
+        await wallet.save();
+        const tx = new WalletTransaction({
+          userId: order.userId,
+          type: 'credit',
+          amount: order.appliedPoints,
+          balanceAfter: wallet.balance,
+          source: 'checkout_refund',
+          sourceId: order._id.toString(),
+          idempotencyKey: 'refund_cancel_' + order._id.toString(),
+          description: 'Points refunded for cancelled order'
+        });
+        await tx.save();
+        order.pointsRefunded = true;
+      }
     }
 
     order.orderStatus = 'Cancelled';

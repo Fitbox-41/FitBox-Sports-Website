@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
-import { User, Mail, Phone, MapPin, Plus, Trash2, AlertTriangle, Save } from 'lucide-react';
+import { User, Mail, Phone, MapPin, Plus, Trash2, AlertTriangle, Save, Wallet as WalletIcon, ArrowUpRight, ArrowDownLeft } from 'lucide-react';
 import './Account.css';
 
 export default function Account() {
@@ -28,6 +29,11 @@ export default function Account() {
     country: ''
   });
 
+  // Wallet State
+  const [walletBalance, setWalletBalance] = useState(0);
+  const [walletTransactions, setWalletTransactions] = useState([]);
+  const [walletLoading, setWalletLoading] = useState(true);
+
   useEffect(() => {
     if (!currentUser) {
       navigate('/auth');
@@ -35,8 +41,28 @@ export default function Account() {
       setName(currentUser.name || '');
       setPhone(currentUser.phone || '');
       setAddresses(currentUser.addresses || []);
+      fetchWallet();
     }
   }, [currentUser, navigate]);
+
+  const fetchWallet = async () => {
+    try {
+      setWalletLoading(true);
+      const token = localStorage.getItem('fitbox_token');
+      const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
+      const res = await axios.get(`${apiUrl}/api/wallet`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.data.success) {
+        setWalletBalance(res.data.balance);
+        setWalletTransactions(res.data.transactions);
+      }
+    } catch (error) {
+      console.error("Failed to fetch wallet:", error);
+    } finally {
+      setWalletLoading(false);
+    }
+  };
 
   const handleSaveProfile = async (e) => {
     e.preventDefault();
@@ -103,11 +129,48 @@ export default function Account() {
 
       <div className="account-container">
         <div className="account-header-section">
-          <h1 className="account-title">Personal Details</h1>
-          <p className="account-subtitle">Manage your personal information and addresses</p>
+          <h1 className="account-title">Your Account</h1>
+          <p className="account-subtitle">Manage your personal information, addresses, and wallet</p>
         </div>
         
         {errorMsg && <div className="account-error">{errorMsg}</div>}
+
+        <div className="account-card wallet-section">
+          <h2><WalletIcon size={20} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> FitBox Wallet</h2>
+          {walletLoading ? (
+            <p>Loading wallet...</p>
+          ) : (
+            <>
+              <div className="wallet-balance-box">
+                <span className="wallet-balance-label">Available Reward Points</span>
+                <span className="wallet-balance-amount">{walletBalance}</span>
+              </div>
+              <div className="wallet-transactions">
+                <h3>Recent Transactions</h3>
+                {walletTransactions.length === 0 ? (
+                  <p>No transactions yet.</p>
+                ) : (
+                  <div className="wallet-tx-list">
+                    {walletTransactions.map((tx, idx) => (
+                      <div key={idx} className={`wallet-tx-item ${tx.type}`}>
+                        <div className="wallet-tx-icon">
+                          {tx.type === 'credit' ? <ArrowDownLeft size={16} color="#10b981" /> : <ArrowUpRight size={16} color="#ef4444" />}
+                        </div>
+                        <div className="wallet-tx-details">
+                          <span className="wallet-tx-desc">{tx.description || tx.source}</span>
+                          <span className="wallet-tx-date">{new Date(tx.createdAt).toLocaleDateString()}</span>
+                        </div>
+                        <div className={`wallet-tx-amount ${tx.type}`}>
+                          {tx.type === 'credit' ? '+' : '-'}{tx.amount}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+        </div>
 
         <div className="account-card">
           <form className="account-form" onSubmit={handleSaveProfile}>
