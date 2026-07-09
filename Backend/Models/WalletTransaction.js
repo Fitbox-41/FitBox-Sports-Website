@@ -36,4 +36,6 @@ const WalletTransactionSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-export default mongoose.model('WalletTransaction', WalletTransactionSchema);
+// Explicit shared-DB collection name. Must match the FitBox app backend exactly
+// so the wallet ledger is a single source of truth across website + app + admin.
+export default mongoose.model('WalletTransaction', WalletTransactionSchema, 'wallet_transactions');

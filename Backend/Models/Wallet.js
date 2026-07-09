@@ -14,4 +14,5 @@ const WalletSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-export default mongoose.model('Wallet', WalletSchema);
+// Explicit shared-DB collection name (matches the FitBox app backend).
+export default mongoose.model('Wallet', WalletSchema, 'wallets');
