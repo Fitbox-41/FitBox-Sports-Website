@@ -82,7 +82,7 @@ const ourProductCards = [
   {
     id: 'op-1',
     heading: 'Weights & Dumbbells',
-    seeAllPath: '/category/weights-and-dumbbells',
+    seeAllPath: '/category/weights-&-dumbbells',
     items: [
       { id: 'op-1-a', label: 'Dumbbells', path: '/category/dumbbells', imgSrc: '517FvNN-33L.webp' },
       { id: 'op-1-b', label: 'Kettlebell', path: '/category/kettlebells', imgSrc: 'abcde.webp' },
@@ -104,7 +104,7 @@ const ourProductCards = [
   {
     id: 'op-3',
     heading: 'Support & Protection',
-    seeAllPath: '/category/support-and-protection',
+    seeAllPath: '/category/support-&-protection',
     items: [
       { id: 'op-3-a', label: 'Wrist Supporter', path: '/category/supporters', imgSrc: 'supporters.webp' },
       { id: 'op-3-b', label: 'Lifting Belts', path: '/category/belts', imgSrc: 'left-and-right-hand-weightlifting-belt-leather-gym-belt-for-original-imahff86nwz3u6bh.webp' },
@@ -115,7 +115,7 @@ const ourProductCards = [
   {
     id: 'op-4',
     heading: 'Balls & Sports',
-    seeAllPath: '/category/balls-and-sports',
+    seeAllPath: '/category/balls-&-sports',
     items: [
       { id: 'op-4-a', label: 'Football', path: '/category/balls', imgSrc: '450-pro-league-football-32-panel-rubber-moulded-design-for-original-imahfff8yuaymr7e.webp' },
       { id: 'op-4-b', label: 'Cricket Ball', path: '/category/balls', imgSrc: 'balls.webp' },
@@ -126,7 +126,7 @@ const ourProductCards = [
   {
     id: 'op-5',
     heading: 'Lifestyle & Accessories',
-    seeAllPath: '/category/lifestyle-and-accessories',
+    seeAllPath: '/category/lifestyle-&-accessories',
     items: [
       { id: 'op-5-a', label: 'T-shirt', path: '/category/clothing', imgSrc: 's-t-shirt-for-gym-fitbox-sports-original-imahf8gpbqppvzzz-removebg-preview.webp' },
       { id: 'op-5-b', label: 'Boxing Gloves', path: '/category/gloves', imgSrc: 'boxing.webp' },

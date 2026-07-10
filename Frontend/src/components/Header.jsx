@@ -7,12 +7,12 @@ import './Header.css';
 
 /* ── Categories for Sub-Header ── */
 const categories = [
-  { label: 'Weights & Dumbbells',    path: '/category/weights-and-dumbbells'   },
+  { label: 'Weights & Dumbbells',    path: '/category/weights-&-dumbbells'   },
   { label: 'Workout Essentials',     path: '/category/workout-essentials'       },
   { label: '99',                     path: '/under99',                         isUnder99: true },
-  { label: 'Support & Protection',   path: '/category/support-and-protection'     },
-  { label: 'Balls & Sports',         path: '/category/balls-and-sports'      },
-  { label: 'Lifestyle & Accessories',path: '/category/lifestyle-and-accessories' },
+  { label: 'Support & Protection',   path: '/category/support-&-protection'     },
+  { label: 'Balls & Sports',         path: '/category/balls-&-sports'      },
+  { label: 'Lifestyle & Accessories',path: '/category/lifestyle-&-accessories' },
 ];
 
 /* ── User dropdown menu items (SVG icons, no emojis) ── */

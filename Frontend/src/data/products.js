@@ -3424,7 +3424,7 @@ const products = [
     {
         "id": 44,
         "name": "FitBox Sports Supplements Shaker Bottle for Protein, Pre - Post Workout",
-        "category": "Lifestyle And Accessories",
+        "category": "Lifestyle & Accessories",
         "subCategory": "Shakers",
         "isNew": false,
         "isOutOfStock": false,
@@ -4424,7 +4424,7 @@ const products = [
     {
         "id": 60,
         "name": "FitBox Sports Spider Shaker Bottle with 2 Removable Compartment for Protein, Pre - Post Workout",
-        "category": "Lifestyle And Accessories",
+        "category": "Lifestyle & Accessories",
         "subCategory": "Shakers",
         "isNew": false,
         "isOutOfStock": false,

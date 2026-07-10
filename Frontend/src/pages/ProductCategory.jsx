@@ -26,6 +26,10 @@ const categoryMeta = {
   'grippers': { label: 'Grippers', desc: 'Adjustable hand grippers to build forearm strength.', banner: '/Untitled-design-19.webp' },
   'shakers': { label: 'Shakers', desc: 'Leak-proof shaker bottles for your protein and supplements.', banner: '/Untitled-design-19.webp' },
   'bats': { label: 'Bats', desc: 'Premium bats for cricket and other sports.', banner: '/Untitled-design-19.webp' },
+  'lifestyle-&-accessories': { label: 'Lifestyle & Accessories', desc: 'Smart accessories for an active lifestyle.', banner: '/Untitled-design-19.webp' },
+  'weights-&-dumbbells': { label: 'Weights & Dumbbells', desc: 'Precision-engineered weights and dumbbells for strength training.', banner: '/Untitled-design-19.webp' },
+  'support-&-protection': { label: 'Support & Protection', desc: 'Essential support gear for wrists, knees, and joints.', banner: '/Untitled-design-19.webp' },
+  'balls-&-sports': { label: 'Balls & Sports', desc: 'High-quality balls and gear for every sport.', banner: '/Untitled-design-19.webp' },
 };
 
 export default function ProductCategory() {
@@ -35,14 +39,16 @@ export default function ProductCategory() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filterOpen, setFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState('featured');
-  
+  // Stable random score per variant card — reset on category change
+  const flatScoreRef = useRef(new Map());
+
   // Filter states
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
 
-  const formatLabel = (id) => (id || '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formatLabel = (id) => (id || '').split('-').map(word => word === '&' ? '&' : word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const meta = categoryMeta[categoryId] || { 
     label: formatLabel(categoryId) || 'Category', 
     desc: `Browse our premium ${formatLabel(categoryId).toLowerCase() || 'sports'} equipment.`, 
@@ -52,19 +58,21 @@ export default function ProductCategory() {
   useEffect(() => {
     const cid = categoryId || '';
     const categoryProducts = allProducts.filter(p => {
-      const query1 = cid.replace(/-/g, ' ').toLowerCase();
-      const query2 = query1.replace(/ and /g, ' & ');
+      const query = cid.replace(/-/g, ' ').toLowerCase();
       
-      const normalizedCategory = p.category ? p.category.toLowerCase().replace(/-/g, ' ') : '';
-      const normalizedSubCategory = p.subCategory ? p.subCategory.toLowerCase().replace(/-/g, ' ') : '';
+      const normalizedCategory = p.category ? p.category.toLowerCase() : '';
+      const normalizedSubCategory = p.subCategory ? p.subCategory.toLowerCase() : '';
       const normalizedName = p.name ? p.name.toLowerCase() : '';
 
-      const categoryMatch = normalizedCategory && (normalizedCategory.includes(query1) || normalizedCategory.includes(query2));
-      const subCategoryMatch = normalizedSubCategory && (normalizedSubCategory.includes(query1) || normalizedSubCategory.includes(query2));
-      const nameMatch = normalizedName && (normalizedName.includes(query1) || normalizedName.includes(query2));
+      const categoryMatch = normalizedCategory && normalizedCategory.includes(query);
+      const subCategoryMatch = normalizedSubCategory && normalizedSubCategory.includes(query);
+      const nameMatch = normalizedName && normalizedName.includes(query);
       
       return categoryMatch || subCategoryMatch || nameMatch;
     });
+    
+    // Reset random scores so every category visit gets a fresh shuffle
+    flatScoreRef.current = new Map();
     
     setProducts(categoryProducts);
     window.scrollTo(0, 0);
@@ -88,29 +96,39 @@ export default function ProductCategory() {
       result.sort((a, b) => a.price - b.price);
     } else if (sortBy === 'price-high') {
       result.sort((a, b) => b.price - a.price);
-    } else if (sortBy === 'featured') {
-      // Custom logic for featured (e.g., show New first then in-stock)
-      result.sort((a, b) => {
-        if (a.isNew !== b.isNew) return b.isNew ? 1 : -1;
-        if (a.isOutOfStock !== b.isOutOfStock) return a.isOutOfStock ? 1 : -1;
-        return 0;
-      });
     }
+    // 'featured': no product-level sort — order handled at variant level in useMemo
 
     setFilteredProducts(result);
   }, [products, sortBy, minPrice, maxPrice, inStockOnly, outOfStockOnly]);
 
-  // Automatically expand products with multiple variants into separate cards
+  // Expand variants into individual cards, then apply random order for 'featured'
   const expandedProducts = useMemo(() => {
-    return flattenProducts(filteredProducts).map(p => {
-      return {
-        ...p,
-        displayId: p.displayId || p.id,
-        price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
-        oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null
-      };
-    });
-  }, [filteredProducts]);
+    const flat = flattenProducts(filteredProducts).map(p => ({
+      ...p,
+      displayId: p.displayId || p.id,
+      price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
+      oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null
+    }));
+
+    if (sortBy === 'featured') {
+      // Assign a stable random score to each variant card once per category visit
+      flat.forEach(p => {
+        if (!flatScoreRef.current.has(p.displayId)) {
+          flatScoreRef.current.set(p.displayId, Math.random());
+        }
+      });
+      // Sort by random score, pushing out-of-stock to the end
+      return [...flat].sort((a, b) => {
+        const aOOS = a.isOutOfStock ? 1 : 0;
+        const bOOS = b.isOutOfStock ? 1 : 0;
+        if (aOOS !== bOOS) return aOOS - bOOS;
+        return (flatScoreRef.current.get(a.displayId) ?? 1) - (flatScoreRef.current.get(b.displayId) ?? 1);
+      });
+    }
+
+    return flat;
+  }, [filteredProducts, sortBy]);
 
   return (
     <div className="category-page">
