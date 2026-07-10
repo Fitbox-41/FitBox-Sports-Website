@@ -4331,165 +4331,253 @@ const products = [
         ]
     },
     {
-      "id": 58,
-      "name": "FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black) & FitBox Sports 5kg Diamond Dumbbells (2.5kg x 2) Set Of 2 For Home Gym Workout | Men & Women ",
-      "category": "Weights & Dumbbells",
-      "subCategory": "Dumbbells",
+        "id": 58,
+        "name": "FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black) & FitBox Sports 5kg Diamond Dumbbells (2.5kg x 2) Set Of 2 For Home Gym Workout | Men & Women ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Diamond Shape Grip",
+            "Versatile Usage",
+            "Beginner Friendly"
+        ],
+        "longDesc": "Step up your fitness lifestyle with the FitBox Sports 5kg Kettlebell and 5kg Diamond Dumbbells Combo. These free arm weights are easy to learn and incredibly effective, making them ideal for beginners and seasoned athletes alike. Whether you're targeting stabilizing muscles or performing intense cardio, this durable, rust-free vinyl-coated set is an essential addition to any home gym.",
+        "features": [
+            "Product 1: a piece of 5kg vinayl coated kettlebell",
+            "Product 1: perfect for gym workout, zumba & aerobics",
+            "Product 1: rustfree ensuring longer period of usage and safety",
+            "Product 1: box content : 1 piece of pvc kettlebell",
+            "Product 2: So easy to use What’s great about free arm weights is that, even if you are a beginner or new to the fit lifestyle, it’s simple to perform exercises that are very effective and easy to learn, requiring just a hand weight and some motivation.",
+            "Product 2: So many uses With our small single weight, you can incorporate it into any fitness or strength training routine. Whether repairing a torn rotator, targeting stabilizing muscles, or just wanting to look great in your jeans, this training weight is a must.",
+            "Product 2: Box Content - 2.5kg x 2 Diamond Shaped Dumbbells"
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/58.1.1.jpg"
+        ],
+        "imgSrc": "/Images/58.1.1.jpg",
+        "hoverImgSrc": "/Images/58.1.1.jpg",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/58.1.1.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "5kg Kettlebell + 5kg (2.5kg x 2) Dumbbells",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "name": "FitBox Sports - Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black), Exlusive Octa PVC Fixed Dumbbells 4kg (2kg x 2) Black & Hexa PVC Dumbbells 4kg (2kg x 2) RED ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Multi-shape Dumbbells",
+            "Dynamic Kettlebell",
+            "Abrasion Resistant"
+        ],
+        "longDesc": "Experience varied resistance training with this comprehensive FitBox Sports Combo featuring a 5kg Kettlebell, 4kg Octa PVC Dumbbells, and 4kg Hexa PVC Dumbbells. The unique geometric designs prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds intensity to any workout. Constructed from premium, rust-free PVC, this robust set guarantees longevity and safety for all your fitness endeavors.",
+        "features": ["a piece of 5kg vinayl coated kettlebell",
+            "perfect for gym workout, zumba & aerobics",
+            "rustfree ensuring longer period of usage and safety",
+            "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
+            "Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
+            "Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
+            "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells"
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/59.1.1.jpg"
+        ],
+        "imgSrc": "/Images/59.1.1.jpg",
+        "hoverImgSrc": "/Images/59.1.1.jpg",
+        "variants": [
+            {
+                "color": "Multi",
+                "images": [
+                    "/Images/59.1.1.jpg"
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "name": "FitBox Sports Spider Shaker Bottle with 2 Removable Compartment for Protein, Pre - Post Workout",
+        "category": "Lifestyle And Accessories",
+        "subCategory": "Shakers",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": ["100% Leak Proof",
+            "BPA Free",
+            "Storage Compartment"
+        ],
+        "longDesc": "Get ready to experience convenience and functionality with FitBox Sports Spider Shaker Bottle. This innovative shaker bottle is designed to meet the needs of fitness enthusiasts, athletes, and anyone leading an active lifestyle. With its smart compartments, leak-proof design, and premium materials, it has become an essential companion for your fitness journey.",
+        "features": ["100 % Leak proof, storage container, pill container, water bottle plus shaker for preparation and saving time.",
+            "Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
+            "Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
+            "Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements."
+        ],
+        "material": "Plastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/60.1.3.jpg",
+            "/Images/60.1.4.jpg",
+            "/Images/60.1.5.jpg",
+
+        ],
+        "imgSrc": "/Images/60.1.1.jpg",
+        "hoverImgSrc": "/Images/60.1.2.jpg",
+        "variants": [
+            {
+                "color": "Red-Black",
+                "images": [
+                    "/Images/60.1.1.jpg",
+                    "/Images/60.1.2.jpg",
+                    "/Images/60.1.3.jpg",
+                    "/Images/60.1.4.jpg",
+                    "/Images/60.1.5.jpg",
+                    "/Images/60.1.6.jpg",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "500 ml",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 500
+                    }
+                ]
+            },
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/60.2.1.jpg",
+                    "/Images/60.2.2.jpg",
+                    "/Images/60.2.3.jpg",
+                    "/Images/60.2.4.jpg",
+                    "/Images/60.2.5.jpg",
+                    "/Images/60.2.6.jpg",
+                ],
+                "sizes": [
+                    {
+                        "name": "500 ml",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 500
+                    }
+                ]
+            }
+        ]
+    },
+    {
+      "id": 61,
+      "name": "FitBox Sports Toning Tube with Door Anchor | Resistance Exercise Band | Comfortable Handles - Ideal for Physical Therapy, Strength Training, Muscle Toning",
+      "category": "Workout Essentials",
+      "subCategory": "Resistance Bands",
       "isNew": false,
       "isOutOfStock": false,
       "qualities": [
-        "Diamond Shape Grip",
-        "Versatile Usage",
-        "Beginner Friendly"
+        "Durable",
+        "Comfortable",
+        "Portable"
       ],
-      "longDesc": "Step up your fitness lifestyle with the FitBox Sports 5kg Kettlebell and 5kg Diamond Dumbbells Combo. These free arm weights are easy to learn and incredibly effective, making them ideal for beginners and seasoned athletes alike. Whether you're targeting stabilizing muscles or performing intense cardio, this durable, rust-free vinyl-coated set is an essential addition to any home gym.",
+      "longDesc": "Experience a complete strength training workout with FitBox Sports Toning Tube. This versatile exercise band features double-strength tubes and a door anchor, making it perfect for physical therapy, muscle toning, and building overall strength. Designed for comfort and stability, it ensures a secure grip even during intense workouts. Whether you're at home, in the gym, or on the go, this compact and portable toning tube is an ideal addition to your fitness routine.",
       "features": [
-        "Product 1: a piece of 5kg vinayl coated kettlebell",
-        "Product 1: perfect for gym workout, zumba & aerobics",
-        "Product 1: rustfree ensuring longer period of usage and safety",
-        "Product 1: box content : 1 piece of pvc kettlebell",
-        "Product 2: So easy to use What’s great about free arm weights is that, even if you are a beginner or new to the fit lifestyle, it’s simple to perform exercises that are very effective and easy to learn, requiring just a hand weight and some motivation.",
-        "Product 2: So many uses With our small single weight, you can incorporate it into any fitness or strength training routine. Whether repairing a torn rotator, targeting stabilizing muscles, or just wanting to look great in your jeans, this training weight is a must.",
-        "Product 2: Box Content - 2.5kg x 2 Diamond Shaped Dumbbells"
+        "Natural and Solid: Resistance band is created from 100% natural rubber and the thick working out band furthermore features a strong tear resistance, which does presently not wreck without issues can make certain your assurance at the same time as working out.",
+        "Box Content : Toning Tube with Double Strength Tubes With Door Anchor",
+        "Comfortable & Ergonomic: The foam handles are additionally designed to be ergonomic and non-slip, which ensures that you do not slip even as sweating heavily. The toning tubes are designed to offer a stable and comfortable grip throughout the workout.",
+        "Workout Versatility: This toning tube is a flexible and effective device for strength training, fitness, and rehabilitation. It is perfect for a variety of exercises, including strength training, Pilates, yoga, and physical therapy. You may also use it to enhance your flexibility and mobility."
       ],
-      "material": "Polyvinyl Chloride (PVC)",
+      "material": "Natural Rubber",
       "relatedIds": [],
       "showcaseImages": [
-        "/Images/58.1.1.jpg"
+        "/Images/61.1.4.jpg",
+        "/Images/61.1.5.jpg",
+        "/Images/61.1.6.jpg",
       ],
-      "imgSrc": "/Images/58.1.1.jpg",
-      "hoverImgSrc": "/Images/58.1.1.jpg",
+      "imgSrc": "/Images/61.1.1.jpg",
+      "hoverImgSrc": "/Images/61.1.2.jpg",
       "variants": [
         {
-          "color": "Black",
+          "color": "Red- 10kg Combo Light",
           "images": [
-            "/Images/58.1.1.jpg"
+            "/Images/61.1.1.jpg",
+            "/Images/61.1.2.jpg",
+            "/Images/61.1.3.jpg",
+            "/Images/61.1.4.jpg",
+            "/Images/61.1.5.jpg",
+            "/Images/61.1.6.jpg",
           ],
           "sizes": [
             {
-              "name": "5kg Kettlebell + 5kg (2.5kg x 2) Dumbbells",
+              "name": "Standard",
               "price": 0,
               "oldPrice": 0,
-              "weight": 5000
+              "weight": 125
             }
           ]
-        }
-      ]
-    },
-    {
-  "id": 59,
-  "name": "FitBox Sports - Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black), Exlusive Octa PVC Fixed Dumbbells 4kg (2kg x 2) Black & Hexa PVC Dumbbells 4kg (2kg x 2) RED ",
-  "category": "Weights & Dumbbells",
-  "subCategory": "Dumbbells",
-  "isNew": false,
-  "isOutOfStock": false,
-  "qualities": [
-    "Multi-shape Dumbbells",
-    "Dynamic Kettlebell",
-    "Abrasion Resistant"
-  ],
-  "longDesc": "Experience varied resistance training with this comprehensive FitBox Sports Combo featuring a 5kg Kettlebell, 4kg Octa PVC Dumbbells, and 4kg Hexa PVC Dumbbells. The unique geometric designs prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds intensity to any workout. Constructed from premium, rust-free PVC, this robust set guarantees longevity and safety for all your fitness endeavors.",
-  "features": ["a piece of 5kg vinayl coated kettlebell",
-  "perfect for gym workout, zumba & aerobics",
-  "rustfree ensuring longer period of usage and safety",
-  "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
-  "Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
-  "Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
-  "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells"
-],
-  "material": "Polyvinyl Chloride (PVC)",
-  "relatedIds": [],
-  "showcaseImages": [
-    "/Images/59.1.1.jpg"
-  ],
-  "imgSrc": "/Images/59.1.1.jpg",
-  "hoverImgSrc": "/Images/59.1.1.jpg",
-  "variants": [
-    {
-      "color": "Multi",
-      "images": [
-        "/Images/59.1.1.jpg"
-      ],
-      "sizes": [
+        },
         {
-          "name": "Standard",
-          "price": 0,
-          "oldPrice": 0,
-          "weight": 5000
+          "color": "Green- 20kg Combo Medium",
+          "images": [
+            "/Images/61.2.1.jpg",
+            "/Images/61.2.2.jpg",
+            "/Images/61.2.3.jpg",
+            "/Images/61.2.4.jpg",
+            "/Images/61.2.5.jpg",
+            "/Images/61.2.6.jpg",
+          ],
+          "sizes": [
+            {
+              "name": "Standard",
+              "price": 0,
+              "oldPrice": 0,
+              "weight": 125
+            }
+          ]
+        },
+        {
+            "color": "Red- 15kg Double Tube",
+            "images": [
+                "/Images/61.3.1.jpg",
+                "/Images/61.3.2.jpg",
+                "/Images/61.3.3.jpg",
+                "/Images/61.3.4.jpg",
+                "/Images/61.3.5.jpg",
+                "/Images/61.3.6.jpg",
+            ],
+            "sizes": [
+                {
+                    "name": "Standard",
+                    "price": 0,
+                    "oldPrice": 0,
+                    "weight": 125
+                }
+            ]
         }
       ]
     }
-  ]
-},
-{
-  "id": 60,
-  "name": "FitBox Sports Spider Shaker Bottle with 2 Removable Compartment for Protein, Pre - Post Workout",
- "category": "Lifestyle And Accessories",
- "subCategory": "Shakers",
-  "isNew": false,
-  "isOutOfStock": false,
-  "qualities": ["100% Leak Proof",
-  "BPA Free",
-  "Storage Compartment"
-],
-  "longDesc": "",
-  "features": ["100 % Leak proof, storage container, pill container, water bottle plus shaker for preparation and saving time.",
-"Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
-"Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
-"Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements."
-],
-  "material": "Plastic",
-  "relatedIds": [],
-  "showcaseImages": [
-    "/Images/60.1.3.jpg",
-    "/Images/60.1.4.jpg",
-    "/Images/60.1.5.jpg",
-    
-  ],
-  "imgSrc": "/Images/60.1.1.jpg",
-  "hoverImgSrc": "/Images/60.1.2.jpg",
-  "variants": [
-    {
-      "color": "Red-Black",
-      "images": [
-        "/Images/60.1.1.jpg",
-        "/Images/60.1.2.jpg",
-        "/Images/60.1.3.jpg",
-        "/Images/60.1.4.jpg",
-        "/Images/60.1.5.jpg",
-        "/Images/60.1.6.jpg",
-
-      ],
-      "sizes": [
-        {
-          "name": "500 ml",
-          "price": 0,
-          "oldPrice": 0,
-          "weight": 500
-        }
-      ]
-    },
-    {
-      "color": "Black",
-      "images": [
-        "/Images/60.2.1.jpg",
-        "/Images/60.2.2.jpg",
-        "/Images/60.2.3.jpg",
-        "/Images/60.2.4.jpg",
-        "/Images/60.2.5.jpg",
-        "/Images/60.2.6.jpg",
-      ],
-      "sizes": [
-        {
-          "name": "500 ml",
-          "price": 0,
-          "oldPrice": 0,
-          "weight": 500
-        }
-      ]
-    }
-  ]
-}
 ];
 
 export default products;
