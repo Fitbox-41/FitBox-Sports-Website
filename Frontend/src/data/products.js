@@ -3424,8 +3424,8 @@ const products = [
     {
         "id": 44,
         "name": "FitBox Sports Supplements Shaker Bottle for Protein, Pre - Post Workout",
-        "category": "Workout Essentials",
-        "subCategory": "Shaker Bottles",
+        "category": "Lifestyle And Accessories",
+        "subCategory": "Shakers",
         "isNew": false,
         "isOutOfStock": false,
         "qualities": [
@@ -4416,6 +4416,75 @@ const products = [
           "price": 0,
           "oldPrice": 0,
           "weight": 5000
+        }
+      ]
+    }
+  ]
+},
+{
+  "id": 60,
+  "name": "FitBox Sports Spider Shaker Bottle with 2 Removable Compartment for Protein, Pre - Post Workout",
+ "category": "Lifestyle And Accessories",
+ "subCategory": "Shakers",
+  "isNew": false,
+  "isOutOfStock": false,
+  "qualities": ["100% Leak Proof",
+  "BPA Free",
+  "Storage Compartment"
+],
+  "longDesc": "",
+  "features": ["100 % Leak proof, storage container, pill container, water bottle plus shaker for preparation and saving time.",
+"Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
+"Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
+"Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements."
+],
+  "material": "Plastic",
+  "relatedIds": [],
+  "showcaseImages": [
+    "/Images/60.1.3.jpg",
+    "/Images/60.1.4.jpg",
+    "/Images/60.1.5.jpg",
+    
+  ],
+  "imgSrc": "/Images/60.1.1.jpg",
+  "hoverImgSrc": "/Images/60.1.2.jpg",
+  "variants": [
+    {
+      "color": "Red-Black",
+      "images": [
+        "/Images/60.1.1.jpg",
+        "/Images/60.1.2.jpg",
+        "/Images/60.1.3.jpg",
+        "/Images/60.1.4.jpg",
+        "/Images/60.1.5.jpg",
+        "/Images/60.1.6.jpg",
+
+      ],
+      "sizes": [
+        {
+          "name": "500 ml",
+          "price": 0,
+          "oldPrice": 0,
+          "weight": 500
+        }
+      ]
+    },
+    {
+      "color": "Black",
+      "images": [
+        "/Images/60.2.1.jpg",
+        "/Images/60.2.2.jpg",
+        "/Images/60.2.3.jpg",
+        "/Images/60.2.4.jpg",
+        "/Images/60.2.5.jpg",
+        "/Images/60.2.6.jpg",
+      ],
+      "sizes": [
+        {
+          "name": "500 ml",
+          "price": 0,
+          "oldPrice": 0,
+          "weight": 500
         }
       ]
     }
