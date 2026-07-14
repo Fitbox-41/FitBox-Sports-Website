@@ -400,7 +400,7 @@ export default function Auth() {
         </div>
       </div>
       <div className="auth-right">
-        <img src="zzz.jpg" alt="Welcome to FitBox" className="auth-side-image" />
+        <img src="zzz.webp" alt="Welcome to FitBox" className="auth-side-image" / loading="lazy" decoding="async">
       </div>
     </div>
   </div>

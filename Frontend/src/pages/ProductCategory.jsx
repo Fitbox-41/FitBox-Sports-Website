@@ -143,7 +143,7 @@ export default function ProductCategory() {
 
       <section className="category-hero">
         <div className="hero-bg">
-          <img src={meta.banner} alt={meta.label} />
+          <img src={meta.banner} alt={meta.label} / loading="lazy" decoding="async">
           <div className="hero-overlay" />
         </div>
         <div className="hero-content container">

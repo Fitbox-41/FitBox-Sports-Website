@@ -369,7 +369,7 @@ export default function Orders() {
                   return (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '12px 0', borderBottom: idx !== order.items.length - 1 ? '1px solid #f1f5f9' : 'none' }}>
                       <Link to={`/product/${item.productId}`} style={{ flexShrink: 0 }}>
-                        <img src={img} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e2e8f0' }} />
+                        <img src={img} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e2e8f0' }} / loading="lazy" decoding="async">
                       </Link>
 
                       <div style={{ flex: 1 }}>

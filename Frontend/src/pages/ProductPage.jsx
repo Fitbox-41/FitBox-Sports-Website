@@ -401,7 +401,7 @@ export default function ProductPage() {
                 {images.map((img, idx) => (
                   <div key={idx} className="gallery-main-img-wrap">
                     {/* Rendering MAIN PRODUCT IMAGES */}
-                    <img src={img} alt={`${product.name} - ${idx}`} className="gallery-main-img" />
+                    <img src={img} alt={`${product.name} - ${idx}`} className="gallery-main-img" / loading="lazy" decoding="async">
                   </div>
                 ))}
               </div>
@@ -502,7 +502,7 @@ export default function ProductPage() {
                       setCurrentImgIdx(0);
                     }}
                   >
-                    <img src={variant.images[0]} alt={variant.color || `Color ${idx}`} />
+                    <img src={variant.images[0]} alt={variant.color || `Color ${idx}`} / loading="lazy" decoding="async">
                     {variant.price && variant.price !== product.price && (
                        <span style={{ fontSize: '10px', display: 'block', textAlign: 'center' }}>₹{variant.price}</span>
                     )}
@@ -806,7 +806,7 @@ export default function ProductPage() {
               </svg>
             </button>
             <div className="fullscreen-left">
-              <img src={images[currentImgIdx]} alt={product.name} />
+              <img src={images[currentImgIdx]} alt={product.name} / loading="lazy" decoding="async">
             </div>
             <div className="fullscreen-right">
               <h2>{product.name}</h2>
