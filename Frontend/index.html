@@ -6,16 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="qEZfgg_O2YtB3rgx2N5TvV09gQS8zYRNPxlzqUCdRT8" />
     <title>FitBox Sports | Shop</title>
+    <!-- Preconnect to improve lottie load time -->
+    <link rel="preconnect" href="https://lottie.host" />
+    <link rel="preconnect" href="https://unpkg.com" />
+    <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.3.0/dist/dotlottie-wc.js"></script>
     <style>
       html, body {
         background-color: #f9f9fc;
         margin: 0;
         padding: 0;
       }
+      /* Prevent white flash by rendering the overlay background instantly */
+      .global-loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.45);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+      .loader-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .lottie-container {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 20px;
+      }
+      dotlottie-wc {
+        width: 100%;
+        height: 100%;
+      }
+      .loading-bar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 220px;
+      }
+      .loading-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 12px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        animation: pulse 1.5s infinite ease-in-out;
+      }
+      .loading-bar {
+        width: 100%;
+        height: 6px;
+        background-color: #eaeaea;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      }
+      .loading-progress {
+        width: 40%;
+        height: 100%;
+        background: linear-gradient(90deg, #ff416c, #ff4b2b);
+        border-radius: 10px;
+        animation: loadingAnimation 1.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      @keyframes loadingAnimation {
+        0% { transform: translateX(-150%); }
+        100% { transform: translateX(350%); }
+      }
+      @keyframes pulse {
+        0% { opacity: 0.6; }
+        50% { opacity: 1; }
+        100% { opacity: 0.6; }
+      }
     </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="global-loader-overlay" id="static-loader">
+        <div class="loader-content">
+          <div class="lottie-container">
+            <dotlottie-wc src="https://lottie.host/23c83fda-09ea-4928-b899-8121bece22cd/WtC6KRywYf.lottie" autoplay loop></dotlottie-wc>
+          </div>
+          <div class="loading-bar-container">
+            <span class="loading-text">Loading...</span>
+            <div class="loading-bar">
+              <div class="loading-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

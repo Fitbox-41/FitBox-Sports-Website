@@ -134,6 +134,18 @@ export default function ProductPage() {
     return 'STANDARD';
   };
 
+  const getShortSize = (sizeStr) => {
+    if (!sizeStr) return sizeStr;
+    const s = sizeStr.toString().trim().toLowerCase();
+    if (s === 'small') return 'S';
+    if (s === 'medium') return 'M';
+    if (s === 'large') return 'L';
+    if (s === 'x-large' || s === 'xlarge') return 'XL';
+    if (s === 'xx-large' || s === 'xxlarge') return 'XXL';
+    if (s === 'xxx-large' || s === 'xxxlarge') return 'XXXL';
+    return sizeStr;
+  };
+
   const normalizeVariantLabel = (variant) => {
     if (!variant) return '';
     if (typeof variant === 'string') return variant;
@@ -509,12 +521,9 @@ export default function ProductPage() {
                       key={idx}
                       className={`size-pill ${selectedSizeIdx === idx ? 'selected' : ''}`}
                       onClick={() => setSelectedSizeIdx(idx)}
-                      style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                      title={label}
                     >
-                      <span>{label}</span>
-                      {size.price && size.price !== product.price && (
-                        <span style={{ fontSize: '10px', opacity: 0.8 }}>₹{size.price}</span>
-                      )}
+                      <span>{getShortSize(label)}</span>
                     </div>
                   ))}
                 </div>
