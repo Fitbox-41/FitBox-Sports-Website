@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
+import ProductCardSkeleton from '../components/ProductCardSkeleton';
 import { flattenProducts } from '../utils/flattenProducts';
 import { ProductContext } from '../context/ProductContext';
 import './ProductCategory.css';
@@ -46,10 +47,6 @@ export default function Under99() {
     <div className="category-page">
       <Header hideSubHeader={false} hideSaleRibbon={false} />
 
-      {loading ? (
-        <div style={{ textAlign: 'center', padding: '100px 0' }}>Loading products...</div>
-      ) : (
-        <>
           <section className="category-hero under99-hero">
             <div className="hero-bg">
               <img src="/99banner.jpeg" alt="Under ₹99" loading="lazy" decoding="async" />
@@ -60,12 +57,18 @@ export default function Under99() {
           <main className="category-main container">
             <div className="category-controls">
               <div className="products-count">
-                Showing <span>{expandedProducts.length}</span> products
+                Showing <span>{loading ? 0 : expandedProducts.length}</span> products
               </div>
             </div>
 
             <div className="products-grid-wrapper">
-              {expandedProducts.length > 0 ? (
+              {loading ? (
+                <div className="products-grid">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <ProductCardSkeleton key={i} />
+                  ))}
+                </div>
+              ) : expandedProducts.length > 0 ? (
                 <div className="products-grid">
                   {expandedProducts.map((displayProduct) => (
                     <ProductCard key={displayProduct.displayId} product={displayProduct} showStatusTags={true} />
@@ -79,8 +82,6 @@ export default function Under99() {
               )}
             </div>
           </main>
-        </>
-      )}
 
       <Footer />
     </div>

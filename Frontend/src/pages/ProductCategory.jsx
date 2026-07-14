@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
+import ProductCardSkeleton from '../components/ProductCardSkeleton';
 import { flattenProducts } from '../utils/flattenProducts';
 import './ProductCategory.css';
 
@@ -164,12 +165,8 @@ export default function ProductCategory() {
     <div className="category-page">
       <Header hideSubHeader={true} hideSaleRibbon={false} />
       
-      {loading ? (
-        <div style={{ textAlign: 'center', padding: '100px 0' }}>Loading products...</div>
-      ) : (
-        <>
-          {/* Spacer for fixed header */}
-          <div className="header-spacer" />
+      {/* Spacer for fixed header */}
+      <div className="header-spacer" />
 
       <section className="category-hero">
         <div className="hero-bg">
@@ -190,7 +187,7 @@ export default function ProductCategory() {
       <main className="category-main container">
         <div className="category-controls">
           <div className="products-count">
-            Showing <span>{expandedProducts.length}</span> products
+            Showing <span>{loading ? 0 : expandedProducts.length}</span> products
           </div>
           
           <div className="control-actions">
@@ -349,7 +346,13 @@ export default function ProductCategory() {
                 <p>Applying Filters...</p>
               </div>
             )}
-            {expandedProducts.length > 0 ? (
+            {loading ? (
+              <div className="products-grid">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <ProductCardSkeleton key={i} />
+                ))}
+              </div>
+            ) : expandedProducts.length > 0 ? (
               <div className="products-grid">
                 {expandedProducts.map((displayProduct) => (
                   <ProductCard key={displayProduct.displayId} product={displayProduct} showStatusTags={true} />
@@ -379,8 +382,6 @@ export default function ProductCategory() {
           </div>
         </div>
       </main>
-      </>
-      )}
 
       <Footer />
     </div>

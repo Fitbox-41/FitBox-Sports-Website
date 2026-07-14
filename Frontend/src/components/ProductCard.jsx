@@ -1,11 +1,19 @@
-import { useState, memo } from 'react';
+import { useState, memo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = memo(({ product, showStatusTags = false }) => {
   const [hovered, setHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageRef = useRef(null);
   const { addToCart, toggleWishlist, wishlist } = useCart();
+  
+  useEffect(() => {
+    if (imageRef.current && imageRef.current.complete) {
+      setImageLoaded(true);
+    }
+  }, []);
   
   const isInWishlist = wishlist.some(item => item.id === product.id);
 
@@ -159,6 +167,8 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
     );
   };
 
+  const showSkeleton = !imageLoaded && !!product.imgSrc;
+
   return (
     <div
       className="pc-card"
@@ -166,81 +176,99 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Badge */}
-      {product.tag && (
-        <span className="pc-badge" id={`pc-badge-${product.id}`}>
-          {product.tag}
-        </span>
-      )}
-
-      {/* Wishlist heart button */}
-      <button
-        className={`pc-wish ${isInWishlist ? 'pc-wish--active' : ''}`}
-        id={`pc-wish-${product.id}`}
-        aria-label="Add to wishlist"
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          toggleWishlist(product);
-        }}
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill={isInWishlist ? '#ef4444' : 'none'}
-          stroke={isInWishlist ? '#ef4444' : '#888'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          width="16"
-          height="16"
-        >
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-      </button>
-
-      {/* Status Tags (Always show if out of stock or new) */}
-      {(showStatusTags || product.isOutOfStock || product.isNew) && (
-        <div className="pc-status-tags">
-          {product.isOutOfStock ? (
-            <span className="pc-status-tag pc-status-tag--out-of-stock">
-              Out of Stock
-            </span>
-          ) : product.isNew ? (
-            <span className="pc-status-tag pc-status-tag--new">
-              New Arrival
-            </span>
-          ) : null}
+      {/* Skeleton overlay */}
+      {showSkeleton && (
+        <div className="pc-skeleton-overlay">
+          <div className="pc-skeleton-img"></div>
+          <div className="pc-skeleton-content">
+            <div className="pc-skeleton-line title"></div>
+            <div className="pc-skeleton-line desc"></div>
+            <div className="pc-skeleton-line desc short"></div>
+            <div className="pc-skeleton-price"></div>
+            <div className="pc-skeleton-btn"></div>
+          </div>
         </div>
       )}
 
-      {/* Image area */}
-      <Link 
-        to={`/product/${product.id}`} 
-        className="pc-img-link" 
-        id={`pc-img-${product.id}`}
-      >
-        {product.imgSrc ? (
-            <img
-              src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
-              alt={product.name}
-              className={`pc-img ${product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
-              loading="lazy"
-              decoding="async"
-            />
-        ) : (
-          <div className={`pc-placeholder ${hovered ? 'pc-placeholder--hover' : ''}`}>
-            <div className="pc-placeholder-label">
-              {hovered ? 'Hover View' : product.name}
-            </div>
-            <div className="pc-placeholder-hint">
-              {hovered ? (product.desc || 'Quality Sports Gear') : 'Add image'}
-            </div>
+      {/* Actual Content (Hidden until image loads) */}
+      <div style={{ opacity: showSkeleton ? 0 : 1, transition: 'opacity 0.3s ease', display: 'flex', flexDirection: 'column', height: '100%' }}>
+        {/* Badge */}
+        {product.tag && (
+          <span className="pc-badge" id={`pc-badge-${product.id}`}>
+            {product.tag}
+          </span>
+        )}
+
+        {/* Wishlist heart button */}
+        <button
+          className={`pc-wish ${isInWishlist ? 'pc-wish--active' : ''}`}
+          id={`pc-wish-${product.id}`}
+          aria-label="Add to wishlist"
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            toggleWishlist(product);
+          }}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill={isInWishlist ? '#ef4444' : 'none'}
+            stroke={isInWishlist ? '#ef4444' : '#888'}
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            width="16"
+            height="16"
+          >
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </button>
+
+        {/* Status Tags (Always show if out of stock or new) */}
+        {(showStatusTags || product.isOutOfStock || product.isNew) && (
+          <div className="pc-status-tags">
+            {product.isOutOfStock ? (
+              <span className="pc-status-tag pc-status-tag--out-of-stock">
+                Out of Stock
+              </span>
+            ) : product.isNew ? (
+              <span className="pc-status-tag pc-status-tag--new">
+                New Arrival
+              </span>
+            ) : null}
           </div>
         )}
-      </Link>
 
-      {/* Card body */}
-      <div className="pc-body">
+        {/* Image area */}
+        <Link 
+          to={`/product/${product.id}`} 
+          className="pc-img-link" 
+          id={`pc-img-${product.id}`}
+        >
+          {product.imgSrc ? (
+              <img
+                ref={imageRef}
+                src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
+                alt={product.name}
+                className={`pc-img ${product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setImageLoaded(true)}
+              />
+          ) : (
+            <div className={`pc-placeholder ${hovered ? 'pc-placeholder--hover' : ''}`}>
+              <div className="pc-placeholder-label">
+                {hovered ? 'Hover View' : product.name}
+              </div>
+              <div className="pc-placeholder-hint">
+                {hovered ? (product.desc || 'Quality Sports Gear') : 'Add image'}
+              </div>
+            </div>
+          )}
+        </Link>
+
+        {/* Card body */}
+        <div className="pc-body">
         <Link 
           to={`/product/${product.id}`} 
           className="pc-name"
@@ -383,6 +411,7 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         >
           {product.isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
         </button>
+      </div>
       </div>
     </div>
   );

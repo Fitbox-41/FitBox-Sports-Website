@@ -3,6 +3,7 @@ import { ProductContext } from '../context/ProductContext';
 import { Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
+import ProductCardSkeleton from '../components/ProductCardSkeleton';
 import CategoryGridCard from '../components/CategoryGridCard';
 import Footer from '../components/Footer';
 import { flattenProducts } from '../utils/flattenProducts';
@@ -310,7 +311,7 @@ const DigitRoll = memo(({ start, target, duration, delay, reverse, canAnimate })
 const NEW_ARRIVAL_COUNT = 6;
 
 export default function Home() {
-  const { products: allProducts } = useContext(ProductContext);
+  const { products: allProducts, loading } = useContext(ProductContext);
   const { addToCart, toggleWishlist, wishlist } = useCart();
   const navigate = useNavigate();
 
@@ -581,8 +582,14 @@ export default function Home() {
     const track = postersTrackRef.current;
     if (!track) return;
 
+    let isVisible = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    }, { rootMargin: '50px' });
+    observer.observe(track);
+
     const animate = () => {
-      if (!isDraggingPosters.current) {
+      if (!isDraggingPosters.current && isVisible) {
         const totalWidth = track.scrollWidth;
         const halfWidth = totalWidth / 2;
         scrollPosPosters.current -= autoScrollSpeed;
@@ -619,14 +626,15 @@ export default function Home() {
       track.style.cursor = 'grab';
     };
 
-    track.addEventListener('mousedown', handleStart);
-    track.addEventListener('mousemove', handleMove);
+    track.addEventListener('mousedown', handleStart, { passive: true });
+    track.addEventListener('mousemove', handleMove, { passive: true });
     window.addEventListener('mouseup', handleEnd);
-    track.addEventListener('touchstart', handleStart);
-    track.addEventListener('touchmove', handleMove);
+    track.addEventListener('touchstart', handleStart, { passive: true });
+    track.addEventListener('touchmove', handleMove, { passive: true });
     track.addEventListener('touchend', handleEnd);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animationId);
       track.removeEventListener('mousedown', handleStart);
       track.removeEventListener('mousemove', handleMove);
@@ -642,8 +650,14 @@ export default function Home() {
     const track = catTrackRef.current;
     if (!track) return;
 
+    let isVisible = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    }, { rootMargin: '50px' });
+    observer.observe(track);
+
     const animate = () => {
-      if (!isDragging.current) {
+      if (!isDragging.current && isVisible) {
         const totalWidth = track.scrollWidth;
         const setWidth = totalWidth / 3; // 3 repetitions
         scrollPos.current -= autoScrollSpeed;
@@ -679,14 +693,15 @@ export default function Home() {
       track.style.cursor = 'grab';
     };
 
-    track.addEventListener('mousedown', handleStart);
-    track.addEventListener('mousemove', handleMove);
+    track.addEventListener('mousedown', handleStart, { passive: true });
+    track.addEventListener('mousemove', handleMove, { passive: true });
     window.addEventListener('mouseup', handleEnd);
-    track.addEventListener('touchstart', handleStart);
-    track.addEventListener('touchmove', handleMove);
+    track.addEventListener('touchstart', handleStart, { passive: true });
+    track.addEventListener('touchmove', handleMove, { passive: true });
     track.addEventListener('touchend', handleEnd);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animationId);
       track.removeEventListener('mousedown', handleStart);
       track.removeEventListener('mousemove', handleMove);
@@ -707,12 +722,18 @@ export default function Home() {
     const track = availTrackRef.current;
     if (!track) return;
 
+    let isVisible = true;
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    }, { rootMargin: '50px' });
+    observer.observe(track);
+
     let animationId;
     const totalWidth = track.scrollWidth;
     const halfWidth = totalWidth / 2;
 
     const animate = () => {
-      if (!isDraggingAvail.current) {
+      if (!isDraggingAvail.current && isVisible) {
         const totalWidth = track.scrollWidth;
         const setWidth = totalWidth / 3;
         scrollPosAvail.current -= autoScrollSpeed;
@@ -748,14 +769,15 @@ export default function Home() {
       track.style.cursor = 'grab';
     };
 
-    track.addEventListener('mousedown', handleStart);
-    track.addEventListener('mousemove', handleMove);
+    track.addEventListener('mousedown', handleStart, { passive: true });
+    track.addEventListener('mousemove', handleMove, { passive: true });
     window.addEventListener('mouseup', handleEnd);
-    track.addEventListener('touchstart', handleStart);
-    track.addEventListener('touchmove', handleMove);
+    track.addEventListener('touchstart', handleStart, { passive: true });
+    track.addEventListener('touchmove', handleMove, { passive: true });
     track.addEventListener('touchend', handleEnd);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animationId);
       track.removeEventListener('mousedown', handleStart);
       track.removeEventListener('mousemove', handleMove);
@@ -1262,7 +1284,13 @@ export default function Home() {
                 onTouchStart={handleNaTouchStart}
                 onTouchEnd={handleNaTouchEnd}
               >
-                {[...newArrivals, ...newArrivals, ...newArrivals].map((product, i) => (
+                {loading 
+                  ? Array.from({ length: 8 }).map((_, i) => (
+                      <div className="na-mobile-carousel na-card-wrap" key={`na-skel-${i}`} style={{ width: 'var(--na-step, 25%)', padding: '0 8px' }}>
+                        <ProductCardSkeleton />
+                      </div>
+                    ))
+                  : [...newArrivals, ...newArrivals, ...newArrivals].map((product, i) => (
                   <div className="na-mobile-carousel na-card-wrap" key={`${product.displayId || product.id}-${i}`} style={{ width: 'var(--na-step, 25%)' }}>
                     <ProductCard product={product} />
                   </div>
@@ -1343,7 +1371,13 @@ export default function Home() {
 
         {/* Desktop Grid (Hidden on Mobile) */}
         <div className="best-sellers-grid bs-desktop">
-          {visibleBestSellers.map((product) => (
+          {loading 
+            ? Array.from({ length: 8 }).map((_, i) => (
+                <div key={`bs-skel-d-${i}`} className="reveal-on-scroll">
+                  <ProductCardSkeleton />
+                </div>
+              ))
+            : visibleBestSellers.map((product) => (
             <div key={product.displayId || product.id} className="reveal-on-scroll">
               <ProductCard product={product} />
             </div>
@@ -1353,7 +1387,17 @@ export default function Home() {
         {/* Mobile Carousels (5 Rows, Independent, Hidden on Desktop) */}
         <div className="bs-mobile">
           <div className="bs-mobile-multi-rows">
-            {bsChunks.map((chunk, rowIdx) => (
+            {loading 
+              ? Array.from({ length: 2 }).map((_, i) => (
+                  <div key={`bs-row-skel-${i}`} className="reveal-on-scroll" style={{ display: 'flex', overflow: 'hidden' }}>
+                    {Array.from({ length: 3 }).map((_, j) => (
+                      <div key={`bs-skel-${i}-${j}`} style={{ width: '80%', padding: '0 8px', flexShrink: 0 }}>
+                        <ProductCardSkeleton />
+                      </div>
+                    ))}
+                  </div>
+                ))
+              : bsChunks.map((chunk, rowIdx) => (
               <div key={`bs-row-reveal-${rowIdx}`} className="reveal-on-scroll">
                 <MobileRowCarousel products={chunk} />
               </div>
