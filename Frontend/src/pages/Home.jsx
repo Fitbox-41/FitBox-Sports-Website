@@ -19,23 +19,23 @@ import './Home.css';
 
 /* Posters Section Data */
 const posterImages = [
-  { id: 'p1', imgSrc: '/2.webp-scaled.webp', mobileImgSrc: '/2.webp-scaled - Copy.webp', link: '/category/dumbbells' },
-  { id: 'p2', imgSrc: '/4.webp.webp', link: '/category/weight-vests' },
-  { id: 'p3', imgSrc: '/7.webp.webp', link: '/category/wall-mounts' },
-  { id: 'p4', imgSrc: '/5.webp.webp', link: '/category/gym-t-shirts' },
-  { id: 'p5', imgSrc: '/6.webp.webp', link: '/category/resistance-bands' },
-  { id: 'p6', imgSrc: '/3.webp-scaled.webp', mobileImgSrc: '/3.webp-scaled - Copy.webp', link: '/category/kettlebells' },
+  { id: 'p1', imgSrc: '/2.jpg-scaled.webp', mobileImgSrc: '/2.jpg-scaled - Copy.webp', link: '/category/dumbbells' },
+  { id: 'p2', imgSrc: '/4.jpg.webp', link: '/category/weight-vests' },
+  { id: 'p3', imgSrc: '/7.jpg.webp', link: '/category/wall-mounts' },
+  { id: 'p4', imgSrc: '/5.jpg.webp', link: '/category/gym-t-shirts' },
+  { id: 'p5', imgSrc: '/6.jpg.webp', link: '/category/resistance-bands' },
+  { id: 'p6', imgSrc: '/3.jpg-scaled.webp', mobileImgSrc: '/3.jpg-scaled - Copy.webp', link: '/category/kettlebells' },
 ];
 
 /* Collage Posters Data */
 const collagePosters = [
-  { id: 'cp1', imgSrc: '/4.webp.webp', mobileImgSrc: '/1.webp-scaled.webp', link: '/category/lifting-belts' },
-  { id: 'cp2', imgSrc: '/5.webp.webp', mobileImgSrc: '/2.webp-scaled.webp', link: '/category/gym-gloves' },
-  { id: 'cp3', imgSrc: '/9.webp.webp', mobileImgSrc: '5-scaled.webp', link: '/category/shakers' },
-  { id: 'cp4', imgSrc: '6.webp.webp', mobileImgSrc: '/3.webp-scaled.webp', link: '/category/push-up-bars' },
-  { id: 'cp6', imgSrc: '/8.webp.webp', mobileImgSrc: '', link: '/category/hand-grippers' },
-  { id: 'cp7', imgSrc: '/2.webp-scaled - Copy.webp', mobileImgSrc: '', link: '/category/basketballs' },
-  { id: 'cp8', imgSrc: '/7.webp - Copy.webp', mobileImgSrc: '', link: '/category/skipping-ropes' },
+  { id: 'cp1', imgSrc: '/4.jpg.webp', mobileImgSrc: '/1.jpg-scaled.webp', link: '/category/lifting-belts' },
+  { id: 'cp2', imgSrc: '/5.jpg.webp', mobileImgSrc: '/2.jpg-scaled.webp', link: '/category/gym-gloves' },
+  { id: 'cp3', imgSrc: '/9.jpg.webp', mobileImgSrc: '5-scaled.webp', link: '/category/shakers' },
+  { id: 'cp4', imgSrc: '6.jpg.webp', mobileImgSrc: '/3.jpg-scaled.webp', link: '/category/push-up-bars' },
+  { id: 'cp6', imgSrc: '/8.jpg.webp', mobileImgSrc: '', link: '/category/hand-grippers' },
+  { id: 'cp7', imgSrc: '/2.jpg-scaled - Copy.webp', mobileImgSrc: '', link: '/category/basketballs' },
+  { id: 'cp8', imgSrc: '/7.jpg - Copy.webp', mobileImgSrc: '', link: '/category/skipping-ropes' },
 ];
 
 const HERO_CARD_COUNT = 5;
