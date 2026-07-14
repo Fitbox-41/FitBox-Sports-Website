@@ -71,21 +71,27 @@ function AppContent() {
   const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    // Hide the loader as soon as data finishes loading naturally (no artificial delay)
+    // Hide the static loader from index.html as soon as data finishes loading
     if (!loading) {
+      const staticLoader = document.getElementById('static-loader');
+      if (staticLoader) {
+        staticLoader.classList.add('hidden');
+      }
       setShowLoader(false);
       // Brief delay for the fade out transition before animations start
       const timer = setTimeout(() => {
+          if (staticLoader) {
+            staticLoader.remove(); // Remove from DOM after fade out
+          }
           window.__APP_LOADED__ = true;
           window.dispatchEvent(new CustomEvent('loaderFinished'));
-      }, 400);
+      }, 500);
       return () => clearTimeout(timer);
     }
   }, [loading]);
 
   return (
     <>
-      <Loader isVisible={showLoader} />
 
       <BrowserRouter>
         <LoginPromptModal />

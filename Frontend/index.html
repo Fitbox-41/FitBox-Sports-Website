@@ -23,13 +23,18 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.45);
+        background-color: #0f172a; /* Solid background to prevent white flash */
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 99999;
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+      .global-loader-overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
       }
       .loader-content {
         display: flex;
@@ -90,21 +95,20 @@
     </style>
   </head>
   <body>
-    <div id="root">
-      <div class="global-loader-overlay" id="static-loader">
-        <div class="loader-content">
-          <div class="lottie-container">
-            <dotlottie-wc src="https://lottie.host/23c83fda-09ea-4928-b899-8121bece22cd/WtC6KRywYf.lottie" autoplay loop></dotlottie-wc>
-          </div>
-          <div class="loading-bar-container">
-            <span class="loading-text">Loading...</span>
-            <div class="loading-bar">
-              <div class="loading-progress"></div>
-            </div>
+    <div class="global-loader-overlay" id="static-loader">
+      <div class="loader-content">
+        <div class="lottie-container">
+          <dotlottie-wc src="https://lottie.host/23c83fda-09ea-4928-b899-8121bece22cd/WtC6KRywYf.lottie" autoplay loop></dotlottie-wc>
+        </div>
+        <div class="loading-bar-container">
+          <span class="loading-text">Loading...</span>
+          <div class="loading-bar">
+            <div class="loading-progress"></div>
           </div>
         </div>
       </div>
     </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

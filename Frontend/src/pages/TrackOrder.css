@@ -29,7 +29,25 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 65%;
+  max-width: 55%;
+}
+
+.track-order-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.estimated-delivery {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #059669;
+  font-weight: 500;
+  background: #ecfdf5;
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
 .track-order-destination {
@@ -39,8 +57,32 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 30%;
+  max-width: 200px;
   text-align: right;
+}
+
+/* Status banners */
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.status-banner.rto {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.status-banner.cancelled {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
 }
 
 /* Progress Bar Container */
@@ -123,6 +165,128 @@
   text-align: center;
 }
 
+/* Live status bar */
+.live-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.live-status-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.delhivery-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.awb-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
+.refresh-tracking-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.refresh-tracking-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.refresh-tracking-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.refresh-tracking-btn .spin {
+  animation: spinAnim 1s linear infinite;
+}
+
+@keyframes spinAnim {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Status chips */
+.status-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-chip.pending,
+.status-chip.created {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.status-chip.ready-to-ship {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-chip.in-transit {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.status-chip.out-for-delivery {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.status-chip.delivered {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-chip.rto {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-chip.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
 /* Grid Layout for details */
 .track-order-grid {
   display: grid;
@@ -162,6 +326,126 @@
 .detail-value {
   color: #475569;
   flex: 1;
+}
+
+/* Shipment History Timeline */
+.shipment-history-card {
+  grid-column: 1 / -1;
+}
+
+.items-card {
+  grid-column: 1 / -1;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 24px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: 2px solid #e2e8f0;
+  z-index: 1;
+}
+
+.timeline-item.latest .timeline-dot {
+  background: #22c55e;
+  border-color: #16a34a;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+}
+
+.timeline-content {
+  min-height: 20px;
+}
+
+.timeline-status {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.4;
+}
+
+.timeline-item.latest .timeline-status {
+  color: #166534;
+}
+
+.timeline-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #94a3b8;
+  flex-wrap: wrap;
+}
+
+.timeline-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.timeline-location::before {
+  content: '📍';
+  font-size: 11px;
+}
+
+.timeline-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.timeline-time::before {
+  content: '🕐';
+  font-size: 11px;
+}
+
+/* Tracking states */
+.tracking-error-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #dc2626;
+  font-size: 13px;
+  background: #fef2f2;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.tracking-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #64748b;
+  font-size: 14px;
+  padding: 20px 0;
 }
 
 /* Items of shipment */
@@ -255,22 +539,42 @@
   .track-order-grid {
     grid-template-columns: 1fr;
   }
-  
+
+  .shipment-history-card,
+  .items-card {
+    grid-column: 1;
+  }
+
+  .track-order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .track-order-header h2 {
+    max-width: 100%;
+  }
+
+  .track-order-header-right {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
   .progress-container {
     margin: 10px -10px;
     overflow-x: auto;
     padding-bottom: 10px;
   }
-  
+
   .progress-container::before, .progress-line {
     top: 20px;
     min-width: 300px;
   }
-  
+
   .progress-step {
     width: 65px;
   }
-  
+
   .progress-icon-wrap {
     width: 40px;
     height: 40px;
@@ -281,8 +585,19 @@
     width: 20px;
     height: 20px;
   }
-  
+
   .progress-label {
     font-size: 10px;
+  }
+
+  .live-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .timeline-meta {
+    flex-direction: column;
+    gap: 4px;
   }
 }

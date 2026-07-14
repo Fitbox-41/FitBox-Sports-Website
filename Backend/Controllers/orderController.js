@@ -1,6 +1,6 @@
 import Order from '../Models/Order.js';
 import User from '../Models/User.js';
-import { createDelhiveryShipment } from '../Utils/delhivery.js';
+import { createDelhiveryShipment, trackDelhiveryShipment, cancelDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
 import crypto from 'crypto';
@@ -686,9 +686,9 @@ export const cancelOrder = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Order is already cancelled' });
     }
 
-    // Only allow cancellation if order is not Shipped or Delivered
-    if (order.shipmentStatus === 'Shipped' || order.shipmentStatus === 'Delivered') {
-      return res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been shipped or delivered' });
+    // Only allow cancellation if order is not Out for Delivery or Delivered
+    if (order.shipmentStatus === 'Out for Delivery' || order.shipmentStatus === 'Delivered') {
+      return res.status(400).json({ success: false, message: 'Cannot cancel an order that is out for delivery or already delivered' });
     }
 
     const isSilent = req.query.silent === 'true';
@@ -700,6 +700,17 @@ export const cancelOrder = async (req, res) => {
 
     if (cancelReason && Array.isArray(cancelReason)) {
       order.cancelReason = cancelReason;
+    }
+
+    // Cancel shipment on Delhivery if AWB exists
+    if (order.awb) {
+      try {
+        await cancelDelhiveryShipment(order.awb);
+        console.log(`Delhivery shipment cancelled for order ${id}, AWB: ${order.awb}`);
+      } catch (delhiveryErr) {
+        console.error('Failed to cancel Delhivery shipment:', delhiveryErr.message);
+        // Continue with order cancellation even if Delhivery cancel fails
+      }
     }
 
     order.orderStatus = 'Cancelled';
@@ -805,7 +816,22 @@ export const codPayment = async (req, res) => {
       order.shippingAddress = shippingAddress;
     }
 
-    order.shipmentStatus = 'Created';
+    await order.save();
+
+    // Create Delhivery Shipment for COD order
+    try {
+      const shipment = await createDelhiveryShipment(order);
+      if (shipment.packages && shipment.packages.length > 0) {
+        order.awb = shipment.packages[0].waybill;
+        order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+        order.shipmentStatus = 'Created';
+      } else {
+        order.shipmentStatus = 'Created';
+      }
+    } catch (shipmentError) {
+      console.error('COD Delhivery shipment creation failed:', shipmentError.message);
+      order.shipmentStatus = 'Created';
+    }
 
     await order.save();
 
@@ -898,5 +924,83 @@ export const codPayment = async (req, res) => {
     res.status(200).json({ success: true, message: 'COD order placed successfully', orderId: order._id });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const trackOrder = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user?._id;
+    if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
+
+    const order = await Order.findOne({ _id: id, userId });
+    if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
+
+    // If no AWB yet, return current static status
+    if (!order.awb) {
+      return res.status(200).json({
+        success: true,
+        tracking: {
+          status: order.shipmentStatus || 'Pending',
+          delhiveryStatus: null,
+          scans: [],
+          estimatedDate: null,
+          awb: null
+        }
+      });
+    }
+
+    // Fetch live tracking from Delhivery
+    const tracking = await trackDelhiveryShipment(order.awb);
+
+    // Update order's shipmentStatus in DB if it has changed
+    const newStatus = tracking.status;
+    if (newStatus && newStatus !== order.shipmentStatus) {
+      // Only update forward (don't regress status)
+      const statusOrder = ['Pending', 'Created', 'Ready to Ship', 'In Transit', 'Out for Delivery', 'Delivered', 'RTO', 'Cancelled'];
+      const currentIdx = statusOrder.indexOf(order.shipmentStatus);
+      const newIdx = statusOrder.indexOf(newStatus);
+
+      if (newIdx > currentIdx || newStatus === 'RTO' || newStatus === 'Cancelled') {
+        order.shipmentStatus = newStatus;
+
+        // Also update orderStatus if delivered
+        if (newStatus === 'Delivered') {
+          order.orderStatus = 'Completed';
+        }
+
+        await order.save();
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      tracking: {
+        status: tracking.status,
+        delhiveryStatus: tracking.delhiveryStatus,
+        scans: tracking.scans,
+        estimatedDate: tracking.estimatedDate,
+        awb: order.awb
+      }
+    });
+  } catch (error) {
+    console.error('Track order error:', error.message);
+    // If Delhivery API fails, still return the static status from DB
+    try {
+      const order = await Order.findById(req.params.id);
+      return res.status(200).json({
+        success: true,
+        tracking: {
+          status: order?.shipmentStatus || 'Pending',
+          delhiveryStatus: null,
+          scans: [],
+          estimatedDate: null,
+          awb: order?.awb || null,
+          error: 'Live tracking temporarily unavailable'
+        }
+      });
+    } catch (e) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
   }
 };
