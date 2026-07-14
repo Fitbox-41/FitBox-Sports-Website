@@ -110,7 +110,7 @@ export const createDelhiveryShipment = async (order) => {
 
     const response = await axios.post(
       `${process.env.DELHIVERY_BASE_URL}/api/cmu/create.json`,
-      `format=${format}&data=${JSON.stringify(payload)}`,
+      `format=${format}&data=${encodeURIComponent(JSON.stringify(payload))}`,
       {
         headers: {
           'Authorization': `Token ${process.env.DELHIVERY_API_KEY}`,
