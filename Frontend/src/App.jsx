@@ -66,39 +66,36 @@ function ScrollToTop() {
   return null;
 }
 
-// Inner component to consume contexts safely
-function AppContent() {
-  const { loading } = useContext(ProductContext);
-  const [showLoader, setShowLoader] = useState(true);
-
+function InitialLoaderController({ dataLoading }) {
   useEffect(() => {
-    // Hide the static loader from index.html as soon as data finishes loading
-    if (!loading) {
+    // Wait until both data is loaded AND this component is mounted (meaning Suspense is resolved)
+    if (!dataLoading) {
       const staticLoader = document.getElementById('static-loader');
       if (staticLoader) {
         staticLoader.classList.add('hidden');
+        setTimeout(() => {
+          if (staticLoader) staticLoader.remove();
+        }, 500);
       }
-      setShowLoader(false);
-      // Brief delay for the fade out transition before animations start
-      const timer = setTimeout(() => {
-          if (staticLoader) {
-            staticLoader.remove(); // Remove from DOM after fade out
-          }
-          window.__APP_LOADED__ = true;
-          window.dispatchEvent(new CustomEvent('loaderFinished'));
-      }, 500);
-      return () => clearTimeout(timer);
+      window.__APP_LOADED__ = true;
+      window.dispatchEvent(new CustomEvent('loaderFinished'));
     }
-  }, [loading]);
+  }, [dataLoading]);
+  return null;
+}
+
+// Inner component to consume contexts safely
+function AppContent() {
+  const { loading } = useContext(ProductContext);
 
   return (
     <>
-
       <BrowserRouter>
         <LoginPromptModal />
         <LoginRequiredModal />
         <ScrollToTop />
-        <Suspense fallback={<Loader isVisible={true} showBar={false} />}>
+        <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f9f9fc', color: '#ff416c', fontWeight: 'bold' }}>Loading...</div>}>
+          <InitialLoaderController dataLoading={loading} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/product/:productId" element={<ProductPage />} />
