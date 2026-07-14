@@ -52,7 +52,7 @@ export default function Under99() {
         <>
           <section className="category-hero under99-hero">
             <div className="hero-bg">
-              <img src="/ABCDE.webp" alt="Under ₹99" loading="lazy" decoding="async" />
+              <img src="/99banner.jpeg" alt="Under ₹99" loading="lazy" decoding="async" />
               <div className="hero-overlay" />
             </div>
           </section>
