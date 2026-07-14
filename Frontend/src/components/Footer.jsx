@@ -169,7 +169,7 @@ export default function Footer() {
             <span className="footer-accordion-icon">{openFooterCol === 'brand-col' ? '×' : '+'}</span>
           </h4>
           <div className={`footer-col-content ${openFooterCol === 'brand-col' ? 'open' : ''}`}>
-            {/* Company logo image – replace this div with <img src="..." / loading="lazy" decoding="async"> */}
+            {/* Company logo image – replace this div with <img src="..." loading="lazy" decoding="async" /> */}
             <div className="footer-brand-img-wrap" id="footer-brand-img">
               <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="footer-brand-img" loading="lazy" decoding="async" />
             </div>

@@ -30,7 +30,7 @@ export default function Favourite() {
                     to={`/product/${item.id}`}
                     className="fav-item-image-wrapper"
                   >
-                    <img src={img} alt={item.name} className="fav-item-image" / loading="lazy" decoding="async">
+                    <img src={img} alt={item.name} className="fav-item-image" loading="lazy" decoding="async" />
                   </Link>
 
                   <div className="fav-item-details">

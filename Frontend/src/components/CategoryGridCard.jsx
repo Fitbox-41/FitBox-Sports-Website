@@ -23,7 +23,7 @@ const CategoryGridCard = memo(({ card }) => {
               {item.imgSrc ? (
                 <img src={item.imgSrc} alt={item.label} className="cgc-img" loading="lazy" decoding="async" />
               ) : (
-                /* Placeholder – replace with <img src="..." / loading="lazy" decoding="async"> later */
+                /* Placeholder – replace with <img src="..." loading="lazy" decoding="async" /> later */
                 <div className="cgc-img-placeholder">
                   <span className="cgc-ph-text">{item.label}</span>
                 </div>

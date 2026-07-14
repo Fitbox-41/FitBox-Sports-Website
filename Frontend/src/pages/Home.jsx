@@ -985,7 +985,7 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="new-hero" id="new-hero">
         <div className="hero-wallpaper-wrap">
-          <img src="/Untitled-design-19.webp" alt="Hero Background" className="hero-wallpaper" / loading="lazy" decoding="async">
+          <img src="/Untitled-design-19.webp" alt="Hero Background" className="hero-wallpaper" loading="lazy" decoding="async" />
           <div className="hero-overlay"></div>
         </div>
 
@@ -1074,7 +1074,7 @@ export default function Home() {
                         onClick={() => heroSelectProduct(p.id)}
                         type="button"
                       >
-                        <img className="hero-search-item-img" src={img} alt={p.name} / loading="lazy" decoding="async">
+                        <img className="hero-search-item-img" src={img} alt={p.name} loading="lazy" decoding="async" />
                         <span className="hero-search-item-name">{p.name}</span>
                         <span className="hero-search-item-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
                       </button>
@@ -1135,7 +1135,7 @@ export default function Home() {
                         style={{ transition: hpTrans ? '' : 'none', textDecoration: 'none' }}
                       >
                         <div className="hp-card-img-square">
-                          <img src={product.imgSrc} alt={product.name} / loading="lazy" decoding="async">
+                          <img src={product.imgSrc} alt={product.name} loading="lazy" decoding="async" />
                         </div>
                         <div className="hp-card-info">
                           <p className="hp-card-name">{product.name}</p>

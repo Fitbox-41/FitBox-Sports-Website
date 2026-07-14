@@ -74,7 +74,7 @@ export default function Cart() {
                     to={`/product/${item.id}`} 
                     className="cart-item-img-wrap"
                   >
-                    <img src={item.imgSrc} alt={item.name} / loading="lazy" decoding="async">
+                    <img src={item.imgSrc} alt={item.name} loading="lazy" decoding="async" />
                   </Link>
                   
                   <div className="cart-item-details">

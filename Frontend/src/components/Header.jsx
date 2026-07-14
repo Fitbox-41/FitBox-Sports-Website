@@ -228,7 +228,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           <Link to="/" className="logo" id="logo-link" onClick={() => setMenuOpen(false)}>
             <picture>
               <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.webp" />
-              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="header-logo-img" / loading="lazy" decoding="async">
+              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="header-logo-img" loading="lazy" decoding="async" />
             </picture>
           </Link>
 
@@ -302,7 +302,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                               onClick={() => handleProductSelect(p.id)}
                               onMouseEnter={() => setFocusedIndex(idx)}
                             >
-                              <img src={img} alt={p.name} className="search-result-img" / loading="lazy" decoding="async">
+                              <img src={img} alt={p.name} className="search-result-img" loading="lazy" decoding="async" />
                               <div className="search-result-info">
                                 <h5 className="search-result-title">{p.name}</h5>
                                 <span className="search-result-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
@@ -530,7 +530,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                         onClick={() => handleProductSelect(p.id)}
                         onMouseEnter={() => setFocusedIndex(idx)}
                       >
-                        <img src={img} alt={p.name} className="search-result-img" / loading="lazy" decoding="async">
+                        <img src={img} alt={p.name} className="search-result-img" loading="lazy" decoding="async" />
                         <div className="search-result-info">
                           <h5 className="search-result-title">{p.name}</h5>
                           <span className="search-result-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
