@@ -8,15 +8,14 @@ const isMock = () => process.env.DELHIVERY_MOCK === 'true';
 // Generate a fake AWB number
 const generateMockAWB = () => 'MOCK' + Date.now().toString().slice(-10);
 
-// --- Warehouse / Return Address (FitBox Sports, Jalandhar) ---
 const WAREHOUSE = {
   name: 'FitBox Sports',
-  address: '41, Wariana Industrial Complex',
+  address: '41, Warirana Industrial Complex',
   city: 'Jalandhar',
   state: 'Punjab',
-  pin: '144002',
+  pin: '144021',
   country: 'India',
-  phone: '8568989898'
+  phone: '7347464503'
 };
 
 /**
