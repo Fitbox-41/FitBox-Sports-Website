@@ -1,0 +1,247 @@
+/* Overlay with blur effect */
+.login-prompt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Modal Content */
+.login-prompt-modal {
+  position: relative;
+  border-radius: 16px;
+  width: 40vw;
+  min-width: 600px;
+  max-width: 800px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Animated gradient border */
+  background: linear-gradient(45deg, #ef4444, #3b82f6, #a855f7, #ef4444);
+  background-size: 300% 300%;
+  animation: modalFadeIn 0.4s ease-out forwards, borderGlow 6s ease infinite;
+  padding: 3px;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Close Button */
+.login-prompt-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #333;
+  z-index: 10;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.login-prompt-close:hover {
+  background: #f1f5f9;
+  transform: rotate(90deg);
+}
+
+/* Flex layout for image and text */
+.login-prompt-content {
+  display: flex;
+  height: 400px;
+  background-color: #ffffff;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+/* Left Image Section */
+.login-prompt-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  padding: 30px;
+}
+
+.login-prompt-slideshow-img {
+  width: 100%;
+  height: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  animation: modalImageFade 0.5s ease-in-out;
+}
+
+@keyframes modalImageFade {
+  from { opacity: 0.6; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Right Text Section */
+.login-prompt-text-section {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f8fafc;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Floating Shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(45px);
+  z-index: -1;
+  animation: float 8s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+.shape-1 {
+  width: 150px;
+  height: 150px;
+  background: rgba(59, 130, 246, 0.4);
+  top: -50px;
+  right: -50px;
+}
+
+.shape-2 {
+  width: 120px;
+  height: 120px;
+  background: rgba(239, 68, 68, 0.3);
+  bottom: -40px;
+  left: -20px;
+  animation-delay: 2s;
+  animation-duration: 10s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  background: rgba(168, 85, 247, 0.3);
+  top: 50%;
+  right: 20%;
+  animation-delay: 4s;
+  animation-duration: 7s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.1); }
+}
+
+.login-prompt-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #fef2f2;
+  color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+  margin-bottom: 16px;
+}
+
+.login-prompt-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 0;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.login-prompt-desc {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 35px;
+}
+
+/* Google Login Button */
+.login-prompt-google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #1e293b;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.login-prompt-google-btn:hover {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .login-prompt-modal {
+    width: 90vw;
+    min-width: 300px;
+  }
+  
+  .login-prompt-content {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .login-prompt-image-container {
+    height: 220px;
+    width: 100%;
+    padding: 15px;
+  }
+  
+  .login-prompt-text-section {
+    padding: 30px 20px;
+    text-align: center;
+  }
+}

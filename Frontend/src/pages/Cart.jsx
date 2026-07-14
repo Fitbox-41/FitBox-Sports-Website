@@ -71,16 +71,21 @@ export default function Cart() {
               {cart.map((item) => (
                 <div key={`${item.id}-${item.selectedVariant}`} className="cart-item-card">
                   <Link 
-                    to={`/product/${item.id}`} 
+                    to={`/product/${item.id || item._id || item.productId}`} 
                     className="cart-item-img-wrap"
                   >
-                    <img src={item.imgSrc} alt={item.name} loading="lazy" decoding="async" />
+                    <img 
+                      src={item.imgSrc && typeof item.imgSrc === 'string' ? item.imgSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp') : item.imgSrc} 
+                      alt={item.name} 
+                      loading="lazy" 
+                      decoding="async" 
+                    />
                   </Link>
                   
                   <div className="cart-item-details">
                     <div className="cart-item-header">
                       <Link 
-                        to={`/product/${item.id}`} 
+                        to={`/product/${item.id || item._id || item.productId}`} 
                         className="cart-item-name"
                       >
                         {item.name}

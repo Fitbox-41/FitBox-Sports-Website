@@ -1,0 +1,288 @@
+.track-order-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 20px 40px;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+}
+
+.track-order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.track-order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.track-order-header h2 {
+  margin: 0;
+  color: #1e3a8a;
+  font-size: 24px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 65%;
+}
+
+.track-order-destination {
+  color: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30%;
+  text-align: right;
+}
+
+/* Progress Bar Container */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin: 20px 40px 10px;
+}
+
+/* Connecting Line */
+.progress-container::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e2e8f0;
+  z-index: 1;
+}
+
+/* Active Connecting Line */
+.progress-line {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  height: 2px;
+  background-color: #22c55e;
+  z-index: 2;
+  transition: width 0.6s linear;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 3;
+  width: 100px;
+}
+
+.progress-icon-wrap {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  transition: all 0.5s ease-in-out;
+}
+
+.progress-step.active .progress-icon-wrap {
+  border-color: #22c55e;
+  color: #22c55e;
+  background-color: #f0fdf4;
+  animation: toGreen 0.8s ease forwards;
+}
+
+@keyframes toGreen {
+  from {
+    border-color: #e2e8f0;
+    color: #94a3b8;
+    background-color: white;
+  }
+  to {
+    border-color: #22c55e;
+    color: #22c55e;
+    background-color: #f0fdf4;
+  }
+}
+
+.progress-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Grid Layout for details */
+.track-order-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.detail-card h3 {
+  color: #1e3a8a;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.detail-label {
+  width: 140px;
+  color: #000;
+  font-weight: 700;
+}
+
+.detail-value {
+  color: #475569;
+  flex: 1;
+}
+
+/* Items of shipment */
+.shipment-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.shipment-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.shipment-item-details {
+  flex: 1;
+}
+
+.shipment-item-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 5px;
+  line-height: 1.4;
+}
+
+.shipment-item-price {
+  font-size: 13px;
+  color: #475569;
+  margin: 0 0 5px;
+}
+
+.shipment-item-qty {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Totals section */
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #64748b;
+}
+
+.totals-row.grand-total {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 16px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Download Invoice Button */
+.download-invoice-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1e3a8a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.download-invoice-btn:hover {
+  background-color: #172554;
+}
+
+.no-data {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .track-order-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-container {
+    margin: 10px -10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .progress-container::before, .progress-line {
+    top: 20px;
+    min-width: 300px;
+  }
+  
+  .progress-step {
+    width: 65px;
+  }
+  
+  .progress-icon-wrap {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+
+  .progress-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .progress-label {
+    font-size: 10px;
+  }
+}

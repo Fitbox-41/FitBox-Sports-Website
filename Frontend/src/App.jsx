@@ -19,7 +19,9 @@ import Sitemap from './pages/Sitemap';
 import Account from './pages/Account';
 import Orders from './pages/Orders';
 import CODGateway from './pages/CODGateway';
+import TrackOrder from './pages/TrackOrder';
 import MobileNav from './components/MobileNav';
+import LoginPromptModal from './components/LoginPromptModal';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider, ProductContext } from './context/ProductContext';
 import { AuthProvider } from './context/AuthContext';
@@ -86,6 +88,7 @@ function AppContent() {
       <Loader isVisible={showLoader} />
 
       <BrowserRouter>
+        <LoginPromptModal />
         <LoginRequiredModal />
         <ScrollToTop />
         <Routes>
@@ -97,6 +100,7 @@ function AppContent() {
           <Route path="/auth" element={<Auth />} />
           <Route path="/account" element={<Account />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/track-order/:orderId" element={<TrackOrder />} />
           <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

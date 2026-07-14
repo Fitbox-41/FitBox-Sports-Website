@@ -23,11 +23,14 @@ export default function Favourite() {
         {wishlist.length > 0 ? (
           <div className="fav-list-container">
             {wishlist.map((item) => {
-              const img = item.image || item.imgSrc || (item.variants && item.variants[0].images[0]);
+              let img = item.image || item.imgSrc || (item.variants && item.variants[0].images[0]);
+              if (img && typeof img === 'string') {
+                img = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+              }
               return (
                 <div key={item.id} className="fav-list-item">
                   <Link 
-                    to={`/product/${item.id}`}
+                    to={`/product/${item.id || item._id || item.productId}`}
                     className="fav-item-image-wrapper"
                   >
                     <img src={img} alt={item.name} className="fav-item-image" loading="lazy" decoding="async" />
@@ -35,7 +38,7 @@ export default function Favourite() {
 
                   <div className="fav-item-details">
                     <Link 
-                      to={`/product/${item.id}`}
+                      to={`/product/${item.id || item._id || item.productId}`}
                       className="fav-item-name"
                     >
                       {item.name}

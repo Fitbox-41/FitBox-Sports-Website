@@ -43,10 +43,14 @@ export default function ProductCategory() {
   const flatScoreRef = useRef(new Map());
 
   // Filter states
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
+  const [tempMaxPrice, setTempMaxPrice] = useState(10000);
+  const [isFiltering, setIsFiltering] = useState(false);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
+  const [selectedWeights, setSelectedWeights] = useState([]);
+  const filterTimeoutRef = useRef(null);
 
   const formatLabel = (id) => (id || '').split('-').map(word => word === '&' ? '&' : word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const meta = categoryMeta[categoryId] || { 
@@ -71,6 +75,15 @@ export default function ProductCategory() {
       return categoryMatch || subCategoryMatch || nameMatch;
     });
     
+    // Determine Highest Price for this category
+    const flatCatProducts = flattenProducts(categoryProducts);
+    const maxP = flatCatProducts.length > 0 
+      ? Math.max(...flatCatProducts.map(p => Number(p.price) || 0)) 
+      : 10000;
+      
+    setMaxPrice(maxP);
+    setTempMaxPrice(maxP);
+    
     // Reset random scores so every category visit gets a fresh shuffle
     flatScoreRef.current = new Map();
     
@@ -80,10 +93,6 @@ export default function ProductCategory() {
 
   useEffect(() => {
     let result = [...products];
-
-    // Filter by Price
-    if (minPrice) result = result.filter(p => p.price >= parseInt(minPrice));
-    if (maxPrice) result = result.filter(p => p.price <= parseInt(maxPrice));
 
     // Filter by Availability
     if (inStockOnly && !outOfStockOnly) result = result.filter(p => !p.isOutOfStock);
@@ -100,16 +109,37 @@ export default function ProductCategory() {
     // 'featured': no product-level sort — order handled at variant level in useMemo
 
     setFilteredProducts(result);
-  }, [products, sortBy, minPrice, maxPrice, inStockOnly, outOfStockOnly]);
+  }, [products, sortBy, inStockOnly, outOfStockOnly]);
 
-  // Expand variants into individual cards, then apply random order for 'featured'
+  const toggleWeight = (w) => {
+    setSelectedWeights(prev => 
+      prev.includes(w) ? prev.filter(x => x !== w) : [...prev, w]
+    );
+  };
+
+  // Expand variants into individual cards, apply price filter, then apply random order for 'featured'
   const expandedProducts = useMemo(() => {
-    const flat = flattenProducts(filteredProducts).map(p => ({
+    let flat = flattenProducts(filteredProducts).map(p => ({
       ...p,
       displayId: p.displayId || p.id,
       price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
       oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null
     }));
+
+    // Filter variants by Max Price
+    if (maxPrice > 0) {
+      flat = flat.filter(p => p.price <= maxPrice);
+    }
+    
+    // Filter variants by Weight
+    if (selectedWeights.length > 0) {
+      flat = flat.filter(p => {
+        const weightKg = (p.size && p.size.weight) ? (p.size.weight / 1000) : null;
+        if (weightKg === null) return false;
+        if (selectedWeights.includes('over-10') && weightKg > 10) return true;
+        return selectedWeights.includes(weightKg);
+      });
+    }
 
     if (sortBy === 'featured') {
       // Assign a stable random score to each variant card once per category visit
@@ -128,7 +158,7 @@ export default function ProductCategory() {
     }
 
     return flat;
-  }, [filteredProducts, sortBy]);
+  }, [filteredProducts, sortBy, maxPrice, selectedWeights]);
 
   return (
     <div className="category-page">
@@ -190,6 +220,11 @@ export default function ProductCategory() {
         </div>
 
         <div className="category-layout">
+          {/* Mobile Filter Overlay Backdrop */}
+          {filterOpen && (
+            <div className="filter-sidebar-overlay" onClick={() => setFilterOpen(false)}></div>
+          )}
+          
           {/* Mobile Filter Sidebar - Overlay */}
           <aside className={`filter-sidebar ${filterOpen ? 'open' : ''}`}>
             <div className="sidebar-header">
@@ -203,20 +238,39 @@ export default function ProductCategory() {
             
             <div className="filter-groups">
               <div className="filter-group">
-                <h4>Price Range</h4>
-                <div className="price-range-inputs">
+                <h4>Price Range: Up to ₹{tempMaxPrice}</h4>
+                <div className="price-slider-container">
                   <input 
-                    type="number" 
-                    placeholder="Min" 
-                    value={minPrice} 
-                    onChange={(e) => setMinPrice(e.target.value)} 
+                    type="range" 
+                    className="price-ribbon-slider"
+                    min="0"
+                    max={products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000}
+                    step="50"
+                    value={tempMaxPrice}
+                    onChange={(e) => {
+                      setTempMaxPrice(Number(e.target.value));
+                    }}
+                    onMouseUp={() => {
+                      setIsFiltering(true);
+                      if (filterTimeoutRef.current) clearTimeout(filterTimeoutRef.current);
+                      filterTimeoutRef.current = setTimeout(() => {
+                        setMaxPrice(tempMaxPrice);
+                        setIsFiltering(false);
+                      }, 1000);
+                    }}
+                    onTouchEnd={() => {
+                      setIsFiltering(true);
+                      if (filterTimeoutRef.current) clearTimeout(filterTimeoutRef.current);
+                      filterTimeoutRef.current = setTimeout(() => {
+                        setMaxPrice(tempMaxPrice);
+                        setIsFiltering(false);
+                      }, 1000);
+                    }}
                   />
-                  <input 
-                    type="number" 
-                    placeholder="Max" 
-                    value={maxPrice} 
-                    onChange={(e) => setMaxPrice(e.target.value)} 
-                  />
+                  <div className="price-slider-labels">
+                    <span>₹0</span>
+                    <span>₹{products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000}</span>
+                  </div>
                 </div>
               </div>
               
@@ -241,6 +295,28 @@ export default function ProductCategory() {
               </div>
 
               <div className="filter-group">
+                <h4>Weight</h4>
+                {[2, 4, 6, 8, 10].map(w => (
+                  <label key={w} className="filter-checkbox">
+                    <input 
+                      type="checkbox" 
+                      checked={selectedWeights.includes(w)} 
+                      onChange={() => toggleWeight(w)} 
+                    />
+                    <span>{w} kg</span>
+                  </label>
+                ))}
+                <label className="filter-checkbox">
+                  <input 
+                    type="checkbox" 
+                    checked={selectedWeights.includes('over-10')} 
+                    onChange={() => toggleWeight('over-10')} 
+                  />
+                  <span>Over 10 kg</span>
+                </label>
+              </div>
+
+              <div className="filter-group">
                 <h4>Brand</h4>
                 <label className="filter-checkbox">
                   <input type="checkbox" checked readOnly />
@@ -252,17 +328,27 @@ export default function ProductCategory() {
             <div className="sidebar-footer">
               <button className="apply-filters-btn" onClick={() => setFilterOpen(false)}>Apply Filters</button>
               <button className="clear-filters-btn" onClick={() => {
-                setMinPrice('');
-                setMaxPrice('');
+                const maxP = products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000;
+                setTempMaxPrice(maxP);
+                setMaxPrice(maxP);
                 setInStockOnly(false);
                 setOutOfStockOnly(false);
+                setSelectedWeights([]);
                 setSortBy('featured');
-              }}>Clear All</button>
+              }}>
+                Clear All
+              </button>
             </div>
           </aside>
 
           {/* Product Grid */}
-          <div className="products-grid-wrapper">
+          <div className="products-grid-wrapper" style={{ position: 'relative' }}>
+            {isFiltering && (
+              <div className="products-loading-overlay">
+                <div className="spinner"></div>
+                <p>Applying Filters...</p>
+              </div>
+            )}
             {expandedProducts.length > 0 ? (
               <div className="products-grid">
                 {expandedProducts.map((displayProduct) => (
@@ -280,10 +366,12 @@ export default function ProductCategory() {
                 <h3>No products found</h3>
                 <p>Try adjusting your filters or search terms.</p>
                 <button className="clear-filters-btn" onClick={() => {
-                  setMinPrice('');
-                  setMaxPrice('');
+                  const maxP = products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000;
+                  setTempMaxPrice(maxP);
+                  setMaxPrice(maxP);
                   setInStockOnly(false);
                   setOutOfStockOnly(false);
+                  setSelectedWeights([]);
                   setSortBy('featured');
                 }}>Reset All</button>
               </div>

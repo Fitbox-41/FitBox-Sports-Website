@@ -344,17 +344,16 @@ export default function Orders() {
                          Download Invoice
                        </a>
                      )}
-                     {order.trackingUrl && order.orderStatus !== 'Cancelled' && (
-                       <a 
-                         href={order.trackingUrl} 
-                         target="_blank" 
-                         rel="noreferrer" 
+                     {order.orderStatus !== 'Cancelled' && (
+                       <Link 
+                         to={`/track-order/${order._id}`} 
+                         state={{ order }}
                          style={{ display: 'block', marginTop: '5px', fontSize: '14px', color: '#f97316', textDecoration: 'none', fontWeight: '500' }}
                        >
-                         Track via {order.courier || 'Delhivery'}
-                       </a>
+                         Track Order
+                       </Link>
                      )}
-                     {order.orderStatus !== 'Cancelled' && order.shipmentStatus !== 'Shipped' && order.shipmentStatus !== 'Delivered' && (
+                     {order.orderStatus !== 'Cancelled' && order.shipmentStatus !== 'In Transit' && order.shipmentStatus !== 'Out for Delivery' && order.shipmentStatus !== 'Delivered' && (
                        <CancelButtonWithTimer 
                          order={order}
                          onCancelClick={handleCancelClick}
@@ -364,16 +363,20 @@ export default function Orders() {
                 </div>
 
                 {order.items.map((item, idx) => {
-                  const img = item.image || item.imgSrc;
-                  const inWishlist = wishlist.some(w => w.id === item.productId);
+                  let img = item.image || item.imgSrc;
+                  if (img && typeof img === 'string') {
+                    img = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+                  }
+                  const itemId = item.productId || item.id || item._id;
+                  const inWishlist = wishlist.some(w => w.id === itemId);
                   return (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '12px 0', borderBottom: idx !== order.items.length - 1 ? '1px solid #f1f5f9' : 'none' }}>
-                      <Link to={`/product/${item.productId}`} style={{ flexShrink: 0 }}>
+                      <Link to={`/product/${itemId}`} style={{ flexShrink: 0 }}>
                         <img src={img} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e2e8f0' }} loading="lazy" decoding="async" />
                       </Link>
 
                       <div style={{ flex: 1 }}>
-                        <Link to={`/product/${item.productId}`} style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b', textDecoration: 'none', display: 'block', marginBottom: '4px' }}>
+                        <Link to={`/product/${itemId}`} style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b', textDecoration: 'none', display: 'block', marginBottom: '4px' }}>
                           {item.name}
                         </Link>
                         <div style={{ fontSize: '13px', color: '#64748b' }}>
