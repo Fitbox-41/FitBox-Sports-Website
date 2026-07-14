@@ -1,25 +1,26 @@
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
-import { useEffect, useContext, useState } from 'react';
-import Home from './pages/Home';
-import ProductPage from './pages/ProductPage';
-import ProductCategory from './pages/ProductCategory';
-import Under99 from './pages/Under99';
-import Cart from './pages/Cart';
-import Favourite from './pages/Favourite';
-import Auth from './pages/Auth';
-import Privacy from './pages/Privacy';
-import Terms from './pages/Terms';
-import Shipping from './pages/Shipping';
-import Returns from './pages/Returns';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Team from './pages/Team';
-import FAQ from './pages/FAQ';
-import Sitemap from './pages/Sitemap';
-import Account from './pages/Account';
-import Orders from './pages/Orders';
-import CODGateway from './pages/CODGateway';
-import TrackOrder from './pages/TrackOrder';
+import { useEffect, useContext, useState, Suspense, lazy } from 'react';
+
+const Home = lazy(() => import('./pages/Home'));
+const ProductPage = lazy(() => import('./pages/ProductPage'));
+const ProductCategory = lazy(() => import('./pages/ProductCategory'));
+const Under99 = lazy(() => import('./pages/Under99'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Favourite = lazy(() => import('./pages/Favourite'));
+const Auth = lazy(() => import('./pages/Auth'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Shipping = lazy(() => import('./pages/Shipping'));
+const Returns = lazy(() => import('./pages/Returns'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
+const Team = lazy(() => import('./pages/Team'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const Sitemap = lazy(() => import('./pages/Sitemap'));
+const Account = lazy(() => import('./pages/Account'));
+const Orders = lazy(() => import('./pages/Orders'));
+const CODGateway = lazy(() => import('./pages/CODGateway'));
+const TrackOrder = lazy(() => import('./pages/TrackOrder'));
 import MobileNav from './components/MobileNav';
 import LoginPromptModal from './components/LoginPromptModal';
 import { CartProvider } from './context/CartContext';
@@ -97,32 +98,34 @@ function AppContent() {
         <LoginPromptModal />
         <LoginRequiredModal />
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:productId" element={<ProductPage />} />
-          
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favourites" element={<Favourite />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/track-order/:orderId" element={<TrackOrder />} />
-          <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/shipping" element={<Shipping />} />
-          <Route path="/returns" element={<Returns />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/sitemap" element={<Sitemap />} />
-          <Route path="/under99" element={<Under99 />} />
-          <Route path="/category/:categoryId" element={<ProductCategory />} />
-          
-          {/* Catch-all to home */}
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <Suspense fallback={<Loader isVisible={true} showBar={false} />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
+            
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/favourites" element={<Favourite />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/track-order/:orderId" element={<TrackOrder />} />
+            <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/returns" element={<Returns />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/under99" element={<Under99 />} />
+            <Route path="/category/:categoryId" element={<ProductCategory />} />
+            
+            {/* Catch-all to home */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
         <MobileNav />
       </BrowserRouter>
       <SpeedInsights />

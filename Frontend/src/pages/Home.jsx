@@ -1007,7 +1007,7 @@ export default function Home() {
       ══════════════════════════════════ */}
       <section className="new-hero" id="new-hero">
         <div className="hero-wallpaper-wrap">
-          <img src="/Untitled-design-19.webp" alt="Hero Background" className="hero-wallpaper" loading="lazy" decoding="async" />
+          <img src="/Untitled-design-19.webp" alt="Hero Background" className="hero-wallpaper" fetchpriority="high" decoding="async" />
           <div className="hero-overlay"></div>
         </div>
 
