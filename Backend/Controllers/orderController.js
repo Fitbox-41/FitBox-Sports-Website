@@ -670,12 +670,9 @@ export const getOrderById = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
     
-    // Ensure the user owns the order, unless it's a guest checkout (we allow it if userId matches or if it's admin, though admin logic is separate)
-    // For now, if there's a req.user, just check if it matches
+    // Ensure the user owns the order
     if (req.user && order.userId && order.userId._id.toString() !== req.user._id.toString()) {
-      // return res.status(401).json({ success: false, message: 'Unauthorized' });
-      // Depending on guest checkout logic, we might relax this or check an order token. 
-      // Assuming logged in users for now.
+      return res.status(401).json({ success: false, message: 'Unauthorized to view this order' });
     }
 
     res.status(200).json({ success: true, order });
@@ -692,6 +689,11 @@ export const cancelOrder = async (req, res) => {
 
     if (!order) {
       return res.status(404).json({ success: false, message: 'Order not found' });
+    }
+
+    // Verify order ownership
+    if (order.userId && order.userId.toString() !== req.user?._id?.toString()) {
+      return res.status(403).json({ success: false, message: 'Unauthorized to cancel this order' });
     }
 
     if (order.orderStatus === 'Cancelled') {
