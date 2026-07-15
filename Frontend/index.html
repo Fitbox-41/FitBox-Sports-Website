@@ -24,14 +24,32 @@
         left: 0;
         width: 100vw;
         height: 100vh;
-        background-color: #0f172a; /* Solid background to prevent white flash */
+        background-color: rgba(15, 23, 42, 0.4);
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 99999;
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+      #static-loader {
+        background-color: #0f172a; /* Slate dark fallback */
+        overflow: hidden;
+      }
+      #static-loader::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background-image: url('/Untitled-design-19.webp');
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px);
+        opacity: 0.55;
+        z-index: -1;
       }
       .global-loader-overlay.hidden {
         opacity: 0;
