@@ -169,6 +169,8 @@ export default function Orders() {
       if (payment === 'success') {
         setToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
         clearCart();
+      } else if (payment === 'pending') {
+        setToast({ type: 'success', message: 'Verifying your payment... Please wait.' });
       } else if (payment === 'failed') {
         setToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
       } else if (payment === 'error') {
@@ -190,8 +192,11 @@ export default function Orders() {
             if (status === 'Paid') {
               setToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
               clearCart();
+              // Re-fetch orders to show updated AWB, invoice, etc.
+              fetchOrders();
             } else if (status === 'Failed') {
               setToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
+              fetchOrders();
             }
           }
         } catch (err) {
@@ -200,7 +205,7 @@ export default function Orders() {
       }
 
       if (payment) {
-        const timer = setTimeout(() => setToast(null), 6000);
+        const timer = setTimeout(() => setToast(null), 8000);
         return () => clearTimeout(timer);
       }
     };

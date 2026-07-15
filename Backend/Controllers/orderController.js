@@ -308,9 +308,20 @@ const processPaidOrder = async (order) => {
     order.shipmentStatus = order.shipmentStatus === 'Created' ? order.shipmentStatus : 'Pending';
   }
 
-  // Mark email as sent BEFORE saving so a concurrent callback won't send a second one
-  order.confirmationEmailSent = true;
   await order.save();
+
+  // Atomically claim email-sending rights to prevent duplicate emails
+  // Only the first caller (callback OR redirect) that sets this flag will send the email
+  const claimed = await Order.findOneAndUpdate(
+    { _id: order._id, confirmationEmailSent: { $ne: true } },
+    { $set: { confirmationEmailSent: true } }
+  );
+
+  if (!claimed) {
+    // Another process already claimed email rights — skip sending
+    console.log(`Email already sent for order ${order._id}, skipping duplicate`);
+    return order;
+  }
 
   try {
     const user = await User.findById(order.userId);
@@ -382,6 +393,8 @@ const processPaidOrder = async (order) => {
     }
   } catch (emailErr) {
     console.error('Confirmation email failed:', emailErr);
+    // Reset the flag so a retry can send the email
+    await Order.updateOne({ _id: order._id }, { $set: { confirmationEmailSent: false } });
   }
 
   return order;
@@ -471,13 +484,16 @@ export const phonePeInitiate = async (req, res) => {
 };
 
 export const phonePeRedirect = async (req, res) => {
-  const frontendUrl = process.env.FRONTEND_URL;
+  let frontendUrl = process.env.FRONTEND_URL || '';
   if (!frontendUrl) {
     console.error('FRONTEND_URL is not configured');
     return res.status(500).send('Payment redirect misconfigured: FRONTEND_URL missing');
   }
 
-  let redirectPath = '/orders';
+  // Ensure we redirect to www. version if that's what the user is on
+  if (frontendUrl.includes('://') && !frontendUrl.includes('://www.')) {
+    frontendUrl = frontendUrl.replace('://', '://www.');
+  }
 
   try {
     let merchantOrderId = req.query?.merchantOrderId || req.body?.transactionId || req.body?.merchantOrderId;
@@ -494,49 +510,33 @@ export const phonePeRedirect = async (req, res) => {
     }
 
     const orderIdParam = req.query.orderId;
-    console.log('PhonePe Redirect received:', { merchantOrderId, orderIdParam, body: req.body, query: req.query });
+    console.log('PhonePe Redirect received:', { merchantOrderId, orderIdParam });
 
     let order;
     if (merchantOrderId) {
       order = await Order.findOne({ paymentId: merchantOrderId });
     } else if (orderIdParam) {
       order = await Order.findById(orderIdParam);
-      merchantOrderId = order?.paymentId;
     }
 
     if (!order) {
-      console.error('PhonePe Redirect: Order not found for merchantOrderId:', merchantOrderId, 'or orderId:', orderIdParam);
       return res.redirect(`${frontendUrl}/orders?payment=error&reason=order_not_found`);
     }
 
+    // If already fully processed by the callback webhook, redirect immediately
     if (order.paymentStatus === 'Paid') {
       return res.redirect(`${frontendUrl}/orders?payment=success&orderId=${order._id}`);
     }
 
-    if (!merchantOrderId) {
-      await markOnlineOrderFailed(order);
-      return res.redirect(`${frontendUrl}/orders?payment=failed&orderId=${order._id}`);
-    }
+    // Do NOT poll PhonePe or run heavy processing here — Vercel has a 10s timeout.
+    // Instead, redirect to frontend immediately. The frontend will call /verify-payment
+    // which will reconcile the payment status, create shipment, send email, etc.
+    return res.redirect(`${frontendUrl}/orders?payment=pending&orderId=${order._id}`);
 
-    const terminalState = await resolveTerminalPhonePeState(merchantOrderId);
-    order = await Order.findById(order._id);
-
-    if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
-      // Already fully processed by callback — just redirect
-      redirectPath = `/orders?payment=success&orderId=${order._id}`;
-    } else if (order.paymentStatus === 'Paid' || terminalState === 'success') {
-      await processPaidOrder(order);
-      redirectPath = `/orders?payment=success&orderId=${order._id}`;
-    } else {
-      await markOnlineOrderFailed(order);
-      redirectPath = `/orders?payment=failed&orderId=${order._id}`;
-    }
   } catch (error) {
     console.error('PhonePe Redirect processing error:', error);
-    redirectPath = '/orders?payment=error';
+    return res.redirect(`${frontendUrl}/orders?payment=error`);
   }
-
-  res.redirect(`${frontendUrl}${redirectPath}`);
 };
 
 export const phonePeCallback = async (req, res) => {
@@ -589,10 +589,11 @@ export const verifyOrderPayment = async (req, res) => {
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
 
-    const order = await Order.findOne({ _id: id, userId });
+    let order = await Order.findOne({ _id: id, userId });
     if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
 
-    if (order.paymentStatus === 'Paid') {
+    // Already fully processed
+    if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
       return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
     }
 
@@ -606,22 +607,33 @@ export const verifyOrderPayment = async (req, res) => {
       return res.status(200).json({ success: true, paymentStatus: 'Failed', order: updated });
     }
 
-    const terminalState = await resolveTerminalPhonePeState(order.paymentId, 3);
-    let updated = await Order.findById(order._id);
-
-    if (updated.paymentStatus !== 'Paid') {
-      if (terminalState === 'success') {
-        updated = await processPaidOrder(updated);
-      } else {
-        updated = await markOnlineOrderFailed(updated);
-      }
+    // If already marked Paid (by callback) but not fully processed, finish processing
+    if (order.paymentStatus === 'Paid') {
+      order = await processPaidOrder(order);
+      return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
     }
 
-    return res.status(200).json({
-      success: true,
-      paymentStatus: updated.paymentStatus,
-      order: updated
-    });
+    // Main reconciliation: poll PhonePe to get terminal state
+    const terminalState = await resolveTerminalPhonePeState(order.paymentId, 5);
+    
+    // Re-read order in case callback processed it while we were polling
+    order = await Order.findById(order._id);
+
+    if (order.paymentStatus === 'Paid') {
+      // Callback processed it — ensure full processing is done
+      if (!order.confirmationEmailSent) {
+        order = await processPaidOrder(order);
+      }
+      return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
+    }
+
+    if (terminalState === 'success') {
+      order = await processPaidOrder(order);
+      return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
+    } else {
+      order = await markOnlineOrderFailed(order);
+      return res.status(200).json({ success: true, paymentStatus: 'Failed', order });
+    }
   } catch (error) {
     console.error('Verify order payment error:', error);
     res.status(500).json({ success: false, message: error.message });
