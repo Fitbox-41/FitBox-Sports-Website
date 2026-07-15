@@ -94,7 +94,7 @@ export default function ProductPage() {
   // ─── 1. State & Data Logic ───
   const { addToCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
-  const { deliveryFee } = useSettings();
+  const { deliveryFee, freeDeliveryThreshold } = useSettings();
   const navigate = useNavigate();
   const [checkoutItems, setCheckoutItems] = useState([]);
   const [checkoutTotal, setCheckoutTotal] = useState(0);
@@ -337,7 +337,7 @@ export default function ProductPage() {
       };
       
       const subtotalAmount = parsedActivePrice * quantity;
-      const shippingAmount = subtotalAmount > 999 || subtotalAmount === 0 ? 0 : deliveryFee;
+      const shippingAmount = subtotalAmount > freeDeliveryThreshold || subtotalAmount === 0 ? 0 : deliveryFee;
       const totalAmount = subtotalAmount + shippingAmount;
 
       setCheckoutItems([buyNowItem]);

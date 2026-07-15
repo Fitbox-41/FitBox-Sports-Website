@@ -12,7 +12,7 @@ import './Cart.css';
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, toggleWishlist, wishlist, clearCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
-  const { deliveryFee } = useSettings();
+  const { deliveryFee, freeDeliveryThreshold } = useSettings();
   const navigate = useNavigate();
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
@@ -20,7 +20,7 @@ export default function Cart() {
   const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
   
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
-  const shipping = subtotal > 999 || subtotal === 0 ? 0 : deliveryFee;
+  const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
   const total = subtotal + shipping;
 
   const handleCheckout = async () => {
