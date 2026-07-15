@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import path from 'path';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import { rateLimit } from 'express-rate-limit';
 import productRoutes from './Routes/productRoutes.js';
 import adminRoutes from './Routes/adminRoutes.js';
 import authRoutes from './Routes/authRoutes.js';
@@ -13,25 +16,66 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
+// Strict CORS Configuration
+const allowedOrigins = [
+    process.env.FRONTEND_URL,
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://localhost:3000'
+].filter(Boolean);
+
 const corsOptions = {
-    origin: (_origin, callback) => callback(null, true),
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
     credentials: true,
 };
 
-app.use(cors(corsOptions));
+// Security Middlewares
+app.use(helmet());
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization,Accept,Origin,X-Requested-With');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    if (req.method === 'OPTIONS') {
-        return res.sendStatus(204);
+    if (req.body) req.body = mongoSanitize.sanitize(req.body);
+    if (req.params) req.params = mongoSanitize.sanitize(req.params);
+    if (req.query) {
+        for (const key in req.query) {
+            if (typeof req.query[key] === 'object' && req.query[key] !== null) {
+                req.query[key] = mongoSanitize.sanitize(req.query[key]);
+            }
+            if (key.startsWith('$') || key.includes('.')) {
+                delete req.query[key];
+            }
+        }
     }
     next();
 });
+app.use(cors(corsOptions));
+
+// Rate Limiting
+const globalLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { success: false, message: 'Too many requests, please try again after 15 minutes.' }
+});
+
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 20, // Limit each IP to 20 auth attempts per windowMs
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { success: false, message: 'Too many authentication attempts, please try again after 15 minutes.' }
+});
+
+app.use('/api', globalLimiter);
+app.use('/api/auth', authLimiter);
 
 app.get('/favicon.ico', (req, res) => res.sendStatus(204));
 
