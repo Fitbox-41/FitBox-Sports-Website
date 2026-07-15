@@ -15,22 +15,22 @@ const animateFly = (startElement, targetSelector, imageSrc) => {
   flyer.className = 'cart-flyer-item';
   flyer.style.position = 'fixed';
   flyer.style.zIndex = '999999';
-  flyer.style.width = '60px';
-  flyer.style.height = '60px';
+  flyer.style.width = '100px'; /* Larger size */
+  flyer.style.height = '100px'; /* Larger size */
   flyer.style.backgroundImage = `url(${imageSrc})`;
   flyer.style.backgroundSize = 'cover';
   flyer.style.backgroundPosition = 'center';
   flyer.style.borderRadius = '50%';
-  flyer.style.boxShadow = '0 8px 24px rgba(255, 107, 53, 0.45)';
+  flyer.style.boxShadow = '0 12px 32px rgba(255, 107, 53, 0.5)';
   flyer.style.pointerEvents = 'none';
 
   // Get positions
   const startRect = startElement.getBoundingClientRect();
   const targetRect = targetElement.getBoundingClientRect();
 
-  // Set start position
-  const startX = startRect.left + startRect.width / 2 - 30;
-  const startY = startRect.top + startRect.height / 2 - 30;
+  // Set start position (centered on startElement)
+  const startX = startRect.left + startRect.width / 2 - 50;
+  const startY = startRect.top + startRect.height / 2 - 50;
   flyer.style.left = `${startX}px`;
   flyer.style.top = `${startY}px`;
 
@@ -39,12 +39,12 @@ const animateFly = (startElement, targetSelector, imageSrc) => {
   // Force layout reflow
   flyer.offsetWidth;
 
-  // Animate to target
-  flyer.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
-  flyer.style.left = `${targetRect.left + targetRect.width / 2 - 15}px`;
-  flyer.style.top = `${targetRect.top + targetRect.height / 2 - 15}px`;
-  flyer.style.transform = 'scale(0.18)';
-  flyer.style.opacity = '0.05';
+  // Animate to target (slower transition)
+  flyer.style.transition = 'all 1.2s cubic-bezier(0.25, 1, 0.5, 1)';
+  flyer.style.left = `${targetRect.left + targetRect.width / 2 - 20}px`;
+  flyer.style.top = `${targetRect.top + targetRect.height / 2 - 20}px`;
+  flyer.style.transform = 'scale(0.3)';
+  flyer.style.opacity = '0.1';
 
   // Cleanup and shake header element
   setTimeout(() => {
@@ -53,7 +53,7 @@ const animateFly = (startElement, targetSelector, imageSrc) => {
     setTimeout(() => {
       targetElement.classList.remove('pulse-pop');
     }, 450);
-  }, 800);
+  }, 1200);
 };
 
 const ProductCard = memo(({ product, showStatusTags = false }) => {
