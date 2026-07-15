@@ -1,7 +1,7 @@
 FitBox Sports – Premium Home Gym & Fitness Solutions
 
 FitBox Sports is a leading provider of high-quality, durable, and affordable home gym equipment. Our mission is to make professional-grade fitness accessible to everyone, empowering individuals to achieve their health goals from the comfort of their own homes.
-🏋️ Our Product Range
+ Our Product Range
 
 We specialize in versatile equipment designed for both beginners and seasoned athletes. Our core offerings include:
 
@@ -13,7 +13,7 @@ We specialize in versatile equipment designed for both beginners and seasoned at
 
     Specialized Kits: Targeted solutions like the "Intruder" series for heavy-duty strength training.
 
-🚀 Key Features
+ Key Features
 
     Space-Efficient Design: Equipment engineered to provide a full-body workout without requiring a dedicated commercial space.
 
@@ -23,7 +23,7 @@ We specialize in versatile equipment designed for both beginners and seasoned at
 
     Affordability: Premium quality at a price point that makes home fitness a reality for every budget.
 
-📈 Workout Guides
+ Workout Guides
 
 Our equipment is optimized for a variety of functional movements:
 
@@ -33,7 +33,7 @@ Our equipment is optimized for a variety of functional movements:
 
     Lower Body: Squats, Lunges, and Romanian Deadlifts (RDL).
 
-🌐 Connect With Us
+ Connect With Us
 
 Stay updated on new product launches, fitness tips, and exclusive deals:
 
@@ -41,7 +41,7 @@ Stay updated on new product launches, fitness tips, and exclusive deals:
 
     Customer Support: Available via the website for inquiries regarding orders, warranty, and assembly.
 
-📄 License
+ License
 
 Information and branding materials are property of FitBox Sports. This repository serves as a digital footprint/documentation for the brand's online presence.
 

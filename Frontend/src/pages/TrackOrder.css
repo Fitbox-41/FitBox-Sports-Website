@@ -411,7 +411,7 @@
 }
 
 .timeline-location::before {
-  content: '📍';
+  content: '';
   font-size: 11px;
 }
 
@@ -422,7 +422,7 @@
 }
 
 .timeline-time::before {
-  content: '🕐';
+  content: '';
   font-size: 11px;
 }
 
