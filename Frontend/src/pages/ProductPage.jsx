@@ -100,6 +100,7 @@ export default function ProductPage() {
   const [checkoutTotal, setCheckoutTotal] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [buyNowDeliveryFee, setBuyNowDeliveryFee] = useState(0);
+  const [isProcessing, setIsProcessing] = useState(false);
   // useParams retrieves the :productId from the URL (e.g., /product/1)
   const { productId } = useParams();
 
@@ -306,6 +307,7 @@ export default function ProductPage() {
 
 
   const handleBuyNow = async () => {
+    if (isProcessing) return;
     if (!currentUser) {
       setShowLoginModal(true);
       return;
@@ -316,6 +318,7 @@ export default function ProductPage() {
       return;
     }
 
+    setIsProcessing(true);
     try {
       const currentVariant = (product.variants && product.variants[selectedVariantIdx]) || (product.variants && product.variants[0]) || { sizes: [] };
       const currentSize = currentVariant?.sizes && currentVariant.sizes[selectedSizeIdx] ? currentVariant.sizes[selectedSizeIdx] : null;
@@ -364,6 +367,8 @@ export default function ProductPage() {
     } catch (err) {
       console.error(err);
       alert("Failed to initiate checkout");
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -604,11 +609,11 @@ export default function ProductPage() {
                 {isActuallyOutOfStock ? 'Out of Stock' : 'Add to Cart'}
               </button>
               <button 
-                className={`v2-btn v2-btn-buy ${isActuallyOutOfStock ? 'v2-btn--disabled' : ''}`}
-                disabled={isActuallyOutOfStock}
+                className={`v2-btn v2-btn-buy ${isActuallyOutOfStock || isProcessing ? 'v2-btn--disabled' : ''}`}
+                disabled={isActuallyOutOfStock || isProcessing}
                 onClick={handleBuyNow}
               >
-                {isActuallyOutOfStock ? 'Out of Stock' : 'Buy Now'}
+                {isActuallyOutOfStock ? 'Out of Stock' : isProcessing ? 'Processing...' : 'Buy Now'}
               </button>
             </div>
 
