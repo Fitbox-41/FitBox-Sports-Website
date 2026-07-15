@@ -715,14 +715,19 @@ export const cancelOrder = async (req, res) => {
     }
 
     // Cancel shipment on Delhivery if AWB exists
+    // IMPORTANT: cancelDelhiveryShipment never throws — it returns { error: true } on failure.
+    // We must check the return value explicitly and record the result.
     if (order.awb) {
-      try {
-        await cancelDelhiveryShipment(order.awb);
-        console.log(`Delhivery shipment cancelled for order ${id}, AWB: ${order.awb}`);
-      } catch (delhiveryErr) {
-        console.error('Failed to cancel Delhivery shipment:', delhiveryErr.message);
-        // Continue with order cancellation even if Delhivery cancel fails
+      const delhiveryResult = await cancelDelhiveryShipment(order.awb);
+      if (delhiveryResult && !delhiveryResult.error) {
+        order.delhiveryCancelConfirmed = true;
+        console.log(`Delhivery shipment confirmed cancelled for order ${id}, AWB: ${order.awb}`);
+      } else {
+        order.delhiveryCancelConfirmed = false;
+        console.error(`Delhivery cancellation FAILED for order ${id}, AWB: ${order.awb}. Will need manual retry.`, delhiveryResult);
       }
+    } else {
+      order.delhiveryCancelConfirmed = null; // No AWB — Delhivery never had this shipment
     }
 
     order.orderStatus = 'Cancelled';

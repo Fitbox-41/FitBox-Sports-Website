@@ -21,7 +21,7 @@ const TrackOrder = () => {
     setTrackingLoading(true);
     setTrackingError(null);
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('fitbox_token');
       const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
       const res = await fetch(`${apiUrl}/api/orders/${order._id}/track`, {
         headers: { Authorization: `Bearer ${token}` }
@@ -258,11 +258,6 @@ const TrackOrder = () => {
           {/* Shipment History Timeline */}
           <div className="detail-card shipment-history-card">
             <h3>Shipment History</h3>
-            {trackingError && (
-              <p className="tracking-error-msg">
-                <AlertTriangle size={14} /> {trackingError}
-              </p>
-            )}
             {trackingLoading && !trackingData && (
               <div className="tracking-loading">
                 <RefreshCw size={18} className="spin" />
@@ -286,11 +281,25 @@ const TrackOrder = () => {
               </div>
             ) : (
               !trackingLoading && (
-                <p className="no-data">
-                  {order.awb
-                    ? 'Tracking data will appear once the shipment is scanned by Delhivery.'
-                    : 'Shipment has not been dispatched yet. Tracking updates will appear here once your order is shipped.'}
-                </p>
+                <div style={{ padding: '16px 0' }}>
+                  {trackingError && !trackingData ? (
+                    <p className="tracking-error-msg">
+                      <AlertTriangle size={14} /> {trackingError}
+                    </p>
+                  ) : null}
+                  <p className="no-data">
+                    {!order.awb
+                      ? 'Shipment has not been dispatched yet. Tracking updates will appear here once your order is shipped.'
+                      : (trackingData?.error
+                          ? 'Live tracking is temporarily unavailable. Your shipment is on its way — please check back later.'
+                          : 'Tracking data will appear once the shipment is scanned by Delhivery.')}
+                  </p>
+                  {order.awb && (
+                    <p style={{ fontSize: '13px', color: '#94a3b8', marginTop: '6px' }}>
+                      Current status: <strong style={{ color: '#64748b' }}>{liveStatus || order.shipmentStatus || 'Processing'}</strong>
+                    </p>
+                  )}
+                </div>
               )
             )}
           </div>

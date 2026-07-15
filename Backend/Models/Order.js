@@ -34,7 +34,8 @@ const orderSchema = new mongoose.Schema({
   confirmationEmailSent: { type: Boolean, default: false },
   cancelReason: [{ type: String }],
   isRefunded: { type: Boolean, default: false },
-  refundedAt: Date
+  refundedAt: Date,
+  delhiveryCancelConfirmed: { type: Boolean, default: null } // null = no AWB, true = confirmed cancelled on Delhivery, false = cancel failed/unconfirmed
 }, { timestamps: true });
 
 // TTL Index: Automatically delete documents after 1800 seconds (30 mins)
