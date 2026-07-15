@@ -3,6 +3,59 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
+// Floating image fly animation utility
+const animateFly = (startElement, targetSelector, imageSrc) => {
+  if (!startElement || !imageSrc) return;
+
+  const targetElement = document.querySelector(targetSelector);
+  if (!targetElement) return;
+
+  // Create flyer element
+  const flyer = document.createElement('div');
+  flyer.className = 'cart-flyer-item';
+  flyer.style.position = 'fixed';
+  flyer.style.zIndex = '999999';
+  flyer.style.width = '60px';
+  flyer.style.height = '60px';
+  flyer.style.backgroundImage = `url(${imageSrc})`;
+  flyer.style.backgroundSize = 'cover';
+  flyer.style.backgroundPosition = 'center';
+  flyer.style.borderRadius = '50%';
+  flyer.style.boxShadow = '0 8px 24px rgba(255, 107, 53, 0.45)';
+  flyer.style.pointerEvents = 'none';
+
+  // Get positions
+  const startRect = startElement.getBoundingClientRect();
+  const targetRect = targetElement.getBoundingClientRect();
+
+  // Set start position
+  const startX = startRect.left + startRect.width / 2 - 30;
+  const startY = startRect.top + startRect.height / 2 - 30;
+  flyer.style.left = `${startX}px`;
+  flyer.style.top = `${startY}px`;
+
+  document.body.appendChild(flyer);
+
+  // Force layout reflow
+  flyer.offsetWidth;
+
+  // Animate to target
+  flyer.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
+  flyer.style.left = `${targetRect.left + targetRect.width / 2 - 15}px`;
+  flyer.style.top = `${targetRect.top + targetRect.height / 2 - 15}px`;
+  flyer.style.transform = 'scale(0.18)';
+  flyer.style.opacity = '0.05';
+
+  // Cleanup and shake header element
+  setTimeout(() => {
+    flyer.remove();
+    targetElement.classList.add('pulse-pop');
+    setTimeout(() => {
+      targetElement.classList.remove('pulse-pop');
+    }, 450);
+  }, 800);
+};
+
 const ProductCard = memo(({ product, showStatusTags = false }) => {
   const [hovered, setHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -207,6 +260,9 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
+            if (!isInWishlist) {
+              animateFly(e.currentTarget, '#fav-btn', product.imgSrc);
+            }
             toggleWishlist(product);
           }}
         >
@@ -381,6 +437,9 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
               const currentSize = currentVariant?.sizes && currentVariant.sizes[0] ? currentVariant.sizes[0] : null;
               const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
               const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
+              
+              const imgToFly = currentVariant?.images?.[0] || product.imgSrc;
+              animateFly(e.currentTarget, '#cart-btn', imgToFly);
               
               const normalizeSizeLabel = (size) => {
                 if (size === null || size === undefined) return '';

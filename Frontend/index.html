@@ -34,22 +34,10 @@
         transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
       }
       #static-loader {
-        background-color: #0f172a; /* Slate dark fallback */
+        background-color: rgba(255, 255, 255, 0.35); /* Frosty transparent overlay */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         overflow: hidden;
-      }
-      #static-loader::before {
-        content: '';
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        right: -20px;
-        bottom: -20px;
-        background-image: url('/Untitled-design-19.webp');
-        background-size: cover;
-        background-position: center;
-        filter: blur(20px);
-        opacity: 0.55;
-        z-index: -1;
       }
       .global-loader-overlay.hidden {
         opacity: 0;
@@ -80,7 +68,7 @@
         font-family: 'Inter', sans-serif;
         font-size: 14px;
         font-weight: 700;
-        color: #ffffff;
+        color: #0f172a; /* Slate dark text to match light overlay */
         margin-bottom: 12px;
         letter-spacing: 2px;
         text-transform: uppercase;
