@@ -2,24 +2,26 @@
 
 .pc-card {
   position: relative;
-  background: #ffffff;
-  border: 1px solid #cfcfda;
-  /* Darker border */
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1.5px solid rgba(26, 26, 46, 0.12) !important;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   width: 100%;
   max-width: 280px;
-  /* Decreased size */
   margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(26, 26, 46, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.6) !important;
 }
 
 .pc-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(26, 26, 46, 0.14);
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 20px 45px rgba(26, 26, 46, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(26, 26, 46, 0.22) !important;
 }
 
 /* ── Skeleton Loader ── */
@@ -106,14 +108,18 @@
   top: 12px;
   left: 12px;
   z-index: 2;
-  background: #ff6b35;
-  color: #fff;
+  background: rgba(255, 107, 53, 0.2) !important;
+  color: #ff5511 !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 107, 53, 0.35) !important;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.15) !important;
 }
 
 /* ── Status Tags ── */
@@ -139,13 +145,19 @@
 }
 
 .pc-status-tag--new {
-  background: #ff6b35;
-  color: #fff;
+  background: rgba(255, 107, 53, 0.2) !important;
+  color: #ff5511 !important;
+  border: 1.5px solid rgba(255, 107, 53, 0.35) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .pc-status-tag--out-of-stock {
-  background: #1a1a2e;
-  color: #fff;
+  background: rgba(26, 26, 46, 0.15) !important;
+  color: #1a1a2e !important;
+  border: 1.5px solid rgba(26, 26, 46, 0.25) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 @media (max-width: 600px) {
@@ -169,20 +181,23 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1.5px solid #e8e8f0;
-  background: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: border-color 0.25s, background 0.25s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+  transition: all 0.25s ease;
 }
 
 .pc-wish:hover,
 .pc-wish--active {
-  border-color: #ef4444;
-  background: #fff5f5;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
 }
 
 /* ── Image area ── */
@@ -268,7 +283,8 @@
   overflow: hidden;
 }
 
-.pc-name:hover {
+.pc-name:hover,
+.pc-card:hover .pc-name {
   color: #ff6b35;
 }
 
@@ -334,26 +350,30 @@
   margin-top: 10px;
   padding: 9px 0;
   width: 100%;
-  background: #1a1a2e;
-  /* Dark button */
+  background: rgba(26, 26, 46, 0.8) !important;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
   color: #fff;
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
   font-weight: 700;
-  border: none;
   border-radius: 10px;
   cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
   transition: all 0.25s;
 }
 
 .pc-add-btn:hover:not(.pc-add-btn--disabled) {
-  background: #000000;
-  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.9) !important;
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
 }
 
 .pc-add-btn--disabled {
-  background: #e8e8f0;
+  background: rgba(232, 232, 240, 0.5) !important;
   color: #a0a0b0;
+  border: 1.5px solid rgba(232, 232, 240, 0.3) !important;
   cursor: not-allowed;
   box-shadow: none;
 }

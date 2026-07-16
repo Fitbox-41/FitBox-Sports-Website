@@ -35,6 +35,7 @@ const orderSchema = new mongoose.Schema({
   cancelReason: [{ type: String }],
   isRefunded: { type: Boolean, default: false },
   refundedAt: Date,
+  stockSubtracted: { type: Boolean, default: false },
   delhiveryCancelConfirmed: { type: Boolean, default: null } // null = no AWB, true = confirmed cancelled on Delhivery, false = cancel failed/unconfirmed
 }, { timestamps: true });
 

@@ -1,10 +1,53 @@
 import Order from '../Models/Order.js';
 import User from '../Models/User.js';
+import Product from '../Models/Product.js';
+import mongoose from 'mongoose';
 import { createDelhiveryShipment, trackDelhiveryShipment, cancelDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
 import crypto from 'crypto';
 import axios from 'axios';
+
+const deductOrderStock = async (order) => {
+  if (order.stockSubtracted) {
+    return;
+  }
+
+  for (const item of (order.items || [])) {
+    const searchId = item.productId || item.id || item._id;
+    if (!searchId) continue;
+
+    const qty = item.quantity || 1;
+
+    try {
+      let productObj = null;
+      if (mongoose.isValidObjectId(searchId)) {
+        productObj = await Product.findById(searchId);
+      }
+      
+      if (!productObj) {
+        const numId = Number(searchId);
+        if (!isNaN(numId)) {
+          productObj = await Product.findOne({ id: numId });
+        }
+      }
+
+      if (productObj) {
+        productObj.stock = Math.max(0, (productObj.stock || 0) - qty);
+        if (productObj.stock === 0) {
+          productObj.isOutOfStock = true;
+        }
+        await productObj.save();
+        console.log(`Deducted ${qty} stock from Product "${productObj.name}". New stock: ${productObj.stock}`);
+      }
+    } catch (err) {
+      console.error(`Failed to deduct stock for product ID ${searchId}:`, err);
+    }
+  }
+
+  order.stockSubtracted = true;
+  await order.save();
+};
 
 export const placeOrder = async (req, res) => {
   try {
@@ -113,6 +156,7 @@ export const mockPayment = async (req, res) => {
       order.trackingUrl = `https://track.delhivery.com/p/MOCK_AWB_${orderId}`;
     }
 
+    await deductOrderStock(order);
     await order.save();
 
     // 5. Send Order Confirmation Email
@@ -308,6 +352,7 @@ const processPaidOrder = async (order) => {
     order.shipmentStatus = order.shipmentStatus === 'Created' ? order.shipmentStatus : 'Pending';
   }
 
+  await deductOrderStock(order);
   await order.save();
 
   // Atomically claim email-sending rights to prevent duplicate emails
@@ -852,6 +897,7 @@ export const codPayment = async (req, res) => {
       order.shipmentStatus = 'Created';
     }
 
+    await deductOrderStock(order);
     await order.save();
 
     // Generate Invoice

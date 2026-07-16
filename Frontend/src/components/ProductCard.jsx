@@ -327,104 +327,106 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         <div className="pc-body">
         <Link 
           to={`/product/${product.id}`} 
-          className="pc-name"
+          style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}
         >
-          {product.name}
-        </Link>
-        <div className="pc-qualities">
-          {(product.qualities && product.qualities.length > 0 
-            ? product.qualities 
-            : ['Premium Quality', 'Highly Durable', 'Fitness Grade']
-          ).slice(0, 3).map((q, idx) => {
-            const text = q.trim();
-            const parts = text.split(':');
-            return (
-              <span key={idx} className="pc-quality-sq">
-                <span className="pc-quality-icon">{getIcon(text)}</span>
-                <span className="pc-quality-text">
-                  {parts.length > 1 ? (
-                    <><strong>{parts[0].trim()}</strong> : {parts.slice(1).join(':').trim()}</>
-                  ) : (
-                    text
-                  )}
+          <div className="pc-name">
+            {product.name}
+          </div>
+          <div className="pc-qualities">
+            {(product.qualities && product.qualities.length > 0 
+              ? product.qualities 
+              : ['Premium Quality', 'Highly Durable', 'Fitness Grade']
+            ).slice(0, 3).map((q, idx) => {
+              const text = q.trim();
+              const parts = text.split(':');
+              return (
+                <span key={idx} className="pc-quality-sq">
+                  <span className="pc-quality-icon">{getIcon(text)}</span>
+                  <span className="pc-quality-text">
+                    {parts.length > 1 ? (
+                      <><strong>{parts[0].trim()}</strong> : {parts.slice(1).join(':').trim()}</>
+                    ) : (
+                      text
+                    )}
+                  </span>
                 </span>
-              </span>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <div className="pc-price-row">
-          {(() => {
-            let minP = Number.POSITIVE_INFINITY;
-            let maxP = 0;
-            let uniqueWeights = new Set();
-            const isFlattened = product.hasOwnProperty('selectedVariant');
+          <div className="pc-price-row">
+            {(() => {
+              let minP = Number.POSITIVE_INFINITY;
+              let maxP = 0;
+              let uniqueWeights = new Set();
+              const isFlattened = product.hasOwnProperty('selectedVariant');
 
-            if (isFlattened) {
-              minP = product.price || 0;
-              maxP = product.price || 0;
-              if (product.size && typeof product.size.weight === 'number' && product.size.weight > 0) {
-                uniqueWeights.add(product.size.weight);
-              } else if (product.variant && typeof product.variant.weight === 'number' && product.variant.weight > 0) {
-                uniqueWeights.add(product.variant.weight);
-              } else if (product.weight && product.weight > 0) {
+              if (isFlattened) {
+                minP = product.price || 0;
+                maxP = product.price || 0;
+                if (product.size && typeof product.size.weight === 'number' && product.size.weight > 0) {
+                  uniqueWeights.add(product.size.weight);
+                } else if (product.variant && typeof product.variant.weight === 'number' && product.variant.weight > 0) {
+                  uniqueWeights.add(product.variant.weight);
+                } else if (product.weight && product.weight > 0) {
+                  uniqueWeights.add(product.weight);
+                }
+              } else if (product.variants) {
+                product.variants.forEach(v => {
+                  if (v.sizes && v.sizes.length) {
+                    v.sizes.forEach(s => {
+                      if (typeof s.price === 'number') {
+                        if (s.price < minP) minP = s.price;
+                        if (s.price > maxP) maxP = s.price;
+                      }
+                      if (typeof s.weight === 'number' && s.weight > 0) {
+                        uniqueWeights.add(s.weight);
+                      }
+                    });
+                  } else if (typeof v.price === 'number') {
+                    if (v.price < minP) minP = v.price;
+                    if (v.price > maxP) maxP = v.price;
+                    if (typeof v.weight === 'number' && v.weight > 0) {
+                      uniqueWeights.add(v.weight);
+                    }
+                  }
+                });
+              }
+
+              if (!isFinite(minP)) minP = product.price || 0;
+              if (maxP === 0) maxP = product.price || 0;
+              const hasRange = minP !== maxP;
+
+              if (uniqueWeights.size === 0 && product.weight && product.weight > 0) {
                 uniqueWeights.add(product.weight);
               }
-            } else if (product.variants) {
-              product.variants.forEach(v => {
-                if (v.sizes && v.sizes.length) {
-                  v.sizes.forEach(s => {
-                    if (typeof s.price === 'number') {
-                      if (s.price < minP) minP = s.price;
-                      if (s.price > maxP) maxP = s.price;
-                    }
-                    if (typeof s.weight === 'number' && s.weight > 0) {
-                      uniqueWeights.add(s.weight);
-                    }
-                  });
-                } else if (typeof v.price === 'number') {
-                  if (v.price < minP) minP = v.price;
-                  if (v.price > maxP) maxP = v.price;
-                  if (typeof v.weight === 'number' && v.weight > 0) {
-                    uniqueWeights.add(v.weight);
-                  }
-                }
-              });
-            }
 
-            if (!isFinite(minP)) minP = product.price || 0;
-            if (maxP === 0) maxP = product.price || 0;
-            const hasRange = minP !== maxP;
+              let weightStr = '';
+              if (uniqueWeights.size > 0) {
+                const sortedWeights = Array.from(uniqueWeights).sort((a, b) => a - b);
+                weightStr = sortedWeights.map(w => `${w / 1000} kg`).join(', ');
+              }
 
-            if (uniqueWeights.size === 0 && product.weight && product.weight > 0) {
-              uniqueWeights.add(product.weight);
-            }
-
-            let weightStr = '';
-            if (uniqueWeights.size > 0) {
-              const sortedWeights = Array.from(uniqueWeights).sort((a, b) => a - b);
-              weightStr = sortedWeights.map(w => `${w / 1000} kg`).join(', ');
-            }
-
-            return (
-              <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span className="pc-price">
-                    {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
-                  </span>
-                  {product.oldPrice && !hasRange && (
-                    <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+              return (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span className="pc-price">
+                      {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
+                    </span>
+                    {product.oldPrice && !hasRange && (
+                      <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+                    )}
+                  </div>
+                  {weightStr && (
+                    <span className="pc-weight" style={{ marginLeft: 'auto', fontSize: '0.8rem', color: '#666', fontWeight: '500' }}>
+                      {weightStr}
+                    </span>
                   )}
-                </div>
-                {weightStr && (
-                  <span className="pc-weight" style={{ marginLeft: 'auto', fontSize: '0.8rem', color: '#666', fontWeight: '500' }}>
-                    {weightStr}
-                  </span>
-                )}
-              </>
-            );
-          })()}
-        </div>
+                </>
+              );
+            })()}
+          </div>
+        </Link>
 
         <button 
           className={`pc-add-btn ${product.isOutOfStock ? 'pc-add-btn--disabled' : ''}`} 
