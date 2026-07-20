@@ -84,7 +84,7 @@ export const placeOrder = async (req, res) => {
     }
 
     const pointsVal = Number(appliedPoints) || 0;
-    const POINT_VALUE_INR = 1; // 1 point = 1 INR discount
+    const POINT_VALUE_INR = 2; // 1 point = 2 INR discount
     let pointsDiscount = 0;
 
     if (pointsVal > 0) {
