@@ -19,6 +19,9 @@ const orderSchema = new mongoose.Schema({
   deliveryCharge: { type: Number, default: 0 },
   appliedPoints: { type: Number, default: 0 },
   pointsDiscount: { type: Number, default: 0 },
+  // Client-supplied checkout key — makes order creation + wallet debit idempotent
+  // (a retried/double-submitted checkout returns the same order, no double-spend).
+  idempotencyKey: { type: String, unique: true, sparse: true },
   shippingAddress: {
     name: String, phone: String, street: String, city: String, state: String, zip: String, country: String
   },
