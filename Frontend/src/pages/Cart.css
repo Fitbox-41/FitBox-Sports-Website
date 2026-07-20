@@ -25,12 +25,14 @@
 .cart-item-card {
   display: flex;
   gap: 14px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   padding: 12px 14px;
   border-radius: 12px;
   margin-bottom: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 16px rgba(26, 26, 46, 0.07), inset 0 1px 1px rgba(255,255,255,0.6);
+  border: 1px solid rgba(26, 26, 46, 0.08);
 }
 
 .cart-item-img-wrap {
@@ -156,11 +158,13 @@
 
 /* Summary Section */
 .summary-card {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   padding: 18px;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  border: 1px solid #f0f0f0;
+  box-shadow: 0 6px 24px rgba(26, 26, 46, 0.08), inset 0 1px 1px rgba(255,255,255,0.7);
+  border: 1px solid rgba(26, 26, 46, 0.08);
   position: sticky;
   top: 130px;
 }
@@ -194,21 +198,24 @@
 .checkout-btn {
   width: 100%;
   height: 44px;
-  background: #ff6b35;
+  background: rgba(255, 107, 53, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1.5px solid rgba(255, 140, 80, 0.45) !important;
   color: #fff;
-  border: none;
   border-radius: 10px;
   font-size: 0.9rem;
   font-weight: 700;
   margin-top: 14px;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(255, 107, 53, 0.22), inset 0 1px 1px rgba(255,255,255,0.25) !important;
   transition: all 0.3s;
 }
 
 .checkout-btn:hover {
-  background: #e85926;
+  background: rgba(220, 80, 20, 0.88) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 10px 28px rgba(255, 107, 53, 0.38), inset 0 1px 1px rgba(255,255,255,0.3) !important;
 }
 
 .secure-checkout-label {
@@ -245,19 +252,24 @@
 
 .continue-shopping-btn {
   display: inline-block;
-  background: #1a1a2e;
+  background: rgba(26, 26, 46, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
   color: #fff;
   padding: 11px 24px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(26,26,46,0.12), inset 0 1px 1px rgba(255,255,255,0.2) !important;
   transition: all 0.3s;
 }
 
 .continue-shopping-btn:hover {
+  background: rgba(0, 0, 0, 0.9) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(26, 26, 46, 0.2);
+  box-shadow: 0 8px 22px rgba(26, 26, 46, 0.25), inset 0 1px 1px rgba(255,255,255,0.25) !important;
 }
 
 /* Responsive */

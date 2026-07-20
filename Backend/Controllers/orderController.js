@@ -1,13 +1,55 @@
 import Order from '../Models/Order.js';
 import User from '../Models/User.js';
-import { createDelhiveryShipment } from '../Utils/delhivery.js';
+import Product from '../Models/Product.js';
+import mongoose from 'mongoose';
+import { createDelhiveryShipment, trackDelhiveryShipment, cancelDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
 import Wallet from '../Models/Wallet.js';
 import WalletTransaction from '../Models/WalletTransaction.js';
 import crypto from 'crypto';
-import mongoose from 'mongoose';
 import axios from 'axios';
+
+const deductOrderStock = async (order) => {
+  if (order.stockSubtracted) {
+    return;
+  }
+
+  for (const item of (order.items || [])) {
+    const searchId = item.productId || item.id || item._id;
+    if (!searchId) continue;
+
+    const qty = item.quantity || 1;
+
+    try {
+      let productObj = null;
+      if (mongoose.isValidObjectId(searchId)) {
+        productObj = await Product.findById(searchId);
+      }
+      
+      if (!productObj) {
+        const numId = Number(searchId);
+        if (!isNaN(numId)) {
+          productObj = await Product.findOne({ id: numId });
+        }
+      }
+
+      if (productObj) {
+        productObj.stock = Math.max(0, (productObj.stock || 0) - qty);
+        if (productObj.stock === 0) {
+          productObj.isOutOfStock = true;
+        }
+        await productObj.save();
+        console.log(`Deducted ${qty} stock from Product "${productObj.name}". New stock: ${productObj.stock}`);
+      }
+    } catch (err) {
+      console.error(`Failed to deduct stock for product ID ${searchId}:`, err);
+    }
+  }
+
+  order.stockSubtracted = true;
+  await order.save();
+};
 
 export const placeOrder = async (req, res) => {
   const session = await mongoose.startSession();
@@ -160,6 +202,7 @@ export const mockPayment = async (req, res) => {
       order.trackingUrl = `https://track.delhivery.com/p/MOCK_AWB_${orderId}`;
     }
 
+    await deductOrderStock(order);
     await order.save();
 
     // 5. Send Order Confirmation Email
@@ -376,9 +419,21 @@ const processPaidOrder = async (order) => {
     order.shipmentStatus = order.shipmentStatus === 'Created' ? order.shipmentStatus : 'Pending';
   }
 
-  // Mark email as sent BEFORE saving so a concurrent callback won't send a second one
-  order.confirmationEmailSent = true;
+  await deductOrderStock(order);
   await order.save();
+
+  // Atomically claim email-sending rights to prevent duplicate emails
+  // Only the first caller (callback OR redirect) that sets this flag will send the email
+  const claimed = await Order.findOneAndUpdate(
+    { _id: order._id, confirmationEmailSent: { $ne: true } },
+    { $set: { confirmationEmailSent: true } }
+  );
+
+  if (!claimed) {
+    // Another process already claimed email rights — skip sending
+    console.log(`Email already sent for order ${order._id}, skipping duplicate`);
+    return order;
+  }
 
   try {
     const user = await User.findById(order.userId);
@@ -450,6 +505,8 @@ const processPaidOrder = async (order) => {
     }
   } catch (emailErr) {
     console.error('Confirmation email failed:', emailErr);
+    // Reset the flag so a retry can send the email
+    await Order.updateOne({ _id: order._id }, { $set: { confirmationEmailSent: false } });
   }
 
   return order;
@@ -539,13 +596,16 @@ export const phonePeInitiate = async (req, res) => {
 };
 
 export const phonePeRedirect = async (req, res) => {
-  const frontendUrl = process.env.FRONTEND_URL;
+  let frontendUrl = process.env.FRONTEND_URL || '';
   if (!frontendUrl) {
     console.error('FRONTEND_URL is not configured');
     return res.status(500).send('Payment redirect misconfigured: FRONTEND_URL missing');
   }
 
-  let redirectPath = '/orders';
+  // Ensure we redirect to www. version if that's what the user is on
+  if (frontendUrl.includes('://') && !frontendUrl.includes('://www.')) {
+    frontendUrl = frontendUrl.replace('://', '://www.');
+  }
 
   try {
     let merchantOrderId = req.query?.merchantOrderId || req.body?.transactionId || req.body?.merchantOrderId;
@@ -562,49 +622,33 @@ export const phonePeRedirect = async (req, res) => {
     }
 
     const orderIdParam = req.query.orderId;
-    console.log('PhonePe Redirect received:', { merchantOrderId, orderIdParam, body: req.body, query: req.query });
+    console.log('PhonePe Redirect received:', { merchantOrderId, orderIdParam });
 
     let order;
     if (merchantOrderId) {
       order = await Order.findOne({ paymentId: merchantOrderId });
     } else if (orderIdParam) {
       order = await Order.findById(orderIdParam);
-      merchantOrderId = order?.paymentId;
     }
 
     if (!order) {
-      console.error('PhonePe Redirect: Order not found for merchantOrderId:', merchantOrderId, 'or orderId:', orderIdParam);
       return res.redirect(`${frontendUrl}/orders?payment=error&reason=order_not_found`);
     }
 
+    // If already fully processed by the callback webhook, redirect immediately
     if (order.paymentStatus === 'Paid') {
       return res.redirect(`${frontendUrl}/orders?payment=success&orderId=${order._id}`);
     }
 
-    if (!merchantOrderId) {
-      await markOnlineOrderFailed(order);
-      return res.redirect(`${frontendUrl}/orders?payment=failed&orderId=${order._id}`);
-    }
+    // Do NOT poll PhonePe or run heavy processing here — Vercel has a 10s timeout.
+    // Instead, redirect to frontend immediately. The frontend will call /verify-payment
+    // which will reconcile the payment status, create shipment, send email, etc.
+    return res.redirect(`${frontendUrl}/orders?payment=pending&orderId=${order._id}`);
 
-    const terminalState = await resolveTerminalPhonePeState(merchantOrderId);
-    order = await Order.findById(order._id);
-
-    if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
-      // Already fully processed by callback — just redirect
-      redirectPath = `/orders?payment=success&orderId=${order._id}`;
-    } else if (order.paymentStatus === 'Paid' || terminalState === 'success') {
-      await processPaidOrder(order);
-      redirectPath = `/orders?payment=success&orderId=${order._id}`;
-    } else {
-      await markOnlineOrderFailed(order);
-      redirectPath = `/orders?payment=failed&orderId=${order._id}`;
-    }
   } catch (error) {
     console.error('PhonePe Redirect processing error:', error);
-    redirectPath = '/orders?payment=error';
+    return res.redirect(`${frontendUrl}/orders?payment=error`);
   }
-
-  res.redirect(`${frontendUrl}${redirectPath}`);
 };
 
 export const phonePeCallback = async (req, res) => {
@@ -657,10 +701,11 @@ export const verifyOrderPayment = async (req, res) => {
     const userId = req.user?._id;
     if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
 
-    const order = await Order.findOne({ _id: id, userId });
+    let order = await Order.findOne({ _id: id, userId });
     if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
 
-    if (order.paymentStatus === 'Paid') {
+    // Already fully processed
+    if (order.paymentStatus === 'Paid' && order.confirmationEmailSent) {
       return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
     }
 
@@ -674,22 +719,33 @@ export const verifyOrderPayment = async (req, res) => {
       return res.status(200).json({ success: true, paymentStatus: 'Failed', order: updated });
     }
 
-    const terminalState = await resolveTerminalPhonePeState(order.paymentId, 3);
-    let updated = await Order.findById(order._id);
-
-    if (updated.paymentStatus !== 'Paid') {
-      if (terminalState === 'success') {
-        updated = await processPaidOrder(updated);
-      } else {
-        updated = await markOnlineOrderFailed(updated);
-      }
+    // If already marked Paid (by callback) but not fully processed, finish processing
+    if (order.paymentStatus === 'Paid') {
+      order = await processPaidOrder(order);
+      return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
     }
 
-    return res.status(200).json({
-      success: true,
-      paymentStatus: updated.paymentStatus,
-      order: updated
-    });
+    // Main reconciliation: poll PhonePe to get terminal state
+    const terminalState = await resolveTerminalPhonePeState(order.paymentId, 5);
+    
+    // Re-read order in case callback processed it while we were polling
+    order = await Order.findById(order._id);
+
+    if (order.paymentStatus === 'Paid') {
+      // Callback processed it — ensure full processing is done
+      if (!order.confirmationEmailSent) {
+        order = await processPaidOrder(order);
+      }
+      return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
+    }
+
+    if (terminalState === 'success') {
+      order = await processPaidOrder(order);
+      return res.status(200).json({ success: true, paymentStatus: 'Paid', order });
+    } else {
+      order = await markOnlineOrderFailed(order);
+      return res.status(200).json({ success: true, paymentStatus: 'Failed', order });
+    }
   } catch (error) {
     console.error('Verify order payment error:', error);
     res.status(500).json({ success: false, message: error.message });
@@ -726,12 +782,9 @@ export const getOrderById = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
     
-    // Ensure the user owns the order, unless it's a guest checkout (we allow it if userId matches or if it's admin, though admin logic is separate)
-    // For now, if there's a req.user, just check if it matches
+    // Ensure the user owns the order
     if (req.user && order.userId && order.userId._id.toString() !== req.user._id.toString()) {
-      // return res.status(401).json({ success: false, message: 'Unauthorized' });
-      // Depending on guest checkout logic, we might relax this or check an order token. 
-      // Assuming logged in users for now.
+      return res.status(401).json({ success: false, message: 'Unauthorized to view this order' });
     }
 
     res.status(200).json({ success: true, order });
@@ -750,13 +803,18 @@ export const cancelOrder = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Order not found' });
     }
 
+    // Verify order ownership
+    if (order.userId && order.userId.toString() !== req.user?._id?.toString()) {
+      return res.status(403).json({ success: false, message: 'Unauthorized to cancel this order' });
+    }
+
     if (order.orderStatus === 'Cancelled') {
       return res.status(400).json({ success: false, message: 'Order is already cancelled' });
     }
 
-    // Only allow cancellation if order is not Shipped or Delivered
-    if (order.shipmentStatus === 'Shipped' || order.shipmentStatus === 'Delivered') {
-      return res.status(400).json({ success: false, message: 'Cannot cancel an order that has already been shipped or delivered' });
+    // Only allow cancellation if order is not Out for Delivery or Delivered
+    if (order.shipmentStatus === 'Out for Delivery' || order.shipmentStatus === 'Delivered') {
+      return res.status(400).json({ success: false, message: 'Cannot cancel an order that is out for delivery or already delivered' });
     }
 
     const isSilent = req.query.silent === 'true';
@@ -770,6 +828,7 @@ export const cancelOrder = async (req, res) => {
       order.cancelReason = cancelReason;
     }
 
+    // Refund redeemed points back to the wallet (idempotent per order).
     if (order.appliedPoints > 0 && !order.pointsRefunded) {
       const wallet = await Wallet.findOne({ userId: order.userId });
       if (wallet) {
@@ -788,6 +847,22 @@ export const cancelOrder = async (req, res) => {
         await tx.save();
         order.pointsRefunded = true;
       }
+    }
+
+    // Cancel shipment on Delhivery if AWB exists
+    // IMPORTANT: cancelDelhiveryShipment never throws — it returns { error: true } on failure.
+    // We must check the return value explicitly and record the result.
+    if (order.awb) {
+      const delhiveryResult = await cancelDelhiveryShipment(order.awb);
+      if (delhiveryResult && !delhiveryResult.error) {
+        order.delhiveryCancelConfirmed = true;
+        console.log(`Delhivery shipment confirmed cancelled for order ${id}, AWB: ${order.awb}`);
+      } else {
+        order.delhiveryCancelConfirmed = false;
+        console.error(`Delhivery cancellation FAILED for order ${id}, AWB: ${order.awb}. Will need manual retry.`, delhiveryResult);
+      }
+    } else {
+      order.delhiveryCancelConfirmed = null; // No AWB — Delhivery never had this shipment
     }
 
     order.orderStatus = 'Cancelled';
@@ -893,8 +968,24 @@ export const codPayment = async (req, res) => {
       order.shippingAddress = shippingAddress;
     }
 
-    order.shipmentStatus = 'Created';
+    await order.save();
 
+    // Create Delhivery Shipment for COD order
+    try {
+      const shipment = await createDelhiveryShipment(order);
+      if (shipment.packages && shipment.packages.length > 0) {
+        order.awb = shipment.packages[0].waybill;
+        order.trackingUrl = `https://track.delhivery.com/p/${order.awb}`;
+        order.shipmentStatus = 'Created';
+      } else {
+        order.shipmentStatus = 'Created';
+      }
+    } catch (shipmentError) {
+      console.error('COD Delhivery shipment creation failed:', shipmentError.message);
+      order.shipmentStatus = 'Created';
+    }
+
+    await deductOrderStock(order);
     await order.save();
 
     // Generate Invoice
@@ -986,5 +1077,83 @@ export const codPayment = async (req, res) => {
     res.status(200).json({ success: true, message: 'COD order placed successfully', orderId: order._id });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const trackOrder = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.user?._id;
+    if (!userId) return res.status(401).json({ success: false, message: 'Unauthorized' });
+
+    const order = await Order.findOne({ _id: id, userId });
+    if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
+
+    // If no AWB yet, return current static status
+    if (!order.awb) {
+      return res.status(200).json({
+        success: true,
+        tracking: {
+          status: order.shipmentStatus || 'Pending',
+          delhiveryStatus: null,
+          scans: [],
+          estimatedDate: null,
+          awb: null
+        }
+      });
+    }
+
+    // Fetch live tracking from Delhivery
+    const tracking = await trackDelhiveryShipment(order.awb);
+
+    // Update order's shipmentStatus in DB if it has changed
+    const newStatus = tracking.status;
+    if (newStatus && newStatus !== order.shipmentStatus) {
+      // Only update forward (don't regress status)
+      const statusOrder = ['Pending', 'Created', 'Ready to Ship', 'In Transit', 'Out for Delivery', 'Delivered', 'RTO', 'Cancelled'];
+      const currentIdx = statusOrder.indexOf(order.shipmentStatus);
+      const newIdx = statusOrder.indexOf(newStatus);
+
+      if (newIdx > currentIdx || newStatus === 'RTO' || newStatus === 'Cancelled') {
+        order.shipmentStatus = newStatus;
+
+        // Also update orderStatus if delivered
+        if (newStatus === 'Delivered') {
+          order.orderStatus = 'Completed';
+        }
+
+        await order.save();
+      }
+    }
+
+    return res.status(200).json({
+      success: true,
+      tracking: {
+        status: tracking.status,
+        delhiveryStatus: tracking.delhiveryStatus,
+        scans: tracking.scans,
+        estimatedDate: tracking.estimatedDate,
+        awb: order.awb
+      }
+    });
+  } catch (error) {
+    console.error('Track order error:', error.message);
+    // If Delhivery API fails, still return the static status from DB
+    try {
+      const order = await Order.findById(req.params.id);
+      return res.status(200).json({
+        success: true,
+        tracking: {
+          status: order?.shipmentStatus || 'Pending',
+          delhiveryStatus: null,
+          scans: [],
+          estimatedDate: null,
+          awb: order?.awb || null,
+          error: 'Live tracking temporarily unavailable'
+        }
+      });
+    } catch (e) {
+      return res.status(500).json({ success: false, message: error.message });
+    }
   }
 };

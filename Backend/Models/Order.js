@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema({
   paymentStatus: { type: String, enum: ['Pending Payment', 'Paid', 'Failed'], default: 'Pending Payment' },
   paymentMode: { type: String, enum: ['Online', 'COD'], default: 'Online' },
   orderStatus: { type: String, enum: ['Pending', 'Completed', 'Cancelled'], default: 'Pending' },
-  shipmentStatus: { type: String, enum: ['Pending', 'Created', 'Shipped', 'Delivered', 'Cancelled'], default: 'Pending' },
+  shipmentStatus: { type: String, enum: ['Pending', 'Created', 'Ready to Ship', 'In Transit', 'Out for Delivery', 'Delivered', 'RTO', 'Cancelled'], default: 'Pending' },
   awb: String,
   courier: { type: String, default: 'Delhivery' },
   trackingUrl: String,
@@ -37,7 +37,9 @@ const orderSchema = new mongoose.Schema({
   cancelReason: [{ type: String }],
   isRefunded: { type: Boolean, default: false },
   refundedAt: Date,
-  pointsRefunded: { type: Boolean, default: false }
+  pointsRefunded: { type: Boolean, default: false },
+  stockSubtracted: { type: Boolean, default: false },
+  delhiveryCancelConfirmed: { type: Boolean, default: null } // null = no AWB, true = confirmed cancelled on Delhivery, false = cancel failed/unconfirmed
 }, { timestamps: true });
 
 // TTL Index: Automatically delete documents after 1800 seconds (30 mins)

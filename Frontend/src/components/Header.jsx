@@ -7,12 +7,12 @@ import './Header.css';
 
 /* ── Categories for Sub-Header ── */
 const categories = [
-  { label: 'Weights & Dumbbells',    path: '/category/weights-and-dumbbells'   },
+  { label: 'Weights & Dumbbells',    path: '/category/weights-&-dumbbells'   },
   { label: 'Workout Essentials',     path: '/category/workout-essentials'       },
   { label: '99',                     path: '/under99',                         isUnder99: true },
-  { label: 'Support & Protection',   path: '/category/support-and-protection'     },
-  { label: 'Balls & Sports',         path: '/category/balls-and-sports'      },
-  { label: 'Lifestyle & Accessories',path: '/category/lifestyle-and-accessories' },
+  { label: 'Support & Protection',   path: '/category/support-&-protection'     },
+  { label: 'Balls & Sports',         path: '/category/balls-&-sports'      },
+  { label: 'Lifestyle & Accessories',path: '/category/lifestyle-&-accessories' },
 ];
 
 /* ── User dropdown menu items (SVG icons, no emojis) ── */
@@ -228,7 +228,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
           <Link to="/" className="logo" id="logo-link" onClick={() => setMenuOpen(false)}>
             <picture>
               <source media="(max-width: 900px)" srcSet="/fitbox-_red-white.webp" />
-              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="header-logo-img" />
+              <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="header-logo-img" loading="lazy" decoding="async" />
             </picture>
           </Link>
 
@@ -302,7 +302,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                               onClick={() => handleProductSelect(p.id)}
                               onMouseEnter={() => setFocusedIndex(idx)}
                             >
-                              <img src={img} alt={p.name} className="search-result-img" />
+                              <img src={img} alt={p.name} className="search-result-img" loading="lazy" decoding="async" />
                               <div className="search-result-info">
                                 <h5 className="search-result-title">{p.name}</h5>
                                 <span className="search-result-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>
@@ -530,7 +530,7 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
                         onClick={() => handleProductSelect(p.id)}
                         onMouseEnter={() => setFocusedIndex(idx)}
                       >
-                        <img src={img} alt={p.name} className="search-result-img" />
+                        <img src={img} alt={p.name} className="search-result-img" loading="lazy" decoding="async" />
                         <div className="search-result-info">
                           <h5 className="search-result-title">{p.name}</h5>
                           <span className="search-result-price">₹{resolvedPrice.toLocaleString('en-IN')}</span>

@@ -113,3 +113,14 @@ h1, h2, h3, h4, h5 {
   opacity: 1;
   visibility: visible;
 }
+
+/* Global utility spacer for desktop only, hidden on mobile/tablets */
+.desktop-only-spacer {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .desktop-only-spacer {
+    display: none !important;
+  }
+}

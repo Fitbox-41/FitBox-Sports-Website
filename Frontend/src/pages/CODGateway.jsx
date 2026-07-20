@@ -133,7 +133,7 @@ export default function CODGateway() {
         {/* Left Side: Brand & Total */}
         <div className="cod-left-pane">
           <div className="cod-brand-header">
-            <img src="/favicon.ico" alt="Fitbox Logo" className="cod-logo" />
+            <img src="/favicon.ico" alt="Fitbox Logo" className="cod-logo" loading="lazy" decoding="async" />
             <span className="cod-brand-name">Fitbox Sports</span>
           </div>
           
@@ -173,7 +173,7 @@ export default function CODGateway() {
               <div className="cod-items-list">
                 {order.items.map((item, idx) => (
                   <div key={idx} className="cod-item">
-                    {item.imgSrc && <img src={item.imgSrc} alt={item.name} className="cod-item-img" />}
+                    {item.imgSrc && <img src={item.imgSrc} alt={item.name} className="cod-item-img" loading="lazy" decoding="async" />}
                     <div className="cod-item-details">
                       <div className="cod-item-name">{item.name}</div>
                       <div className="cod-item-meta">Qty: {item.quantity} {item.selectedVariant ? `| ${item.selectedVariant}` : ''}</div>

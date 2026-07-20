@@ -1,25 +1,28 @@
 import { BrowserRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
-import { useEffect, useContext, useState } from 'react';
-import Home from './pages/Home';
-import ProductPage from './pages/ProductPage';
-import ProductCategory from './pages/ProductCategory';
-import Under99 from './pages/Under99';
-import Cart from './pages/Cart';
-import Favourite from './pages/Favourite';
-import Auth from './pages/Auth';
-import Privacy from './pages/Privacy';
-import Terms from './pages/Terms';
-import Shipping from './pages/Shipping';
-import Returns from './pages/Returns';
-import Contact from './pages/Contact';
-import About from './pages/About';
-import Team from './pages/Team';
-import FAQ from './pages/FAQ';
-import Sitemap from './pages/Sitemap';
-import Account from './pages/Account';
-import Orders from './pages/Orders';
-import CODGateway from './pages/CODGateway';
+import { useEffect, useContext, useState, Suspense, lazy } from 'react';
+
+const Home = lazy(() => import('./pages/Home'));
+const ProductPage = lazy(() => import('./pages/ProductPage'));
+const ProductCategory = lazy(() => import('./pages/ProductCategory'));
+const Under99 = lazy(() => import('./pages/Under99'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Favourite = lazy(() => import('./pages/Favourite'));
+const Auth = lazy(() => import('./pages/Auth'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Shipping = lazy(() => import('./pages/Shipping'));
+const Returns = lazy(() => import('./pages/Returns'));
+const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
+const Team = lazy(() => import('./pages/Team'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const Sitemap = lazy(() => import('./pages/Sitemap'));
+const Account = lazy(() => import('./pages/Account'));
+const Orders = lazy(() => import('./pages/Orders'));
+const CODGateway = lazy(() => import('./pages/CODGateway'));
+const TrackOrder = lazy(() => import('./pages/TrackOrder'));
 import MobileNav from './components/MobileNav';
+import LoginPromptModal from './components/LoginPromptModal';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider, ProductContext } from './context/ProductContext';
 import { AuthProvider } from './context/AuthContext';
@@ -63,58 +66,63 @@ function ScrollToTop() {
   return null;
 }
 
+function InitialLoaderController({ dataLoading }) {
+  useEffect(() => {
+    // Wait until both data is loaded AND this component is mounted (meaning Suspense is resolved)
+    if (!dataLoading) {
+      const staticLoader = document.getElementById('static-loader');
+      if (staticLoader) {
+        staticLoader.classList.add('hidden');
+        setTimeout(() => {
+          if (staticLoader) staticLoader.remove();
+        }, 500);
+      }
+      window.__APP_LOADED__ = true;
+      window.dispatchEvent(new CustomEvent('loaderFinished'));
+    }
+  }, [dataLoading]);
+  return null;
+}
+
 // Inner component to consume contexts safely
 function AppContent() {
   const { loading } = useContext(ProductContext);
-  const [showLoader, setShowLoader] = useState(true);
-
-  useEffect(() => {
-    // Hide the loader only when data is finished loading
-    if (!loading) {
-      const timer = setTimeout(() => {
-        setShowLoader(false);
-        // Wait for the faster fade out transition (0.4s) before triggering animations
-        setTimeout(() => {
-            window.__APP_LOADED__ = true;
-            window.dispatchEvent(new CustomEvent('loaderFinished'));
-        }, 400);
-      }, 1500); // Give the animation at least 1.5s to be visible
-      return () => clearTimeout(timer);
-    }
-  }, [loading]);
 
   return (
     <>
-      <Loader isVisible={showLoader} />
-
       <BrowserRouter>
+        <LoginPromptModal />
         <LoginRequiredModal />
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:productId" element={<ProductPage />} />
-          
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/favourites" element={<Favourite />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/shipping" element={<Shipping />} />
-          <Route path="/returns" element={<Returns />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/sitemap" element={<Sitemap />} />
-          <Route path="/under99" element={<Under99 />} />
-          <Route path="/category/:categoryId" element={<ProductCategory />} />
-          
-          {/* Catch-all to home */}
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f9f9fc', color: '#ff416c', fontWeight: 'bold' }}>Loading...</div>}>
+          <InitialLoaderController dataLoading={loading} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
+            
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/favourites" element={<Favourite />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/track-order/:orderId" element={<TrackOrder />} />
+            <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/returns" element={<Returns />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/under99" element={<Under99 />} />
+            <Route path="/category/:categoryId" element={<ProductCategory />} />
+            
+            {/* Catch-all to home */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
         <MobileNav />
       </BrowserRouter>
       <SpeedInsights />

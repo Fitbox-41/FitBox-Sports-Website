@@ -1,11 +1,72 @@
-import { useState, memo } from 'react';
+import { useState, memo, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
+// Floating image fly animation utility
+const animateFly = (startElement, targetSelector, imageSrc) => {
+  if (!startElement || !imageSrc) return;
+
+  const targetElement = document.querySelector(targetSelector);
+  if (!targetElement) return;
+
+  // Create flyer element
+  const flyer = document.createElement('div');
+  flyer.className = 'cart-flyer-item';
+  flyer.style.position = 'fixed';
+  flyer.style.zIndex = '999999';
+  flyer.style.width = '100px'; /* Larger size */
+  flyer.style.height = '100px'; /* Larger size */
+  flyer.style.backgroundImage = `url(${imageSrc})`;
+  flyer.style.backgroundSize = 'cover';
+  flyer.style.backgroundPosition = 'center';
+  flyer.style.borderRadius = '50%';
+  flyer.style.boxShadow = '0 12px 32px rgba(255, 107, 53, 0.5)';
+  flyer.style.pointerEvents = 'none';
+
+  // Get positions
+  const startRect = startElement.getBoundingClientRect();
+  const targetRect = targetElement.getBoundingClientRect();
+
+  // Set start position (centered on startElement)
+  const startX = startRect.left + startRect.width / 2 - 50;
+  const startY = startRect.top + startRect.height / 2 - 50;
+  flyer.style.left = `${startX}px`;
+  flyer.style.top = `${startY}px`;
+
+  document.body.appendChild(flyer);
+
+  // Force layout reflow
+  flyer.offsetWidth;
+
+  // Animate to target (slower transition)
+  flyer.style.transition = 'all 1.2s cubic-bezier(0.25, 1, 0.5, 1)';
+  flyer.style.left = `${targetRect.left + targetRect.width / 2 - 20}px`;
+  flyer.style.top = `${targetRect.top + targetRect.height / 2 - 20}px`;
+  flyer.style.transform = 'scale(0.3)';
+  flyer.style.opacity = '0.1';
+
+  // Cleanup and shake header element
+  setTimeout(() => {
+    flyer.remove();
+    targetElement.classList.add('pulse-pop');
+    setTimeout(() => {
+      targetElement.classList.remove('pulse-pop');
+    }, 450);
+  }, 1200);
+};
+
 const ProductCard = memo(({ product, showStatusTags = false }) => {
   const [hovered, setHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const imageRef = useRef(null);
   const { addToCart, toggleWishlist, wishlist } = useCart();
+  
+  useEffect(() => {
+    if (imageRef.current && imageRef.current.complete) {
+      setImageLoaded(true);
+    }
+  }, []);
   
   const isInWishlist = wishlist.some(item => item.id === product.id);
 
@@ -159,6 +220,8 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
     );
   };
 
+  const showSkeleton = !imageLoaded && !!product.imgSrc;
+
   return (
     <div
       className="pc-card"
@@ -166,181 +229,204 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* Badge */}
-      {product.tag && (
-        <span className="pc-badge" id={`pc-badge-${product.id}`}>
-          {product.tag}
-        </span>
-      )}
-
-      {/* Wishlist heart button */}
-      <button
-        className={`pc-wish ${isInWishlist ? 'pc-wish--active' : ''}`}
-        id={`pc-wish-${product.id}`}
-        aria-label="Add to wishlist"
-        onClick={(e) => {
-          e.stopPropagation();
-          e.preventDefault();
-          toggleWishlist(product);
-        }}
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill={isInWishlist ? '#ef4444' : 'none'}
-          stroke={isInWishlist ? '#ef4444' : '#888'}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          width="16"
-          height="16"
-        >
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-      </button>
-
-      {/* Status Tags (Always show if out of stock or new) */}
-      {(showStatusTags || product.isOutOfStock || product.isNew) && (
-        <div className="pc-status-tags">
-          {product.isOutOfStock ? (
-            <span className="pc-status-tag pc-status-tag--out-of-stock">
-              Out of Stock
-            </span>
-          ) : product.isNew ? (
-            <span className="pc-status-tag pc-status-tag--new">
-              New Arrival
-            </span>
-          ) : null}
+      {/* Skeleton overlay */}
+      {showSkeleton && (
+        <div className="pc-skeleton-overlay">
+          <div className="pc-skeleton-img"></div>
+          <div className="pc-skeleton-content">
+            <div className="pc-skeleton-line title"></div>
+            <div className="pc-skeleton-line desc"></div>
+            <div className="pc-skeleton-line desc short"></div>
+            <div className="pc-skeleton-price"></div>
+            <div className="pc-skeleton-btn"></div>
+          </div>
         </div>
       )}
 
-      {/* Image area */}
-      <Link 
-        to={`/product/${product.id}`} 
-        className="pc-img-link" 
-        id={`pc-img-${product.id}`}
-      >
-        {product.imgSrc ? (
-            <img
-              src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
-              alt={product.name}
-              className={`pc-img ${product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
-              loading="lazy"
-              decoding="async"
-            />
-        ) : (
-          <div className={`pc-placeholder ${hovered ? 'pc-placeholder--hover' : ''}`}>
-            <div className="pc-placeholder-label">
-              {hovered ? 'Hover View' : product.name}
-            </div>
-            <div className="pc-placeholder-hint">
-              {hovered ? (product.desc || 'Quality Sports Gear') : 'Add image'}
-            </div>
+      {/* Actual Content (Hidden until image loads) */}
+      <div style={{ opacity: showSkeleton ? 0 : 1, transition: 'opacity 0.3s ease', display: 'flex', flexDirection: 'column', height: '100%' }}>
+        {/* Badge */}
+        {product.tag && (
+          <span className="pc-badge" id={`pc-badge-${product.id}`}>
+            {product.tag}
+          </span>
+        )}
+
+        {/* Wishlist heart button */}
+        <button
+          className={`pc-wish ${isInWishlist ? 'pc-wish--active' : ''}`}
+          id={`pc-wish-${product.id}`}
+          aria-label="Add to wishlist"
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            if (!isInWishlist) {
+              animateFly(e.currentTarget, '#fav-btn', product.imgSrc);
+            }
+            toggleWishlist(product);
+          }}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill={isInWishlist ? '#ef4444' : 'none'}
+            stroke={isInWishlist ? '#ef4444' : '#888'}
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            width="16"
+            height="16"
+          >
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </button>
+
+        {/* Status Tags (Always show if out of stock or new) */}
+        {(showStatusTags || product.isOutOfStock || product.isNew) && (
+          <div className="pc-status-tags">
+            {product.isOutOfStock ? (
+              <span className="pc-status-tag pc-status-tag--out-of-stock">
+                Out of Stock
+              </span>
+            ) : product.isNew ? (
+              <span className="pc-status-tag pc-status-tag--new">
+                New Arrival
+              </span>
+            ) : null}
           </div>
         )}
-      </Link>
 
-      {/* Card body */}
-      <div className="pc-body">
+        {/* Image area */}
         <Link 
           to={`/product/${product.id}`} 
-          className="pc-name"
+          className="pc-img-link" 
+          id={`pc-img-${product.id}`}
         >
-          {product.name}
+          {product.imgSrc ? (
+              <img
+                ref={imageRef}
+                src={hovered && product.hoverImgSrc ? product.hoverImgSrc : product.imgSrc}
+                alt={product.name}
+                className={`pc-img ${product.isOutOfStock ? 'pc-img--out-of-stock' : ''}`}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setImageLoaded(true)}
+              />
+          ) : (
+            <div className={`pc-placeholder ${hovered ? 'pc-placeholder--hover' : ''}`}>
+              <div className="pc-placeholder-label">
+                {hovered ? 'Hover View' : product.name}
+              </div>
+              <div className="pc-placeholder-hint">
+                {hovered ? (product.desc || 'Quality Sports Gear') : 'Add image'}
+              </div>
+            </div>
+          )}
         </Link>
-        <div className="pc-qualities">
-          {(product.qualities && product.qualities.length > 0 
-            ? product.qualities 
-            : ['Premium Quality', 'Highly Durable', 'Fitness Grade']
-          ).slice(0, 3).map((q, idx) => {
-            const text = q.trim();
-            const parts = text.split(':');
-            return (
-              <span key={idx} className="pc-quality-sq">
-                <span className="pc-quality-icon">{getIcon(text)}</span>
-                <span className="pc-quality-text">
-                  {parts.length > 1 ? (
-                    <><strong>{parts[0].trim()}</strong> : {parts.slice(1).join(':').trim()}</>
-                  ) : (
-                    text
-                  )}
+
+        {/* Card body */}
+        <div className="pc-body">
+        <Link 
+          to={`/product/${product.id}`} 
+          style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', flex: '1 1 auto' }}
+        >
+          <div className="pc-name">
+            {product.name}
+          </div>
+          <div className="pc-qualities">
+            {(product.qualities && product.qualities.length > 0 
+              ? product.qualities 
+              : ['Premium Quality', 'Highly Durable', 'Fitness Grade']
+            ).slice(0, 3).map((q, idx) => {
+              const text = q.trim();
+              const parts = text.split(':');
+              return (
+                <span key={idx} className="pc-quality-sq">
+                  <span className="pc-quality-icon">{getIcon(text)}</span>
+                  <span className="pc-quality-text">
+                    {parts.length > 1 ? (
+                      <><strong>{parts[0].trim()}</strong> : {parts.slice(1).join(':').trim()}</>
+                    ) : (
+                      text
+                    )}
+                  </span>
                 </span>
-              </span>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <div className="pc-price-row">
-          {(() => {
-            let minP = Number.POSITIVE_INFINITY;
-            let maxP = 0;
-            let uniqueWeights = new Set();
-            const isFlattened = product.hasOwnProperty('selectedVariant');
+          <div className="pc-price-row">
+            {(() => {
+              let minP = Number.POSITIVE_INFINITY;
+              let maxP = 0;
+              let uniqueWeights = new Set();
+              const isFlattened = product.hasOwnProperty('selectedVariant');
 
-            if (isFlattened) {
-              minP = product.price || 0;
-              maxP = product.price || 0;
-              if (product.size && typeof product.size.weight === 'number' && product.size.weight > 0) {
-                uniqueWeights.add(product.size.weight);
-              } else if (product.variant && typeof product.variant.weight === 'number' && product.variant.weight > 0) {
-                uniqueWeights.add(product.variant.weight);
-              } else if (product.weight && product.weight > 0) {
+              if (isFlattened) {
+                minP = product.price || 0;
+                maxP = product.price || 0;
+                if (product.size && typeof product.size.weight === 'number' && product.size.weight > 0) {
+                  uniqueWeights.add(product.size.weight);
+                } else if (product.variant && typeof product.variant.weight === 'number' && product.variant.weight > 0) {
+                  uniqueWeights.add(product.variant.weight);
+                } else if (product.weight && product.weight > 0) {
+                  uniqueWeights.add(product.weight);
+                }
+              } else if (product.variants) {
+                product.variants.forEach(v => {
+                  if (v.sizes && v.sizes.length) {
+                    v.sizes.forEach(s => {
+                      if (typeof s.price === 'number') {
+                        if (s.price < minP) minP = s.price;
+                        if (s.price > maxP) maxP = s.price;
+                      }
+                      if (typeof s.weight === 'number' && s.weight > 0) {
+                        uniqueWeights.add(s.weight);
+                      }
+                    });
+                  } else if (typeof v.price === 'number') {
+                    if (v.price < minP) minP = v.price;
+                    if (v.price > maxP) maxP = v.price;
+                    if (typeof v.weight === 'number' && v.weight > 0) {
+                      uniqueWeights.add(v.weight);
+                    }
+                  }
+                });
+              }
+
+              if (!isFinite(minP)) minP = product.price || 0;
+              if (maxP === 0) maxP = product.price || 0;
+              const hasRange = minP !== maxP;
+
+              if (uniqueWeights.size === 0 && product.weight && product.weight > 0) {
                 uniqueWeights.add(product.weight);
               }
-            } else if (product.variants) {
-              product.variants.forEach(v => {
-                if (v.sizes && v.sizes.length) {
-                  v.sizes.forEach(s => {
-                    if (typeof s.price === 'number') {
-                      if (s.price < minP) minP = s.price;
-                      if (s.price > maxP) maxP = s.price;
-                    }
-                    if (typeof s.weight === 'number' && s.weight > 0) {
-                      uniqueWeights.add(s.weight);
-                    }
-                  });
-                } else if (typeof v.price === 'number') {
-                  if (v.price < minP) minP = v.price;
-                  if (v.price > maxP) maxP = v.price;
-                  if (typeof v.weight === 'number' && v.weight > 0) {
-                    uniqueWeights.add(v.weight);
-                  }
-                }
-              });
-            }
 
-            if (!isFinite(minP)) minP = product.price || 0;
-            if (maxP === 0) maxP = product.price || 0;
-            const hasRange = minP !== maxP;
+              let weightStr = '';
+              if (uniqueWeights.size > 0) {
+                const sortedWeights = Array.from(uniqueWeights).sort((a, b) => a - b);
+                weightStr = sortedWeights.map(w => `${w / 1000} kg`).join(', ');
+              }
 
-            if (uniqueWeights.size === 0 && product.weight && product.weight > 0) {
-              uniqueWeights.add(product.weight);
-            }
-
-            let weightStr = '';
-            if (uniqueWeights.size > 0) {
-              const sortedWeights = Array.from(uniqueWeights).sort((a, b) => a - b);
-              weightStr = sortedWeights.map(w => `${w / 1000} kg`).join(', ');
-            }
-
-            return (
-              <>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span className="pc-price">
-                    {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
-                  </span>
-                  {product.oldPrice && !hasRange && (
-                    <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+              return (
+                <>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span className="pc-price">
+                      {hasRange ? 'From ' : ''}₹{minP.toLocaleString('en-IN')}
+                    </span>
+                    {product.oldPrice && !hasRange && (
+                      <span className="pc-old-price">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+                    )}
+                  </div>
+                  {weightStr && (
+                    <span className="pc-weight" style={{ marginLeft: 'auto', fontSize: '0.8rem', color: '#666', fontWeight: '500' }}>
+                      {weightStr}
+                    </span>
                   )}
-                </div>
-                {weightStr && (
-                  <span className="pc-weight" style={{ marginLeft: 'auto', fontSize: '0.8rem', color: '#666', fontWeight: '500' }}>
-                    {weightStr}
-                  </span>
-                )}
-              </>
-            );
-          })()}
-        </div>
+                </>
+              );
+            })()}
+          </div>
+        </Link>
 
         <button 
           className={`pc-add-btn ${product.isOutOfStock ? 'pc-add-btn--disabled' : ''}`} 
@@ -353,6 +439,9 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
               const currentSize = currentVariant?.sizes && currentVariant.sizes[0] ? currentVariant.sizes[0] : null;
               const activePrice = currentSize?.price ?? currentVariant?.price ?? product.price ?? 0;
               const activeWeight = currentSize?.weight ?? currentVariant?.weight ?? 0;
+              
+              const imgToFly = currentVariant?.images?.[0] || product.imgSrc;
+              animateFly(e.currentTarget, '#cart-btn', imgToFly);
               
               const normalizeSizeLabel = (size) => {
                 if (size === null || size === undefined) return '';
@@ -383,6 +472,7 @@ const ProductCard = memo(({ product, showStatusTags = false }) => {
         >
           {product.isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
         </button>
+      </div>
       </div>
     </div>
   );

@@ -61,7 +61,7 @@ export default function Contact() {
               </div>
               <div>
                 <div className="contact-card-label">Phone Support</div>
-                <div className="contact-card-value"><a href="tel:+918568989898">+91 85689 89898</a></div>
+                <div className="contact-card-value"><a href="tel:+917347464503">+91 73474 64503</a></div>
                 <div className="contact-card-value" style={{ fontSize: '0.85rem', color: 'var(--text-mid)', marginTop: '4px' }}>Mon - Fri, 9am - 6pm IST</div>
               </div>
             </div>
@@ -108,8 +108,8 @@ export default function Contact() {
                     lineHeight: "1.4"
                   }}
                 >
-                  41, Wariana Industrial Complex,<br />
-                  Jalandhar, Punjab - 144002
+                  41, Warirana Industrial Complex,<br />
+                  Jalandhar, Punjab - 144021
                 </div>
               </div>
             </div>

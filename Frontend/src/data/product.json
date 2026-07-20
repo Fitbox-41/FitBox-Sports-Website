@@ -56,11 +56,11 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/1.1.1.jpg",
-                    "/Images/1.1.2.jpg",
-                    "/Images/1.1.3.jpg",
-                    "/Images/1.1.4.jpg",
-                    "/Images/1.1.5.jpg"
+                    "/Images/1.1.1.webp",
+                    "/Images/1.1.2.webp",
+                    "/Images/1.1.3.webp",
+                    "/Images/1.1.4.webp",
+                    "/Images/1.1.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
@@ -68,21 +68,21 @@
             {
                 "color": "Red",
                 "images": [
-                    "/Images/1.2.1.jpg",
-                    "/Images/1.2.2.jpg",
-                    "/Images/1.2.3.jpg"
+                    "/Images/1.2.1.webp",
+                    "/Images/1.2.2.webp",
+                    "/Images/1.2.3.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/1.1.1.jpg",
-            "/Images/1.1.2.jpg",
-            "/Images/1.1.3.jpg"
+            "/Images/1.1.1.webp",
+            "/Images/1.1.2.webp",
+            "/Images/1.1.3.webp"
         ],
-        "imgSrc": "/Images/1.1.1.jpg",
-        "hoverImgSrc": "/Images/1.2.1.jpg"
+        "imgSrc": "/Images/1.1.1.webp",
+        "hoverImgSrc": "/Images/1.2.1.webp"
     },
     {
         "id": 2,
@@ -146,14 +146,14 @@
             {
                 "color": "Convertible Barbell",
                 "images": [
-                    "/Images/2.1.1.jpg",
-                    "/Images/2.1.2.jpg",
-                    "/Images/2.1.3.jpg",
-                    "/Images/2.1.4.jpg",
-                    "/Images/2.1.5.jpg",
-                    "/Images/2.1.6.jpg",
-                    "/Images/2.1.7.jpg",
-                    "/Images/2.1.8.jpg"
+                    "/Images/2.1.1.webp",
+                    "/Images/2.1.2.webp",
+                    "/Images/2.1.3.webp",
+                    "/Images/2.1.4.webp",
+                    "/Images/2.1.5.webp",
+                    "/Images/2.1.6.webp",
+                    "/Images/2.1.7.webp",
+                    "/Images/2.1.8.webp"
                 ],
                 "price": 0,
                 "weight": 0
@@ -161,23 +161,23 @@
             {
                 "color": "Dumbbell Kit",
                 "images": [
-                    "/Images/2.2.1.jpg",
-                    "/Images/2.2.2.jpg",
-                    "/Images/2.2.3.jpg",
-                    "/Images/2.2.4.jpg",
-                    "/Images/2.2.5.jpg"
+                    "/Images/2.2.1.webp",
+                    "/Images/2.2.2.webp",
+                    "/Images/2.2.3.webp",
+                    "/Images/2.2.4.webp",
+                    "/Images/2.2.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/2.1.1.jpg",
-            "/Images/2.1.2.jpg",
-            "/Images/2.1.3.jpg"
+            "/Images/2.1.1.webp",
+            "/Images/2.1.2.webp",
+            "/Images/2.1.3.webp"
         ],
-        "imgSrc": "/Images/2.1.1.jpg",
-        "hoverImgSrc": "/Images/2.2.1.jpg"
+        "imgSrc": "/Images/2.1.1.webp",
+        "hoverImgSrc": "/Images/2.2.1.webp"
     },
     {
         "id": 3,
@@ -236,11 +236,11 @@
             {
                 "color": "Snow & Pink",
                 "images": [
-                    "/Images/3.1.1.jpg",
-                    "/Images/3.1.2.jpg",
-                    "/Images/3.1.3.jpg",
-                    "/Images/3.1.4.jpg",
-                    "/Images/3.1.5.jpg"
+                    "/Images/3.1.1.webp",
+                    "/Images/3.1.2.webp",
+                    "/Images/3.1.3.webp",
+                    "/Images/3.1.4.webp",
+                    "/Images/3.1.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
@@ -248,11 +248,11 @@
             {
                 "color": "Black & Red",
                 "images": [
-                    "/Images/3.2.1.jpg",
-                    "/Images/3.2.2.jpg",
-                    "/Images/3.2.3.jpg",
-                    "/Images/3.2.4.jpg",
-                    "/Images/3.2.5.jpg"
+                    "/Images/3.2.1.webp",
+                    "/Images/3.2.2.webp",
+                    "/Images/3.2.3.webp",
+                    "/Images/3.2.4.webp",
+                    "/Images/3.2.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
@@ -260,23 +260,23 @@
             {
                 "color": "Steel Gray",
                 "images": [
-                    "/Images/3.3.1.jpg",
-                    "/Images/3.3.2.jpg",
-                    "/Images/3.3.3.jpg",
-                    "/Images/3.3.4.jpg",
-                    "/Images/3.3.5.jpg"
+                    "/Images/3.3.1.webp",
+                    "/Images/3.3.2.webp",
+                    "/Images/3.3.3.webp",
+                    "/Images/3.3.4.webp",
+                    "/Images/3.3.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/3.1.1.jpg",
-            "/Images/3.1.2.jpg",
-            "/Images/3.1.3.jpg"
+            "/Images/3.1.1.webp",
+            "/Images/3.1.2.webp",
+            "/Images/3.1.3.webp"
         ],
-        "imgSrc": "/Images/3.1.1.jpg",
-        "hoverImgSrc": "/Images/3.2.1.jpg"
+        "imgSrc": "/Images/3.1.1.webp",
+        "hoverImgSrc": "/Images/3.2.1.webp"
     },
     {
         "id": 4,
@@ -310,11 +310,11 @@
             {
                 "color": " Counter Black 5kg - 60kg",
                 "images": [
-                    "/Images/4.1.1.jpg",
-                    "/Images/4.1.2.jpg",
-                    "/Images/4.1.3.jpg",
-                    "/Images/4.1.4.jpg",
-                    "/Images/4.1.5.jpg"
+                    "/Images/4.1.1.webp",
+                    "/Images/4.1.2.webp",
+                    "/Images/4.1.3.webp",
+                    "/Images/4.1.4.webp",
+                    "/Images/4.1.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -323,11 +323,11 @@
             {
                 "color": " Black Gray 10kg - 40kg",
                 "images": [
-                    "/Images/4.2.1.jpg",
-                    "/Images/4.2.2.jpg",
-                    "/Images/4.2.3.jpg",
-                    "/Images/4.2.4.jpg",
-                    "/Images/4.2.5.jpg"
+                    "/Images/4.2.1.webp",
+                    "/Images/4.2.2.webp",
+                    "/Images/4.2.3.webp",
+                    "/Images/4.2.4.webp",
+                    "/Images/4.2.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -336,11 +336,11 @@
             {
                 "color": " Black Orange 10kg - 40kg",
                 "images": [
-                    "/Images/4.3.1.jpg",
-                    "/Images/4.3.2.jpg",
-                    "/Images/4.3.3.jpg",
-                    "/Images/4.3.4.jpg",
-                    "/Images/4.3.5.jpg"
+                    "/Images/4.3.1.webp",
+                    "/Images/4.3.2.webp",
+                    "/Images/4.3.3.webp",
+                    "/Images/4.3.4.webp",
+                    "/Images/4.3.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -349,11 +349,11 @@
             {
                 "color": " Blue 10kg - 40kg",
                 "images": [
-                    "/Images/4.4.1.jpg",
-                    "/Images/4.4.2.jpg",
-                    "/Images/4.4.3.jpg",
-                    "/Images/4.4.4.jpg",
-                    "/Images/4.4.5.jpg"
+                    "/Images/4.4.1.webp",
+                    "/Images/4.4.2.webp",
+                    "/Images/4.4.3.webp",
+                    "/Images/4.4.4.webp",
+                    "/Images/4.4.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -362,11 +362,11 @@
             {
                 "color": ": Counter Blue 5kg - 60kg",
                 "images": [
-                    "/Images/4.5.1.jpg",
-                    "/Images/4.5.2.jpg",
-                    "/Images/4.5.3.jpg",
-                    "/Images/4.5.4.jpg",
-                    "/Images/4.5.5.jpg"
+                    "/Images/4.5.1.webp",
+                    "/Images/4.5.2.webp",
+                    "/Images/4.5.3.webp",
+                    "/Images/4.5.4.webp",
+                    "/Images/4.5.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -375,11 +375,11 @@
             {
                 "color": " Orange 10kg - 40kg",
                 "images": [
-                    "/Images/4.6.1.jpg",
-                    "/Images/4.6.2.jpg",
-                    "/Images/4.6.3.jpg",
-                    "/Images/4.6.4.jpg",
-                    "/Images/4.6.5.jpg"
+                    "/Images/4.6.1.webp",
+                    "/Images/4.6.2.webp",
+                    "/Images/4.6.3.webp",
+                    "/Images/4.6.4.webp",
+                    "/Images/4.6.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -388,11 +388,11 @@
             {
                 "color": " Black Orange 5kg - 60kg",
                 "images": [
-                    "/Images/4.7.1.jpg",
-                    "/Images/4.7.2.jpg",
-                    "/Images/4.7.3.jpg",
-                    "/Images/4.7.4.jpg",
-                    "/Images/4.7.5.jpg"
+                    "/Images/4.7.1.webp",
+                    "/Images/4.7.2.webp",
+                    "/Images/4.7.3.webp",
+                    "/Images/4.7.4.webp",
+                    "/Images/4.7.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -401,11 +401,11 @@
             {
                 "color": "  Orange 5kg - 60kg",
                 "images": [
-                    "/Images/4.8.1.jpg",
-                    "/Images/4.8.2.jpg",
-                    "/Images/4.8.3.jpg",
-                    "/Images/4.8.4.jpg",
-                    "/Images/4.8.5.jpg"
+                    "/Images/4.8.1.webp",
+                    "/Images/4.8.2.webp",
+                    "/Images/4.8.3.webp",
+                    "/Images/4.8.4.webp",
+                    "/Images/4.8.5.webp"
                 ],
                 "price": 399,
                 "oldPrice": 399,
@@ -413,12 +413,12 @@
             }
         ],
         "showcaseImages": [
-            "/Images/4.1.1.jpg",
-            "/Images/4.2.1.jpg",
-            "/Images/4.3.1.jpg"
+            "/Images/4.1.1.webp",
+            "/Images/4.2.1.webp",
+            "/Images/4.3.1.webp"
         ],
-        "imgSrc": "/Images/4.1.1.jpg",
-        "hoverImgSrc": "/Images/4.2.1.jpg"
+        "imgSrc": "/Images/4.1.1.webp",
+        "hoverImgSrc": "/Images/4.2.1.webp"
     },
     {
         "id": 5,
@@ -449,11 +449,11 @@
                 "price": 599,
                 "oldPrice": 899,
                 "images": [
-                    "/Images/5.1.1.jpg",
-                    "/Images/5.1.2.jpg",
-                    "/Images/5.1.3.jpg",
-                    "/Images/5.1.4.jpg",
-                    "/Images/5.1.5.jpg"
+                    "/Images/5.1.1.webp",
+                    "/Images/5.1.2.webp",
+                    "/Images/5.1.3.webp",
+                    "/Images/5.1.4.webp",
+                    "/Images/5.1.5.webp"
                 ]
             },
             {
@@ -462,11 +462,11 @@
                 "price": 699,
                 "oldPrice": 999,
                 "images": [
-                    "/Images/5.2.1.jpg",
-                    "/Images/5.2.2.jpg",
-                    "/Images/5.2.3.jpg",
-                    "/Images/5.2.4.jpg",
-                    "/Images/5.2.5.jpg"
+                    "/Images/5.2.1.webp",
+                    "/Images/5.2.2.webp",
+                    "/Images/5.2.3.webp",
+                    "/Images/5.2.4.webp",
+                    "/Images/5.2.5.webp"
                 ]
             },
             {
@@ -475,11 +475,11 @@
                 "price": 799,
                 "oldPrice": 1099,
                 "images": [
-                    "/Images/5.3.1.jpg",
-                    "/Images/5.3.2.jpg",
-                    "/Images/5.3.3.jpg",
-                    "/Images/5.3.4.jpg",
-                    "/Images/5.3.5.jpg"
+                    "/Images/5.3.1.webp",
+                    "/Images/5.3.2.webp",
+                    "/Images/5.3.3.webp",
+                    "/Images/5.3.4.webp",
+                    "/Images/5.3.5.webp"
                 ]
             },
             {
@@ -488,11 +488,11 @@
                 "price": 599,
                 "oldPrice": 899,
                 "images": [
-                    "/Images/5.4.1.jpg",
-                    "/Images/5.4.2.jpg",
-                    "/Images/5.4.3.jpg",
-                    "/Images/5.4.4.jpg",
-                    "/Images/5.4.5.jpg"
+                    "/Images/5.4.1.webp",
+                    "/Images/5.4.2.webp",
+                    "/Images/5.4.3.webp",
+                    "/Images/5.4.4.webp",
+                    "/Images/5.4.5.webp"
                 ]
             },
             {
@@ -501,11 +501,11 @@
                 "price": 2499,
                 "oldPrice": 3999,
                 "images": [
-                    "/Images/5.5.1.jpg",
-                    "/Images/5.5.2.jpg",
-                    "/Images/5.5.3.jpg",
-                    "/Images/5.5.4.jpg",
-                    "/Images/5.5.5.jpg"
+                    "/Images/5.5.1.webp",
+                    "/Images/5.5.2.webp",
+                    "/Images/5.5.3.webp",
+                    "/Images/5.5.4.webp",
+                    "/Images/5.5.5.webp"
                 ]
             },
             {
@@ -514,11 +514,11 @@
                 "price": 2899,
                 "oldPrice": 4299,
                 "images": [
-                    "/Images/5.6.1.jpg",
-                    "/Images/5.6.2.jpg",
-                    "/Images/5.6.3.jpg",
-                    "/Images/5.6.4.jpg",
-                    "/Images/5.6.5.jpg"
+                    "/Images/5.6.1.webp",
+                    "/Images/5.6.2.webp",
+                    "/Images/5.6.3.webp",
+                    "/Images/5.6.4.webp",
+                    "/Images/5.6.5.webp"
                 ]
             },
             {
@@ -527,21 +527,21 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/5.7.1.jpg",
-                    "/Images/5.7.2.jpg",
-                    "/Images/5.7.3.jpg",
-                    "/Images/5.7.4.jpg",
-                    "/Images/5.7.5.jpg"
+                    "/Images/5.7.1.webp",
+                    "/Images/5.7.2.webp",
+                    "/Images/5.7.3.webp",
+                    "/Images/5.7.4.webp",
+                    "/Images/5.7.5.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/5.1.1.jpg",
-            "/Images/5.2.1.jpg",
-            "/Images/5.3.1.jpg"
+            "/Images/5.1.1.webp",
+            "/Images/5.2.1.webp",
+            "/Images/5.3.1.webp"
         ],
-        "imgSrc": "/Images/5.1.1.jpg",
-        "hoverImgSrc": "/Images/5.2.1.jpg"
+        "imgSrc": "/Images/5.1.1.webp",
+        "hoverImgSrc": "/Images/5.2.1.webp"
     },
     {
         "id": 6,
@@ -582,24 +582,24 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/6.1.1.jpg",
-                    "/Images/6.1.2.jpg",
-                    "/Images/6.1.3.jpg",
-                    "/Images/6.1.4.jpg",
-                    "/Images/6.1.5.jpg",
-                    "/Images/6.1.6.jpg"
+                    "/Images/6.1.1.webp",
+                    "/Images/6.1.2.webp",
+                    "/Images/6.1.3.webp",
+                    "/Images/6.1.4.webp",
+                    "/Images/6.1.5.webp",
+                    "/Images/6.1.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/6.1.1.jpg",
-            "/Images/6.1.2.jpg",
-            "/Images/6.1.3.jpg"
+            "/Images/6.1.1.webp",
+            "/Images/6.1.2.webp",
+            "/Images/6.1.3.webp"
         ],
-        "imgSrc": "/Images/6.1.1.jpg",
-        "hoverImgSrc": "/Images/6.1.2.jpg"
+        "imgSrc": "/Images/6.1.1.webp",
+        "hoverImgSrc": "/Images/6.1.2.webp"
     },
     {
         "id": 7,
@@ -629,11 +629,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/7.1.1.jpg",
-                    "/Images/7.1.2.jpg",
-                    "/Images/7.1.3.jpg",
-                    "/Images/7.1.4.jpg",
-                    "/Images/7.1.5.jpg"
+                    "/Images/7.1.1.webp",
+                    "/Images/7.1.2.webp",
+                    "/Images/7.1.3.webp",
+                    "/Images/7.1.4.webp",
+                    "/Images/7.1.5.webp"
                 ]
             },
             {
@@ -642,11 +642,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/7.2.1.jpg",
-                    "/Images/7.2.2.jpg",
-                    "/Images/7.2.3.jpg",
-                    "/Images/7.2.4.jpg",
-                    "/Images/7.2.5.jpg"
+                    "/Images/7.2.1.webp",
+                    "/Images/7.2.2.webp",
+                    "/Images/7.2.3.webp",
+                    "/Images/7.2.4.webp",
+                    "/Images/7.2.5.webp"
                 ]
             },
             {
@@ -655,11 +655,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/7.3.1.jpg",
-                    "/Images/7.3.2.jpg",
-                    "/Images/7.3.3.jpg",
-                    "/Images/7.3.4.jpg",
-                    "/Images/7.3.5.jpg"
+                    "/Images/7.3.1.webp",
+                    "/Images/7.3.2.webp",
+                    "/Images/7.3.3.webp",
+                    "/Images/7.3.4.webp",
+                    "/Images/7.3.5.webp"
                 ]
             },
             {
@@ -668,21 +668,21 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/7.4.1.jpg",
-                    "/Images/7.4.2.jpg",
-                    "/Images/7.4.3.jpg",
-                    "/Images/7.4.4.jpg",
-                    "/Images/7.4.5.jpg"
+                    "/Images/7.4.1.webp",
+                    "/Images/7.4.2.webp",
+                    "/Images/7.4.3.webp",
+                    "/Images/7.4.4.webp",
+                    "/Images/7.4.5.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/7.1.1.jpg",
-            "/Images/7.2.1.jpg",
-            "/Images/7.3.1.jpg"
+            "/Images/7.1.1.webp",
+            "/Images/7.2.1.webp",
+            "/Images/7.3.1.webp"
         ],
-        "imgSrc": "/Images/7.1.1.jpg",
-        "hoverImgSrc": "/Images/7.2.1.jpg"
+        "imgSrc": "/Images/7.1.1.webp",
+        "hoverImgSrc": "/Images/7.2.1.webp"
     },
     {
         "id": 8,
@@ -713,11 +713,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/8.4.1.jpg",
-                    "/Images/8.4.2.jpg",
-                    "/Images/8.4.3.jpg",
-                    "/Images/8.4.4.jpg",
-                    "/Images/8.4.5.jpg"
+                    "/Images/8.4.1.webp",
+                    "/Images/8.4.2.webp",
+                    "/Images/8.4.3.webp",
+                    "/Images/8.4.4.webp",
+                    "/Images/8.4.5.webp"
                 ]
             },
             {
@@ -726,11 +726,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/8.2.1.jpg",
-                    "/Images/8.2.2.jpg",
-                    "/Images/8.2.3.jpg",
-                    "/Images/8.2.4.jpg",
-                    "/Images/8.2.5.jpg"
+                    "/Images/8.2.1.webp",
+                    "/Images/8.2.2.webp",
+                    "/Images/8.2.3.webp",
+                    "/Images/8.2.4.webp",
+                    "/Images/8.2.5.webp"
                 ]
             },
             {
@@ -739,11 +739,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/8.3.1.jpg",
-                    "/Images/8.3.2.jpg",
-                    "/Images/8.3.3.jpg",
-                    "/Images/8.3.4.jpg",
-                    "/Images/8.3.5.jpg"
+                    "/Images/8.3.1.webp",
+                    "/Images/8.3.2.webp",
+                    "/Images/8.3.3.webp",
+                    "/Images/8.3.4.webp",
+                    "/Images/8.3.5.webp"
                 ]
             },
             {
@@ -752,11 +752,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/8.4.1.jpg",
-                    "/Images/8.4.2.jpg",
-                    "/Images/8.4.3.jpg",
-                    "/Images/8.4.4.jpg",
-                    "/Images/8.4.5.jpg"
+                    "/Images/8.4.1.webp",
+                    "/Images/8.4.2.webp",
+                    "/Images/8.4.3.webp",
+                    "/Images/8.4.4.webp",
+                    "/Images/8.4.5.webp"
                 ]
             },
             {
@@ -765,11 +765,11 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/8.5.1.jpg",
-                    "/Images/8.5.2.jpg",
-                    "/Images/8.5.3.jpg",
-                    "/Images/8.5.4.jpg",
-                    "/Images/8.5.5.jpg"
+                    "/Images/8.5.1.webp",
+                    "/Images/8.5.2.webp",
+                    "/Images/8.5.3.webp",
+                    "/Images/8.5.4.webp",
+                    "/Images/8.5.5.webp"
                 ]
             },
             {
@@ -778,21 +778,21 @@
                 "price": 3499,
                 "oldPrice": 5299,
                 "images": [
-                    "/Images/8.6.1.jpg",
-                    "/Images/8.6.2.jpg",
-                    "/Images/8.6.3.jpg",
-                    "/Images/8.6.4.jpg",
-                    "/Images/8.6.5.jpg"
+                    "/Images/8.6.1.webp",
+                    "/Images/8.6.2.webp",
+                    "/Images/8.6.3.webp",
+                    "/Images/8.6.4.webp",
+                    "/Images/8.6.5.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/8.1.1.jpg",
-            "/Images/8.2.1.jpg",
-            "/Images/8.3.1.jpg"
+            "/Images/8.1.1.webp",
+            "/Images/8.2.1.webp",
+            "/Images/8.3.1.webp"
         ],
-        "imgSrc": "/Images/8.1.1.jpg",
-        "hoverImgSrc": "/Images/8.2.1.jpg"
+        "imgSrc": "/Images/8.1.1.webp",
+        "hoverImgSrc": "/Images/8.2.1.webp"
     },
     {
         "id": 9,
@@ -822,11 +822,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/9.1.1.jpg",
-                    "/Images/9.1.2.jpg",
-                    "/Images/9.1.3.jpg",
-                    "/Images/9.1.4.jpg",
-                    "/Images/9.1.5.jpg"
+                    "/Images/9.1.1.webp",
+                    "/Images/9.1.2.webp",
+                    "/Images/9.1.3.webp",
+                    "/Images/9.1.4.webp",
+                    "/Images/9.1.5.webp"
                 ]
             },
             {
@@ -835,11 +835,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/9.2.1.jpg",
-                    "/Images/9.2.2.jpg",
-                    "/Images/9.2.3.jpg",
-                    "/Images/9.2.4.jpg",
-                    "/Images/9.2.5.jpg"
+                    "/Images/9.2.1.webp",
+                    "/Images/9.2.2.webp",
+                    "/Images/9.2.3.webp",
+                    "/Images/9.2.4.webp",
+                    "/Images/9.2.5.webp"
                 ]
             },
             {
@@ -848,11 +848,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/9.3.1.jpg",
-                    "/Images/9.3.2.jpg",
-                    "/Images/9.3.3.jpg",
-                    "/Images/9.3.4.jpg",
-                    "/Images/9.3.5.jpg"
+                    "/Images/9.3.1.webp",
+                    "/Images/9.3.2.webp",
+                    "/Images/9.3.3.webp",
+                    "/Images/9.3.4.webp",
+                    "/Images/9.3.5.webp"
                 ]
             },
             {
@@ -861,21 +861,21 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/9.4.1.jpg",
-                    "/Images/9.4.2.jpg",
-                    "/Images/9.4.3.jpg",
-                    "/Images/9.4.4.jpg",
-                    "/Images/9.4.5.jpg"
+                    "/Images/9.4.1.webp",
+                    "/Images/9.4.2.webp",
+                    "/Images/9.4.3.webp",
+                    "/Images/9.4.4.webp",
+                    "/Images/9.4.5.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/9.1.1.jpg",
-            "/Images/9.2.1.jpg",
-            "/Images/9.3.1.jpg"
+            "/Images/9.1.1.webp",
+            "/Images/9.2.1.webp",
+            "/Images/9.3.1.webp"
         ],
-        "imgSrc": "/Images/9.1.1.jpg",
-        "hoverImgSrc": "/Images/9.2.1.jpg"
+        "imgSrc": "/Images/9.1.1.webp",
+        "hoverImgSrc": "/Images/9.2.1.webp"
     },
     {
         "id": 10,
@@ -903,25 +903,25 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/10.1.1.jpg",
-                    "/Images/10.1.2.jpg",
-                    "/Images/10.1.3.jpg",
-                    "/Images/10.1.4.jpg",
-                    "/Images/10.1.5.jpg",
-                    "/Images/10.1.6.jpg",
-                    "/Images/10.1.7.jpg"
+                    "/Images/10.1.1.webp",
+                    "/Images/10.1.2.webp",
+                    "/Images/10.1.3.webp",
+                    "/Images/10.1.4.webp",
+                    "/Images/10.1.5.webp",
+                    "/Images/10.1.6.webp",
+                    "/Images/10.1.7.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/10.1.1.jpg",
-            "/Images/10.1.2.jpg",
-            "/Images/10.1.3.jpg"
+            "/Images/10.1.1.webp",
+            "/Images/10.1.2.webp",
+            "/Images/10.1.3.webp"
         ],
-        "imgSrc": "/Images/10.1.1.jpg",
-        "hoverImgSrc": "/Images/10.1.2.jpg"
+        "imgSrc": "/Images/10.1.1.webp",
+        "hoverImgSrc": "/Images/10.1.2.webp"
     },
     {
         "id": 11,
@@ -950,11 +950,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/11.1.1.jpg",
-                    "/Images/11.1.2.jpg",
-                    "/Images/11.1.3.jpg",
-                    "/Images/11.1.4.jpg",
-                    "/Images/11.1.5.jpg"
+                    "/Images/11.1.1.webp",
+                    "/Images/11.1.2.webp",
+                    "/Images/11.1.3.webp",
+                    "/Images/11.1.4.webp",
+                    "/Images/11.1.5.webp"
                 ]
             },
             {
@@ -963,11 +963,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/11.2.1.jpg",
-                    "/Images/11.2.2.jpg",
-                    "/Images/11.2.3.jpg",
-                    "/Images/11.2.4.jpg",
-                    "/Images/11.2.5.jpg"
+                    "/Images/11.2.1.webp",
+                    "/Images/11.2.2.webp",
+                    "/Images/11.2.3.webp",
+                    "/Images/11.2.4.webp",
+                    "/Images/11.2.5.webp"
                 ]
             },
             {
@@ -976,11 +976,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/11.3.1.jpg",
-                    "/Images/11.3.2.jpg",
-                    "/Images/11.3.3.jpg",
-                    "/Images/11.3.4.jpg",
-                    "/Images/11.3.5.jpg"
+                    "/Images/11.3.1.webp",
+                    "/Images/11.3.2.webp",
+                    "/Images/11.3.3.webp",
+                    "/Images/11.3.4.webp",
+                    "/Images/11.3.5.webp"
                 ]
             },
             {
@@ -989,21 +989,21 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/11.4.1.jpg",
-                    "/Images/11.4.2.jpg",
-                    "/Images/11.4.3.jpg",
-                    "/Images/11.4.4.jpg",
-                    "/Images/11.4.5.jpg"
+                    "/Images/11.4.1.webp",
+                    "/Images/11.4.2.webp",
+                    "/Images/11.4.3.webp",
+                    "/Images/11.4.4.webp",
+                    "/Images/11.4.5.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/11.1.1.jpg",
-            "/Images/11.2.1.jpg",
-            "/Images/11.3.1.jpg"
+            "/Images/11.1.1.webp",
+            "/Images/11.2.1.webp",
+            "/Images/11.3.1.webp"
         ],
-        "imgSrc": "/Images/11.1.1.jpg",
-        "hoverImgSrc": "/Images/11.2.1.jpg"
+        "imgSrc": "/Images/11.1.1.webp",
+        "hoverImgSrc": "/Images/11.2.1.webp"
     },
     {
         "id": 12,
@@ -1032,11 +1032,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/12.1.1.jpg",
-                    "/Images/12.1.2.jpg",
-                    "/Images/12.1.3.jpg",
-                    "/Images/12.1.4.jpg",
-                    "/Images/12.1.5.jpg"
+                    "/Images/12.1.1.webp",
+                    "/Images/12.1.2.webp",
+                    "/Images/12.1.3.webp",
+                    "/Images/12.1.4.webp",
+                    "/Images/12.1.5.webp"
                 ]
             },
             {
@@ -1045,11 +1045,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/12.2.1.jpg",
-                    "/Images/12.2.2.jpg",
-                    "/Images/12.2.3.jpg",
-                    "/Images/12.2.4.jpg",
-                    "/Images/12.2.5.jpg"
+                    "/Images/12.2.1.webp",
+                    "/Images/12.2.2.webp",
+                    "/Images/12.2.3.webp",
+                    "/Images/12.2.4.webp",
+                    "/Images/12.2.5.webp"
                 ]
             },
             {
@@ -1058,11 +1058,11 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/12.3.1.jpg",
-                    "/Images/12.3.2.jpg",
-                    "/Images/12.3.3.jpg",
-                    "/Images/12.3.4.jpg",
-                    "/Images/12.3.5.jpg"
+                    "/Images/12.3.1.webp",
+                    "/Images/12.3.2.webp",
+                    "/Images/12.3.3.webp",
+                    "/Images/12.3.4.webp",
+                    "/Images/12.3.5.webp"
                 ]
             },
             {
@@ -1071,21 +1071,21 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/12.4.1.jpg",
-                    "/Images/12.4.2.jpg",
-                    "/Images/12.4.3.jpg",
-                    "/Images/12.4.4.jpg",
-                    "/Images/12.4.5.jpg"
+                    "/Images/12.4.1.webp",
+                    "/Images/12.4.2.webp",
+                    "/Images/12.4.3.webp",
+                    "/Images/12.4.4.webp",
+                    "/Images/12.4.5.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/12.1.1.jpg",
-            "/Images/12.2.1.jpg",
-            "/Images/12.3.1.jpg"
+            "/Images/12.1.1.webp",
+            "/Images/12.2.1.webp",
+            "/Images/12.3.1.webp"
         ],
-        "imgSrc": "/Images/12.1.1.jpg",
-        "hoverImgSrc": "/Images/12.2.1.jpg"
+        "imgSrc": "/Images/12.1.1.webp",
+        "hoverImgSrc": "/Images/12.2.1.webp"
     },
     {
         "id": 13,
@@ -1112,24 +1112,24 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/13.1.1.jpg",
-                    "/Images/13.1.2.jpg",
-                    "/Images/13.1.3.jpg",
-                    "/Images/13.1.4.jpg",
-                    "/Images/13.1.5.jpg",
-                    "/Images/13.1.6.jpg"
+                    "/Images/13.1.1.webp",
+                    "/Images/13.1.2.webp",
+                    "/Images/13.1.3.webp",
+                    "/Images/13.1.4.webp",
+                    "/Images/13.1.5.webp",
+                    "/Images/13.1.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/13.1.1.jpg",
-            "/Images/13.1.2.jpg",
-            "/Images/13.1.3.jpg"
+            "/Images/13.1.1.webp",
+            "/Images/13.1.2.webp",
+            "/Images/13.1.3.webp"
         ],
-        "imgSrc": "/Images/13.1.1.jpg",
-        "hoverImgSrc": "/Images/13.1.2.jpg"
+        "imgSrc": "/Images/13.1.1.webp",
+        "hoverImgSrc": "/Images/13.1.2.webp"
     },
     {
         "id": 14,
@@ -1159,13 +1159,13 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/14.1.1.jpg",
-                    "/Images/14.1.2.jpg",
-                    "/Images/14.1.3.jpg",
-                    "/Images/14.1.4.jpg",
-                    "/Images/14.1.5.jpg",
-                    "/Images/14.1.6.jpg",
-                    "/Images/14.1.7.jpg"
+                    "/Images/14.1.1.webp",
+                    "/Images/14.1.2.webp",
+                    "/Images/14.1.3.webp",
+                    "/Images/14.1.4.webp",
+                    "/Images/14.1.5.webp",
+                    "/Images/14.1.6.webp",
+                    "/Images/14.1.7.webp"
                 ]
             },
             {
@@ -1174,22 +1174,22 @@
                 "price": 449,
                 "oldPrice": 529,
                 "images": [
-                    "/Images/14.2.1.jpg",
-                    "/Images/14.2.2.jpg",
-                    "/Images/14.2.3.jpg",
-                    "/Images/14.2.4.jpg",
-                    "/Images/14.2.5.jpg",
-                    "/Images/14.2.6.jpg"
+                    "/Images/14.2.1.webp",
+                    "/Images/14.2.2.webp",
+                    "/Images/14.2.3.webp",
+                    "/Images/14.2.4.webp",
+                    "/Images/14.2.5.webp",
+                    "/Images/14.2.6.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/14.1.1.jpg",
-            "/Images/14.1.2.jpg",
-            "/Images/14.1.3.jpg"
+            "/Images/14.1.1.webp",
+            "/Images/14.1.2.webp",
+            "/Images/14.1.3.webp"
         ],
-        "imgSrc": "/Images/14.1.1.jpg",
-        "hoverImgSrc": "/Images/14.1.2.jpg"
+        "imgSrc": "/Images/14.1.1.webp",
+        "hoverImgSrc": "/Images/14.1.2.webp"
     },
     {
         "id": 15,
@@ -1249,13 +1249,13 @@
             {
                 "color": "Gray",
                 "images": [
-                    "/Images/15.1.1.jpg",
-                    "/Images/15.1.2.jpg",
-                    "/Images/15.1.3.jpg",
-                    "/Images/15.1.4.jpg",
-                    "/Images/15.1.5.jpg",
-                    "/Images/15.1.6.jpg",
-                    "/Images/15.1.7.jpg"
+                    "/Images/15.1.1.webp",
+                    "/Images/15.1.2.webp",
+                    "/Images/15.1.3.webp",
+                    "/Images/15.1.4.webp",
+                    "/Images/15.1.5.webp",
+                    "/Images/15.1.6.webp",
+                    "/Images/15.1.7.webp"
                 ],
                 "price": 0,
                 "weight": 0
@@ -1263,24 +1263,24 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/15.2.1.jpg",
-                    "/Images/15.2.2.jpg",
-                    "/Images/15.2.3.jpg",
-                    "/Images/15.2.4.jpg",
-                    "/Images/15.2.5.jpg",
-                    "/Images/15.2.6.jpg"
+                    "/Images/15.2.1.webp",
+                    "/Images/15.2.2.webp",
+                    "/Images/15.2.3.webp",
+                    "/Images/15.2.4.webp",
+                    "/Images/15.2.5.webp",
+                    "/Images/15.2.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/15.1.1.jpg",
-            "/Images/15.1.2.jpg",
-            "/Images/15.1.3.jpg"
+            "/Images/15.1.1.webp",
+            "/Images/15.1.2.webp",
+            "/Images/15.1.3.webp"
         ],
-        "imgSrc": "/Images/15.1.1.jpg",
-        "hoverImgSrc": "/Images/15.1.7.jpg"
+        "imgSrc": "/Images/15.1.1.webp",
+        "hoverImgSrc": "/Images/15.1.7.webp"
     },
     {
         "id": 16,
@@ -1327,24 +1327,24 @@
             {
                 "color": "FitBox Sports Professional Neoprene Ankle Weights",
                 "images": [
-                    "/Images/16.1.1.jpg",
-                    "/Images/16.1.2.jpg",
-                    "/Images/16.1.3.jpg",
-                    "/Images/16.1.4.jpg",
-                    "/Images/16.1.5.jpg",
-                    "/Images/16.1.6.jpg"
+                    "/Images/16.1.1.webp",
+                    "/Images/16.1.2.webp",
+                    "/Images/16.1.3.webp",
+                    "/Images/16.1.4.webp",
+                    "/Images/16.1.5.webp",
+                    "/Images/16.1.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/16.1.1.jpg",
-            "/Images/16.1.2.jpg",
-            "/Images/16.1.3.jpg"
+            "/Images/16.1.1.webp",
+            "/Images/16.1.2.webp",
+            "/Images/16.1.3.webp"
         ],
-        "imgSrc": "/Images/16.1.1.jpg",
-        "hoverImgSrc": "/Images/16.1.2.jpg"
+        "imgSrc": "/Images/16.1.1.webp",
+        "hoverImgSrc": "/Images/16.1.2.webp"
     },
     {
         "id": 17,
@@ -1392,25 +1392,25 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/17.1.1.jpg",
-                    "/Images/17.1.2.jpg",
-                    "/Images/17.1.3.jpg",
-                    "/Images/17.1.4.jpg",
-                    "/Images/17.1.5.jpg",
-                    "/Images/17.1.6.jpg",
-                    "/Images/17.1.7.jpg"
+                    "/Images/17.1.1.webp",
+                    "/Images/17.1.2.webp",
+                    "/Images/17.1.3.webp",
+                    "/Images/17.1.4.webp",
+                    "/Images/17.1.5.webp",
+                    "/Images/17.1.6.webp",
+                    "/Images/17.1.7.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/17.1.1.jpg",
-            "/Images/17.1.2.jpg",
-            "/Images/17.1.3.jpg"
+            "/Images/17.1.1.webp",
+            "/Images/17.1.2.webp",
+            "/Images/17.1.3.webp"
         ],
-        "imgSrc": "/Images/17.1.1.jpg",
-        "hoverImgSrc": "/Images/17.1.10.jpg"
+        "imgSrc": "/Images/17.1.1.webp",
+        "hoverImgSrc": "/Images/17.1.10.webp"
     },
     {
         "id": 18,
@@ -1442,12 +1442,12 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/18.1.1.jpg",
-                    "/Images/18.1.2.jpg",
-                    "/Images/18.1.3.jpg",
-                    "/Images/18.1.4.jpg",
-                    "/Images/18.1.5.jpg",
-                    "/Images/18.1.6.jpg"
+                    "/Images/18.1.1.webp",
+                    "/Images/18.1.2.webp",
+                    "/Images/18.1.3.webp",
+                    "/Images/18.1.4.webp",
+                    "/Images/18.1.5.webp",
+                    "/Images/18.1.6.webp"
                 ]
             },
             {
@@ -1456,12 +1456,12 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/18.2.1.jpg",
-                    "/Images/18.2.2.jpg",
-                    "/Images/18.2.3.jpg",
-                    "/Images/18.2.4.jpg",
-                    "/Images/18.2.5.jpg",
-                    "/Images/18.2.6.jpg"
+                    "/Images/18.2.1.webp",
+                    "/Images/18.2.2.webp",
+                    "/Images/18.2.3.webp",
+                    "/Images/18.2.4.webp",
+                    "/Images/18.2.5.webp",
+                    "/Images/18.2.6.webp"
                 ]
             }
         ],
@@ -1520,24 +1520,24 @@
             {
                 "color": "Black",
                 "images": [
-                    "/Images/19.1.1.jpg",
-                    "/Images/19.1.2.jpg",
-                    "/Images/19.1.3.jpg",
-                    "/Images/19.1.4.jpg",
-                    "/Images/19.1.5.jpg",
-                    "/Images/19.1.6.jpg"
+                    "/Images/19.1.1.webp",
+                    "/Images/19.1.2.webp",
+                    "/Images/19.1.3.webp",
+                    "/Images/19.1.4.webp",
+                    "/Images/19.1.5.webp",
+                    "/Images/19.1.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/19.1.1.jpg",
-            "/Images/19.1.2.jpg",
-            "/Images/19.1.3.jpg"
+            "/Images/19.1.1.webp",
+            "/Images/19.1.2.webp",
+            "/Images/19.1.3.webp"
         ],
-        "imgSrc": "/Images/19.1.1.jpg",
-        "hoverImgSrc": "/Images/19.1.10.jpg"
+        "imgSrc": "/Images/19.1.1.webp",
+        "hoverImgSrc": "/Images/19.1.10.webp"
     },
     {
         "id": 20,
@@ -1578,25 +1578,25 @@
             {
                 "color": " Black ",
                 "images": [
-                    "/Images/20.1.1.jpg",
-                    "/Images/20.1.2.jpg",
-                    "/Images/20.1.3.jpg",
-                    "/Images/20.1.4.jpg",
-                    "/Images/20.1.5.jpg",
-                    "/Images/20.1.6.jpg",
-                    "/Images/20.1.7.jpg"
+                    "/Images/20.1.1.webp",
+                    "/Images/20.1.2.webp",
+                    "/Images/20.1.3.webp",
+                    "/Images/20.1.4.webp",
+                    "/Images/20.1.5.webp",
+                    "/Images/20.1.6.webp",
+                    "/Images/20.1.7.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/20.1.1.jpg",
-            "/Images/20.1.2.jpg",
-            "/Images/20.1.3.jpg"
+            "/Images/20.1.1.webp",
+            "/Images/20.1.2.webp",
+            "/Images/20.1.3.webp"
         ],
-        "imgSrc": "/Images/20.1.1.jpg",
-        "hoverImgSrc": "/Images/20.1.10.jpg"
+        "imgSrc": "/Images/20.1.1.webp",
+        "hoverImgSrc": "/Images/20.1.10.webp"
     },
     {
         "id": 21,
@@ -1628,11 +1628,11 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/21.1.1.jpg",
-                    "/Images/21.1.2.jpg",
-                    "/Images/21.1.3.jpg",
-                    "/Images/21.1.4.jpg",
-                    "/Images/21.1.5.jpg"
+                    "/Images/21.1.1.webp",
+                    "/Images/21.1.2.webp",
+                    "/Images/21.1.3.webp",
+                    "/Images/21.1.4.webp",
+                    "/Images/21.1.5.webp"
                 ]
             },
             {
@@ -1641,22 +1641,22 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/21.2.1.jpg",
-                    "/Images/21.2.2.jpg",
-                    "/Images/21.2.3.jpg",
-                    "/Images/21.2.4.jpg",
-                    "/Images/21.2.5.jpg",
-                    "/Images/21.2.6.jpg"
+                    "/Images/21.2.1.webp",
+                    "/Images/21.2.2.webp",
+                    "/Images/21.2.3.webp",
+                    "/Images/21.2.4.webp",
+                    "/Images/21.2.5.webp",
+                    "/Images/21.2.6.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/21.1.1.jpg",
-            "/Images/21.1.2.jpg",
-            "/Images/21.1.3.jpg"
+            "/Images/21.1.1.webp",
+            "/Images/21.1.2.webp",
+            "/Images/21.1.3.webp"
         ],
-        "imgSrc": "/Images/21.1.1.jpg",
-        "hoverImgSrc": "/Images/21.1.2.jpg"
+        "imgSrc": "/Images/21.1.1.webp",
+        "hoverImgSrc": "/Images/21.1.2.webp"
     },
     {
         "id": 22,
@@ -1690,24 +1690,24 @@
             {
                 "color": "Red",
                 "images": [
-                    "/Images/22.1.1.jpg",
-                    "/Images/22.1.2.jpg",
-                    "/Images/22.1.3.jpg",
-                    "/Images/22.1.4.jpg",
-                    "/Images/22.1.5.jpg",
-                    "/Images/22.1.6.jpg"
+                    "/Images/22.1.1.webp",
+                    "/Images/22.1.2.webp",
+                    "/Images/22.1.3.webp",
+                    "/Images/22.1.4.webp",
+                    "/Images/22.1.5.webp",
+                    "/Images/22.1.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/22.1.1.jpg",
-            "/Images/22.1.2.jpg",
-            "/Images/22.1.3.jpg"
+            "/Images/22.1.1.webp",
+            "/Images/22.1.2.webp",
+            "/Images/22.1.3.webp"
         ],
-        "imgSrc": "/Images/22.1.1.jpg",
-        "hoverImgSrc": "/Images/22.1.2.jpg"
+        "imgSrc": "/Images/22.1.1.webp",
+        "hoverImgSrc": "/Images/22.1.2.webp"
     },
     {
         "id": 23,
@@ -1737,12 +1737,12 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/23.1.1.jpg",
-                    "/Images/23.1.2.jpg",
-                    "/Images/23.1.3.jpg",
-                    "/Images/23.1.4.jpg",
-                    "/Images/23.1.5.jpg",
-                    "/Images/23.1.6.jpg"
+                    "/Images/23.1.1.webp",
+                    "/Images/23.1.2.webp",
+                    "/Images/23.1.3.webp",
+                    "/Images/23.1.4.webp",
+                    "/Images/23.1.5.webp",
+                    "/Images/23.1.6.webp"
                 ]
             },
             {
@@ -1751,12 +1751,12 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/23.2.1.jpg",
-                    "/Images/23.2.2.jpg",
-                    "/Images/23.2.3.jpg",
-                    "/Images/23.2.4.jpg",
-                    "/Images/23.2.5.jpg",
-                    "/Images/23.2.6.jpg"
+                    "/Images/23.2.1.webp",
+                    "/Images/23.2.2.webp",
+                    "/Images/23.2.3.webp",
+                    "/Images/23.2.4.webp",
+                    "/Images/23.2.5.webp",
+                    "/Images/23.2.6.webp"
                 ]
             },
             {
@@ -1765,22 +1765,22 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/23.3.1.jpg",
-                    "/Images/23.3.2.jpg",
-                    "/Images/23.3.3.jpg",
-                    "/Images/23.3.4.jpg",
-                    "/Images/23.3.5.jpg",
-                    "/Images/23.3.6.jpg"
+                    "/Images/23.3.1.webp",
+                    "/Images/23.3.2.webp",
+                    "/Images/23.3.3.webp",
+                    "/Images/23.3.4.webp",
+                    "/Images/23.3.5.webp",
+                    "/Images/23.3.6.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/23.1.1.jpg",
-            "/Images/23.1.2.jpg",
-            "/Images/23.1.3.jpg"
+            "/Images/23.1.1.webp",
+            "/Images/23.1.2.webp",
+            "/Images/23.1.3.webp"
         ],
-        "imgSrc": "/Images/23.1.1.jpg",
-        "hoverImgSrc": "/Images/23.1.2.jpg"
+        "imgSrc": "/Images/23.1.1.webp",
+        "hoverImgSrc": "/Images/23.1.2.webp"
     },
     {
         "id": 24,
@@ -1810,11 +1810,11 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/24.1.1.jpg",
-                    "/Images/24.1.2.jpg",
-                    "/Images/24.1.3.jpg",
-                    "/Images/24.1.4.jpg",
-                    "/Images/24.1.5.jpg"
+                    "/Images/24.1.1.webp",
+                    "/Images/24.1.2.webp",
+                    "/Images/24.1.3.webp",
+                    "/Images/24.1.4.webp",
+                    "/Images/24.1.5.webp"
                 ]
             },
             {
@@ -1823,10 +1823,10 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/24.2.1.jpg",
-                    "/Images/24.2.2.jpg",
-                    "/Images/24.2.3.jpg",
-                    "/Images/24.2.4.jpg"
+                    "/Images/24.2.1.webp",
+                    "/Images/24.2.2.webp",
+                    "/Images/24.2.3.webp",
+                    "/Images/24.2.4.webp"
                 ]
             },
             {
@@ -1835,10 +1835,10 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/24.3.1.jpg",
-                    "/Images/24.3.2.jpg",
-                    "/Images/24.3.3.jpg",
-                    "/Images/24.3.4.jpg"
+                    "/Images/24.3.1.webp",
+                    "/Images/24.3.2.webp",
+                    "/Images/24.3.3.webp",
+                    "/Images/24.3.4.webp"
                 ]
             },
             {
@@ -1847,10 +1847,10 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/24.4.1.jpg",
-                    "/Images/24.4.2.jpg",
-                    "/Images/24.4.3.jpg",
-                    "/Images/24.4.4.jpg"
+                    "/Images/24.4.1.webp",
+                    "/Images/24.4.2.webp",
+                    "/Images/24.4.3.webp",
+                    "/Images/24.4.4.webp"
                 ]
             },
             {
@@ -1859,19 +1859,19 @@
                 "price": 0,
                 "oldPrice": 0,
                 "images": [
-                    "/Images/24.4.1.jpg",
-                    "/Images/24.4.2.jpg",
-                    "/Images/24.4.3.jpg"
+                    "/Images/24.4.1.webp",
+                    "/Images/24.4.2.webp",
+                    "/Images/24.4.3.webp"
                 ]
             }
         ],
         "showcaseImages": [
-            "/Images/24.1.1.jpg",
-            "/Images/24.1.2.jpg",
-            "/Images/24.1.3.jpg"
+            "/Images/24.1.1.webp",
+            "/Images/24.1.2.webp",
+            "/Images/24.1.3.webp"
         ],
-        "imgSrc": "/Images/24.1.1.jpg",
-        "hoverImgSrc": "/Images/24.1.2.jpg"
+        "imgSrc": "/Images/24.1.1.webp",
+        "hoverImgSrc": "/Images/24.1.2.webp"
     },
     {
         "id": 25,
@@ -1906,23 +1906,23 @@
             {
                 "color": "Yellow",
                 "images": [
-                    "/Images/25.1.1.jpg",
-                    "/Images/25.1.2.jpg",
-                    "/Images/25.1.3.jpg",
-                    "/Images/25.1.4.jpg",
-                    "/Images/25.1.5.jpg"
+                    "/Images/25.1.1.webp",
+                    "/Images/25.1.2.webp",
+                    "/Images/25.1.3.webp",
+                    "/Images/25.1.4.webp",
+                    "/Images/25.1.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/25.1.1.jpg",
-            "/Images/25.1.2.jpg",
-            "/Images/25.1.3.jpg"
+            "/Images/25.1.1.webp",
+            "/Images/25.1.2.webp",
+            "/Images/25.1.3.webp"
         ],
-        "imgSrc": "/Images/25.1.1.jpg",
-        "hoverImgSrc": "/Images/25.1.2.jpg"
+        "imgSrc": "/Images/25.1.1.webp",
+        "hoverImgSrc": "/Images/25.1.2.webp"
     },
     {
         "id": 26,
@@ -1956,23 +1956,23 @@
             {
                 "color": "Yellow(15-25Kg)",
                 "images": [
-                    "/Images/26.1.1.jpg",
-                    "/Images/26.1.2.jpg",
-                    "/Images/26.1.3.jpg",
-                    "/Images/26.1.4.jpg",
-                    "/Images/26.1.5.jpg"
+                    "/Images/26.1.1.webp",
+                    "/Images/26.1.2.webp",
+                    "/Images/26.1.3.webp",
+                    "/Images/26.1.4.webp",
+                    "/Images/26.1.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/26.1.1.jpg",
-            "/Images/26.1.2.jpg",
-            "/Images/26.1.3.jpg"
+            "/Images/26.1.1.webp",
+            "/Images/26.1.2.webp",
+            "/Images/26.1.3.webp"
         ],
-        "imgSrc": "/Images/26.1.1.jpg",
-        "hoverImgSrc": "/Images/26.1.2.jpg"
+        "imgSrc": "/Images/26.1.1.webp",
+        "hoverImgSrc": "/Images/26.1.2.webp"
     },
     {
         "id": 27,
@@ -2044,12 +2044,12 @@
                     }
                 ],
                 "images": [
-                    "/Images/27.1.1.jpg",
-                    "/Images/27.1.2.jpg",
-                    "/Images/27.1.3.jpg",
-                    "/Images/27.1.4.jpg",
-                    "/Images/27.1.5.jpg",
-                    "/Images/27.1.6.jpg"
+                    "/Images/27.1.1.webp",
+                    "/Images/27.1.2.webp",
+                    "/Images/27.1.3.webp",
+                    "/Images/27.1.4.webp",
+                    "/Images/27.1.5.webp",
+                    "/Images/27.1.6.webp"
                 ],
                 "price": 0,
                 "weight": 0
@@ -2079,22 +2079,22 @@
                     }
                 ],
                 "images": [
-                    "/Images/27.2.1.jpg",
-                    "/Images/27.2.2.jpg",
-                    "/Images/27.2.3.jpg",
-                    "/Images/27.2.4.jpg",
-                    "/Images/27.2.5.jpg"
+                    "/Images/27.2.1.webp",
+                    "/Images/27.2.2.webp",
+                    "/Images/27.2.3.webp",
+                    "/Images/27.2.4.webp",
+                    "/Images/27.2.5.webp"
                 ],
                 "price": 0,
                 "weight": 0
             }
         ],
         "showcaseImages": [
-            "/Images/27.1.1.jpg",
-            "/Images/27.1.2.jpg",
-            "/Images/27.1.3.jpg"
+            "/Images/27.1.1.webp",
+            "/Images/27.1.2.webp",
+            "/Images/27.1.3.webp"
         ],
-        "imgSrc": "/Images/27.1.1.jpg",
-        "hoverImgSrc": "/Images/27.1.2.jpg"
+        "imgSrc": "/Images/27.1.1.webp",
+        "hoverImgSrc": "/Images/27.1.2.webp"
     }
 ]

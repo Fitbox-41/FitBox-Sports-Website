@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
+import ProductCardSkeleton from '../components/ProductCardSkeleton';
 import { flattenProducts } from '../utils/flattenProducts';
 import './ProductCategory.css';
 
@@ -26,6 +27,10 @@ const categoryMeta = {
   'grippers': { label: 'Grippers', desc: 'Adjustable hand grippers to build forearm strength.', banner: '/Untitled-design-19.webp' },
   'shakers': { label: 'Shakers', desc: 'Leak-proof shaker bottles for your protein and supplements.', banner: '/Untitled-design-19.webp' },
   'bats': { label: 'Bats', desc: 'Premium bats for cricket and other sports.', banner: '/Untitled-design-19.webp' },
+  'lifestyle-&-accessories': { label: 'Lifestyle & Accessories', desc: 'Smart accessories for an active lifestyle.', banner: '/Untitled-design-19.webp' },
+  'weights-&-dumbbells': { label: 'Weights & Dumbbells', desc: 'Precision-engineered weights and dumbbells for strength training.', banner: '/Untitled-design-19.webp' },
+  'support-&-protection': { label: 'Support & Protection', desc: 'Essential support gear for wrists, knees, and joints.', banner: '/Untitled-design-19.webp' },
+  'balls-&-sports': { label: 'Balls & Sports', desc: 'High-quality balls and gear for every sport.', banner: '/Untitled-design-19.webp' },
 };
 
 export default function ProductCategory() {
@@ -35,14 +40,20 @@ export default function ProductCategory() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filterOpen, setFilterOpen] = useState(false);
   const [sortBy, setSortBy] = useState('featured');
-  
+  // Stable random score per variant card — reset on category change
+  const flatScoreRef = useRef(new Map());
+
   // Filter states
-  const [minPrice, setMinPrice] = useState('');
-  const [maxPrice, setMaxPrice] = useState('');
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000);
+  const [tempMaxPrice, setTempMaxPrice] = useState(10000);
+  const [isFiltering, setIsFiltering] = useState(false);
   const [inStockOnly, setInStockOnly] = useState(false);
   const [outOfStockOnly, setOutOfStockOnly] = useState(false);
+  const [selectedWeights, setSelectedWeights] = useState([]);
+  const filterTimeoutRef = useRef(null);
 
-  const formatLabel = (id) => (id || '').split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  const formatLabel = (id) => (id || '').split('-').map(word => word === '&' ? '&' : word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   const meta = categoryMeta[categoryId] || { 
     label: formatLabel(categoryId) || 'Category', 
     desc: `Browse our premium ${formatLabel(categoryId).toLowerCase() || 'sports'} equipment.`, 
@@ -52,19 +63,30 @@ export default function ProductCategory() {
   useEffect(() => {
     const cid = categoryId || '';
     const categoryProducts = allProducts.filter(p => {
-      const query1 = cid.replace(/-/g, ' ').toLowerCase();
-      const query2 = query1.replace(/ and /g, ' & ');
+      const query = cid.replace(/-/g, ' ').toLowerCase();
       
-      const normalizedCategory = p.category ? p.category.toLowerCase().replace(/-/g, ' ') : '';
-      const normalizedSubCategory = p.subCategory ? p.subCategory.toLowerCase().replace(/-/g, ' ') : '';
+      const normalizedCategory = p.category ? p.category.toLowerCase() : '';
+      const normalizedSubCategory = p.subCategory ? p.subCategory.toLowerCase() : '';
       const normalizedName = p.name ? p.name.toLowerCase() : '';
 
-      const categoryMatch = normalizedCategory && (normalizedCategory.includes(query1) || normalizedCategory.includes(query2));
-      const subCategoryMatch = normalizedSubCategory && (normalizedSubCategory.includes(query1) || normalizedSubCategory.includes(query2));
-      const nameMatch = normalizedName && (normalizedName.includes(query1) || normalizedName.includes(query2));
+      const categoryMatch = normalizedCategory && normalizedCategory.includes(query);
+      const subCategoryMatch = normalizedSubCategory && normalizedSubCategory.includes(query);
+      const nameMatch = normalizedName && normalizedName.includes(query);
       
       return categoryMatch || subCategoryMatch || nameMatch;
     });
+    
+    // Determine Highest Price for this category
+    const flatCatProducts = flattenProducts(categoryProducts);
+    const maxP = flatCatProducts.length > 0 
+      ? Math.max(...flatCatProducts.map(p => Number(p.price) || 0)) 
+      : 10000;
+      
+    setMaxPrice(maxP);
+    setTempMaxPrice(maxP);
+    
+    // Reset random scores so every category visit gets a fresh shuffle
+    flatScoreRef.current = new Map();
     
     setProducts(categoryProducts);
     window.scrollTo(0, 0);
@@ -72,10 +94,6 @@ export default function ProductCategory() {
 
   useEffect(() => {
     let result = [...products];
-
-    // Filter by Price
-    if (minPrice) result = result.filter(p => p.price >= parseInt(minPrice));
-    if (maxPrice) result = result.filter(p => p.price <= parseInt(maxPrice));
 
     // Filter by Availability
     if (inStockOnly && !outOfStockOnly) result = result.filter(p => !p.isOutOfStock);
@@ -88,44 +106,71 @@ export default function ProductCategory() {
       result.sort((a, b) => a.price - b.price);
     } else if (sortBy === 'price-high') {
       result.sort((a, b) => b.price - a.price);
-    } else if (sortBy === 'featured') {
-      // Custom logic for featured (e.g., show New first then in-stock)
-      result.sort((a, b) => {
-        if (a.isNew !== b.isNew) return b.isNew ? 1 : -1;
-        if (a.isOutOfStock !== b.isOutOfStock) return a.isOutOfStock ? 1 : -1;
-        return 0;
+    }
+    // 'featured': no product-level sort — order handled at variant level in useMemo
+
+    setFilteredProducts(result);
+  }, [products, sortBy, inStockOnly, outOfStockOnly]);
+
+  const toggleWeight = (w) => {
+    setSelectedWeights(prev => 
+      prev.includes(w) ? prev.filter(x => x !== w) : [...prev, w]
+    );
+  };
+
+  // Expand variants into individual cards, apply price filter, then apply random order for 'featured'
+  const expandedProducts = useMemo(() => {
+    let flat = flattenProducts(filteredProducts).map(p => ({
+      ...p,
+      displayId: p.displayId || p.id,
+      price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
+      oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null
+    }));
+
+    // Filter variants by Max Price
+    if (maxPrice > 0) {
+      flat = flat.filter(p => p.price <= maxPrice);
+    }
+    
+    // Filter variants by Weight
+    if (selectedWeights.length > 0) {
+      flat = flat.filter(p => {
+        const weightKg = (p.size && p.size.weight) ? (p.size.weight / 1000) : null;
+        if (weightKg === null) return false;
+        if (selectedWeights.includes('over-10') && weightKg > 10) return true;
+        return selectedWeights.includes(weightKg);
       });
     }
 
-    setFilteredProducts(result);
-  }, [products, sortBy, minPrice, maxPrice, inStockOnly, outOfStockOnly]);
+    if (sortBy === 'featured') {
+      // Assign a stable random score to each variant card once per category visit
+      flat.forEach(p => {
+        if (!flatScoreRef.current.has(p.displayId)) {
+          flatScoreRef.current.set(p.displayId, Math.random());
+        }
+      });
+      // Sort by random score, pushing out-of-stock to the end
+      return [...flat].sort((a, b) => {
+        const aOOS = a.isOutOfStock ? 1 : 0;
+        const bOOS = b.isOutOfStock ? 1 : 0;
+        if (aOOS !== bOOS) return aOOS - bOOS;
+        return (flatScoreRef.current.get(a.displayId) ?? 1) - (flatScoreRef.current.get(b.displayId) ?? 1);
+      });
+    }
 
-  // Automatically expand products with multiple variants into separate cards
-  const expandedProducts = useMemo(() => {
-    return flattenProducts(filteredProducts).map(p => {
-      return {
-        ...p,
-        displayId: p.displayId || p.id,
-        price: typeof p.price === 'number' ? p.price : (Number(p.price) || 0),
-        oldPrice: p.oldPrice ? (typeof p.oldPrice === 'number' ? p.oldPrice : (Number(p.oldPrice) || 0)) : null
-      };
-    });
-  }, [filteredProducts]);
+    return flat;
+  }, [filteredProducts, sortBy, maxPrice, selectedWeights]);
 
   return (
     <div className="category-page">
       <Header hideSubHeader={true} hideSaleRibbon={false} />
       
-      {loading ? (
-        <div style={{ textAlign: 'center', padding: '100px 0' }}>Loading products...</div>
-      ) : (
-        <>
-          {/* Spacer for fixed header */}
-          <div className="header-spacer" />
+      {/* Spacer for fixed header */}
+      <div className="header-spacer" />
 
       <section className="category-hero">
         <div className="hero-bg">
-          <img src={meta.banner} alt={meta.label} />
+          <img src={meta.banner} alt={meta.label} loading="lazy" decoding="async" />
           <div className="hero-overlay" />
         </div>
         <div className="hero-content container">
@@ -142,7 +187,7 @@ export default function ProductCategory() {
       <main className="category-main container">
         <div className="category-controls">
           <div className="products-count">
-            Showing <span>{expandedProducts.length}</span> products
+            Showing <span>{loading ? 0 : expandedProducts.length}</span> products
           </div>
           
           <div className="control-actions">
@@ -172,6 +217,11 @@ export default function ProductCategory() {
         </div>
 
         <div className="category-layout">
+          {/* Mobile Filter Overlay Backdrop */}
+          {filterOpen && (
+            <div className="filter-sidebar-overlay" onClick={() => setFilterOpen(false)}></div>
+          )}
+          
           {/* Mobile Filter Sidebar - Overlay */}
           <aside className={`filter-sidebar ${filterOpen ? 'open' : ''}`}>
             <div className="sidebar-header">
@@ -185,20 +235,39 @@ export default function ProductCategory() {
             
             <div className="filter-groups">
               <div className="filter-group">
-                <h4>Price Range</h4>
-                <div className="price-range-inputs">
+                <h4>Price Range: Up to ₹{tempMaxPrice}</h4>
+                <div className="price-slider-container">
                   <input 
-                    type="number" 
-                    placeholder="Min" 
-                    value={minPrice} 
-                    onChange={(e) => setMinPrice(e.target.value)} 
+                    type="range" 
+                    className="price-ribbon-slider"
+                    min="0"
+                    max={products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000}
+                    step="50"
+                    value={tempMaxPrice}
+                    onChange={(e) => {
+                      setTempMaxPrice(Number(e.target.value));
+                    }}
+                    onMouseUp={() => {
+                      setIsFiltering(true);
+                      if (filterTimeoutRef.current) clearTimeout(filterTimeoutRef.current);
+                      filterTimeoutRef.current = setTimeout(() => {
+                        setMaxPrice(tempMaxPrice);
+                        setIsFiltering(false);
+                      }, 1000);
+                    }}
+                    onTouchEnd={() => {
+                      setIsFiltering(true);
+                      if (filterTimeoutRef.current) clearTimeout(filterTimeoutRef.current);
+                      filterTimeoutRef.current = setTimeout(() => {
+                        setMaxPrice(tempMaxPrice);
+                        setIsFiltering(false);
+                      }, 1000);
+                    }}
                   />
-                  <input 
-                    type="number" 
-                    placeholder="Max" 
-                    value={maxPrice} 
-                    onChange={(e) => setMaxPrice(e.target.value)} 
-                  />
+                  <div className="price-slider-labels">
+                    <span>₹0</span>
+                    <span>₹{products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000}</span>
+                  </div>
                 </div>
               </div>
               
@@ -223,6 +292,28 @@ export default function ProductCategory() {
               </div>
 
               <div className="filter-group">
+                <h4>Weight</h4>
+                {[2, 4, 6, 8, 10].map(w => (
+                  <label key={w} className="filter-checkbox">
+                    <input 
+                      type="checkbox" 
+                      checked={selectedWeights.includes(w)} 
+                      onChange={() => toggleWeight(w)} 
+                    />
+                    <span>{w} kg</span>
+                  </label>
+                ))}
+                <label className="filter-checkbox">
+                  <input 
+                    type="checkbox" 
+                    checked={selectedWeights.includes('over-10')} 
+                    onChange={() => toggleWeight('over-10')} 
+                  />
+                  <span>Over 10 kg</span>
+                </label>
+              </div>
+
+              <div className="filter-group">
                 <h4>Brand</h4>
                 <label className="filter-checkbox">
                   <input type="checkbox" checked readOnly />
@@ -234,18 +325,34 @@ export default function ProductCategory() {
             <div className="sidebar-footer">
               <button className="apply-filters-btn" onClick={() => setFilterOpen(false)}>Apply Filters</button>
               <button className="clear-filters-btn" onClick={() => {
-                setMinPrice('');
-                setMaxPrice('');
+                const maxP = products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000;
+                setTempMaxPrice(maxP);
+                setMaxPrice(maxP);
                 setInStockOnly(false);
                 setOutOfStockOnly(false);
+                setSelectedWeights([]);
                 setSortBy('featured');
-              }}>Clear All</button>
+              }}>
+                Clear All
+              </button>
             </div>
           </aside>
 
           {/* Product Grid */}
-          <div className="products-grid-wrapper">
-            {expandedProducts.length > 0 ? (
+          <div className="products-grid-wrapper" style={{ position: 'relative' }}>
+            {isFiltering && (
+              <div className="products-loading-overlay">
+                <div className="spinner"></div>
+                <p>Applying Filters...</p>
+              </div>
+            )}
+            {loading ? (
+              <div className="products-grid">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <ProductCardSkeleton key={i} />
+                ))}
+              </div>
+            ) : expandedProducts.length > 0 ? (
               <div className="products-grid">
                 {expandedProducts.map((displayProduct) => (
                   <ProductCard key={displayProduct.displayId} product={displayProduct} showStatusTags={true} />
@@ -262,10 +369,12 @@ export default function ProductCategory() {
                 <h3>No products found</h3>
                 <p>Try adjusting your filters or search terms.</p>
                 <button className="clear-filters-btn" onClick={() => {
-                  setMinPrice('');
-                  setMaxPrice('');
+                  const maxP = products.length > 0 ? Math.max(...flattenProducts(products).map(p => Number(p.price) || 0)) : 10000;
+                  setTempMaxPrice(maxP);
+                  setMaxPrice(maxP);
                   setInStockOnly(false);
                   setOutOfStockOnly(false);
+                  setSelectedWeights([]);
                   setSortBy('featured');
                 }}>Reset All</button>
               </div>
@@ -273,8 +382,6 @@ export default function ProductCategory() {
           </div>
         </div>
       </main>
-      </>
-      )}
 
       <Footer />
     </div>

@@ -182,14 +182,19 @@
 .sub-header-link--highlight {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #ff416c;
-  border-color: rgba(255, 65, 108, 0.35);
-  background: rgba(255, 65, 108, 0.08);
+  color: #ff416c !important;
+  background: rgba(255, 65, 108, 0.18) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 65, 108, 0.45) !important;
+  box-shadow: 0 4px 15px rgba(255, 65, 108, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
 }
 
 .sub-header-link--highlight:hover {
-  color: #ff6b35;
-  background: rgba(255, 65, 108, 0.12);
+  color: #ff6b35 !important;
+  background: rgba(255, 65, 108, 0.3) !important;
+  border-color: rgba(255, 65, 108, 0.6) !important;
+  box-shadow: 0 8px 22px rgba(255, 65, 108, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
 }
 
 .search-input:focus {
@@ -273,8 +278,9 @@
   z-index: 1000;
   pointer-events: auto;
   width: 100%;
-  background: #000000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000 !important;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25) !important;
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease;
   will-change: transform, opacity;
 }
@@ -289,7 +295,7 @@
 .sub-header-nav {
   max-width: 95%;
   margin: 0 auto;
-  padding: 4px 16px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,37 +314,42 @@
   font-weight: 600;
   color: #ffffff;
   padding: 6px 14px;
-  border: none;
+  border: 1.5px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: var(--radius-md);
   text-decoration: none;
   white-space: nowrap;
-  transition: all var(--transition);
-  background: #111111;
+  transition: all var(--transition) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
 }
 
 .sub-header-link:hover {
-  color: #ffffff;
-  border: 1px solid rgba(255, 107, 53, 0.3);
-  background: rgba(255, 107, 53, 0.12);
-  transform: translateY(-1px);
+  color: #ffffff !important;
+  border-color: rgba(255, 107, 53, 0.45) !important;
+  background: rgba(255, 107, 53, 0.22) !important;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-1.5px) !important;
 }
 
 .sub-header-link--highlight {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #ff416c;
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 10px 30px;
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  color: #ff416c !important;
+  background: rgba(255, 65, 108, 0.18) !important;
+  border: 1.5px solid rgba(255, 65, 108, 0.45) !important;
+  padding: 6px 20px !important;
   border-radius: var(--radius-lg);
-  transition: all var(--transition);
+  box-shadow: 0 4px 15px rgba(255, 65, 108, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
 }
 
 .sub-header-link--highlight:hover {
-  color: #ff416c;
-  background: rgba(255, 65, 108, 0.08);
-  border-color: rgba(255, 65, 108, 0.45);
-  transform: translateY(-2px);
+  color: #ff6b35 !important;
+  background: rgba(255, 65, 108, 0.3) !important;
+  border-color: rgba(255, 65, 108, 0.6) !important;
+  box-shadow: 0 8px 22px rgba(255, 65, 108, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-2px) !important;
 }
 
 .sub-header-link--highlight:focus {
@@ -476,18 +487,25 @@
 }
 
 .mobile-search-submit {
-  background: transparent;
-  border: none;
-  color: var(--text-mid);
+  background: rgba(255, 107, 53, 0.12) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 107, 53, 0.25) !important;
+  border-radius: 8px;
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 4px;
+  padding: 6px 10px;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .mobile-search-submit:hover {
-  color: var(--primary);
+  background: rgba(255, 107, 53, 0.25) !important;
+  border-color: rgba(255, 107, 53, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .header-search-overlay {
@@ -536,20 +554,24 @@
 }
 
 .overlay-search-btn {
-  background: var(--primary);
+  background: rgba(255, 107, 53, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1.5px solid rgba(255, 140, 80, 0.45) !important;
   color: white;
-  border: none;
   padding: 0 24px;
   border-radius: var(--radius-md);
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
 }
 
 .overlay-search-btn:hover {
-  background: var(--primary-dark);
+  background: rgba(220, 80, 20, 0.88) !important;
   transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(255, 107, 53, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
 }
 
 @media (max-width: 600px) {
@@ -758,17 +780,15 @@
 
   .sub-header {
     top: 76px;
-    background: rgba(0, 0, 0, 0.95); /* Semi-transparent black */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: #000000 !important;
     padding: 0;
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2.5px solid rgba(255, 107, 53, 0.8) !important;
     z-index: 1009;
     visibility: hidden;
     opacity: 0;
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45) !important;
     transform: translateY(-20px);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                 opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -786,9 +806,9 @@
     width: 100%;
     padding: 18px 24px;
     border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 0;
-    background: transparent;
+    background: transparent !important;
     text-align: left;
     font-size: 1.05rem;
     font-family: 'Space Grotesk', sans-serif; /* Using the new modern font */
@@ -796,6 +816,8 @@
     letter-spacing: 0.5px;
     color: #fff;
     text-transform: uppercase;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
   }
 
   .sub-header-link--highlight {

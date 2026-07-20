@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useSettings } from '../context/SettingsContext';
 import './InfoPages.css';
 
 export default function Shipping() {
+  const { freeDeliveryThreshold } = useSettings();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -58,7 +61,7 @@ export default function Shipping() {
             <p><em>Please note that potential delays due to a high volume of orders or postal service problems are outside of our control.</em></p>
 
             <h2>2. Shipping Rates</h2>
-            <p>Shipping charges for your order will be calculated and displayed at checkout. We often run promotions for free shipping on orders over a certain amount (e.g., Free Shipping on orders over ₹999).</p>
+            <p>Shipping charges for your order will be calculated and displayed at checkout. We often run promotions for free shipping on orders over a certain amount (e.g., Free Shipping on orders over ₹{freeDeliveryThreshold}).</p>
 
             <h2>3. Order Tracking</h2>
             <p>When your order has shipped, you will receive an email notification from us which will include a tracking number you can use to check its status. Please allow 48 hours for the tracking information to become available.</p>

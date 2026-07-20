@@ -131,7 +131,7 @@ export default function Orders() {
   const location = useLocation();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [paymentToast, setPaymentToast] = useState(null); // { type: 'success'|'failed'|'error', message }
+  const [toast, setToast] = useState(null); // { type: 'success'|'failed'|'error', message }
   const [cancelModalOrder, setCancelModalOrder] = useState(null);
 
   const getPaymentLabel = (order) => {
@@ -167,13 +167,15 @@ export default function Orders() {
       const orderId = params.get('orderId');
 
       if (payment === 'success') {
-        setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
+        setToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
         clearCart();
+      } else if (payment === 'pending') {
+        setToast({ type: 'success', message: 'Verifying your payment... Please wait.' });
       } else if (payment === 'failed') {
-        setPaymentToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
+        setToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
       } else if (payment === 'error') {
         const reason = params.get('reason') || 'unknown';
-        setPaymentToast({ type: 'error', message: `Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
+        setToast({ type: 'error', message: `Something went wrong during payment (Reason: ${reason}). Please check your order status.` });
       }
 
       if (orderId && currentUser && ['success', 'failed', 'pending', 'error'].includes(payment)) {
@@ -188,10 +190,13 @@ export default function Orders() {
           if (verifyRes.data.success) {
             const status = verifyRes.data.paymentStatus;
             if (status === 'Paid') {
-              setPaymentToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
+              setToast({ type: 'success', message: 'Payment successful! Your order has been confirmed.' });
               clearCart();
+              // Re-fetch orders to show updated AWB, invoice, etc.
+              fetchOrders();
             } else if (status === 'Failed') {
-              setPaymentToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
+              setToast({ type: 'error', message: 'Payment was not completed. Please try again from your cart.' });
+              fetchOrders();
             }
           }
         } catch (err) {
@@ -200,7 +205,7 @@ export default function Orders() {
       }
 
       if (payment) {
-        const timer = setTimeout(() => setPaymentToast(null), 6000);
+        const timer = setTimeout(() => setToast(null), 8000);
         return () => clearTimeout(timer);
       }
     };
@@ -247,7 +252,14 @@ export default function Orders() {
   }, [loading, currentUser]);
 
   if (loading) {
-     return <div className="orders-page"><Header /><div style={{ height: '110px' }} /><div style={{textAlign: 'center', padding: '50px'}}>Loading Orders...</div><Footer /></div>;
+     return (
+       <div className="orders-page" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+         <Header />
+         <div style={{ height: '110px' }} />
+         <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Loading Orders...</div>
+         <Footer />
+       </div>
+     );
   }
 
   const handleCancelClick = (order) => {
@@ -268,15 +280,17 @@ export default function Orders() {
       
       if (res.data.success) {
         if (cancelModalOrder.paymentStatus === 'Paid') {
-          alert('We are sorry to see your order cancelled. Your refund has been initiated and will reflect in your original payment method within 5-7 business days.');
+          setToast({ type: 'success', message: 'We are sorry to see your order cancelled. Your refund has been initiated and will reflect in your original payment method within 5-7 business days.' });
         } else {
-          alert('Order cancelled successfully');
+          setToast({ type: 'success', message: 'Order cancelled successfully.' });
         }
+        setTimeout(() => setToast(null), 6000);
         setCancelModalOrder(null);
         await fetchOrders();
       }
     } catch (err) {
-      alert(err.response?.data?.message || "Failed to cancel order");
+      setToast({ type: 'error', message: err.response?.data?.message || "Failed to cancel order" });
+      setTimeout(() => setToast(null), 6000);
       console.error(err);
     } finally {
       setLoading(false);
@@ -288,7 +302,7 @@ export default function Orders() {
       <Header />
       <div className="header-spacer" style={{ height: '110px' }} />
 
-      {paymentToast && (
+      {toast && (
         <div style={{
           position: 'fixed',
           top: '120px',
@@ -300,12 +314,15 @@ export default function Orders() {
           fontSize: '15px',
           fontWeight: '600',
           boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
-          background: paymentToast.type === 'success' ? '#dcfce7' : '#fee2e2',
-          color: paymentToast.type === 'success' ? '#15803d' : '#b91c1c',
-          border: `1px solid ${paymentToast.type === 'success' ? '#bbf7d0' : '#fecaca'}`,
-          animation: 'fadeIn 0.3s ease'
+          background: toast.type === 'success' ? '#dcfce7' : '#fee2e2',
+          color: toast.type === 'success' ? '#15803d' : '#b91c1c',
+          border: `1px solid ${toast.type === 'success' ? '#bbf7d0' : '#fecaca'}`,
+          animation: 'fadeIn 0.3s ease',
+          textAlign: 'center',
+          maxWidth: '90%',
+          width: 'max-content'
         }}>
-          {paymentToast.message}
+          {toast.message}
         </div>
       )}
 
@@ -344,17 +361,16 @@ export default function Orders() {
                          Download Invoice
                        </a>
                      )}
-                     {order.trackingUrl && order.orderStatus !== 'Cancelled' && (
-                       <a 
-                         href={order.trackingUrl} 
-                         target="_blank" 
-                         rel="noreferrer" 
+                     {order.orderStatus !== 'Cancelled' && (
+                       <Link 
+                         to={`/track-order/${order._id}`} 
+                         state={{ order }}
                          style={{ display: 'block', marginTop: '5px', fontSize: '14px', color: '#f97316', textDecoration: 'none', fontWeight: '500' }}
                        >
-                         Track via {order.courier || 'Delhivery'}
-                       </a>
+                         Track Order
+                       </Link>
                      )}
-                     {order.orderStatus !== 'Cancelled' && order.shipmentStatus !== 'Shipped' && order.shipmentStatus !== 'Delivered' && (
+                     {order.orderStatus !== 'Cancelled' && order.shipmentStatus !== 'In Transit' && order.shipmentStatus !== 'Out for Delivery' && order.shipmentStatus !== 'Delivered' && (
                        <CancelButtonWithTimer 
                          order={order}
                          onCancelClick={handleCancelClick}
@@ -364,16 +380,20 @@ export default function Orders() {
                 </div>
 
                 {order.items.map((item, idx) => {
-                  const img = item.image || item.imgSrc;
-                  const inWishlist = wishlist.some(w => w.id === item.productId);
+                  let img = item.image || item.imgSrc;
+                  if (img && typeof img === 'string') {
+                    img = img.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+                  }
+                  const itemId = item.productId || item.id || item._id;
+                  const inWishlist = wishlist.some(w => w.id === itemId);
                   return (
                     <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '12px 0', borderBottom: idx !== order.items.length - 1 ? '1px solid #f1f5f9' : 'none' }}>
-                      <Link to={`/product/${item.productId}`} style={{ flexShrink: 0 }}>
-                        <img src={img} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e2e8f0' }} />
+                      <Link to={`/product/${itemId}`} style={{ flexShrink: 0 }}>
+                        <img src={img} alt={item.name} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '6px', border: '1px solid #e2e8f0' }} loading="lazy" decoding="async" />
                       </Link>
 
                       <div style={{ flex: 1 }}>
-                        <Link to={`/product/${item.productId}`} style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b', textDecoration: 'none', display: 'block', marginBottom: '4px' }}>
+                        <Link to={`/product/${itemId}`} style={{ fontSize: '15px', fontWeight: '600', color: '#1e293b', textDecoration: 'none', display: 'block', marginBottom: '4px' }}>
                           {item.name}
                         </Link>
                         <div style={{ fontSize: '13px', color: '#64748b' }}>

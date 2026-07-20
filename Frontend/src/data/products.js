@@ -21,21 +21,21 @@ const products = [
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/1.1.1.jpg",
-            "/Images/1.1.2.jpg",
-            "/Images/1.1.3.jpg"
+            "/Images/1.1.1.webp",
+            "/Images/1.1.2.webp",
+            "/Images/1.1.3.webp"
         ],
-        "imgSrc": "/Images/1.1.1.jpg",
-        "hoverImgSrc": "/Images/1.2.1.jpg",
+        "imgSrc": "/Images/1.1.1.webp",
+        "hoverImgSrc": "/Images/1.2.1.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/1.1.1.jpg",
-                    "/Images/1.1.2.jpg",
-                    "/Images/1.1.3.jpg",
-                    "/Images/1.1.4.jpg",
-                    "/Images/1.1.5.jpg"
+                    "/Images/1.1.1.webp",
+                    "/Images/1.1.2.webp",
+                    "/Images/1.1.3.webp",
+                    "/Images/1.1.4.webp",
+                    "/Images/1.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -73,9 +73,9 @@ const products = [
             {
                 "color": "Red",
                 "images": [
-                    "/Images/1.2.1.jpg",
-                    "/Images/1.2.2.jpg",
-                    "/Images/1.2.3.jpg"
+                    "/Images/1.2.1.webp",
+                    "/Images/1.2.2.webp",
+                    "/Images/1.2.3.webp"
                 ],
                 "sizes": [
                     {
@@ -133,24 +133,24 @@ const products = [
         "material": "Blend, Iron, Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/2.1.1.jpg",
-            "/Images/2.1.2.jpg",
-            "/Images/2.1.3.jpg"
+            "/Images/2.1.1.webp",
+            "/Images/2.1.2.webp",
+            "/Images/2.1.3.webp"
         ],
-        "imgSrc": "/Images/2.1.1.jpg",
-        "hoverImgSrc": "/Images/2.2.1.jpg",
+        "imgSrc": "/Images/2.1.1.webp",
+        "hoverImgSrc": "/Images/2.2.1.webp",
         "variants": [
             {
                 "color": "Convertible Barbell",
                 "images": [
-                    "/Images/2.1.1.jpg",
-                    "/Images/2.1.2.jpg",
-                    "/Images/2.1.3.jpg",
-                    "/Images/2.1.4.jpg",
-                    "/Images/2.1.5.jpg",
-                    "/Images/2.1.6.jpg",
-                    "/Images/2.1.7.jpg",
-                    "/Images/2.1.8.jpg"
+                    "/Images/2.1.1.webp",
+                    "/Images/2.1.2.webp",
+                    "/Images/2.1.3.webp",
+                    "/Images/2.1.4.webp",
+                    "/Images/2.1.5.webp",
+                    "/Images/2.1.6.webp",
+                    "/Images/2.1.7.webp",
+                    "/Images/2.1.8.webp"
                 ],
                 "sizes": [
                     {
@@ -194,11 +194,11 @@ const products = [
             {
                 "color": "Dumbbell Kit",
                 "images": [
-                    "/Images/2.2.1.jpg",
-                    "/Images/2.2.2.jpg",
-                    "/Images/2.2.3.jpg",
-                    "/Images/2.2.4.jpg",
-                    "/Images/2.2.5.jpg"
+                    "/Images/2.2.1.webp",
+                    "/Images/2.2.2.webp",
+                    "/Images/2.2.3.webp",
+                    "/Images/2.2.4.webp",
+                    "/Images/2.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -263,21 +263,21 @@ const products = [
         "material": "Polypropylene (PP)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/3.1.1.jpg",
-            "/Images/3.1.2.jpg",
-            "/Images/3.1.3.jpg"
+            "/Images/3.1.1.webp",
+            "/Images/3.1.2.webp",
+            "/Images/3.1.3.webp"
         ],
-        "imgSrc": "/Images/3.1.1.jpg",
-        "hoverImgSrc": "/Images/3.2.1.jpg",
+        "imgSrc": "/Images/3.1.1.webp",
+        "hoverImgSrc": "/Images/3.2.1.webp",
         "variants": [
             {
                 "color": "Snow & Pink",
                 "images": [
-                    "/Images/3.1.1.jpg",
-                    "/Images/3.1.2.jpg",
-                    "/Images/3.1.3.jpg",
-                    "/Images/3.1.4.jpg",
-                    "/Images/3.1.5.jpg"
+                    "/Images/3.1.1.webp",
+                    "/Images/3.1.2.webp",
+                    "/Images/3.1.3.webp",
+                    "/Images/3.1.4.webp",
+                    "/Images/3.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -315,11 +315,11 @@ const products = [
             {
                 "color": "Black & Red",
                 "images": [
-                    "/Images/3.2.1.jpg",
-                    "/Images/3.2.2.jpg",
-                    "/Images/3.2.3.jpg",
-                    "/Images/3.2.4.jpg",
-                    "/Images/3.2.5.jpg"
+                    "/Images/3.2.1.webp",
+                    "/Images/3.2.2.webp",
+                    "/Images/3.2.3.webp",
+                    "/Images/3.2.4.webp",
+                    "/Images/3.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -357,11 +357,11 @@ const products = [
             {
                 "color": "Steel Gray",
                 "images": [
-                    "/Images/3.3.1.jpg",
-                    "/Images/3.3.2.jpg",
-                    "/Images/3.3.3.jpg",
-                    "/Images/3.3.4.jpg",
-                    "/Images/3.3.5.jpg"
+                    "/Images/3.3.1.webp",
+                    "/Images/3.3.2.webp",
+                    "/Images/3.3.3.webp",
+                    "/Images/3.3.4.webp",
+                    "/Images/3.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -420,21 +420,21 @@ const products = [
         "material": "Stainless Steel",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/4.1.1.jpg",
-            "/Images/4.2.1.jpg",
-            "/Images/4.3.1.jpg"
+            "/Images/4.1.1.webp",
+            "/Images/4.2.1.webp",
+            "/Images/4.3.1.webp"
         ],
-        "imgSrc": "/Images/4.1.1.jpg",
-        "hoverImgSrc": "/Images/4.2.1.jpg",
+        "imgSrc": "/Images/4.1.1.webp",
+        "hoverImgSrc": "/Images/4.2.1.webp",
         "variants": [
             {
                 "color": " Counter Black 5kg - 60kg",
                 "images": [
-                    "/Images/4.1.1.jpg",
-                    "/Images/4.1.2.jpg",
-                    "/Images/4.1.3.jpg",
-                    "/Images/4.1.4.jpg",
-                    "/Images/4.1.5.jpg"
+                    "/Images/4.1.1.webp",
+                    "/Images/4.1.2.webp",
+                    "/Images/4.1.3.webp",
+                    "/Images/4.1.4.webp",
+                    "/Images/4.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -448,11 +448,11 @@ const products = [
             {
                 "color": " Black Gray 10kg - 40kg",
                 "images": [
-                    "/Images/4.2.1.jpg",
-                    "/Images/4.2.2.jpg",
-                    "/Images/4.2.3.jpg",
-                    "/Images/4.2.4.jpg",
-                    "/Images/4.2.5.jpg"
+                    "/Images/4.2.1.webp",
+                    "/Images/4.2.2.webp",
+                    "/Images/4.2.3.webp",
+                    "/Images/4.2.4.webp",
+                    "/Images/4.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -466,11 +466,11 @@ const products = [
             {
                 "color": " Black Orange 10kg - 40kg",
                 "images": [
-                    "/Images/4.3.1.jpg",
-                    "/Images/4.3.2.jpg",
-                    "/Images/4.3.3.jpg",
-                    "/Images/4.3.4.jpg",
-                    "/Images/4.3.5.jpg"
+                    "/Images/4.3.1.webp",
+                    "/Images/4.3.2.webp",
+                    "/Images/4.3.3.webp",
+                    "/Images/4.3.4.webp",
+                    "/Images/4.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -484,11 +484,11 @@ const products = [
             {
                 "color": " Blue 10kg - 40kg",
                 "images": [
-                    "/Images/4.4.1.jpg",
-                    "/Images/4.4.2.jpg",
-                    "/Images/4.4.3.jpg",
-                    "/Images/4.4.4.jpg",
-                    "/Images/4.4.5.jpg"
+                    "/Images/4.4.1.webp",
+                    "/Images/4.4.2.webp",
+                    "/Images/4.4.3.webp",
+                    "/Images/4.4.4.webp",
+                    "/Images/4.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -502,11 +502,11 @@ const products = [
             {
                 "color": ": Counter Blue 5kg - 60kg",
                 "images": [
-                    "/Images/4.5.1.jpg",
-                    "/Images/4.5.2.jpg",
-                    "/Images/4.5.3.jpg",
-                    "/Images/4.5.4.jpg",
-                    "/Images/4.5.5.jpg"
+                    "/Images/4.5.1.webp",
+                    "/Images/4.5.2.webp",
+                    "/Images/4.5.3.webp",
+                    "/Images/4.5.4.webp",
+                    "/Images/4.5.5.webp"
                 ],
                 "sizes": [
                     {
@@ -520,11 +520,11 @@ const products = [
             {
                 "color": " Orange 10kg - 40kg",
                 "images": [
-                    "/Images/4.6.1.jpg",
-                    "/Images/4.6.2.jpg",
-                    "/Images/4.6.3.jpg",
-                    "/Images/4.6.4.jpg",
-                    "/Images/4.6.5.jpg"
+                    "/Images/4.6.1.webp",
+                    "/Images/4.6.2.webp",
+                    "/Images/4.6.3.webp",
+                    "/Images/4.6.4.webp",
+                    "/Images/4.6.5.webp"
                 ],
                 "sizes": [
                     {
@@ -538,11 +538,11 @@ const products = [
             {
                 "color": " Black Orange 5kg - 60kg",
                 "images": [
-                    "/Images/4.7.1.jpg",
-                    "/Images/4.7.2.jpg",
-                    "/Images/4.7.3.jpg",
-                    "/Images/4.7.4.jpg",
-                    "/Images/4.7.5.jpg"
+                    "/Images/4.7.1.webp",
+                    "/Images/4.7.2.webp",
+                    "/Images/4.7.3.webp",
+                    "/Images/4.7.4.webp",
+                    "/Images/4.7.5.webp"
                 ],
                 "sizes": [
                     {
@@ -556,11 +556,11 @@ const products = [
             {
                 "color": "  Orange 5kg - 60kg",
                 "images": [
-                    "/Images/4.8.1.jpg",
-                    "/Images/4.8.2.jpg",
-                    "/Images/4.8.3.jpg",
-                    "/Images/4.8.4.jpg",
-                    "/Images/4.8.5.jpg"
+                    "/Images/4.8.1.webp",
+                    "/Images/4.8.2.webp",
+                    "/Images/4.8.3.webp",
+                    "/Images/4.8.4.webp",
+                    "/Images/4.8.5.webp"
                 ],
                 "sizes": [
                     {
@@ -595,21 +595,21 @@ const products = [
         "material": "Cast Iron, Neoprene",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/5.1.1.jpg",
-            "/Images/5.2.1.jpg",
-            "/Images/5.3.1.jpg"
+            "/Images/5.1.1.webp",
+            "/Images/5.2.1.webp",
+            "/Images/5.3.1.webp"
         ],
-        "imgSrc": "/Images/5.1.1.jpg",
-        "hoverImgSrc": "/Images/5.2.1.jpg",
+        "imgSrc": "/Images/5.1.1.webp",
+        "hoverImgSrc": "/Images/5.2.1.webp",
         "variants": [
             {
                 "color": "Red - 4kg (2kg x 2)",
                 "images": [
-                    "/Images/5.1.1.jpg",
-                    "/Images/5.1.2.jpg",
-                    "/Images/5.1.3.jpg",
-                    "/Images/5.1.4.jpg",
-                    "/Images/5.1.5.jpg"
+                    "/Images/5.1.1.webp",
+                    "/Images/5.1.2.webp",
+                    "/Images/5.1.3.webp",
+                    "/Images/5.1.4.webp",
+                    "/Images/5.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -623,11 +623,11 @@ const products = [
             {
                 "color": " Orange - 6kg (3kg x 2)",
                 "images": [
-                    "/Images/5.2.1.jpg",
-                    "/Images/5.2.2.jpg",
-                    "/Images/5.2.3.jpg",
-                    "/Images/5.2.4.jpg",
-                    "/Images/5.2.5.jpg"
+                    "/Images/5.2.1.webp",
+                    "/Images/5.2.2.webp",
+                    "/Images/5.2.3.webp",
+                    "/Images/5.2.4.webp",
+                    "/Images/5.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -641,11 +641,11 @@ const products = [
             {
                 "color": "Blue - 8kg (4kg x 2)",
                 "images": [
-                    "/Images/5.3.1.jpg",
-                    "/Images/5.3.2.jpg",
-                    "/Images/5.3.3.jpg",
-                    "/Images/5.3.4.jpg",
-                    "/Images/5.3.5.jpg"
+                    "/Images/5.3.1.webp",
+                    "/Images/5.3.2.webp",
+                    "/Images/5.3.3.webp",
+                    "/Images/5.3.4.webp",
+                    "/Images/5.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -659,11 +659,11 @@ const products = [
             {
                 "color": "Pink - 2kg (1kg x 2)",
                 "images": [
-                    "/Images/5.4.1.jpg",
-                    "/Images/5.4.2.jpg",
-                    "/Images/5.4.3.jpg",
-                    "/Images/5.4.4.jpg",
-                    "/Images/5.4.5.jpg"
+                    "/Images/5.4.1.webp",
+                    "/Images/5.4.2.webp",
+                    "/Images/5.4.3.webp",
+                    "/Images/5.4.4.webp",
+                    "/Images/5.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -677,11 +677,11 @@ const products = [
             {
                 "color": "Multicolor - 12kg Combo Set",
                 "images": [
-                    "/Images/5.5.1.jpg",
-                    "/Images/5.5.2.jpg",
-                    "/Images/5.5.3.jpg",
-                    "/Images/5.5.4.jpg",
-                    "/Images/5.5.5.jpg"
+                    "/Images/5.5.1.webp",
+                    "/Images/5.5.2.webp",
+                    "/Images/5.5.3.webp",
+                    "/Images/5.5.4.webp",
+                    "/Images/5.5.5.webp"
                 ],
                 "sizes": [
                     {
@@ -695,11 +695,11 @@ const products = [
             {
                 "color": "Multicolor - 16kg Combo Set",
                 "images": [
-                    "/Images/5.6.1.jpg",
-                    "/Images/5.6.2.jpg",
-                    "/Images/5.6.3.jpg",
-                    "/Images/5.6.4.jpg",
-                    "/Images/5.6.5.jpg"
+                    "/Images/5.6.1.webp",
+                    "/Images/5.6.2.webp",
+                    "/Images/5.6.3.webp",
+                    "/Images/5.6.4.webp",
+                    "/Images/5.6.5.webp"
                 ],
                 "sizes": [
                     {
@@ -713,11 +713,11 @@ const products = [
             {
                 "color": "Multicolor - 20kg Combo Set",
                 "images": [
-                    "/Images/5.7.1.jpg",
-                    "/Images/5.7.2.jpg",
-                    "/Images/5.7.3.jpg",
-                    "/Images/5.7.4.jpg",
-                    "/Images/5.7.5.jpg"
+                    "/Images/5.7.1.webp",
+                    "/Images/5.7.2.webp",
+                    "/Images/5.7.3.webp",
+                    "/Images/5.7.4.webp",
+                    "/Images/5.7.5.webp"
                 ],
                 "sizes": [
                     {
@@ -752,22 +752,22 @@ const products = [
         "material": "  Blend, Ironsand, Polyester Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/6.1.1.jpg",
-            "/Images/6.1.2.jpg",
-            "/Images/6.1.3.jpg"
+            "/Images/6.1.1.webp",
+            "/Images/6.1.2.webp",
+            "/Images/6.1.3.webp"
         ],
-        "imgSrc": "/Images/6.1.1.jpg",
-        "hoverImgSrc": "/Images/6.1.2.jpg",
+        "imgSrc": "/Images/6.1.1.webp",
+        "hoverImgSrc": "/Images/6.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/6.1.1.jpg",
-                    "/Images/6.1.2.jpg",
-                    "/Images/6.1.3.jpg",
-                    "/Images/6.1.4.jpg",
-                    "/Images/6.1.5.jpg",
-                    "/Images/6.1.6.jpg"
+                    "/Images/6.1.1.webp",
+                    "/Images/6.1.2.webp",
+                    "/Images/6.1.3.webp",
+                    "/Images/6.1.4.webp",
+                    "/Images/6.1.5.webp",
+                    "/Images/6.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -807,21 +807,21 @@ const products = [
         "material": "Cast Iron, Vinyl",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/7.1.1.jpg",
-            "/Images/7.2.1.jpg",
-            "/Images/7.3.1.jpg"
+            "/Images/7.1.1.webp",
+            "/Images/7.2.1.webp",
+            "/Images/7.3.1.webp"
         ],
-        "imgSrc": "/Images/7.1.1.jpg",
-        "hoverImgSrc": "/Images/7.2.1.jpg",
+        "imgSrc": "/Images/7.1.1.webp",
+        "hoverImgSrc": "/Images/7.2.1.webp",
         "variants": [
             {
                 "color": " 2kg | Panther Pink",
                 "images": [
-                    "/Images/7.1.1.jpg",
-                    "/Images/7.1.2.jpg",
-                    "/Images/7.1.3.jpg",
-                    "/Images/7.1.4.jpg",
-                    "/Images/7.1.5.jpg"
+                    "/Images/7.1.1.webp",
+                    "/Images/7.1.2.webp",
+                    "/Images/7.1.3.webp",
+                    "/Images/7.1.4.webp",
+                    "/Images/7.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -835,11 +835,11 @@ const products = [
             {
                 "color": " 5kg | Rugged Red",
                 "images": [
-                    "/Images/7.2.1.jpg",
-                    "/Images/7.2.2.jpg",
-                    "/Images/7.2.3.jpg",
-                    "/Images/7.2.4.jpg",
-                    "/Images/7.2.5.jpg"
+                    "/Images/7.2.1.webp",
+                    "/Images/7.2.2.webp",
+                    "/Images/7.2.3.webp",
+                    "/Images/7.2.4.webp",
+                    "/Images/7.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -853,11 +853,11 @@ const products = [
             {
                 "color": " 8kg | Blitz Blue",
                 "images": [
-                    "/Images/7.3.1.jpg",
-                    "/Images/7.3.2.jpg",
-                    "/Images/7.3.3.jpg",
-                    "/Images/7.3.4.jpg",
-                    "/Images/7.3.5.jpg"
+                    "/Images/7.3.1.webp",
+                    "/Images/7.3.2.webp",
+                    "/Images/7.3.3.webp",
+                    "/Images/7.3.4.webp",
+                    "/Images/7.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -871,11 +871,11 @@ const products = [
             {
                 "color": " 10kg | Owlish Orange",
                 "images": [
-                    "/Images/7.4.1.jpg",
-                    "/Images/7.4.2.jpg",
-                    "/Images/7.4.3.jpg",
-                    "/Images/7.4.4.jpg",
-                    "/Images/7.4.5.jpg"
+                    "/Images/7.4.1.webp",
+                    "/Images/7.4.2.webp",
+                    "/Images/7.4.3.webp",
+                    "/Images/7.4.4.webp",
+                    "/Images/7.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -910,21 +910,21 @@ const products = [
         "material": "Vinyl Coated Cast Iron",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/8.1.1.jpg",
-            "/Images/8.2.1.jpg",
-            "/Images/8.3.1.jpg"
+            "/Images/8.1.1.webp",
+            "/Images/8.2.1.webp",
+            "/Images/8.3.1.webp"
         ],
-        "imgSrc": "/Images/8.1.1.jpg",
-        "hoverImgSrc": "/Images/8.2.1.jpg",
+        "imgSrc": "/Images/8.1.1.webp",
+        "hoverImgSrc": "/Images/8.2.1.webp",
         "variants": [
             {
                 "color": " 5kg (2.5kg x 2) Owlish Orange",
                 "images": [
-                    "/Images/8.4.1.jpg",
-                    "/Images/8.4.2.jpg",
-                    "/Images/8.4.3.jpg",
-                    "/Images/8.4.4.jpg",
-                    "/Images/8.4.5.jpg"
+                    "/Images/8.4.1.webp",
+                    "/Images/8.4.2.webp",
+                    "/Images/8.4.3.webp",
+                    "/Images/8.4.4.webp",
+                    "/Images/8.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -938,11 +938,11 @@ const products = [
             {
                 "color": " 10kg (5kg x 2) Blitz Blue",
                 "images": [
-                    "/Images/8.2.1.jpg",
-                    "/Images/8.2.2.jpg",
-                    "/Images/8.2.3.jpg",
-                    "/Images/8.2.4.jpg",
-                    "/Images/8.2.5.jpg"
+                    "/Images/8.2.1.webp",
+                    "/Images/8.2.2.webp",
+                    "/Images/8.2.3.webp",
+                    "/Images/8.2.4.webp",
+                    "/Images/8.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -956,11 +956,11 @@ const products = [
             {
                 "color": "2kg (1kg x 2) Panther Pink",
                 "images": [
-                    "/Images/8.3.1.jpg",
-                    "/Images/8.3.2.jpg",
-                    "/Images/8.3.3.jpg",
-                    "/Images/8.3.4.jpg",
-                    "/Images/8.3.5.jpg"
+                    "/Images/8.3.1.webp",
+                    "/Images/8.3.2.webp",
+                    "/Images/8.3.3.webp",
+                    "/Images/8.3.4.webp",
+                    "/Images/8.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -974,11 +974,11 @@ const products = [
             {
                 "color": "4kg (2kg x 2) Rugged Red",
                 "images": [
-                    "/Images/8.4.1.jpg",
-                    "/Images/8.4.2.jpg",
-                    "/Images/8.4.3.jpg",
-                    "/Images/8.4.4.jpg",
-                    "/Images/8.4.5.jpg"
+                    "/Images/8.4.1.webp",
+                    "/Images/8.4.2.webp",
+                    "/Images/8.4.3.webp",
+                    "/Images/8.4.4.webp",
+                    "/Images/8.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -992,11 +992,11 @@ const products = [
             {
                 "color": " 6kg (3kg x 2) Yobbery Yellow",
                 "images": [
-                    "/Images/8.5.1.jpg",
-                    "/Images/8.5.2.jpg",
-                    "/Images/8.5.3.jpg",
-                    "/Images/8.5.4.jpg",
-                    "/Images/8.5.5.jpg"
+                    "/Images/8.5.1.webp",
+                    "/Images/8.5.2.webp",
+                    "/Images/8.5.3.webp",
+                    "/Images/8.5.4.webp",
+                    "/Images/8.5.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1010,11 +1010,11 @@ const products = [
             {
                 "color": "8kg (4kg x 2) Gazzle Grey",
                 "images": [
-                    "/Images/8.6.1.jpg",
-                    "/Images/8.6.2.jpg",
-                    "/Images/8.6.3.jpg",
-                    "/Images/8.6.4.jpg",
-                    "/Images/8.6.5.jpg"
+                    "/Images/8.6.1.webp",
+                    "/Images/8.6.2.webp",
+                    "/Images/8.6.3.webp",
+                    "/Images/8.6.4.webp",
+                    "/Images/8.6.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1048,21 +1048,21 @@ const products = [
         "material": "Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/9.1.1.jpg",
-            "/Images/9.2.1.jpg",
-            "/Images/9.3.1.jpg"
+            "/Images/9.1.1.webp",
+            "/Images/9.2.1.webp",
+            "/Images/9.3.1.webp"
         ],
-        "imgSrc": "/Images/9.1.1.jpg",
-        "hoverImgSrc": "/Images/9.2.1.jpg",
+        "imgSrc": "/Images/9.1.1.webp",
+        "hoverImgSrc": "/Images/9.2.1.webp",
         "variants": [
             {
                 "color": "BlackGold 5",
                 "images": [
-                    "/Images/9.1.1.jpg",
-                    "/Images/9.1.2.jpg",
-                    "/Images/9.1.3.jpg",
-                    "/Images/9.1.4.jpg",
-                    "/Images/9.1.5.jpg"
+                    "/Images/9.1.1.webp",
+                    "/Images/9.1.2.webp",
+                    "/Images/9.1.3.webp",
+                    "/Images/9.1.4.webp",
+                    "/Images/9.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1076,11 +1076,11 @@ const products = [
             {
                 "color": "BlackGold 5",
                 "images": [
-                    "/Images/9.2.1.jpg",
-                    "/Images/9.2.2.jpg",
-                    "/Images/9.2.3.jpg",
-                    "/Images/9.2.4.jpg",
-                    "/Images/9.2.5.jpg"
+                    "/Images/9.2.1.webp",
+                    "/Images/9.2.2.webp",
+                    "/Images/9.2.3.webp",
+                    "/Images/9.2.4.webp",
+                    "/Images/9.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1094,11 +1094,11 @@ const products = [
             {
                 "color": "Skywalker 7",
                 "images": [
-                    "/Images/9.3.1.jpg",
-                    "/Images/9.3.2.jpg",
-                    "/Images/9.3.3.jpg",
-                    "/Images/9.3.4.jpg",
-                    "/Images/9.3.5.jpg"
+                    "/Images/9.3.1.webp",
+                    "/Images/9.3.2.webp",
+                    "/Images/9.3.3.webp",
+                    "/Images/9.3.4.webp",
+                    "/Images/9.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1112,11 +1112,11 @@ const products = [
             {
                 "color": "Combat 7",
                 "images": [
-                    "/Images/9.4.1.jpg",
-                    "/Images/9.4.2.jpg",
-                    "/Images/9.4.3.jpg",
-                    "/Images/9.4.4.jpg",
-                    "/Images/9.4.5.jpg"
+                    "/Images/9.4.1.webp",
+                    "/Images/9.4.2.webp",
+                    "/Images/9.4.3.webp",
+                    "/Images/9.4.4.webp",
+                    "/Images/9.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1151,23 +1151,23 @@ const products = [
         "material": "",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/10.1.1.jpg",
-            "/Images/10.1.2.jpg",
-            "/Images/10.1.3.jpg"
+            "/Images/10.1.1.webp",
+            "/Images/10.1.2.webp",
+            "/Images/10.1.3.webp"
         ],
-        "imgSrc": "/Images/10.1.1.jpg",
-        "hoverImgSrc": "/Images/10.1.2.jpg",
+        "imgSrc": "/Images/10.1.1.webp",
+        "hoverImgSrc": "/Images/10.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/10.1.1.jpg",
-                    "/Images/10.1.2.jpg",
-                    "/Images/10.1.3.jpg",
-                    "/Images/10.1.4.jpg",
-                    "/Images/10.1.5.jpg",
-                    "/Images/10.1.6.jpg",
-                    "/Images/10.1.7.jpg"
+                    "/Images/10.1.1.webp",
+                    "/Images/10.1.2.webp",
+                    "/Images/10.1.3.webp",
+                    "/Images/10.1.4.webp",
+                    "/Images/10.1.5.webp",
+                    "/Images/10.1.6.webp",
+                    "/Images/10.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -1200,21 +1200,21 @@ const products = [
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/11.1.1.jpg",
-            "/Images/11.2.1.jpg",
-            "/Images/11.3.1.jpg"
+            "/Images/11.1.1.webp",
+            "/Images/11.2.1.webp",
+            "/Images/11.3.1.webp"
         ],
-        "imgSrc": "/Images/11.1.1.jpg",
-        "hoverImgSrc": "/Images/11.2.1.jpg",
+        "imgSrc": "/Images/11.1.1.webp",
+        "hoverImgSrc": "/Images/11.2.1.webp",
         "variants": [
             {
                 "color": "Pack Of 1",
                 "images": [
-                    "/Images/11.1.1.jpg",
-                    "/Images/11.1.2.jpg",
-                    "/Images/11.1.3.jpg",
-                    "/Images/11.1.4.jpg",
-                    "/Images/11.1.5.jpg"
+                    "/Images/11.1.1.webp",
+                    "/Images/11.1.2.webp",
+                    "/Images/11.1.3.webp",
+                    "/Images/11.1.4.webp",
+                    "/Images/11.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1228,11 +1228,11 @@ const products = [
             {
                 "color": "Pack Of 2",
                 "images": [
-                    "/Images/11.2.1.jpg",
-                    "/Images/11.2.2.jpg",
-                    "/Images/11.2.3.jpg",
-                    "/Images/11.2.4.jpg",
-                    "/Images/11.2.5.jpg"
+                    "/Images/11.2.1.webp",
+                    "/Images/11.2.2.webp",
+                    "/Images/11.2.3.webp",
+                    "/Images/11.2.4.webp",
+                    "/Images/11.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1246,11 +1246,11 @@ const products = [
             {
                 "color": "Pack Of 3",
                 "images": [
-                    "/Images/11.3.1.jpg",
-                    "/Images/11.3.2.jpg",
-                    "/Images/11.3.3.jpg",
-                    "/Images/11.3.4.jpg",
-                    "/Images/11.3.5.jpg"
+                    "/Images/11.3.1.webp",
+                    "/Images/11.3.2.webp",
+                    "/Images/11.3.3.webp",
+                    "/Images/11.3.4.webp",
+                    "/Images/11.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1264,11 +1264,11 @@ const products = [
             {
                 "color": "Pack Of 6",
                 "images": [
-                    "/Images/11.4.1.jpg",
-                    "/Images/11.4.2.jpg",
-                    "/Images/11.4.3.jpg",
-                    "/Images/11.4.4.jpg",
-                    "/Images/11.4.5.jpg"
+                    "/Images/11.4.1.webp",
+                    "/Images/11.4.2.webp",
+                    "/Images/11.4.3.webp",
+                    "/Images/11.4.4.webp",
+                    "/Images/11.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1301,21 +1301,21 @@ const products = [
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/12.1.1.jpg",
-            "/Images/12.2.1.jpg",
-            "/Images/12.3.1.jpg"
+            "/Images/12.1.1.webp",
+            "/Images/12.2.1.webp",
+            "/Images/12.3.1.webp"
         ],
-        "imgSrc": "/Images/12.1.1.jpg",
-        "hoverImgSrc": "/Images/12.2.1.jpg",
+        "imgSrc": "/Images/12.1.1.webp",
+        "hoverImgSrc": "/Images/12.2.1.webp",
         "variants": [
             {
                 "color": "Pack Of 1",
                 "images": [
-                    "/Images/12.1.1.jpg",
-                    "/Images/12.1.2.jpg",
-                    "/Images/12.1.3.jpg",
-                    "/Images/12.1.4.jpg",
-                    "/Images/12.1.5.jpg"
+                    "/Images/12.1.1.webp",
+                    "/Images/12.1.2.webp",
+                    "/Images/12.1.3.webp",
+                    "/Images/12.1.4.webp",
+                    "/Images/12.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1329,11 +1329,11 @@ const products = [
             {
                 "color": "Pack Of 2",
                 "images": [
-                    "/Images/12.2.1.jpg",
-                    "/Images/12.2.2.jpg",
-                    "/Images/12.2.3.jpg",
-                    "/Images/12.2.4.jpg",
-                    "/Images/12.2.5.jpg"
+                    "/Images/12.2.1.webp",
+                    "/Images/12.2.2.webp",
+                    "/Images/12.2.3.webp",
+                    "/Images/12.2.4.webp",
+                    "/Images/12.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1347,11 +1347,11 @@ const products = [
             {
                 "color": "Pack Of 3",
                 "images": [
-                    "/Images/12.3.1.jpg",
-                    "/Images/12.3.2.jpg",
-                    "/Images/12.3.3.jpg",
-                    "/Images/12.3.4.jpg",
-                    "/Images/12.3.5.jpg"
+                    "/Images/12.3.1.webp",
+                    "/Images/12.3.2.webp",
+                    "/Images/12.3.3.webp",
+                    "/Images/12.3.4.webp",
+                    "/Images/12.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1365,11 +1365,11 @@ const products = [
             {
                 "color": "Pack Of 6",
                 "images": [
-                    "/Images/12.4.1.jpg",
-                    "/Images/12.4.2.jpg",
-                    "/Images/12.4.3.jpg",
-                    "/Images/12.4.4.jpg",
-                    "/Images/12.4.5.jpg"
+                    "/Images/12.4.1.webp",
+                    "/Images/12.4.2.webp",
+                    "/Images/12.4.3.webp",
+                    "/Images/12.4.4.webp",
+                    "/Images/12.4.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1403,22 +1403,22 @@ const products = [
         "material": "Cotton, Polyester, Rayon",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/13.1.1.jpg",
-            "/Images/13.1.2.jpg",
-            "/Images/13.1.3.jpg"
+            "/Images/13.1.1.webp",
+            "/Images/13.1.2.webp",
+            "/Images/13.1.3.webp"
         ],
-        "imgSrc": "/Images/13.1.1.jpg",
-        "hoverImgSrc": "/Images/13.1.2.jpg",
+        "imgSrc": "/Images/13.1.1.webp",
+        "hoverImgSrc": "/Images/13.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/13.1.1.jpg",
-                    "/Images/13.1.2.jpg",
-                    "/Images/13.1.3.jpg",
-                    "/Images/13.1.4.jpg",
-                    "/Images/13.1.5.jpg",
-                    "/Images/13.1.6.jpg"
+                    "/Images/13.1.1.webp",
+                    "/Images/13.1.2.webp",
+                    "/Images/13.1.3.webp",
+                    "/Images/13.1.4.webp",
+                    "/Images/13.1.5.webp",
+                    "/Images/13.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1452,23 +1452,23 @@ const products = [
         "material": "Cotton, Polyester, Rayon",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/14.1.1.jpg",
-            "/Images/14.1.2.jpg",
-            "/Images/14.1.3.jpg"
+            "/Images/14.1.1.webp",
+            "/Images/14.1.2.webp",
+            "/Images/14.1.3.webp"
         ],
-        "imgSrc": "/Images/14.1.1.jpg",
-        "hoverImgSrc": "/Images/14.1.2.jpg",
+        "imgSrc": "/Images/14.1.1.webp",
+        "hoverImgSrc": "/Images/14.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/14.1.1.jpg",
-                    "/Images/14.1.2.jpg",
-                    "/Images/14.1.3.jpg",
-                    "/Images/14.1.4.jpg",
-                    "/Images/14.1.5.jpg",
-                    "/Images/14.1.6.jpg",
-                    "/Images/14.1.7.jpg"
+                    "/Images/14.1.1.webp",
+                    "/Images/14.1.2.webp",
+                    "/Images/14.1.3.webp",
+                    "/Images/14.1.4.webp",
+                    "/Images/14.1.5.webp",
+                    "/Images/14.1.6.webp",
+                    "/Images/14.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -1482,12 +1482,12 @@ const products = [
             {
                 "color": "Combat - Camo",
                 "images": [
-                    "/Images/14.2.1.jpg",
-                    "/Images/14.2.2.jpg",
-                    "/Images/14.2.3.jpg",
-                    "/Images/14.2.4.jpg",
-                    "/Images/14.2.5.jpg",
-                    "/Images/14.2.6.jpg"
+                    "/Images/14.2.1.webp",
+                    "/Images/14.2.2.webp",
+                    "/Images/14.2.3.webp",
+                    "/Images/14.2.4.webp",
+                    "/Images/14.2.5.webp",
+                    "/Images/14.2.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1523,23 +1523,23 @@ const products = [
         "material": "100% Polyester",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/15.1.1.jpg",
-            "/Images/15.1.2.jpg",
-            "/Images/15.1.3.jpg"
+            "/Images/15.1.1.webp",
+            "/Images/15.1.2.webp",
+            "/Images/15.1.3.webp"
         ],
-        "imgSrc": "/Images/15.1.1.jpg",
-        "hoverImgSrc": "/Images/15.1.7.jpg",
+        "imgSrc": "/Images/15.1.1.webp",
+        "hoverImgSrc": "/Images/15.1.7.webp",
         "variants": [
             {
                 "color": "Gray",
                 "images": [
-                    "/Images/15.1.1.jpg",
-                    "/Images/15.1.2.jpg",
-                    "/Images/15.1.3.jpg",
-                    "/Images/15.1.4.jpg",
-                    "/Images/15.1.5.jpg",
-                    "/Images/15.1.6.jpg",
-                    "/Images/15.1.7.jpg"
+                    "/Images/15.1.1.webp",
+                    "/Images/15.1.2.webp",
+                    "/Images/15.1.3.webp",
+                    "/Images/15.1.4.webp",
+                    "/Images/15.1.5.webp",
+                    "/Images/15.1.6.webp",
+                    "/Images/15.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -1577,12 +1577,12 @@ const products = [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/15.2.1.jpg",
-                    "/Images/15.2.2.jpg",
-                    "/Images/15.2.3.jpg",
-                    "/Images/15.2.4.jpg",
-                    "/Images/15.2.5.jpg",
-                    "/Images/15.2.6.jpg"
+                    "/Images/15.2.1.webp",
+                    "/Images/15.2.2.webp",
+                    "/Images/15.2.3.webp",
+                    "/Images/15.2.4.webp",
+                    "/Images/15.2.5.webp",
+                    "/Images/15.2.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1641,22 +1641,22 @@ const products = [
         "material": "Neoprene",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/16.1.1.jpg",
-            "/Images/16.1.2.jpg",
-            "/Images/16.1.3.jpg"
+            "/Images/16.1.1.webp",
+            "/Images/16.1.2.webp",
+            "/Images/16.1.3.webp"
         ],
-        "imgSrc": "/Images/16.1.1.jpg",
-        "hoverImgSrc": "/Images/16.1.2.jpg",
+        "imgSrc": "/Images/16.1.1.webp",
+        "hoverImgSrc": "/Images/16.1.2.webp",
         "variants": [
             {
                 "color": "FitBox Sports Professional Neoprene Ankle Weights",
                 "images": [
-                    "/Images/16.1.1.jpg",
-                    "/Images/16.1.2.jpg",
-                    "/Images/16.1.3.jpg",
-                    "/Images/16.1.4.jpg",
-                    "/Images/16.1.5.jpg",
-                    "/Images/16.1.6.jpg"
+                    "/Images/16.1.1.webp",
+                    "/Images/16.1.2.webp",
+                    "/Images/16.1.3.webp",
+                    "/Images/16.1.4.webp",
+                    "/Images/16.1.5.webp",
+                    "/Images/16.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1704,23 +1704,23 @@ const products = [
         "material": "",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/17.1.1.jpg",
-            "/Images/17.1.2.jpg",
-            "/Images/17.1.3.jpg"
+            "/Images/17.1.1.webp",
+            "/Images/17.1.2.webp",
+            "/Images/17.1.3.webp"
         ],
-        "imgSrc": "/Images/17.1.1.jpg",
-        "hoverImgSrc": "/Images/17.1.2.jpg",
+        "imgSrc": "/Images/17.1.1.webp",
+        "hoverImgSrc": "/Images/17.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/17.1.1.jpg",
-                    "/Images/17.1.2.jpg",
-                    "/Images/17.1.3.jpg",
-                    "/Images/17.1.4.jpg",
-                    "/Images/17.1.5.jpg",
-                    "/Images/17.1.6.jpg",
-                    "/Images/17.1.7.jpg"
+                    "/Images/17.1.1.webp",
+                    "/Images/17.1.2.webp",
+                    "/Images/17.1.3.webp",
+                    "/Images/17.1.4.webp",
+                    "/Images/17.1.5.webp",
+                    "/Images/17.1.6.webp",
+                    "/Images/17.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -1774,12 +1774,12 @@ const products = [
             {
                 "color": "Tan",
                 "images": [
-                    "/Images/18.1.1.jpg",
-                    "/Images/18.1.2.jpg",
-                    "/Images/18.1.3.jpg",
-                    "/Images/18.1.4.jpg",
-                    "/Images/18.1.5.jpg",
-                    "/Images/18.1.6.jpg"
+                    "/Images/18.1.1.webp",
+                    "/Images/18.1.2.webp",
+                    "/Images/18.1.3.webp",
+                    "/Images/18.1.4.webp",
+                    "/Images/18.1.5.webp",
+                    "/Images/18.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1793,12 +1793,12 @@ const products = [
             {
                 "color": "Black / Red",
                 "images": [
-                    "/Images/18.2.1.jpg",
-                    "/Images/18.2.2.jpg",
-                    "/Images/18.2.3.jpg",
-                    "/Images/18.2.4.jpg",
-                    "/Images/18.2.5.jpg",
-                    "/Images/18.2.6.jpg"
+                    "/Images/18.2.1.webp",
+                    "/Images/18.2.2.webp",
+                    "/Images/18.2.3.webp",
+                    "/Images/18.2.4.webp",
+                    "/Images/18.2.5.webp",
+                    "/Images/18.2.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1833,22 +1833,22 @@ const products = [
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/19.1.1.jpg",
-            "/Images/19.1.2.jpg",
-            "/Images/19.1.3.jpg"
+            "/Images/19.1.1.webp",
+            "/Images/19.1.2.webp",
+            "/Images/19.1.3.webp"
         ],
-        "imgSrc": "/Images/19.1.1.jpg",
-        "hoverImgSrc": "/Images/19.1.10.jpg",
+        "imgSrc": "/Images/19.1.1.webp",
+        "hoverImgSrc": "/Images/19.1.10.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/19.1.1.jpg",
-                    "/Images/19.1.2.jpg",
-                    "/Images/19.1.3.jpg",
-                    "/Images/19.1.4.jpg",
-                    "/Images/19.1.5.jpg",
-                    "/Images/19.1.6.jpg"
+                    "/Images/19.1.1.webp",
+                    "/Images/19.1.2.webp",
+                    "/Images/19.1.3.webp",
+                    "/Images/19.1.4.webp",
+                    "/Images/19.1.5.webp",
+                    "/Images/19.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -1901,23 +1901,23 @@ const products = [
         "material": "Blend, Ironsand, Neoprene",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/20.1.1.jpg",
-            "/Images/20.1.2.jpg",
-            "/Images/20.1.3.jpg"
+            "/Images/20.1.1.webp",
+            "/Images/20.1.2.webp",
+            "/Images/20.1.3.webp"
         ],
-        "imgSrc": "/Images/20.1.1.jpg",
-        "hoverImgSrc": "/Images/20.1.2.jpg",
+        "imgSrc": "/Images/20.1.1.webp",
+        "hoverImgSrc": "/Images/20.1.2.webp",
         "variants": [
             {
                 "color": " Black ",
                 "images": [
-                    "/Images/20.1.1.jpg",
-                    "/Images/20.1.2.jpg",
-                    "/Images/20.1.3.jpg",
-                    "/Images/20.1.4.jpg",
-                    "/Images/20.1.5.jpg",
-                    "/Images/20.1.6.jpg",
-                    "/Images/20.1.7.jpg"
+                    "/Images/20.1.1.webp",
+                    "/Images/20.1.2.webp",
+                    "/Images/20.1.3.webp",
+                    "/Images/20.1.4.webp",
+                    "/Images/20.1.5.webp",
+                    "/Images/20.1.6.webp",
+                    "/Images/20.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -1959,21 +1959,21 @@ const products = [
         "material": "Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/21.1.1.jpg",
-            "/Images/21.1.2.jpg",
-            "/Images/21.1.3.jpg"
+            "/Images/21.1.1.webp",
+            "/Images/21.1.2.webp",
+            "/Images/21.1.3.webp"
         ],
-        "imgSrc": "/Images/21.1.1.jpg",
-        "hoverImgSrc": "/Images/21.1.2.jpg",
+        "imgSrc": "/Images/21.1.1.webp",
+        "hoverImgSrc": "/Images/21.1.2.webp",
         "variants": [
             {
                 "color": "Pro-League",
                 "images": [
-                    "/Images/21.1.1.jpg",
-                    "/Images/21.1.2.jpg",
-                    "/Images/21.1.3.jpg",
-                    "/Images/21.1.4.jpg",
-                    "/Images/21.1.5.jpg"
+                    "/Images/21.1.1.webp",
+                    "/Images/21.1.2.webp",
+                    "/Images/21.1.3.webp",
+                    "/Images/21.1.4.webp",
+                    "/Images/21.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -1987,12 +1987,12 @@ const products = [
             {
                 "color": "NetBuster",
                 "images": [
-                    "/Images/21.2.1.jpg",
-                    "/Images/21.2.2.jpg",
-                    "/Images/21.2.3.jpg",
-                    "/Images/21.2.4.jpg",
-                    "/Images/21.2.5.jpg",
-                    "/Images/21.2.6.jpg"
+                    "/Images/21.2.1.webp",
+                    "/Images/21.2.2.webp",
+                    "/Images/21.2.3.webp",
+                    "/Images/21.2.4.webp",
+                    "/Images/21.2.5.webp",
+                    "/Images/21.2.6.webp"
                 ],
                 "sizes": [
                     {
@@ -2026,22 +2026,22 @@ const products = [
         "material": "Blend, Polyurethane (PU), Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/22.1.1.jpg",
-            "/Images/22.1.2.jpg",
-            "/Images/22.1.3.jpg"
+            "/Images/22.1.1.webp",
+            "/Images/22.1.2.webp",
+            "/Images/22.1.3.webp"
         ],
-        "imgSrc": "/Images/22.1.1.jpg",
-        "hoverImgSrc": "/Images/22.1.2.jpg",
+        "imgSrc": "/Images/22.1.1.webp",
+        "hoverImgSrc": "/Images/22.1.2.webp",
         "variants": [
             {
                 "color": "Red",
                 "images": [
-                    "/Images/22.1.1.jpg",
-                    "/Images/22.1.2.jpg",
-                    "/Images/22.1.3.jpg",
-                    "/Images/22.1.4.jpg",
-                    "/Images/22.1.5.jpg",
-                    "/Images/22.1.6.jpg"
+                    "/Images/22.1.1.webp",
+                    "/Images/22.1.2.webp",
+                    "/Images/22.1.3.webp",
+                    "/Images/22.1.4.webp",
+                    "/Images/22.1.5.webp",
+                    "/Images/22.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -2075,22 +2075,22 @@ const products = [
         "material": "Blend, Polyurethane (PU), Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/23.1.1.jpg",
-            "/Images/23.1.2.jpg",
-            "/Images/23.1.3.jpg"
+            "/Images/23.1.1.webp",
+            "/Images/23.1.2.webp",
+            "/Images/23.1.3.webp"
         ],
-        "imgSrc": "/Images/23.1.1.jpg",
-        "hoverImgSrc": "/Images/23.1.2.jpg",
+        "imgSrc": "/Images/23.1.1.webp",
+        "hoverImgSrc": "/Images/23.1.2.webp",
         "variants": [
             {
                 "color": "Pack of 2",
                 "images": [
-                    "/Images/23.1.1.jpg",
-                    "/Images/23.1.2.jpg",
-                    "/Images/23.1.3.jpg",
-                    "/Images/23.1.4.jpg",
-                    "/Images/23.1.5.jpg",
-                    "/Images/23.1.6.jpg"
+                    "/Images/23.1.1.webp",
+                    "/Images/23.1.2.webp",
+                    "/Images/23.1.3.webp",
+                    "/Images/23.1.4.webp",
+                    "/Images/23.1.5.webp",
+                    "/Images/23.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -2104,12 +2104,12 @@ const products = [
             {
                 "color": "Pack of 3",
                 "images": [
-                    "/Images/23.2.1.jpg",
-                    "/Images/23.2.2.jpg",
-                    "/Images/23.2.3.jpg",
-                    "/Images/23.2.4.jpg",
-                    "/Images/23.2.5.jpg",
-                    "/Images/23.2.6.jpg"
+                    "/Images/23.2.1.webp",
+                    "/Images/23.2.2.webp",
+                    "/Images/23.2.3.webp",
+                    "/Images/23.2.4.webp",
+                    "/Images/23.2.5.webp",
+                    "/Images/23.2.6.webp"
                 ],
                 "sizes": [
                     {
@@ -2123,11 +2123,11 @@ const products = [
             {
                 "color": "Pack of 6",
                 "images": [
-                    "/Images/23.3.1.jpg",
-                    "/Images/23.3.2.jpg",
-                    "/Images/23.3.3.jpg",
-                    "/Images/23.3.4.jpg",
-                    "/Images/23.3.5.jpg"
+                    "/Images/23.3.1.webp",
+                    "/Images/23.3.2.webp",
+                    "/Images/23.3.3.webp",
+                    "/Images/23.3.4.webp",
+                    "/Images/23.3.5.webp"
                 ],
                 "sizes": [
                     {
@@ -2161,21 +2161,21 @@ const products = [
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/24.1.1.jpg",
-            "/Images/24.1.2.jpg",
-            "/Images/24.1.3.jpg"
+            "/Images/24.1.1.webp",
+            "/Images/24.1.2.webp",
+            "/Images/24.1.3.webp"
         ],
-        "imgSrc": "/Images/24.1.1.jpg",
-        "hoverImgSrc": "/Images/24.1.2.jpg",
+        "imgSrc": "/Images/24.1.1.webp",
+        "hoverImgSrc": "/Images/24.1.2.webp",
         "variants": [
             {
                 "color": "Black - Grey",
                 "images": [
-                    "/Images/24.1.1.jpg",
-                    "/Images/24.1.2.jpg",
-                    "/Images/24.1.3.jpg",
-                    "/Images/24.1.4.jpg",
-                    "/Images/24.1.5.jpg"
+                    "/Images/24.1.1.webp",
+                    "/Images/24.1.2.webp",
+                    "/Images/24.1.3.webp",
+                    "/Images/24.1.4.webp",
+                    "/Images/24.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -2189,10 +2189,10 @@ const products = [
             {
                 "color": "Red - Black",
                 "images": [
-                    "/Images/24.2.1.jpg",
-                    "/Images/24.2.2.jpg",
-                    "/Images/24.2.3.jpg",
-                    "/Images/24.2.4.jpg"
+                    "/Images/24.2.1.webp",
+                    "/Images/24.2.2.webp",
+                    "/Images/24.2.3.webp",
+                    "/Images/24.2.4.webp"
                 ],
                 "sizes": [
                     {
@@ -2206,10 +2206,10 @@ const products = [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/24.3.1.jpg",
-                    "/Images/24.3.2.jpg",
-                    "/Images/24.3.3.jpg",
-                    "/Images/24.3.4.jpg"
+                    "/Images/24.3.1.webp",
+                    "/Images/24.3.2.webp",
+                    "/Images/24.3.3.webp",
+                    "/Images/24.3.4.webp"
                 ],
                 "sizes": [
                     {
@@ -2223,10 +2223,10 @@ const products = [
             {
                 "color": "Blue - Black",
                 "images": [
-                    "/Images/24.4.1.jpg",
-                    "/Images/24.4.2.jpg",
-                    "/Images/24.4.3.jpg",
-                    "/Images/24.4.4.jpg"
+                    "/Images/24.4.1.webp",
+                    "/Images/24.4.2.webp",
+                    "/Images/24.4.3.webp",
+                    "/Images/24.4.4.webp"
                 ],
                 "sizes": [
                     {
@@ -2240,9 +2240,9 @@ const products = [
             {
                 "color": "Yellow - Black",
                 "images": [
-                    "/Images/24.5.1.jpg",
-                    "/Images/24.5.2.jpg",
-                    "/Images/24.5.3.jpg"
+                    "/Images/24.5.1.webp",
+                    "/Images/24.5.2.webp",
+                    "/Images/24.5.3.webp"
                 ],
                 "sizes": [
                     {
@@ -2277,21 +2277,21 @@ const products = [
         "material": " Alloy Steel ",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/25.1.1.jpg",
-            "/Images/25.1.2.jpg",
-            "/Images/25.1.3.jpg"
+            "/Images/25.1.1.webp",
+            "/Images/25.1.2.webp",
+            "/Images/25.1.3.webp"
         ],
-        "imgSrc": "/Images/25.1.1.jpg",
-        "hoverImgSrc": "/Images/25.1.2.jpg",
+        "imgSrc": "/Images/25.1.1.webp",
+        "hoverImgSrc": "/Images/25.1.2.webp",
         "variants": [
             {
                 "color": "Yellow",
                 "images": [
-                    "/Images/25.1.1.jpg",
-                    "/Images/25.1.2.jpg",
-                    "/Images/25.1.3.jpg",
-                    "/Images/25.1.4.jpg",
-                    "/Images/25.1.5.jpg"
+                    "/Images/25.1.1.webp",
+                    "/Images/25.1.2.webp",
+                    "/Images/25.1.3.webp",
+                    "/Images/25.1.4.webp",
+                    "/Images/25.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -2325,21 +2325,21 @@ const products = [
         "material": "Natural Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/26.1.1.jpg",
-            "/Images/26.1.2.jpg",
-            "/Images/26.1.3.jpg"
+            "/Images/26.1.1.webp",
+            "/Images/26.1.2.webp",
+            "/Images/26.1.3.webp"
         ],
-        "imgSrc": "/Images/26.1.1.jpg",
-        "hoverImgSrc": "/Images/26.1.2.jpg",
+        "imgSrc": "/Images/26.1.1.webp",
+        "hoverImgSrc": "/Images/26.1.2.webp",
         "variants": [
             {
                 "color": "Yellow(15-25Kg)",
                 "images": [
-                    "/Images/26.1.1.jpg",
-                    "/Images/26.1.2.jpg",
-                    "/Images/26.1.3.jpg",
-                    "/Images/26.1.4.jpg",
-                    "/Images/26.1.5.jpg"
+                    "/Images/26.1.1.webp",
+                    "/Images/26.1.2.webp",
+                    "/Images/26.1.3.webp",
+                    "/Images/26.1.4.webp",
+                    "/Images/26.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -2375,22 +2375,22 @@ const products = [
         "material": "Faux Leather",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/27.1.1.jpg",
-            "/Images/27.1.2.jpg",
-            "/Images/27.1.3.jpg"
+            "/Images/27.1.1.webp",
+            "/Images/27.1.2.webp",
+            "/Images/27.1.3.webp"
         ],
-        "imgSrc": "/Images/27.1.1.jpg",
-        "hoverImgSrc": "/Images/27.1.2.jpg",
+        "imgSrc": "/Images/27.1.1.webp",
+        "hoverImgSrc": "/Images/27.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/27.1.1.jpg",
-                    "/Images/27.1.2.jpg",
-                    "/Images/27.1.3.jpg",
-                    "/Images/27.1.4.jpg",
-                    "/Images/27.1.5.jpg",
-                    "/Images/27.1.6.jpg"
+                    "/Images/27.1.1.webp",
+                    "/Images/27.1.2.webp",
+                    "/Images/27.1.3.webp",
+                    "/Images/27.1.4.webp",
+                    "/Images/27.1.5.webp",
+                    "/Images/27.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -2422,11 +2422,11 @@ const products = [
             {
                 "color": "Tan / Brown",
                 "images": [
-                    "/Images/27.2.1.jpg",
-                    "/Images/27.2.2.jpg",
-                    "/Images/27.2.3.jpg",
-                    "/Images/27.2.4.jpg",
-                    "/Images/27.2.5.jpg"
+                    "/Images/27.2.1.webp",
+                    "/Images/27.2.2.webp",
+                    "/Images/27.2.3.webp",
+                    "/Images/27.2.4.webp",
+                    "/Images/27.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -2476,20 +2476,20 @@ const products = [
         "material": "",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/28.1.2.jpg",
-            "/Images/28.1.3.jpg",
-            "/Images/28.1.4.jpg"
+            "/Images/28.1.2.webp",
+            "/Images/28.1.3.webp",
+            "/Images/28.1.4.webp"
         ],
-        "imgSrc": "/Images/28.1.1.jpg",
-        "hoverImgSrc": "/Images/28.1.2.jpg",
+        "imgSrc": "/Images/28.1.1.webp",
+        "hoverImgSrc": "/Images/28.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/28.1.1.jpg",
-                    "/Images/28.1.2.jpg",
-                    "/Images/28.1.3.jpg",
-                    "/Images/28.1.4.jpg"
+                    "/Images/28.1.1.webp",
+                    "/Images/28.1.2.webp",
+                    "/Images/28.1.3.webp",
+                    "/Images/28.1.4.webp"
                 ],
                 "sizes": [
                     {
@@ -2525,22 +2525,22 @@ const products = [
         "material": "Leather",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/29.1.2.jpg",
-            "/Images/29.1.3.jpg",
-            "/Images/29.1.4.jpg"
+            "/Images/29.1.2.webp",
+            "/Images/29.1.3.webp",
+            "/Images/29.1.4.webp"
         ],
-        "imgSrc": "/Images/29.1.1.jpg",
-        "hoverImgSrc": "/Images/29.1.2.jpg",
+        "imgSrc": "/Images/29.1.1.webp",
+        "hoverImgSrc": "/Images/29.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/29.1.1.jpg",
-                    "/Images/29.1.2.jpg",
-                    "/Images/29.1.3.jpg",
-                    "/Images/29.1.4.jpg",
-                    "/Images/29.1.5.jpg",
-                    "/Images/29.1.6.jpg"
+                    "/Images/29.1.1.webp",
+                    "/Images/29.1.2.webp",
+                    "/Images/29.1.3.webp",
+                    "/Images/29.1.4.webp",
+                    "/Images/29.1.5.webp",
+                    "/Images/29.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -2575,25 +2575,25 @@ const products = [
         "material": "Leather",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/30.1.2.jpg",
-            "/Images/30.1.3.jpg",
-            "/Images/30.1.4.jpg"
+            "/Images/30.1.2.webp",
+            "/Images/30.1.3.webp",
+            "/Images/30.1.4.webp"
         ],
-        "imgSrc": "/Images/30.1.1.jpg",
-        "hoverImgSrc": "/Images/30.1.2.jpg",
+        "imgSrc": "/Images/30.1.1.webp",
+        "hoverImgSrc": "/Images/30.1.2.webp",
         "variants": [
             {
                 "color": "Leather Black",
                 "images": [
-                    "/Images/30.1.1.jpg",
-                    "/Images/30.1.2.jpg",
-                    "/Images/30.1.3.jpg",
-                    "/Images/30.1.4.jpg",
-                    "/Images/30.1.5.jpg",
-                    "/Images/30.1.6.jpg",
-                    "/Images/30.1.7.jpg",
-                    "/Images/30.1.8.jpg",
-                    "/Images/30.1.9.jpg"
+                    "/Images/30.1.1.webp",
+                    "/Images/30.1.2.webp",
+                    "/Images/30.1.3.webp",
+                    "/Images/30.1.4.webp",
+                    "/Images/30.1.5.webp",
+                    "/Images/30.1.6.webp",
+                    "/Images/30.1.7.webp",
+                    "/Images/30.1.8.webp",
+                    "/Images/30.1.9.webp"
                 ],
                 "sizes": [
                     {
@@ -2613,15 +2613,15 @@ const products = [
             {
                 "color": "Leather Tan",
                 "images": [
-                    "/Images/30.2.1.jpg",
-                    "/Images/30.2.2.jpg",
-                    "/Images/30.2.3.jpg",
-                    "/Images/30.2.4.jpg",
-                    "/Images/30.2.5.jpg",
-                    "/Images/30.2.6.jpg",
-                    "/Images/30.2.7.jpg",
-                    "/Images/30.2.8.jpg",
-                    "/Images/30.2.9.jpg"
+                    "/Images/30.2.1.webp",
+                    "/Images/30.2.2.webp",
+                    "/Images/30.2.3.webp",
+                    "/Images/30.2.4.webp",
+                    "/Images/30.2.5.webp",
+                    "/Images/30.2.6.webp",
+                    "/Images/30.2.7.webp",
+                    "/Images/30.2.8.webp",
+                    "/Images/30.2.9.webp"
                 ],
                 "sizes": [
                     {
@@ -2641,14 +2641,14 @@ const products = [
             {
                 "color": "Suede Black Leather",
                 "images": [
-                    "/Images/30.3.1.jpg",
-                    "/Images/30.3.2.jpg",
-                    "/Images/30.3.3.jpg",
-                    "/Images/30.3.4.jpg",
-                    "/Images/30.3.5.jpg",
-                    "/Images/30.3.6.jpg",
-                    "/Images/30.3.7.jpg",
-                    "/Images/30.3.8.jpg"
+                    "/Images/30.3.1.webp",
+                    "/Images/30.3.2.webp",
+                    "/Images/30.3.3.webp",
+                    "/Images/30.3.4.webp",
+                    "/Images/30.3.5.webp",
+                    "/Images/30.3.6.webp",
+                    "/Images/30.3.7.webp",
+                    "/Images/30.3.8.webp"
                 ],
                 "sizes": [
                     {
@@ -2668,13 +2668,13 @@ const products = [
             {
                 "color": "Suede Blue Grey Leather",
                 "images": [
-                    "/Images/30.4.1.jpg",
-                    "/Images/30.4.2.jpg",
-                    "/Images/30.4.3.jpg",
-                    "/Images/30.4.4.jpg",
-                    "/Images/30.4.5.jpg",
-                    "/Images/30.4.6.jpg",
-                    "/Images/30.4.7.jpg"
+                    "/Images/30.4.1.webp",
+                    "/Images/30.4.2.webp",
+                    "/Images/30.4.3.webp",
+                    "/Images/30.4.4.webp",
+                    "/Images/30.4.5.webp",
+                    "/Images/30.4.6.webp",
+                    "/Images/30.4.7.webp"
                 ],
                 "sizes": [
                     {
@@ -2694,13 +2694,13 @@ const products = [
             {
                 "color": "Suede Brown Leather",
                 "images": [
-                    "/Images/30.5.1.jpg",
-                    "/Images/30.5.2.jpg",
-                    "/Images/30.5.3.jpg",
-                    "/Images/30.5.4.jpg",
-                    "/Images/30.5.5.jpg",
-                    "/Images/30.5.6.jpg",
-                    "/Images/30.5.7.jpg"
+                    "/Images/30.5.1.webp",
+                    "/Images/30.5.2.webp",
+                    "/Images/30.5.3.webp",
+                    "/Images/30.5.4.webp",
+                    "/Images/30.5.5.webp",
+                    "/Images/30.5.6.webp",
+                    "/Images/30.5.7.webp"
                 ],
                 "sizes": [
                     {
@@ -2740,21 +2740,21 @@ const products = [
         "material": "Polypropylene (PP)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/31.1.3.jpg",
-            "/Images/31.1.4.jpg",
-            "/Images/31.1.5.jpg"
+            "/Images/31.1.3.webp",
+            "/Images/31.1.4.webp",
+            "/Images/31.1.5.webp"
         ],
-        "imgSrc": "/Images/31.1.1.jpg",
-        "hoverImgSrc": "/Images/31.1.2.jpg",
+        "imgSrc": "/Images/31.1.1.webp",
+        "hoverImgSrc": "/Images/31.1.2.webp",
         "variants": [
             {
                 "color": "Black ",
                 "images": [
-                    "/Images/31.1.1.jpg",
-                    "/Images/31.1.2.jpg",
-                    "/Images/31.1.3.jpg",
-                    "/Images/31.1.4.jpg",
-                    "/Images/31.1.5.jpg"
+                    "/Images/31.1.1.webp",
+                    "/Images/31.1.2.webp",
+                    "/Images/31.1.3.webp",
+                    "/Images/31.1.4.webp",
+                    "/Images/31.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -2796,20 +2796,20 @@ const products = [
         "material": "Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/32.1.2.jpg",
-            "/Images/32.1.3.jpg",
-            "/Images/32.1.4.jpg"
+            "/Images/32.1.2.webp",
+            "/Images/32.1.3.webp",
+            "/Images/32.1.4.webp"
         ],
-        "imgSrc": "/Images/32.1.1.jpg",
-        "hoverImgSrc": "/Images/32.1.2.jpg",
+        "imgSrc": "/Images/32.1.1.webp",
+        "hoverImgSrc": "/Images/32.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/32.1.1.jpg",
-                    "/Images/32.1.2.jpg",
-                    "/Images/32.1.3.jpg",
-                    "/Images/32.1.4.jpg"
+                    "/Images/32.1.1.webp",
+                    "/Images/32.1.2.webp",
+                    "/Images/32.1.3.webp",
+                    "/Images/32.1.4.webp"
                 ],
                 "sizes": [
                     {
@@ -2844,20 +2844,20 @@ const products = [
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/33.1.2.jpg",
-            "/Images/33.1.3.jpg",
-            "/Images/33.1.4.jpg"
+            "/Images/33.1.2.webp",
+            "/Images/33.1.3.webp",
+            "/Images/33.1.4.webp"
         ],
-        "imgSrc": "/Images/33.1.1.jpg",
-        "hoverImgSrc": "/Images/33.1.2.jpg",
+        "imgSrc": "/Images/33.1.1.webp",
+        "hoverImgSrc": "/Images/33.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/33.1.1.jpg",
-                    "/Images/33.1.2.jpg",
-                    "/Images/33.1.3.jpg",
-                    "/Images/33.1.4.jpg"
+                    "/Images/33.1.1.webp",
+                    "/Images/33.1.2.webp",
+                    "/Images/33.1.3.webp",
+                    "/Images/33.1.4.webp"
                 ],
                 "sizes": [
                     {
@@ -2936,24 +2936,24 @@ const products = [
         "material": "Alloy Steel",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/34.1.2.jpg",
-            "/Images/34.1.3.jpg",
-            "/Images/34.1.4.jpg"
+            "/Images/34.1.2.webp",
+            "/Images/34.1.3.webp",
+            "/Images/34.1.4.webp"
         ],
-        "imgSrc": "/Images/34.1.1.jpg",
-        "hoverImgSrc": "/Images/34.1.2.jpg",
+        "imgSrc": "/Images/34.1.1.webp",
+        "hoverImgSrc": "/Images/34.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/34.1.1.jpg",
-                    "/Images/34.1.2.jpg",
-                    "/Images/34.1.3.jpg",
-                    "/Images/34.1.4.jpg",
-                    "/Images/34.1.5.jpg",
-                    "/Images/34.1.6.jpg",
-                    "/Images/34.1.7.jpg",
-                    "/Images/34.1.8.jpg"
+                    "/Images/34.1.1.webp",
+                    "/Images/34.1.2.webp",
+                    "/Images/34.1.3.webp",
+                    "/Images/34.1.4.webp",
+                    "/Images/34.1.5.webp",
+                    "/Images/34.1.6.webp",
+                    "/Images/34.1.7.webp",
+                    "/Images/34.1.8.webp"
                 ],
                 "sizes": [
                     {
@@ -2988,15 +2988,15 @@ const products = [
         "material": "Rubber",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/35.1.1.jpg"
+            "/Images/35.1.1.webp"
         ],
-        "imgSrc": "/Images/35.1.1.jpg",
-        "hoverImgSrc": "/Images/35.1.1.jpg",
+        "imgSrc": "/Images/35.1.1.webp",
+        "hoverImgSrc": "/Images/35.1.1.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/35.1.1.jpg"
+                    "/Images/35.1.1.webp"
                 ],
                 "sizes": [
                     {
@@ -3030,22 +3030,22 @@ const products = [
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/36.1.4.jpg",
-            "/Images/36.1.5.jpg",
-            "/Images/36.1.6.jpg"
+            "/Images/36.1.4.webp",
+            "/Images/36.1.5.webp",
+            "/Images/36.1.6.webp"
         ],
-        "imgSrc": "/Images/36.1.1.jpg",
-        "hoverImgSrc": "/Images/36.1.2.jpg",
+        "imgSrc": "/Images/36.1.1.webp",
+        "hoverImgSrc": "/Images/36.1.2.webp",
         "variants": [
             {
                 "color": "Yellow",
                 "images": [
-                    "/Images/36.1.1.jpg",
-                    "/Images/36.1.2.jpg",
-                    "/Images/36.1.3.jpg",
-                    "/Images/36.1.4.jpg",
-                    "/Images/36.1.5.jpg",
-                    "/Images/36.1.6.jpg"
+                    "/Images/36.1.1.webp",
+                    "/Images/36.1.2.webp",
+                    "/Images/36.1.3.webp",
+                    "/Images/36.1.4.webp",
+                    "/Images/36.1.5.webp",
+                    "/Images/36.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -3075,24 +3075,24 @@ const products = [
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/37.1.3.jpg",
-            "/Images/37.1.4.jpg",
-            "/Images/37.1.5.jpg"
+            "/Images/37.1.3.webp",
+            "/Images/37.1.4.webp",
+            "/Images/37.1.5.webp"
         ],
-        "imgSrc": "/Images/37.1.1.jpg ",
-        "hoverImgSrc": "/Images/37.1.2.jpg",
+        "imgSrc": "/Images/37.1.1.webp ",
+        "hoverImgSrc": "/Images/37.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/37.1.1.jpg",
-                    "/Images/37.1.2.jpg",
-                    "/Images/37.1.3.jpg",
-                    "/Images/37.1.4.jpg",
-                    "/Images/37.1.5.jpg",
-                    "/Images/37.1.6.jpg",
-                    "/Images/37.1.7.jpg",
-                    "/Images/37.1.8.jpg",
+                    "/Images/37.1.1.webp",
+                    "/Images/37.1.2.webp",
+                    "/Images/37.1.3.webp",
+                    "/Images/37.1.4.webp",
+                    "/Images/37.1.5.webp",
+                    "/Images/37.1.6.webp",
+                    "/Images/37.1.7.webp",
+                    "/Images/37.1.8.webp",
                 ],
                 "sizes": [
                     {
@@ -3125,24 +3125,24 @@ const products = [
         "material": "Wood",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/38.1.4.jpg",
-            "/Images/38.1.5.jpg",
-            "/Images/38.1.6.jpg",
+            "/Images/38.1.4.webp",
+            "/Images/38.1.5.webp",
+            "/Images/38.1.6.webp",
 
         ],
-        "imgSrc": "/Images/38.1.1.jpg",
-        "hoverImgSrc": "/Images/38.1.2.jpg",
+        "imgSrc": "/Images/38.1.1.webp",
+        "hoverImgSrc": "/Images/38.1.2.webp",
         "variants": [
             {
                 "color": "black/offwhite",
                 "images": [
-                    "/Images/38.1.1.jpg",
-                    "/Images/38.1.2.jpg",
-                    "/Images/38.1.3.jpg",
-                    "/Images/38.1.4.jpg",
-                    "/Images/38.1.5.jpg",
-                    "/Images/38.1.6.jpg",
-                    "/Images/38.1.7.jpg"
+                    "/Images/38.1.1.webp",
+                    "/Images/38.1.2.webp",
+                    "/Images/38.1.3.webp",
+                    "/Images/38.1.4.webp",
+                    "/Images/38.1.5.webp",
+                    "/Images/38.1.6.webp",
+                    "/Images/38.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -3175,22 +3175,22 @@ const products = [
         "material": "Wood",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/39.1.3.jpg",
-            "/Images/39.1.4.jpg",
-            "/Images/39.1.5.jpg"
+            "/Images/39.1.3.webp",
+            "/Images/39.1.4.webp",
+            "/Images/39.1.5.webp"
         ],
-        "imgSrc": "/Images/39.1.1.jpg",
-        "hoverImgSrc": "/Images/39.1.2.jpg",
+        "imgSrc": "/Images/39.1.1.webp",
+        "hoverImgSrc": "/Images/39.1.2.webp",
         "variants": [
             {
                 "color": "Offwhite",
                 "images": [
-                    "/Images/39.1.1.jpg",
-                    "/Images/39.1.2.jpg",
-                    "/Images/39.1.3.jpg",
-                    "/Images/39.1.4.jpg",
-                    "/Images/39.1.5.jpg",
-                    "/Images/39.1.6.jpg",
+                    "/Images/39.1.1.webp",
+                    "/Images/39.1.2.webp",
+                    "/Images/39.1.3.webp",
+                    "/Images/39.1.4.webp",
+                    "/Images/39.1.5.webp",
+                    "/Images/39.1.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3223,22 +3223,22 @@ const products = [
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/40.1.4.jpg",
-            "/Images/40.1.5.jpg",
-            "/Images/40.1.6.jpg",
+            "/Images/40.1.4.webp",
+            "/Images/40.1.5.webp",
+            "/Images/40.1.6.webp",
         ],
-        "imgSrc": "/Images/40.1.1.jpg",
-        "hoverImgSrc": "/Images/40.1.2.jpg",
+        "imgSrc": "/Images/40.1.1.webp",
+        "hoverImgSrc": "/Images/40.1.2.webp",
         "variants": [
             {
                 "color": "Yellow",
                 "images": [
-                    "/Images/40.1.1.jpg",
-                    "/Images/40.1.2.jpg",
-                    "/Images/40.1.3.jpg",
-                    "/Images/40.1.4.jpg",
-                    "/Images/40.1.5.jpg",
-                    "/Images/40.1.6.jpg",
+                    "/Images/40.1.1.webp",
+                    "/Images/40.1.2.webp",
+                    "/Images/40.1.3.webp",
+                    "/Images/40.1.4.webp",
+                    "/Images/40.1.5.webp",
+                    "/Images/40.1.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3272,23 +3272,23 @@ const products = [
         "material": "",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/41.1.4.jpg",
-            "/Images/41.1.5.jpg",
-            "/Images/41.1.6.jpg"
+            "/Images/41.1.4.webp",
+            "/Images/41.1.5.webp",
+            "/Images/41.1.6.webp"
         ],
-        "imgSrc": "/Images/41.1.1.jpg",
-        "hoverImgSrc": "/Images/41.1.2.jpg",
+        "imgSrc": "/Images/41.1.1.webp",
+        "hoverImgSrc": "/Images/41.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/41.1.1.jpg",
-                    "/Images/41.1.2.jpg",
-                    "/Images/41.1.3.jpg",
-                    "/Images/41.1.4.jpg",
-                    "/Images/41.1.5.jpg",
-                    "/Images/41.1.6.jpg",
-                    "/Images/41.1.7.jpg",
+                    "/Images/41.1.1.webp",
+                    "/Images/41.1.2.webp",
+                    "/Images/41.1.3.webp",
+                    "/Images/41.1.4.webp",
+                    "/Images/41.1.5.webp",
+                    "/Images/41.1.6.webp",
+                    "/Images/41.1.7.webp",
                 ],
                 "sizes": [
                     {
@@ -3303,13 +3303,13 @@ const products = [
             {
                 "color": "Red",
                 "images": [
-                    "/Images/41.2.1.jpg",
-                    "/Images/41.2.2.jpg",
-                    "/Images/41.2.3.jpg",
-                    "/Images/41.2.4.jpg",
-                    "/Images/41.2.5.jpg",
-                    "/Images/41.2.6.jpg",
-                    "/Images/41.2.7.jpg",
+                    "/Images/41.2.1.webp",
+                    "/Images/41.2.2.webp",
+                    "/Images/41.2.3.webp",
+                    "/Images/41.2.4.webp",
+                    "/Images/41.2.5.webp",
+                    "/Images/41.2.6.webp",
+                    "/Images/41.2.7.webp",
 
                 ],
                 "sizes": [
@@ -3344,22 +3344,22 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "showcaseImages": ["/Images/42.1.4.jpg",
-            "/Images/42.1.5.jpg",
-            "/Images/42.1.6.jpg"
+        "showcaseImages": ["/Images/42.1.4.webp",
+            "/Images/42.1.5.webp",
+            "/Images/42.1.6.webp"
         ],
-        "imgSrc": "/Images/42.1.1.jpg",
-        "hoverImgSrc": "/Images/42.1.2.jpg",
+        "imgSrc": "/Images/42.1.1.webp",
+        "hoverImgSrc": "/Images/42.1.2.webp",
         "variants": [
             {
                 "color": "PushUp - Stand ",
                 "images": [
-                    "/Images/42.1.1.jpg",
-                    "/Images/42.1.2.jpg",
-                    "/Images/42.1.3.jpg",
-                    "/Images/42.1.4.jpg",
-                    "/Images/42.1.5.jpg",
-                    "/Images/42.1.6.jpg"
+                    "/Images/42.1.1.webp",
+                    "/Images/42.1.2.webp",
+                    "/Images/42.1.3.webp",
+                    "/Images/42.1.4.webp",
+                    "/Images/42.1.5.webp",
+                    "/Images/42.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -3392,23 +3392,23 @@ const products = [
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/43.1.4.jpg",
-            "/Images/43.1.5.jpg",
-            "/Images/43.1.6.jpg"
+            "/Images/43.1.4.webp",
+            "/Images/43.1.5.webp",
+            "/Images/43.1.6.webp"
         ],
-        "imgSrc": "/Images/43.1.1.jpg",
-        "hoverImgSrc": "/Images/43.1.2.jpg",
+        "imgSrc": "/Images/43.1.1.webp",
+        "hoverImgSrc": "/Images/43.1.2.webp",
         "variants": [
             {
                 "color": " PushUp - Handles ",
                 "images": [
-                    "/Images/43.1.1.jpg",
-                    "/Images/43.1.2.jpg",
-                    "/Images/43.1.3.jpg",
-                    "/Images/43.1.4.jpg",
-                    "/Images/43.1.5.jpg",
-                    "/Images/43.1.6.jpg",
-                    "/Images/43.1.7.jpg"
+                    "/Images/43.1.1.webp",
+                    "/Images/43.1.2.webp",
+                    "/Images/43.1.3.webp",
+                    "/Images/43.1.4.webp",
+                    "/Images/43.1.5.webp",
+                    "/Images/43.1.6.webp",
+                    "/Images/43.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -3424,8 +3424,8 @@ const products = [
     {
         "id": 44,
         "name": "FitBox Sports Supplements Shaker Bottle for Protein, Pre - Post Workout",
-        "category": "Workout Essentials",
-        "subCategory": "Shaker Bottles",
+        "category": "Lifestyle & Accessories",
+        "subCategory": "Shakers",
         "isNew": false,
         "isOutOfStock": false,
         "qualities": [
@@ -3441,21 +3441,21 @@ const products = [
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/44.1.3.jpg",
-            "/Images/44.1.4.jpg",
-            "/Images/44.1.5.jpg",
+            "/Images/44.1.3.webp",
+            "/Images/44.1.4.webp",
+            "/Images/44.1.5.webp",
         ],
-        "imgSrc": "/Images/44.1.1.jpg",
-        "hoverImgSrc": "/Images/44.1.2.jpg",
+        "imgSrc": "/Images/44.1.1.webp",
+        "hoverImgSrc": "/Images/44.1.2.webp",
         "variants": [
             {
                 "color": "Orange",
                 "images": [
-                    "/Images/44.1.1.jpg",
-                    "/Images/44.1.2.jpg",
-                    "/Images/44.1.3.jpg",
-                    "/Images/44.1.4.jpg",
-                    "/Images/44.1.5.jpg",
+                    "/Images/44.1.1.webp",
+                    "/Images/44.1.2.webp",
+                    "/Images/44.1.3.webp",
+                    "/Images/44.1.4.webp",
+                    "/Images/44.1.5.webp",
                 ],
                 "sizes": [
                     {
@@ -3469,11 +3469,11 @@ const products = [
             {
                 "color": "Blue",
                 "images": [
-                    "/Images/44.2.1.jpg",
-                    "/Images/44.2.2.jpg",
-                    "/Images/44.2.3.jpg",
-                    "/Images/44.2.4.jpg",
-                    "/Images/44.2.5.jpg"
+                    "/Images/44.2.1.webp",
+                    "/Images/44.2.2.webp",
+                    "/Images/44.2.3.webp",
+                    "/Images/44.2.4.webp",
+                    "/Images/44.2.5.webp"
                 ],
                 "sizes": [
                     {
@@ -3487,11 +3487,11 @@ const products = [
             {
                 "color": "White",
                 "images": [
-                    "/Images/44.3.1.jpg",
-                    "/Images/44.3.2.jpg",
-                    "/Images/44.3.3.jpg",
-                    "/Images/44.3.4.jpg",
-                    "/Images/44.3.5.jpg",
+                    "/Images/44.3.1.webp",
+                    "/Images/44.3.2.webp",
+                    "/Images/44.3.3.webp",
+                    "/Images/44.3.4.webp",
+                    "/Images/44.3.5.webp",
                 ],
                 "sizes": [
                     {
@@ -3526,23 +3526,23 @@ const products = [
         "material": "Blend, Metal",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/45.1.3.jpg",
-            "/Images/45.1.4.jpg",
-            "/Images/45.1.5.jpg",
+            "/Images/45.1.3.webp",
+            "/Images/45.1.4.webp",
+            "/Images/45.1.5.webp",
         ],
-        "imgSrc": "/Images/45.1.1.jpg",
-        "hoverImgSrc": "/Images/45.1.2.jpg",
+        "imgSrc": "/Images/45.1.1.webp",
+        "hoverImgSrc": "/Images/45.1.2.webp",
         "variants": [
             {
                 "color": "Black ",
                 "images": [
-                    "/Images/45.1.1.jpg",
-                    "/Images/45.1.2.jpg",
-                    "/Images/45.1.3.jpg",
-                    "/Images/45.1.4.jpg",
-                    "/Images/45.1.5.jpg",
-                    "/Images/45.1.6.jpg",
-                    "/Images/45.1.7.jpg"
+                    "/Images/45.1.1.webp",
+                    "/Images/45.1.2.webp",
+                    "/Images/45.1.3.webp",
+                    "/Images/45.1.4.webp",
+                    "/Images/45.1.5.webp",
+                    "/Images/45.1.6.webp",
+                    "/Images/45.1.7.webp"
                 ],
                 "sizes": [
                     {
@@ -3586,22 +3586,22 @@ const products = [
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/46.1.3.jpg",
-            "/Images/46.1.4.jpg",
-            "/Images/46.1.5.jpg",
+            "/Images/46.1.3.webp",
+            "/Images/46.1.4.webp",
+            "/Images/46.1.5.webp",
         ],
-        "imgSrc": "/Images/46.1.1.jpg",
-        "hoverImgSrc": "/Images/46.1.2.jpg",
+        "imgSrc": "/Images/46.1.1.webp",
+        "hoverImgSrc": "/Images/46.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/46.1.1.jpg",
-                    "/Images/46.1.2.jpg",
-                    "/Images/46.1.3.jpg",
-                    "/Images/46.1.4.jpg",
-                    "/Images/46.1.5.jpg",
-                    "/Images/46.1.6.jpg",
+                    "/Images/46.1.1.webp",
+                    "/Images/46.1.2.webp",
+                    "/Images/46.1.3.webp",
+                    "/Images/46.1.4.webp",
+                    "/Images/46.1.5.webp",
+                    "/Images/46.1.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3615,12 +3615,12 @@ const products = [
             {
                 "color": "Gray",
                 "images": [
-                    "/Images/46.2.1.jpg",
-                    "/Images/46.2.2.jpg",
-                    "/Images/46.2.3.jpg",
-                    "/Images/46.2.4.jpg",
-                    "/Images/46.2.5.jpg",
-                    "/Images/46.2.6.jpg",
+                    "/Images/46.2.1.webp",
+                    "/Images/46.2.2.webp",
+                    "/Images/46.2.3.webp",
+                    "/Images/46.2.4.webp",
+                    "/Images/46.2.5.webp",
+                    "/Images/46.2.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3634,12 +3634,12 @@ const products = [
             {
                 "color": "Multicolor",
                 "images": [
-                    "/Images/46.3.1.jpg",
-                    "/Images/46.3.2.jpg",
-                    "/Images/46.3.3.jpg",
-                    "/Images/46.3.4.jpg",
-                    "/Images/46.3.5.jpg",
-                    "/Images/46.3.6.jpg",
+                    "/Images/46.3.1.webp",
+                    "/Images/46.3.2.webp",
+                    "/Images/46.3.3.webp",
+                    "/Images/46.3.4.webp",
+                    "/Images/46.3.5.webp",
+                    "/Images/46.3.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3653,12 +3653,12 @@ const products = [
             {
                 "color": "Pink",
                 "images": [
-                    "/Images/46.4.1.jpg",
-                    "/Images/46.4.2.jpg",
-                    "/Images/46.4.3.jpg",
-                    "/Images/46.4.4.jpg",
-                    "/Images/46.4.5.jpg",
-                    "/Images/46.4.6.jpg",
+                    "/Images/46.4.1.webp",
+                    "/Images/46.4.2.webp",
+                    "/Images/46.4.3.webp",
+                    "/Images/46.4.4.webp",
+                    "/Images/46.4.5.webp",
+                    "/Images/46.4.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3690,22 +3690,22 @@ const products = [
         "material": "Steel, Elastic",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/47.1.3.jpg",
-            "/Images/47.1.4.jpg",
-            "/Images/47.1.6.jpg",
+            "/Images/47.1.3.webp",
+            "/Images/47.1.4.webp",
+            "/Images/47.1.6.webp",
         ],
-        "imgSrc": "/Images/47.1.1.jpg",
-        "hoverImgSrc": "/Images/47.1.2.jpg",
+        "imgSrc": "/Images/47.1.1.webp",
+        "hoverImgSrc": "/Images/47.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/47.1.1.jpg",
-                    "/Images/47.1.2.jpg",
-                    "/Images/47.1.3.jpg",
-                    "/Images/47.1.4.jpg",
-                    "/Images/47.1.5.jpg",
-                    "/Images/47.1.6.jpg",
+                    "/Images/47.1.1.webp",
+                    "/Images/47.1.2.webp",
+                    "/Images/47.1.3.webp",
+                    "/Images/47.1.4.webp",
+                    "/Images/47.1.5.webp",
+                    "/Images/47.1.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3737,22 +3737,22 @@ const products = [
         "material": " Cotton Blend",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/48.1.3.jpg",
-            "/Images/48.1.4.jpg",
-            "/Images/48.1.5.jpg",
+            "/Images/48.1.3.webp",
+            "/Images/48.1.4.webp",
+            "/Images/48.1.5.webp",
         ],
-        "imgSrc": "/Images/48.1.1.jpg",
-        "hoverImgSrc": "/Images/48.1.2.jpg",
+        "imgSrc": "/Images/48.1.1.webp",
+        "hoverImgSrc": "/Images/48.1.2.webp",
         "variants": [
             {
                 "color": "Black ",
                 "images": [
-                    "/Images/48.1.1.jpg",
-                    "/Images/48.1.2.jpg",
-                    "/Images/48.1.3.jpg",
-                    "/Images/48.1.4.jpg",
-                    "/Images/48.1.5.jpg",
-                    "/Images/48.1.6.jpg",
+                    "/Images/48.1.1.webp",
+                    "/Images/48.1.2.webp",
+                    "/Images/48.1.3.webp",
+                    "/Images/48.1.4.webp",
+                    "/Images/48.1.5.webp",
+                    "/Images/48.1.6.webp",
                 ],
                 "sizes": [
                     {
@@ -3783,23 +3783,23 @@ const products = [
         "material": "Wire with PVC Coating ",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/49.1.3.jpg",
-            "/Images/49.1.4.jpg",
-            "/Images/49.1.5.jpg",
+            "/Images/49.1.3.webp",
+            "/Images/49.1.4.webp",
+            "/Images/49.1.5.webp",
         ],
-        "imgSrc": "/Images/49.1.1.jpg",
-        "hoverImgSrc": "/Images/49.1.2.jpg",
+        "imgSrc": "/Images/49.1.1.webp",
+        "hoverImgSrc": "/Images/49.1.2.webp",
         "variants": [
             {
                 "color": "Red/Black",
                 "images": [
-                    "/Images/49.1.1.jpg",
-                    "/Images/49.1.2.jpg",
-                    "/Images/49.1.3.jpg",
-                    "/Images/49.1.4.jpg",
-                    "/Images/49.1.5.jpg",
-                    "/Images/49.1.6.jpg",
-                    "/Images/49.1.7.jpg",
+                    "/Images/49.1.1.webp",
+                    "/Images/49.1.2.webp",
+                    "/Images/49.1.3.webp",
+                    "/Images/49.1.4.webp",
+                    "/Images/49.1.5.webp",
+                    "/Images/49.1.6.webp",
+                    "/Images/49.1.7.webp",
                 ],
                 "sizes": [
                     {
@@ -3832,23 +3832,23 @@ const products = [
         "material": "Blend, Iron, Polypropylene (PP)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/50.1.3.jpg",
-            "/Images/50.1.4.jpg",
-            "/Images/50.1.5.jpg",
+            "/Images/50.1.3.webp",
+            "/Images/50.1.4.webp",
+            "/Images/50.1.5.webp",
         ],
-        "imgSrc": "/Images/50.1.1.jpg",
-        "hoverImgSrc": "/Images/50.1.2.jpg",
+        "imgSrc": "/Images/50.1.1.webp",
+        "hoverImgSrc": "/Images/50.1.2.webp",
         "variants": [
             {
                 "color": "Home Gym Set",
                 "images": [
-                    "/Images/50.1.1.jpg",
-                    "/Images/50.1.2.jpg",
-                    "/Images/50.1.3.jpg",
-                    "/Images/50.1.4.jpg",
-                    "/Images/50.1.5.jpg",
-                    "/Images/50.1.6.jpg",
-                    "/Images/50.1.7.jpg",
+                    "/Images/50.1.1.webp",
+                    "/Images/50.1.2.webp",
+                    "/Images/50.1.3.webp",
+                    "/Images/50.1.4.webp",
+                    "/Images/50.1.5.webp",
+                    "/Images/50.1.6.webp",
+                    "/Images/50.1.7.webp",
 
                 ],
                 "sizes": [
@@ -3881,13 +3881,13 @@ const products = [
             {
                 "color": "Convertible Barbell ",
                 "images": [
-                    "/Images/50.2.1.jpg",
-                    "/Images/50.2.2.jpg",
-                    "/Images/50.2.3.jpg",
-                    "/Images/50.2.4.jpg",
-                    "/Images/50.2.5.jpg",
-                    "/Images/50.2.6.jpg",
-                    "/Images/50.2.7.jpg",
+                    "/Images/50.2.1.webp",
+                    "/Images/50.2.2.webp",
+                    "/Images/50.2.3.webp",
+                    "/Images/50.2.4.webp",
+                    "/Images/50.2.5.webp",
+                    "/Images/50.2.6.webp",
+                    "/Images/50.2.7.webp",
 
                 ],
                 "sizes": [
@@ -3920,12 +3920,12 @@ const products = [
             {
                 "color": "Dumbbells Kit",
                 "images": [
-                    "/Images/50.3.1.jpg",
-                    "/Images/50.3.2.jpg",
-                    "/Images/50.3.3.jpg",
-                    "/Images/50.3.4.jpg",
-                    "/Images/50.3.5.jpg",
-                    "/Images/50.3.6.jpg",
+                    "/Images/50.3.1.webp",
+                    "/Images/50.3.2.webp",
+                    "/Images/50.3.3.webp",
+                    "/Images/50.3.4.webp",
+                    "/Images/50.3.5.webp",
+                    "/Images/50.3.6.webp",
 
                 ],
                 "sizes": [
@@ -3979,21 +3979,21 @@ const products = [
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/51.1.3.jpg",
-            "/Images/51.1.4.jpg",
-            "/Images/51.1.5.jpg",
+            "/Images/51.1.3.webp",
+            "/Images/51.1.4.webp",
+            "/Images/51.1.5.webp",
         ],
-        "imgSrc": "/Images/51.1.1.jpg",
-        "hoverImgSrc": "/Images/51.1.2.jpg",
+        "imgSrc": "/Images/51.1.1.webp",
+        "hoverImgSrc": "/Images/51.1.2.webp",
         "variants": [
             {
                 "color": "Red",
                 "images": [
-                    "/Images/51.1.1.jpg",
-                    "/Images/51.1.2.jpg",
-                    "/Images/51.1.3.jpg",
-                    "/Images/51.1.4.jpg",
-                    "/Images/51.1.5.jpg",
+                    "/Images/51.1.1.webp",
+                    "/Images/51.1.2.webp",
+                    "/Images/51.1.3.webp",
+                    "/Images/51.1.4.webp",
+                    "/Images/51.1.5.webp",
                 ],
                 "sizes": [
                     {
@@ -4028,19 +4028,19 @@ const products = [
         "material": "Blend Iron",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/52.1.1.jpg",
-            "/Images/52.1.2.jpg",
-            "/Images/52.1.3.jpg",
+            "/Images/52.1.1.webp",
+            "/Images/52.1.2.webp",
+            "/Images/52.1.3.webp",
         ],
-        "imgSrc": "/Images/52.1.1.jpg",
-        "hoverImgSrc": "/Images/52.1.2.jpg",
+        "imgSrc": "/Images/52.1.1.webp",
+        "hoverImgSrc": "/Images/52.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/52.1.1.jpg",
-                    "/Images/52.1.2.jpg",
-                    "/Images/52.1.3.jpg",
+                    "/Images/52.1.1.webp",
+                    "/Images/52.1.2.webp",
+                    "/Images/52.1.3.webp",
                 ],
                 "sizes": [
                     {
@@ -4072,20 +4072,20 @@ const products = [
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/53.1.1.jpg",
-            "/Images/53.1.2.jpg",
-            "/Images/53.1.3.jpg",
+            "/Images/53.1.1.webp",
+            "/Images/53.1.2.webp",
+            "/Images/53.1.3.webp",
         ],
-        "imgSrc": "/Images/53.1.1.jpg",
-        "hoverImgSrc": "/Images/53.1.2.jpg",
+        "imgSrc": "/Images/53.1.1.webp",
+        "hoverImgSrc": "/Images/53.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/53.1.1.jpg",
-                    "/Images/53.1.2.jpg",
-                    "/Images/53.1.3.jpg",
-                    "/Images/53.1.4.jpg"
+                    "/Images/53.1.1.webp",
+                    "/Images/53.1.2.webp",
+                    "/Images/53.1.3.webp",
+                    "/Images/53.1.4.webp"
                 ],
                 "sizes": [
                     {
@@ -4099,11 +4099,11 @@ const products = [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/53.2.1.jpg",
-                    "/Images/53.2.2.jpg",
-                    "/Images/53.2.3.jpg",
-                    "/Images/53.2.4.jpg",
-                    "/Images/53.2.5.jpg",
+                    "/Images/53.2.1.webp",
+                    "/Images/53.2.2.webp",
+                    "/Images/53.2.3.webp",
+                    "/Images/53.2.4.webp",
+                    "/Images/53.2.5.webp",
 
 
                 ],
@@ -4144,21 +4144,21 @@ const products = [
         "material": "Polyvinyl Chloride (PVC), Vinyl",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/54.1.2.jpg",
-            "/Images/54.1.3.jpg",
-            "/Images/54.1.4.jpg"
+            "/Images/54.1.2.webp",
+            "/Images/54.1.3.webp",
+            "/Images/54.1.4.webp"
         ],
-        "imgSrc": "/Images/54.1.1.jpg",
-        "hoverImgSrc": "/Images/54.1.2.jpg",
+        "imgSrc": "/Images/54.1.1.webp",
+        "hoverImgSrc": "/Images/54.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/54.1.1.jpg",
-                    "/Images/54.1.2.jpg",
-                    "/Images/54.1.3.jpg",
-                    "/Images/54.1.4.jpg",
-                    "/Images/54.1.5.jpg"
+                    "/Images/54.1.1.webp",
+                    "/Images/54.1.2.webp",
+                    "/Images/54.1.3.webp",
+                    "/Images/54.1.4.webp",
+                    "/Images/54.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -4193,22 +4193,22 @@ const products = [
         "material": "Polyvinyl Chloride (PVC), Vinyl",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/55.1.4.jpg",
-            "/Images/55.1.5.jpg",
-            "/Images/55.1.6.jpg"
+            "/Images/55.1.4.webp",
+            "/Images/55.1.5.webp",
+            "/Images/55.1.6.webp"
         ],
-        "imgSrc": "/Images/55.1.1.jpg",
-        "hoverImgSrc": "/Images/55.1.2.jpg",
+        "imgSrc": "/Images/55.1.1.webp",
+        "hoverImgSrc": "/Images/55.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/55.1.1.jpg",
-                    "/Images/55.1.2.jpg",
-                    "/Images/55.1.3.jpg",
-                    "/Images/55.1.4.jpg",
-                    "/Images/55.1.5.jpg",
-                    "/Images/55.1.6.jpg"
+                    "/Images/55.1.1.webp",
+                    "/Images/55.1.2.webp",
+                    "/Images/55.1.3.webp",
+                    "/Images/55.1.4.webp",
+                    "/Images/55.1.5.webp",
+                    "/Images/55.1.6.webp"
                 ],
                 "sizes": [
                     {
@@ -4247,21 +4247,21 @@ const products = [
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/56.1.3.jpg",
-            "/Images/56.1.4.jpg",
-            "/Images/56.1.5.jpg"
+            "/Images/56.1.3.webp",
+            "/Images/56.1.4.webp",
+            "/Images/56.1.5.webp"
         ],
-        "imgSrc": "/Images/56.1.1.jpg",
-        "hoverImgSrc": "/Images/56.1.2.jpg",
+        "imgSrc": "/Images/56.1.1.webp",
+        "hoverImgSrc": "/Images/56.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/56.1.1.jpg",
-                    "/Images/56.1.2.jpg",
-                    "/Images/56.1.3.jpg",
-                    "/Images/56.1.4.jpg",
-                    "/Images/56.1.5.jpg"
+                    "/Images/56.1.1.webp",
+                    "/Images/56.1.2.webp",
+                    "/Images/56.1.3.webp",
+                    "/Images/56.1.4.webp",
+                    "/Images/56.1.5.webp"
                 ],
                 "sizes": [
                     {
@@ -4300,23 +4300,23 @@ const products = [
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
-            "/Images/57.1.3.jpg",
-            "/Images/57.1.5.jpg",
-            "/Images/57.1.4.jpg"
+            "/Images/57.1.3.webp",
+            "/Images/57.1.5.webp",
+            "/Images/57.1.4.webp"
         ],
-        "imgSrc": "/Images/57.1.1.jpg",
-        "hoverImgSrc": "/Images/57.1.2.jpg",
+        "imgSrc": "/Images/57.1.1.webp",
+        "hoverImgSrc": "/Images/57.1.2.webp",
         "variants": [
             {
                 "color": "Black",
                 "images": [
-                    "/Images/57.1.1.jpg",
-                    "/Images/57.1.2.jpg",
-                    "/Images/57.1.3.jpg",
-                    "/Images/57.1.4.jpg",
-                    "/Images/57.1.5.jpg",
-                    "/Images/57.1.6.jpg",
-                    "/Images/57.1.7.jpg",
+                    "/Images/57.1.1.webp",
+                    "/Images/57.1.2.webp",
+                    "/Images/57.1.3.webp",
+                    "/Images/57.1.4.webp",
+                    "/Images/57.1.5.webp",
+                    "/Images/57.1.6.webp",
+                    "/Images/57.1.7.webp",
 
                 ],
                 "sizes": [
@@ -4331,96 +4331,253 @@ const products = [
         ]
     },
     {
-      "id": 58,
-      "name": "FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black) & FitBox Sports 5kg Diamond Dumbbells (2.5kg x 2) Set Of 2 For Home Gym Workout | Men & Women ",
-      "category": "Weights & Dumbbells",
-      "subCategory": "Dumbbells",
+        "id": 58,
+        "name": "FitBox Sports Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black) & FitBox Sports 5kg Diamond Dumbbells (2.5kg x 2) Set Of 2 For Home Gym Workout | Men & Women ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Diamond Shape Grip",
+            "Versatile Usage",
+            "Beginner Friendly"
+        ],
+        "longDesc": "Step up your fitness lifestyle with the FitBox Sports 5kg Kettlebell and 5kg Diamond Dumbbells Combo. These free arm weights are easy to learn and incredibly effective, making them ideal for beginners and seasoned athletes alike. Whether you're targeting stabilizing muscles or performing intense cardio, this durable, rust-free vinyl-coated set is an essential addition to any home gym.",
+        "features": [
+            "Product 1: a piece of 5kg vinayl coated kettlebell",
+            "Product 1: perfect for gym workout, zumba & aerobics",
+            "Product 1: rustfree ensuring longer period of usage and safety",
+            "Product 1: box content : 1 piece of pvc kettlebell",
+            "Product 2: So easy to use What’s great about free arm weights is that, even if you are a beginner or new to the fit lifestyle, it’s simple to perform exercises that are very effective and easy to learn, requiring just a hand weight and some motivation.",
+            "Product 2: So many uses With our small single weight, you can incorporate it into any fitness or strength training routine. Whether repairing a torn rotator, targeting stabilizing muscles, or just wanting to look great in your jeans, this training weight is a must.",
+            "Product 2: Box Content - 2.5kg x 2 Diamond Shaped Dumbbells"
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/58.1.1.webp"
+        ],
+        "imgSrc": "/Images/58.1.1.webp",
+        "hoverImgSrc": "/Images/58.1.1.webp",
+        "variants": [
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/58.1.1.webp"
+                ],
+                "sizes": [
+                    {
+                        "name": "5kg Kettlebell + 5kg (2.5kg x 2) Dumbbells",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 59,
+        "name": "FitBox Sports - Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black), Exlusive Octa PVC Fixed Dumbbells 4kg (2kg x 2) Black & Hexa PVC Dumbbells 4kg (2kg x 2) RED ",
+        "category": "Weights & Dumbbells",
+        "subCategory": "Dumbbells",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Multi-shape Dumbbells",
+            "Dynamic Kettlebell",
+            "Abrasion Resistant"
+        ],
+        "longDesc": "Experience varied resistance training with this comprehensive FitBox Sports Combo featuring a 5kg Kettlebell, 4kg Octa PVC Dumbbells, and 4kg Hexa PVC Dumbbells. The unique geometric designs prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds intensity to any workout. Constructed from premium, rust-free PVC, this robust set guarantees longevity and safety for all your fitness endeavors.",
+        "features": ["a piece of 5kg vinayl coated kettlebell",
+            "perfect for gym workout, zumba & aerobics",
+            "rustfree ensuring longer period of usage and safety",
+            "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
+            "Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
+            "Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
+            "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells"
+        ],
+        "material": "Polyvinyl Chloride (PVC)",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/59.1.1.webp"
+        ],
+        "imgSrc": "/Images/59.1.1.webp",
+        "hoverImgSrc": "/Images/59.1.1.webp",
+        "variants": [
+            {
+                "color": "Multi",
+                "images": [
+                    "/Images/59.1.1.webp"
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 5000
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 60,
+        "name": "FitBox Sports Spider Shaker Bottle with 2 Removable Compartment for Protein, Pre - Post Workout",
+        "category": "Lifestyle & Accessories",
+        "subCategory": "Shakers",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": ["100% Leak Proof",
+            "BPA Free",
+            "Storage Compartment"
+        ],
+        "longDesc": "Get ready to experience convenience and functionality with FitBox Sports Spider Shaker Bottle. This innovative shaker bottle is designed to meet the needs of fitness enthusiasts, athletes, and anyone leading an active lifestyle. With its smart compartments, leak-proof design, and premium materials, it has become an essential companion for your fitness journey.",
+        "features": ["100 % Leak proof, storage container, pill container, water bottle plus shaker for preparation and saving time.",
+            "Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
+            "Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
+            "Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements."
+        ],
+        "material": "Plastic",
+        "relatedIds": [],
+        "showcaseImages": [
+            "/Images/60.1.3.webp",
+            "/Images/60.1.4.webp",
+            "/Images/60.1.5.webp",
+
+        ],
+        "imgSrc": "/Images/60.1.1.webp",
+        "hoverImgSrc": "/Images/60.1.2.webp",
+        "variants": [
+            {
+                "color": "Red-Black",
+                "images": [
+                    "/Images/60.1.1.webp",
+                    "/Images/60.1.2.webp",
+                    "/Images/60.1.3.webp",
+                    "/Images/60.1.4.webp",
+                    "/Images/60.1.5.webp",
+                    "/Images/60.1.6.webp",
+
+                ],
+                "sizes": [
+                    {
+                        "name": "500 ml",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 500
+                    }
+                ]
+            },
+            {
+                "color": "Black",
+                "images": [
+                    "/Images/60.2.1.webp",
+                    "/Images/60.2.2.webp",
+                    "/Images/60.2.3.webp",
+                    "/Images/60.2.4.webp",
+                    "/Images/60.2.5.webp",
+                    "/Images/60.2.6.webp",
+                ],
+                "sizes": [
+                    {
+                        "name": "500 ml",
+                        "price": 0,
+                        "oldPrice": 0,
+                        "weight": 500
+                    }
+                ]
+            }
+        ]
+    },
+    {
+      "id": 61,
+      "name": "FitBox Sports Toning Tube with Door Anchor | Resistance Exercise Band | Comfortable Handles - Ideal for Physical Therapy, Strength Training, Muscle Toning",
+      "category": "Workout Essentials",
+      "subCategory": "Resistance Bands",
       "isNew": false,
       "isOutOfStock": false,
       "qualities": [
-        "Diamond Shape Grip",
-        "Versatile Usage",
-        "Beginner Friendly"
+        "Durable",
+        "Comfortable",
+        "Portable"
       ],
-      "longDesc": "Step up your fitness lifestyle with the FitBox Sports 5kg Kettlebell and 5kg Diamond Dumbbells Combo. These free arm weights are easy to learn and incredibly effective, making them ideal for beginners and seasoned athletes alike. Whether you're targeting stabilizing muscles or performing intense cardio, this durable, rust-free vinyl-coated set is an essential addition to any home gym.",
+      "longDesc": "Experience a complete strength training workout with FitBox Sports Toning Tube. This versatile exercise band features double-strength tubes and a door anchor, making it perfect for physical therapy, muscle toning, and building overall strength. Designed for comfort and stability, it ensures a secure grip even during intense workouts. Whether you're at home, in the gym, or on the go, this compact and portable toning tube is an ideal addition to your fitness routine.",
       "features": [
-        "Product 1: a piece of 5kg vinayl coated kettlebell",
-        "Product 1: perfect for gym workout, zumba & aerobics",
-        "Product 1: rustfree ensuring longer period of usage and safety",
-        "Product 1: box content : 1 piece of pvc kettlebell",
-        "Product 2: So easy to use What’s great about free arm weights is that, even if you are a beginner or new to the fit lifestyle, it’s simple to perform exercises that are very effective and easy to learn, requiring just a hand weight and some motivation.",
-        "Product 2: So many uses With our small single weight, you can incorporate it into any fitness or strength training routine. Whether repairing a torn rotator, targeting stabilizing muscles, or just wanting to look great in your jeans, this training weight is a must.",
-        "Product 2: Box Content - 2.5kg x 2 Diamond Shaped Dumbbells"
+        "Natural and Solid: Resistance band is created from 100% natural rubber and the thick working out band furthermore features a strong tear resistance, which does presently not wreck without issues can make certain your assurance at the same time as working out.",
+        "Box Content : Toning Tube with Double Strength Tubes With Door Anchor",
+        "Comfortable & Ergonomic: The foam handles are additionally designed to be ergonomic and non-slip, which ensures that you do not slip even as sweating heavily. The toning tubes are designed to offer a stable and comfortable grip throughout the workout.",
+        "Workout Versatility: This toning tube is a flexible and effective device for strength training, fitness, and rehabilitation. It is perfect for a variety of exercises, including strength training, Pilates, yoga, and physical therapy. You may also use it to enhance your flexibility and mobility."
       ],
-      "material": "Polyvinyl Chloride (PVC)",
+      "material": "Natural Rubber",
       "relatedIds": [],
       "showcaseImages": [
-        "/Images/58.1.1.jpg"
+        "/Images/61.1.4.webp",
+        "/Images/61.1.5.webp",
+        "/Images/61.1.6.webp",
       ],
-      "imgSrc": "/Images/58.1.1.jpg",
-      "hoverImgSrc": "/Images/58.1.1.jpg",
+      "imgSrc": "/Images/61.1.1.webp",
+      "hoverImgSrc": "/Images/61.1.2.webp",
       "variants": [
         {
-          "color": "Black",
+          "color": "Red- 10kg Combo Light",
           "images": [
-            "/Images/58.1.1.jpg"
+            "/Images/61.1.1.webp",
+            "/Images/61.1.2.webp",
+            "/Images/61.1.3.webp",
+            "/Images/61.1.4.webp",
+            "/Images/61.1.5.webp",
+            "/Images/61.1.6.webp",
           ],
           "sizes": [
             {
-              "name": "5kg Kettlebell + 5kg (2.5kg x 2) Dumbbells",
+              "name": "Standard",
               "price": 0,
               "oldPrice": 0,
-              "weight": 5000
+              "weight": 125
             }
           ]
-        }
-      ]
-    },
-    {
-  "id": 59,
-  "name": "FitBox Sports - Intruder 5 Kg Kettlebell Strength and Cardio Training Weights (Black), Exlusive Octa PVC Fixed Dumbbells 4kg (2kg x 2) Black & Hexa PVC Dumbbells 4kg (2kg x 2) RED ",
-  "category": "Weights & Dumbbells",
-  "subCategory": "Dumbbells",
-  "isNew": false,
-  "isOutOfStock": false,
-  "qualities": [
-    "Multi-shape Dumbbells",
-    "Dynamic Kettlebell",
-    "Abrasion Resistant"
-  ],
-  "longDesc": "Experience varied resistance training with this comprehensive FitBox Sports Combo featuring a 5kg Kettlebell, 4kg Octa PVC Dumbbells, and 4kg Hexa PVC Dumbbells. The unique geometric designs prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds intensity to any workout. Constructed from premium, rust-free PVC, this robust set guarantees longevity and safety for all your fitness endeavors.",
-  "features": ["a piece of 5kg vinayl coated kettlebell",
-  "perfect for gym workout, zumba & aerobics",
-  "rustfree ensuring longer period of usage and safety",
-  "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
-  "Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
-  "Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
-  "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells"
-],
-  "material": "Polyvinyl Chloride (PVC)",
-  "relatedIds": [],
-  "showcaseImages": [
-    "/Images/59.1.1.jpg"
-  ],
-  "imgSrc": "/Images/59.1.1.jpg",
-  "hoverImgSrc": "/Images/59.1.1.jpg",
-  "variants": [
-    {
-      "color": "Multi",
-      "images": [
-        "/Images/59.1.1.jpg"
-      ],
-      "sizes": [
+        },
         {
-          "name": "Standard",
-          "price": 0,
-          "oldPrice": 0,
-          "weight": 5000
+          "color": "Green- 20kg Combo Medium",
+          "images": [
+            "/Images/61.2.1.webp",
+            "/Images/61.2.2.webp",
+            "/Images/61.2.3.webp",
+            "/Images/61.2.4.webp",
+            "/Images/61.2.5.webp",
+            "/Images/61.2.6.webp",
+          ],
+          "sizes": [
+            {
+              "name": "Standard",
+              "price": 0,
+              "oldPrice": 0,
+              "weight": 125
+            }
+          ]
+        },
+        {
+            "color": "Red- 15kg Double Tube",
+            "images": [
+                "/Images/61.3.1.webp",
+                "/Images/61.3.2.webp",
+                "/Images/61.3.3.webp",
+                "/Images/61.3.4.webp",
+                "/Images/61.3.5.webp",
+                "/Images/61.3.6.webp",
+            ],
+            "sizes": [
+                {
+                    "name": "Standard",
+                    "price": 0,
+                    "oldPrice": 0,
+                    "weight": 125
+                }
+            ]
         }
       ]
     }
-  ]
-}
 ];
 
 export default products;

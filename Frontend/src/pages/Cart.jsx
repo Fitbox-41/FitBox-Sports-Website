@@ -12,10 +12,11 @@ import './Cart.css';
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, toggleWishlist, wishlist, clearCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
-  const { deliveryFee } = useSettings();
+  const { deliveryFee, freeDeliveryThreshold } = useSettings();
   const navigate = useNavigate();
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const [walletBalance, setWalletBalance] = useState(0);
   const [applyPoints, setApplyPoints] = useState(false);
@@ -43,16 +44,17 @@ export default function Cart() {
   const parsePrice = (val) => Number(String(val).replace(/[^0-9.-]+/g,""));
   
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
-  const shipping = subtotal > 999 || subtotal === 0 ? 0 : deliveryFee;
-  
+  const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
+
   const POINT_VALUE_INR = 1;
   const maxPointsApplicable = Math.floor(subtotal / POINT_VALUE_INR);
   const pointsToUse = applyPoints ? Math.min(walletBalance, maxPointsApplicable) : 0;
   const discount = pointsToUse * POINT_VALUE_INR;
-  
+
   const total = subtotal + shipping - discount;
 
   const handleCheckout = async () => {
+    if (isProcessing) return;
     if (!currentUser) {
       setShowLoginModal(true);
       return;
@@ -63,6 +65,7 @@ export default function Cart() {
       return;
     }
     
+    setIsProcessing(true);
     try {
       const token = localStorage.getItem('fitbox_token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
@@ -82,6 +85,8 @@ export default function Cart() {
     } catch (err) {
       console.error("Checkout failed:", err);
       alert("Failed to initiate checkout");
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -101,16 +106,21 @@ export default function Cart() {
               {cart.map((item) => (
                 <div key={`${item.id}-${item.selectedVariant}`} className="cart-item-card">
                   <Link 
-                    to={`/product/${item.id}`} 
+                    to={`/product/${item.id || item._id || item.productId}`} 
                     className="cart-item-img-wrap"
                   >
-                    <img src={item.imgSrc} alt={item.name} />
+                    <img 
+                      src={item.imgSrc && typeof item.imgSrc === 'string' ? item.imgSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp') : item.imgSrc} 
+                      alt={item.name} 
+                      loading="lazy" 
+                      decoding="async" 
+                    />
                   </Link>
                   
                   <div className="cart-item-details">
                     <div className="cart-item-header">
                       <Link 
-                        to={`/product/${item.id}`} 
+                        to={`/product/${item.id || item._id || item.productId}`} 
                         className="cart-item-name"
                       >
                         {item.name}
@@ -192,7 +202,13 @@ export default function Cart() {
                   <span>Total</span>
                   <span>₹{total}</span>
                 </div>
-                <button className="checkout-btn" onClick={handleCheckout}>Proceed to Checkout</button>
+                <button 
+                  className={`checkout-btn ${isProcessing ? 'checkout-btn--disabled' : ''}`} 
+                  onClick={handleCheckout} 
+                  disabled={isProcessing}
+                >
+                  {isProcessing ? 'Processing Checkout...' : 'Proceed to Checkout'}
+                </button>
                 <div className="secure-checkout-label">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />

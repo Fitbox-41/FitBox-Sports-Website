@@ -29,19 +29,21 @@
 
 .orders-list-item {
   display: flex;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border-radius: 12px;
   padding: 20px;
   gap: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 6px 20px rgba(26, 26, 46, 0.07), inset 0 1px 1px rgba(255,255,255,0.6);
+  border: 1px solid rgba(26, 26, 46, 0.07);
   align-items: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .orders-list-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(26, 26, 46, 0.12), inset 0 1px 1px rgba(255,255,255,0.7);
 }
 
 .orders-item-image-wrapper {
@@ -109,18 +111,26 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  background: white;
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #ff6b35;
-  border: 1px solid #ff6b35;
+  border: 1.5px solid rgba(255, 107, 53, 0.35) !important;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.5);
 }
 
 .orders-wishlist-btn:hover {
-  background: #fff4f0;
+  background: rgba(255, 244, 240, 0.75) !important;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1), inset 0 1px 1px rgba(255,255,255,0.4);
 }
 
 .orders-wishlist-btn.active {
-  background: #ff6b35;
+  background: rgba(255, 107, 53, 0.78) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(255, 140, 80, 0.4) !important;
   color: white;
+  box-shadow: 0 4px 14px rgba(255, 107, 53, 0.22), inset 0 1px 1px rgba(255,255,255,0.25);
 }
 
 .empty-orders-state {
@@ -149,17 +159,23 @@
 
 .continue-shopping-btn {
   display: inline-block;
-  background: #ff6b35;
+  background: rgba(255, 107, 53, 0.78) !important;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1.5px solid rgba(255, 140, 80, 0.45) !important;
   color: white;
   padding: 12px 28px;
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s ease;
+  box-shadow: 0 6px 18px rgba(255, 107, 53, 0.2), inset 0 1px 1px rgba(255,255,255,0.25);
+  transition: all 0.2s ease;
 }
 
 .continue-shopping-btn:hover {
-  background: #e85926;
+  background: rgba(220, 80, 20, 0.88) !important;
+  box-shadow: 0 10px 26px rgba(255, 107, 53, 0.35), inset 0 1px 1px rgba(255,255,255,0.3);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
