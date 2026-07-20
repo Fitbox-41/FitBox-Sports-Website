@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useSettings } from '../context/SettingsContext';
@@ -14,6 +14,9 @@ export default function Cart() {
   const { currentUser, setShowLoginModal } = useAuth();
   const { deliveryFee, freeDeliveryThreshold } = useSettings();
   const navigate = useNavigate();
+  // Stable key per checkout attempt so a retry / double-submit can't create a
+  // duplicate order or double-spend points. Reset only after a confirmed success.
+  const idempotencyKeyRef = useRef(null);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
   const [currentOrderId, setCurrentOrderId] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -66,19 +69,26 @@ export default function Cart() {
     }
     
     setIsProcessing(true);
+    // Reuse the same key across retries of this checkout attempt.
+    if (!idempotencyKeyRef.current) {
+      idempotencyKeyRef.current =
+        (window.crypto?.randomUUID?.() ?? `ck_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+    }
     try {
       const token = localStorage.getItem('fitbox_token');
       const config = { headers: { Authorization: `Bearer ${token}` } };
-      
+
       const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-      const res = await axios.post(`${apiUrl}/api/orders/place`, { 
-        items: cart, 
+      const res = await axios.post(`${apiUrl}/api/orders/place`, {
+        items: cart,
         totalAmount: total,
         deliveryCharge: shipping,
-        appliedPoints: pointsToUse
+        appliedPoints: pointsToUse,
+        idempotencyKey: idempotencyKeyRef.current
       }, config);
-      
+
       if (res.data.success) {
+        idempotencyKeyRef.current = null; // fresh key for the next distinct order
         setCurrentOrderId(res.data.orderId);
         setIsCheckoutModalOpen(true);
       }
