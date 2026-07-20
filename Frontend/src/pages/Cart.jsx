@@ -46,7 +46,7 @@ export default function Cart() {
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
   const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
 
-  const POINT_VALUE_INR = 1;
+  const POINT_VALUE_INR = 2;
   const maxPointsApplicable = Math.floor(subtotal / POINT_VALUE_INR);
   const pointsToUse = applyPoints ? Math.min(walletBalance, maxPointsApplicable) : 0;
   const discount = pointsToUse * POINT_VALUE_INR;
