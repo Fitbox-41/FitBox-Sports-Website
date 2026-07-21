@@ -39,6 +39,12 @@ const userSchema = new mongoose.Schema(
     orders: {
       type: Array,
       default: []
+    },
+    // Shared FitBox points balance — kept on the user doc so it's visible right
+    // in the users collection. History lives in the wallet_transactions ledger.
+    walletBalance: {
+      type: Number,
+      default: 0
     }
   },
   {

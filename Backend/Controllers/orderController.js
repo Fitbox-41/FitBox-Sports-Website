@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 import { createDelhiveryShipment, trackDelhiveryShipment, cancelDelhiveryShipment } from '../Utils/delhivery.js';
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
-import Wallet from '../Models/Wallet.js';
 import WalletTransaction from '../Models/WalletTransaction.js';
 import crypto from 'crypto';
 import axios from 'axios';
@@ -117,12 +116,16 @@ export const placeOrder = async (req, res) => {
     await order.save({ session });
 
     if (pointsVal > 0) {
-      const wallet = await Wallet.findOne({ userId }).session(session);
-      if (!wallet || wallet.balance < pointsVal) {
+      // Atomically debit the balance on the user doc — the filter guarantees it
+      // never goes negative (and covers a missing user).
+      const debited = await User.findOneAndUpdate(
+        { _id: userId, walletBalance: { $gte: pointsVal } },
+        { $inc: { walletBalance: -pointsVal } },
+        { new: true, session }
+      );
+      if (!debited) {
         throw new Error('Insufficient wallet points');
       }
-      wallet.balance -= pointsVal;
-      await wallet.save({ session });
 
       pointsDiscount = pointsVal * POINT_VALUE_INR;
       order.pointsDiscount = pointsDiscount;
@@ -132,7 +135,7 @@ export const placeOrder = async (req, res) => {
         userId,
         type: 'debit',
         amount: pointsVal,
-        balanceAfter: wallet.balance,
+        balanceAfter: debited.walletBalance,
         source: 'checkout_redeem',
         sourceId: order._id.toString(),
         // Stable per checkout attempt → the unique index blocks a double debit.
@@ -378,15 +381,17 @@ const markOnlineOrderFailed = async (order) => {
   order.shipmentStatus = 'Cancelled';
   
   if (order.appliedPoints > 0 && !order.pointsRefunded) {
-    const wallet = await Wallet.findOne({ userId: order.userId });
-    if (wallet) {
-      wallet.balance += order.appliedPoints;
-      await wallet.save();
+    const refunded = await User.findByIdAndUpdate(
+      order.userId,
+      { $inc: { walletBalance: order.appliedPoints } },
+      { new: true }
+    );
+    if (refunded) {
       const tx = new WalletTransaction({
         userId: order.userId,
         type: 'credit',
         amount: order.appliedPoints,
-        balanceAfter: wallet.balance,
+        balanceAfter: refunded.walletBalance,
         source: 'checkout_refund',
         sourceId: order._id.toString(),
         idempotencyKey: 'refund_fail_' + order._id.toString(),
@@ -845,17 +850,20 @@ export const cancelOrder = async (req, res) => {
       order.cancelReason = cancelReason;
     }
 
-    // Refund redeemed points back to the wallet (idempotent per order).
+    // Refund redeemed points back to the wallet (idempotent per order via the
+    // pointsRefunded flag + the unique refund idempotencyKey).
     if (order.appliedPoints > 0 && !order.pointsRefunded) {
-      const wallet = await Wallet.findOne({ userId: order.userId });
-      if (wallet) {
-        wallet.balance += order.appliedPoints;
-        await wallet.save();
+      const refunded = await User.findByIdAndUpdate(
+        order.userId,
+        { $inc: { walletBalance: order.appliedPoints } },
+        { new: true }
+      );
+      if (refunded) {
         const tx = new WalletTransaction({
           userId: order.userId,
           type: 'credit',
           amount: order.appliedPoints,
-          balanceAfter: wallet.balance,
+          balanceAfter: refunded.walletBalance,
           source: 'checkout_refund',
           sourceId: order._id.toString(),
           idempotencyKey: 'refund_cancel_' + order._id.toString(),
