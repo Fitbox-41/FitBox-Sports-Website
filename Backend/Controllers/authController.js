@@ -147,7 +147,21 @@ export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
     const user = await User.findOne({ email });
+
+    // Account created via Google sign-in has no local password. Guard this so
+    // bcrypt.compare(password, undefined) can't throw a 500, and tell the user
+    // how to proceed instead.
+    if (user && !user.password) {
+      return res.status(401).json({
+        message:
+          'This account uses Google sign-in. Tap "Continue with Google", or use "Forgot password" to set a password.',
+      });
+    }
 
     if (user && (await bcrypt.compare(password, user.password))) {
       res.json({
