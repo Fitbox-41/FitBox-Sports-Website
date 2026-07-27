@@ -21,7 +21,10 @@ const allowedOrigins = [
     process.env.FRONTEND_URL,
     'http://localhost:5173',
     'http://localhost:5174',
-    'http://localhost:3000'
+    'http://localhost:3000',
+    // FitBox Flutter app — web build (Firebase Hosting) needs to call the auth API.
+    'https://fitboxsports-8d1c0.web.app',
+    'https://fitboxsports-8d1c0.firebaseapp.com'
 ].filter(Boolean);
 
 // Automatically add www. version of FRONTEND_URL if present
