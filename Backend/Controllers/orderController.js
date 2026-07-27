@@ -1120,6 +1120,8 @@ export const trackOrder = async (req, res) => {
         // Also update orderStatus if delivered
         if (newStatus === 'Delivered') {
           order.orderStatus = 'Completed';
+        } else if (newStatus === 'Cancelled') {
+          order.orderStatus = 'Cancelled';
         }
 
         await order.save();

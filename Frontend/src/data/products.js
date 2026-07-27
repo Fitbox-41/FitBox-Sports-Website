@@ -40,32 +40,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
@@ -80,37 +80,39 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 2,
@@ -155,38 +157,38 @@ const products = [
                 "sizes": [
                     {
                         "name": "4kg (1kg x 4)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "8kg (2kg x 4)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     },
                     {
                         "name": "12kg (3kg x 4)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
@@ -203,43 +205,45 @@ const products = [
                 "sizes": [
                     {
                         "name": "4kg (1kg x 4)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "8kg (2kg x 4)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     },
                     {
                         "name": "12kg (3kg x 4)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 3,
@@ -282,32 +286,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
@@ -324,32 +328,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
@@ -366,37 +370,39 @@ const products = [
                 "sizes": [
                     {
                         "name": "2kg (1kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "6kg (3kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     },
                     {
                         "name": "8kg (4kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 4,
@@ -439,8 +445,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -457,8 +463,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -475,8 +481,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -493,8 +499,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -511,8 +517,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -529,8 +535,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -547,8 +553,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -565,13 +571,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg - 60kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 5,
@@ -614,8 +622,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     }
                 ]
@@ -632,8 +640,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     }
                 ]
@@ -650,8 +658,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     }
                 ]
@@ -668,8 +676,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     }
                 ]
@@ -686,8 +694,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     }
                 ]
@@ -704,8 +712,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     }
                 ]
@@ -722,13 +730,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 6,
@@ -772,19 +782,21 @@ const products = [
                 "sizes": [
                     {
                         "name": " 5Lbs - 2.5kg (1.13kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2.5
                     },
                     {
                         "name": " 10Lbs - 4.5kg (2.25kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4.5
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 7,
@@ -826,8 +838,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     }
                 ]
@@ -844,8 +856,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     }
                 ]
@@ -862,8 +874,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     }
                 ]
@@ -880,13 +892,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 8,
@@ -929,8 +943,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     }
                 ]
@@ -947,8 +961,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
@@ -965,8 +979,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     }
                 ]
@@ -983,8 +997,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     }
                 ]
@@ -1001,8 +1015,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     }
                 ]
@@ -1019,13 +1033,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 9,
@@ -1067,8 +1083,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 350
                     }
                 ]
@@ -1085,8 +1101,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 350
                     }
                 ]
@@ -1103,8 +1119,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 350
                     }
                 ]
@@ -1121,13 +1137,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 350
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 10,
@@ -1172,13 +1190,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 0
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 11,
@@ -1219,8 +1239,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
@@ -1237,8 +1257,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
@@ -1255,8 +1275,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
@@ -1273,13 +1293,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 12,
@@ -1320,8 +1342,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
@@ -1338,8 +1360,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
@@ -1356,8 +1378,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
@@ -1374,13 +1396,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 13,
@@ -1423,13 +1447,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 0
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 14,
@@ -1473,8 +1499,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
@@ -1492,13 +1518,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 15,
@@ -1544,32 +1572,32 @@ const products = [
                 "sizes": [
                     {
                         "name": "Small",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "Medium",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "Large",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "X-Large",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "XX-Large",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     }
                 ]
@@ -1587,37 +1615,39 @@ const products = [
                 "sizes": [
                     {
                         "name": "Small",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "Medium",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "Large",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "X-Large",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     },
                     {
                         "name": "XX-Large",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 16,
@@ -1661,25 +1691,27 @@ const products = [
                 "sizes": [
                     {
                         "name": "1kg (0.5kg x 2) Black",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 1000
                     },
                     {
                         "name": "2kg (1kg x 2) Black",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "4kg (2kg x 2) Black",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 17,
@@ -1725,25 +1757,27 @@ const products = [
                 "sizes": [
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     },
                     {
                         "name": "15kg (7.5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 15000
                     },
                     {
                         "name": "20kg (10kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 18,
@@ -1784,8 +1818,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
@@ -1803,13 +1837,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 19,
@@ -1853,31 +1889,33 @@ const products = [
                 "sizes": [
                     {
                         "name": "1kg (0.5 Kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 1000
                     },
                     {
                         "name": "2kg (1 Kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     },
                     {
                         "name": "3kg (1.5 Kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 3000
                     },
                     {
                         "name": "4kg (2 Kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 20,
@@ -1922,19 +1960,21 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     },
                     {
                         "name": "10kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 21,
@@ -1978,8 +2018,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     }
                 ]
@@ -1997,13 +2037,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 350
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 22,
@@ -2046,13 +2088,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "2 Pcs",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 220
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 23,
@@ -2095,8 +2139,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 260
                     }
                 ]
@@ -2114,8 +2158,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 390
                     }
                 ]
@@ -2132,13 +2176,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 780
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 24,
@@ -2180,8 +2226,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
@@ -2197,8 +2243,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
@@ -2214,8 +2260,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
@@ -2231,8 +2277,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
@@ -2247,13 +2293,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 25,
@@ -2296,13 +2344,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "FitBox Sports Ab Roller",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 475
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 26,
@@ -2344,13 +2394,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "FitBox Sports Resistance and Pull up Band",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 200
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 27,
@@ -2395,26 +2447,26 @@ const products = [
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     },
                     {
                         "name": "12 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     },
                     {
                         "name": "14 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     },
                     {
                         "name": "16 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     }
                 ]
@@ -2431,31 +2483,33 @@ const products = [
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     },
                     {
                         "name": "12 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     },
                     {
                         "name": "14 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     },
                     {
                         "name": "16 Oz",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 450
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 28,
@@ -2494,13 +2548,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "Heavy Duty Door Anchor",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 50
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 29,
@@ -2545,13 +2601,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "Medium",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 30,
@@ -2598,14 +2656,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     }
                 ]
@@ -2626,14 +2684,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     }
                 ]
@@ -2653,14 +2711,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     }
                 ]
@@ -2679,14 +2737,14 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     }
                 ]
@@ -2705,19 +2763,21 @@ const products = [
                 "sizes": [
                     {
                         "name": "S/M",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     },
                     {
                         "name": "L/XL",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 720
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 31,
@@ -2759,19 +2819,21 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg (2.5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     },
                     {
                         "name": "10kg (5kg x 2)",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 32,
@@ -2814,13 +2876,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 33,
@@ -2862,55 +2926,57 @@ const products = [
                 "sizes": [
                     {
                         "name": "4kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     },
                     {
                         "name": "8kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "10k",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     },
                     {
                         "name": "12kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     },
                     {
                         "name": "14kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 14000
                     },
                     {
                         "name": "16kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     },
                     {
                         "name": "18kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 18000
                     },
                     {
                         "name": "20kg",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 34,
@@ -2958,13 +3024,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "20 Inch",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 1000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 35,
@@ -3001,13 +3069,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "10Kg X 2",
-                        "price": 450,
-                        "oldPrice": 600,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 2000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 36,
@@ -3022,7 +3092,8 @@ const products = [
             "Tournament Grade"
         ],
         "longDesc": "Serve up serious fun with the FitBox Sports Pickleball Balls Set of 3. These bright yellow balls feature the official 40-hole design for consistent flight, reliable bounce, and predictable spin — whether you're playing indoors or outdoors. Built from tough, seamless plastic construction, they resist cracking and deformation match after match. Bold colour keeps the ball visible during fast rallies, making them ideal for beginners, families, and seasoned players who want a dependable practice ball at an unbeatable value.",
-        "features": ["Approved for Tournament Play | Official size and weight with 40 precision-drilled holes for consistent flight and bounce — trusted by competitive and recreational players alike.",
+        "features": [
+            "Approved for Tournament Play | Official size and weight with 40 precision-drilled holes for consistent flight and bounce — trusted by competitive and recreational players alike.",
             "Built for Performance | Designed to withstand tough conditions with a seamless, one-piece construction that resists cracking and deformation over time.",
             "Consistent Bounce & Flight | Balanced design ensures reliable bounce, straight flight, and predictable spin – perfect for drills, practice, or intense matches.",
             "Super Visible, Super Fun | Bright, bold color makes it easy to keep your eye on the ball – even during fast-paced rallies. "
@@ -3050,13 +3121,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "Pack of 3",
-                        "price": 239,
-                        "oldPrice": 299,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 23
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 37,
@@ -3071,7 +3144,9 @@ const products = [
             "Multi-Ball Compatible"
         ],
         "longDesc": "Step up to the crease with the FitBox Sports Viper Series Cricket Bat. Crafted from heavy-duty, full-size plastic, this bat is engineered to handle tennis balls, wind balls, and lightweight plastic balls with equal ease. Its robust construction delivers a powerful pick-up and a satisfying feel at the crease, making it perfect for street cricket, garden matches, and casual backyard play. Lightweight yet sturdy, the Viper Series lets players of all ages enjoy authentic cricket action without the maintenance of a traditional willow bat.",
-        "features": ["Full Size Heavy Duty Plastic Cricket Bat Suitable with Tennis Ball, Wind Ball & Plastic Ball."],
+        "features": [
+            "Full Size Heavy Duty Plastic Cricket Bat Suitable with Tennis Ball, Wind Ball & Plastic Ball."
+        ],
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
@@ -3092,18 +3167,20 @@ const products = [
                     "/Images/37.1.5.webp",
                     "/Images/37.1.6.webp",
                     "/Images/37.1.7.webp",
-                    "/Images/37.1.8.webp",
+                    "/Images/37.1.8.webp"
                 ],
                 "sizes": [
                     {
                         "name": "One Size",
-                        "price": 399,
-                        "oldPrice": 499,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 800
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 38,
@@ -3118,17 +3195,18 @@ const products = [
             "Includes 3 Balls & Cover"
         ],
         "longDesc": "Dominate every rally with the FitBox Sports PicklePWR Pickleball Paddles Set. This premium two-paddle bundle features a boarded composite surface that delivers the ideal combination of power, control, and durability. The ergonomic cushioned grip absorbs impact and sweat, keeping your hand comfortable during long, intense sessions. Engineered weight distribution ensures quick net reflexes and forceful baseline drives, while the textured surface amplifies spin and ball placement. The set includes a protective cover and 3 pickleball balls — everything you need to start playing straight out of the box.",
-        "features": ["Lightweight & Durable Paddles | Crafted with a Premium Boarded Composite Surface for the perfect blend of power, control, and durability. Great for extended play without arm fatigue.",
+        "features": [
+            "Lightweight & Durable Paddles | Crafted with a Premium Boarded Composite Surface for the perfect blend of power, control, and durability. Great for extended play without arm fatigue.",
             "Balanced Weight for All Play Styles | Engineered with optimal weight distribution for quick reflexes at the net and powerful drives from the baseline.",
             "Comfortable, Cushioned Grip | Ergonomic non-slip grip offers superior comfort and sweat absorption. Ensures enhanced control and accuracy during intense rallies and long matches.",
-            "Optimized for Power & Spin | Engineered surface texture enhances spin and ball placement. Ideal for players looking to improve their game with precision and finesse. "],
+            "Optimized for Power & Spin | Engineered surface texture enhances spin and ball placement. Ideal for players looking to improve their game with precision and finesse. "
+        ],
         "material": "Wood",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/38.1.4.webp",
             "/Images/38.1.5.webp",
-            "/Images/38.1.6.webp",
-
+            "/Images/38.1.6.webp"
         ],
         "imgSrc": "/Images/38.1.1.webp",
         "hoverImgSrc": "/Images/38.1.2.webp",
@@ -3147,13 +3225,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "16L x 8W Centimeters",
-                        "price": 1699,
-                        "oldPrice": 2099,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 39,
@@ -3168,10 +3248,12 @@ const products = [
             "For Men & Women"
         ],
         "longDesc": "Elevate your game with the FitBox Sports PicklePWR Pickleball Paddle in classic offwhite. Engineered with a premium boarded composite surface, this single paddle delivers pinpoint accuracy and responsive power shot after shot. The shock-absorbent handle reduces vibration on impact, protecting your wrist and elbow during extended play. The ergonomic cushioned grip keeps your hand dry and locked-in, while the optimised surface texture lets you generate spin and direct shots with confidence. Suitable for men and women at all skill levels, from first-time players to competitive enthusiasts.",
-        "features": ["Lightweight & Durable Paddle | Crafted with a Premium Boarded Composite Surface for the perfect blend of power, control, and durability. Great for extended play without arm fatigue.",
+        "features": [
+            "Lightweight & Durable Paddle | Crafted with a Premium Boarded Composite Surface for the perfect blend of power, control, and durability. Great for extended play without arm fatigue.",
             "Balanced Weight for All Play Styles | Engineered with optimal weight distribution for quick reflexes at the net and powerful drives from the baseline.",
             "Comfortable, Cushioned Grip | Ergonomic non-slip grip offers superior comfort and sweat absorption. Ensures enhanced control and accuracy during intense rallies and long matches.",
-            "Optimized for Power & Spin | Engineered surface texture enhances spin and ball placement. Ideal for players looking to improve their game with precision and finesse."],
+            "Optimized for Power & Spin | Engineered surface texture enhances spin and ball placement. Ideal for players looking to improve their game with precision and finesse."
+        ],
         "material": "Wood",
         "relatedIds": [],
         "showcaseImages": [
@@ -3190,18 +3272,20 @@ const products = [
                     "/Images/39.1.3.webp",
                     "/Images/39.1.4.webp",
                     "/Images/39.1.5.webp",
-                    "/Images/39.1.6.webp",
+                    "/Images/39.1.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "41L x 20W Centimeters",
-                        "price": 1699,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 230
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 40,
@@ -3216,16 +3300,18 @@ const products = [
             "Indoor & Outdoor"
         ],
         "longDesc": "Stock up and keep the game going with the FitBox Sports Pickleball Balls Set of 6. These bright yellow balls are built for all-weather performance, whether you're hitting on a hardwood gym floor or an open outdoor court. The official 40-hole design ensures a consistent, true-flying trajectory every time, while the seamless one-piece plastic construction stands up to repeated hard play without cracking. At six balls per pack, you'll always have a spare on hand for long practice sessions, group play, or teaching beginners the basics of pickleball.",
-        "features": ["Approved for Tournament Play | Official size and weight with 40 precision-drilled holes for consistent flight and bounce — trusted by competitive and recreational players alike.",
+        "features": [
+            "Approved for Tournament Play | Official size and weight with 40 precision-drilled holes for consistent flight and bounce — trusted by competitive and recreational players alike.",
             "Built for Performance | Designed to withstand tough conditions with a seamless, one-piece construction that resists cracking and deformation over time.",
             "Consistent Bounce & Flight | Balanced design ensures reliable bounce, straight flight, and predictable spin – perfect for drills, practice, or intense matches.",
-            "Super Visible, Super Fun | Bright, bold color makes it easy to keep your eye on the ball – even during fast-paced rallies. "],
+            "Super Visible, Super Fun | Bright, bold color makes it easy to keep your eye on the ball – even during fast-paced rallies. "
+        ],
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/40.1.4.webp",
             "/Images/40.1.5.webp",
-            "/Images/40.1.6.webp",
+            "/Images/40.1.6.webp"
         ],
         "imgSrc": "/Images/40.1.1.webp",
         "hoverImgSrc": "/Images/40.1.2.webp",
@@ -3238,18 +3324,20 @@ const products = [
                     "/Images/40.1.3.webp",
                     "/Images/40.1.4.webp",
                     "/Images/40.1.5.webp",
-                    "/Images/40.1.6.webp",
+                    "/Images/40.1.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Pack of 6",
-                        "price": 799,
-                        "oldPrice": 1199,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 23
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 41,
@@ -3264,7 +3352,8 @@ const products = [
             "Hook & Loop Closure"
         ],
         "longDesc": "Train harder and hit heavier with the FitBox Sports Boxing Wraps. Designed for boxers, MMA fighters, weightlifters, and functional fitness athletes, these wraps deliver firm wrist stabilisation and knuckle protection so you can push your limits safely. Constructed from premium breathable cotton, they wick sweat efficiently to keep your hands dry and blister-free through your toughest sessions. The heavy-duty hook-and-loop closure locks the wrap securely in place — no slipping or bunching mid-workout. At 180 inches in length, they wrap comfortably around every hand size, providing full coverage for boxing, CrossFit, powerlifting, and bodyweight training.",
-        "features": ["STABILIZE YOUR WRISTS & Hand To Hit It HARD - You’ll literally wonder how you ever worked out without them. These high performance straps provide wrist support and stability for weightlifters, Crossfit, MMA, Powerlifting, push ups, planks, burpees & strength training. Boost your workout performance for more challenging advanced lifts and gym routines.",
+        "features": [
+            "STABILIZE YOUR WRISTS & Hand To Hit It HARD - You’ll literally wonder how you ever worked out without them. These high performance straps provide wrist support and stability for weightlifters, Crossfit, MMA, Powerlifting, push ups, planks, burpees & strength training. Boost your workout performance for more challenging advanced lifts and gym routines.",
             "PREMIUM BREATHABLE MATERIAL - Constructed from the highest quality breathable cotton, these wraps wick sweat to keep your hands dry, comfortable and free of blisters during even your most intense workouts. ",
             "SECURE HOOK & LOOP CLOSURE - Features a premium, heavy-duty hook & loop closure that stays firmly in place during your entire workout. No slipping, no bunching — just secure, reliable support from start to finish.",
             "IDEAL LENGTH FOR ALL WORKOUTS - At 180 inches long, these wraps offer the perfect balance of coverage and flexibility. Easy to wrap, comfortable to wear, and secure enough for even the most demanding training sessions."
@@ -3288,16 +3377,15 @@ const products = [
                     "/Images/41.1.4.webp",
                     "/Images/41.1.5.webp",
                     "/Images/41.1.6.webp",
-                    "/Images/41.1.7.webp",
+                    "/Images/41.1.7.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 249,
-                        "oldPrice": 500,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
-                    },
-
+                    }
                 ]
             },
             {
@@ -3309,20 +3397,20 @@ const products = [
                     "/Images/41.2.4.webp",
                     "/Images/41.2.5.webp",
                     "/Images/41.2.6.webp",
-                    "/Images/41.2.7.webp",
-
+                    "/Images/41.2.7.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 249,
-                        "oldPrice": 500,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
-                    },
-
+                    }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 42,
@@ -3344,7 +3432,8 @@ const products = [
         ],
         "material": "Blend",
         "relatedIds": [],
-        "showcaseImages": ["/Images/42.1.4.webp",
+        "showcaseImages": [
+            "/Images/42.1.4.webp",
             "/Images/42.1.5.webp",
             "/Images/42.1.6.webp"
         ],
@@ -3364,13 +3453,15 @@ const products = [
                 "sizes": [
                     {
                         "name": " 58L x 46W x 72H Centimeters ",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 43,
@@ -3385,7 +3476,8 @@ const products = [
             "Portable & Lightweight"
         ],
         "longDesc": "Take your push-up performance to the next level with the FitBox Sports Push-Up Bars. These sturdy elevated handles are engineered with a slight tilt that naturally relieves wrist pressure, allowing deeper range of motion and greater muscle activation across your chest, shoulders, triceps, and back. The cushioned foam grips are wrapped in sweat-absorbing material for a firm, skid-free hold throughout your entire set. The compact, portable design means you can set up for a full upper-body session at home, in the gym, or on the go — with minimal setup time and even less storage space needed.",
-        "features": ["UNIQUE DESIGN: The FitBox Sports Push Up Bar for Men and Women features a tilt design that relieves wrist pressure, allowing you to perform more pushups at once. You can work out different parts of your body with this one piece of equipment, such as your shoulders, back, chest, and biceps.",
+        "features": [
+            "UNIQUE DESIGN: The FitBox Sports Push Up Bar for Men and Women features a tilt design that relieves wrist pressure, allowing you to perform more pushups at once. You can work out different parts of your body with this one piece of equipment, such as your shoulders, back, chest, and biceps.",
             "High-quality, comfortable handles that are made of sweat-absorbing material and have a non-slip surface that gives you a firm, soft, and skid-free grip",
             "EASY TO ASSEMBLE : The FitBox Sports Push Up Bar is so simple to assemble that children can do it quickly as well. Just Take These Three Steps I align, push, and then it's ready to use. Because the equipment is portable, it requires very little room for storage."
         ],
@@ -3413,13 +3505,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "Push-Up Bars",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 44,
@@ -3434,16 +3528,17 @@ const products = [
             "Leak-proof Seal"
         ],
         "longDesc": "Mix your supplements perfectly with the FitBox Sports Supplements Shaker Bottle. Crafted from premium, BPA-free PP+PE materials, it features a 316 stainless steel shaker ball for smooth, clump-free protein shakes, smoothies, and juices. The sturdy loop top and leak-proof screw-on lid ensure convenient carrying and secure storage, making it the ideal companion for your pre and post-workout hydration needs.",
-        "features": ["Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements.",
+        "features": [
+            "Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements.",
             "Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
-            "Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
+            "Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying."
         ],
         "material": "Plastic",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/44.1.3.webp",
             "/Images/44.1.4.webp",
-            "/Images/44.1.5.webp",
+            "/Images/44.1.5.webp"
         ],
         "imgSrc": "/Images/44.1.1.webp",
         "hoverImgSrc": "/Images/44.1.2.webp",
@@ -3455,13 +3550,13 @@ const products = [
                     "/Images/44.1.2.webp",
                     "/Images/44.1.3.webp",
                     "/Images/44.1.4.webp",
-                    "/Images/44.1.5.webp",
+                    "/Images/44.1.5.webp"
                 ],
                 "sizes": [
                     {
                         "name": "700ml",
-                        "price": 249,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 50
                     }
                 ]
@@ -3478,8 +3573,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "700ml",
-                        "price": 249,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 50
                     }
                 ]
@@ -3491,19 +3586,20 @@ const products = [
                     "/Images/44.3.2.webp",
                     "/Images/44.3.3.webp",
                     "/Images/44.3.4.webp",
-                    "/Images/44.3.5.webp",
+                    "/Images/44.3.5.webp"
                 ],
                 "sizes": [
                     {
                         "name": "700ml",
-                        "price": 249,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 50
                     }
                 ]
-            },
-
-        ]
+            }
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 45,
@@ -3518,17 +3614,19 @@ const products = [
             "Space-saving Design"
         ],
         "longDesc": "Experience the ultimate full-body workout at home with the FitBox Sports Adjustable Dumbbells & Home Gym Set. This all-in-one solution includes everything you need for strength training, featuring adjustable weights, a curl rod, and a barbell rod. Designed with high-quality, heavy-duty steel and an anti-slip grip, it provides safety and stability during intense sessions while its compact nature makes it perfect for limited spaces.",
-        "features": ["All-in-One Home Gym Solution | Everything you need for a full-body workout at home—includes 2 x dumbbell rods, 5 feet barbell, 3 feet curl rod and more. No need for multiple machines or gym memberships.",
+        "features": [
+            "All-in-One Home Gym Solution | Everything you need for a full-body workout at home—includes 2 x dumbbell rods, 5 feet barbell, 3 feet curl rod and more. No need for multiple machines or gym memberships.",
             "Durable & High-Quality Materials | Made from heavy-duty steel, anti-slip and premium material for long-lasting performance. Designed to handle intense training sessions with safety and stability.",
             "Full-Body Workout Versatility | Target chest, arms, legs, back, core, and more. Great for strength training, muscle building, cardio conditioning, and toning—all from the comfort of your home.",
             "Adjustable & Space-Saving Design | Equipment adjusts easily to your fitness level and available space. Compact storage options make it perfect for apartments, garages, or home studios.",
-            "In The Box - Weight Plate, 2 x Dumbbell Rods, 3 Feet Curl Rod, Gloves, Skipping Rope, Hand Grip & Locks "],
+            "In The Box - Weight Plate, 2 x Dumbbell Rods, 3 Feet Curl Rod, Gloves, Skipping Rope, Hand Grip & Locks "
+        ],
         "material": "Blend, Metal",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/45.1.3.webp",
             "/Images/45.1.4.webp",
-            "/Images/45.1.5.webp",
+            "/Images/45.1.5.webp"
         ],
         "imgSrc": "/Images/45.1.1.webp",
         "hoverImgSrc": "/Images/45.1.2.webp",
@@ -3547,25 +3645,27 @@ const products = [
                 "sizes": [
                     {
                         "name": "30 Kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 30000
                     },
                     {
                         "name": "40 Kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 40000
                     },
                     {
                         "name": "50 Kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 50000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 46,
@@ -3580,15 +3680,17 @@ const products = [
             "Portable"
         ],
         "longDesc": "Enhance your workout routines with the FitBox Sports Fabric Resistance Band. Specifically designed with an elastic latex interweave to prevent slipping, it offers exceptional durability and retains tension after frequent stretching. Multipurpose and highly portable, this loop hip band is perfect for yoga, Pilates, CrossFit, and targeted exercises for the arms, abdomen, buttocks, and legs.",
-        "features": [" 【NON-SLIP AND DURABLE】: Fabric and elastic latex interweave technology prevents booty bands from slipping during workouts. Inner latex increases the elasticity and durability of elastic band to avoid losing elasticity and tension after frequent stretching.",
+        "features": [
+            " 【NON-SLIP AND DURABLE】: Fabric and elastic latex interweave technology prevents booty bands from slipping during workouts. Inner latex increases the elasticity and durability of elastic band to avoid losing elasticity and tension after frequent stretching.",
             " 【Multipurpose】: Resistance bands can exercise arms, abdomen, buttocks and legs, help you shape a healthy and perfect body, increase muscle endurance and strength. Exercise bands are suitable for many workouts and activities including P90x, CrossFit, Yoga, Insanity, Pilates, Hot Yoga, and Beach Body workouts.",
-            "【PORTABLE AND ANYWHERE FITNESS】: Resistance band comes with a handy carrying bag, making it easy to store and take with you. Whether you're at home, in the gym, in the office or outdoors, you can exercise and shape yourself whenever you want. "],
+            "【PORTABLE AND ANYWHERE FITNESS】: Resistance band comes with a handy carrying bag, making it easy to store and take with you. Whether you're at home, in the gym, in the office or outdoors, you can exercise and shape yourself whenever you want. "
+        ],
         "material": "Blend",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/46.1.3.webp",
             "/Images/46.1.4.webp",
-            "/Images/46.1.5.webp",
+            "/Images/46.1.5.webp"
         ],
         "imgSrc": "/Images/46.1.1.webp",
         "hoverImgSrc": "/Images/46.1.2.webp",
@@ -3601,13 +3703,13 @@ const products = [
                     "/Images/46.1.3.webp",
                     "/Images/46.1.4.webp",
                     "/Images/46.1.5.webp",
-                    "/Images/46.1.6.webp",
+                    "/Images/46.1.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -3620,13 +3722,13 @@ const products = [
                     "/Images/46.2.3.webp",
                     "/Images/46.2.4.webp",
                     "/Images/46.2.5.webp",
-                    "/Images/46.2.6.webp",
+                    "/Images/46.2.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -3639,13 +3741,13 @@ const products = [
                     "/Images/46.3.3.webp",
                     "/Images/46.3.4.webp",
                     "/Images/46.3.5.webp",
-                    "/Images/46.3.6.webp",
+                    "/Images/46.3.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
@@ -3658,18 +3760,20 @@ const products = [
                     "/Images/46.4.3.webp",
                     "/Images/46.4.4.webp",
                     "/Images/46.4.5.webp",
-                    "/Images/46.4.6.webp",
+                    "/Images/46.4.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 150
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 47,
@@ -3684,15 +3788,17 @@ const products = [
             "Heavy-Duty"
         ],
         "longDesc": "Push your lifting limits with the FitBox Sports Weight Lifting Wrist Straps featuring durable steel hooks. These high-performance straps provide unparalleled wrist stability and padded support, eliminating discomfort and securing your wrists in a neutral position. Perfect for deadlifts, shrugs, and advanced gym routines, they are essential for powerlifters, bodybuilders, and fitness enthusiasts aiming for new personal records.",
-        "features": ["PERFECT WRIST PROTECTORS FOR MEN OR WOMEN, XFIT, WOD & BODYBUILDING. Hit new PR’s in shrugs, bench press, cleans, jerks, overhead or shoulder press. Mostly eliminate pain & discomfort by securing the wrist in a neutral position.",
+        "features": [
+            "PERFECT WRIST PROTECTORS FOR MEN OR WOMEN, XFIT, WOD & BODYBUILDING. Hit new PR’s in shrugs, bench press, cleans, jerks, overhead or shoulder press. Mostly eliminate pain & discomfort by securing the wrist in a neutral position.",
             "STABILIZE YOUR WRISTS & LIFT MORE WEIGHT - You’ll literally wonder how you ever worked out without them. These high performance straps provide wrist support and stability for weightlifters, Crossfit, MMA, Powerlifting, push ups, planks, burpees & strength training. Boost your workout performance for more challenging advanced lifts and gym routines.",
-            "Professionals Trust -- Finding the right type of wrist wrap for your lifting needs is essential to getting the most out of your workout. Simply put, you’re wasting cash on wraps unless you’ve got the right type on your wrists. CLICK 'Add to Cart'! Try them today!"],
+            "Professionals Trust -- Finding the right type of wrist wrap for your lifting needs is essential to getting the most out of your workout. Simply put, you’re wasting cash on wraps unless you’ve got the right type on your wrists. CLICK 'Add to Cart'! Try them today!"
+        ],
         "material": "Steel, Elastic",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/47.1.3.webp",
             "/Images/47.1.4.webp",
-            "/Images/47.1.6.webp",
+            "/Images/47.1.6.webp"
         ],
         "imgSrc": "/Images/47.1.1.webp",
         "hoverImgSrc": "/Images/47.1.2.webp",
@@ -3705,18 +3811,20 @@ const products = [
                     "/Images/47.1.3.webp",
                     "/Images/47.1.4.webp",
                     "/Images/47.1.5.webp",
-                    "/Images/47.1.6.webp",
+                    "/Images/47.1.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 48,
@@ -3731,15 +3839,17 @@ const products = [
             "Comfortable Grip"
         ],
         "longDesc": "Deepen your stretches and improve flexibility with the FitBox Sports Yoga Belt. This versatile yoga strap features an extra safe adjustable D-Ring buckle, allowing practitioners of all levels to achieve proper positioning securely. Its sturdy, non-slip cotton blend material ensures a comfortable grip without straining your hands, making it ideal for yoga, Pilates, physical therapy, and overall fitness routines.",
-        "features": ["Adjustable length: Allows for a wide range of stretching and positioning, suitable for beginners and advanced practitioners alike.",
+        "features": [
+            "Adjustable length: Allows for a wide range of stretching and positioning, suitable for beginners and advanced practitioners alike.",
             "Non-slip material: Provides extra stability and support for poses and stretches.",
-            "Comfortable grip: Soft yet sturdy texture ensures a comfortable hold without straining your hands. "],
+            "Comfortable grip: Soft yet sturdy texture ensures a comfortable hold without straining your hands. "
+        ],
         "material": " Cotton Blend",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/48.1.3.webp",
             "/Images/48.1.4.webp",
-            "/Images/48.1.5.webp",
+            "/Images/48.1.5.webp"
         ],
         "imgSrc": "/Images/48.1.1.webp",
         "hoverImgSrc": "/Images/48.1.2.webp",
@@ -3752,18 +3862,20 @@ const products = [
                     "/Images/48.1.3.webp",
                     "/Images/48.1.4.webp",
                     "/Images/48.1.5.webp",
-                    "/Images/48.1.6.webp",
+                    "/Images/48.1.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "21L x 21W Centimeters",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 250
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 49,
@@ -3778,14 +3890,16 @@ const products = [
             "Cardio Enhancing"
         ],
         "longDesc": "Boost your cardio endurance and agility with the FitBox Sports Skipping Rope. Perfect for both men and women, this jump rope is coated with durable PVC to prevent cracking and ensure a smooth, tangle-free rotation. Whether you're engaging in boxing, MMA, or a comprehensive cross-training session, it helps shape muscle tension across your entire body.",
-        "features": ["Our exercise skipping rope can shape your cardio endurance, stamina and speed, while improving the muscle tension of your whole body. A great choice for boxing, MMA and cross training.",
-            "PVC Embedded Wire Rope: Rope is coated with PVC, which features durable and smooth, ensures the maximum service life and avoids cracking or breaking.   "],
+        "features": [
+            "Our exercise skipping rope can shape your cardio endurance, stamina and speed, while improving the muscle tension of your whole body. A great choice for boxing, MMA and cross training.",
+            "PVC Embedded Wire Rope: Rope is coated with PVC, which features durable and smooth, ensures the maximum service life and avoids cracking or breaking.   "
+        ],
         "material": "Wire with PVC Coating ",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/49.1.3.webp",
             "/Images/49.1.4.webp",
-            "/Images/49.1.5.webp",
+            "/Images/49.1.5.webp"
         ],
         "imgSrc": "/Images/49.1.1.webp",
         "hoverImgSrc": "/Images/49.1.2.webp",
@@ -3799,18 +3913,20 @@ const products = [
                     "/Images/49.1.4.webp",
                     "/Images/49.1.5.webp",
                     "/Images/49.1.6.webp",
-                    "/Images/49.1.7.webp",
+                    "/Images/49.1.7.webp"
                 ],
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 100
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 50,
@@ -3825,16 +3941,18 @@ const products = [
             "Multiple Configurations"
         ],
         "longDesc": "Transform your home into a personal gym with the FitBox Sports Double Grip Home Gym Set. This versatile kit includes a curl rod, 2 dumbbell rods, and adjustable weight plates designed for independent use off the bar. With high-quality construction and added accessories like cushioned gloves and a skipping rope, it supports boundless workout possibilities from beginner to intermediate levels.",
-        "features": ["Weight Plates, The taken care of weight plan permits for about boundless work out employments. Weights can presently be utilized on or off the bar. Essentially hold the handles and utilize them autonomous of the Rods!",
+        "features": [
+            "Weight Plates, The taken care of weight plan permits for about boundless work out employments. Weights can presently be utilized on or off the bar. Essentially hold the handles and utilize them autonomous of the Rods!",
             "Curl Rod - Our high-quality, barbell is planned to be solid and space sparing! Essentially screw together to form a solid, strong barbell to perform active workouts, Unscrew and store effectively.",
             "Dumbbell Rods - 14 x 2 Dumbbell Rods Offer larger room for adding more weight plates and increase challenge, great for both beginners and intermediate users",
-            "Accessories - A Pair of Cushined Gym Gloves Free Size & 1 Skipping Rope For Strength Training"],
+            "Accessories - A Pair of Cushined Gym Gloves Free Size & 1 Skipping Rope For Strength Training"
+        ],
         "material": "Blend, Iron, Polypropylene (PP)",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/50.1.3.webp",
             "/Images/50.1.4.webp",
-            "/Images/50.1.5.webp",
+            "/Images/50.1.5.webp"
         ],
         "imgSrc": "/Images/50.1.1.webp",
         "hoverImgSrc": "/Images/50.1.2.webp",
@@ -3848,32 +3966,31 @@ const products = [
                     "/Images/50.1.4.webp",
                     "/Images/50.1.5.webp",
                     "/Images/50.1.6.webp",
-                    "/Images/50.1.7.webp",
-
+                    "/Images/50.1.7.webp"
                 ],
                 "sizes": [
                     {
                         "name": "8kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "12kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
@@ -3887,32 +4004,31 @@ const products = [
                     "/Images/50.2.4.webp",
                     "/Images/50.2.5.webp",
                     "/Images/50.2.6.webp",
-                    "/Images/50.2.7.webp",
-
+                    "/Images/50.2.7.webp"
                 ],
                 "sizes": [
                     {
                         "name": "8kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "12kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
@@ -3925,38 +4041,38 @@ const products = [
                     "/Images/50.3.3.webp",
                     "/Images/50.3.4.webp",
                     "/Images/50.3.5.webp",
-                    "/Images/50.3.6.webp",
-
+                    "/Images/50.3.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "8kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 8000
                     },
                     {
                         "name": "12kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 12000
                     },
                     {
                         "name": "16kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     },
                     {
                         "name": "20kg",
-                        "price": 2750,
-                        "oldPrice": 2750,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
-            },
-
-        ]
+            }
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 51,
@@ -3971,17 +4087,19 @@ const products = [
             "Rust-Free PVC"
         ],
         "longDesc": "Enhance your strength training routine with the FitBox Sports 4kg Hexa PVC Dumbbells and Adjustable Hand Grip Strengthener Combo. The ergonomic, anti-rolling dumbbells offer a comfortable non-slip grip ideal for prolonged sessions. Coupled with an adjustable hand gripper (10kg-40kg) made of upgraded durable materials, this set is perfect for toning muscles and improving forearm strength without the need for expensive gym memberships.",
-        "features": ["Product 1: Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
+        "features": [
+            "Product 1: Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
             "Product 1: Made of Premium PVC - Durable, Rust-Free & Abrasion Resistant. Comfortable non-slip grip for long workout sessions",
             "Product 1: Ergonomic & Anti Rolling Design - Hexagon Design Dumbbells. Perfect for Strength Training, Zumba",
             "Product 2: The grip strengther, made of the latest upgraded material, has a longer handle than others, which is more convenient for you to hold; in addition, the handle material is strong and durable, which perfectly avoids the problem of the handle breaking during exercise!",
-            "Product 2: Focusing on your hands and forearms with our deluxe forearm grip resistance trainers can save you hundreds on gym memberships and workout equipment"],
+            "Product 2: Focusing on your hands and forearms with our deluxe forearm grip resistance trainers can save you hundreds on gym memberships and workout equipment"
+        ],
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/51.1.3.webp",
             "/Images/51.1.4.webp",
-            "/Images/51.1.5.webp",
+            "/Images/51.1.5.webp"
         ],
         "imgSrc": "/Images/51.1.1.webp",
         "hoverImgSrc": "/Images/51.1.2.webp",
@@ -3993,18 +4111,20 @@ const products = [
                     "/Images/51.1.2.webp",
                     "/Images/51.1.3.webp",
                     "/Images/51.1.4.webp",
-                    "/Images/51.1.5.webp",
+                    "/Images/51.1.5.webp"
                 ],
                 "sizes": [
                     {
                         "name": "(2kg x 2) Red Hex",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 4000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 52,
@@ -4030,7 +4150,7 @@ const products = [
         "showcaseImages": [
             "/Images/52.1.1.webp",
             "/Images/52.1.2.webp",
-            "/Images/52.1.3.webp",
+            "/Images/52.1.3.webp"
         ],
         "imgSrc": "/Images/52.1.1.webp",
         "hoverImgSrc": "/Images/52.1.2.webp",
@@ -4040,18 +4160,20 @@ const products = [
                 "images": [
                     "/Images/52.1.1.webp",
                     "/Images/52.1.2.webp",
-                    "/Images/52.1.3.webp",
+                    "/Images/52.1.3.webp"
                 ],
                 "sizes": [
                     {
                         "name": "20 Kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 53,
@@ -4066,15 +4188,17 @@ const products = [
             "Premium PVC"
         ],
         "longDesc": "Upgrade your workout gear with the FitBox Sports Vinyl Dumbbells Kit. Designed for comfort and efficiency, this kit includes premium PVC finger grip plates that are easy to carry and handle. Paired with sturdy dumbbell rods, this set allows for customizable weight adjustments, making it perfect for targeted strength training and versatile home workouts.",
-        "features": ["Premium PVC Finger Grip Plates",
+        "features": [
+            "Premium PVC Finger Grip Plates",
             "Easy To Carry Weight",
-            "Weight Plates Comes With 2 Dumbbell Rods"],
+            "Weight Plates Comes With 2 Dumbbell Rods"
+        ],
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
         "showcaseImages": [
             "/Images/53.1.1.webp",
             "/Images/53.1.2.webp",
-            "/Images/53.1.3.webp",
+            "/Images/53.1.3.webp"
         ],
         "imgSrc": "/Images/53.1.1.webp",
         "hoverImgSrc": "/Images/53.1.2.webp",
@@ -4090,8 +4214,8 @@ const products = [
                 "sizes": [
                     {
                         "name": "10 Kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 10000
                     }
                 ]
@@ -4103,20 +4227,20 @@ const products = [
                     "/Images/53.2.2.webp",
                     "/Images/53.2.3.webp",
                     "/Images/53.2.4.webp",
-                    "/Images/53.2.5.webp",
-
-
+                    "/Images/53.2.5.webp"
                 ],
                 "sizes": [
                     {
                         "name": "20 Kg",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 54,
@@ -4163,13 +4287,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "20 Kg (5 Kg X 4) + 2 x 14 Dumbbell Rods",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 55,
@@ -4213,13 +4339,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "16 Kg (2 Kg X 8) + 1 x 3 Feet Plain Rod + Pair Of Dumbbell Rods + Gym Accessories",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 16000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 56,
@@ -4266,13 +4394,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "20 Kg (3kg x 4 12kg + 2kg x 4 8kg) + Pair Of Dumbbell Rods + 1 x 4 Feet Plain Rod + Gym Accessories",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 20000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 57,
@@ -4295,7 +4425,7 @@ const products = [
             "Product 2: a piece of 5kg vinayl coated kettlebell",
             "Product 2: perfect for gym workout, zumba & aerobics",
             "Product 2: rustfree ensuring longer period of usage and safety",
-            "Product 2: box content : 1 piece of pvc kettlebell",
+            "Product 2: box content : 1 piece of pvc kettlebell"
         ],
         "material": "Polyvinyl Chloride (PVC)",
         "relatedIds": [],
@@ -4316,19 +4446,20 @@ const products = [
                     "/Images/57.1.4.webp",
                     "/Images/57.1.5.webp",
                     "/Images/57.1.6.webp",
-                    "/Images/57.1.7.webp",
-
+                    "/Images/57.1.7.webp"
                 ],
                 "sizes": [
                     {
                         "name": "6kg (3kg x 2) + 5kg Kettlebell",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 6000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 58,
@@ -4368,13 +4499,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "5kg Kettlebell + 5kg (2.5kg x 2) Dumbbells",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 59,
@@ -4389,7 +4522,8 @@ const products = [
             "Abrasion Resistant"
         ],
         "longDesc": "Experience varied resistance training with this comprehensive FitBox Sports Combo featuring a 5kg Kettlebell, 4kg Octa PVC Dumbbells, and 4kg Hexa PVC Dumbbells. The unique geometric designs prevent rolling and ensure a secure grip, while the vinyl-coated kettlebell adds intensity to any workout. Constructed from premium, rust-free PVC, this robust set guarantees longevity and safety for all your fitness endeavors.",
-        "features": ["a piece of 5kg vinayl coated kettlebell",
+        "features": [
+            "a piece of 5kg vinayl coated kettlebell",
             "perfect for gym workout, zumba & aerobics",
             "rustfree ensuring longer period of usage and safety",
             "Box Content :- A Set Of 2 Dumbbells. Includes 2kg x 2 Premium PVC Dumbbells",
@@ -4413,13 +4547,15 @@ const products = [
                 "sizes": [
                     {
                         "name": "Standard",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 5000
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 60,
@@ -4428,12 +4564,14 @@ const products = [
         "subCategory": "Shakers",
         "isNew": false,
         "isOutOfStock": false,
-        "qualities": ["100% Leak Proof",
+        "qualities": [
+            "100% Leak Proof",
             "BPA Free",
             "Storage Compartment"
         ],
         "longDesc": "Get ready to experience convenience and functionality with FitBox Sports Spider Shaker Bottle. This innovative shaker bottle is designed to meet the needs of fitness enthusiasts, athletes, and anyone leading an active lifestyle. With its smart compartments, leak-proof design, and premium materials, it has become an essential companion for your fitness journey.",
-        "features": ["100 % Leak proof, storage container, pill container, water bottle plus shaker for preparation and saving time.",
+        "features": [
+            "100 % Leak proof, storage container, pill container, water bottle plus shaker for preparation and saving time.",
             "Shaker Bottle comes with a sturdy loop top so that you can carry it easily and hook it somewhere for storage.",
             "Screw-on lid creates leak-proof seal, and flip cap snaps securely shut to keep contents contained; loop top for easy carrying.",
             "Premium and safe material with PP+PE, BPA Free, and shaker ball is made of 316 stainless steel, premium shaker bottle for mixing protein shakers, smoothie, juice, milk etc. Supplements."
@@ -4443,8 +4581,7 @@ const products = [
         "showcaseImages": [
             "/Images/60.1.3.webp",
             "/Images/60.1.4.webp",
-            "/Images/60.1.5.webp",
-
+            "/Images/60.1.5.webp"
         ],
         "imgSrc": "/Images/60.1.1.webp",
         "hoverImgSrc": "/Images/60.1.2.webp",
@@ -4457,14 +4594,13 @@ const products = [
                     "/Images/60.1.3.webp",
                     "/Images/60.1.4.webp",
                     "/Images/60.1.5.webp",
-                    "/Images/60.1.6.webp",
-
+                    "/Images/60.1.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "500 ml",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 500
                     }
                 ]
@@ -4477,112 +4613,114 @@ const products = [
                     "/Images/60.2.3.webp",
                     "/Images/60.2.4.webp",
                     "/Images/60.2.5.webp",
-                    "/Images/60.2.6.webp",
+                    "/Images/60.2.6.webp"
                 ],
                 "sizes": [
                     {
                         "name": "500 ml",
-                        "price": 0,
-                        "oldPrice": 0,
+                        "price": 9999,
+                        "oldPrice": 9999,
                         "weight": 500
                     }
                 ]
             }
-        ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
-      "id": 61,
-      "name": "FitBox Sports Toning Tube with Door Anchor | Resistance Exercise Band | Comfortable Handles - Ideal for Physical Therapy, Strength Training, Muscle Toning",
-      "category": "Workout Essentials",
-      "subCategory": "Resistance Bands",
-      "isNew": false,
-      "isOutOfStock": false,
-      "qualities": [
-        "Durable",
-        "Comfortable",
-        "Portable"
-      ],
-      "longDesc": "Experience a complete strength training workout with FitBox Sports Toning Tube. This versatile exercise band features double-strength tubes and a door anchor, making it perfect for physical therapy, muscle toning, and building overall strength. Designed for comfort and stability, it ensures a secure grip even during intense workouts. Whether you're at home, in the gym, or on the go, this compact and portable toning tube is an ideal addition to your fitness routine.",
-      "features": [
-        "Natural and Solid: Resistance band is created from 100% natural rubber and the thick working out band furthermore features a strong tear resistance, which does presently not wreck without issues can make certain your assurance at the same time as working out.",
-        "Box Content : Toning Tube with Double Strength Tubes With Door Anchor",
-        "Comfortable & Ergonomic: The foam handles are additionally designed to be ergonomic and non-slip, which ensures that you do not slip even as sweating heavily. The toning tubes are designed to offer a stable and comfortable grip throughout the workout.",
-        "Workout Versatility: This toning tube is a flexible and effective device for strength training, fitness, and rehabilitation. It is perfect for a variety of exercises, including strength training, Pilates, yoga, and physical therapy. You may also use it to enhance your flexibility and mobility."
-      ],
-      "material": "Natural Rubber",
-      "relatedIds": [],
-      "showcaseImages": [
-        "/Images/61.1.4.webp",
-        "/Images/61.1.5.webp",
-        "/Images/61.1.6.webp",
-      ],
-      "imgSrc": "/Images/61.1.1.webp",
-      "hoverImgSrc": "/Images/61.1.2.webp",
-      "variants": [
-        {
-          "color": "Red- 10kg Combo Light",
-          "images": [
-            "/Images/61.1.1.webp",
-            "/Images/61.1.2.webp",
-            "/Images/61.1.3.webp",
+        "id": 61,
+        "name": "FitBox Sports Toning Tube with Door Anchor | Resistance Exercise Band | Comfortable Handles - Ideal for Physical Therapy, Strength Training, Muscle Toning",
+        "category": "Workout Essentials",
+        "subCategory": "Resistance Bands",
+        "isNew": false,
+        "isOutOfStock": false,
+        "qualities": [
+            "Durable",
+            "Comfortable",
+            "Portable"
+        ],
+        "longDesc": "Experience a complete strength training workout with FitBox Sports Toning Tube. This versatile exercise band features double-strength tubes and a door anchor, making it perfect for physical therapy, muscle toning, and building overall strength. Designed for comfort and stability, it ensures a secure grip even during intense workouts. Whether you're at home, in the gym, or on the go, this compact and portable toning tube is an ideal addition to your fitness routine.",
+        "features": [
+            "Natural and Solid: Resistance band is created from 100% natural rubber and the thick working out band furthermore features a strong tear resistance, which does presently not wreck without issues can make certain your assurance at the same time as working out.",
+            "Box Content : Toning Tube with Double Strength Tubes With Door Anchor",
+            "Comfortable & Ergonomic: The foam handles are additionally designed to be ergonomic and non-slip, which ensures that you do not slip even as sweating heavily. The toning tubes are designed to offer a stable and comfortable grip throughout the workout.",
+            "Workout Versatility: This toning tube is a flexible and effective device for strength training, fitness, and rehabilitation. It is perfect for a variety of exercises, including strength training, Pilates, yoga, and physical therapy. You may also use it to enhance your flexibility and mobility."
+        ],
+        "material": "Natural Rubber",
+        "relatedIds": [],
+        "showcaseImages": [
             "/Images/61.1.4.webp",
             "/Images/61.1.5.webp",
-            "/Images/61.1.6.webp",
-          ],
-          "sizes": [
+            "/Images/61.1.6.webp"
+        ],
+        "imgSrc": "/Images/61.1.1.webp",
+        "hoverImgSrc": "/Images/61.1.2.webp",
+        "variants": [
             {
-              "name": "Standard",
-              "price": 0,
-              "oldPrice": 0,
-              "weight": 125
-            }
-          ]
-        },
-        {
-          "color": "Green- 20kg Combo Medium",
-          "images": [
-            "/Images/61.2.1.webp",
-            "/Images/61.2.2.webp",
-            "/Images/61.2.3.webp",
-            "/Images/61.2.4.webp",
-            "/Images/61.2.5.webp",
-            "/Images/61.2.6.webp",
-          ],
-          "sizes": [
+                "color": "Red- 10kg Combo Light",
+                "images": [
+                    "/Images/61.1.1.webp",
+                    "/Images/61.1.2.webp",
+                    "/Images/61.1.3.webp",
+                    "/Images/61.1.4.webp",
+                    "/Images/61.1.5.webp",
+                    "/Images/61.1.6.webp"
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 9999,
+                        "oldPrice": 9999,
+                        "weight": 125
+                    }
+                ]
+            },
             {
-              "name": "Standard",
-              "price": 0,
-              "oldPrice": 0,
-              "weight": 125
+                "color": "Green- 20kg Combo Medium",
+                "images": [
+                    "/Images/61.2.1.webp",
+                    "/Images/61.2.2.webp",
+                    "/Images/61.2.3.webp",
+                    "/Images/61.2.4.webp",
+                    "/Images/61.2.5.webp",
+                    "/Images/61.2.6.webp"
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 9999,
+                        "oldPrice": 9999,
+                        "weight": 125
+                    }
+                ]
+            },
+            {
+                "color": "Red- 15kg Double Tube",
+                "images": [
+                    "/Images/61.3.1.webp",
+                    "/Images/61.3.2.webp",
+                    "/Images/61.3.3.webp",
+                    "/Images/61.3.4.webp",
+                    "/Images/61.3.5.webp",
+                    "/Images/61.3.6.webp"
+                ],
+                "sizes": [
+                    {
+                        "name": "Standard",
+                        "price": 9999,
+                        "oldPrice": 9999,
+                        "weight": 125
+                    }
+                ]
             }
-          ]
-        },
-        {
-            "color": "Red- 15kg Double Tube",
-            "images": [
-                "/Images/61.3.1.webp",
-                "/Images/61.3.2.webp",
-                "/Images/61.3.3.webp",
-                "/Images/61.3.4.webp",
-                "/Images/61.3.5.webp",
-                "/Images/61.3.6.webp",
-            ],
-            "sizes": [
-                {
-                    "name": "Standard",
-                    "price": 0,
-                    "oldPrice": 0,
-                    "weight": 125
-                }
-            ]
-        }
-      ]
+        ],
+        "price": 9999,
+        "oldPrice": 9999
     }
 ];
 
 export default products;
-
-
 
 // {
 //   "id": 0,

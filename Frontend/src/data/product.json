@@ -24,32 +24,32 @@
             {
                 "name": "2kg (1kg x 2)",
                 "weight": 2000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "4kg (2kg x 2)",
                 "weight": 4000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "6kg (3kg x 2)",
                 "weight": 6000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "8kg (4kg x 2)",
                 "weight": 8000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "10kg (5kg x 2)",
                 "weight": 10000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -62,7 +62,7 @@
                     "/Images/1.1.4.webp",
                     "/Images/1.1.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             },
             {
@@ -72,7 +72,7 @@
                     "/Images/1.2.2.webp",
                     "/Images/1.2.3.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -82,7 +82,9 @@
             "/Images/1.1.3.webp"
         ],
         "imgSrc": "/Images/1.1.1.webp",
-        "hoverImgSrc": "/Images/1.2.1.webp"
+        "hoverImgSrc": "/Images/1.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 2,
@@ -108,38 +110,38 @@
             {
                 "name": "4kg (1kg x 4)",
                 "weight": 4000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "8kg (2kg x 4)",
                 "weight": 8000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "10kg (5kg x 2)",
                 "weight": 10000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "12kg (3kg x 4)",
                 "weight": 12000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "16kg",
                 "weight": 16000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "20kg",
                 "weight": 20000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -155,7 +157,7 @@
                     "/Images/2.1.7.webp",
                     "/Images/2.1.8.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             },
             {
@@ -167,7 +169,7 @@
                     "/Images/2.2.4.webp",
                     "/Images/2.2.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -177,7 +179,9 @@
             "/Images/2.1.3.webp"
         ],
         "imgSrc": "/Images/2.1.1.webp",
-        "hoverImgSrc": "/Images/2.2.1.webp"
+        "hoverImgSrc": "/Images/2.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 3,
@@ -204,32 +208,32 @@
             {
                 "name": "2kg (1kg x 2)",
                 "weight": 2000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "4kg (2kg x 2)",
                 "weight": 4000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "6kg (3kg x 2)",
                 "weight": 6000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "8kg (4kg x 2)",
                 "weight": 8000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "10kg (5kg x 2)",
                 "weight": 10000,
-                "price": 999,
-                "oldPrice": 999
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -242,7 +246,7 @@
                     "/Images/3.1.4.webp",
                     "/Images/3.1.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             },
             {
@@ -254,7 +258,7 @@
                     "/Images/3.2.4.webp",
                     "/Images/3.2.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             },
             {
@@ -266,7 +270,7 @@
                     "/Images/3.3.4.webp",
                     "/Images/3.3.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -276,7 +280,9 @@
             "/Images/3.1.3.webp"
         ],
         "imgSrc": "/Images/3.1.1.webp",
-        "hoverImgSrc": "/Images/3.2.1.webp"
+        "hoverImgSrc": "/Images/3.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 4,
@@ -303,7 +309,8 @@
             {
                 "name": "5kg - 60kg",
                 "weight": 150,
-                "price": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -316,8 +323,8 @@
                     "/Images/4.1.4.webp",
                     "/Images/4.1.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -329,8 +336,8 @@
                     "/Images/4.2.4.webp",
                     "/Images/4.2.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -342,8 +349,8 @@
                     "/Images/4.3.4.webp",
                     "/Images/4.3.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -355,8 +362,8 @@
                     "/Images/4.4.4.webp",
                     "/Images/4.4.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -368,8 +375,8 @@
                     "/Images/4.5.4.webp",
                     "/Images/4.5.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -381,8 +388,8 @@
                     "/Images/4.6.4.webp",
                     "/Images/4.6.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -394,8 +401,8 @@
                     "/Images/4.7.4.webp",
                     "/Images/4.7.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             },
             {
@@ -407,8 +414,8 @@
                     "/Images/4.8.4.webp",
                     "/Images/4.8.5.webp"
                 ],
-                "price": 399,
-                "oldPrice": 399,
+                "price": 9999,
+                "oldPrice": 9999,
                 "weight": 0
             }
         ],
@@ -418,7 +425,9 @@
             "/Images/4.3.1.webp"
         ],
         "imgSrc": "/Images/4.1.1.webp",
-        "hoverImgSrc": "/Images/4.2.1.webp"
+        "hoverImgSrc": "/Images/4.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 5,
@@ -446,8 +455,8 @@
             {
                 "color": "Red - 4kg (2kg x 2)",
                 "weight": 4000,
-                "price": 599,
-                "oldPrice": 899,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.1.1.webp",
                     "/Images/5.1.2.webp",
@@ -459,8 +468,8 @@
             {
                 "color": " Orange - 6kg (3kg x 2)",
                 "weight": 6000,
-                "price": 699,
-                "oldPrice": 999,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.2.1.webp",
                     "/Images/5.2.2.webp",
@@ -472,8 +481,8 @@
             {
                 "color": "Blue - 8kg (4kg x 2)",
                 "weight": 8000,
-                "price": 799,
-                "oldPrice": 1099,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.3.1.webp",
                     "/Images/5.3.2.webp",
@@ -485,8 +494,8 @@
             {
                 "color": "Pink - 2kg (1kg x 2)",
                 "weight": 2000,
-                "price": 599,
-                "oldPrice": 899,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.4.1.webp",
                     "/Images/5.4.2.webp",
@@ -498,8 +507,8 @@
             {
                 "color": "Multicolor - 12kg Combo Set",
                 "weight": 12000,
-                "price": 2499,
-                "oldPrice": 3999,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.5.1.webp",
                     "/Images/5.5.2.webp",
@@ -511,8 +520,8 @@
             {
                 "color": "Multicolor - 16kg Combo Set",
                 "weight": 16000,
-                "price": 2899,
-                "oldPrice": 4299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.6.1.webp",
                     "/Images/5.6.2.webp",
@@ -524,8 +533,8 @@
             {
                 "color": "Multicolor - 20kg Combo Set",
                 "weight": 20000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/5.7.1.webp",
                     "/Images/5.7.2.webp",
@@ -541,7 +550,9 @@
             "/Images/5.3.1.webp"
         ],
         "imgSrc": "/Images/5.1.1.webp",
-        "hoverImgSrc": "/Images/5.2.1.webp"
+        "hoverImgSrc": "/Images/5.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 6,
@@ -568,14 +579,14 @@
             {
                 "name": " 5Lbs - 2.5kg (1.13kg x 2)",
                 "weight": 2.5,
-                "price": 699,
-                "oldPrice": 799
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": " 10Lbs - 4.5kg (2.25kg x 2)",
                 "weight": 4.5,
-                "price": 999,
-                "oldPrice": 1099
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -589,7 +600,7 @@
                     "/Images/6.1.5.webp",
                     "/Images/6.1.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -599,7 +610,9 @@
             "/Images/6.1.3.webp"
         ],
         "imgSrc": "/Images/6.1.1.webp",
-        "hoverImgSrc": "/Images/6.1.2.webp"
+        "hoverImgSrc": "/Images/6.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 7,
@@ -626,8 +639,8 @@
             {
                 "color": " 2kg | Panther Pink",
                 "weight": 2000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/7.1.1.webp",
                     "/Images/7.1.2.webp",
@@ -639,8 +652,8 @@
             {
                 "color": " 5kg | Rugged Red",
                 "weight": 5000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/7.2.1.webp",
                     "/Images/7.2.2.webp",
@@ -652,8 +665,8 @@
             {
                 "color": " 8kg | Blitz Blue",
                 "weight": 8000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/7.3.1.webp",
                     "/Images/7.3.2.webp",
@@ -665,8 +678,8 @@
             {
                 "color": " 10kg | Owlish Orange",
                 "weight": 10000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/7.4.1.webp",
                     "/Images/7.4.2.webp",
@@ -682,7 +695,9 @@
             "/Images/7.3.1.webp"
         ],
         "imgSrc": "/Images/7.1.1.webp",
-        "hoverImgSrc": "/Images/7.2.1.webp"
+        "hoverImgSrc": "/Images/7.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 8,
@@ -710,8 +725,8 @@
             {
                 "color": " 5kg (2.5kg x 2) Owlish Orange",
                 "weight": 5000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/8.4.1.webp",
                     "/Images/8.4.2.webp",
@@ -723,8 +738,8 @@
             {
                 "color": " 10kg (5kg x 2) Blitz Blue",
                 "weight": 10000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/8.2.1.webp",
                     "/Images/8.2.2.webp",
@@ -736,8 +751,8 @@
             {
                 "color": "2kg (1kg x 2) Panther Pink",
                 "weight": 2000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/8.3.1.webp",
                     "/Images/8.3.2.webp",
@@ -749,8 +764,8 @@
             {
                 "color": "4kg (2kg x 2) Rugged Red",
                 "weight": 4000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/8.4.1.webp",
                     "/Images/8.4.2.webp",
@@ -762,8 +777,8 @@
             {
                 "color": " 6kg (3kg x 2) Yobbery Yellow",
                 "weight": 6000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/8.5.1.webp",
                     "/Images/8.5.2.webp",
@@ -775,8 +790,8 @@
             {
                 "color": "8kg (4kg x 2) Gazzle Grey",
                 "weight": 8000,
-                "price": 3499,
-                "oldPrice": 5299,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/8.6.1.webp",
                     "/Images/8.6.2.webp",
@@ -792,7 +807,9 @@
             "/Images/8.3.1.webp"
         ],
         "imgSrc": "/Images/8.1.1.webp",
-        "hoverImgSrc": "/Images/8.2.1.webp"
+        "hoverImgSrc": "/Images/8.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 9,
@@ -819,8 +836,8 @@
             {
                 "color": "BlackGold 5",
                 "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/9.1.1.webp",
                     "/Images/9.1.2.webp",
@@ -832,8 +849,8 @@
             {
                 "color": "BlackGold 5",
                 "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/9.2.1.webp",
                     "/Images/9.2.2.webp",
@@ -845,8 +862,8 @@
             {
                 "color": "Skywalker 7",
                 "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/9.3.1.webp",
                     "/Images/9.3.2.webp",
@@ -858,8 +875,8 @@
             {
                 "color": "Combat 7",
                 "weight": 350,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/9.4.1.webp",
                     "/Images/9.4.2.webp",
@@ -875,7 +892,9 @@
             "/Images/9.3.1.webp"
         ],
         "imgSrc": "/Images/9.1.1.webp",
-        "hoverImgSrc": "/Images/9.2.1.webp"
+        "hoverImgSrc": "/Images/9.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 10,
@@ -911,7 +930,7 @@
                     "/Images/10.1.6.webp",
                     "/Images/10.1.7.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -921,7 +940,9 @@
             "/Images/10.1.3.webp"
         ],
         "imgSrc": "/Images/10.1.1.webp",
-        "hoverImgSrc": "/Images/10.1.2.webp"
+        "hoverImgSrc": "/Images/10.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 11,
@@ -947,8 +968,8 @@
             {
                 "color": "Pack Of 1",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/11.1.1.webp",
                     "/Images/11.1.2.webp",
@@ -960,8 +981,8 @@
             {
                 "color": "Pack Of 2",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/11.2.1.webp",
                     "/Images/11.2.2.webp",
@@ -973,8 +994,8 @@
             {
                 "color": "Pack Of 3",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/11.3.1.webp",
                     "/Images/11.3.2.webp",
@@ -986,8 +1007,8 @@
             {
                 "color": "Pack Of 6",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/11.4.1.webp",
                     "/Images/11.4.2.webp",
@@ -1003,7 +1024,9 @@
             "/Images/11.3.1.webp"
         ],
         "imgSrc": "/Images/11.1.1.webp",
-        "hoverImgSrc": "/Images/11.2.1.webp"
+        "hoverImgSrc": "/Images/11.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 12,
@@ -1029,8 +1052,8 @@
             {
                 "color": "Pack Of 1",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/12.1.1.webp",
                     "/Images/12.1.2.webp",
@@ -1042,8 +1065,8 @@
             {
                 "color": "Pack Of 2",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/12.2.1.webp",
                     "/Images/12.2.2.webp",
@@ -1055,8 +1078,8 @@
             {
                 "color": "Pack Of 3",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/12.3.1.webp",
                     "/Images/12.3.2.webp",
@@ -1068,8 +1091,8 @@
             {
                 "color": "Pack Of 6",
                 "weight": 230,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/12.4.1.webp",
                     "/Images/12.4.2.webp",
@@ -1085,7 +1108,9 @@
             "/Images/12.3.1.webp"
         ],
         "imgSrc": "/Images/12.1.1.webp",
-        "hoverImgSrc": "/Images/12.2.1.webp"
+        "hoverImgSrc": "/Images/12.2.1.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 13,
@@ -1119,7 +1144,7 @@
                     "/Images/13.1.5.webp",
                     "/Images/13.1.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1129,7 +1154,9 @@
             "/Images/13.1.3.webp"
         ],
         "imgSrc": "/Images/13.1.1.webp",
-        "hoverImgSrc": "/Images/13.1.2.webp"
+        "hoverImgSrc": "/Images/13.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 14,
@@ -1156,8 +1183,8 @@
             {
                 "color": "Black",
                 "weight": 250,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/14.1.1.webp",
                     "/Images/14.1.2.webp",
@@ -1171,8 +1198,8 @@
             {
                 "color": "Combat - Camo",
                 "weight": 250,
-                "price": 449,
-                "oldPrice": 529,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/14.2.1.webp",
                     "/Images/14.2.2.webp",
@@ -1189,7 +1216,9 @@
             "/Images/14.1.3.webp"
         ],
         "imgSrc": "/Images/14.1.1.webp",
-        "hoverImgSrc": "/Images/14.1.2.webp"
+        "hoverImgSrc": "/Images/14.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 15,
@@ -1217,32 +1246,32 @@
             {
                 "name": "Small",
                 "weight": 200,
-                "price": 399,
-                "oldPrice": 499
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "Medium",
                 "weight": 200,
-                "price": 399,
-                "oldPrice": 499
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "Large",
                 "weight": 200,
-                "price": 399,
-                "oldPrice": 499
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "X-Large",
                 "weight": 200,
-                "price": 399,
-                "oldPrice": 499
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "XX-Large",
                 "weight": 200,
-                "price": 399,
-                "oldPrice": 499
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1257,7 +1286,7 @@
                     "/Images/15.1.6.webp",
                     "/Images/15.1.7.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             },
             {
@@ -1270,7 +1299,7 @@
                     "/Images/15.2.5.webp",
                     "/Images/15.2.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1280,7 +1309,9 @@
             "/Images/15.1.3.webp"
         ],
         "imgSrc": "/Images/15.1.1.webp",
-        "hoverImgSrc": "/Images/15.1.7.webp"
+        "hoverImgSrc": "/Images/15.1.7.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 16,
@@ -1307,20 +1338,20 @@
             {
                 "name": "1kg (0.5kg x 2) Black",
                 "weight": 1000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "2kg (1kg x 2) Black",
                 "weight": 2000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "4kg (2kg x 2) Black",
                 "weight": 4000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1334,7 +1365,7 @@
                     "/Images/16.1.5.webp",
                     "/Images/16.1.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1344,7 +1375,9 @@
             "/Images/16.1.3.webp"
         ],
         "imgSrc": "/Images/16.1.1.webp",
-        "hoverImgSrc": "/Images/16.1.2.webp"
+        "hoverImgSrc": "/Images/16.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 17,
@@ -1372,20 +1405,20 @@
             {
                 "name": "10kg (5kg x 2)",
                 "weight": 10000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "15kg (7.5kg x 2)",
                 "weight": 15000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "20kg (10kg x 2)",
                 "weight": 20000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1400,7 +1433,7 @@
                     "/Images/17.1.6.webp",
                     "/Images/17.1.7.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1410,7 +1443,9 @@
             "/Images/17.1.3.webp"
         ],
         "imgSrc": "/Images/17.1.1.webp",
-        "hoverImgSrc": "/Images/17.1.10.webp"
+        "hoverImgSrc": "/Images/17.1.10.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 18,
@@ -1439,8 +1474,8 @@
             {
                 "color": "Tan",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/18.1.1.webp",
                     "/Images/18.1.2.webp",
@@ -1453,8 +1488,8 @@
             {
                 "color": "Black / Red",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/18.2.1.webp",
                     "/Images/18.2.2.webp",
@@ -1467,7 +1502,9 @@
         ],
         "showcaseImages": [],
         "imgSrc": "",
-        "hoverImgSrc": ""
+        "hoverImgSrc": "",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 19,
@@ -1494,26 +1531,26 @@
             {
                 "name": "1kg (0.5 Kg x 2)",
                 "weight": 1000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "2kg (1 Kg x 2)",
                 "weight": 2000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "3kg (1.5 Kg x 2)",
                 "weight": 3000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "4kg (2 Kg x 2)",
                 "weight": 4000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1527,7 +1564,7 @@
                     "/Images/19.1.5.webp",
                     "/Images/19.1.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1537,7 +1574,9 @@
             "/Images/19.1.3.webp"
         ],
         "imgSrc": "/Images/19.1.1.webp",
-        "hoverImgSrc": "/Images/19.1.10.webp"
+        "hoverImgSrc": "/Images/19.1.10.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 20,
@@ -1564,14 +1603,14 @@
             {
                 "name": "5kg",
                 "weight": 5000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "10kg",
                 "weight": 10000,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1586,7 +1625,7 @@
                     "/Images/20.1.6.webp",
                     "/Images/20.1.7.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1596,7 +1635,9 @@
             "/Images/20.1.3.webp"
         ],
         "imgSrc": "/Images/20.1.1.webp",
-        "hoverImgSrc": "/Images/20.1.10.webp"
+        "hoverImgSrc": "/Images/20.1.10.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 21,
@@ -1625,8 +1666,8 @@
             {
                 "color": "Pro-League",
                 "weight": 450,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/21.1.1.webp",
                     "/Images/21.1.2.webp",
@@ -1638,8 +1679,8 @@
             {
                 "color": "NetBuster",
                 "weight": 350,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/21.2.1.webp",
                     "/Images/21.2.2.webp",
@@ -1656,7 +1697,9 @@
             "/Images/21.1.3.webp"
         ],
         "imgSrc": "/Images/21.1.1.webp",
-        "hoverImgSrc": "/Images/21.1.2.webp"
+        "hoverImgSrc": "/Images/21.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 22,
@@ -1682,8 +1725,8 @@
             {
                 "name": "2 Pcs",
                 "weight": 220,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1697,7 +1740,7 @@
                     "/Images/22.1.5.webp",
                     "/Images/22.1.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1707,7 +1750,9 @@
             "/Images/22.1.3.webp"
         ],
         "imgSrc": "/Images/22.1.1.webp",
-        "hoverImgSrc": "/Images/22.1.2.webp"
+        "hoverImgSrc": "/Images/22.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 23,
@@ -1734,8 +1779,8 @@
             {
                 "color": "Pack of 2",
                 "weight": 260,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/23.1.1.webp",
                     "/Images/23.1.2.webp",
@@ -1748,8 +1793,8 @@
             {
                 "color": "Pack of 3",
                 "weight": 390,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/23.2.1.webp",
                     "/Images/23.2.2.webp",
@@ -1762,8 +1807,8 @@
             {
                 "color": "Pack of 6",
                 "weight": 780,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/23.3.1.webp",
                     "/Images/23.3.2.webp",
@@ -1780,7 +1825,9 @@
             "/Images/23.1.3.webp"
         ],
         "imgSrc": "/Images/23.1.1.webp",
-        "hoverImgSrc": "/Images/23.1.2.webp"
+        "hoverImgSrc": "/Images/23.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 24,
@@ -1807,8 +1854,8 @@
             {
                 "color": "Black - Grey",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/24.1.1.webp",
                     "/Images/24.1.2.webp",
@@ -1820,8 +1867,8 @@
             {
                 "color": "Red - Black",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/24.2.1.webp",
                     "/Images/24.2.2.webp",
@@ -1832,8 +1879,8 @@
             {
                 "color": "Black",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/24.3.1.webp",
                     "/Images/24.3.2.webp",
@@ -1844,8 +1891,8 @@
             {
                 "color": "Blue - Black",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/24.4.1.webp",
                     "/Images/24.4.2.webp",
@@ -1856,8 +1903,8 @@
             {
                 "color": "Yellow - Black",
                 "weight": 250,
-                "price": 0,
-                "oldPrice": 0,
+                "price": 9999,
+                "oldPrice": 9999,
                 "images": [
                     "/Images/24.4.1.webp",
                     "/Images/24.4.2.webp",
@@ -1871,7 +1918,9 @@
             "/Images/24.1.3.webp"
         ],
         "imgSrc": "/Images/24.1.1.webp",
-        "hoverImgSrc": "/Images/24.1.2.webp"
+        "hoverImgSrc": "/Images/24.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 25,
@@ -1898,8 +1947,8 @@
             {
                 "name": "FitBox Sports Ab Roller",
                 "weight": 475,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1912,7 +1961,7 @@
                     "/Images/25.1.4.webp",
                     "/Images/25.1.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1922,7 +1971,9 @@
             "/Images/25.1.3.webp"
         ],
         "imgSrc": "/Images/25.1.1.webp",
-        "hoverImgSrc": "/Images/25.1.2.webp"
+        "hoverImgSrc": "/Images/25.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 26,
@@ -1948,8 +1999,8 @@
             {
                 "name": "FitBox Sports Resistance and Pull up Band",
                 "weight": 200,
-                "price": 0,
-                "oldPrice": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -1962,7 +2013,7 @@
                     "/Images/26.1.4.webp",
                     "/Images/26.1.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -1972,7 +2023,9 @@
             "/Images/26.1.3.webp"
         ],
         "imgSrc": "/Images/26.1.1.webp",
-        "hoverImgSrc": "/Images/26.1.2.webp"
+        "hoverImgSrc": "/Images/26.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     },
     {
         "id": 27,
@@ -2000,22 +2053,26 @@
             {
                 "name": "10 Oz",
                 "weight": 450,
-                "price": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "12 Oz",
                 "weight": 450,
-                "price": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "14 Oz",
                 "weight": 450,
-                "price": 0
+                "price": 9999,
+                "oldPrice": 9999
             },
             {
                 "name": "16 Oz",
                 "weight": 450,
-                "price": 0
+                "price": 9999,
+                "oldPrice": 9999
             }
         ],
         "variants": [
@@ -2024,23 +2081,23 @@
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 599,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     },
                     {
                         "name": "12 Oz",
-                        "price": 455.08,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     },
                     {
                         "name": "14 Oz",
-                        "price": 501.05,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     },
                     {
                         "name": "16 Oz",
-                        "price": 647.72,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     }
                 ],
                 "images": [
@@ -2051,7 +2108,7 @@
                     "/Images/27.1.5.webp",
                     "/Images/27.1.6.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             },
             {
@@ -2059,23 +2116,23 @@
                 "sizes": [
                     {
                         "name": "10 Oz",
-                        "price": 517.56,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     },
                     {
                         "name": "12 Oz",
-                        "price": 743.16,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     },
                     {
                         "name": "14 Oz",
-                        "price": 599,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     },
                     {
                         "name": "16 Oz",
-                        "price": 599,
-                        "oldPrice": 1095
+                        "price": 9999,
+                        "oldPrice": 9999
                     }
                 ],
                 "images": [
@@ -2085,7 +2142,7 @@
                     "/Images/27.2.4.webp",
                     "/Images/27.2.5.webp"
                 ],
-                "price": 0,
+                "price": 9999,
                 "weight": 0
             }
         ],
@@ -2095,6 +2152,8 @@
             "/Images/27.1.3.webp"
         ],
         "imgSrc": "/Images/27.1.1.webp",
-        "hoverImgSrc": "/Images/27.1.2.webp"
+        "hoverImgSrc": "/Images/27.1.2.webp",
+        "price": 9999,
+        "oldPrice": 9999
     }
 ]
