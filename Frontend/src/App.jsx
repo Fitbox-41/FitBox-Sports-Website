@@ -18,6 +18,7 @@ const Team = lazy(() => import('./pages/Team'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const Sitemap = lazy(() => import('./pages/Sitemap'));
 const Account = lazy(() => import('./pages/Account'));
+const WalletPage = lazy(() => import('./pages/WalletPage'));
 const Orders = lazy(() => import('./pages/Orders'));
 const CODGateway = lazy(() => import('./pages/CODGateway'));
 const TrackOrder = lazy(() => import('./pages/TrackOrder'));
@@ -104,6 +105,7 @@ function AppContent() {
             <Route path="/favourites" element={<Favourite />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/account/wallet" element={<WalletPage />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/track-order/:orderId" element={<TrackOrder />} />
             <Route path="/cod-checkout/:orderId" element={<CODGateway />} />
