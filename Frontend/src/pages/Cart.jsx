@@ -49,12 +49,16 @@ export default function Cart() {
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
   const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
 
-  const POINT_VALUE_INR = 2;
-  const maxPointsApplicable = Math.floor(subtotal / POINT_VALUE_INR);
-  const pointsToUse = applyPoints ? Math.min(walletBalance, maxPointsApplicable) : 0;
+  // FitBox points: 1 point = ₹0.10, redeemable for AT MOST 50% of the order
+  // value (the rest must be paid). Mirrors the server clamp in orderController.
+  const POINT_VALUE_INR = 0.1;
+  const orderValue = subtotal + shipping;
+  const maxRedeemableByCap = Math.floor((0.5 * orderValue) / POINT_VALUE_INR);
+  const maxPointsApplicable = Math.min(walletBalance, maxRedeemableByCap);
+  const pointsToUse = applyPoints ? maxPointsApplicable : 0;
   const discount = pointsToUse * POINT_VALUE_INR;
 
-  const total = subtotal + shipping - discount;
+  const total = orderValue - discount;
 
   const handleCheckout = async () => {
     if (isProcessing) return;
@@ -186,31 +190,35 @@ export default function Cart() {
                 </div>
                 {walletBalance > 0 && (
                   <div className="wallet-apply-section" style={{ marginTop: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
                       <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Wallet Balance</span>
-                      <span style={{ color: '#ff6b35', fontWeight: '700' }}>{walletBalance} Pts</span>
+                      <span style={{ color: '#ff6b35', fontWeight: '700' }}>{walletBalance} Pts <span style={{ color: '#94a3b8', fontWeight: '500', fontSize: '0.8rem' }}>(₹{(walletBalance * POINT_VALUE_INR).toFixed(2)})</span></span>
                     </div>
+                    <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 8px' }}>
+                      1 point = ₹{POINT_VALUE_INR.toFixed(2)} · redeemable for up to 50% of your order.
+                    </p>
                     <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', cursor: 'pointer' }}>
-                      <input 
-                        type="checkbox" 
-                        checked={applyPoints} 
-                        onChange={(e) => setApplyPoints(e.target.checked)} 
+                      <input
+                        type="checkbox"
+                        checked={applyPoints}
+                        onChange={(e) => setApplyPoints(e.target.checked)}
+                        disabled={maxPointsApplicable <= 0}
                         style={{ accentColor: '#ff6b35', width: '16px', height: '16px' }}
                       />
-                      Apply points for discount
+                      Apply {maxPointsApplicable} points (−₹{(maxPointsApplicable * POINT_VALUE_INR).toFixed(2)})
                     </label>
                   </div>
                 )}
                 {applyPoints && pointsToUse > 0 && (
                   <div className="summary-row" style={{ color: '#10b981' }}>
                     <span>Points Discount</span>
-                    <span>-₹{discount}</span>
+                    <span>-₹{discount.toFixed(2)}</span>
                   </div>
                 )}
                 <div className="summary-divider" />
                 <div className="summary-row total-row">
                   <span>Total</span>
-                  <span>₹{total}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
                 <button 
                   className={`checkout-btn ${isProcessing ? 'checkout-btn--disabled' : ''}`} 

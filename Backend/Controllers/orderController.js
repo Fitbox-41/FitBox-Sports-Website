@@ -98,8 +98,13 @@ export const placeOrder = async (req, res) => {
     // rule holds regardless of what the client sends (see the points T&C).
     const POINT_VALUE_INR = 0.1;
     const requestedPoints = Math.max(0, Math.floor(Number(appliedPoints) || 0));
+    // The cap is 50% of the PRE-discount order value. totalAmount arrives already
+    // discounted by the client, so reconstruct the order value first (this keeps
+    // the server cap identical to the client's preview, non-circular).
+    const orderValue =
+      Number(totalAmount || 0) + requestedPoints * POINT_VALUE_INR;
     const maxRedeemablePoints =
-      Math.floor((0.5 * Number(totalAmount || 0)) / POINT_VALUE_INR);
+      Math.floor((0.5 * orderValue) / POINT_VALUE_INR);
     const pointsVal = Math.min(requestedPoints, Math.max(0, maxRedeemablePoints));
     let pointsDiscount = 0;
 
