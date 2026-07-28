@@ -93,9 +93,14 @@ export const placeOrder = async (req, res) => {
       };
     }
 
-    // Redeemed points must be a non-negative integer.
-    const pointsVal = Math.max(0, Math.floor(Number(appliedPoints) || 0));
-    const POINT_VALUE_INR = 2; // 1 point = 2 INR discount
+    // FitBox points: 1 point = ₹0.10 (10 paise). Points can cover AT MOST 50% of
+    // the order value — the rest must be paid. We clamp here on the server so the
+    // rule holds regardless of what the client sends (see the points T&C).
+    const POINT_VALUE_INR = 0.1;
+    const requestedPoints = Math.max(0, Math.floor(Number(appliedPoints) || 0));
+    const maxRedeemablePoints =
+      Math.floor((0.5 * Number(totalAmount || 0)) / POINT_VALUE_INR);
+    const pointsVal = Math.min(requestedPoints, Math.max(0, maxRedeemablePoints));
     let pointsDiscount = 0;
 
     // Create the order first so the wallet debit can reference its id.
