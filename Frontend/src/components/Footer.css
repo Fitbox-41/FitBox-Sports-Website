@@ -199,6 +199,40 @@
   object-fit: contain;
 }
 
+.footer-intro-link-wrap {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-intro-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition), transform var(--transition);
+}
+
+.footer-intro-link:hover {
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+.footer-intro-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  transition: transform var(--transition);
+}
+
+.footer-intro-link:hover svg {
+  transform: translateX(2px);
+}
+
+
 .footer-bottom {
   max-width: 1400px;
   margin: 48px auto 0;

@@ -173,6 +173,21 @@ export default function Footer() {
             <div className="footer-brand-img-wrap" id="footer-brand-img">
               <img src="/fitbox-_red-white.webp" alt="FitBox Sports" className="footer-brand-img" loading="lazy" decoding="async" />
             </div>
+            <div className="footer-intro-link-wrap">
+              <a 
+                href="https://fitboxsports.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="footer-intro-link"
+                id="footer-intro-website-link"
+              >
+                Bulk Orders & Corporate Website
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
