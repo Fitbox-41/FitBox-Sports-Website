@@ -21,16 +21,17 @@ export const getSettings = async (req, res) => {
 // @access  Admin (Protected by admin secret if needed, or simple auth)
 export const updateDeliveryFee = async (req, res) => {
   try {
-    const { deliveryFee, freeDeliveryThreshold } = req.body;
-    
-    // In a real app, you'd verify admin credentials here
+    const { deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor } = req.body;
     
     let settings = await Settings.findOne();
     if (!settings) {
-      settings = await Settings.create({ deliveryFee, freeDeliveryThreshold });
+      settings = await Settings.create({ deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor });
     } else {
       if (deliveryFee !== undefined) settings.deliveryFee = deliveryFee;
       if (freeDeliveryThreshold !== undefined) settings.freeDeliveryThreshold = freeDeliveryThreshold;
+      if (saleRibbonText !== undefined) settings.saleRibbonText = saleRibbonText;
+      if (saleRibbonColor !== undefined) settings.saleRibbonColor = saleRibbonColor;
+      if (saleRibbonTextColor !== undefined) settings.saleRibbonTextColor = saleRibbonTextColor;
       await settings.save();
     }
     

@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { ProductContext } from '../context/ProductContext';
+import { useSettings } from '../context/SettingsContext';
 import './Header.css';
 
 /* ── Categories for Sub-Header ── */
@@ -72,6 +73,12 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
   const location = useLocation();
   const shouldHideSubHeader = hideSubHeader || location.pathname !== '/';
   
+  const { saleRibbonText, saleRibbonColor, saleRibbonTextColor } = useSettings() || {};
+  const DEFAULT_SALE_TEXT = 'SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • ';
+  const activeSaleText = (saleRibbonText && saleRibbonText.trim() !== '') ? saleRibbonText : DEFAULT_SALE_TEXT;
+  const activeRibbonBg = saleRibbonColor || '#e53935';
+  const activeRibbonTextColor = saleRibbonTextColor || '#ffffff';
+
   const [menuOpen, setMenuOpen]   = useState(false);
   const [userOpen, setUserOpen]   = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -479,12 +486,15 @@ export default function Header({ hideSubHeader = false, hideSaleRibbon = false }
 
       {/* ── Sale Ribbon ── */}
       {!hideSaleRibbon && (
-        <div className={`sale-ribbon ${!isScrollingUp ? 'sale-ribbon--hidden' : ''}`}>
+        <div 
+          className={`sale-ribbon ${!isScrollingUp ? 'sale-ribbon--hidden' : ''}`}
+          style={{ backgroundColor: activeRibbonBg, color: activeRibbonTextColor }}
+        >
           <div className="sale-ribbon-track">
             <div className="sale-content">
-              <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
-              <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
-              <span className="sale-text">SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • </span>
+              <span className="sale-text" style={{ color: activeRibbonTextColor }}>{activeSaleText}</span>
+              <span className="sale-text" style={{ color: activeRibbonTextColor }}>{activeSaleText}</span>
+              <span className="sale-text" style={{ color: activeRibbonTextColor }}>{activeSaleText}</span>
             </div>
           </div>
         </div>
