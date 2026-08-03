@@ -10,7 +10,7 @@ import './Header.css';
 const categories = [
   { label: 'Weights & Dumbbells',    path: '/category/weights-&-dumbbells'   },
   { label: 'Workout Essentials',     path: '/category/workout-essentials'       },
-  { label: '99',                     path: '/under99',                         isUnder99: true },
+  { label: '99 Store',               path: '/under99',                         isUnder99: true },
   { label: 'Support & Protection',   path: '/category/support-&-protection'     },
   { label: 'Balls & Sports',         path: '/category/balls-&-sports'      },
   { label: 'Lifestyle & Accessories',path: '/category/lifestyle-&-accessories' },
