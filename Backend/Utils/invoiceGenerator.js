@@ -50,8 +50,8 @@ export const generateInvoice = async (order) => {
           <tr>
             <td>${productLabel}</td>
             <td class="center">${item.quantity || 1}</td>
-            <td class="right">Rs. ${numericPrice}</td>
-            <td class="right">Rs. ${itemTotal}</td>
+            <td class="right">₹${numericPrice}</td>
+            <td class="right">₹${itemTotal}</td>
           </tr>
         `;
       });

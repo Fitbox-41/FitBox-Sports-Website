@@ -258,23 +258,23 @@ export const mockPayment = async (req, res) => {
             return `<tr style="background:${bg};">
                       <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                       <td style="padding:10px 14px; text-align:center;">${qty}</td>
-                      <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
-                      <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                      <td style="padding:10px 14px; text-align:right;">?${price}</td>
+                      <td style="padding:10px 14px; text-align:right;">?${price * qty}</td>
                     </tr>`;
           }).join('')}
                 </tbody>
                 <tfoot>
                   <tr style="background:#fff3ee;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
-                    <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                    <td style="padding:10px 14px; text-align:right;">?${(order.totalAmount - (order.deliveryCharge || 0))}</td>
                   </tr>
                   <tr style="background:#fff3ee;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
-                    <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                    <td style="padding:10px 14px; text-align:right;">?${order.deliveryCharge || 0}</td>
                   </tr>
                   <tr style="background:#fff3ee; font-weight:bold;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                    <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                    <td style="padding:10px 14px; text-align:right; color:#ff6b35;">?${order.totalAmount}</td>
                   </tr>
                 </tfoot>
               </table>
@@ -489,23 +489,23 @@ const processPaidOrder = async (order) => {
                   return `<tr style="background:${bg};">
                     <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                     <td style="padding:10px 14px; text-align:center;">${qty}</td>
-                    <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
-                    <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                    <td style="padding:10px 14px; text-align:right;">?${price}</td>
+                    <td style="padding:10px 14px; text-align:right;">?${price * qty}</td>
                   </tr>`;
                 }).join('')}
               </tbody>
               <tfoot>
                 <tr style="background:#fff3ee;">
                   <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
-                  <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                  <td style="padding:10px 14px; text-align:right;">?${(order.totalAmount - (order.deliveryCharge || 0))}</td>
                 </tr>
                 <tr style="background:#fff3ee;">
                   <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
-                  <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                  <td style="padding:10px 14px; text-align:right;">?${order.deliveryCharge || 0}</td>
                 </tr>
                 <tr style="background:#fff3ee; font-weight:bold;">
                   <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                  <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                  <td style="padding:10px 14px; text-align:right; color:#ff6b35;">?${order.totalAmount}</td>
                 </tr>
               </tfoot>
             </table>
@@ -927,23 +927,23 @@ export const cancelOrder = async (req, res) => {
                       return `<tr style="background:${bg};">
                         <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                         <td style="padding:10px 14px; text-align:center;">${qty}</td>
-                        <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
-                        <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                        <td style="padding:10px 14px; text-align:right;">?${price}</td>
+                        <td style="padding:10px 14px; text-align:right;">?${price * qty}</td>
                       </tr>`;
                     }).join('')}
                   </tbody>
                   <tfoot>
                     <tr style="background:#fff3ee;">
                       <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
-                      <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                      <td style="padding:10px 14px; text-align:right;">?${(order.totalAmount - (order.deliveryCharge || 0))}</td>
                     </tr>
                     <tr style="background:#fff3ee;">
                       <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
-                      <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                      <td style="padding:10px 14px; text-align:right;">?${order.deliveryCharge || 0}</td>
                     </tr>
                     <tr style="background:#fff3ee; font-weight:bold;">
                       <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                      <td style="padding:10px 14px; text-align:right; color:#ff6b35;">?${order.totalAmount}</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -1059,23 +1059,23 @@ export const codPayment = async (req, res) => {
                     return `<tr style="background:${bg};">
                       <td style="padding:10px 14px;">${item.name}${variant}${size}</td>
                       <td style="padding:10px 14px; text-align:center;">${qty}</td>
-                      <td style="padding:10px 14px; text-align:right;">Rs. ${price}</td>
-                      <td style="padding:10px 14px; text-align:right;">Rs. ${price * qty}</td>
+                      <td style="padding:10px 14px; text-align:right;">?${price}</td>
+                      <td style="padding:10px 14px; text-align:right;">?${price * qty}</td>
                     </tr>`;
                   }).join('')}
                 </tbody>
                 <tfoot>
                   <tr style="background:#fff3ee;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Subtotal:</td>
-                    <td style="padding:10px 14px; text-align:right;">Rs. ${(order.totalAmount - (order.deliveryCharge || 0))}</td>
+                    <td style="padding:10px 14px; text-align:right;">?${(order.totalAmount - (order.deliveryCharge || 0))}</td>
                   </tr>
                   <tr style="background:#fff3ee;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Delivery Fee:</td>
-                    <td style="padding:10px 14px; text-align:right;">Rs. ${order.deliveryCharge || 0}</td>
+                    <td style="padding:10px 14px; text-align:right;">?${order.deliveryCharge || 0}</td>
                   </tr>
                   <tr style="background:#fff3ee; font-weight:bold;">
                     <td colspan="3" style="padding:10px 14px; text-align:right;">Order Total:</td>
-                    <td style="padding:10px 14px; text-align:right; color:#ff6b35;">Rs. ${order.totalAmount}</td>
+                    <td style="padding:10px 14px; text-align:right; color:#ff6b35;">?${order.totalAmount}</td>
                   </tr>
                 </tfoot>
               </table>
