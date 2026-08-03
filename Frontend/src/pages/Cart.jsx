@@ -50,11 +50,42 @@ export default function Cart() {
   const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
 
   const POINT_VALUE_INR = 1;
-  const maxPointsApplicable = Math.floor(subtotal / POINT_VALUE_INR);
-  const pointsToUse = applyPoints ? Math.min(walletBalance, maxPointsApplicable) : 0;
-  const discount = pointsToUse * POINT_VALUE_INR;
+  // Maximum points redeemable is capped at 50% of the subtotal and limited by available wallet balance
+  const max50PercentPoints = Math.floor((subtotal * 0.5) / POINT_VALUE_INR);
+  const maxAllowedPoints = Math.min(walletBalance, max50PercentPoints);
 
-  const total = orderValue - discount;
+  const [customPointsInput, setCustomPointsInput] = useState('');
+
+  const handleTogglePoints = (checked) => {
+    setApplyPoints(checked);
+    if (checked) {
+      setCustomPointsInput(String(maxAllowedPoints));
+    }
+  };
+
+  const handleCustomPointsChange = (val) => {
+    if (val === '') {
+      setCustomPointsInput('');
+      return;
+    }
+    const num = parseInt(val, 10);
+    if (isNaN(num)) return;
+    if (num < 0) {
+      setCustomPointsInput('0');
+    } else if (num > maxAllowedPoints) {
+      setCustomPointsInput(String(maxAllowedPoints));
+    } else {
+      setCustomPointsInput(String(num));
+    }
+  };
+
+  const parsedInput = parseInt(customPointsInput, 10);
+  const pointsToUse = applyPoints && maxAllowedPoints > 0
+    ? (isNaN(parsedInput) ? maxAllowedPoints : Math.min(parsedInput, maxAllowedPoints))
+    : 0;
+
+  const discount = pointsToUse * POINT_VALUE_INR;
+  const total = (subtotal + shipping) - discount;
 
   const handleCheckout = async () => {
     if (isProcessing) return;
@@ -185,24 +216,89 @@ export default function Cart() {
                   <span>{shipping === 0 ? 'FREE' : `₹${shipping}`}</span>
                 </div>
                 {walletBalance > 0 && (
-                  <div className="wallet-apply-section" style={{ marginTop: '12px', padding: '12px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                      <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Wallet Balance</span>
-                      <span style={{ color: '#ff6b35', fontWeight: '700' }}>{walletBalance} Pts <span style={{ color: '#94a3b8', fontWeight: '500', fontSize: '0.8rem' }}>(₹{(walletBalance * POINT_VALUE_INR).toFixed(2)})</span></span>
+                  <div className="wallet-apply-section" style={{ marginTop: '12px', padding: '14px', background: '#f8fafc', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1e293b' }}>Wallet Balance</span>
+                      <span style={{ color: '#ff6b35', fontWeight: '700', fontSize: '0.95rem' }}>
+                        {walletBalance} Pts <span style={{ color: '#64748b', fontWeight: '500', fontSize: '0.8rem' }}>(₹{(walletBalance * POINT_VALUE_INR).toFixed(2)})</span>
+                      </span>
                     </div>
-                    <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 8px' }}>
-                      1 point = ₹{POINT_VALUE_INR.toFixed(2)} · redeemable for up to 50% of your order.
+
+                    <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 10px', lineHeight: '1.4' }}>
+                      1 point = ₹{POINT_VALUE_INR.toFixed(2)} · Redeemable up to 50% of order (Max <strong>{maxAllowedPoints} Pts</strong>).
                     </p>
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', cursor: 'pointer' }}>
+
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', cursor: maxAllowedPoints > 0 ? 'pointer' : 'not-allowed', fontWeight: '600', color: '#334155' }}>
                       <input
                         type="checkbox"
                         checked={applyPoints}
-                        onChange={(e) => setApplyPoints(e.target.checked)}
-                        disabled={maxPointsApplicable <= 0}
-                        style={{ accentColor: '#ff6b35', width: '16px', height: '16px' }}
+                        onChange={(e) => handleTogglePoints(e.target.checked)}
+                        disabled={maxAllowedPoints <= 0}
+                        style={{ accentColor: '#ff6b35', width: '17px', height: '17px', cursor: 'pointer' }}
                       />
-                      Apply {maxPointsApplicable} points (−₹{(maxPointsApplicable * POINT_VALUE_INR).toFixed(2)})
+                      Apply Wallet Points
                     </label>
+
+                    {applyPoints && maxAllowedPoints > 0 && (
+                      <div style={{ marginTop: '12px', paddingTop: '10px', borderTop: '1px dashed #cbd5e1' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', marginBottom: '8px' }}>
+                          <span style={{ fontSize: '0.8rem', color: '#475569', fontWeight: '500' }}>Points to redeem:</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <input
+                              type="number"
+                              min="1"
+                              max={maxAllowedPoints}
+                              value={customPointsInput}
+                              onChange={(e) => handleCustomPointsChange(e.target.value)}
+                              placeholder={`1-${maxAllowedPoints}`}
+                              style={{
+                                width: '90px',
+                                padding: '6px 10px',
+                                border: '1.5px solid #ff6b35',
+                                borderRadius: '6px',
+                                fontSize: '0.85rem',
+                                fontWeight: '700',
+                                textAlign: 'right',
+                                outline: 'none',
+                                color: '#1e293b'
+                              }}
+                            />
+                            <span style={{ fontSize: '0.8rem', fontWeight: '600', color: '#475569' }}>Pts</span>
+                          </div>
+                        </div>
+
+                        {/* Quick preset buttons */}
+                        <div style={{ display: 'flex', gap: '6px', marginTop: '6px', marginBottom: '10px' }}>
+                          <button
+                            type="button"
+                            onClick={() => handleCustomPointsChange(Math.floor(maxAllowedPoints * 0.25))}
+                            style={{ flex: 1, padding: '4px 0', fontSize: '0.72rem', borderRadius: '4px', border: '1px solid #cbd5e1', background: '#fff', color: '#475569', cursor: 'pointer', fontWeight: '500' }}
+                          >
+                            25%
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleCustomPointsChange(Math.floor(maxAllowedPoints * 0.5))}
+                            style={{ flex: 1, padding: '4px 0', fontSize: '0.72rem', borderRadius: '4px', border: '1px solid #cbd5e1', background: '#fff', color: '#475569', cursor: 'pointer', fontWeight: '500' }}
+                          >
+                            50%
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleCustomPointsChange(maxAllowedPoints)}
+                            style={{ flex: 1, padding: '4px 0', fontSize: '0.72rem', borderRadius: '4px', border: '1px solid #ff6b35', background: '#fff3ee', color: '#ff6b35', cursor: 'pointer', fontWeight: '600' }}
+                          >
+                            Max ({maxAllowedPoints})
+                          </button>
+                        </div>
+
+                        {pointsToUse > 0 && (
+                          <div style={{ fontSize: '0.75rem', color: '#059669', background: '#ecfdf5', padding: '6px 10px', borderRadius: '6px', border: '1px solid #a7f3d0', lineHeight: '1.4' }}>
+                            Split: <strong>₹{pointsToUse} Points</strong> + <strong>₹{((subtotal + shipping) - pointsToUse).toFixed(2)} Cash/Online</strong>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                 )}
                 {applyPoints && pointsToUse > 0 && (

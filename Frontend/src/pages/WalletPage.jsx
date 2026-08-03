@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import './WalletPage.css';
 
-const POINT_VALUE_INR = 0.1;
+const POINT_VALUE_INR = 1;
 
 export default function WalletPage() {
   const { currentUser } = useAuth();
