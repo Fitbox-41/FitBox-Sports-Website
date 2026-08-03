@@ -23,25 +23,18 @@ export default function Under99() {
     window.scrollTo(0, 0);
   }, []);
 
-  const under99Products = useMemo(() => {
-    const pricedProducts = allProducts.filter((product) => resolveProductPrice(product) > 0 && resolveProductPrice(product) <= 99);
-    if (pricedProducts.length > 0) {
-      return pricedProducts.slice(0, 12);
-    }
-
-    return [...allProducts]
-      .sort((a, b) => resolveProductPrice(a) - resolveProductPrice(b))
-      .slice(0, 8);
-  }, [allProducts]);
-
   const expandedProducts = useMemo(() => {
-    return flattenProducts(under99Products).map((product) => ({
-      ...product,
-      displayId: product.displayId || product.id,
-      price: typeof product.price === 'number' ? product.price : (Number(product.price) || 0),
-      oldPrice: product.oldPrice ? (typeof product.oldPrice === 'number' ? product.oldPrice : (Number(product.oldPrice) || 0)) : null,
-    }));
-  }, [under99Products]);
+    if (!allProducts || allProducts.length === 0) return [];
+    const flattened = flattenProducts(allProducts);
+    return flattened
+      .map((product) => ({
+        ...product,
+        displayId: product.displayId || product.id,
+        price: typeof product.price === 'number' ? product.price : (Number(product.price) || 0),
+        oldPrice: product.oldPrice ? (typeof product.oldPrice === 'number' ? product.oldPrice : (Number(product.oldPrice) || 0)) : null,
+      }))
+      .filter((product) => product.price > 0 && product.price <= 99);
+  }, [allProducts]);
 
   return (
     <div className="category-page">
