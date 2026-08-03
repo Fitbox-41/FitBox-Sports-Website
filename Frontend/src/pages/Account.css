@@ -426,6 +426,37 @@
   margin-bottom: 16px;
   color: var(--text-dark);
 }
+.wallet-tx-summary-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.wallet-tx-summary-head h3 { margin-bottom: 0; }
+.wallet-viewall-btn {
+  background: none;
+  border: none;
+  color: #ff6b35;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+.wallet-viewall-btn:hover { text-decoration: underline; }
+.wallet-viewall-link {
+  margin-top: 8px;
+  background: #fff7f3;
+  border: 1px solid #ffd9c7;
+  color: #ff6b35;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-align: center;
+  transition: background .15s;
+}
+.wallet-viewall-link:hover { background: #ffefe7; }
 .wallet-tx-list {
   display: flex;
   flex-direction: column;

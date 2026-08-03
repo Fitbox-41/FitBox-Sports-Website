@@ -146,12 +146,21 @@ export default function Account() {
                 <span className="wallet-balance-amount">{walletBalance}</span>
               </div>
               <div className="wallet-transactions">
-                <h3>Recent Transactions</h3>
+                <div className="wallet-tx-summary-head">
+                  <h3>Recent Transactions</h3>
+                  <button
+                    type="button"
+                    className="wallet-viewall-btn"
+                    onClick={() => navigate('/account/wallet')}
+                  >
+                    View all →
+                  </button>
+                </div>
                 {walletTransactions.length === 0 ? (
                   <p>No transactions yet.</p>
                 ) : (
                   <div className="wallet-tx-list">
-                    {walletTransactions.map((tx, idx) => (
+                    {walletTransactions.slice(0, 3).map((tx, idx) => (
                       <div key={idx} className={`wallet-tx-item ${tx.type}`}>
                         <div className="wallet-tx-icon">
                           {tx.type === 'credit' ? <ArrowDownLeft size={16} color="#10b981" /> : <ArrowUpRight size={16} color="#ef4444" />}
@@ -165,6 +174,15 @@ export default function Account() {
                         </div>
                       </div>
                     ))}
+                    {walletTransactions.length > 3 && (
+                      <button
+                        type="button"
+                        className="wallet-viewall-link"
+                        onClick={() => navigate('/account/wallet')}
+                      >
+                        View all {walletTransactions.length} transactions →
+                      </button>
+                    )}
                   </div>
                 )}
               </div>

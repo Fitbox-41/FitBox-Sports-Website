@@ -41,6 +41,20 @@ Stay updated on new product launches, fitness tips, and exclusive deals:
 
     Customer Support: Available via the website for inquiries regarding orders, warranty, and assembly.
 
+ FitBox Points & Rewards
+
+Customers earn FitBox Points through activity in the FitBox app (recording runs,
+completing challenges). Points can be redeemed at checkout on this website:
+
+- 1 point = ₹0.10 (ten paise).
+- Points can cover up to 50% of an order's value; the rest is paid normally.
+- Points carry no cash value and are non-transferable. Full terms are on the
+  website Terms & Conditions page ("FitBox Points & Rewards").
+
+Points redemption is handled in `Backend/Controllers/orderController.js`; the
+wallet balance and ledger live in the shared MongoDB Atlas database (same
+account as the FitBox app).
+
  License
 
 Information and branding materials are property of FitBox Sports. This repository serves as a digital footprint/documentation for the brand's online presence.

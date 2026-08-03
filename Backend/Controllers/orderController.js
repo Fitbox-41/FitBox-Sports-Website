@@ -93,9 +93,8 @@ export const placeOrder = async (req, res) => {
       };
     }
 
-    // Redeemed points must be a non-negative integer.
-    const pointsVal = Math.max(0, Math.floor(Number(appliedPoints) || 0));
-    const POINT_VALUE_INR = 2; // 1 point = 2 INR discount
+    const pointsVal = Number(appliedPoints) || 0;
+    const POINT_VALUE_INR = 1; // 1 point = 1 INR discount
     let pointsDiscount = 0;
 
     // Create the order first so the wallet debit can reference its id.

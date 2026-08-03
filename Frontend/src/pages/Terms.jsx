@@ -40,10 +40,22 @@ export default function Terms() {
             <h2>4. Returns and Refunds</h2>
             <p>We want you to be completely satisfied with your purchase. If you are not satisfied, you may return the item within our standard return window in its original condition. Please refer to our <a href="/returns">Return & Cancellation Policy</a> for detailed instructions.</p>
 
-            <h2>5. Limitation of Liability</h2>
+            <h2>5. FitBox Points &amp; Rewards</h2>
+            <p>FitBox Points are a promotional loyalty reward earned through activity in the FitBox app (for example, recording runs or completing challenges) and other promotions we may run from time to time. By earning or redeeming points you agree to the following:</p>
+            <ul>
+              <li><strong>Value.</strong> Each point has a redemption value of <strong>₹0.10 (ten paise)</strong> when applied to an eligible order. This value is for redemption only.</li>
+              <li><strong>No cash value.</strong> Points are not money, carry no cash value, and cannot be transferred, sold, exchanged for cash, or withdrawn.</li>
+              <li><strong>Redemption limit.</strong> Points may be redeemed for a discount of <strong>up to 50% of an order's value</strong>. The remaining balance must be paid using a standard payment method.</li>
+              <li><strong>Earning.</strong> Points are credited for genuine in-app activity only. We do not sync or reward activity from third-party services such as Apple Health or Google Health Connect.</li>
+              <li><strong>Expiry &amp; changes.</strong> We may change the earn rate, redemption value, redemption limit, or expire unused points, and may modify or discontinue the programme, at any time with or without notice.</li>
+              <li><strong>Misuse.</strong> We may withhold, reduce, or revoke points and suspend accounts where we reasonably suspect fraud, error, abuse, or any breach of these terms. Our determination is final.</li>
+              <li><strong>Refunds.</strong> If an order paid partly with points is cancelled or refunded, the redeemed points are returned to your wallet; the cash portion is refunded per our Return &amp; Cancellation Policy.</li>
+            </ul>
+
+            <h2>6. Limitation of Liability</h2>
             <p>In no event shall FitBox Sports, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this website.</p>
 
-            <h2>6. Governing Law</h2>
+            <h2>7. Governing Law</h2>
             <p>These terms and conditions are governed by and construed in accordance with the laws of Punjab, India, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.</p>
           </div>
         </div>

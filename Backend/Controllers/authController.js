@@ -13,6 +13,15 @@ const generateToken = (id) => {
   });
 };
 
+// Record that this user signed in from the WEBSITE UI. The mobile app hits these
+// same auth endpoints, so we only stamp when the request comes from the website
+// (it sends `X-Client: web`) — that lets the admin portal separate website users
+// from app-only users. Best-effort / fire-and-forget.
+const stampWebLogin = (req, userId) => {
+  if (req.get('x-client') !== 'web') return;
+  User.updateOne({ _id: userId }, { $set: { lastWebLoginAt: new Date() } }).catch(() => {});
+};
+
 const getEmailTemplate = (otp, title = 'Your Verification Code', message = 'Hello! Please use the 6-digit code below to securely verify your identity and access your account.') => `
 <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #eaeaea;">
   <div style="background-color: #1a1a2e; padding: 30px 20px; text-align: center;">
@@ -93,6 +102,7 @@ export const registerUser = async (req, res) => {
 
     if (user) {
       await OTP.findOneAndDelete({ email });
+      stampWebLogin(req, user._id);
       res.status(201).json({
         _id: user._id,
         name: user.name,
@@ -164,6 +174,7 @@ export const loginUser = async (req, res) => {
     }
 
     if (user && (await bcrypt.compare(password, user.password))) {
+      stampWebLogin(req, user._id);
       res.json({
         _id: user._id,
         name: user.name,
@@ -284,6 +295,7 @@ export const googleLogin = async (req, res) => {
     }
 
     if (user) {
+      stampWebLogin(req, user._id);
       res.json({
         _id: user._id,
         name: user.name,
