@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import CheckoutModal from '../components/CheckoutModal';
+import { POINT_VALUE_INR, maxRedeemablePoints } from '../config/points';
 import './Cart.css';
 
 export default function Cart() {
@@ -49,9 +50,8 @@ export default function Cart() {
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
   const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
 
-  const POINT_VALUE_INR = 1;
   // Maximum points redeemable is capped at 50% of the subtotal and limited by available wallet balance
-  const max50PercentPoints = Math.floor((subtotal * 0.5) / POINT_VALUE_INR);
+  const max50PercentPoints = maxRedeemablePoints(subtotal);
   const maxAllowedPoints = Math.min(walletBalance, max50PercentPoints);
 
   const [customPointsInput, setCustomPointsInput] = useState('');

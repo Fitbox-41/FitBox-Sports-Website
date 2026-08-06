@@ -6,6 +6,7 @@ import { createDelhiveryShipment, trackDelhiveryShipment, cancelDelhiveryShipmen
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
 import WalletTransaction from '../Models/WalletTransaction.js';
+import { POINT_VALUE_INR, maxRedeemablePoints } from '../Utils/points.js';
 import crypto from 'crypto';
 import axios from 'axios';
 
@@ -94,12 +95,11 @@ export const placeOrder = async (req, res) => {
     }
 
     const pointsVal = Number(appliedPoints) || 0;
-    const POINT_VALUE_INR = 1; // 1 point = 1 INR discount
     let pointsDiscount = 0;
 
     if (pointsVal > 0) {
       const calculatedSubtotal = sanitizedItems.reduce((acc, item) => acc + (Number(item.price) * Number(item.quantity)), 0);
-      const max50PercentPoints = Math.floor((calculatedSubtotal * 0.5) / POINT_VALUE_INR);
+      const max50PercentPoints = maxRedeemablePoints(calculatedSubtotal);
       if (pointsVal > max50PercentPoints) {
         throw new Error(`Points redemption cannot exceed 50% of order subtotal (max ${max50PercentPoints} pts allowed for this order).`);
       }

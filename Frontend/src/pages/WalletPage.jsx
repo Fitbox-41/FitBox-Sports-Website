@@ -9,8 +9,7 @@ import {
   Download, Printer,
 } from 'lucide-react';
 import './WalletPage.css';
-
-const POINT_VALUE_INR = 1;
+import { POINT_VALUE_INR } from '../config/points';
 
 export default function WalletPage() {
   const { currentUser } = useAuth();
