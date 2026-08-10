@@ -2,18 +2,20 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import { useSettings } from '../context/SettingsContext';
+import { useSettings, usePoints } from '../context/SettingsContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import axios from 'axios';
 import CheckoutModal from '../components/CheckoutModal';
-import { POINT_VALUE_INR, maxRedeemablePoints } from '../config/points';
+import { maxRedeemablePoints } from '../config/points';
 import './Cart.css';
 
 export default function Cart() {
   const { cart, removeFromCart, updateQuantity, toggleWishlist, wishlist, clearCart } = useCart();
   const { currentUser, setShowLoginModal } = useAuth();
   const { deliveryFee, freeDeliveryThreshold } = useSettings();
+  // Live rate + cap from admin settings, so changing them needs no deploy.
+  const { pointValueInr: POINT_VALUE_INR, redeemCapPercent } = usePoints();
   const navigate = useNavigate();
   // Stable key per checkout attempt so a retry / double-submit can't create a
   // duplicate order or double-spend points. Reset only after a confirmed success.
@@ -50,9 +52,11 @@ export default function Cart() {
   const subtotal = cart.reduce((total, item) => total + (parsePrice(item.price) * item.quantity), 0);
   const shipping = subtotal > freeDeliveryThreshold || subtotal === 0 ? 0 : deliveryFee;
 
-  // Maximum points redeemable is capped at 50% of the subtotal and limited by available wallet balance
-  const max50PercentPoints = maxRedeemablePoints(subtotal);
-  const maxAllowedPoints = Math.min(walletBalance, max50PercentPoints);
+  // Redeemable points are capped by the configured share of the subtotal and by
+  // the available wallet balance. The cap itself isn't shown here — see the
+  // Terms page (the "*" below).
+  const maxCappedPoints = maxRedeemablePoints(subtotal, POINT_VALUE_INR, redeemCapPercent);
+  const maxAllowedPoints = Math.min(walletBalance, maxCappedPoints);
 
   const [customPointsInput, setCustomPointsInput] = useState('');
 
@@ -224,8 +228,15 @@ export default function Cart() {
                       </span>
                     </div>
 
+                    {/* The redemption limit is a T&C matter and is not spelled
+                        out at the point of sale — just the asterisk. The server
+                        clamps regardless, and the exact rate and cap are on the
+                        Terms page. */}
                     <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 10px', lineHeight: '1.4' }}>
-                      1 point = ₹{POINT_VALUE_INR.toFixed(2)} · Redeemable up to 50% of order (Max <strong>{maxAllowedPoints} Pts</strong>).
+                      Redeem your points against this order.{' '}
+                      <Link to="/terms" style={{ color: '#64748b', textDecoration: 'underline' }}>
+                        *Terms and conditions apply
+                      </Link>
                     </p>
 
                     <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', cursor: maxAllowedPoints > 0 ? 'pointer' : 'not-allowed', fontWeight: '600', color: '#334155' }}>

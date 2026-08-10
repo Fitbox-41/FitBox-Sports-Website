@@ -3,16 +3,17 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   Wallet as WalletIcon, ArrowUpRight, ArrowDownLeft, ArrowLeft,
   Download, Printer,
 } from 'lucide-react';
 import './WalletPage.css';
-import { POINT_VALUE_INR } from '../config/points';
+import { usePoints } from '../context/SettingsContext';
 
 export default function WalletPage() {
   const { currentUser } = useAuth();
+  const { pointValueInr: POINT_VALUE_INR } = usePoints();
   const navigate = useNavigate();
 
   const [balance, setBalance] = useState(0);
@@ -106,8 +107,12 @@ export default function WalletPage() {
         <div className="wallet-balance-card">
           <span className="wbc-label">Available Reward Points</span>
           <span className="wbc-amount">{balance}</span>
+          {/* Rate shown, redemption limit left to the Terms page. */}
           <span className="wbc-sub">
-            ≈ ₹{(balance * POINT_VALUE_INR).toFixed(2)} · 1 point = ₹{POINT_VALUE_INR.toFixed(2)} · redeemable up to 50% of an order
+            ≈ ₹{(balance * POINT_VALUE_INR).toFixed(2)} · 1 point = ₹{POINT_VALUE_INR.toFixed(2)} ·{' '}
+            <Link to="/terms" style={{ color: 'inherit', textDecoration: 'underline' }}>
+              *Terms and conditions apply
+            </Link>
           </span>
         </div>
 

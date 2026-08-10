@@ -6,7 +6,7 @@ import { createDelhiveryShipment, trackDelhiveryShipment, cancelDelhiveryShipmen
 import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
 import WalletTransaction from '../Models/WalletTransaction.js';
-import { POINT_VALUE_INR, maxRedeemablePoints } from '../Utils/points.js';
+import { getPointsConfig, maxRedeemablePointsFor } from '../Utils/points.js';
 import crypto from 'crypto';
 import axios from 'axios';
 
@@ -97,11 +97,17 @@ export const placeOrder = async (req, res) => {
     const pointsVal = Number(appliedPoints) || 0;
     let pointsDiscount = 0;
 
+    // Live rate + cap from admin settings (falls back to the defaults).
+    const pointsConfig = await getPointsConfig();
+    const POINT_VALUE_INR = pointsConfig.pointValueInr;
+
     if (pointsVal > 0) {
       const calculatedSubtotal = sanitizedItems.reduce((acc, item) => acc + (Number(item.price) * Number(item.quantity)), 0);
-      const max50PercentPoints = maxRedeemablePoints(calculatedSubtotal);
-      if (pointsVal > max50PercentPoints) {
-        throw new Error(`Points redemption cannot exceed 50% of order subtotal (max ${max50PercentPoints} pts allowed for this order).`);
+      const maxAllowedPoints = maxRedeemablePointsFor(calculatedSubtotal, pointsConfig);
+      if (pointsVal > maxAllowedPoints) {
+        // The cap itself is a T&C matter and isn't advertised at the point of
+        // sale, so the message states the allowance, not the percentage rule.
+        throw new Error(`You can redeem at most ${maxAllowedPoints} points on this order. Terms and conditions apply.`);
       }
     }
 

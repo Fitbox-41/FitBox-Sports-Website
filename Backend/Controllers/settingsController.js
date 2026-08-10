@@ -21,8 +21,8 @@ export const getSettings = async (req, res) => {
 // @access  Admin (Protected by admin secret if needed, or simple auth)
 export const updateDeliveryFee = async (req, res) => {
   try {
-    const { deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor } = req.body;
-    
+    const { deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor, pointValueInr, redeemCapPercent } = req.body;
+
     let settings = await Settings.findOne();
     if (!settings) {
       settings = await Settings.create({ deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor });
@@ -32,6 +32,22 @@ export const updateDeliveryFee = async (req, res) => {
       if (saleRibbonText !== undefined) settings.saleRibbonText = saleRibbonText;
       if (saleRibbonColor !== undefined) settings.saleRibbonColor = saleRibbonColor;
       if (saleRibbonTextColor !== undefined) settings.saleRibbonTextColor = saleRibbonTextColor;
+      // Points economy — rejected rather than silently coerced, because a bad
+      // value here mis-prices every balance in the system.
+      if (pointValueInr !== undefined) {
+        const v = Number(pointValueInr);
+        if (!Number.isFinite(v) || v <= 0) {
+          return res.status(400).json({ success: false, message: 'Point value must be a number greater than 0.' });
+        }
+        settings.pointValueInr = v;
+      }
+      if (redeemCapPercent !== undefined) {
+        const c = Number(redeemCapPercent);
+        if (!Number.isFinite(c) || c < 0 || c > 100) {
+          return res.status(400).json({ success: false, message: 'Redeem cap must be between 0 and 100 percent.' });
+        }
+        settings.redeemCapPercent = c;
+      }
       await settings.save();
     }
     

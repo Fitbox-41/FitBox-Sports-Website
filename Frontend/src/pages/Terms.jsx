@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { usePoints } from '../context/SettingsContext';
+import { formatPointValue } from '../config/points';
 import './InfoPages.css';
 
 export default function Terms() {
+  // The points clause states the live configured rate and cap, so changing them
+  // in the admin portal updates the published terms too — the cart deliberately
+  // doesn't repeat them, it just links here.
+  const { pointValueInr, redeemCapPercent } = usePoints();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -43,10 +49,10 @@ export default function Terms() {
             <h2>5. FitBox Points &amp; Rewards</h2>
             <p>FitBox Points are a promotional loyalty reward earned through activity in the FitBox app (for example, recording runs or completing challenges) and other promotions we may run from time to time. By earning or redeeming points you agree to the following:</p>
             <ul>
-              <li><strong>Value.</strong> Each point has a redemption value of <strong>₹0.10 (ten paise)</strong> when applied to an eligible order. This value is for redemption only.</li>
+              <li><strong>Value.</strong> Each point has a redemption value of <strong>{formatPointValue(pointValueInr)}</strong> when applied to an eligible order. This value is for redemption only.</li>
               <li><strong>No cash value.</strong> Points are not money, carry no cash value, and cannot be transferred, sold, exchanged for cash, or withdrawn.</li>
-              <li><strong>Redemption limit.</strong> Points may be redeemed for a discount of <strong>up to 50% of an order's value</strong>. The remaining balance must be paid using a standard payment method.</li>
-              <li><strong>Earning.</strong> Points are credited for genuine in-app activity only. We do not sync or reward activity from third-party services such as Apple Health or Google Health Connect.</li>
+              <li><strong>Redemption limit.</strong> Points may be redeemed for a discount of <strong>up to {redeemCapPercent}% of an order's value</strong>. The remaining balance must be paid using a standard payment method. This limit is applied automatically at checkout.</li>
+              <li><strong>Earning.</strong> Points are awarded as a weekly competition in the FitBox app, not for each activity. A season runs Monday to Monday (UTC); when it closes, players are ranked by the territory they hold at that moment and only the <strong>top 20</strong> receive points, the highest rank receiving the largest award and the remainder scaled by rank and area held. Territory held during a season carries no value until the season closes. Points are credited for genuine in-app activity only — we do not sync or reward activity from third-party services such as Apple Health or Google Health Connect.</li>
               <li><strong>Expiry &amp; changes.</strong> We may change the earn rate, redemption value, redemption limit, or expire unused points, and may modify or discontinue the programme, at any time with or without notice.</li>
               <li><strong>Misuse.</strong> We may withhold, reduce, or revoke points and suspend accounts where we reasonably suspect fraud, error, abuse, or any breach of these terms. Our determination is final.</li>
               <li><strong>Refunds.</strong> If an order paid partly with points is cancelled or refunded, the redeemed points are returned to your wallet; the cash portion is refunded per our Return &amp; Cancellation Policy.</li>

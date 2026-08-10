@@ -72,17 +72,26 @@ Points redemption is handled in `Backend/Controllers/orderController.js`; the
 wallet balance and ledger live in the shared MongoDB Atlas database (same
 account as the FitBox app).
 
-**The point value and the 50% cap are defined once per side and imported —
-never re-declared in a page or controller:**
+**The point value and the redemption cap are configured in the admin portal**
+(admin → Website Settings → *FitBox Points*) and stored on the shared `settings`
+document. Read them, never hardcode them:
 
-- `Backend/Utils/points.js` (server)
-- `Frontend/src/config/points.js` (client)
+- `Backend/Utils/points.js` → `getPointsConfig()` / `maxRedeemablePointsFor()`
+- `Frontend/src/config/points.js` (defaults + helpers) via
+  `usePoints()` from `SettingsContext`
 
-They must stay identical, and they must not change without owner sign-off: the
-value is published on the Terms & Conditions page, stated in the app's in-app
-T&C, and used by the admin portal to price the outstanding points liability. A
-checkout rework once re-declared it locally as ₹1 and shipped a 10×
-over-valuation of every point, which is why it now lives in one place.
+The constants in those files are **fallbacks only**, used before settings load or
+if the read fails. Changing the value in admin re-prices every point already
+issued and updates the checkout clamp, the cart, the wallet page, the published
+Terms clause and the mobile app at once — with no deploy and no app release.
+
+A checkout rework once re-declared the value locally as ₹1 and shipped a 10×
+over-valuation of every point, which is why it lives in one place.
+
+Note the cart and checkout deliberately **do not state the redemption limit** —
+they show "*Terms and conditions apply" linking to the Terms page, where the
+current value and cap are rendered from the same config. The server clamps
+regardless, so hiding the rule can't be exploited.
 
 Customers can see their full ledger at `/account/wallet` (history, filter, CSV
 export, save-as-PDF via the browser print dialog); the account page shows the

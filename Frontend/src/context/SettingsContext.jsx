@@ -1,10 +1,22 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { DEFAULT_POINT_VALUE_INR, DEFAULT_REDEEM_CAP_PERCENT } from '../config/points';
 
 export const SettingsContext = createContext();
 
 export const useSettings = () => {
   return useContext(SettingsContext);
+};
+
+/// The live points economy (rate + redemption cap), configured in the admin
+/// portal. Use this instead of importing the constants, so an admin change
+/// takes effect everywhere without a deploy.
+export const usePoints = () => {
+  const s = useContext(SettingsContext) || {};
+  return {
+    pointValueInr: s.pointValueInr ?? DEFAULT_POINT_VALUE_INR,
+    redeemCapPercent: s.redeemCapPercent ?? DEFAULT_REDEEM_CAP_PERCENT,
+  };
 };
 
 const DEFAULT_SALE_TEXT = 'SUMMER SALE IS LIVE! GET UP TO 50% OFF ON ALL GYM EQUIPMENT • USE CODE: FIT50 • LIMITED TIME OFFER • FREE DELIVERY ON ORDERS ABOVE ₹999 • ';
@@ -17,6 +29,8 @@ export const SettingsProvider = ({ children }) => {
   const [saleRibbonText, setSaleRibbonText] = useState(DEFAULT_SALE_TEXT);
   const [saleRibbonColor, setSaleRibbonColor] = useState(DEFAULT_RIBBON_COLOR);
   const [saleRibbonTextColor, setSaleRibbonTextColor] = useState(DEFAULT_TEXT_COLOR);
+  const [pointValueInr, setPointValueInr] = useState(DEFAULT_POINT_VALUE_INR);
+  const [redeemCapPercent, setRedeemCapPercent] = useState(DEFAULT_REDEEM_CAP_PERCENT);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +52,14 @@ export const SettingsProvider = ({ children }) => {
           if (res.data.settings.saleRibbonTextColor) {
             setSaleRibbonTextColor(res.data.settings.saleRibbonTextColor);
           }
+          if (Number(res.data.settings.pointValueInr) > 0) {
+            setPointValueInr(Number(res.data.settings.pointValueInr));
+          }
+          // 0 is a valid cap (redemption switched off), so check for null/undefined
+          // rather than truthiness.
+          if (res.data.settings.redeemCapPercent !== undefined && res.data.settings.redeemCapPercent !== null) {
+            setRedeemCapPercent(Number(res.data.settings.redeemCapPercent));
+          }
         }
       } catch (err) {
         console.error('Failed to fetch settings:', err);
@@ -50,7 +72,7 @@ export const SettingsProvider = ({ children }) => {
   }, []);
 
   return (
-    <SettingsContext.Provider value={{ deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor, loading }}>
+    <SettingsContext.Provider value={{ deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor, pointValueInr, redeemCapPercent, loading }}>
       {children}
     </SettingsContext.Provider>
   );
