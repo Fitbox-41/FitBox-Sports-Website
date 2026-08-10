@@ -21,7 +21,7 @@ export const getSettings = async (req, res) => {
 // @access  Admin (Protected by admin secret if needed, or simple auth)
 export const updateDeliveryFee = async (req, res) => {
   try {
-    const { deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor, pointValueInr, redeemCapPercent } = req.body;
+    const { deliveryFee, freeDeliveryThreshold, saleRibbonText, saleRibbonColor, saleRibbonTextColor, pointValueInr, redeemCapPercent, seasonTopRewardInr } = req.body;
 
     let settings = await Settings.findOne();
     if (!settings) {
@@ -47,6 +47,13 @@ export const updateDeliveryFee = async (req, res) => {
           return res.status(400).json({ success: false, message: 'Redeem cap must be between 0 and 100 percent.' });
         }
         settings.redeemCapPercent = c;
+      }
+      if (seasonTopRewardInr !== undefined) {
+        const r = Number(seasonTopRewardInr);
+        if (!Number.isFinite(r) || r < 0) {
+          return res.status(400).json({ success: false, message: 'Top season reward must be 0 or more.' });
+        }
+        settings.seasonTopRewardInr = r;
       }
       await settings.save();
     }

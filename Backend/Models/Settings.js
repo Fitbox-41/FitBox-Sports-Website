@@ -17,6 +17,11 @@ const settingsSchema = new mongoose.Schema({
   // Changing pointValueInr re-prices every existing balance.
   pointValueInr: { type: Number, default: 0.1, min: 0.01, max: 100 },
   redeemCapPercent: { type: Number, default: 10, min: 0, max: 100 },
+
+  // What winning a weekly territory season is worth, in rupees. Places 2–20 are
+  // derived from this by rank and area held, so this one number sets the whole
+  // prize table (and roughly 4.7x it is the most a season can cost).
+  seasonTopRewardInr: { type: Number, default: 200, min: 0, max: 100000 },
 }, { timestamps: true });
 
 // We only need one settings document
