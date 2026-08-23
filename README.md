@@ -93,6 +93,17 @@ they show "*Terms and conditions apply" linking to the Terms page, where the
 current value and cap are rendered from the same config. The server clamps
 regardless, so hiding the rule can't be exploited.
 
+**Redemption is automatic** (13 Aug 2026, owner's instruction — "कस्टमर पजल
+मारेगा"). The cart applies the largest discount the balance and the cap allow;
+there is no tick-box, no points field and no 25/50/Max presets. Client and server
+now agree by construction, since the server already recomputed the same maximum.
+The customer-facing word is **"Earned"**, not "wallet" — the legal pages still say
+wallet, which describes the mechanism accurately.
+
+Points **expire 99 days** after they are earned and are spent oldest-first
+(`Backend/Utils/pointsExpiry.js`, mirrored in the app backend). Every expiry is a
+real ledger row, so "where did my points go?" is answerable from the history.
+
 Customers can see their full ledger at `/account/wallet` (history, filter, CSV
 export, save-as-PDF via the browser print dialog); the account page shows the
 balance plus the last three transactions.
