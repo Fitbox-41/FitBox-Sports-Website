@@ -130,15 +130,15 @@ export default function Account() {
       <div className="account-container">
         <div className="account-header-section">
           <h1 className="account-title">Your Account</h1>
-          <p className="account-subtitle">Manage your personal information, addresses, and wallet</p>
+          <p className="account-subtitle">Manage your personal information, addresses, and earned points</p>
         </div>
         
         {errorMsg && <div className="account-error">{errorMsg}</div>}
 
         <div className="account-card wallet-section">
-          <h2><WalletIcon size={20} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> FitBox Wallet</h2>
+          <h2><WalletIcon size={20} style={{ marginRight: '8px', verticalAlign: 'middle' }} /> FitBox Earned</h2>
           {walletLoading ? (
-            <p>Loading wallet...</p>
+            <p>Loading your points...</p>
           ) : (
             <>
               <div className="wallet-balance-box">

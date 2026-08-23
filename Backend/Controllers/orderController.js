@@ -7,6 +7,7 @@ import { generateInvoice } from '../Utils/invoiceGenerator.js';
 import sendEmail from '../Utils/sendEmail.js';
 import WalletTransaction from '../Models/WalletTransaction.js';
 import { getPointsConfig, maxRedeemablePointsFor } from '../Utils/points.js';
+import { consumeOldestFirst, creditExpiry } from '../Utils/pointsExpiry.js';
 import crypto from 'crypto';
 import axios from 'axios';
 
@@ -160,6 +161,13 @@ export const placeOrder = async (req, res) => {
 
     await session.commitTransaction();
     session.endSession();
+
+    // Attribute the spend to the oldest live credits, so points expire in the
+    // order they were earned. Deliberately after the commit and non-throwing:
+    // the balance is already correct, this only decides what expires next.
+    if (pointsVal > 0) {
+      await consumeOldestFirst(userId, pointsVal);
+    }
 
     res.status(200).json({
       success: true,
@@ -404,6 +412,8 @@ const markOnlineOrderFailed = async (order) => {
         userId: order.userId,
         type: 'credit',
         amount: order.appliedPoints,
+        remaining: order.appliedPoints,
+        expiresAt: creditExpiry(),
         balanceAfter: refunded.walletBalance,
         source: 'checkout_refund',
         sourceId: order._id.toString(),
@@ -876,6 +886,8 @@ export const cancelOrder = async (req, res) => {
           userId: order.userId,
           type: 'credit',
           amount: order.appliedPoints,
+          remaining: order.appliedPoints,
+          expiresAt: creditExpiry(),
           balanceAfter: refunded.walletBalance,
           source: 'checkout_refund',
           sourceId: order._id.toString(),

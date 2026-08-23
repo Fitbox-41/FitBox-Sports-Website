@@ -25,7 +25,6 @@ export default function Cart() {
   const [isProcessing, setIsProcessing] = useState(false);
 
   const [walletBalance, setWalletBalance] = useState(0);
-  const [applyPoints, setApplyPoints] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -58,35 +57,12 @@ export default function Cart() {
   const maxCappedPoints = maxRedeemablePoints(subtotal, POINT_VALUE_INR, redeemCapPercent);
   const maxAllowedPoints = Math.min(walletBalance, maxCappedPoints);
 
-  const [customPointsInput, setCustomPointsInput] = useState('');
-
-  const handleTogglePoints = (checked) => {
-    setApplyPoints(checked);
-    if (checked) {
-      setCustomPointsInput(String(maxAllowedPoints));
-    }
-  };
-
-  const handleCustomPointsChange = (val) => {
-    if (val === '') {
-      setCustomPointsInput('');
-      return;
-    }
-    const num = parseInt(val, 10);
-    if (isNaN(num)) return;
-    if (num < 0) {
-      setCustomPointsInput('0');
-    } else if (num > maxAllowedPoints) {
-      setCustomPointsInput(String(maxAllowedPoints));
-    } else {
-      setCustomPointsInput(String(num));
-    }
-  };
-
-  const parsedInput = parseInt(customPointsInput, 10);
-  const pointsToUse = applyPoints && maxAllowedPoints > 0
-    ? (isNaN(parsedInput) ? maxAllowedPoints : Math.min(parsedInput, maxAllowedPoints))
-    : 0;
+  // Applied automatically, with no controls for the customer to reason about.
+  // Asking someone to pick a number of points — against a cap they can't see —
+  // was just a puzzle at the checkout; the best available discount is always
+  // what they'd have chosen anyway. The server independently enforces the same
+  // cap, so this can't be pushed past the limit.
+  const pointsToUse = maxAllowedPoints > 0 ? maxAllowedPoints : 0;
 
   const discount = pointsToUse * POINT_VALUE_INR;
   const total = (subtotal + shipping) - discount;
@@ -222,97 +198,34 @@ export default function Cart() {
                 {walletBalance > 0 && (
                   <div className="wallet-apply-section" style={{ marginTop: '12px', padding: '14px', background: '#f8fafc', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                      <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1e293b' }}>Wallet Balance</span>
+                      <span style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1e293b' }}>Earned</span>
                       <span style={{ color: '#ff6b35', fontWeight: '700', fontSize: '0.95rem' }}>
                         {walletBalance} Pts <span style={{ color: '#64748b', fontWeight: '500', fontSize: '0.8rem' }}>(₹{(walletBalance * POINT_VALUE_INR).toFixed(2)})</span>
                       </span>
                     </div>
 
-                    {/* The redemption limit is a T&C matter and is not spelled
-                        out at the point of sale — just the asterisk. The server
-                        clamps regardless, and the exact rate and cap are on the
-                        Terms page. */}
-                    <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '0 0 10px', lineHeight: '1.4' }}>
-                      Redeem your points against this order.{' '}
+                    {/* Applied automatically. The customer isn't asked to choose
+                        an amount, and the redemption limit is a T&C matter that
+                        isn't spelled out at the point of sale — just the
+                        asterisk. The server clamps regardless. */}
+                    {pointsToUse > 0 ? (
+                      <div style={{ fontSize: '0.85rem', color: '#059669', background: '#ecfdf5', padding: '8px 10px', borderRadius: '6px', border: '1px solid #a7f3d0', lineHeight: '1.45' }}>
+                        <strong>₹{discount.toFixed(2)} off</strong> applied using your earned points.
+                      </div>
+                    ) : (
+                      <div style={{ fontSize: '0.8rem', color: '#64748b', lineHeight: '1.45' }}>
+                        Your points will be applied automatically on a qualifying order.
+                      </div>
+                    )}
+
+                    <p style={{ fontSize: '0.75rem', color: '#64748b', margin: '8px 0 0', lineHeight: '1.4' }}>
                       <Link to="/terms" style={{ color: '#64748b', textDecoration: 'underline' }}>
                         *Terms and conditions apply
                       </Link>
                     </p>
-
-                    <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.85rem', cursor: maxAllowedPoints > 0 ? 'pointer' : 'not-allowed', fontWeight: '600', color: '#334155' }}>
-                      <input
-                        type="checkbox"
-                        checked={applyPoints}
-                        onChange={(e) => handleTogglePoints(e.target.checked)}
-                        disabled={maxAllowedPoints <= 0}
-                        style={{ accentColor: '#ff6b35', width: '17px', height: '17px', cursor: 'pointer' }}
-                      />
-                      Apply Wallet Points
-                    </label>
-
-                    {applyPoints && maxAllowedPoints > 0 && (
-                      <div style={{ marginTop: '12px', paddingTop: '10px', borderTop: '1px dashed #cbd5e1' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', marginBottom: '8px' }}>
-                          <span style={{ fontSize: '0.8rem', color: '#475569', fontWeight: '500' }}>Points to redeem:</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <input
-                              type="number"
-                              min="1"
-                              max={maxAllowedPoints}
-                              value={customPointsInput}
-                              onChange={(e) => handleCustomPointsChange(e.target.value)}
-                              placeholder={`1-${maxAllowedPoints}`}
-                              style={{
-                                width: '90px',
-                                padding: '6px 10px',
-                                border: '1.5px solid #ff6b35',
-                                borderRadius: '6px',
-                                fontSize: '0.85rem',
-                                fontWeight: '700',
-                                textAlign: 'right',
-                                outline: 'none',
-                                color: '#1e293b'
-                              }}
-                            />
-                            <span style={{ fontSize: '0.8rem', fontWeight: '600', color: '#475569' }}>Pts</span>
-                          </div>
-                        </div>
-
-                        {/* Quick preset buttons */}
-                        <div style={{ display: 'flex', gap: '6px', marginTop: '6px', marginBottom: '10px' }}>
-                          <button
-                            type="button"
-                            onClick={() => handleCustomPointsChange(Math.floor(maxAllowedPoints * 0.25))}
-                            style={{ flex: 1, padding: '4px 0', fontSize: '0.72rem', borderRadius: '4px', border: '1px solid #cbd5e1', background: '#fff', color: '#475569', cursor: 'pointer', fontWeight: '500' }}
-                          >
-                            25%
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleCustomPointsChange(Math.floor(maxAllowedPoints * 0.5))}
-                            style={{ flex: 1, padding: '4px 0', fontSize: '0.72rem', borderRadius: '4px', border: '1px solid #cbd5e1', background: '#fff', color: '#475569', cursor: 'pointer', fontWeight: '500' }}
-                          >
-                            50%
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => handleCustomPointsChange(maxAllowedPoints)}
-                            style={{ flex: 1, padding: '4px 0', fontSize: '0.72rem', borderRadius: '4px', border: '1px solid #ff6b35', background: '#fff3ee', color: '#ff6b35', cursor: 'pointer', fontWeight: '600' }}
-                          >
-                            Max ({maxAllowedPoints})
-                          </button>
-                        </div>
-
-                        {pointsToUse > 0 && (
-                          <div style={{ fontSize: '0.75rem', color: '#059669', background: '#ecfdf5', padding: '6px 10px', borderRadius: '6px', border: '1px solid #a7f3d0', lineHeight: '1.4' }}>
-                            Split: <strong>₹{pointsToUse} Points</strong> + <strong>₹{((subtotal + shipping) - pointsToUse).toFixed(2)} Cash/Online</strong>
-                          </div>
-                        )}
-                      </div>
-                    )}
                   </div>
                 )}
-                {applyPoints && pointsToUse > 0 && (
+                {pointsToUse > 0 && (
                   <div className="summary-row" style={{ color: '#10b981' }}>
                     <span>Points Discount</span>
                     <span>-₹{discount.toFixed(2)}</span>

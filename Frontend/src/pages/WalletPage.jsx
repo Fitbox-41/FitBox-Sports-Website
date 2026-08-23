@@ -93,7 +93,7 @@ export default function WalletPage() {
         </button>
 
         <div className="wallet-head">
-          <h1><WalletIcon size={26} /> FitBox Wallet</h1>
+          <h1><WalletIcon size={26} /> FitBox Earned</h1>
           <div className="wallet-actions no-print">
             <button onClick={exportCSV} disabled={!shown.length}>
               <Download size={16} /> Export CSV
