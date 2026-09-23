@@ -104,6 +104,24 @@ Points **expire 99 days** after they are earned and are spent oldest-first
 (`Backend/Utils/pointsExpiry.js`, mirrored in the app backend). Every expiry is a
 real ledger row, so "where did my points go?" is answerable from the history.
 
+### Deleting an account deletes the app's data too
+
+`DELETE /api/auth/profile` removes the `users` document **and** every collection
+the FitBox app keyed to that user: `runs`, `territories`, `season_progress`,
+`wallet_transactions`, `notifications`, `challenge_progress`. Orders are kept —
+a completed order is the shop's financial record, not personal data to withdraw.
+
+It used to delete only the login. That mattered beyond tidiness: the app's Play
+Store data-safety declaration promises deletion on request, and Google requires
+that to work **from the web as well as in the app**. Removing the login while a
+customer's GPS history survived would have made the declaration untrue.
+
+The collection list lives in `APP_COLLECTIONS` in `Controllers/authController.js`
+and is deliberately duplicated from `OWNED_BY_USER` in the app backend's
+`routes/account.js` — the same "duplicate the shape, don't share the code"
+arrangement the two backends use for the points ledger. **If the app starts
+storing something new against a user, add it in both places or neither.**
+
 Customers can see their full ledger at `/account/wallet` (history, filter, CSV
 export, save-as-PDF via the browser print dialog); the account page shows the
 balance plus the last three transactions.

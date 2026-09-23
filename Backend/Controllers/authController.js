@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import User from '../Models/User.js';
 import OTP from '../Models/OTP.js';
 import sendEmail from '../Utils/sendEmail.js';
@@ -380,19 +381,58 @@ export const updateProfile = async (req, res) => {
   }
 };
 
+// Collections the FitBox app writes, all keyed by `userId`.
+//
+// Named here rather than imported as models because this backend has no schema
+// for any of them — they belong to the app backend, which shares this database.
+// That is the same "duplicate the shape, don't share the code" arrangement the
+// two backends already use for the points ledger.
+//
+// Keep this list in step with `OWNED_BY_USER` in the app backend's
+// `routes/account.js`. If the app starts storing something new against a user,
+// it has to be deleted from both doors or neither.
+const APP_COLLECTIONS = [
+  'runs',
+  'territories',
+  'season_progress',
+  'wallet_transactions',
+  'notifications',
+  'challenge_progress',
+];
+
 // @desc    Delete user account and all data
 // @route   DELETE /api/auth/profile
 // @access  Private
+//
+// This used to delete only the `users` document, which left every run,
+// territory, points entry and notification behind, keyed to an account that no
+// longer existed. That mattered beyond tidiness: the app's Play Store data
+// safety declaration says a user can have their data deleted, and Google
+// requires that to work from the web as well as in the app. Deleting the login
+// while the GPS history survived would have made the declaration untrue.
+//
+// Orders are deliberately kept — a completed order is the shop's financial
+// record, not the customer's personal data to withdraw.
 export const deleteAccount = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
-
-    if (user) {
-      await User.deleteOne({ _id: user._id });
-      res.json({ message: 'User account removed successfully' });
-    } else {
-      res.status(404).json({ message: 'User not found' });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
+
+    // Data first, account last. If this dies halfway the person still has an
+    // account and can retry; the other order would orphan the data with no way
+    // left to reach it.
+    const deleted = {};
+    const db = mongoose.connection.db;
+    for (const name of APP_COLLECTIONS) {
+      const result = await db.collection(name).deleteMany({ userId: user._id });
+      deleted[name] = result.deletedCount || 0;
+    }
+    await User.deleteOne({ _id: user._id });
+
+    console.log('Account deleted', String(user._id), JSON.stringify(deleted));
+    res.json({ message: 'User account removed successfully', deleted });
   } catch (error) {
     console.error('Error deleting account:', error);
     res.status(500).json({ message: 'Server Error' });
